@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "../../../src/features/futures-edge/contracts/index.ts",
+    "../../../src/features/futures-edge/contracts/src/**/*.ts",
+    "selftest/**/*.ts"
+  ],
+  "//": "Strict standalone check of the contracts + selftest: npx tsc -p docs/futures-edge/contracts/tsconfig.json"
+}

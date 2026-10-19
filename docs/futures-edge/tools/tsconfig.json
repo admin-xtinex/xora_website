@@ -1,0 +1,11 @@
+{
+  "//": "EDGE-00 read-only probe of staged drafts against the box contracts. Does not modify drafts.",
+  "compilerOptions": {
+    "target": "ES2022", "lib": ["ES2022"], "module": "ESNext", "moduleResolution": "Bundler",
+    "strict": true, "noEmit": true, "skipLibCheck": true, "isolatedModules": true, "baseUrl": ".",
+    "paths": {
+      "@futures-edge/contracts": ["../../../src/features/futures-edge/contracts/index.ts"],
+      "features/futures-edge/contracts": ["../../../src/features/futures-edge/contracts/index.ts"]
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson one",
+      "dur": 8,
+      "desc": "Title card: Phase 1, lesson T01, What is cryptocurrency; the tutor walks in."
+    },
+    {
+      "id": "ticker",
+      "name": "A price on a phone",
+      "dur": 14,
+      "desc": "A phone shows a fictional BTC price ticking; the question: what is this?"
+    },
+    {
+      "id": "money",
+      "name": "What money is",
+      "dur": 18,
+      "desc": "Cash turns into a bank balance: money is value people agree to accept, and most of it is already digital."
+    },
+    {
+      "id": "digital",
+      "name": "Digital assets",
+      "dur": 16,
+      "desc": "Definition of a digital asset, with examples that are and are not crypto."
+    },
+    {
+      "id": "ledger",
+      "name": "A shared record",
+      "dur": 22,
+      "desc": "Cryptocurrency defined: a payment is written to a public ledger copied across many computers, with no bank in the middle."
+    },
+    {
+      "id": "bitcoin",
+      "name": "Meet Bitcoin",
+      "dur": 14,
+      "desc": "Bitcoin, symbol BTC: the first cryptocurrency, launched in 2009, with a maximum of 21 million coins."
+    },
+    {
+      "id": "wallet",
+      "name": "No coin in your phone",
+      "dur": 16,
+      "desc": "The misconception: a wallet holds keys, not coins; the coins are entries on the ledger."
+    },
+    {
+      "id": "token",
+      "name": "Coins and tokens",
+      "dur": 12,
+      "desc": "Coins run their own blockchain; tokens like USDT are built on top of existing ones."
+    },
+    {
+      "id": "balance",
+      "name": "Your balance",
+      "dur": 16,
+      "desc": "A fictional 0.002 BTC balance; its value is amount times price: 120 USDT."
+    },
+    {
+      "id": "moves",
+      "name": "When price moves",
+      "dur": 20,
+      "desc": "The price moves up and down; the BTC amount stays the same while its value changes."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 16,
+      "desc": "Pause and calculate: 0.002 BTC at 65,000 USDT; the answer 130 USDT is revealed."
+    },
+    {
+      "id": "sort",
+      "name": "Crypto or not",
+      "dur": 16,
+      "desc": "Five items are sorted into crypto and not crypto."
+    },
+    {
+      "id": "risks",
+      "name": "Know the risks",
+      "dur": 22,
+      "desc": "No government guarantee, volatile prices, lost keys and scams; owning coins is not the same as a futures contract."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 18,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T02, why do crypto prices move."
+    }
+  ]
+}

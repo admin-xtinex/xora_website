@@ -282,6 +282,8 @@
 }
 
 .fe-dialog {
+  /* The site's reset zeroes every margin; auto margins centre the modal again. */
+  margin: auto;
   width: min(1100px, calc(100vw - 32px));
   max-height: calc(100vh - 32px);
   padding: 0;

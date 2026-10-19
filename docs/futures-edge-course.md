@@ -10,7 +10,10 @@ marked `locked` are dimmed, show a "Coming soon" badge and cannot be opened.
 | `src/components/futures-edge/CourseCatalog.tsx` | The section: phase groups, lesson cards, lock state, progress bar, lesson dialog that runs the animation in a frame. |
 | `src/components/futures-edge/course.css` | Its styles. Every class is prefixed `fe-`; colours come from the `@theme` tokens in `src/styles.css`. |
 | `public/futures-edge/cards/<id>.webp` | The title cards, 1280×720. |
-| `public/futures-edge/lessons/<id>.html` | The lesson animations: each one a self-contained HTML page (add them as they are ready). |
+| `public/futures-edge/lessons/<id>.html` | The lesson animations: each one a self-contained HTML page. Built from `content/`, do not edit by hand. |
+| `public/futures-edge/lessons/<id>/` | That lesson's images and fonts, loaded by the page with relative paths. |
+| `content/futures-edge/<id>/` | Each lesson's source: scene code, styles, tutor setup, music and narration script (see its README). |
+| `tools/futures-edge-lessons/` | The lesson player (`runtime.js`) and the build script that makes the pages from `content/`. |
 | `tools/futures-edge-cards/` | The title-card renderer, with the tutor poses and fonts it uses. |
 
 The section is wired in by `src/App.tsx` (after `FuturesEdgeSection`). It also adds **Course** to
@@ -20,15 +23,31 @@ the header navigation (`NAV` in `src/lib/content.ts`), and points "Start Futures
 
 ## Release a lesson
 
-1. Save the lesson's animation as one self-contained HTML page (its scripts and styles inline, or
-   loaded from a CDN) at `public/futures-edge/lessons/<id>.html`, for example `T01.html`.
-2. In `courseData.ts`, set that lesson's `status` to `"available"`.
-3. Build and deploy (README, "Azure Static Web Apps").
+1. Add the lesson's source as `content/futures-edge/<id>/` (same layout as `V00` and `T01`).
+2. Build its page:
+   ```bash
+   node tools/futures-edge-lessons/build-lesson.mjs <id>   # or no id to rebuild every lesson
+   ```
+   This writes `public/futures-edge/lessons/<id>.html` and `public/futures-edge/lessons/<id>/`.
+3. In `courseData.ts`, set that lesson's `status` to `"available"`.
+4. Build and deploy (README, "Azure Static Web Apps").
 
-The dialog checks the page exists before loading it; if it is missing it says "This lesson is not
-available yet." All lessons are `locked` until their animation page is added.
+To change a lesson that is already out, edit its files in `content/futures-edge/<id>/` and run step 2
+again. The dialog checks the page exists before loading it; if it is missing it says "This lesson
+is not available yet."
 
-| Lesson | Animation source |
+V00 and T01 are available.
+
+### How a lesson page behaves
+
+- It starts playing as soon as it loads, scaled to fill a 16:9 frame (letterboxed in other shapes).
+- Browsers block sound until the viewer interacts, so the page shows "Click anywhere for sound".
+  The first click turns the music on. After that a click pauses or resumes, and Space does too.
+- The control bar has play/pause (replay at the end), a seek bar (arrow keys move 5 s) and a sound
+  toggle. It fades out while the lesson plays and the pointer is still.
+- It needs no network beyond its own files: no CDN, no fonts from Google, no claude.ai.
+
+| Lesson | Where it was authored (the source of record is now `content/futures-edge/<id>/`) |
 |---|---|
 | V00 Welcome to XORA Futures Edge | https://claude.ai/artifact/DUwD6iYhioTmvCSUkkVbZy |
 | T01 What Is Cryptocurrency? | https://claude.ai/artifact/VARq1etaN7gjD1XSvZWbgk |
@@ -48,7 +67,9 @@ Needs Node 22.18+ (it runs TypeScript directly) and Playwright with Chromium. If
 
 ## Notes
 
-- **Hosting size.** Animation pages are small (tens of KB each), so all 27 fit easily within the
-  Azure Static Web Apps Free plan's app-size limit.
+- **Hosting size.** A lesson page is about 100–120 KB, plus 1.5–2.5 MB of images and fonts in its
+  folder (mostly the tutor poses). All 27 lessons come to roughly 50–60 MB. Check this against the
+  Azure Static Web Apps plan's app-size limit as lessons are added; the tutor images could later be
+  shared between lessons instead of copied into each folder.
 - **Safety.** The section is static: no trading endpoints, no API keys, no account data. It always
   shows "Education and demo practice only. No live trading, no real money."

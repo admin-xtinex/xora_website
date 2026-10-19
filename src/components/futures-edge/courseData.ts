@@ -1,8 +1,9 @@
 // XORA Futures Edge course catalogue: the single source for the website's course
 // section and for the title-card renderer (tools/futures-edge-cards).
 //
-// To release a lesson: export its MP4 from the animation's Export button, save it as
-// public/futures-edge/videos/<id>.mp4 and set its status to "available".
+// To release a lesson: save its animation page (the self-contained HTML) as
+// public/futures-edge/lessons/<id>.html and set its status to "available".
+// Lessons play as live web animations in the site; there are no MP4 files.
 
 export type LessonStatus = "available" | "locked";
 export type LessonKind = "intro" | "lesson" | "checkpoint";
@@ -34,9 +35,9 @@ export const PHASES: Phase[] = [
 ];
 
 export const LESSONS: Lesson[] = [
-  { id: "V00", kind: "intro", phase: 0, title: "Welcome to XORA Futures Edge", line: "How the course works, the five phases, and why it is demo only.", minutes: 2, status: "available", pose: "wave" },
+  { id: "V00", kind: "intro", phase: 0, title: "Welcome to XORA Futures Edge", line: "How the course works, the five phases, and why it is demo only.", minutes: 2, status: "locked", pose: "wave" },
 
-  { id: "T01", kind: "lesson", phase: 1, title: "What Is Cryptocurrency?", line: "Digital assets, the blockchain, Bitcoin and wallets.", minutes: 4, status: "available", pose: "present" },
+  { id: "T01", kind: "lesson", phase: 1, title: "What Is Cryptocurrency?", line: "Digital assets, the blockchain, Bitcoin and wallets.", minutes: 4, status: "locked", pose: "present" },
   { id: "T02", kind: "lesson", phase: 1, title: "Why Do Crypto Prices Move?", line: "Buyers, sellers, demand, supply and volatility.", minutes: 4, status: "locked", pose: "think" },
   { id: "T03", kind: "lesson", phase: 1, title: "Trading Pairs: BTC/USDT", line: "Base and quote assets, and what a price really means.", minutes: 4, status: "locked", pose: "explain" },
   { id: "T04", kind: "lesson", phase: 1, title: "What Does an Exchange Do?", line: "Order books, bid and ask, spread and account safety.", minutes: 5, status: "locked", pose: "point" },
@@ -69,4 +70,4 @@ export const LESSONS: Lesson[] = [
 ];
 
 export const cardSrc = (id: string) => `/futures-edge/cards/${id}.webp`;
-export const videoSrc = (id: string) => `/futures-edge/videos/${id}.mp4`;
+export const lessonSrc = (id: string) => `/futures-edge/lessons/${id}.html`;

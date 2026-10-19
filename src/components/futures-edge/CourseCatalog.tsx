@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Clock, Lock, Play, X } from "lucide-react";
-import { LESSONS, PHASES, cardSrc, videoSrc, type Lesson } from "./courseData";
+import { LESSONS, PHASES, cardSrc, lessonSrc, type Lesson } from "./courseData";
 import "./course.css";
 
-// The XORA Futures Edge course: every video as a title card, grouped by phase.
-// Locked lessons are shown but cannot be opened; available ones play in a dialog.
+// The XORA Futures Edge course: every lesson as a title card, grouped by phase.
+// Locked lessons are shown but cannot be opened; available ones run their web
+// animation in a dialog.
 export function CourseCatalog() {
   const [playing, setPlaying] = useState<Lesson | null>(null);
   const available = LESSONS.filter((l) => l.status === "available").length;
@@ -15,12 +16,12 @@ export function CourseCatalog() {
         <header className="fe-head">
           <p className="fe-kicker">XORA Futures Edge · The course</p>
           <h2 id="fe-course-title" className="fe-title">
-            {LESSONS.length} short videos, five phases
+            {LESSONS.length} short lessons, five phases
           </h2>
           <p className="fe-intro">
             From “what is Bitcoin?” to a full demo trading decision. New lessons unlock as they are released.
           </p>
-          <div className="fe-progress" aria-label={`${available} of ${LESSONS.length} videos available`}>
+          <div className="fe-progress" aria-label={`${available} of ${LESSONS.length} lessons available`}>
             <span className="fe-progress-bar">
               <i style={{ width: `${(available / LESSONS.length) * 100}%` }} />
             </span>
@@ -53,10 +54,10 @@ export function CourseCatalog() {
         })}
 
         <p className="fe-note">
-          Education and demo practice only. No live trading, no real money. All prices in the videos are fictional.
+          Education and demo practice only. No live trading, no real money. All prices in the lessons are fictional.
         </p>
       </div>
-      <VideoDialog lesson={playing} onClose={() => setPlaying(null)} />
+      <LessonDialog lesson={playing} onClose={() => setPlaying(null)} />
     </section>
   );
 }
@@ -99,26 +100,36 @@ function LessonCard({ lesson: l, onPlay }: { lesson: Lesson; onPlay: () => void 
   );
 }
 
-function VideoDialog({ lesson, onClose }: { lesson: Lesson | null; onClose: () => void }) {
+function LessonDialog({ lesson, onClose }: { lesson: Lesson | null; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
-  const [missing, setMissing] = useState(false);
+  const [state, setState] = useState<"checking" | "ready" | "missing">("checking");
 
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
-    if (lesson && !d.open) {
-      setMissing(false);
-      d.showModal();
-    } else if (!lesson && d.open) {
-      d.close();
-    }
+    if (lesson && !d.open) d.showModal();
+    else if (!lesson && d.open) d.close();
+  }, [lesson]);
+
+  // Check the lesson page exists before loading it, so a missing file shows a
+  // friendly message instead of the host's 404 page inside the frame.
+  useEffect(() => {
+    if (!lesson) return;
+    let alive = true;
+    setState("checking");
+    fetch(lessonSrc(lesson.id), { method: "HEAD", cache: "no-store" })
+      .then((r) => alive && setState(r.ok && (r.headers.get("content-type") ?? "").includes("html") ? "ready" : "missing"))
+      .catch(() => alive && setState("missing"));
+    return () => {
+      alive = false;
+    };
   }, [lesson]);
 
   return (
     <dialog
       ref={ref}
       className="fe-dialog"
-      aria-label={lesson ? `${lesson.id}: ${lesson.title}` : "Lesson video"}
+      aria-label={lesson ? `${lesson.id}: ${lesson.title}` : "Lesson"}
       onClose={onClose}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -130,23 +141,26 @@ function VideoDialog({ lesson, onClose }: { lesson: Lesson | null; onClose: () =
             <span>
               <b>{lesson.id}</b> {lesson.title}
             </span>
-            <button type="button" className="fe-close" onClick={onClose} aria-label="Close video">
+            <button type="button" className="fe-close" onClick={onClose} aria-label="Close lesson">
               <X size={20} />
             </button>
           </div>
-          {missing ? (
-            <p className="fe-missing">This video has not been uploaded yet. Please check back soon.</p>
+          {state === "missing" ? (
+            <p className="fe-missing">This lesson is not available yet. Please check back soon.</p>
           ) : (
-            <video
-              key={lesson.id}
-              src={videoSrc(lesson.id)}
-              poster={cardSrc(lesson.id)}
-              controls
-              autoPlay
-              playsInline
-              preload="metadata"
-              onError={() => setMissing(true)}
-            />
+            <div className="fe-stage">
+              {state === "ready" ? (
+                <iframe
+                  key={lesson.id}
+                  src={lessonSrc(lesson.id)}
+                  title={`${lesson.id}: ${lesson.title}`}
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <img src={cardSrc(lesson.id)} alt="" />
+              )}
+            </div>
           )}
         </div>
       ) : null}

@@ -1,0 +1,137 @@
+{
+  "tutor-present.webp": {
+    "mime": "image/webp",
+    "w": 546,
+    "h": 612
+  },
+  "tutor-explain.webp": {
+    "mime": "image/webp",
+    "w": 502,
+    "h": 602
+  },
+  "tutor-point.webp": {
+    "mime": "image/webp",
+    "w": 547,
+    "h": 568
+  },
+  "tutor-think.webp": {
+    "mime": "image/webp",
+    "w": 465,
+    "h": 656
+  },
+  "tutor-magnify.webp": {
+    "mime": "image/webp",
+    "w": 187,
+    "h": 170
+  },
+  "tutor-thumbs.webp": {
+    "mime": "image/webp",
+    "w": 181,
+    "h": 179
+  },
+  "tutor-confused.webp": {
+    "mime": "image/webp",
+    "w": 185,
+    "h": 169
+  },
+  "tutor-checklist.webp": {
+    "mime": "image/webp",
+    "w": 185,
+    "h": 161
+  },
+  "tutor-idea.webp": {
+    "mime": "image/webp",
+    "w": 169,
+    "h": 178
+  },
+  "tutor-cheer.webp": {
+    "mime": "image/webp",
+    "w": 207,
+    "h": 182
+  },
+  "tutor-laptop.webp": {
+    "mime": "image/webp",
+    "w": 185,
+    "h": 170
+  },
+  "tutor-pointer.webp": {
+    "mime": "image/webp",
+    "w": 248,
+    "h": 171
+  },
+  "tutor-typing.webp": {
+    "mime": "image/webp",
+    "w": 207,
+    "h": 175
+  },
+  "tutor-calm.webp": {
+    "mime": "image/webp",
+    "w": 234,
+    "h": 174
+  },
+  "tutor-wv1.webp": {
+    "mime": "image/webp",
+    "w": 381,
+    "h": 448
+  },
+  "tutor-wv2.webp": {
+    "mime": "image/webp",
+    "w": 374,
+    "h": 448
+  },
+  "tutor-wv3.webp": {
+    "mime": "image/webp",
+    "w": 363,
+    "h": 448
+  },
+  "tutor-wv4.webp": {
+    "mime": "image/webp",
+    "w": 375,
+    "h": 446
+  },
+  "tutor-wk0.webp": {
+    "mime": "image/webp",
+    "w": 353,
+    "h": 460
+  },
+  "tutor-wk1.webp": {
+    "mime": "image/webp",
+    "w": 361,
+    "h": 460
+  },
+  "tutor-wk2.webp": {
+    "mime": "image/webp",
+    "w": 345,
+    "h": 460
+  },
+  "tutor-wk3.webp": {
+    "mime": "image/webp",
+    "w": 365,
+    "h": 460
+  },
+  "tutor-wk4.webp": {
+    "mime": "image/webp",
+    "w": 375,
+    "h": 457
+  },
+  "tutor-wk5.webp": {
+    "mime": "image/webp",
+    "w": 364,
+    "h": 457
+  },
+  "tutor-wk6.webp": {
+    "mime": "image/webp",
+    "w": 354,
+    "h": 457
+  },
+  "tutor-wk7.webp": {
+    "mime": "image/webp",
+    "w": 365,
+    "h": 457
+  },
+  "xtinex-x.png": {
+    "mime": "image/png",
+    "w": 320,
+    "h": 205
+  }
+}

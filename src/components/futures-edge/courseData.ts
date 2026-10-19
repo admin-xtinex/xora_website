@@ -49,8 +49,8 @@ export const LESSONS: Lesson[] = [
   { id: "T08", kind: "lesson", phase: 2, title: "Stop-Loss and Take-Profit", line: "Plan an exit before you enter.", minutes: 5, status: "available", pose: "present" },
   { id: "T09", kind: "lesson", phase: 2, title: "Fees, Spread and Slippage", line: "How small costs turn small wins into losses.", minutes: 5, status: "available", pose: "explain", flip: true },
 
-  { id: "T10", kind: "lesson", phase: 3, title: "Exchange Platform Tour", line: "A mock trading screen, piece by piece.", minutes: 5, status: "locked", pose: "point" },
-  { id: "T11", kind: "lesson", phase: 3, title: "Spot vs Futures", line: "Owning coins versus a contract about their price.", minutes: 5, status: "locked", pose: "think" },
+  { id: "T10", kind: "lesson", phase: 3, title: "Exchange Platform Tour", line: "A mock trading screen, piece by piece.", minutes: 5, status: "available", pose: "point" },
+  { id: "T11", kind: "lesson", phase: 3, title: "Spot vs Futures", line: "Owning coins versus a contract about their price.", minutes: 5, status: "available", pose: "think" },
   { id: "T12", kind: "lesson", phase: 3, title: "Margin and Leverage", line: "Why leverage magnifies losses as well as gains.", minutes: 6, status: "locked", pose: "explain" },
   { id: "T13", kind: "lesson", phase: 3, title: "Liquidation, Funding and Futures Risks", line: "What can close a position for you, and when to stay out.", minutes: 6, status: "locked", pose: "think", flip: true },
   { id: "CPA", kind: "checkpoint", phase: 3, title: "Checkpoint A", line: "Review T01 to T13, with extra focus on leverage and safety.", minutes: 4, status: "locked", pose: "hi" },

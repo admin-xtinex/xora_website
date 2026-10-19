@@ -1,0 +1,129 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson ten",
+      "dur": 9,
+      "desc": "Title card: Phase 3, lesson T10, exchange platform tour; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "So many boxes",
+      "dur": 17,
+      "desc": "A generic mock trading terminal assembles panel by panel, labelled as an educational mock."
+    },
+    {
+      "id": "layout",
+      "name": "The overall layout",
+      "dur": 19.5,
+      "desc": "Each region of the mock is outlined and numbered: watchlist, symbol bar, chart, order book, order entry, positions, wallet, security."
+    },
+    {
+      "id": "watchlist",
+      "name": "Find the pair",
+      "dur": 18,
+      "desc": "Watchlist: typing BTC in the search filters the list; tapping BTC/USDT switches the whole screen to that pair."
+    },
+    {
+      "id": "symbol",
+      "name": "The symbol bar",
+      "dur": 18.5,
+      "desc": "Symbol bar: symbol, last price and 24-hour change; worked example 60,000 to 61,200 is +2%."
+    },
+    {
+      "id": "chart",
+      "name": "The chart",
+      "dur": 18.5,
+      "desc": "Chart: the newest candle forms live; switching 1m to 5m regroups five candles into one."
+    },
+    {
+      "id": "book",
+      "name": "The order book",
+      "dur": 20.5,
+      "desc": "Order book: asks above, bids below, spread 10 USDT; a market buy takes the best ask and the last price ticks up."
+    },
+    {
+      "id": "entry",
+      "name": "Order entry",
+      "dur": 24,
+      "desc": "Order entry: type, price and size; a limit buy of 0.010 BTC at 60,000 has an order value of 600 USDT; buttons are mock only."
+    },
+    {
+      "id": "positions",
+      "name": "Positions and PnL",
+      "dur": 24,
+      "desc": "Positions panel: a filled order becomes a long position; unrealized PnL moves +6 / −6 USDT as price moves."
+    },
+    {
+      "id": "wallet",
+      "name": "Your wallet",
+      "dur": 18.5,
+      "desc": "Wallet: 1,000 USDT balance, 600 in use, 400 available (1x example)."
+    },
+    {
+      "id": "security",
+      "name": "Security settings",
+      "dur": 25.5,
+      "desc": "Security drawer: two-factor login, anti-phishing code, withdrawal address list, API keys never shared."
+    },
+    {
+      "id": "mistake",
+      "name": "Read the label",
+      "dur": 19.5,
+      "desc": "Common mistake: tapping from memory after an app update hits Sell instead of Buy; correction: read the label and check the order."
+    },
+    {
+      "id": "try",
+      "name": "Find it",
+      "dur": 22,
+      "desc": "Hotspot hunt: where is unrealized PnL? Countdown, then C, the positions panel; why not the chart."
+    },
+    {
+      "id": "risks",
+      "name": "Stay safe",
+      "dur": 24,
+      "desc": "Safety rules: check the address, check spot or futures, never explore on a real account, WAIT is always a choice."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 26.5,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T11, spot vs futures."
+    }
+  ]
+}

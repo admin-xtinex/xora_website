@@ -1,0 +1,197 @@
+{
+  "about": "T11 captions, written as a warm tutor speaking; each line starts at film time t (seconds). Can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson eleven: spot versus futures. What do you really own when you trade?"
+    },
+    {
+      "t": 9.6,
+      "text": "Asha and Rahul both think BTC might rise. Both trade 0.010 BTC at 60,000."
+    },
+    {
+      "t": 15.6,
+      "text": "Asha buys on spot. Rahul opens a long futures position."
+    },
+    {
+      "t": 20.2,
+      "text": "If BTC rises, both gain. So what's the difference?"
+    },
+    {
+      "t": 25.6,
+      "text": "Spot means buying the actual asset, paid in full, and it's yours right away."
+    },
+    {
+      "t": 31.5,
+      "text": "Like buying a gold coin at a shop. You pay, and you take the coin home."
+    },
+    {
+      "t": 37,
+      "text": "Asha pays 600 USDT, and 0.010 BTC lands in her wallet. She owns it."
+    },
+    {
+      "t": 43.1,
+      "text": "A futures contract is an agreement about the price of an asset. It is not the asset itself."
+    },
+    {
+      "t": 50.1,
+      "text": "The asset it follows is called the underlying. Here, the underlying is BTC."
+    },
+    {
+      "t": 55.9,
+      "text": "Rahul opens a long contract for 0.010 BTC. No BTC arrives. He holds a contract."
+    },
+    {
+      "t": 63.1,
+      "text": "Most crypto futures are perpetual. A perpetual contract has no end date."
+    },
+    {
+      "t": 68.7,
+      "text": "Older-style futures expire on a set date. A perpetual stays open until it's closed."
+    },
+    {
+      "t": 75,
+      "text": "When it closes, profit or loss is settled in USDT. No coins are delivered."
+    },
+    {
+      "t": 81.6,
+      "text": "Exposure is how much of your money moves with the price."
+    },
+    {
+      "t": 86.1,
+      "text": "Notional value is the full size of a position: size × price."
+    },
+    {
+      "t": 90.9,
+      "text": "0.010 BTC × 60,000 = 600 USDT. Asha and Rahul both have 600 USDT of exposure."
+    },
+    {
+      "t": 98.1,
+      "text": "Now let's follow the same price for both, side by side."
+    },
+    {
+      "t": 102.6,
+      "text": "BTC rises to 63,000. Asha's coins are worth 630 USDT. Rahul's PnL is +30 USDT."
+    },
+    {
+      "t": 108.6,
+      "text": "BTC falls to 57,000. Asha's coins: 570 USDT. Rahul's PnL: −30 USDT."
+    },
+    {
+      "t": 113.9,
+      "text": "Same moves, same money. But only Asha owns any BTC."
+    },
+    {
+      "t": 119.1,
+      "text": "Futures can also go short: you gain if the price falls, and lose if it rises."
+    },
+    {
+      "t": 125.1,
+      "text": "Short 0.010 BTC from 60,000. At 57,000: +30 USDT. At 63,000: −30 USDT."
+    },
+    {
+      "t": 130.6,
+      "text": "On plain spot, you can only sell coins you already hold."
+    },
+    {
+      "t": 136.1,
+      "text": "A common mistake: thinking a futures position means you own the coin."
+    },
+    {
+      "t": 141.5,
+      "text": "You can't withdraw BTC from a futures position. There is no coin to send."
+    },
+    {
+      "t": 147.2,
+      "text": "Correction: futures give price exposure. Spot gives ownership."
+    },
+    {
+      "t": 153.1,
+      "text": "Futures add risks that plain spot doesn't have."
+    },
+    {
+      "t": 157,
+      "text": "Margin and leverage: a small deposit controls a bigger position. That's lesson T12."
+    },
+    {
+      "t": 163.3,
+      "text": "Liquidation: if losses eat your margin, the exchange can close the position for you."
+    },
+    {
+      "t": 169.7,
+      "text": "Funding: perpetual traders pay or receive small amounts at set times. More in T13."
+    },
+    {
+      "t": 176.6,
+      "text": "Your turn. Spot or futures? Sort these five. Pause if you need more time."
+    },
+    {
+      "t": 185.2,
+      "text": "Holding coins in your wallet, and withdrawing them: spot."
+    },
+    {
+      "t": 189.8,
+      "text": "A perpetual long, funding payments and liquidation: all futures."
+    },
+    {
+      "t": 194.9,
+      "text": "Well done if you sorted them all!"
+    },
+    {
+      "t": 198.6,
+      "text": "Here's the whole picture in one table."
+    },
+    {
+      "t": 201.9,
+      "text": "With spot, you hold the coin and pay the full price. No expiry, no funding, no liquidation."
+    },
+    {
+      "t": 208.8,
+      "text": "With perpetual futures, you hold a contract. You can go long or short."
+    },
+    {
+      "t": 214.3,
+      "text": "And you face funding and liquidation."
+    },
+    {
+      "t": 218.6,
+      "text": "Neither one is safe. Spot prices can fall a lot, and you can lose money."
+    },
+    {
+      "t": 224.3,
+      "text": "Futures can lose faster, and a position can be closed for you."
+    },
+    {
+      "t": 229.2,
+      "text": "Fees and funding keep adding up while a futures position stays open."
+    },
+    {
+      "t": 234.5,
+      "text": "When unsure, WAIT. NO_TRADE is always allowed."
+    },
+    {
+      "t": 239.1,
+      "text": "Spot means you buy and own the actual coin."
+    },
+    {
+      "t": 242.8,
+      "text": "Futures are contracts about a price. You can go long or short, but you own no coin."
+    },
+    {
+      "t": 249.1,
+      "text": "Futures add funding, leverage and liquidation risk."
+    },
+    {
+      "t": 253.3,
+      "text": "Check yourself: you hold a BTC perpetual long. Do you own any BTC?"
+    },
+    {
+      "t": 258.5,
+      "text": "No. You hold a contract that follows the BTC price."
+    },
+    {
+      "t": 263.6,
+      "text": "Great work! Next up, T12: margin and leverage, and why they magnify losses as well as gains."
+    }
+  ]
+}

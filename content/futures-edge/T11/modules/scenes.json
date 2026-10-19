@@ -1,0 +1,123 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson eleven",
+      "dur": 9,
+      "desc": "Title card: Phase 3, lesson T11, spot vs futures; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Two traders",
+      "dur": 16,
+      "desc": "Asha buys 0.010 BTC on spot; Rahul opens a long futures position of the same size; both gain when BTC rises."
+    },
+    {
+      "id": "spot",
+      "name": "Spot: you own it",
+      "dur": 17.5,
+      "desc": "Spot defined; gold-coin analogy; Asha pays 600 USDT and 0.010 BTC lands in her wallet."
+    },
+    {
+      "id": "futures",
+      "name": "Futures: a contract",
+      "dur": 20,
+      "desc": "Futures contract and underlying defined; Rahul opens a long contract and no BTC arrives in his wallet."
+    },
+    {
+      "id": "perp",
+      "name": "Perpetual",
+      "dur": 18.5,
+      "desc": "Dated futures expire on a date; a perpetual has no end date; on close, profit or loss is settled in USDT."
+    },
+    {
+      "id": "exposure",
+      "name": "Exposure",
+      "dur": 16.5,
+      "desc": "Exposure and notional value: 0.010 BTC x 60,000 = 600 USDT for both traders."
+    },
+    {
+      "id": "side",
+      "name": "Side by side",
+      "dur": 21,
+      "desc": "The same price path for both: 63,000 gives 630 USDT / +30 USDT; 57,000 gives 570 USDT / -30 USDT."
+    },
+    {
+      "id": "short",
+      "name": "Going short",
+      "dur": 17,
+      "desc": "A short futures position gains when price falls: +30 at 57,000, -30 at 63,000; plain spot can only sell coins you hold."
+    },
+    {
+      "id": "mistake",
+      "name": "No coin to withdraw",
+      "dur": 17,
+      "desc": "Common mistake: a futures position is not owned BTC; a withdraw attempt shows 0 BTC."
+    },
+    {
+      "id": "extra",
+      "name": "Extra futures risks",
+      "dur": 23.5,
+      "desc": "Leverage (T12), liquidation as a conceptual shrinking margin, and a funding clock."
+    },
+    {
+      "id": "try",
+      "name": "Sort them",
+      "dur": 22,
+      "desc": "Pause and sort five examples into spot or futures; countdown, then each card moves to its bin."
+    },
+    {
+      "id": "compare",
+      "name": "The whole picture",
+      "dur": 20,
+      "desc": "Comparison table: what you hold, what you pay, short, expiry, funding, liquidation."
+    },
+    {
+      "id": "risks",
+      "name": "Know the risks",
+      "dur": 20.5,
+      "desc": "Neither is safe; futures can lose faster and be closed for you; costs add up; WAIT / NO_TRADE."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 24.5,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T12, margin and leverage."
+    }
+  ]
+}

@@ -33,7 +33,8 @@ the same contract as the xtinex.com website image.
 
 Live on the **Free** plan: `xora-website` in resource group `rg-xora-web` (East Asia),
 https://gentle-stone-0d854db00.2.azurestaticapps.net. `public/staticwebapp.config.json` sets SPA fallback,
-cache headers and MIME types. Redeploy from this folder:
+cache headers and MIME types. `.env.production` turns on the interactive course (`/learn/futures-edge`).
+Redeploy from this folder:
 
 ```bash
 npm run build

@@ -22,6 +22,20 @@ marked `locked` are dimmed, show a "Coming soon" badge and cannot be opened.
 `public/staticwebapp.config.json` serves `/futures-edge/*` as files instead of rewriting them to
 `index.html`.
 
+## Video lessons and the interactive course
+
+The course has two parts that work together:
+
+- **Video lessons, `/course`** (this document): short animated lessons with the brain tutor, captions and
+  music. They are the first thing a beginner sees. CP1, CPA and CPB here are short *video recaps*.
+- **Interactive course, `/learn/futures-edge`** (`src/features/futures-edge/`, `docs/futures-edge/`): slides,
+  notes, exercises, glossary and the graded checkpoint quizzes (CP1 8, CPA 22, CPB 25 questions), with progress
+  saved on the device. Each lesson's "Watch animation" tab shows that lesson's video first (any lesson marked
+  `available` in `courseData.ts`), then the interactive step-by-step animation.
+
+`/course` links to the interactive course ("Open the interactive lessons"). The interactive course is included
+when the build has `VITE_FUTURES_EDGE_ENABLED=true`, which `.env.production` sets for `npm run build`.
+
 ## Release a lesson
 
 1. Add the lesson's source as `content/futures-edge/<id>/` (same layout as `V00` and `T01`).
@@ -38,7 +52,7 @@ To change a lesson that is already out, edit its files in `content/futures-edge/
 again. The dialog checks the page exists before loading it; if it is missing it says "This lesson
 is not available yet."
 
-V00 and T01 are available, both with a voiceover.
+V00 and T01 are available with a voiceover; T02–T13, CP1 and CPA are available with captions (no voiceover yet).
 
 ### Voiceover
 

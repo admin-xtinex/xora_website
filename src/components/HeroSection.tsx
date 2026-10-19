@@ -2,7 +2,6 @@ import { useRef, useState, type PointerEvent } from "react";
 import { motion, type MotionValue, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowRight, BookOpen, Play } from "lucide-react";
 import { HERO, LINKS } from "@/lib/content";
-import { NeuralField } from "./NeuralField";
 import { HeroScene } from "./HeroScene";
 import { OverviewDialog } from "./OverviewDialog";
 import { Icon } from "./ui/Icon";
@@ -50,7 +49,6 @@ export function HeroSection() {
         <motion.div className="hero-scene" style={coreP}>
           <HeroScene />
         </motion.div>
-        <NeuralField className="hero-field" />
 
         <motion.div className="float float-btc" style={nearP}>
           <div className="float-card">

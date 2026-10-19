@@ -18,10 +18,10 @@ npm run build    # typecheck + production build to dist/
   `TrustNoticeSection`, `FinalCTASection`, `Footer`; shared pieces in `components/ui/`
 - `src/styles.css` — brand tokens (same palette/fonts as xtinex.com) and section styles
 - `public/brand/` — reused XTINEX/XORA brand media; `xora-hero.webp` is the hero artwork that
-  `HeroScene` animates (red trades → XORA brain → green), with layers aligned to the image
+  `HeroScene` animates with a WebGL shader (red trades → XORA brain → green), falling back to the still image
 
 Charts and tickers on the page are illustrative (seeded data), not live market data.
-Animations respect `prefers-reduced-motion`; the hero canvas stays off for reduced motion.
+Animations respect `prefers-reduced-motion`; the hero shader stays off for reduced motion.
 
 ## Deploy
 

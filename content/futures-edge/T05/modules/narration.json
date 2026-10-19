@@ -1,0 +1,189 @@
+{
+  "about": "T05 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson five: buy, sell, long and short. Welcome to Phase 2."
+    },
+    {
+      "t": 8.4,
+      "text": "BTC's price goes up, and it goes down. Most people only think about one direction."
+    },
+    {
+      "t": 14.8,
+      "text": "Can someone gain when the price falls? With a short position, yes. Let's see how."
+    },
+    {
+      "t": 22.4,
+      "text": "First, spot trading. Buying spot means you pay USDT now and receive real BTC."
+    },
+    {
+      "t": 28.4,
+      "text": "Like buying gold at a shop: you pay, and the gold is yours to keep."
+    },
+    {
+      "t": 33.8,
+      "text": "You pay 600 USDT for 0.01 BTC at 60,000. Your USDT goes down, your BTC goes up."
+    },
+    {
+      "t": 40,
+      "text": "Selling spot is the reverse. Sell the 0.01 BTC at 62,000, and you get 620 USDT back."
+    },
+    {
+      "t": 47.4,
+      "text": "Spot is ownership. The BTC is yours, and its value rises and falls with the price."
+    },
+    {
+      "t": 53.8,
+      "text": "Futures are different. A futures contract is an agreement about an asset's price."
+    },
+    {
+      "t": 60.1,
+      "text": "Opening one gives you a position: you gain or lose as the price moves, but you own no BTC."
+    },
+    {
+      "t": 68.4,
+      "text": "Going long means opening a position that gains if the price rises."
+    },
+    {
+      "t": 73.7,
+      "text": "Like agreeing today to buy a crate of mangoes at today's price. If prices rise, your deal is worth more."
+    },
+    {
+      "t": 81.4,
+      "text": "Long 0.01 BTC at 60,000. If the price rises to 61,000, you gain 1,000 × 0.01 = 10 USDT."
+    },
+    {
+      "t": 88,
+      "text": "But if it falls to 59,000, you lose 10 USDT. A long loses when the price falls."
+    },
+    {
+      "t": 95.4,
+      "text": "Going short means opening a position that gains if the price falls."
+    },
+    {
+      "t": 100.7,
+      "text": "Like a shopkeeper who agrees today to sell rice next week at today's price, before she buys it."
+    },
+    {
+      "t": 107.8,
+      "text": "If rice gets cheaper, she buys it for less and keeps the difference. If it gets dearer, she loses."
+    },
+    {
+      "t": 115.1,
+      "text": "Short 0.01 BTC at 60,000. A fall to 59,000 gains 10 USDT. A rise to 61,000 loses 10 USDT."
+    },
+    {
+      "t": 124.4,
+      "text": "Now watch one price, with a long and a short opened at the same 60,000."
+    },
+    {
+      "t": 130,
+      "text": "The price climbs to 61,500. The long shows +15 USDT, the short −15 USDT."
+    },
+    {
+      "t": 135.7,
+      "text": "Then the market reverses and falls to 58,500. The results flip."
+    },
+    {
+      "t": 140.8,
+      "text": "Now the long is down 15 USDT and the short is up 15. Same move, opposite results."
+    },
+    {
+      "t": 148.4,
+      "text": "A common mistake: thinking buying spot is the same as going long with margin."
+    },
+    {
+      "t": 154.4,
+      "text": "Spot: you pay the full 600 USDT and own 0.01 BTC. If the price drops, you still hold the coins."
+    },
+    {
+      "t": 161.6,
+      "text": "Margin is a deposit that lets you hold a bigger futures position. Losses come out of it."
+    },
+    {
+      "t": 168.3,
+      "text": "If losses eat that deposit, the exchange can close your position. That's liquidation."
+    },
+    {
+      "t": 174.8,
+      "text": "And selling coins you own is not shorting. A short is a new position that gains if price falls."
+    },
+    {
+      "t": 182.4,
+      "text": "Your call. Long, short, or wait? Pick one in your head before the price moves."
+    },
+    {
+      "t": 188.6,
+      "text": "Here's the move: up first, then down, ending at 59,800."
+    },
+    {
+      "t": 193.6,
+      "text": "Long: minus 2 USDT. Short: plus 2 USDT. Wait: nothing gained, nothing lost."
+    },
+    {
+      "t": 199.5,
+      "text": "Nobody knows the next move for sure. Choosing to wait is always allowed."
+    },
+    {
+      "t": 206.4,
+      "text": "Your turn. A short of 0.02 BTC at 60,000. The price rises to 60,500. Profit or loss? Pause if needed."
+    },
+    {
+      "t": 214.4,
+      "text": "A loss of 10 USDT. A short loses when the price rises: 500 × 0.02 = 10."
+    },
+    {
+      "t": 220,
+      "text": "That's before fees. Well done if you said loss: that's the key idea."
+    },
+    {
+      "t": 226.3,
+      "text": "Before we go on, the risks."
+    },
+    {
+      "t": 229,
+      "text": "A price can keep rising, so a short's possible loss has no fixed limit."
+    },
+    {
+      "t": 234.5,
+      "text": "Margin and leverage make losses bigger too, and can lead to liquidation."
+    },
+    {
+      "t": 240.1,
+      "text": "Fees come out of every result. Futures also have funding: regular payments between longs and shorts."
+    },
+    {
+      "t": 247.6,
+      "text": "And no one can promise the next move. Waiting is always a valid choice."
+    },
+    {
+      "t": 254.2,
+      "text": "Let's recap."
+    },
+    {
+      "t": 255.9,
+      "text": "Spot buying means owning the coin. Selling spot means exiting it."
+    },
+    {
+      "t": 261,
+      "text": "A long gains when the price rises. A short gains when it falls."
+    },
+    {
+      "t": 266,
+      "text": "Futures use margin and can be liquidated. And waiting is always allowed."
+    },
+    {
+      "t": 271.6,
+      "text": "Check yourself: BTC falls 1,000 USDT. Which position gains, long or short?"
+    },
+    {
+      "t": 277.4,
+      "text": "The short gains. The long loses. Same move, opposite sides."
+    },
+    {
+      "t": 283.6,
+      "text": "Next up, T06: entry, exit, and how to work out profit and loss. See you there!"
+    }
+  ]
+}

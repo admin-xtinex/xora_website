@@ -1,0 +1,111 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Checkpoint one",
+      "dur": 8,
+      "desc": "Title card: Phase 1 checkpoint CP1, Foundations Checkpoint; the tutor walks in."
+    },
+    {
+      "id": "how",
+      "name": "How it works",
+      "dur": 18,
+      "desc": "Eight questions from T01 to T04: read, pause, pick, countdown, see why. Not graded."
+    },
+    {
+      "id": "q-crypto",
+      "name": "Question 1",
+      "dur": 21,
+      "desc": "T01: what a cryptocurrency is; a shared ledger fills in and is copied."
+    },
+    {
+      "id": "q-value",
+      "name": "Question 2",
+      "dur": 21,
+      "desc": "T01: 0.005 BTC at 60,000 USDT is worth 300 USDT."
+    },
+    {
+      "id": "q-demand",
+      "name": "Question 3",
+      "dur": 21,
+      "desc": "T02: more buyers than sellers; the price tends to rise, but nothing is guaranteed."
+    },
+    {
+      "id": "q-volatility",
+      "name": "Question 4",
+      "dur": 21,
+      "desc": "T02: volatility is the size and speed of price swings in both directions."
+    },
+    {
+      "id": "q-pair",
+      "name": "Question 5",
+      "dur": 21,
+      "desc": "T03: in BTC/USDT, BTC is the base and USDT the quote."
+    },
+    {
+      "id": "q-notional",
+      "name": "Question 6",
+      "dur": 21,
+      "desc": "T03: 0.001 BTC at 65,000 USDT is 65 USDT of notional value."
+    },
+    {
+      "id": "q-spread",
+      "name": "Question 7",
+      "dur": 21,
+      "desc": "T04: best ask 60,010 minus best bid 59,990 is a spread of 20 USDT."
+    },
+    {
+      "id": "q-phish",
+      "name": "Question 8",
+      "dur": 21,
+      "desc": "T04: a message asks for your OTP; never share it."
+    },
+    {
+      "id": "safety",
+      "name": "Critical safety",
+      "dur": 29,
+      "desc": "Exchange is not a bank, never share codes, stablecoin peg not guaranteed, you can always wait."
+    },
+    {
+      "id": "revisit",
+      "name": "Where to revisit",
+      "dur": 19,
+      "desc": "Which lesson each question came from; rewatch with no penalty."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: Phase 2 starts with T05, Buy, Sell, Long and Short."
+    }
+  ]
+}

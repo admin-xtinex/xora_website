@@ -1,0 +1,123 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson two",
+      "dur": 8,
+      "desc": "Title card: Phase 1, lesson T02, Why do crypto prices move; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Same coin, new price",
+      "dur": 14,
+      "desc": "A fictional BTC/USDT board ticks minute by minute; the question: who decides the price?"
+    },
+    {
+      "id": "market",
+      "name": "Buyers and sellers",
+      "dur": 22,
+      "desc": "Buyer, seller and market price defined; a buyer and a seller agree and the last price updates."
+    },
+    {
+      "id": "demand",
+      "name": "Demand",
+      "dur": 23,
+      "desc": "Demand defined with a mango-stall analogy; buyers outnumber sellers and the price ticks up."
+    },
+    {
+      "id": "supply",
+      "name": "Supply",
+      "dur": 23,
+      "desc": "Supply defined with a closing-time fish stall; sellers pile up and the price ticks down."
+    },
+    {
+      "id": "change",
+      "name": "Measuring a move",
+      "dur": 21,
+      "desc": "Worked example: change in USDT and in percent, 60,000 to 61,200 and 60,000 to 57,000."
+    },
+    {
+      "id": "sliders",
+      "name": "Buyer and seller strength",
+      "dur": 23,
+      "desc": "Illustrative model: buyer and seller sliders move and the model price drifts up, down, sideways."
+    },
+    {
+      "id": "size",
+      "name": "Not a headcount",
+      "dur": 21,
+      "desc": "Three buyers wanting 12 BTC outweigh ten sellers offering 2 BTC: size matters, not headcount."
+    },
+    {
+      "id": "liquidity",
+      "name": "Liquidity",
+      "dur": 22,
+      "desc": "Liquidity defined: the same 1 BTC buy barely moves a deep market but lifts a thin one 400 USDT."
+    },
+    {
+      "id": "volatility",
+      "name": "Volatility",
+      "dur": 20,
+      "desc": "Volatility defined: a calm line and a wild line; surprise news makes a sudden jump."
+    },
+    {
+      "id": "mistake",
+      "name": "Not a smooth line",
+      "dur": 18,
+      "desc": "Common mistake: price as a smooth line; zoom in to a jagged path that can turn at any time."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 17,
+      "desc": "Pause and calculate: 60,000 to 63,000 USDT is +3,000 USDT, +5%."
+    },
+    {
+      "id": "risks",
+      "name": "Know the risks",
+      "dur": 25,
+      "desc": "Sudden moves, no one knows the next move, WAIT / NO_TRADE is always allowed, models are not markets."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 29,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T03, Trading pairs: BTC/USDT."
+    }
+  ]
+}

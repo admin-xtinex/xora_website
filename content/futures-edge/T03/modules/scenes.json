@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson three",
+      "dur": 8,
+      "desc": "Title card: Phase 1, lesson T03, Trading pairs: BTC/USDT; the tutor walks in."
+    },
+    {
+      "id": "tags",
+      "name": "Price tags",
+      "dur": 16,
+      "desc": "A shop price tag compares money with one unit of an item; a BTC price compares USDT with one BTC."
+    },
+    {
+      "id": "pair",
+      "name": "Two halves",
+      "dur": 22,
+      "desc": "Trading pair defined; BTC/USDT splits into the base asset BTC and the quote asset USDT."
+    },
+    {
+      "id": "symbol",
+      "name": "Symbols",
+      "dur": 16,
+      "desc": "Symbol defined: BTC/USDT and BTCUSDT are the same pair; read the price as USDT per one BTC."
+    },
+    {
+      "id": "usdt",
+      "name": "USDT, a stablecoin",
+      "dur": 20,
+      "desc": "Stablecoin defined: USDT is designed to stay near 1 US dollar while BTC swings; a measuring stick."
+    },
+    {
+      "id": "quantity",
+      "name": "Quantity",
+      "dur": 19,
+      "desc": "Quantity defined: one BTC as 1,000 pieces; 0.001 BTC is worth 60 USDT at 60,000 USDT per BTC."
+    },
+    {
+      "id": "notional",
+      "name": "Notional value",
+      "dur": 20,
+      "desc": "Notional value defined; worked example 0.05 BTC x 60,000 USDT per BTC = 3,000 USDT."
+    },
+    {
+      "id": "calc",
+      "name": "Watch it update",
+      "dur": 23,
+      "desc": "A calculator updates as the price moves: 1 BTC and 0.001 BTC at 60,000, 63,000 and 57,000 USDT."
+    },
+    {
+      "id": "mistake",
+      "name": "You do not need 60,000",
+      "dur": 18,
+      "desc": "Common mistake: thinking you need 60,000 USDT; you choose the quantity, 0.001 BTC costs 60 USDT."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 18,
+      "desc": "Pause and calculate: 0.02 BTC at 65,000 USDT per BTC is 1,300 USDT."
+    },
+    {
+      "id": "pairs",
+      "name": "Other pairs",
+      "dur": 16,
+      "desc": "ETH/USDT at 3,000 and ETH/BTC at 0.05: the quote asset can be something other than USDT."
+    },
+    {
+      "id": "risks",
+      "name": "Stablecoin risks",
+      "dur": 24,
+      "desc": "A stablecoin can lose its peg, depends on its issuer and reserves; notional value is not profit."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 26,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T04, What does an exchange do?"
+    }
+  ]
+}

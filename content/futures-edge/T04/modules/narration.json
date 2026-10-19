@@ -1,0 +1,189 @@
+{
+  "about": "T04 captions, shown on screen as the tutor speaking (no voice yet); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson four: what does an exchange do? Let's look inside the marketplace."
+    },
+    {
+      "t": 8.4,
+      "text": "An exchange is a business that runs a marketplace where people buy and sell assets."
+    },
+    {
+      "t": 14.8,
+      "text": "Like a big market hall: it brings buyers and sellers together, and keeps the record."
+    },
+    {
+      "t": 21.4,
+      "text": "A trading platform is the app or website you use to reach it."
+    },
+    {
+      "t": 27.4,
+      "text": "An order is an instruction: buy or sell, how much, and at what price."
+    },
+    {
+      "t": 33,
+      "text": "This one says: buy 0.01 BTC at 60,000 USDT. That's 600 USDT in total."
+    },
+    {
+      "t": 38.6,
+      "text": "If nobody sells at that price yet, the order waits in a list."
+    },
+    {
+      "t": 44.4,
+      "text": "The order book is a live list of waiting orders, sorted by price."
+    },
+    {
+      "t": 49.6,
+      "text": "Sell orders sit on top. The cheapest one is closest to the middle."
+    },
+    {
+      "t": 54.8,
+      "text": "Buy orders sit below. The highest one is closest to the middle."
+    },
+    {
+      "t": 59.8,
+      "text": "New orders keep arriving and leaving, so the book changes all the time."
+    },
+    {
+      "t": 66.4,
+      "text": "Two prices matter most. The bid is the highest price a buyer is waiting to pay."
+    },
+    {
+      "t": 72.6,
+      "text": "The ask is the lowest price a seller is waiting to accept."
+    },
+    {
+      "t": 77.4,
+      "text": "Here the bid is 59,990 USDT, and the ask is 60,010 USDT."
+    },
+    {
+      "t": 83.4,
+      "text": "The spread is the gap between them: the ask minus the bid."
+    },
+    {
+      "t": 88.2,
+      "text": "60,010 minus 59,990 is a spread of 20 USDT."
+    },
+    {
+      "t": 92,
+      "text": "Now a new buyer offers 60,000. The best bid moves up, and the spread shrinks to 10."
+    },
+    {
+      "t": 98.4,
+      "text": "In a quiet market with few orders, the spread is often wider."
+    },
+    {
+      "t": 104.4,
+      "text": "Matching: the exchange pairs orders whose prices meet."
+    },
+    {
+      "t": 109,
+      "text": "A buyer wants 0.30 BTC and will pay up to 60,020 USDT."
+    },
+    {
+      "t": 113.6,
+      "text": "First, 0.20 BTC fills at the best ask, 60,010."
+    },
+    {
+      "t": 117.6,
+      "text": "The other 0.10 BTC fills at the next ask, 60,020."
+    },
+    {
+      "t": 121.8,
+      "text": "Total: 0.30 BTC for 18,004 USDT. The last trade price is now 60,020."
+    },
+    {
+      "t": 128.4,
+      "text": "Your turn. A buyer wants 0.10 BTC, paying up to 60,015 USDT. Which sell orders fill it?"
+    },
+    {
+      "t": 137,
+      "text": "0.05 BTC at 60,010, then 0.05 BTC at 60,015. The 60,030 order is above the limit."
+    },
+    {
+      "t": 143.2,
+      "text": "Total cost: 3,000.50 plus 3,000.75, which is 6,001.25 USDT."
+    },
+    {
+      "t": 148.4,
+      "text": "Binance is one large crypto exchange. There are many others."
+    },
+    {
+      "t": 153.4,
+      "text": "The screens in this course are generic mocks, not real exchange screens."
+    },
+    {
+      "t": 159,
+      "text": "Real apps change their labels over time, so check the app's own help pages."
+    },
+    {
+      "t": 165.4,
+      "text": "Important: an exchange is not a bank."
+    },
+    {
+      "t": 168.8,
+      "text": "Money you keep there is usually not protected the way a bank deposit is."
+    },
+    {
+      "t": 174.6,
+      "text": "Exchanges can pause withdrawals, get hacked, or even shut down."
+    },
+    {
+      "t": 179.6,
+      "text": "And the rules differ from country to country."
+    },
+    {
+      "t": 184.4,
+      "text": "Phishing is a fake message or website that tries to steal your login."
+    },
+    {
+      "t": 190,
+      "text": "Spot the red flags. Pressure: urgent, act now, or your account will be locked."
+    },
+    {
+      "t": 196.2,
+      "text": "A look-alike address with a small spelling change. And a request for your OTP."
+    },
+    {
+      "t": 202.4,
+      "text": "Safer habits: type the address yourself or use a bookmark, and never share codes."
+    },
+    {
+      "t": 209.4,
+      "text": "Account security means keeping other people out of your account."
+    },
+    {
+      "t": 214.6,
+      "text": "Never share your password, your OTP codes, or API secret keys. Not with anyone."
+    },
+    {
+      "t": 220.8,
+      "text": "Real support staff will never ask for them. Turn on two-step verification too."
+    },
+    {
+      "t": 227.4,
+      "text": "Let's recap. An exchange runs a marketplace. Orders wait in the order book until prices meet."
+    },
+    {
+      "t": 234.4,
+      "text": "Bid is the best buy price, ask the best sell price. The spread is ask minus bid."
+    },
+    {
+      "t": 240.6,
+      "text": "An exchange is not a bank. Never share passwords, OTPs or API keys."
+    },
+    {
+      "t": 246,
+      "text": "Check yourself: best bid 59,990, best ask 60,010. What's the spread?"
+    },
+    {
+      "t": 251.4,
+      "text": "60,010 minus 59,990 is 20 USDT."
+    },
+    {
+      "t": 255.6,
+      "text": "That's Phase 1! Next up: the Foundations Checkpoint, a short review of lessons one to four."
+    }
+  ]
+}

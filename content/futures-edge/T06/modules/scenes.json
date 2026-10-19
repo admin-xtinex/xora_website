@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson six",
+      "dur": 8,
+      "desc": "Title card: Phase 2, lesson T06, Entry, Exit and Profit/Loss; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Did it make money?",
+      "dur": 14,
+      "desc": "A trade has a start and an end; four things decide its result: entry, exit, size and fees."
+    },
+    {
+      "id": "entryexit",
+      "name": "Entry and exit",
+      "dur": 22,
+      "desc": "Entry is where you open, exit is where you close; a click at 60,000, a move, a click at 61,200."
+    },
+    {
+      "id": "size",
+      "name": "Quantity and notional",
+      "dur": 24,
+      "desc": "Quantity 0.05 BTC; notional value = quantity x price = 3,000 USDT; each 100 USDT move is 5 USDT."
+    },
+    {
+      "id": "spot",
+      "name": "Spot profit and loss",
+      "dur": 21,
+      "desc": "Spot gross PnL = (exit - entry) x quantity: +60 USDT, or -30 USDT."
+    },
+    {
+      "id": "unreal",
+      "name": "Unrealized and realized",
+      "dur": 21,
+      "desc": "An open trade's PnL moves with price; closing locks it in as realized: +60 USDT before fees."
+    },
+    {
+      "id": "flong",
+      "name": "Futures long",
+      "dur": 26,
+      "desc": "Linear USDT-margined long: (exit - entry) x quantity = -60 USDT; simplified, fees and funding left out; leverage vs margin."
+    },
+    {
+      "id": "fshort",
+      "name": "Futures short",
+      "dur": 19,
+      "desc": "Short: (entry - exit) x quantity: +60 USDT on a fall to 59,400, -80 USDT on a rise to 60,800."
+    },
+    {
+      "id": "fees",
+      "name": "Gross and net",
+      "dur": 30,
+      "desc": "Fees on entry and exit at an example 0.05%: gross +60, fees 3.00 and 3.03, net +53.97 USDT."
+    },
+    {
+      "id": "mistake",
+      "name": "Forgetting fees",
+      "dur": 24,
+      "desc": "A gross win of +4 USDT becomes a net loss of about -2 USDT after fees; unrealized is not yours yet."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 19,
+      "desc": "Pause and work it out: short 0.02 BTC from 60,000 to 61,000 is -20 USDT gross, -21.21 USDT net."
+    },
+    {
+      "id": "risks",
+      "name": "Know the risks",
+      "dur": 28,
+      "desc": "Price jumps past exits, fees and funding, leverage and liquidation, simple models and no trade."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 31,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T07, Market, Limit and Stop Orders."
+    }
+  ]
+}

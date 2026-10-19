@@ -1,0 +1,111 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson five",
+      "dur": 8,
+      "desc": "Title card: Phase 2, lesson T05, Buy, Sell, Long and Short; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Two directions",
+      "dur": 14,
+      "desc": "A fictional BTC price rises and falls; can anyone gain when it falls?"
+    },
+    {
+      "id": "buysell",
+      "name": "Spot buy and sell",
+      "dur": 25,
+      "desc": "Spot buying swaps 600 USDT for 0.01 BTC at 60,000; selling at 62,000 returns 620 USDT."
+    },
+    {
+      "id": "own",
+      "name": "Owning vs a position",
+      "dur": 21,
+      "desc": "Spot is ownership; a futures contract gives a position with profit and loss but no coins."
+    },
+    {
+      "id": "long",
+      "name": "Going long",
+      "dur": 27,
+      "desc": "A long gains when price rises: 0.01 BTC from 60,000 to 61,000 is +10 USDT; to 59,000 is -10 USDT."
+    },
+    {
+      "id": "short",
+      "name": "Going short",
+      "dur": 29,
+      "desc": "A short gains when price falls: 0.01 BTC from 60,000 to 59,000 is +10 USDT; to 61,000 is -10 USDT."
+    },
+    {
+      "id": "meters",
+      "name": "One price, two results",
+      "dur": 24,
+      "desc": "One price path with long and short meters side by side; the results flip when the market reverses."
+    },
+    {
+      "id": "mistake",
+      "name": "Spot is not margin",
+      "dur": 34,
+      "desc": "Spot buy vs futures long with margin: the margin shrinks with losses and can be liquidated; selling is not shorting."
+    },
+    {
+      "id": "choose",
+      "name": "Long, short or wait",
+      "dur": 24,
+      "desc": "Pick long, short or wait; a set fictional path ends at 59,800: long -2, short +2, wait 0."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 20,
+      "desc": "Pause and work it out: a short of 0.02 BTC from 60,000 to 60,500 loses 10 USDT."
+    },
+    {
+      "id": "risks",
+      "name": "Know the risks",
+      "dur": 28,
+      "desc": "Unlimited short losses, leverage and liquidation, fees and funding, no sure direction."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 29,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T06, Entry, Exit and Profit/Loss."
+    }
+  ]
+}

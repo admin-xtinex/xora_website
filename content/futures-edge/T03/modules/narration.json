@@ -1,0 +1,177 @@
+{
+  "about": "T03 captions, shown on screen as the tutor speaking (no voice yet); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson three: trading pairs. What does BTC/USDT really mean? Let's find out."
+    },
+    {
+      "t": 8.4,
+      "text": "Look at a shop price tag. Rice: ₹60 for one kilo."
+    },
+    {
+      "t": 12.6,
+      "text": "It compares two things: an amount of money, and one unit of the item."
+    },
+    {
+      "t": 18.2,
+      "text": "A crypto price works the same way: 60,000 USDT for one BTC."
+    },
+    {
+      "t": 24.4,
+      "text": "A trading pair tells you which asset is being priced against another."
+    },
+    {
+      "t": 30,
+      "text": "The first half, BTC, is the base asset: the thing you buy or sell."
+    },
+    {
+      "t": 35.4,
+      "text": "The second half, USDT, is the quote asset: what the price is counted in."
+    },
+    {
+      "t": 41,
+      "text": "So BTC/USDT means: the price of one BTC, in USDT."
+    },
+    {
+      "t": 46.4,
+      "text": "A symbol is the short name for a pair. Many apps drop the slash: BTCUSDT."
+    },
+    {
+      "t": 52.4,
+      "text": "BTC/USDT and BTCUSDT are the same pair. ETHUSDT is ETH priced in USDT."
+    },
+    {
+      "t": 58,
+      "text": "Read the price as: one BTC costs 60,000 USDT."
+    },
+    {
+      "t": 62.4,
+      "text": "USDT is a stablecoin: a token designed to stay close to one US dollar."
+    },
+    {
+      "t": 68,
+      "text": "BTC's price swings a lot. USDT's price is designed to barely move."
+    },
+    {
+      "t": 73.4,
+      "text": "That makes it a handy measuring stick for prices. But designed to stay is not guaranteed."
+    },
+    {
+      "t": 82.4,
+      "text": "Quantity is how much of the base asset you buy or sell."
+    },
+    {
+      "t": 87,
+      "text": "Think of one BTC as a big block, cut into 1,000 small pieces."
+    },
+    {
+      "t": 92,
+      "text": "One piece is 0.001 BTC. At 60,000 USDT per BTC, it's worth just 60 USDT."
+    },
+    {
+      "t": 97.8,
+      "text": "The price per BTC stays the same."
+    },
+    {
+      "t": 101.4,
+      "text": "Notional value is the total worth of a quantity, counted in the quote asset."
+    },
+    {
+      "t": 107.4,
+      "text": "The formula: value in USDT equals BTC amount times USDT per BTC."
+    },
+    {
+      "t": 112.6,
+      "text": "Say you buy 0.05 BTC at 60,000 USDT per BTC. 0.05 times 60,000 is 3,000 USDT."
+    },
+    {
+      "t": 121.4,
+      "text": "Now let the price move, and watch two orders: 1 BTC and 0.001 BTC."
+    },
+    {
+      "t": 127,
+      "text": "BTC rises to 63,000. 1 BTC is now worth 63,000 USDT. 0.001 BTC: 63 USDT."
+    },
+    {
+      "t": 133,
+      "text": "Both rose 5 percent. In USDT, that's 3,000 more versus just 3 more."
+    },
+    {
+      "t": 138.6,
+      "text": "If BTC falls to 57,000, they're worth 57,000 and 57 USDT."
+    },
+    {
+      "t": 144.4,
+      "text": "A common mistake: BTC costs 60,000 USDT, so I need 60,000 USDT to trade it."
+    },
+    {
+      "t": 150.4,
+      "text": "No. 60,000 is the price of one whole BTC, not the size of your order."
+    },
+    {
+      "t": 155.8,
+      "text": "You choose the quantity. 0.001 BTC at 60,000 costs 60 USDT, before fees."
+    },
+    {
+      "t": 162.4,
+      "text": "Your turn. Quantity: 0.02 BTC. Price: 65,000 USDT per BTC. What's the notional value?"
+    },
+    {
+      "t": 171,
+      "text": "0.02 times 65,000 is 1,300 USDT. Well done if you got it."
+    },
+    {
+      "t": 180.4,
+      "text": "Other pairs work the same way. ETH/USDT: one ETH costs 3,000 USDT."
+    },
+    {
+      "t": 185.8,
+      "text": "The quote doesn't have to be USDT. In ETH/BTC, the price is counted in BTC."
+    },
+    {
+      "t": 191.8,
+      "text": "ETH/BTC at 0.05 means one ETH costs 0.05 BTC."
+    },
+    {
+      "t": 196.4,
+      "text": "Before you go further: stablecoins have risks too."
+    },
+    {
+      "t": 200.6,
+      "text": "A stablecoin is not guaranteed to stay at one dollar. It can slip, and that's called losing its peg."
+    },
+    {
+      "t": 208.2,
+      "text": "It depends on the company behind it, and on the money it holds in reserve."
+    },
+    {
+      "t": 214,
+      "text": "And notional value isn't profit. It's just what your BTC is worth right now."
+    },
+    {
+      "t": 220.4,
+      "text": "Let's recap. A pair prices the base asset in the quote asset: USDT per one BTC."
+    },
+    {
+      "t": 226.6,
+      "text": "Value in USDT equals BTC amount times USDT per BTC."
+    },
+    {
+      "t": 231,
+      "text": "USDT is a stablecoin. It aims for one dollar, but that's not guaranteed."
+    },
+    {
+      "t": 236.8,
+      "text": "Check yourself: you buy 0.01 BTC at 60,000 USDT. What's the notional value?"
+    },
+    {
+      "t": 242.8,
+      "text": "0.01 times 60,000 is 600 USDT."
+    },
+    {
+      "t": 246.6,
+      "text": "Well done! Next up: what does an exchange do? See you in lesson four."
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "about": "T02 captions, shown on screen as the tutor speaking (no voice yet); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson two: why do crypto prices move? Let's find out who really sets the price."
+    },
+    {
+      "t": 8.4,
+      "text": "Here's a puzzle. At ten o'clock, BTC costs 60,000 USDT."
+    },
+    {
+      "t": 13,
+      "text": "A minute later it's higher. Then lower. Nobody pressed a button."
+    },
+    {
+      "t": 18.6,
+      "text": "So who decides? Buyers and sellers."
+    },
+    {
+      "t": 22.4,
+      "text": "Every price comes from a market: people who want to buy, and people who want to sell."
+    },
+    {
+      "t": 29,
+      "text": "A buyer pays to get BTC. A seller gives up BTC to get paid."
+    },
+    {
+      "t": 33.8,
+      "text": "When a buyer and a seller agree on a price, a trade happens."
+    },
+    {
+      "t": 38.8,
+      "text": "The price of the latest trade is what we call the market price."
+    },
+    {
+      "t": 44.4,
+      "text": "Demand means how much people want to buy, and at what price."
+    },
+    {
+      "t": 49.4,
+      "text": "Think of the last mangoes at a busy stall. When many want them, the seller can ask more."
+    },
+    {
+      "t": 56.4,
+      "text": "Here, more buyers arrive than sellers. To get BTC, buyers offer a little more."
+    },
+    {
+      "t": 62.4,
+      "text": "Each new trade is a bit higher, so the price ticks up."
+    },
+    {
+      "t": 67.4,
+      "text": "Supply means how much people want to sell, and at what price."
+    },
+    {
+      "t": 72.4,
+      "text": "Think of a fish seller near closing time with lots left. To sell it all, she cuts her price."
+    },
+    {
+      "t": 79.4,
+      "text": "Now more sellers arrive than buyers. To find a buyer, sellers accept less."
+    },
+    {
+      "t": 85.6,
+      "text": "We call this selling pressure. The price ticks down."
+    },
+    {
+      "t": 90.4,
+      "text": "Let's measure a move. Change is the new price minus the old price."
+    },
+    {
+      "t": 95.8,
+      "text": "From 60,000 to 61,200 USDT, the change is plus 1,200 USDT."
+    },
+    {
+      "t": 100.6,
+      "text": "As a percent: 1,200 divided by 60,000, times 100, is 2 percent."
+    },
+    {
+      "t": 105.8,
+      "text": "From 60,000 down to 57,000: minus 3,000 USDT, or minus 5 percent."
+    },
+    {
+      "t": 111.4,
+      "text": "Now a simple model to watch. It's illustrative only, not a prediction of real markets."
+    },
+    {
+      "t": 118.2,
+      "text": "Buyers stronger than sellers? The model price drifts up."
+    },
+    {
+      "t": 123,
+      "text": "Sellers stronger? It drifts down."
+    },
+    {
+      "t": 126.6,
+      "text": "When both sides are about equal, the price wobbles sideways, with no clear direction."
+    },
+    {
+      "t": 134.4,
+      "text": "Careful: price doesn't simply follow how many people are buying or selling."
+    },
+    {
+      "t": 140.2,
+      "text": "Here, 3 buyers each want 4 BTC. That's 12 BTC in total."
+    },
+    {
+      "t": 144.8,
+      "text": "And 10 sellers offer only 0.2 BTC each. That's just 2 BTC."
+    },
+    {
+      "t": 149.5,
+      "text": "Fewer people, but far more BTC wanted. Size matters, not headcount."
+    },
+    {
+      "t": 155.4,
+      "text": "Liquidity means how easily you can buy or sell without moving the price much."
+    },
+    {
+      "t": 161.4,
+      "text": "Left: a busy market with lots of BTC for sale at each price. Right: a quiet one."
+    },
+    {
+      "t": 167.6,
+      "text": "Now someone buys 1 BTC, in both markets."
+    },
+    {
+      "t": 171.4,
+      "text": "Busy market: the price stays put. Quiet market: it jumps 400 USDT."
+    },
+    {
+      "t": 177.4,
+      "text": "Volatility is how much and how fast a price swings."
+    },
+    {
+      "t": 182,
+      "text": "A calm market moves a little. A volatile one swings hard, up and down."
+    },
+    {
+      "t": 187.8,
+      "text": "Surprise news, or a quiet market with few orders, can cause sudden jumps."
+    },
+    {
+      "t": 193.6,
+      "text": "Crypto is known for high volatility."
+    },
+    {
+      "t": 197.4,
+      "text": "A common mistake: picturing price as a smooth line you can simply follow."
+    },
+    {
+      "t": 203.2,
+      "text": "Zoom in, and real price paths are jagged, full of small ups and downs."
+    },
+    {
+      "t": 209,
+      "text": "Nobody knows the next tick. A neat trend can turn around at any moment."
+    },
+    {
+      "t": 215.4,
+      "text": "Your turn. BTC moves from 60,000 to 63,000 USDT. What's the change, in USDT and in percent?"
+    },
+    {
+      "t": 224,
+      "text": "Answer: plus 3,000 USDT. And 3,000 divided by 60,000, times 100, is 5 percent."
+    },
+    {
+      "t": 232.4,
+      "text": "Before you go further, know the risks."
+    },
+    {
+      "t": 235.8,
+      "text": "News or a quiet market can move prices fast, in either direction."
+    },
+    {
+      "t": 240.9,
+      "text": "Nobody knows the next move. Not experts, not apps, not AI."
+    },
+    {
+      "t": 245.6,
+      "text": "When things look unclear, you can always wait. Not trading is a valid choice."
+    },
+    {
+      "t": 251.6,
+      "text": "And remember: today's model was illustrative, not real market data."
+    },
+    {
+      "t": 257.4,
+      "text": "Let's recap. Prices move as buyers and sellers trade. The latest trade is the market price."
+    },
+    {
+      "t": 264.4,
+      "text": "More demand tends to push price up. More supply tends to push it down."
+    },
+    {
+      "t": 270,
+      "text": "Liquidity and news shape how fast and how far it moves."
+    },
+    {
+      "t": 274.6,
+      "text": "Check yourself: many sellers, few buyers. Which way does price tend to move?"
+    },
+    {
+      "t": 280.6,
+      "text": "Down, as sellers accept less. But nothing is guaranteed."
+    },
+    {
+      "t": 286.6,
+      "text": "Great work! Next up: trading pairs, and what BTC/USDT really means."
+    }
+  ]
+}

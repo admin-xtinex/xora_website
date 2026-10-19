@@ -1,0 +1,157 @@
+{
+  "about": "CP1 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Checkpoint one. Let's see how much of Phase 1 you remember."
+    },
+    {
+      "t": 8.4,
+      "text": "Welcome to your first checkpoint: eight quick questions on lessons T01 to T04."
+    },
+    {
+      "t": 14.6,
+      "text": "Read each question, pick an answer, and pause the video whenever you need more time."
+    },
+    {
+      "t": 21.2,
+      "text": "It's not graded. Missing one just shows you what to revisit."
+    },
+    {
+      "t": 26.3,
+      "text": "Question one, from T01. What is a cryptocurrency? Choose A, B, C or D."
+    },
+    {
+      "t": 33.6,
+      "text": "It's A. Crypto is a digital asset recorded on a shared public ledger: the blockchain."
+    },
+    {
+      "t": 40.2,
+      "text": "B is tempting, but your phone holds keys, not coins. The coins are entries on the ledger."
+    },
+    {
+      "t": 47.3,
+      "text": "Question two, from T01. You hold 0.005 BTC, and one BTC costs 60,000 USDT. What is it worth?"
+    },
+    {
+      "t": 54.6,
+      "text": "It's B, 300 USDT. Value is amount times price: 0.005 times 60,000."
+    },
+    {
+      "t": 61.2,
+      "text": "C is a decimal slip. 3,000 USDT is what 0.05 BTC would be worth, ten times more."
+    },
+    {
+      "t": 68.3,
+      "text": "Question three, from T02. Suddenly far more people want to buy than to sell. What tends to happen?"
+    },
+    {
+      "t": 75.6,
+      "text": "A. Buyers compete for the few sellers and offer more, so the price tends to rise."
+    },
+    {
+      "t": 82.2,
+      "text": "But B is wrong: nothing is guaranteed. News or thin trading can turn the price quickly."
+    },
+    {
+      "t": 89.3,
+      "text": "Question four, from T02. What does high volatility mean?"
+    },
+    {
+      "t": 96.6,
+      "text": "It's B. Volatility is how far and how fast the price swings, up and down."
+    },
+    {
+      "t": 103.2,
+      "text": "A is a trap. A volatile price can fall just as sharply as it rises."
+    },
+    {
+      "t": 110.3,
+      "text": "Question five, from T03. In the pair BTC/USDT, which one is the base asset?"
+    },
+    {
+      "t": 117.6,
+      "text": "A, BTC. The base is the asset being priced: one BTC costs this many USDT."
+    },
+    {
+      "t": 124.2,
+      "text": "USDT is the quote, the unit of the price. It aims to track the dollar, with no guarantee."
+    },
+    {
+      "t": 131.3,
+      "text": "Question six, from T03. You buy 0.001 BTC when the price is 65,000 USDT. How many USDT is that?"
+    },
+    {
+      "t": 138.6,
+      "text": "B, 65 USDT. Quantity times price: 0.001 times 65,000. That's the notional value."
+    },
+    {
+      "t": 145.2,
+      "text": "D is the price of one whole BTC. You're buying one thousandth of a BTC."
+    },
+    {
+      "t": 152.3,
+      "text": "Question seven, from T04. The best bid is 59,990 and the best ask is 60,010 USDT. The spread?"
+    },
+    {
+      "t": 159.6,
+      "text": "B, 20 USDT. The spread is the best ask minus the best bid: 60,010 minus 59,990."
+    },
+    {
+      "t": 166.2,
+      "text": "C is the bid itself: the highest price a buyer is offering right now. Not the gap."
+    },
+    {
+      "t": 173.3,
+      "text": "Question eight, from T04. A message asks for your OTP, the one-time code. What do you do?"
+    },
+    {
+      "t": 180.6,
+      "text": "C. Never share it. Open the exchange app yourself, or use its official support page."
+    },
+    {
+      "t": 187.2,
+      "text": "A is exactly what scammers want. Rushing you is a trick, and an OTP opens your account."
+    },
+    {
+      "t": 194.3,
+      "text": "Before Phase 2, four safety points that matter most."
+    },
+    {
+      "t": 198.6,
+      "text": "An exchange is not a bank. Your balance there has no bank-style guarantee."
+    },
+    {
+      "t": 204.4,
+      "text": "Never share your password, OTP or API secret keys. Not even with someone claiming to be support."
+    },
+    {
+      "t": 211.6,
+      "text": "USDT aims to track one US dollar, but that peg is not guaranteed."
+    },
+    {
+      "t": 216.7,
+      "text": "And prices can swing fast. You can always choose to wait, and make no trade."
+    },
+    {
+      "t": 223.3,
+      "text": "Here's where each question came from."
+    },
+    {
+      "t": 226.6,
+      "text": "Questions one and two: T01. Three and four: T02."
+    },
+    {
+      "t": 230.6,
+      "text": "Five and six: T03. Seven and eight: T04."
+    },
+    {
+      "t": 234.2,
+      "text": "Missed one? Rewatch that lesson before Phase 2. There's no penalty, and you can retry anytime."
+    },
+    {
+      "t": 242.6,
+      "text": "Next up, Phase 2 begins with T05: buy, sell, long and short. See you there!"
+    }
+  ]
+}

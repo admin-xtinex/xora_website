@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson four",
+      "dur": 8,
+      "desc": "Title card: Phase 1, lesson T04, What does an exchange do; the tutor walks in."
+    },
+    {
+      "id": "meeting",
+      "name": "The meeting place",
+      "dur": 19,
+      "desc": "Exchange and trading platform defined: buyers and sellers flow into one marketplace that records trades."
+    },
+    {
+      "id": "order",
+      "name": "An order",
+      "dur": 17,
+      "desc": "Order defined: a buy ticket for 0.01 BTC at 60,000 USDT builds field by field, 600 USDT in total."
+    },
+    {
+      "id": "book",
+      "name": "The order book",
+      "dur": 22,
+      "desc": "Order book defined: sell orders stack above, buy orders below, sorted by price, changing all the time."
+    },
+    {
+      "id": "bidask",
+      "name": "Bid and ask",
+      "dur": 17,
+      "desc": "Bid and ask defined: best bid 59,990 and best ask 60,010 are highlighted."
+    },
+    {
+      "id": "spread",
+      "name": "Spread",
+      "dur": 21,
+      "desc": "Spread = ask minus bid: 20 USDT, then a new 60,000 bid narrows it to 10; quiet markets have wider spreads."
+    },
+    {
+      "id": "match",
+      "name": "Matching",
+      "dur": 24,
+      "desc": "A buy of 0.30 BTC up to 60,020 fills 0.20 at 60,010 and 0.10 at 60,020: 18,004 USDT; last price 60,020."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 20,
+      "desc": "Pause and match: 0.10 BTC up to 60,015 fills 0.05 at 60,010 and 0.05 at 60,015, 6,001.25 USDT in total."
+    },
+    {
+      "id": "example",
+      "name": "One example",
+      "dur": 17,
+      "desc": "Binance is one large exchange among many; course screens are generic educational mocks."
+    },
+    {
+      "id": "notbank",
+      "name": "Not a bank",
+      "dur": 19,
+      "desc": "An exchange is not a bank: usually no deposit protection; withdrawals can pause, hacks, closures; rules differ."
+    },
+    {
+      "id": "phishing",
+      "name": "Spot the fake",
+      "dur": 25,
+      "desc": "Phishing defined; a fake message's red flags (urgency, look-alike address, asks for OTP) versus safe habits."
+    },
+    {
+      "id": "security",
+      "name": "Never share these",
+      "dur": 18,
+      "desc": "Account security: never share password, OTP or API secret key; support never asks; turn on 2FA."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 28,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 12,
+      "desc": "End card: Phase 1 complete; next, CP1 Foundations Checkpoint."
+    }
+  ]
+}

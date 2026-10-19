@@ -1,0 +1,193 @@
+{
+  "about": "T06 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson six: entry, exit, and profit or loss. Let's do the maths, step by step."
+    },
+    {
+      "t": 8.4,
+      "text": "Every trade has a start and an end. The question is always: how much did it make, or lose?"
+    },
+    {
+      "t": 15.3,
+      "text": "To answer, you need four things: entry, exit, size and fees. Let's meet them one by one."
+    },
+    {
+      "t": 22.4,
+      "text": "The entry price is the price where you open a trade. The exit price is where you close it."
+    },
+    {
+      "t": 29.2,
+      "text": "Think of a bus ride: where you get on, and where you get off. The distance between them matters."
+    },
+    {
+      "t": 36.4,
+      "text": "Here, you enter at 60,000. The price moves, and you exit at 61,200. A move of 1,200 USDT."
+    },
+    {
+      "t": 44.4,
+      "text": "Size is how much you trade. Quantity is the amount of the asset, like 0.05 BTC."
+    },
+    {
+      "t": 50.5,
+      "text": "Notional value is quantity times price. It's the full value of the trade."
+    },
+    {
+      "t": 56.2,
+      "text": "Like 3 kg of onions at 40 per kg: the bill is 120. Here, 0.05 × 60,000 = 3,000 USDT."
+    },
+    {
+      "t": 62.6,
+      "text": "Bigger size means every price move counts for more, up or down."
+    },
+    {
+      "t": 68.4,
+      "text": "Now the profit or loss formula for spot: exit minus entry, times quantity."
+    },
+    {
+      "t": 74.2,
+      "text": "Buy 0.05 BTC at 60,000 and sell at 61,200: 1,200 × 0.05 = +60 USDT. That's the gross result."
+    },
+    {
+      "t": 81.2,
+      "text": "Gross means before any fees. Sell at 59,400 instead, and it's −600 × 0.05 = −30 USDT."
+    },
+    {
+      "t": 89.4,
+      "text": "While a trade is open, its profit or loss is unrealized. It changes with every tick."
+    },
+    {
+      "t": 95.8,
+      "text": "A green number now can turn red a minute later. It isn't locked in until you close."
+    },
+    {
+      "t": 102.2,
+      "text": "When you exit, it becomes realized: the result is fixed. Here, +60 USDT, before fees."
+    },
+    {
+      "t": 110.4,
+      "text": "Futures next. On a USDT-margined contract, a long works the same way: exit minus entry, times size."
+    },
+    {
+      "t": 118,
+      "text": "Long 0.1 BTC at 60,000, exit at 59,400: −600 × 0.1 = −60 USDT. A loss."
+    },
+    {
+      "t": 123.7,
+      "text": "This is simplified: fees and funding are left out for now."
+    },
+    {
+      "t": 128.4,
+      "text": "Leverage doesn't change this USDT result, but it makes it larger compared with your margin."
+    },
+    {
+      "t": 136.4,
+      "text": "For a short, flip it: entry minus exit, times size."
+    },
+    {
+      "t": 140.6,
+      "text": "Short 0.1 BTC at 60,000, exit at 59,400: 600 × 0.1 = +60 USDT. The fall was your gain."
+    },
+    {
+      "t": 147.3,
+      "text": "But exit at 60,800, and it's −800 × 0.1 = −80 USDT. A short loses when the price rises."
+    },
+    {
+      "t": 155.4,
+      "text": "Now fees. Say you go long 0.1 BTC from 60,000 to 60,600. Gross: +60 USDT."
+    },
+    {
+      "t": 161.2,
+      "text": "Exchanges charge a fee on entry and again on exit: notional value times the fee rate."
+    },
+    {
+      "t": 167.8,
+      "text": "We'll use 0.05%, a made-up rate. Entry fee: 6,000 × 0.05% = 3.00 USDT."
+    },
+    {
+      "t": 173.4,
+      "text": "Exit fee: 6,060 × 0.05% = 3.03 USDT. Net: 60 − 3.00 − 3.03 = +53.97 USDT."
+    },
+    {
+      "t": 179.2,
+      "text": "Net is what you actually keep. Always check real fee rates before trading."
+    },
+    {
+      "t": 185.4,
+      "text": "A common mistake: counting the gross result and forgetting fees."
+    },
+    {
+      "t": 190.5,
+      "text": "Long 0.1 BTC from 60,000 to 60,040. Gross: +4 USDT. Looks like a win."
+    },
+    {
+      "t": 196,
+      "text": "But fees are 3.00 on entry and about 3.00 on exit. Net: about −2 USDT. A gross win, a net loss."
+    },
+    {
+      "t": 203.2,
+      "text": "And remember: an open, unrealized profit isn't yours until you close."
+    },
+    {
+      "t": 209.4,
+      "text": "Your turn. Short 0.02 BTC at 60,000, closed at 61,000. What's the gross result? Pause if needed."
+    },
+    {
+      "t": 217.2,
+      "text": "Gross: −20 USDT. Entry minus exit is −1,000, times 0.02."
+    },
+    {
+      "t": 221.8,
+      "text": "With 0.05% fees, 0.60 on entry and 0.61 on exit, the net is −21.21 USDT."
+    },
+    {
+      "t": 228.3,
+      "text": "Before you go on, the risks."
+    },
+    {
+      "t": 231,
+      "text": "Prices can jump past the exit you planned, so your real exit can be worse."
+    },
+    {
+      "t": 236.8,
+      "text": "Fees hit every entry and exit, and futures add funding. Small trades feel it most."
+    },
+    {
+      "t": 243.2,
+      "text": "Leverage makes the same loss a bigger share of your margin, and can lead to liquidation."
+    },
+    {
+      "t": 249.9,
+      "text": "These are simple models, not predictions. Choosing no trade is always allowed."
+    },
+    {
+      "t": 256.2,
+      "text": "Let's recap."
+    },
+    {
+      "t": 257.9,
+      "text": "Long or spot: exit minus entry, times quantity. Short: entry minus exit."
+    },
+    {
+      "t": 263.5,
+      "text": "Unrealized results move with the price. Realized results are fixed when you close."
+    },
+    {
+      "t": 269.8,
+      "text": "Net is gross minus fees, and on futures, funding too."
+    },
+    {
+      "t": 274.2,
+      "text": "Check yourself: long 0.1 BTC from 60,000 to 60,300, with 6 USDT in total fees. What's the net?"
+    },
+    {
+      "t": 281.4,
+      "text": "Gross is 300 × 0.1 = 30 USDT. Minus 6 in fees: net +24 USDT."
+    },
+    {
+      "t": 287.6,
+      "text": "Next up, T07: market, limit and stop orders. See you there!"
+    }
+  ]
+}

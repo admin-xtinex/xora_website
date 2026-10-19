@@ -1,9 +1,11 @@
 import { motion } from "motion/react";
 import { Check, Minus } from "lucide-react";
 import { DIFFERENT } from "@/lib/content";
+import { revealTransition, useSeen } from "@/lib/seen";
 import { Reveal } from "./ui/Reveal";
 
 export function DifferenceSection() {
+  const [table, seen] = useSeen<HTMLDivElement>();
   return (
     <section id="about" className="section difference" aria-labelledby="diff-title">
       <div className="container diff-grid">
@@ -19,7 +21,7 @@ export function DifferenceSection() {
           </ul>
         </Reveal>
 
-        <div className="compare" role="table" aria-label="Typical approach compared with XORA">
+        <div ref={table} className="compare" role="table" aria-label="Typical approach compared with XORA">
           <div className="compare-head" role="row">
             <span role="columnheader">The usual way</span>
             <span role="columnheader">With XORA</span>
@@ -30,9 +32,8 @@ export function DifferenceSection() {
               className="compare-row"
               role="row"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px" }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              animate={seen === "idle" ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+              transition={revealTransition(seen, { duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] })}
             >
               <span className="compare-without" role="cell">
                 <Minus size={15} aria-hidden />

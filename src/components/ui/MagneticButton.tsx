@@ -1,5 +1,6 @@
 import { useRef, type ReactNode, type MouseEvent } from "react";
-import { cn, scrollToId } from "@/lib/utils";
+import { linkClick } from "@/lib/router";
+import { cn } from "@/lib/utils";
 
 type Props = {
   href: string;
@@ -9,7 +10,7 @@ type Props = {
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
 };
 
-// Same magnetic feel as the xtinex.com buttons; in-page anchors scroll smoothly.
+// Same magnetic feel as the xtinex.com buttons; internal links route client-side.
 export function MagneticButton({ href, children, variant = "primary", className, onClick }: Props) {
   const ref = useRef<HTMLAnchorElement>(null);
 
@@ -36,11 +37,7 @@ export function MagneticButton({ href, children, variant = "primary", className,
       onMouseLeave={onLeave}
       onClick={(e) => {
         onClick?.(e);
-        if (e.defaultPrevented) return;
-        if (href.startsWith("#")) {
-          e.preventDefault();
-          scrollToId(href.slice(1));
-        }
+        linkClick(href)(e);
       }}
       {...(external && href.startsWith("http") ? { rel: "noopener" } : {})}
     >

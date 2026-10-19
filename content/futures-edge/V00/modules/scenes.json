@@ -1,0 +1,87 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look (user asked to follow xora.xtinex.com): deep void ground, frosted glass panels with thin cyan-to-violet gradient edges, fictional market lines that draw themselves in, calm eased motion",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "signal",
+      "name": "Signal from noise",
+      "dur": 8,
+      "desc": "A jagged fictional price line draws across the dark, settles, and the XTINEX | XORA lockup appears."
+    },
+    {
+      "id": "welcome",
+      "name": "Welcome",
+      "dur": 10,
+      "desc": "Title: Welcome to XORA Futures Edge, a beginner course in crypto futures that starts from zero."
+    },
+    {
+      "id": "for-you",
+      "name": "Who it is for",
+      "dur": 10,
+      "desc": "Never traded? Three beginner situations appear as chips; every term is defined before it is used."
+    },
+    {
+      "id": "lesson",
+      "name": "How a lesson works",
+      "dur": 18,
+      "desc": "A lesson card assembles its five ways to learn: Watch, Read, Slides, Try it, Quiz, each lighting in turn."
+    },
+    {
+      "id": "phases",
+      "name": "Five phases",
+      "dur": 24,
+      "desc": "A roadmap path draws through five phase nodes, 23 lessons and three checkpoints."
+    },
+    {
+      "id": "demo-only",
+      "name": "Demo only",
+      "dur": 16,
+      "desc": "A live order button is switched off and replaced by Demo; no live trading, no real money, no keys."
+    },
+    {
+      "id": "risk",
+      "name": "Risk in view",
+      "dur": 14,
+      "desc": "Leverage, fees and wrong signals are named; BUY, SELL and WAIT appear and WAIT is highlighted as valid."
+    },
+    {
+      "id": "outcomes",
+      "name": "By the end",
+      "dur": 10,
+      "desc": "Four outcomes tick in one by one as a checklist."
+    },
+    {
+      "id": "start",
+      "name": "Start lesson one",
+      "dur": 10,
+      "desc": "End card: next up T01 What Is Cryptocurrency, with the education-only notice."
+    }
+  ]
+}

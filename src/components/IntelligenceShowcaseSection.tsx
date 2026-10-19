@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Activity, ArrowDownRight, ArrowUpRight, BrainCircuit, Check, NotebookPen, Radar } from "lucide-react";
 import { SHOWCASE } from "@/lib/content";
+import { revealTransition, useSeen, type Seen } from "@/lib/seen";
 import { rng, type Candle } from "@/lib/series";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "./ui/SectionHeading";
@@ -39,7 +40,7 @@ const PAD = 26;
 const y = (v: number) => PAD + (1 - v / 100) * (H - PAD * 2);
 const STEP = (W - 60) / N;
 
-function MarketChart() {
+function MarketChart({ seen }: { seen: Seen }) {
   return (
     <svg className="mchart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Illustrative chart: price ranging between support and resistance, now testing resistance a second time">
       <defs>
@@ -85,9 +86,8 @@ function MarketChart() {
               key={i}
               className={up ? "candle is-up" : "candle is-down"}
               initial={{ opacity: 0, scaleY: 0.2 }}
-              whileInView={{ opacity: 1, scaleY: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.025 }}
+              animate={seen === "idle" ? { opacity: 0, scaleY: 0.2 } : { opacity: 1, scaleY: 1 }}
+              transition={revealTransition(seen, { duration: 0.5, delay: 0.2 + i * 0.025 })}
               style={{ transformOrigin: `${x}px ${top + bh / 2}px` }}
             >
               <line x1={x + STEP * 0.3} x2={x + STEP * 0.3} y1={y(c.h)} y2={y(c.l)} />
@@ -108,12 +108,13 @@ function MarketChart() {
 }
 
 export function IntelligenceShowcaseSection() {
+  const [bento, seen] = useSeen<HTMLDivElement>();
   return (
     <section id="intelligence" className="section showcase" aria-labelledby="intel-title">
       <div className="container">
         <SectionHeading id="intel-title" kicker={SHOWCASE.kicker} title={SHOWCASE.title} intro={SHOWCASE.intro} />
 
-        <div className="bento">
+        <div ref={bento} className="bento">
           <SpotlightCard className="bento-main">
             <header className="panel-head">
               <span className="panel-title">
@@ -123,13 +124,12 @@ export function IntelligenceShowcaseSection() {
                 <i /> Demo · illustrative
               </span>
             </header>
-            <MarketChart />
+            <MarketChart seen={seen} />
             <motion.div
               className="ai-note"
               initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 1.4 }}
+              animate={seen === "idle" ? { opacity: 0, y: 14 } : { opacity: 1, y: 0 }}
+              transition={revealTransition(seen, { duration: 0.8, delay: 1.4 })}
             >
               <BrainCircuit size={18} aria-hidden />
               <p>
@@ -153,9 +153,8 @@ export function IntelligenceShowcaseSection() {
                   <span className="trend-bar">
                     <motion.i
                       initial={{ width: 0 }}
-                      whileInView={{ width: `${t.strength}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.2, delay: 0.3 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                      animate={{ width: seen === "idle" ? 0 : `${t.strength}%` }}
+                      transition={revealTransition(seen, { duration: 1.2, delay: 0.3 + i * 0.15, ease: [0.16, 1, 0.3, 1] })}
                     />
                   </span>
                 </li>

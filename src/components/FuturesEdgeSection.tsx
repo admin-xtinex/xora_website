@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, ChevronRight, CircleCheck, Lock, Play } from "lucide-react";
 import { EDGE, LINKS } from "@/lib/content";
+import { revealTransition, useSeen } from "@/lib/seen";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "./ui/MagneticButton";
 import { Reveal } from "./ui/Reveal";
@@ -14,6 +15,8 @@ const C = 2 * Math.PI * R;
 function LearningPreview() {
   const next = EDGE.modules.find((m) => m.state === "active")!;
   const nextIndex = EDGE.modules.indexOf(next) + 1;
+  const [ring, ringSeen] = useSeen<SVGSVGElement>();
+  const [list, listSeen] = useSeen<HTMLOListElement>();
   return (
     <SpotlightCard className="edge-preview" tilt>
       <div className="edge-preview-bar" aria-hidden>
@@ -25,7 +28,7 @@ function LearningPreview() {
 
       <div className="edge-top">
         <div className="edge-progress">
-          <svg viewBox="0 0 80 80" aria-hidden>
+          <svg ref={ring} viewBox="0 0 80 80" aria-hidden>
             <defs>
               <linearGradient id="ringGrad" x1="0" x2="1">
                 <stop offset="0" stopColor="#3ecbff" />
@@ -40,9 +43,8 @@ function LearningPreview() {
               className="ring-value"
               strokeDasharray={C}
               initial={{ strokeDashoffset: C }}
-              whileInView={{ strokeDashoffset: C * (1 - PCT / 100) }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+              animate={{ strokeDashoffset: ringSeen === "idle" ? C : C * (1 - PCT / 100) }}
+              transition={revealTransition(ringSeen, { duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 })}
             />
           </svg>
           <span className="ring-label">{PCT}%</span>
@@ -67,15 +69,14 @@ function LearningPreview() {
         </div>
       </div>
 
-      <ol className="module-list">
+      <ol ref={list} className="module-list">
         {EDGE.modules.map((m, i) => (
           <motion.li
             key={m.title}
             className={cn("module", `is-${m.state}`)}
             initial={{ opacity: 0, x: 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+            animate={listSeen === "idle" ? { opacity: 0, x: 16 } : { opacity: 1, x: 0 }}
+            transition={revealTransition(listSeen, { duration: 0.6, delay: 0.2 + i * 0.06, ease: [0.16, 1, 0.3, 1] })}
           >
             <span className="module-n">{i + 1}</span>
             <div className="module-text">
@@ -140,7 +141,7 @@ export function FuturesEdgeSection() {
           </Reveal>
 
           <Reveal delay={0.24}>
-            <MagneticButton href={LINKS.getStarted}>
+            <MagneticButton href={LINKS.course}>
               Start Futures Edge
               <ArrowRight size={17} aria-hidden />
             </MagneticButton>

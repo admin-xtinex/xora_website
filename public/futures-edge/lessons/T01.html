@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T01 · What Is Cryptocurrency? · XORA Futures Edge</title>
+<meta name="description" content="XORA Futures Edge lesson T01, an animated lesson (5 min). Education only, not financial advice.">
+<style>
+@font-face { font-family:"Outfit";font-weight:400 700; src: url("T01/fonts/outfit.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Manrope";font-weight:400 800; src: url("T01/fonts/manrope.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:400; src: url("T01/fonts/dm-mono-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:500; src: url("T01/fonts/dm-mono-500.woff2") format("woff2"); font-display: block; }
+
+html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; color: #eef1f7;
+  font-family: "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden;
+  background: #02030a; transform-origin: 50% 50%;
+  --display: "Outfit", "Manrope", system-ui, sans-serif;
+  --sans: "Manrope", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace; }
+#stage .fe-scene { position: absolute; inset: 0; overflow: hidden; }
+body:not(.fe-ready) #stage { visibility: hidden; }
+.fe-loading { position: fixed; inset: 0; display: grid; place-items: center; margin: 0; font-size: 15px; color: #6b7489; }
+body.fe-ready .fe-loading { display: none; }
+.fe-ui { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 10; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 14px; background: rgba(7, 8, 20, 0.8); border: 1px solid rgba(130, 160, 255, 0.18);
+  backdrop-filter: blur(8px); transition: opacity 0.4s; }
+body.fe-idle .fe-ui { opacity: 0; }
+body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
+.fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
+  background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
+.fe-btn svg { width: 20px; height: 20px; }
+.fe-cc { font: 700 12px/1 "Manrope", system-ui, sans-serif; letter-spacing: 0.04em; color: #6b7489; }
+.fe-cc[aria-pressed="true"] { color: #eef1f7; box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-cap { position: fixed; left: 50%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(78vw, 980px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+  color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
+  transition: bottom 0.4s; pointer-events: none; }
+body.fe-idle .fe-cap { bottom: 20px; }
+.fe-cap[hidden], body:not(.fe-ready) .fe-cap { display: none; }
+.fe-track { position: relative; flex: 1; height: 6px; border-radius: 6px; background: rgba(238, 241, 247, 0.14);
+  cursor: pointer; touch-action: none; }
+.fe-track::before { content: ""; position: absolute; inset: -12px 0; }
+.fe-track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, #3ecbff, #a855f7); }
+.fe-time { flex: none; font: 500 13px/1 "DM Mono", ui-monospace, monospace; color: #b4bccb; font-variant-numeric: tabular-nums; }
+.fe-hint { position: fixed; top: 12px; right: 12px; z-index: 10; padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(62, 203, 255, 0.45); background: rgba(7, 8, 20, 0.82); color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif; }
+.fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
+@media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-height: 420px) {
+  .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
+  .fe-btn { width: 34px; height: 34px; }
+  .fe-btn svg { width: 18px; height: 18px; }
+  .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
+  body.fe-idle .fe-cap { bottom: 8px; }
+  .fe-hint { top: 6px; right: 6px; padding: 7px 12px; font-size: 12px; }
+}
+
+</style>
+</head>
+<body>
+<p class="fe-loading">Loading lesson…</p>
+<div id="stage" aria-label="T01 What Is Cryptocurrency?" role="img"></div>
+<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/futures-edge/T01/. Edit the source, not this file. -->
+<script>window.FILM = {"id":"T01","width":1920,"height":1080,"scenes":[{"id":"title","name":"Lesson one","dur":8,"k":1,"oldStart":0,"oldDur":8},{"id":"ticker","name":"A price on a phone","dur":14,"k":1,"oldStart":8,"oldDur":14},{"id":"money","name":"What money is","dur":23.04,"k":1.28,"oldStart":22,"oldDur":18},{"id":"digital","name":"Digital assets","dur":17.44,"k":1.09,"oldStart":40,"oldDur":16},{"id":"ledger","name":"A shared record","dur":22.22,"k":1.01,"oldStart":56,"oldDur":22},{"id":"bitcoin","name":"Meet Bitcoin","dur":22.96,"k":1.64,"oldStart":78,"oldDur":14},{"id":"wallet","name":"No coin in your phone","dur":20,"k":1.25,"oldStart":92,"oldDur":16},{"id":"token","name":"Coins and tokens","dur":14.04,"k":1.17,"oldStart":108,"oldDur":12},{"id":"balance","name":"Your balance","dur":23.84,"k":1.49,"oldStart":120,"oldDur":16},{"id":"moves","name":"When price moves","dur":30.2,"k":1.51,"oldStart":136,"oldDur":20},{"id":"try","name":"Try it","dur":17.6,"k":1.1,"oldStart":156,"oldDur":16},{"id":"sort","name":"Crypto or not","dur":17.28,"k":1.08,"oldStart":172,"oldDur":16},{"id":"risks","name":"Know the risks","dur":36.52,"k":1.66,"oldStart":188,"oldDur":22},{"id":"recap","name":"Recap","dur":31.86,"k":1.77,"oldStart":210,"oldDur":18},{"id":"next","name":"Up next","dur":10,"k":1,"oldStart":228,"oldDur":10}],"voice":{"src":"T01/voice.mp3","lines":[{"t":0.6,"d":5.151,"text":"Lesson one: what is cryptocurrency? Let's start at the very beginning."},{"t":8.4,"d":3.844,"text":"You've probably seen a screen like this. Prices that never sit still."},{"t":12.6,"d":5.767,"text":"BTC keeps moving. But what is BTC, really? By the end of this lesson, you'll know."},{"t":22.512,"d":4.559,"text":"Let's start with money. Money is value that people agree to accept."},{"t":28.144,"d":4.189,"text":"You hand it over, and you get food, a bus ticket, or rent paid."},{"t":32.633,"d":5.126,"text":"And most money today is already just numbers, stored in a bank's computers."},{"t":38.059,"d":5.939,"text":"Value is what something is worth to people. Money is a shared way to store and exchange it."},{"t":45.476,"d":4.806,"text":"A digital asset is anything of value that exists only as digital records."},{"t":50.582,"d":3.401,"text":"A bank balance. Points in a game. Airline miles."},{"t":54.282,"d":7.787,"text":"Cryptocurrency is one kind of digital asset, like BTC and ETH. But not every digital asset is crypto."},{"t":62.884,"d":4.066,"text":"Here's the key idea. Say a friend sends you a small amount of crypto."},{"t":67.25,"d":4.066,"text":"The payment is written into a shared record, called a ledger."},{"t":71.616,"d":4.239,"text":"Many computers around the world keep a copy, and they check each other."},{"t":76.155,"d":4.066,"text":"The records are grouped into blocks, linked in order. That's the blockchain."},{"t":80.521,"d":3.672,"text":"So there's no bank in the middle. The network keeps the record."},{"t":85.356,"d":4.806,"text":"Meet Bitcoin, symbol B T C: the first and best-known cryptocurrency."},{"t":91.916,"d":6.087,"text":"It launched in 2009, and no more than twenty-one million bitcoin can ever exist."},{"t":98.804,"d":8.404,"text":"One bitcoin can be split into tiny parts, so you can own a small piece, like 0.002 BTC."},{"t":108.16,"d":3.672,"text":"Here's a common mistake. There is no coin inside your phone."},{"t":114.66,"d":6.876,"text":"A wallet holds keys, which prove you control your crypto. The coins themselves are entries on the blockchain."},{"t":121.836,"d":5.348,"text":"On an exchange, the exchange holds the keys for you. Lose your keys, and you can lose access."},{"t":128.128,"d":5.865,"text":"Two words you'll hear: coins and tokens. A coin runs on its own blockchain."},{"t":134.293,"d":6.605,"text":"A token is built on top of an existing one. USDT is a token designed to track the US dollar."},{"t":142.296,"d":3.376,"text":"Now a worked example. What is my BTC worth?"},{"t":145.972,"d":7.886,"text":"Say you hold 0.002 BTC, and one BTC costs 60,000 USDT."},{"t":154.158,"d":5.151,"text":"Amount times price: 120 USDT. That's all it is."},{"t":166.144,"d":2.218,"text":"Now watch what happens when the price moves."},{"t":170.976,"d":6.038,"text":"The price rises to 63,000. Your value rises to 126."},{"t":180.338,"d":5.816,"text":"Then it falls to 57,000. Your value falls to 114."},{"t":187.888,"d":7.442,"text":"Notice: you still hold the same 0.002 BTC. Only its value changed."},{"t":196.4,"d":10.646,"text":"Your turn. You hold 0.002 BTC, and the price is 65,000 USDT. What is it worth? Pause if you need more time."},{"t":207.346,"d":5.077,"text":"The answer: 130 USDT. Well done if you got it."},{"t":213.772,"d":2.366,"text":"Quick check: crypto, or not crypto?"},{"t":217.66,"d":7.492,"text":"Bitcoin: crypto. Game points: not crypto. Ether: crypto. A bank balance: not crypto."},{"t":225.868,"d":4.337,"text":"And USDT? It counts too. It's a crypto token."},{"t":231.284,"d":2.366,"text":"Before you go further, know the risks."},{"t":234.936,"d":5.643,"text":"No government stands behind crypto. If something goes wrong, nobody has to pay you back."},{"t":242.24,"d":2.933,"text":"Prices can rise or fall a lot in a single day."},{"t":247.884,"d":5.2,"text":"Lose your keys, or get tricked by a scammer, and your crypto can be gone for good."},{"t":253.86,"d":7.171,"text":"And owning BTC is not the same as trading futures, which are contracts about its price. We'll cover those later."},{"t":261.331,"d":3.278,"text":"Learn first, and never risk money you can't afford to lose."},{"t":267.848,"d":1.257,"text":"Let's recap."},{"t":269.972,"d":4.288,"text":"Cryptocurrency is a digital asset recorded on a shared blockchain."},{"t":274.928,"d":3.672,"text":"A wallet holds keys. The coins live on the blockchain."},{"t":279.176,"d":5.126,"text":"And value equals amount times price. The amount stays; the value moves."},{"t":284.602,"d":7.516,"text":"Check yourself: if BTC falls ten percent, what happens to your 0.002 BTC?"},{"t":292.418,"d":6.136,"text":"You still hold 0.002 BTC. Its value falls by ten percent."},{"t":299.6,"d":4.732,"text":"Great start! Next up: why do crypto prices move? See you in lesson two."}]},"assetBase":"T01/assets/","assets":{"tutor-checklist.webp":{"mime":"image/webp","w":185,"h":161},"tutor-cheer.webp":{"mime":"image/webp","w":207,"h":182},"tutor-confused.webp":{"mime":"image/webp","w":185,"h":169},"tutor-explain.webp":{"mime":"image/webp","w":502,"h":602},"tutor-idea.webp":{"mime":"image/webp","w":169,"h":178},"tutor-idle.webp":{"mime":"image/webp","w":331,"h":446},"tutor-magnify.webp":{"mime":"image/webp","w":187,"h":170},"tutor-point.webp":{"mime":"image/webp","w":547,"h":568},"tutor-present.webp":{"mime":"image/webp","w":546,"h":612},"tutor-read.webp":{"mime":"image/webp","w":190,"h":181},"tutor-think.webp":{"mime":"image/webp","w":465,"h":656},"tutor-thumbs.webp":{"mime":"image/webp","w":181,"h":179},"tutor-wk0.webp":{"mime":"image/webp","w":353,"h":460},"tutor-wk1.webp":{"mime":"image/webp","w":361,"h":460},"tutor-wk2.webp":{"mime":"image/webp","w":345,"h":460},"tutor-wk3.webp":{"mime":"image/webp","w":365,"h":460},"tutor-wk4.webp":{"mime":"image/webp","w":375,"h":457},"tutor-wk5.webp":{"mime":"image/webp","w":364,"h":457},"tutor-wk6.webp":{"mime":"image/webp","w":354,"h":457},"tutor-wk7.webp":{"mime":"image/webp","w":365,"h":457},"tutor-wv1.webp":{"mime":"image/webp","w":381,"h":448},"tutor-wv2.webp":{"mime":"image/webp","w":374,"h":448},"tutor-wv3.webp":{"mime":"image/webp","w":363,"h":448},"tutor-wv4.webp":{"mime":"image/webp","w":375,"h":446},"xtinex-x.png":{"mime":"image/png","w":320,"h":205}},"fontChecks":["400 40px \"Manrope\"","700 40px \"Outfit\"","600 40px \"Outfit\"","400 40px \"DM Mono\"","500 40px \"DM Mono\""],"modules":{"base.css":"#stage { --ground:#02030a; --main:#3ecbff; --second:#eef1f7; --accent:#a855f7; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }\n.ground { position:absolute; inset:0; background:radial-gradient(60% 55% at 88% 6%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), radial-gradient(55% 50% at 6% 98%, color-mix(in srgb, var(--main) 11%, transparent), transparent 70%), var(--ground) }\n.words { position:absolute; margin:0; display:flex; flex-direction:column; gap:24px } .words > * { margin:0 }\n.line { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:84px; line-height:1.05; font-weight:700; letter-spacing:-0.02em; text-wrap:balance }\n.sub { font-size:36px; line-height:1.45; color:color-mix(in srgb, var(--second) 72%, var(--ground)) }\n.kick { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.24em; text-transform:uppercase; color:var(--main) }\n.hl { color:var(--main) } .hv { color:var(--accent) }\n.art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }\n.glass { position:absolute; box-sizing:border-box; border-radius:28px; background:linear-gradient(180deg, color-mix(in srgb, var(--ground) 82%, var(--main)), color-mix(in srgb, var(--ground) 94%, var(--second))); border:1.5px solid color-mix(in srgb, var(--main) 22%, transparent); box-shadow:0 30px 80px rgba(0,0,0,.45) }\n.chip { display:inline-flex; align-items:center; gap:16px; padding:18px 30px; border-radius:999px; font-size:32px; font-weight:600; background:color-mix(in srgb, var(--ground) 88%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent); white-space:nowrap }\n.dot { width:14px; height:14px; border-radius:50%; background:var(--main); flex:none }\n.rule { height:4px; border-radius:4px; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.mono { font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums }\n.fict { font-family:var(--mono, ui-monospace, monospace); font-size:18px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 45%, var(--ground)) }\n.def { font-size:34px; line-height:1.45; font-weight:600 } .def b { color:var(--main); font-weight:700 }\n.lock { display:flex; align-items:center; gap:22px } .lock img { width:92px; height:59px; display:block }\n.lock-xt { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:600; font-size:40px; letter-spacing:.2em }\n.lock-bar { width:2px; height:46px; background:color-mix(in srgb, var(--second) 30%, transparent) }\n.lock-xo { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:700; font-size:40px; letter-spacing:.2em; color:var(--main) }\n.chrome { position:absolute; left:140px; right:140px; top:56px; display:flex; align-items:center; gap:28px; z-index:4 }\n.chrome span { font-family:var(--mono, ui-monospace, monospace); font-size:19px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 55%, var(--ground)); white-space:nowrap }\n.chrome div { flex:1; height:4px; border-radius:4px; background:color-mix(in srgb, var(--second) 10%, transparent); overflow:hidden } .chrome i { display:block; height:100%; width:0; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.tutor { position:absolute; inset:0; pointer-events:none; z-index:5 }\n.tutor-img { position:absolute; display:block; max-width:none; opacity:0 }\n.tutor-shadow { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--main) 38%, transparent), transparent) }\n.bubble { position:absolute; left:0; top:0; width:max-content; max-width:540px; box-sizing:border-box; padding:20px 28px; border-radius:26px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); box-shadow:0 18px 50px rgba(0,0,0,.45); opacity:0 }\n.bubble p { margin:0; font-size:30px; line-height:1.35; font-weight:600; color:var(--second) }\n.bubble::after { content:''; position:absolute; right:44px; bottom:-12px; width:22px; height:22px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border-right:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); border-bottom:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); transform:rotate(45deg) }\n.bubble.is-top::after { right:auto; left:calc(50% - 11px) }\n.box { position:absolute; margin:0; border:2px solid var(--second); box-sizing:border-box; font-size:30px; letter-spacing:.12em } .box::after { content:attr(data-label); position:absolute; left:14px; bottom:10px }\n","narration.json":"{\n  \"about\": \"T01 voiceover script for ElevenLabs (female tutor voice, warm, clear, unhurried). Each line is generated as its own clip and placed at film time t (seconds). say = spoken form when it differs from text.\",\n  \"model\": \"eleven_multilingual_v2\",\n  \"lines\": [\n    {\n      \"t\": 0.6,\n      \"text\": \"Lesson one: what is cryptocurrency? Let's start at the very beginning.\"\n    },\n    {\n      \"t\": 8.4,\n      \"text\": \"You've probably seen a screen like this. Prices that never sit still.\"\n    },\n    {\n      \"t\": 12.6,\n      \"text\": \"BTC keeps moving. But what is BTC, really? By the end of this lesson, you'll know.\"\n    },\n    {\n      \"t\": 22.4,\n      \"text\": \"Let's start with money. Money is value that people agree to accept.\"\n    },\n    {\n      \"t\": 26.8,\n      \"text\": \"You hand it over, and you get food, a bus ticket, or rent paid.\"\n    },\n    {\n      \"t\": 29.6,\n      \"text\": \"And most money today is already just numbers, stored in a bank's computers.\"\n    },\n    {\n      \"t\": 33.4,\n      \"text\": \"Value is what something is worth to people. Money is a shared way to store and exchange it.\"\n    },\n    {\n      \"t\": 40.4,\n      \"text\": \"A digital asset is anything of value that exists only as digital records.\"\n    },\n    {\n      \"t\": 44.2,\n      \"text\": \"A bank balance. Points in a game. Airline miles.\"\n    },\n    {\n      \"t\": 48.2,\n      \"text\": \"Cryptocurrency is one kind of digital asset, like BTC and ETH. But not every digital asset is crypto.\"\n    },\n    {\n      \"t\": 56.4,\n      \"text\": \"Here's the key idea. Say a friend sends you a small amount of crypto.\"\n    },\n    {\n      \"t\": 60.6,\n      \"text\": \"The payment is written into a shared record, called a ledger.\"\n    },\n    {\n      \"t\": 64.6,\n      \"text\": \"Many computers around the world keep a copy, and they check each other.\"\n    },\n    {\n      \"t\": 68.8,\n      \"text\": \"The records are grouped into blocks, linked in order. That's the blockchain.\"\n    },\n    {\n      \"t\": 73.0,\n      \"text\": \"So there's no bank in the middle. The network keeps the record.\"\n    },\n    {\n      \"t\": 78.4,\n      \"text\": \"Meet Bitcoin, symbol B T C: the first and best-known cryptocurrency.\"\n    },\n    {\n      \"t\": 82.4,\n      \"text\": \"It launched in 2009, and no more than twenty-one million bitcoin can ever exist.\"\n    },\n    {\n      \"t\": 86.6,\n      \"text\": \"One bitcoin can be split into tiny parts, so you can own a small piece, like 0.002 BTC.\",\n      \"say\": \"One bitcoin can be split into tiny parts, so you can own a small piece, like zero point zero zero two B T C.\"\n    },\n    {\n      \"t\": 92.4,\n      \"text\": \"Here's a common mistake. There is no coin inside your phone.\"\n    },\n    {\n      \"t\": 97.6,\n      \"text\": \"A wallet holds keys, which prove you control your crypto. The coins themselves are entries on the blockchain.\"\n    },\n    {\n      \"t\": 103.0,\n      \"text\": \"On an exchange, the exchange holds the keys for you. Lose your keys, and you can lose access.\"\n    },\n    {\n      \"t\": 108.4,\n      \"text\": \"Two words you'll hear: coins and tokens. A coin runs on its own blockchain.\"\n    },\n    {\n      \"t\": 112.4,\n      \"text\": \"A token is built on top of an existing one. USDT is a token designed to track the US dollar.\",\n      \"say\": \"A token is built on top of an existing one. U S D T is a token designed to track the US dollar.\"\n    },\n    {\n      \"t\": 120.4,\n      \"text\": \"Now a worked example. What is my BTC worth?\"\n    },\n    {\n      \"t\": 122.8,\n      \"text\": \"Say you hold 0.002 BTC, and one BTC costs 60,000 USDT.\",\n      \"say\": \"Say you hold zero point zero zero two B T C, and one B T C costs sixty thousand U S D T.\"\n    },\n    {\n      \"t\": 127.4,\n      \"text\": \"Amount times price: 120 USDT. That's all it is.\",\n      \"say\": \"Amount times price: one hundred and twenty U S D T. That's all it is.\"\n    },\n    {\n      \"t\": 136.4,\n      \"text\": \"Now watch what happens when the price moves.\"\n    },\n    {\n      \"t\": 139.6,\n      \"text\": \"The price rises to 63,000. Your value rises to 126.\",\n      \"say\": \"The price rises to sixty-three thousand. Your value rises to one hundred and twenty-six.\"\n    },\n    {\n      \"t\": 145.8,\n      \"text\": \"Then it falls to 57,000. Your value falls to 114.\",\n      \"say\": \"Then it falls to fifty-seven thousand. Your value falls to one hundred and fourteen.\"\n    },\n    {\n      \"t\": 150.8,\n      \"text\": \"Notice: you still hold the same 0.002 BTC. Only its value changed.\",\n      \"say\": \"Notice: you still hold the same zero point zero zero two B T C. Only its value changed.\"\n    },\n    {\n      \"t\": 156.6,\n      \"text\": \"Your turn. You hold 0.002 BTC, and the price is 65,000 USDT. What is it worth? Pause if you need more time.\",\n      \"say\": \"Your turn. You hold zero point zero zero two B T C, and the price is sixty-five thousand U S D T. What is it worth? Pause if you need more time.\"\n    },\n    {\n      \"t\": 165.2,\n      \"text\": \"The answer: 130 USDT. Well done if you got it.\",\n      \"say\": \"The answer: one hundred and thirty U S D T. Well done if you got it.\"\n    },\n    {\n      \"t\": 172.4,\n      \"text\": \"Quick check: crypto, or not crypto?\"\n    },\n    {\n      \"t\": 176.0,\n      \"text\": \"Bitcoin: crypto. Game points: not crypto. Ether: crypto. A bank balance: not crypto.\"\n    },\n    {\n      \"t\": 183.6,\n      \"text\": \"And USDT? It counts too. It's a crypto token.\",\n      \"say\": \"And U S D T? It counts too. It's a crypto token.\"\n    },\n    {\n      \"t\": 188.4,\n      \"text\": \"Before you go further, know the risks.\"\n    },\n    {\n      \"t\": 190.6,\n      \"text\": \"No government stands behind crypto. If something goes wrong, nobody has to pay you back.\"\n    },\n    {\n      \"t\": 195.0,\n      \"text\": \"Prices can rise or fall a lot in a single day.\"\n    },\n    {\n      \"t\": 198.4,\n      \"text\": \"Lose your keys, or get tricked by a scammer, and your crypto can be gone for good.\"\n    },\n    {\n      \"t\": 202.0,\n      \"text\": \"And owning BTC is not the same as trading futures, which are contracts about its price. We'll cover those later.\"\n    },\n    {\n      \"t\": 205.6,\n      \"text\": \"Learn first, and never risk money you can't afford to lose.\"\n    },\n    {\n      \"t\": 210.4,\n      \"text\": \"Let's recap.\"\n    },\n    {\n      \"t\": 211.6,\n      \"text\": \"Cryptocurrency is a digital asset recorded on a shared blockchain.\"\n    },\n    {\n      \"t\": 214.4,\n      \"text\": \"A wallet holds keys. The coins live on the blockchain.\"\n    },\n    {\n      \"t\": 216.8,\n      \"text\": \"And value equals amount times price. The amount stays; the value moves.\"\n    },\n    {\n      \"t\": 219.6,\n      \"text\": \"Check yourself: if BTC falls ten percent, what happens to your 0.002 BTC?\",\n      \"say\": \"Check yourself: if B T C falls ten percent, what happens to your zero point zero zero two B T C?\"\n    },\n    {\n      \"t\": 224.2,\n      \"text\": \"You still hold 0.002 BTC. Its value falls by ten percent.\",\n      \"say\": \"You still hold zero point zero zero two B T C. Its value falls by ten percent.\"\n    },\n    {\n      \"t\": 228.6,\n      \"text\": \"Great start! Next up: why do crypto prices move? See you in lesson two.\"\n    }\n  ]\n}\n","scene-balance.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('balance', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const tile = (cls, top, big, small, w, hl) => '<div class=\"glass ' + cls + '\" style=\"position:relative;width:' + w + 'px;padding:24px 30px;' + (hl ? 'border-color:var(--main);background:color-mix(in srgb, var(--ground) 75%, var(--main))' : '') + '\"><p class=\"fict\" style=\"margin:0 0 8px\">' + top + '</p><p class=\"mono ' + cls + '-n\" style=\"margin:0;font-size:56px\">' + big + '</p><p style=\"margin:6px 0 0;font-size:24px;color:color-mix(in srgb, var(--second) 65%, var(--ground))\">' + small + '</p></div>';\n    const op = (cls, s) => '<span class=\"mono ' + cls + '\" style=\"font-size:64px;color:var(--main)\">' + s + '</span>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:190px;width:1500px\"><p class=\"kick bl-k\">Worked example</p>' +\n      '<h2 class=\"line bl-t\">What is my BTC worth?</h2>' +\n      '<p class=\"sub bl-s\">Value = amount of BTC × price of one BTC</p></div>' +\n      '<div style=\"position:absolute;left:140px;top:500px;display:flex;align-items:center;gap:30px\">' +\n      tile('bl-a', 'Your balance', '0.002 BTC', 'the amount you hold', 330) + op('bl-x', '×') +\n      tile('bl-p', 'Price of 1 BTC', '60,000', 'USDT per BTC', 360) + op('bl-e', '=') +\n      tile('bl-v', 'Value', '120', 'USDT', 330, true) + '</div>' +\n      '<p class=\"fict bl-f\" style=\"position:absolute;left:140px;top:720px;margin:0\">All amounts are fictional examples</p>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.bl-k').style; this.t = q('.bl-t'); this.s = q('.bl-s'); this.f = q('.bl-f').style;\n    this.parts = ['.bl-a', '.bl-x', '.bl-p', '.bl-e', '.bl-v'].map((s) => q(s).style);\n    this.vn = q('.bl-v-n');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 1.0, pose: 'present' }, { t: 7.9, pose: 'thumbs' }, { t: 11.2, pose: 'explain' }],\n      says: [{ t0: 11.4, t1: 15.6, text: 'Amount times price. That is all it is.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.s, t, 1.2, { stagger: 0.06 });\n    const at = [2.6, 4.0, 4.4, 6.4, 6.8];\n    this.parts.forEach((s, i) => {\n      const p = seg(t, at[i], at[i] + 0.6);\n      s.opacity = eo(seg(t, at[i], at[i] + 0.3));\n      s.transform = 'translateY(' + lerp(36, 0, eo(p)) + 'px) scale(' + lerp(0.9, 1, eob(p, 1.6)) + ')';\n    });\n    const v = Math.round(lerp(60, 120, eo(seg(t, 6.9, 7.9))));\n    if (this.vn.textContent !== String(v)) this.vn.textContent = String(v);\n    this.f.opacity = 0.9 * eo(seg(t, 8.4, 9.0));\n    this.tutor.render(t);\n  },\n});\n","scene-bitcoin.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('bitcoin', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const tile = (cls, label) => '<div class=\"glass bt-tile\" style=\"position:relative;width:640px;padding:26px 36px;display:flex;align-items:baseline;gap:24px\"><span class=\"mono ' + cls + '\" style=\"flex:none;font-size:50px;color:var(--main)\"></span><span style=\"flex:1;min-width:0;font-size:26px;font-weight:600;line-height:1.3\">' + label + '</span></div>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:200px;width:780px\"><p class=\"kick bt-k\">The first cryptocurrency</p>' +\n      '<h2 class=\"line bt-t\">Meet Bitcoin</h2>' +\n      '<p class=\"def bt-d\"><b>Bitcoin</b> is the first and best-known cryptocurrency. Its short symbol is <b>BTC</b>.</p>' +\n      '<p class=\"sub bt-s\">One bitcoin can be split into tiny parts, so you can own a small piece of one.</p></div>' +\n      '<div class=\"bt-tiles\" style=\"position:absolute;left:1060px;top:180px;display:flex;flex-direction:column;gap:26px\">' +\n      tile('bt-year', 'launched') + tile('bt-max', 'the most that can ever exist') + tile('bt-min', 'BTC, the smallest unit') + '</div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.bt-k').style; this.t = q('.bt-t'); this.d = q('.bt-d'); this.s = q('.bt-s');\n    this.tiles = [...kit.stage.querySelectorAll('.bt-tile')].map((e) => e.style);\n    this.year = q('.bt-year'); this.max = q('.bt-max'); this.min = q('.bt-min');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 2.0, pose: 'point', flip: true }, { t: 9.2, pose: 'explain' }],\n      says: [{ t0: 9.4, t1: 13.6, text: 'You can own a tiny piece, like 0.002 BTC.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.d, t, 0.9, { stagger: 0.06 });\n    this.tiles.forEach((s, i) => {\n      const a = 2.0 + i * 1.6, p = seg(t, a, a + 0.6);\n      s.opacity = eo(p);\n      s.transform = 'translateX(' + lerp(50, 0, eo(p)) + 'px) translateY(' + (-t * 1.2).toFixed(2) + 'px)';\n    });\n    const set = (el, v) => { if (el.textContent !== v) el.textContent = v; };\n    set(this.year, String(Math.round(lerp(2004, 2009, eo(seg(t, 2.1, 3.1))))));\n    set(this.max, UI.fmt(Math.round(lerp(10500000, 21000000, eo(seg(t, 3.7, 4.9))) / 1000) * 1000));\n    const z = Math.round(lerp(1, 8, eo(seg(t, 5.3, 6.5))));\n    set(this.min, '0.' + '0'.repeat(z - 1) + '1');\n    TextFx.fadeFromRight(this.s, t, 6.8, { stagger: 0.06 });\n    this.tutor.render(t);\n  },\n});\n","scene-digital.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nconst DG_OUT = [['Bank balance', 1150, 290], ['Game coins', 1090, 470], ['Airline miles', 1150, 650]];\nconst DG_IN = [['BTC', 1345, 470], ['ETH', 1430, 560]];\nkit.scene('digital', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const chip = (txt, x, y, cls, extra) => '<span class=\"chip ' + cls + '\" style=\"position:absolute;left:' + x + 'px;top:' + y + 'px;transform:translate(-50%,-50%);font-size:26px;padding:12px 22px;' + (extra || '') + '\">' + txt + '</span>';\n    let chips = '';\n    DG_OUT.forEach((c) => { chips += chip(c[0], c[1], c[2], 'dg-o'); });\n    DG_IN.forEach((c) => { chips += chip(c[0], c[1], c[2], 'dg-i mono', 'background:var(--main);color:var(--ground);border-color:var(--main)'); });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' +\n      '<circle class=\"dg-big\" cx=\"1290\" cy=\"450\" r=\"300\" pathLength=\"1\" stroke-width=\"3\" style=\"fill:color-mix(in srgb, var(--main) 5%, transparent);stroke:color-mix(in srgb, var(--second) 40%, transparent)\"/>' +\n      '<circle class=\"dg-small\" cx=\"1385\" cy=\"510\" r=\"135\" pathLength=\"1\" stroke-width=\"4\" style=\"fill:color-mix(in srgb, var(--main) 12%, transparent);stroke:var(--main)\"/>' +\n      '<text class=\"dg-bl\" x=\"1290\" y=\"200\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:30px;font-weight:700\">Digital assets</text>' +\n      '<text class=\"dg-sl\" x=\"1385\" y=\"418\" text-anchor=\"middle\" style=\"fill:var(--main);font-size:24px;font-weight:700\">Cryptocurrency</text></svg>' +\n      chips +\n      '<div class=\"words\" style=\"left:140px;top:200px;width:740px\"><p class=\"kick dg-k\">A bigger family</p>' +\n      '<h2 class=\"line dg-t\">Digital assets</h2>' +\n      '<p class=\"def dg-d\" style=\"margin-top:6px\">A <b>digital asset</b> is anything of value that exists only as digital records.</p>' +\n      '<p class=\"sub dg-s\">Cryptocurrency is one kind of digital asset. Not every digital asset is crypto.</p></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.dg-k').style; this.t = q('.dg-t'); this.d = q('.dg-d'); this.s = q('.dg-s');\n    this.big = q('.dg-big'); this.small = q('.dg-small'); this.bl = q('.dg-bl').style; this.sl = q('.dg-sl').style;\n    this.outs = [...kit.stage.querySelectorAll('.dg-o')].map((e) => e.style);\n    this.ins = [...kit.stage.querySelectorAll('.dg-i')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 1.4, pose: 'present' }, { t: 8.2, pose: 'idea' }, { t: 11.2, pose: 'explain' }],\n      says: [{ t0: 11.4, t1: 15.6, text: 'Crypto lives inside this bigger family.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.d, t, 1.0, { stagger: 0.06 });\n    this.big.setAttribute('stroke-dasharray', eio(seg(t, 1.4, 2.6)) + ' 1');\n    this.big.style.opacity = eo(seg(t, 1.3, 1.8));\n    this.bl.opacity = eo(seg(t, 2.2, 2.7));\n    this.outs.forEach((s, i) => {\n      const a = 3.0 + i * 0.7, p = seg(t, a, a + 0.6);\n      s.opacity = eo(p);\n      s.transform = 'translate(-50%,-50%) translateY(' + lerp(26, 0, eo(p)) + 'px) translateY(' + (Math.sin((t + i) * 1.7) * 3).toFixed(2) + 'px)';\n    });\n    this.small.setAttribute('stroke-dasharray', eio(seg(t, 7.8, 8.8)) + ' 1');\n    this.small.style.opacity = eo(seg(t, 7.7, 8.1));\n    this.sl.opacity = eo(seg(t, 8.6, 9.1));\n    this.ins.forEach((s, i) => {\n      const a = 9.0 + i * 0.4, p = seg(t, a, a + 0.6);\n      s.opacity = eo(seg(t, a, a + 0.3));\n      s.transform = 'translate(-50%,-50%) scale(' + lerp(0.4, 1, eob(p, 1.8)) + ')';\n    });\n    TextFx.fadeFromRight(this.s, t, 9.8, { stagger: 0.06 });\n    this.tutor.render(t);\n  },\n});\n","scene-ledger.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst LG_C = [1340, 470];\nconst LG_NODES = [30, 90, 150, 210, 270, 330].map((a) => [LG_C[0] + 330 * Math.cos(a * Math.PI / 180), LG_C[1] + 230 * Math.sin(a * Math.PI / 180)]);\nkit.scene('ledger', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let lines = '', nodes = '';\n    LG_NODES.forEach((n) => {\n      lines += '<line class=\"lg-ln\" x1=\"' + LG_C[0] + '\" y1=\"' + LG_C[1] + '\" x2=\"' + n[0].toFixed(1) + '\" y2=\"' + n[1].toFixed(1) + '\" pathLength=\"1\" stroke-width=\"2\" style=\"stroke:color-mix(in srgb, var(--main) 45%, transparent)\"/>';\n      nodes += '<g class=\"lg-node\" transform=\"translate(' + n[0].toFixed(1) + ' ' + n[1].toFixed(1) + ')\"><rect x=\"-46\" y=\"-34\" width=\"92\" height=\"62\" rx=\"10\" style=\"fill:color-mix(in srgb, var(--ground) 80%, var(--main));stroke:color-mix(in srgb, var(--main) 50%, transparent);stroke-width:2\"/>' +\n        '<rect class=\"lg-copy\" x=\"-30\" y=\"-20\" width=\"60\" height=\"7\" rx=\"3\" style=\"fill:var(--main)\"/><rect class=\"lg-copy\" x=\"-30\" y=\"-6\" width=\"48\" height=\"7\" rx=\"3\" style=\"fill:var(--main)\"/><rect class=\"lg-copy\" x=\"-30\" y=\"8\" width=\"54\" height=\"7\" rx=\"3\" style=\"fill:var(--accent)\"/><rect x=\"-14\" y=\"30\" width=\"28\" height=\"8\" rx=\"2\" style=\"fill:color-mix(in srgb, var(--second) 30%, transparent)\"/></g>';\n    });\n    const row = (a, b, c) => '<div style=\"display:flex;gap:14px;font-size:22px\" class=\"mono ' + c + '\"><span style=\"color:color-mix(in srgb, var(--second) 50%, var(--ground))\">' + a + '</span><span style=\"flex:1\">' + b + '</span></div>';\n    let blocks = '';\n    for (let i = 0; i < 3; i++) blocks += '<div class=\"glass lg-blk\" style=\"position:relative;width:200px;height:110px;padding:16px 18px;border-color:color-mix(in srgb, var(--main) 50%, transparent)\"><p class=\"kick\" style=\"margin:0 0 10px;font-size:18px\">Block ' + (i + 1) + '</p><div style=\"height:8px;width:150px;border-radius:4px;margin-bottom:8px;background:color-mix(in srgb, var(--second) 25%, transparent)\"></div><div style=\"height:8px;width:110px;border-radius:4px;background:color-mix(in srgb, var(--second) 25%, transparent)\"></div></div>' + (i < 2 ? '<div class=\"lg-link\" style=\"width:44px;height:6px;border-radius:3px;background:var(--main)\"></div>' : '');\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' + lines +\n      '<circle class=\"lg-pk\" r=\"16\" style=\"fill:var(--accent)\"/>' + nodes + '</svg>' +\n      '<div class=\"lg-p lg-from\" style=\"position:absolute;left:1000px;top:250px;display:flex;flex-direction:column;align-items:center;gap:8px\"><span style=\"width:84px;height:84px;border-radius:50%;background:color-mix(in srgb, var(--accent) 30%, var(--ground));border:2px solid var(--accent)\"></span><span style=\"font-size:24px;font-weight:600\">A friend</span></div>' +\n      '<div class=\"lg-p lg-to\" style=\"position:absolute;left:1600px;top:250px;display:flex;flex-direction:column;align-items:center;gap:8px\"><span style=\"width:84px;height:84px;border-radius:50%;background:color-mix(in srgb, var(--main) 30%, var(--ground));border:2px solid var(--main)\"></span><span style=\"font-size:24px;font-weight:600\">You</span></div>' +\n      '<div class=\"glass lg-book\" style=\"left:1170px;top:390px;width:340px;padding:20px 24px;display:flex;flex-direction:column;gap:10px;z-index:2\"><p class=\"kick\" style=\"margin:0;font-size:18px\">Ledger · shared record</p>' +\n      row('#1', 'Ana → Ben 0.20', '') + row('#2', 'Ben → Cai 0.05', '') + row('#3', 'Friend → You 0.01', 'lg-new') + '</div>' +\n      '<div class=\"lg-chain\" style=\"position:absolute;left:990px;top:560px;display:flex;align-items:center\">' + blocks + '</div>' +\n      '<p class=\"kick lg-cl\" style=\"position:absolute;left:990px;top:700px;margin:0\">Blockchain: pages of the record, linked in order</p>' +\n      '<div class=\"words\" style=\"left:140px;top:200px;width:760px\"><p class=\"kick lg-k\">The key idea</p>' +\n      '<h2 class=\"line lg-t\">A record everyone can check</h2>' +\n      '<p class=\"def lg-d\">A <b>cryptocurrency</b> is a digital asset recorded on a shared public ledger, called a blockchain. People can send it to each other without a bank in the middle.</p></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.lg-k').style; this.t = q('.lg-t'); this.d = q('.lg-d');\n    this.from = q('.lg-from').style; this.to = q('.lg-to').style; this.pk = q('.lg-pk');\n    this.book = q('.lg-book').style; this.nw = q('.lg-new').style;\n    this.lns = all('.lg-ln'); this.nodes = all('.lg-node').map((e) => e.style); this.copies = all('.lg-copy').map((e) => e.style);\n    this.blks = all('.lg-blk').map((e) => e.style); this.links = all('.lg-link').map((e) => e.style); this.cl = q('.lg-cl').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 2.0, pose: 'point', flip: true }, { t: 8.2, pose: 'magnify' }, { t: 13.0, pose: 'present' }, { t: 17.2, pose: 'explain' }],\n      says: [{ t0: 17.4, t1: 21.7, text: 'No bank in the middle. The network keeps the record.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const pp = seg(t, 1.6, 2.2), po = seg(t, 7.6, 8.2);\n    for (const s of [this.from, this.to]) { s.opacity = eo(pp) * (1 - ei(po)); s.transform = 'translate(-50%,0) translateY(' + lerp(20, 0, eo(pp)) + 'px)'; }\n    const b = seg(t, 2.2, 2.9);\n    this.book.opacity = eo(b) * (1 - ei(seg(t, 12.2, 12.8)));\n    this.book.transform = 'scale(' + lerp(0.9, 1, eob(b, 1.5)) * lerp(1, 0.85, eio(seg(t, 12.2, 12.8))) + ')';\n    const go = seg(t, 3.2, 4.4), back = seg(t, 5.4, 6.6);\n    let px, py;\n    if (t < 5.4) { px = lerp(1000, LG_C[0], eio(go)); py = lerp(300, LG_C[1] + 10, eio(go)) - Math.sin(Math.PI * go) * 80; }\n    else { px = lerp(LG_C[0], 1600, eio(back)); py = lerp(LG_C[1] + 10, 300, eio(back)) - Math.sin(Math.PI * back) * 80; }\n    this.pk.setAttribute('cx', px.toFixed(1)); this.pk.setAttribute('cy', py.toFixed(1));\n    this.pk.style.opacity = (t > 3.1 && t < 6.7) ? 1 : 0;\n    const nr = seg(t, 4.4, 5.0);\n    this.nw.opacity = eo(nr); this.nw.color = 'var(--main)';\n    this.nw.transform = 'translateX(' + lerp(20, 0, eo(nr)) + 'px)';\n    this.lns.forEach((l, i) => {\n      const a = 8.4 + i * 0.25;\n      l.setAttribute('stroke-dasharray', eio(seg(t, a, a + 0.6)) + ' 1');\n      l.style.opacity = 1 - ei(seg(t, 12.0, 12.6));\n    });\n    this.nodes.forEach((n, i) => {\n      const a = 8.7 + i * 0.25, p = seg(t, a, a + 0.5);\n      n.opacity = eo(p) * (1 - ei(seg(t, 12.0, 12.6)));\n      n.transformBox = 'fill-box'; n.transformOrigin = 'center';\n      n.transform = 'scale(' + lerp(0.5, 1, eob(p, 1.7)) + ')';\n    });\n    this.copies.forEach((c, i) => {\n      const node = Math.floor(i / 3), a = 9.4 + node * 0.25 + (i % 3) * 0.12;\n      c.transformBox = 'fill-box'; c.transformOrigin = 'left center';\n      c.transform = 'scaleX(' + eo(seg(t, a, a + 0.35)) + ')';\n    });\n    this.blks.forEach((s, i) => {\n      const a = 12.8 + i * 0.45, p = seg(t, a, a + 0.6);\n      s.opacity = eo(p);\n      s.transform = 'translateY(' + lerp(30, 0, eo(p)) + 'px) scale(' + lerp(0.9, 1, eob(p, 1.6)) + ')';\n    });\n    this.links.forEach((s, i) => { const a = 13.3 + i * 0.45; s.transformOrigin = '0 50%'; s.transform = 'scaleX(' + eo(seg(t, a, a + 0.3)) + ')'; });\n    this.cl.opacity = eo(seg(t, 14.6, 15.2));\n    TextFx.fadeFromRight(this.d, t, 15.4, { stagger: 0.045 });\n    this.tutor.render(t);\n  },\n});\n","scene-money.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nkit.scene('money', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:200px;width:820px\"><p class=\"kick mn-k\">Start with money</p>' +\n      '<h2 class=\"line mn-t\">Money is value people agree to accept</h2>' +\n      '<p class=\"sub mn-s\">Most money today is already just numbers in a computer.</p></div>' +\n      '<div class=\"glass mn-def\" style=\"left:140px;top:660px;width:880px;padding:30px 38px\"><p class=\"def\" style=\"margin:0\"><b>Value</b> is what something is worth to people. <b>Money</b> is a shared way to store value and exchange it.</p></div>' +\n      '<div class=\"mn-note\" style=\"position:absolute;left:1060px;top:250px;width:480px;height:240px;border-radius:20px;box-sizing:border-box;border:3px solid color-mix(in srgb, var(--main) 60%, transparent);background:linear-gradient(135deg, color-mix(in srgb, var(--ground) 80%, var(--main)), color-mix(in srgb, var(--ground) 80%, var(--accent)));display:grid;place-items:center\">' +\n      '<span class=\"mono\" style=\"position:absolute;left:22px;top:14px;font-size:30px\">100</span><span class=\"mono\" style=\"position:absolute;right:22px;bottom:14px;font-size:30px\">100</span>' +\n      '<span style=\"width:150px;height:150px;border-radius:50%;border:3px solid color-mix(in srgb, var(--second) 30%, transparent);display:grid;place-items:center\"><span class=\"mono\" style=\"font-size:64px\">100</span></span></div>' +\n      '<div class=\"mn-items\" style=\"position:absolute;left:1060px;top:540px;display:flex;gap:18px\"><span class=\"chip mn-i\">Food</span><span class=\"chip mn-i\">Bus ticket</span><span class=\"chip mn-i\">Rent</span></div>' +\n      '<div class=\"glass mn-bank\" style=\"left:1070px;top:240px;width:460px;padding:34px 40px\"><p class=\"fict\" style=\"margin:0 0 12px\">Example bank app</p><p style=\"margin:0;font-size:26px;color:color-mix(in srgb, var(--second) 65%, var(--ground))\">Account balance</p>' +\n      '<p class=\"mono\" style=\"margin:8px 0 0;font-size:64px\">₹5,000.00</p><p style=\"margin:14px 0 0;font-size:22px;color:color-mix(in srgb, var(--second) 55%, var(--ground))\">Stored as a number on the bank computers</p></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.mn-k').style; this.t = q('.mn-t'); this.s = q('.mn-s'); this.def = q('.mn-def').style;\n    this.note = q('.mn-note').style; this.bank = q('.mn-bank').style;\n    this.items = [...kit.stage.querySelectorAll('.mn-i')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.4, pose: 'present' }, { t: 10.2, pose: 'explain' }],\n      says: [{ t0: 13.2, t1: 17.6, text: 'Crypto is a newer kind of digital value.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const n = seg(t, 1.2, 2.0), m = seg(t, 6.2, 7.2);\n    this.note.opacity = eo(n) * (1 - ei(m));\n    this.note.transform = 'translateY(' + lerp(40, 0, eo(n)) + 'px) rotate(' + lerp(-4, 0, eob(n, 1.6)) + 'deg) scale(' + lerp(1, 0.6, eio(m)) + ')';\n    this.items.forEach((s, i) => {\n      const a = 2.8 + i * 0.5;\n      s.opacity = eo(seg(t, a, a + 0.4)) * (1 - ei(seg(t, 5.8, 6.4)));\n      s.transform = 'translateY(' + lerp(24, 0, eo(seg(t, a, a + 0.5))) + 'px)';\n    });\n    const b = seg(t, 6.8, 7.8);\n    this.bank.opacity = eo(b);\n    this.bank.transform = 'scale(' + lerp(0.7, 1, eob(b, 1.5)) + ') translateY(' + (-Math.max(0, t - 7.8) * 1.5).toFixed(2) + 'px)';\n    TextFx.fadeFromRight(this.s, t, 7.6, { stagger: 0.07 });\n    const d = seg(t, 10.2, 10.9);\n    this.def.opacity = eo(d);\n    this.def.transform = 'translateY(' + lerp(30, 0, eo(d)) + 'px)';\n    this.tutor.render(t);\n  },\n});\n","scene-moves.js":"const { seg, eo, eob, eio, lerp, clamp01, TextFx } = kit;\nconst MV_KEYS = [[0, 60000], [2.2, 60000], [7.0, 63000], [9.2, 63000], [14.0, 57000], [20, 57000]];\nconst mvPrice = (t) => {\n  let v = MV_KEYS[0][1];\n  for (let i = 1; i < MV_KEYS.length; i++) { const a = MV_KEYS[i - 1], b = MV_KEYS[i]; if (t >= a[0]) v = lerp(a[1], b[1], eio(clamp01((t - a[0]) / (b[0] - a[0])))); }\n  return v + Math.sin(t * 5.3) * 140 + Math.sin(t * 11.7) * 70;\n};\nconst mvX = (t) => 1020 + (Math.min(t, 18) / 18) * 660, mvY = (p) => 600 - (p - 55000) / 10000 * 380;\nkit.scene('moves', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const row = (label, cls, note) => '<div style=\"display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\"><span style=\"width:170px;font-size:26px;color:color-mix(in srgb, var(--second) 65%, var(--ground))\">' + label + '</span><span class=\"mono ' + cls + '\" style=\"font-size:46px;min-width:290px\"></span><span class=\"' + cls + '-n\" style=\"font-size:24px;font-weight:600\">' + note + '</span></div>';\n    let grid = '';\n    for (let p = 56000; p <= 64000; p += 2000) grid += '<line x1=\"1020\" x2=\"1680\" y1=\"' + mvY(p) + '\" y2=\"' + mvY(p) + '\" style=\"stroke:color-mix(in srgb, var(--second) 8%, transparent);stroke-width:1.5\"/><text x=\"1700\" y=\"' + (mvY(p) + 8) + '\" class=\"mono\" style=\"fill:color-mix(in srgb, var(--second) 45%, var(--ground));font-size:18px\">' + UI.fmt(p) + '</text>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"mv-chart\">' + grid +\n      '<path class=\"mv-line\" fill=\"none\" stroke-width=\"5\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/><circle class=\"mv-dot\" r=\"10\" style=\"fill:var(--second)\"/></g>' +\n      '<text x=\"1020\" y=\"200\" class=\"fict\" style=\"fill:color-mix(in srgb, var(--second) 45%, var(--ground))\">BTC price in USDT · fictional</text></svg>' +\n      '<div class=\"words\" style=\"left:140px;top:190px;width:820px\"><p class=\"kick mv-k\">When the price moves</p>' +\n      '<h2 class=\"line mv-t\">Same amount, new value</h2></div>' +\n      '<div class=\"glass mv-panel\" style=\"left:140px;top:450px;width:800px;padding:14px 36px\">' +\n      row('Amount', 'mv-a', 'stays the same') + row('BTC price', 'mv-p', '') + row('Value', 'mv-v', '') + '</div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.mv-k').style; this.t = q('.mv-t'); this.panel = q('.mv-panel').style;\n    this.line = q('.mv-line'); this.dot = q('.mv-dot'); this.chart = q('.mv-chart').style;\n    this.a = q('.mv-a'); this.p = q('.mv-p'); this.v = q('.mv-v'); this.pn = q('.mv-p-n'); this.vn = q('.mv-v-n'); this.an = q('.mv-a-n').style;\n    this.a.textContent = '0.002 BTC';\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.6, pose: 'point', flip: true }, { t: 9.4, pose: 'think' }, { t: 14.4, pose: 'explain' }],\n      says: [{ t0: 14.6, t1: 19.7, text: 'Same 0.002 BTC. Only its value changed.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const pn = seg(t, 0.6, 1.3);\n    this.panel.opacity = eo(pn); this.panel.transform = 'translateY(' + lerp(30, 0, eo(pn)) + 'px)';\n    this.chart.opacity = eo(seg(t, 0.4, 1.0));\n    let d = '';\n    const end = Math.min(t, 18);\n    for (let s = 0; s <= end + 1e-6; s += 0.1) d += (s ? 'L' : 'M') + mvX(s).toFixed(1) + ' ' + mvY(mvPrice(s)).toFixed(1);\n    this.line.setAttribute('d', d || 'M1020 ' + mvY(60000));\n    this.dot.setAttribute('cx', mvX(end).toFixed(1)); this.dot.setAttribute('cy', mvY(mvPrice(end)).toFixed(1));\n    const step = Math.floor(t * 4) / 4, price = Math.round(mvPrice(step));\n    const value = price * 0.002;\n    const pt = UI.fmt(price) + ' USDT', vt = UI.fmt(value, 2) + ' USDT';\n    if (this.p.textContent !== pt) this.p.textContent = pt;\n    if (this.v.textContent !== vt) this.v.textContent = vt;\n    const chg = (price - 60000) / 60000 * 100;\n    const note = Math.abs(chg) < 0.5 ? '' : (chg > 0 ? '▲ ' : '▼ ') + Math.abs(chg).toFixed(1) + '%';\n    for (const el of [this.pn, this.vn]) { if (el.textContent !== note) el.textContent = note; el.style.color = chg >= 0 ? 'var(--main)' : 'var(--accent)'; }\n    this.an.color = 'var(--main)';\n    this.an.opacity = 0.5 + 0.5 * eo(seg(t, 14.6, 15.2));\n    this.tutor.render(t);\n  },\n});\n","scene-next.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('next', {\n  init(kit) {\n    const pts = UI.walk(kit, 11, 96, 140, 1780, 930, 840, 18);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"next-g\" x1=\"0\" x2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient></defs>' +\n      '<path class=\"next-path\" d=\"' + UI.d(pts) + '\" pathLength=\"1\" fill=\"none\" stroke=\"url(#next-g)\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"opacity:.5\"/></svg>' +\n      '<div class=\"next-lock\" style=\"position:absolute;left:0;right:0;top:150px;display:flex;justify-content:center\"></div>' +\n      '<div class=\"words\" style=\"left:210px;top:320px;width:1500px;align-items:center;text-align:center;gap:28px\">' +\n      '<p class=\"kick next-k\">Lesson T01 complete · Up next: T02</p>' +\n      '<h2 class=\"line next-t\" style=\"font-size:100px\">Why do crypto prices move?</h2>' +\n      '<div class=\"rule next-r\" style=\"width:240px\"></div>' +\n      '<div class=\"chip next-c\" style=\"font-size:32px;padding:20px 38px;background:var(--main);color:var(--ground);border-color:var(--main)\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 28 28\"><path d=\"M7 4 L24 14 L7 24 Z\" style=\"fill:var(--ground)\"/></svg><span>Continue to lesson two</span></div></div>' +\n      '<p class=\"fict next-f\" style=\"position:absolute;left:0;right:0;bottom:70px;margin:0;text-align:center\">Educational content only · Not financial advice · Crypto involves risk</p>' +\n      '</div>'));\n    kit.stage.querySelector('.next-lock').append(UI.lockup(kit));\n    const q = (s) => kit.stage.querySelector(s);\n    this.path = q('.next-path'); this.lock = q('.next-lock').style; this.k = q('.next-k').style;\n    this.t = q('.next-t'); this.r = q('.next-r').style; this.c = q('.next-c').style; this.f = q('.next-f').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }, { t: 1.1, x: 1620, y: 965, s: 230, d: 1.0 }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.1, pose: 'walk', flip: true }, { t: 1.1, pose: 'wave' }, { t: 4.0, pose: 'present' }, { t: 6.8, pose: 'wave' }],\n      says: [{ t0: 1.3, t1: 5.6, text: 'Great start! See you in lesson two.', side: 'top' }],\n    });\n  },\n  render(t) {\n    this.path.setAttribute('stroke-dasharray', eio(seg(t, 0, 2.6)) + ' 1');\n    const l = seg(t, 0.1, 0.8);\n    this.lock.opacity = eo(l);\n    this.lock.transform = 'scale(' + lerp(0.85, 1, eob(l, 1.6)) + ')';\n    this.k.opacity = eo(seg(t, 0.5, 1.0));\n    TextFx.fadeFromRight(this.t, t, 0.7);\n    this.r.transform = 'scaleX(' + eo(seg(t, 1.5, 2.2)) + ')';\n    const c = seg(t, 2.1, 2.7);\n    this.c.opacity = eo(seg(t, 2.1, 2.4));\n    this.c.transform = 'scale(' + (lerp(0.8, 1, eob(c, 1.7)) * kit.breathe(Math.max(0, t - 2.7), 0.015, 2.4)) + ')';\n    this.f.opacity = 0.9 * eo(seg(t, 2.8, 3.4));\n    this.tutor.render(t);\n  },\n});\n","scene-recap.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst RECAP = ['Cryptocurrency is a digital asset recorded on a shared blockchain.', 'A wallet holds keys. The coins live on the blockchain.', 'Value = amount × price. The amount stays, the value moves.'];\nkit.scene('recap', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let items = '';\n    RECAP.forEach((s) => {\n      items += '<div class=\"rc-i\" style=\"display:flex;align-items:center;gap:26px\"><svg width=\"50\" height=\"50\" viewBox=\"0 0 52 52\" style=\"flex:none\"><circle cx=\"26\" cy=\"26\" r=\"23\" fill=\"none\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 45%, transparent)\"/>' +\n        '<path class=\"rc-tick\" d=\"M15 27 L23 35 L38 18\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/></svg><span style=\"font-size:34px;font-weight:600\">' + s + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1300px\"><p class=\"kick rc-k\">Recap</p><h2 class=\"line rc-t\">Three things to remember</h2>' +\n      '<div style=\"display:flex;flex-direction:column;gap:22px;margin-top:10px\">' + items + '</div></div>' +\n      '<div class=\"glass rc-q\" style=\"left:140px;top:640px;width:1080px;padding:26px 36px\"><p class=\"kick\" style=\"margin:0 0 10px;color:var(--accent)\">Check yourself</p>' +\n      '<p style=\"margin:0;font-size:32px;font-weight:600;line-height:1.4\">BTC falls 10%. What happens to your 0.002 BTC?</p>' +\n      '<p class=\"rc-a\" style=\"margin:12px 0 0;font-size:30px;line-height:1.4;color:var(--main);font-weight:700\">You still hold 0.002 BTC. Its value falls by 10%.</p></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.rc-k').style; this.t = q('.rc-t'); this.qc = q('.rc-q').style; this.a = q('.rc-a').style;\n    this.items = [...kit.stage.querySelectorAll('.rc-i')].map((e) => e.style);\n    this.ticks = [...kit.stage.querySelectorAll('.rc-tick')];\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'checklist' }, { t: 9.4, pose: 'think' }, { t: 14.4, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    this.items.forEach((s, i) => {\n      const a = 1.4 + i * 2.4;\n      s.opacity = eo(seg(t, a, a + 0.4));\n      s.transform = 'translateX(' + lerp(26, 0, eo(seg(t, a, a + 0.5))) + 'px)';\n      this.ticks[i].setAttribute('stroke-dasharray', eo(seg(t, a + 0.5, a + 0.9)) + ' 1');\n    });\n    const qp = seg(t, 9.2, 9.9);\n    this.qc.opacity = eo(qp); this.qc.transform = 'translateY(' + lerp(30, 0, eo(qp)) + 'px)';\n    const ap = seg(t, 14.2, 14.7);\n    this.a.opacity = eo(ap); this.a.transform = 'translateX(' + lerp(20, 0, eo(ap)) + 'px)';\n    this.tutor.render(t);\n  },\n});\n","scene-risks.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nconst RISKS = [\n  ['No guarantee', 'No government stands behind crypto. If something goes wrong, nobody has to pay you back.'],\n  ['Fast price swings', 'Crypto prices can rise or fall a lot in a single day.'],\n  ['Keys and scams', 'Lose your keys or get tricked by a scammer, and your crypto can be gone for good.'],\n  ['Owning is not futures', 'Holding BTC means you own it. Futures are contracts about its price. We cover them later.'],\n];\nkit.scene('risks', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let cards = '';\n    RISKS.forEach((r, i) => {\n      cards += '<div class=\"glass rk-c\" style=\"left:' + (140 + (i % 2) * 780) + 'px;top:' + (340 + Math.floor(i / 2) * 218) + 'px;width:750px;min-height:196px;padding:24px 34px\">' +\n        '<p class=\"kick\" style=\"margin:0 0 10px;color:var(--accent)\">' + r[0] + '</p><p style=\"margin:0;font-size:28px;line-height:1.4;font-weight:600\">' + r[1] + '</p></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:180px;width:1400px\"><p class=\"kick rk-k\" style=\"color:var(--accent)\">Before you go further</p>' +\n      '<h2 class=\"line rk-t\">Know the risks</h2></div>' + cards +\n      '</div>'));\n    this.k = kit.stage.querySelector('.rk-k').style; this.t = kit.stage.querySelector('.rk-t');\n    this.cards = [...kit.stage.querySelectorAll('.rk-c')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'think' }, { t: 9.6, pose: 'magnify' }, { t: 16.6, pose: 'explain' }],\n      says: [{ t0: 16.8, t1: 21.7, text: 'Learn first. Never risk money you cannot afford to lose.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    this.cards.forEach((c, i) => {\n      const a = 1.2 + i * 3.4, p = seg(t, a, a + 0.7);\n      c.opacity = eo(seg(t, a, a + 0.35));\n      c.transform = 'translateY(' + (lerp(40, 0, eo(p)) - Math.max(0, t - a) * 0.8).toFixed(2) + 'px) scale(' + lerp(0.95, 1, eob(p, 1.5)) + ')';\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-sort.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst SORT_ITEMS = [['Bitcoin (BTC)', 0, 270, 695], ['Game points', 1, 945, 695], ['Ether (ETH)', 0, 480, 695], ['Bank balance', 1, 1155, 695], ['USDT', 0, 650, 695]];\nconst SORT_T0 = 1.6, SORT_STEP = 2.2;\nkit.scene('sort', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const bin = (cls, x, label, col) => '<div class=\"glass ' + cls + '\" style=\"left:' + x + 'px;top:600px;width:620px;height:180px;padding:18px 26px\"><p class=\"kick\" style=\"margin:0;color:' + col + '\">' + label + '</p></div>';\n    let chips = '';\n    SORT_ITEMS.forEach((s) => { chips += '<span class=\"chip so-c\" style=\"position:absolute;left:' + s[2] + 'px;top:' + s[3] + 'px;font-size:26px;padding:12px 22px;' + (s[1] ? '' : 'background:color-mix(in srgb, var(--ground) 70%, var(--main));border-color:var(--main)') + '\">' + s[0] + '</span>'; });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:190px;width:1300px\"><p class=\"kick so-k\">Quick check</p>' +\n      '<h2 class=\"line so-t\">Crypto, or not crypto?</h2></div>' +\n      bin('so-b0', 140, 'Crypto', 'var(--main)') + bin('so-b1', 820, 'Not crypto', 'var(--accent)') + chips +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.so-k').style; this.t = q('.so-t');\n    this.bins = [q('.so-b0').style, q('.so-b1').style];\n    this.chips = [...kit.stage.querySelectorAll('.so-c')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.6, pose: 'think' }, { t: 12.3, pose: 'explain' }],\n      says: [{ t0: 12.5, t1: 15.8, text: 'USDT counts too. It is a crypto token.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const bp = seg(t, 0.6, 1.3);\n    this.bins.forEach((b) => { b.opacity = eo(bp); b.transform = 'translateY(' + lerp(30, 0, eo(bp)) + 'px)'; });\n    const glow = [0, 0];\n    this.chips.forEach((c, i) => {\n      const s = SORT_ITEMS[i], a = SORT_T0 + i * SORT_STEP;\n      const show = seg(t, a, a + 0.4), move = seg(t, a + 1.3, a + 2.0);\n      const sx = 790 - s[2], sy = 420 - s[3];\n      const e = eio(move);\n      c.opacity = eo(show);\n      c.transformOrigin = '50% 50%';\n      c.transform = 'translate(-50%,-50%) translate(' + (lerp(sx, 0, e) + (1 - e) * 0).toFixed(1) + 'px,' + (lerp(sy, 0, e) - Math.sin(Math.PI * move) * 60).toFixed(1) + 'px) scale(' + (lerp(1.3, 1, e) * lerp(0.7, 1, eob(show, 1.7))).toFixed(4) + ')';\n      c.left = c.left; c.marginLeft = '0';\n      const land = seg(t, a + 2.0, a + 2.6);\n      if (land > 0 && land < 1) glow[s[1]] = Math.max(glow[s[1]], Math.sin(Math.PI * land));\n    });\n    this.bins.forEach((b, i) => { b.borderColor = 'color-mix(in srgb, ' + (i ? 'var(--accent)' : 'var(--main)') + ' ' + (22 + glow[i] * 60).toFixed(0) + '%, transparent)'; });\n    this.tutor.render(t);\n  },\n});\n","scene-ticker.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nconst TICK_ROWS = [['BTC', 'Bitcoin', 64250.5], ['ETH', 'Ether', 3120.4], ['SOL', 'Solana', 148.62], ['XRP', 'XRP', 0.5821]];\nkit.scene('ticker', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let rows = '';\n    TICK_ROWS.forEach((r, i) => {\n      rows += '<div class=\"ticker-row\" style=\"display:flex;align-items:center;gap:18px;padding:22px 26px;border-radius:20px\">' +\n        '<span style=\"width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:18px;font-weight:700;background:color-mix(in srgb, var(--main) ' + (i ? 14 : 30) + '%, var(--ground))\">' + r[0][0] + '</span>' +\n        '<span style=\"display:flex;flex-direction:column;flex:1\"><b style=\"font-size:28px\">' + r[0] + '<span style=\"color:color-mix(in srgb, var(--second) 50%, var(--ground));font-weight:500\"> / USDT</span></b><span style=\"font-size:20px;color:color-mix(in srgb, var(--second) 55%, var(--ground))\">' + r[1] + '</span></span>' +\n        '<span class=\"mono ticker-p\" style=\"font-size:28px\">' + UI.fmt(r[2], r[2] < 10 ? 4 : r[2] < 1000 ? 2 : 1) + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:250px;width:820px\"><p class=\"kick tk-k\">You have probably seen this</p>' +\n      '<h2 class=\"line tk-t\">A price that never sits still</h2>' +\n      '<p class=\"sub tk-s\">BTC keeps moving on the screen. But what is BTC, really?</p></div>' +\n      '<div class=\"glass tk-phone\" style=\"left:1000px;top:130px;width:460px;height:660px;border-radius:56px;padding:40px 22px\">' +\n      '<div style=\"width:120px;height:8px;border-radius:8px;margin:0 auto 34px;background:color-mix(in srgb, var(--second) 18%, transparent)\"></div>' +\n      '<p style=\"margin:0 16px 6px;font-size:30px;font-weight:700\">Markets</p><p class=\"fict\" style=\"margin:0 16px 22px\">Fictional prices</p>' +\n      '<div style=\"display:flex;flex-direction:column;gap:6px\">' + rows + '</div></div></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.tk-k').style; this.t = q('.tk-t'); this.s = q('.tk-s'); this.phone = q('.tk-phone').style;\n    this.rows = [...kit.stage.querySelectorAll('.ticker-row')].map((e) => e.style);\n    this.ps = [...kit.stage.querySelectorAll('.ticker-p')];\n    const r = kit.rng(21); this.series = TICK_ROWS.map((row) => { const out = []; let p = row[2]; for (let i = 0; i < 40; i++) { p *= 1 + (r() - 0.5) * 0.004; out.push(p); } return out; });\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 0.6, pose: 'think' }, { t: 4.2, pose: 'point', flip: true }, { t: 8.6, pose: 'explain' }],\n      says: [{ t0: 8.8, t1: 13.6, text: 'By the end of this lesson, you will know.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.s, t, 2.6, { stagger: 0.07 });\n    const p = seg(t, 0.4, 1.3);\n    this.phone.opacity = eo(p);\n    this.phone.transform = 'translateY(' + (lerp(60, 0, eo(p)) - t * 1.5).toFixed(2) + 'px)';\n    const i = Math.max(0, Math.min(39, Math.floor(t * 2)));\n    this.ps.forEach((el, k) => {\n      const v = this.series[k][i], prev = this.series[k][Math.max(0, i - 1)];\n      const txt = UI.fmt(v, v < 10 ? 4 : v < 1000 ? 2 : 1);\n      if (el.textContent !== txt) el.textContent = txt;\n      el.style.color = v >= prev ? 'var(--main)' : 'var(--accent)';\n    });\n    const hl = seg(t, 4.2, 4.8);\n    this.rows[0].background = 'color-mix(in srgb, var(--main) ' + (eo(hl) * 16).toFixed(1) + '%, transparent)';\n    this.rows[0].outline = hl > 0 ? '2px solid color-mix(in srgb, var(--main) ' + (eo(hl) * 60).toFixed(0) + '%, transparent)' : 'none';\n    this.rows[0].transform = 'scale(' + lerp(1, 1.04, eob(hl, 1.6)) + ')';\n    this.tutor.render(t);\n  },\n});\n","scene-title.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('title', {\n  init(kit) {\n    let ticks = '';\n    for (let i = 0; i < 48; i++) {\n      const a = i / 48 * Math.PI * 2, r1 = 236, r2 = i % 4 ? 250 : 262;\n      ticks += '<line x1=\"' + (Math.cos(a) * r1).toFixed(1) + '\" y1=\"' + (Math.sin(a) * r1).toFixed(1) + '\" x2=\"' + (Math.cos(a) * r2).toFixed(1) + '\" y2=\"' + (Math.sin(a) * r2).toFixed(1) + '\"/>';\n    }\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"title-g\" x1=\"0\" x2=\"1\" y1=\"0\" y2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient>' +\n      '<radialGradient id=\"title-f\"><stop offset=\"0\" style=\"stop-color:color-mix(in srgb, var(--main) 26%, var(--ground))\"/><stop offset=\"1\" style=\"stop-color:var(--ground)\"/></radialGradient></defs>' +\n      '<g class=\"title-coin\" transform=\"translate(1340 470)\">' +\n      '<circle r=\"300\" style=\"fill:url(#title-f);opacity:.8\"/>' +\n      '<g class=\"title-ticks\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 55%, transparent)\">' + ticks + '</g>' +\n      '<circle r=\"200\" fill=\"none\" stroke=\"url(#title-g)\" stroke-width=\"10\"/>' +\n      '<circle r=\"168\" fill=\"none\" stroke-width=\"2\" style=\"stroke:color-mix(in srgb, var(--second) 25%, transparent)\"/>' +\n      '<text y=\"34\" text-anchor=\"middle\" class=\"mono\" style=\"fill:var(--second);font-size:104px;font-weight:500;letter-spacing:.04em\">BTC</text></g></svg>' +\n      '<div class=\"words\" style=\"left:140px;top:250px;width:900px\"><p class=\"kick title-k\">Phase 1 · Crypto foundations</p>' +\n      '<h1 class=\"line title-t\" style=\"font-size:120px\">What is cryptocurrency?</h1>' +\n      '<div class=\"rule title-r\" style=\"width:260px\"></div>' +\n      '<p class=\"sub title-s\">Lesson T01 · about 4 minutes</p></div>' +\n      '<p class=\"fict\" style=\"position:absolute;left:140px;bottom:80px;margin:0\">Education only · Not financial advice</p>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.title-k').style; this.t = q('.title-t'); this.r = q('.title-r').style; this.s = q('.title-s').style;\n    this.coin = q('.title-coin'); this.ticks = q('.title-ticks');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: 2080, y: C.y, s: C.s }, { t: 2.6, x: C.x, y: C.y, s: C.s, d: 1.9, ease: (p) => kit.lerp(p, kit.eo(p), 0.5) }],\n      poses: [{ t: 0, pose: 'walk', flip: true }, { t: 2.6, pose: 'present' }],\n      says: [{ t0: 2.9, t1: 7.4, text: 'Let us start at the very beginning.' }],\n    });\n  },\n  render(t) {\n    this.k.opacity = eo(seg(t, -0.6, -0.1));\n    TextFx.fadeFromRight(this.t, t, -0.9);\n    this.r.transformOrigin = '0 50%';\n    this.r.transform = 'scaleX(' + eo(seg(t, 0.2, 0.9)) + ')';\n    this.s.opacity = eo(seg(t, 0.6, 1.1));\n    const c = seg(t, -0.6, 0.6);\n    this.coin.setAttribute('transform', 'translate(1340 ' + (470 - t * 2).toFixed(1) + ') scale(' + (lerp(0.9, 1, eob(c, 1.6)) * (1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.2))).toFixed(4) + ')');\n    this.coin.style.opacity = eo(c);\n    this.ticks.setAttribute('transform', 'rotate(' + (t * 6).toFixed(2) + ')');\n    this.tutor.render(t);\n  },\n});\n","scene-token.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('token', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const base = (x, label, cls) => '<div class=\"tk-base ' + cls + '\" style=\"position:absolute;left:' + (x - 160) + 'px;top:560px;width:320px;height:64px;border-radius:14px;display:grid;place-items:center;font-size:24px;font-weight:700;background:color-mix(in srgb, var(--ground) 80%, var(--main));border:2px solid color-mix(in srgb, var(--main) 45%, transparent)\">' + label + '</div>';\n    const coin = (x, y, label, cls, tok) => '<div class=\"' + cls + '\" style=\"position:absolute;left:' + (x - 62) + 'px;top:' + (y - 62) + 'px;width:124px;height:124px;border-radius:' + (tok ? '28px' : '50%') + ';display:grid;place-items:center;font-size:30px;font-weight:500;' + (tok ? 'background:color-mix(in srgb, var(--accent) 30%, var(--ground));border:3px solid var(--accent)' : 'background:color-mix(in srgb, var(--main) 25%, var(--ground));border:3px solid var(--main)') + '\"><span class=\"mono\">' + label + '</span></div>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      base(1150, 'Bitcoin blockchain', 'tk-b1') + base(1540, 'Ethereum blockchain', 'tk-b2') +\n      coin(1150, 470, 'BTC', 'tk-c1') + coin(1540, 470, 'ETH', 'tk-c2') + coin(1540, 320, 'USDT', 'tk-c3', true) +\n      '<p class=\"kick tk-l1\" style=\"position:absolute;left:1150px;top:650px;margin:0;transform:translateX(-50%)\">Coin</p>' +\n      '<p class=\"kick tk-l2\" style=\"position:absolute;left:1670px;top:308px;margin:0;color:var(--accent)\">Token</p>' +\n      '<div class=\"words\" style=\"left:140px;top:200px;width:760px\"><p class=\"kick tk-k\">Two words you will hear</p>' +\n      '<h2 class=\"line tk-t\">Coins and tokens</h2>' +\n      '<p class=\"def tk-d\">A <b>coin</b> runs on its own blockchain. A <b>token</b> is built on top of an existing one.</p>' +\n      '<p class=\"sub tk-s\">USDT is a token designed to track the US dollar. It runs on several blockchains.</p></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.tk-k').style; this.t = q('.tk-t'); this.d = q('.tk-d'); this.s = q('.tk-s');\n    this.parts = ['.tk-b1', '.tk-c1', '.tk-l1', '.tk-b2', '.tk-c2', '.tk-c3', '.tk-l2'].map((s) => q(s).style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'think' }, { t: 1.0, pose: 'present' }, { t: 8.2, pose: 'explain' }],\n      says: [{ t0: 8.4, t1: 11.8, text: 'We will meet USDT again in lesson three.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.d, t, 0.9, { stagger: 0.06 });\n    const at = [1.4, 1.9, 2.3, 3.4, 3.9, 5.0, 5.4];\n    this.parts.forEach((s, i) => {\n      const p = seg(t, at[i], at[i] + 0.6);\n      s.opacity = eo(seg(t, at[i], at[i] + 0.3));\n      const drop = i === 1 || i === 4 || i === 5;\n      s.transform = (i === 2 ? 'translateX(-50%) ' : '') + (drop ? 'translateY(' + lerp(-80, 0, eob(p, 1.5)) + 'px)' : 'translateY(' + lerp(20, 0, eo(p)) + 'px)');\n    });\n    TextFx.fadeFromRight(this.s, t, 5.8, { stagger: 0.06 });\n    this.tutor.render(t);\n  },\n});\n","scene-try.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst TRY_R = 120, TRY_C = 2 * Math.PI * TRY_R;\nkit.scene('try', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:190px;width:900px\"><p class=\"kick tr-k\">Your turn</p>' +\n      '<h2 class=\"line tr-t\">Pause and work it out</h2></div>' +\n      '<div class=\"glass tr-q\" style=\"left:140px;top:420px;width:900px;padding:32px 40px\"><p class=\"fict\" style=\"margin:0 0 12px\">Question · fictional prices</p>' +\n      '<p class=\"def\" style=\"margin:0\">You hold <b>0.002 BTC</b>. The price of one BTC is <b>65,000 USDT</b>. What is your BTC worth?</p></div>' +\n      '<div class=\"glass tr-a\" style=\"left:140px;top:660px;width:900px;padding:28px 40px;border-color:var(--main);background:color-mix(in srgb, var(--ground) 76%, var(--main))\"><p class=\"mono\" style=\"margin:0;font-size:46px\">0.002 × 65,000 = <span style=\"color:var(--main)\">130 USDT</span></p></div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"tr-ring\" transform=\"translate(1360 470)\">' +\n      '<circle r=\"' + TRY_R + '\" fill=\"none\" stroke-width=\"14\" style=\"stroke:color-mix(in srgb, var(--second) 10%, transparent)\"/>' +\n      '<circle class=\"tr-arc\" r=\"' + TRY_R + '\" fill=\"none\" stroke-width=\"14\" stroke-linecap=\"round\" transform=\"rotate(-90)\" stroke-dasharray=\"' + TRY_C.toFixed(1) + '\" style=\"stroke:var(--main)\"/>' +\n      '<g class=\"tr-pause\"><rect x=\"-30\" y=\"-40\" width=\"20\" height=\"80\" rx=\"5\" style=\"fill:var(--second)\"/><rect x=\"10\" y=\"-40\" width=\"20\" height=\"80\" rx=\"5\" style=\"fill:var(--second)\"/></g>' +\n      '<text class=\"tr-n mono\" y=\"30\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:88px\"></text></g>' +\n      '<text class=\"tr-hint\" x=\"1360\" y=\"650\" text-anchor=\"middle\" style=\"fill:color-mix(in srgb, var(--second) 60%, var(--ground));font-size:26px\">Hint: amount × price</text></svg>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.tr-k').style; this.t = q('.tr-t'); this.qc = q('.tr-q').style; this.a = q('.tr-a').style;\n    this.ring = q('.tr-ring').style; this.arc = q('.tr-arc'); this.pause = q('.tr-pause').style; this.n = q('.tr-n'); this.hint = q('.tr-hint').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.5, pose: 'present' }, { t: 3.6, pose: 'think' }, { t: 9.0, pose: 'cheer' }, { t: 12.0, pose: 'thumbs' }],\n      says: [{ t0: 0.8, t1: 3.5, text: 'Your turn! Pause if you need more time.' }, { t0: 12.2, t1: 15.7, text: 'Got 130 USDT? Well done.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const qp = seg(t, 1.0, 1.7);\n    this.qc.opacity = eo(qp); this.qc.transform = 'translateY(' + lerp(30, 0, eo(qp)) + 'px)';\n    const r = seg(t, 3.0, 3.6);\n    this.ring.opacity = eo(r) * (1 - ei(seg(t, 8.8, 9.3)));\n    const cd = seg(t, 3.6, 8.6);\n    this.arc.setAttribute('stroke-dashoffset', (TRY_C * cd).toFixed(1));\n    const left = Math.max(0, Math.ceil(5 - (t - 3.6)));\n    const txt = t < 3.6 ? '' : String(Math.min(5, left));\n    if (this.n.textContent !== txt) this.n.textContent = txt;\n    this.pause.opacity = t < 3.6 ? 1 : 0;\n    this.hint.opacity = eo(seg(t, 5.2, 5.8)) * (1 - ei(seg(t, 8.8, 9.3)));\n    const a = seg(t, 9.0, 9.7);\n    this.a.opacity = eo(a);\n    this.a.transform = 'scale(' + lerp(0.92, 1, eob(a, 1.6)) + ')';\n    this.a.transformOrigin = '0 50%';\n    this.tutor.render(t);\n  },\n});\n","scene-wallet.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nkit.scene('wallet', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"glass wl-phone\" style=\"left:1000px;top:190px;width:270px;height:470px;border-radius:44px\"><div style=\"width:80px;height:7px;border-radius:7px;margin:26px auto 0;background:color-mix(in srgb, var(--second) 18%, transparent)\"></div>' +\n      '<p style=\"margin:20px 0 0;text-align:center;font-size:24px;font-weight:700\">My wallet</p></div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' +\n      '<line class=\"wl-link\" x1=\"1180\" y1=\"420\" x2=\"1400\" y2=\"420\" pathLength=\"1\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"stroke:var(--main)\"/>' +\n      '<g class=\"wl-coin\"><circle cx=\"1135\" cy=\"420\" r=\"70\" stroke-width=\"6\" style=\"fill:color-mix(in srgb, var(--ground) 70%, var(--main));stroke:var(--main)\"/><text x=\"1135\" y=\"432\" text-anchor=\"middle\" class=\"mono\" style=\"fill:var(--second);font-size:34px\">BTC</text></g>' +\n      '<g class=\"wl-x\" stroke-width=\"10\" stroke-linecap=\"round\" style=\"stroke:var(--accent)\"><line x1=\"1075\" y1=\"360\" x2=\"1195\" y2=\"480\"/><line x1=\"1195\" y1=\"360\" x2=\"1075\" y2=\"480\"/></g>' +\n      '<g class=\"wl-key\" fill=\"none\" stroke-width=\"10\" stroke-linecap=\"round\" style=\"stroke:var(--main)\"><circle cx=\"1105\" cy=\"420\" r=\"30\"/><line x1=\"1135\" y1=\"420\" x2=\"1185\" y2=\"420\"/><line x1=\"1165\" y1=\"420\" x2=\"1165\" y2=\"442\"/><line x1=\"1182\" y1=\"420\" x2=\"1182\" y2=\"436\"/></g></svg>' +\n      '<div class=\"glass wl-book\" style=\"left:1400px;top:330px;width:330px;padding:22px 26px;display:flex;flex-direction:column;gap:10px\"><p class=\"kick\" style=\"margin:0;font-size:18px\">Blockchain record</p>' +\n      '<div class=\"mono\" style=\"font-size:22px;color:color-mix(in srgb, var(--second) 55%, var(--ground))\">Ben · 0.150 BTC</div><div class=\"mono wl-me\" style=\"font-size:22px\">You · 0.002 BTC</div><div class=\"mono\" style=\"font-size:22px;color:color-mix(in srgb, var(--second) 55%, var(--ground))\">Cai · 1.300 BTC</div></div>' +\n      '<div class=\"words\" style=\"left:140px;top:200px;width:780px\"><p class=\"kick wl-k\" style=\"color:var(--accent)\">Common mistake</p>' +\n      '<h2 class=\"line wl-t\">There is no coin inside your phone</h2>' +\n      '<p class=\"def wl-d\">A <b>wallet</b> holds the keys that prove you control your crypto. The coins are entries on the blockchain.</p>' +\n      '<p class=\"sub wl-s\">On an exchange, the exchange holds the keys for you.</p></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.wl-k').style; this.t = q('.wl-t'); this.d = q('.wl-d'); this.s = q('.wl-s');\n    this.phone = q('.wl-phone').style; this.coin = q('.wl-coin').style; this.x = q('.wl-x'); this.key = q('.wl-key').style;\n    this.link = q('.wl-link'); this.book = q('.wl-book').style; this.me = q('.wl-me').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 1.2, pose: 'confused' }, { t: 5.6, pose: 'explain' }, { t: 11.2, pose: 'think' }],\n      says: [{ t0: 11.4, t1: 15.6, text: 'Lose the keys, and you can lose access.' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const ph = seg(t, 0.6, 1.4);\n    this.phone.opacity = eo(ph);\n    this.phone.transform = 'translateY(' + lerp(40, 0, eo(ph)) + 'px)';\n    const c = seg(t, 1.2, 1.8), cx = seg(t, 3.6, 4.2);\n    this.coin.opacity = eo(c) * (1 - ei(seg(t, 4.4, 5.0)));\n    this.coin.transformBox = 'fill-box'; this.coin.transformOrigin = 'center';\n    this.coin.transform = 'scale(' + lerp(0.4, 1, eob(c, 1.7)) * lerp(1, 0.6, ei(seg(t, 4.4, 5.0))) + ')';\n    this.x.setAttribute('stroke-dasharray', '170'); this.x.setAttribute('stroke-dashoffset', (170 * (1 - eo(cx))).toFixed(1));\n    this.x.style.opacity = 1 - ei(seg(t, 4.4, 5.0));\n    const k = seg(t, 5.0, 5.6);\n    this.key.opacity = eo(k);\n    this.key.transformBox = 'fill-box'; this.key.transformOrigin = 'center';\n    this.key.transform = 'rotate(' + lerp(-30, 0, eob(k, 1.6)) + 'deg) scale(' + lerp(0.5, 1, eob(k, 1.7)) + ')';\n    const b = seg(t, 5.8, 6.5);\n    this.book.opacity = eo(b);\n    this.book.transform = 'translateX(' + lerp(40, 0, eo(b)) + 'px)';\n    this.link.setAttribute('stroke-dasharray', eio(seg(t, 6.6, 7.4)) + ' 1');\n    const m = seg(t, 7.3, 7.8);\n    this.me.color = m > 0 ? 'var(--main)' : 'var(--second)';\n    this.me.transform = 'scale(' + (1 + 0.06 * Math.sin(Math.PI * m)) + ')';\n    this.me.transformOrigin = '0 50%';\n    TextFx.fadeFromRight(this.d, t, 7.6, { stagger: 0.05 });\n    TextFx.fadeFromRight(this.s, t, 10.6, { stagger: 0.07 });\n    this.tutor.render(t);\n  },\n});\n","scenes.json":"{\n  \"v\": 1,\n  \"stage\": \"final\",\n  \"look\": \"XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner\",\n  \"palettes\": [\n    [\n      \"#02030a\",\n      \"#3ecbff\",\n      \"#eef1f7\",\n      \"#a855f7\"\n    ]\n  ],\n  \"theirs\": 1,\n  \"width\": 1920,\n  \"height\": 1080,\n  \"fps\": 60,\n  \"background\": \"#02030a\",\n  \"fonts\": {\n    \"display\": {\n      \"family\": \"Outfit\",\n      \"or\": \"plus-jakarta-sans\",\n      \"weights\": [\n        400,\n        600,\n        700\n      ]\n    },\n    \"sans\": \"manrope\",\n    \"mono\": \"dm-mono\"\n  },\n  \"scenes\": [\n    {\n      \"id\": \"title\",\n      \"name\": \"Lesson one\",\n      \"dur\": 8,\n      \"desc\": \"Title card: Phase 1, lesson T01, What is cryptocurrency; the tutor walks in.\"\n    },\n    {\n      \"id\": \"ticker\",\n      \"name\": \"A price on a phone\",\n      \"dur\": 14,\n      \"desc\": \"A phone shows a fictional BTC price ticking; the question: what is this?\"\n    },\n    {\n      \"id\": \"money\",\n      \"name\": \"What money is\",\n      \"dur\": 18,\n      \"desc\": \"Cash turns into a bank balance: money is value people agree to accept, and most of it is already digital.\"\n    },\n    {\n      \"id\": \"digital\",\n      \"name\": \"Digital assets\",\n      \"dur\": 16,\n      \"desc\": \"Definition of a digital asset, with examples that are and are not crypto.\"\n    },\n    {\n      \"id\": \"ledger\",\n      \"name\": \"A shared record\",\n      \"dur\": 22,\n      \"desc\": \"Cryptocurrency defined: a payment is written to a public ledger copied across many computers, with no bank in the middle.\"\n    },\n    {\n      \"id\": \"bitcoin\",\n      \"name\": \"Meet Bitcoin\",\n      \"dur\": 14,\n      \"desc\": \"Bitcoin, symbol BTC: the first cryptocurrency, launched in 2009, with a maximum of 21 million coins.\"\n    },\n    {\n      \"id\": \"wallet\",\n      \"name\": \"No coin in your phone\",\n      \"dur\": 16,\n      \"desc\": \"The misconception: a wallet holds keys, not coins; the coins are entries on the ledger.\"\n    },\n    {\n      \"id\": \"token\",\n      \"name\": \"Coins and tokens\",\n      \"dur\": 12,\n      \"desc\": \"Coins run their own blockchain; tokens like USDT are built on top of existing ones.\"\n    },\n    {\n      \"id\": \"balance\",\n      \"name\": \"Your balance\",\n      \"dur\": 16,\n      \"desc\": \"A fictional 0.002 BTC balance; its value is amount times price: 120 USDT.\"\n    },\n    {\n      \"id\": \"moves\",\n      \"name\": \"When price moves\",\n      \"dur\": 20,\n      \"desc\": \"The price moves up and down; the BTC amount stays the same while its value changes.\"\n    },\n    {\n      \"id\": \"try\",\n      \"name\": \"Try it\",\n      \"dur\": 16,\n      \"desc\": \"Pause and calculate: 0.002 BTC at 65,000 USDT; the answer 130 USDT is revealed.\"\n    },\n    {\n      \"id\": \"sort\",\n      \"name\": \"Crypto or not\",\n      \"dur\": 16,\n      \"desc\": \"Five items are sorted into crypto and not crypto.\"\n    },\n    {\n      \"id\": \"risks\",\n      \"name\": \"Know the risks\",\n      \"dur\": 22,\n      \"desc\": \"No government guarantee, volatile prices, lost keys and scams; owning coins is not the same as a futures contract.\"\n    },\n    {\n      \"id\": \"recap\",\n      \"name\": \"Recap\",\n      \"dur\": 18,\n      \"desc\": \"Three key points and one question to check yourself.\"\n    },\n    {\n      \"id\": \"next\",\n      \"name\": \"Up next\",\n      \"dur\": 10,\n      \"desc\": \"End card: next lesson T02, why do crypto prices move.\"\n    }\n  ]\n}\n","score.js":"kit.score(function (S, T) {\n  // A quiet bed for a lesson that will carry a voiceover: pad and soft keys, a light pulse in the hands-on parts.\n  const BPM = 84, B = 60 / BPM, BAR = 4 * B;\n  S.tempo(BPM, { t0: 0 });\n  S.program('pad', 'pad', { rev: 0.7, gain: -6 });\n  S.program('keys', 'ep', { rev: 0.45, gain: -10 });\n  S.program('mal', 'pluck', { rev: 0.5, gain: -12, pan: 0.2 });\n  S.program('bass', 'bass', { gain: -10 });\n  const prog = [['D3', 'A3', 'E4', 'F#4'], ['B2', 'F#3', 'A3', 'D4'], ['G2', 'D3', 'F#3', 'B3'], ['A2', 'E3', 'A3', 'C#4']];\n  const roots = ['D2', 'B1', 'G1', 'A1'];\n  const tops = [['F#5', 'A5', 'E5'], ['D5', 'F#5', 'A5'], ['B4', 'D5', 'F#5'], ['C#5', 'E5', 'A5']];\n  const inR = (s, a, b) => s >= a - 0.1 && s < b - 0.1;\n  const pulse = (s) => inR(s, T.balance, T.risks) || inR(s, T.ticker, T.money);\n  const quiet = (s) => inR(s, T.risks, T.recap) || inR(s, T.wallet, T.token);\n  const bars = Math.floor(T.END / BAR);\n  for (let b = 0; b < bars; b++) {\n    const beat = b * 4, s = beat * B, c = prog[b % 4];\n    if (s >= T.next - 0.1) break;\n    S.chord('pad', c, { beat, beats: 4, vel: quiet(s) ? 26 : 32 });\n    if (!quiet(s)) S.chord('keys', c.slice(1), { beat, beats: 3, vel: 34 });\n    if (pulse(s)) { S.pattern('mal', 'x.x..x.x', { from: beat, repeat: 1, pitch: tops[b % 4], vel: 36 }); S.note('bass', roots[b % 4], { beat, beats: 3, vel: 50 }); }\n  }\n  const steps = (a, b) => { const ts = []; for (let s = a + 0.18; s < b; s += 0.364) ts.push(s); S.ticks(ts, { vel: 24 }); };\n  steps(T.title, T.title + 2.6); steps(T.next + 0.1, T.next + 1.1);\n  [[T.title, 2.9], [T.ticker, 8.8], [T.money, 13.2], [T.digital, 11.4], [T.ledger, 17.4], [T.bitcoin, 9.4], [T.wallet, 11.4], [T.token, 8.4], [T.balance, 11.4], [T.moves, 14.6], [T.try, 0.8], [T.try, 12.2], [T.sort, 12.5], [T.risks, 16.8], [T.next, 1.3]]\n    .forEach((b) => S.fx('pop', b[0] + b[1], { vel: 26, pitch: 7 }));\n  S.fx('whoosh', T.ledger + 3.2, { dur: 1.2, vel: 24 }); S.fx('ding', T.ledger + 4.4, { vel: 34 });\n  for (let i = 0; i < 6; i++) S.fx('tick', T.ledger + 9.4 + i * 0.25, { vel: 26 });\n  for (let i = 0; i < 3; i++) S.fx('pop', T.ledger + 12.8 + i * 0.45, { vel: 32 });\n  for (let i = 0; i < 3; i++) S.fx('pop', T.bitcoin + 2.0 + i * 1.6, { vel: 34 });\n  S.fx('thud', T.wallet + 3.6, { vel: 30 }); S.fx('chime', T.wallet + 5.0, { vel: 34 });\n  S.fx('ding', T.balance + 7.9, { vel: 40 });\n  for (let i = 0; i < 5; i++) S.fx('tick', T.try + 3.6 + i, { vel: 30 });\n  S.fx('chime', T.try + 9.0, { vel: 42 });\n  for (let i = 0; i < 5; i++) S.fx('pop', T.sort + 1.6 + i * 2.2 + 2.0, { vel: 36 });\n  for (let i = 0; i < 4; i++) S.fx('pop', T.risks + 1.2 + i * 3.4, { vel: 30 });\n  for (let i = 0; i < 3; i++) S.fx('pop', T.recap + 1.9 + i * 2.4, { vel: 34 });\n  S.fx('ding', T.recap + 14.2, { vel: 38 });\n  S.fx('revswell', T.next, { dur: 1.6, vel: 44 });\n  S.chord('pad', ['D3', 'A3', 'D4', 'F#4'], { t: T.next, dur: 9, vel: 40 });\n  S.chord('keys', ['D3', 'A3', 'D4', 'F#4', 'A4'], { t: T.next + 0.7, dur: 8, vel: 50 });\n  S.run('mal', ['D5', 'E5', 'F#5', 'A5', 'B5', 'D6'], { t: T.next + 1.4, step: 0.12, vel: 40, cresc: 6 });\n  S.master({ gain: -10, fadeOut: 2.5 });\n});\n","shared.js":"window.UI = {\n  LESSON: 'T01 · What is cryptocurrency?',\n  TOTAL: 238,\n  lockup(kit) {\n    return kit.h('<div class=\"lock\"><img alt=\"\" src=\"' + kit.assets.url('xtinex-x.png') + '\"><span class=\"lock-xt\">XTINEX</span><span class=\"lock-bar\"></span><span class=\"lock-xo\">XORA</span></div>');\n  },\n  // Lesson header: lesson name and a progress bar across the whole film.\n  chrome(kit) {\n    const el = kit.h('<div class=\"chrome\"><span>' + kit.esc(UI.LESSON) + '</span><div><i></i></div></div>');\n    kit.stage.append(el);\n    const bar = el.querySelector('i').style, start = kit.start;\n    return (t) => { bar.width = (Math.min(1, (start + t) / UI.TOTAL) * 100).toFixed(2) + '%'; };\n  },\n  fmt(n, dp) { return n.toLocaleString('en-US', { minimumFractionDigits: dp || 0, maximumFractionDigits: dp || 0 }); },\n  // Deterministic fictional price walk: returns [[x,y],...] across x0..x1.\n  walk(kit, seed, n, x0, x1, y0, y1, amp) {\n    const r = kit.rng(seed); const pts = []; let v = 0;\n    for (let i = 0; i < n; i++) {\n      v += (r() - 0.5) * amp; v *= 0.86;\n      const p = i / (n - 1);\n      pts.push([x0 + (x1 - x0) * p, y0 + (y1 - y0) * p + v]);\n    }\n    return pts;\n  },\n  d(pts) { return pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' '); },\n  // The tutor sits in this corner between scenes: feet x, feet y, brain width (px).\n  CORNER: { x: 1735, y: 1042, s: 160 },\n  // The brain tutor. cfg.keys: [{t, x, y, s, d?, ease?}] feet position and brain width, each key reached at t after a d-second move.\n  // cfg.poses: [{t, pose, flip?}] ('wave' and 'walk' play their frame loops). cfg.says: [{t0, t1, text, side?: 'left'|'top'}].\n  tutor(kit, cfg) {\n    const M = kit.json('tutor.json');\n    const root = kit.h('<div class=\"tutor\"></div>');\n    const shadow = kit.h('<div class=\"tutor-shadow\"></div>');\n    root.append(shadow);\n    const imgs = {};\n    for (const n of Object.keys(M)) {\n      const im = kit.h('<img class=\"tutor-img\" alt=\"\" src=\"' + kit.assets.url('tutor-' + n + '.webp') + '\">');\n      imgs[n] = im.style; root.append(im);\n    }\n    const says = (cfg.says || []).map((s) => {\n      const b = kit.h('<div class=\"bubble' + (s.side === 'top' ? ' is-top' : '') + '\"><p>' + kit.esc(s.text) + '</p></div>');\n      root.append(b);\n      return Object.assign({}, s, { st: b.style });\n    });\n    kit.stage.append(root);\n    const keys = cfg.keys, poses = cfg.poses;\n    const LOOPS = {\n      wave: { f: ['wv1', 'wv2', 'wv3', 'wv4', 'wv3', 'wv2'], fps: 7 },\n      walk: { f: ['wk0', 'wk1', 'wk2', 'wk3', 'wk4', 'wk5', 'wk6', 'wk7'], fps: 11 },\n    };\n    const name = (p, dt) => { const L = LOOPS[p.pose]; return L ? L.f[Math.floor(Math.max(0, dt) * L.fps) % L.f.length] : p.pose; };\n    let shown = [];\n    const place = (n, flip, x, y, s, op, sc, lift) => {\n      const m = M[n], st = imgs[n], k = s / m.bw;\n      st.width = (m.w * k).toFixed(1) + 'px'; st.height = (m.h * k).toFixed(1) + 'px';\n      st.left = (x - m.ax * k).toFixed(1) + 'px'; st.top = (y - m.feet * k).toFixed(1) + 'px';\n      st.transformOrigin = (m.ax * k).toFixed(1) + 'px ' + (m.feet * k).toFixed(1) + 'px';\n      st.transform = 'translateY(' + lift.toFixed(2) + 'px) scale(' + (flip ? -sc : sc).toFixed(4) + ',' + sc.toFixed(4) + ')';\n      st.opacity = op;\n      shown.push(n);\n    };\n    const api = {\n      at(t) {\n        let x = keys[0].x, y = keys[0].y, s = keys[0].s;\n        for (let i = 1; i < keys.length; i++) {\n          const a = keys[i - 1], b = keys[i], d = b.d == null ? 0.8 : b.d;\n          const p = kit.seg(t, b.t - d, b.t);\n          if (p <= 0) break;\n          const e = (b.ease || kit.eio)(p);\n          x = kit.lerp(a.x, b.x, e); y = kit.lerp(a.y, b.y, e); s = kit.lerp(a.s, b.s, e);\n        }\n        return { x, y, s };\n      },\n      render(t) {\n        for (const n of shown) imgs[n].opacity = 0;\n        shown = [];\n        const { x, y, s } = api.at(t);\n        let i = 0;\n        for (let j = 0; j < poses.length; j++) if (poses[j].t <= t) i = j;\n        const cur = poses[i], dt = t - cur.t;\n        const sw = i > 0 ? kit.clamp01(dt / 0.18) : 1;\n        const pop = i > 0 ? kit.clamp01(dt / 0.32) : 1;\n        const bob = Math.sin(t * 2 * Math.PI / 2.6) * s * 0.025;\n        const hop = cur.pose === 'walk' ? 0 : Math.sin(Math.PI * pop) * s * 0.07;\n        const step = cur.pose === 'walk' ? Math.abs(Math.sin(dt * Math.PI * 2.75)) * s * 0.03 : 0;\n        const breathe = 1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.1);\n        const sc = breathe * (cur.pose === 'walk' ? 1 : kit.lerp(0.93, 1, kit.eob(pop, 1.8)));\n        if (sw < 1) { const pv = poses[i - 1]; place(name(pv, t - pv.t), !!pv.flip, x, y, s, 1 - sw, breathe, bob); }\n        place(name(cur, dt), !!cur.flip, x, y, s, sw, sc, bob - hop - step);\n        const sh = shadow.style;\n        sh.left = (x - s * 0.6).toFixed(1) + 'px'; sh.top = (y - s * 0.07).toFixed(1) + 'px';\n        sh.width = (s * 1.2).toFixed(1) + 'px'; sh.height = (s * 0.16).toFixed(1) + 'px';\n        sh.opacity = 0.75 - (hop + step) / s;\n        for (const b of says) {\n          const p = kit.seg(t, b.t0, b.t0 + 0.32), o = kit.seg(t, b.t1 - 0.25, b.t1);\n          b.st.opacity = kit.eo(p) * (1 - kit.ei(o));\n          if (b.st.opacity === '0') continue;\n          const g = kit.lerp(0.88, 1, kit.eob(p, 1.6)) * kit.lerp(1, 0.96, kit.ei(o));\n          if (b.side === 'top') {\n            b.st.transformOrigin = '50% 100%';\n            b.st.transform = 'translate(' + x.toFixed(1) + 'px,' + (y - s * 1.42).toFixed(1) + 'px) translate(-50%,-100%) scale(' + g.toFixed(4) + ')';\n          } else {\n            b.st.transformOrigin = '100% 100%';\n            b.st.transform = 'translate(' + (x - s * 0.18).toFixed(1) + 'px,' + (y - s * 1.12).toFixed(1) + 'px) translate(-100%,-100%) scale(' + g.toFixed(4) + ')';\n          }\n        }\n      },\n    };\n    return api;\n  },\n};\n","tutor.json":"{\n  \"idle\": {\n    \"w\": 331,\n    \"h\": 446,\n    \"ax\": 164.5,\n    \"feet\": 432,\n    \"bw\": 305\n  },\n  \"wv1\": {\n    \"w\": 381,\n    \"h\": 448,\n    \"ax\": 163.5,\n    \"feet\": 434,\n    \"bw\": 305\n  },\n  \"wv2\": {\n    \"w\": 374,\n    \"h\": 448,\n    \"ax\": 165.0,\n    \"feet\": 436,\n    \"bw\": 305\n  },\n  \"wv3\": {\n    \"w\": 363,\n    \"h\": 448,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wv4\": {\n    \"w\": 375,\n    \"h\": 446,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wk0\": {\n    \"w\": 353,\n    \"h\": 460,\n    \"ax\": 162.5,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk1\": {\n    \"w\": 361,\n    \"h\": 460,\n    \"ax\": 164.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk2\": {\n    \"w\": 345,\n    \"h\": 460,\n    \"ax\": 170.5,\n    \"feet\": 448,\n    \"bw\": 310\n  },\n  \"wk3\": {\n    \"w\": 365,\n    \"h\": 460,\n    \"ax\": 164.0,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk4\": {\n    \"w\": 375,\n    \"h\": 457,\n    \"ax\": 167.5,\n    \"feet\": 444,\n    \"bw\": 310\n  },\n  \"wk5\": {\n    \"w\": 364,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk6\": {\n    \"w\": 354,\n    \"h\": 457,\n    \"ax\": 166.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk7\": {\n    \"w\": 365,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"present\": {\n    \"w\": 546,\n    \"h\": 612,\n    \"ax\": 218,\n    \"feet\": 605,\n    \"bw\": 421\n  },\n  \"explain\": {\n    \"w\": 502,\n    \"h\": 602,\n    \"ax\": 275,\n    \"feet\": 594,\n    \"bw\": 394\n  },\n  \"think\": {\n    \"w\": 465,\n    \"h\": 656,\n    \"ax\": 229,\n    \"feet\": 648,\n    \"bw\": 452\n  },\n  \"point\": {\n    \"w\": 547,\n    \"h\": 568,\n    \"ax\": 210,\n    \"feet\": 561,\n    \"bw\": 415\n  },\n  \"confused\": {\n    \"w\": 185,\n    \"h\": 169,\n    \"ax\": 85.0,\n    \"feet\": 162,\n    \"bw\": 138\n  },\n  \"thumbs\": {\n    \"w\": 181,\n    \"h\": 179,\n    \"ax\": 102.0,\n    \"feet\": 172,\n    \"bw\": 138\n  },\n  \"cheer\": {\n    \"w\": 207,\n    \"h\": 182,\n    \"ax\": 105.0,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"idea\": {\n    \"w\": 169,\n    \"h\": 178,\n    \"ax\": 69.5,\n    \"feet\": 171,\n    \"bw\": 138\n  },\n  \"magnify\": {\n    \"w\": 187,\n    \"h\": 170,\n    \"ax\": 85.5,\n    \"feet\": 163,\n    \"bw\": 138\n  },\n  \"read\": {\n    \"w\": 190,\n    \"h\": 181,\n    \"ax\": 82.5,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"checklist\": {\n    \"w\": 185,\n    \"h\": 161,\n    \"ax\": 97.5,\n    \"feet\": 153,\n    \"bw\": 138\n  }\n}\n"}};</script>
+<script>
+/* XORA Futures Edge lesson player.
+ *
+ * Plays a lesson written as scene modules (content/futures-edge/<id>/modules) as a plain web
+ * page. Everything on screen is a pure function of the lesson time t, so the page can pause,
+ * seek and replay at any point. It provides the small "kit" the scenes are written against
+ * (stage, easing, TextFx, assets, json) and a WebAudio synth for score.js.
+ *
+ * With a voiceover, build-lesson.mjs lengthens some scenes so the narration fits: a scene with
+ * stretch factor k plays its animation and sound effects k times slower. Scene code still sees the
+ * authored timeline (kit.start, kit.dur and t), so nothing in the modules changes. The voice is
+ * one mixed track; the music dips under each line, and the CC button shows the line as text.
+ *
+ * build-lesson.mjs inlines this file into public/futures-edge/lessons/<id>.html, after a
+ * `window.FILM = {...}` block that carries the scene list, module texts and asset paths.
+ */
+(function () {
+  "use strict";
+
+  const F = window.FILM;
+  const W = F.width;
+  const H = F.height;
+
+  // ── Maths and easing ───────────────────────────────────────────────────────
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const clamp01 = (x) => clamp(x, 0, 1);
+  const seg = (t, a, b) => (b <= a ? (t >= b ? 1 : 0) : clamp01((t - a) / (b - a)));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const eo = (x) => 1 - Math.pow(1 - clamp01(x), 3);
+  const ei = (x) => Math.pow(clamp01(x), 3);
+  const eio = (x) => {
+    x = clamp01(x);
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  };
+  const eob = (x, s = 1.4) => {
+    x = clamp01(x);
+    return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2);
+  };
+  const rng = (seed) => {
+    let a = seed >>> 0 || 1;
+    return () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+  const breathe = (t, amt = 0.012, period = 3.2) => 1 + amt * Math.sin((2 * Math.PI * t) / period);
+
+  // ── DOM helpers ────────────────────────────────────────────────────────────
+  const h = (html) => {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = String(html).trim();
+    return tpl.content.firstElementChild;
+  };
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const el = (tag, o = {}, children = []) => {
+    const e = document.createElement(tag);
+    if (o.class) e.className = o.class;
+    if (o.style) e.setAttribute("style", o.style);
+    if (o.text != null) e.textContent = o.text;
+    if (o.html != null) e.innerHTML = o.html;
+    for (const [k, v] of Object.entries(o.attrs || {})) e.setAttribute(k, v);
+    for (const c of children) e.append(c);
+    return e;
+  };
+
+  // Words of an element as inline-block spans (inline markup such as <b> is kept).
+  const wordCache = new WeakMap();
+  function words(root) {
+    let list = wordCache.get(root);
+    if (list) return list;
+    list = [];
+    const walk = (node) => {
+      for (const child of Array.from(node.childNodes)) {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const part of child.textContent.split(/(\s+)/)) {
+            if (!part) continue;
+            if (/^\s+$/.test(part)) {
+              frag.append(document.createTextNode(part));
+            } else {
+              const s = document.createElement("span");
+              s.textContent = part;
+              s.style.display = "inline-block";
+              frag.append(s);
+              list.push(s);
+            }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      }
+    };
+    walk(root);
+    wordCache.set(root, list);
+    return list;
+  }
+  const TextFx = {
+    fadeFromRight(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.11, d = o.dur ?? 0.5, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = eo(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = p;
+        s.style.transform = "translateX(" + ((1 - p) * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+    fadeOutLeft(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.04, d = o.dur ?? 0.35, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = ei(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = 1 - p;
+        s.style.transform = "translateX(" + (-p * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+  };
+
+  // ── The kit the scene modules use ──────────────────────────────────────────
+  const modules = F.modules;
+  const jsonCache = {};
+  const assets = {
+    url: (name) => F.assetBase + name,
+    has: (name) => Object.prototype.hasOwnProperty.call(F.assets, name),
+    list: () => Object.keys(F.assets),
+  };
+  const defs = {};
+  let scoreFn = null;
+
+  // start/dur: the scene in the played timeline; oldStart/oldDur: as authored (k = dur / oldDur).
+  let acc = 0;
+  const scenes = F.scenes.map((s) => {
+    const o = Object.assign({ k: 1, oldStart: acc, oldDur: s.dur }, s, { start: acc });
+    acc += s.dur;
+    return o;
+  });
+  const END = acc;
+  const OLD_END = scenes.reduce((a, s) => a + s.oldDur, 0);
+  // Authored time to played time.
+  function warp(x) {
+    for (let i = scenes.length - 1; i >= 0; i--) {
+      const s = scenes[i];
+      if (x >= s.oldStart) return s.start + (x - s.oldStart) * s.k;
+    }
+    return x;
+  }
+  const lines = (F.voice && F.voice.lines) || [];
+  // Stretches where the music dips: each line plus a little either side, close ones joined.
+  const duckSpans = [];
+  for (const l of lines) {
+    const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
+    if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
+  }
+
+  function makeKit(box, start, dur) {
+    return {
+      stage: box, start, dur, W, H,
+      seg, lerp, eo, ei, eio, eob, clamp, clamp01, rng, breathe, TextFx, h, el, esc,
+      assets,
+      module: (n) => (n in modules ? modules[n] : null),
+      json: (n) => (jsonCache[n] ??= JSON.parse(modules[n])),
+      modules: () => Object.keys(modules),
+      scene: (id, def) => { defs[id] = def; },
+      score: (fn) => { scoreFn = fn; },
+    };
+  }
+  const run = (name, kit) => new Function("kit", modules[name] + "\n//# sourceURL=" + F.id + "/" + name)(kit);
+
+  // ── Stage ──────────────────────────────────────────────────────────────────
+  const stage = document.getElementById("stage");
+  const css = document.createElement("style");
+  css.textContent = modules["base.css"] || "";
+  document.head.append(css);
+
+  function fit() {
+    const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+  }
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 200));
+  fit();
+
+  // ── Audio: score.js recorded as events, then synthesised with WebAudio ─────
+  function midiOf(p) {
+    if (typeof p === "number") return p;
+    const m = /^([A-Ga-g])([#b]?)(-?\d)$/.exec(String(p).trim());
+    if (!m) return 72;
+    const base = { c: 0, d: 2, e: 4, f: 5, g: 7, a: 9, b: 11 }[m[1].toLowerCase()];
+    return 12 * (Number(m[3]) + 1) + base + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
+  }
+
+  // score.js runs twice: the music against the played timeline, the sound effects against the
+  // authored one and then moved onto the played one, so each cue stays with its animation.
+  function recordScore() {
+    const T = { END };
+    for (const s of scenes) T[s.id] = s.start;
+    const music = recordPass(T);
+    const Told = { END: OLD_END };
+    for (const s of scenes) Told[s.id] = s.oldStart;
+    const cues = recordPass(Told);
+    const ev = music.ev.filter((e) => e.k !== "f");
+    for (const e of cues.ev) {
+      if (e.k !== "f") continue;
+      e.t = warp(e.t);
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      ev.push(e);
+    }
+    ev.sort((a, b) => a.s - b.s);
+    return { ev, tracks: music.tracks, master: music.master };
+  }
+
+  function recordPass(T) {
+    const ev = [];
+    const tracks = {};
+    const master = { gain: -6, fadeOut: 1 };
+    let B = 0.5, t0 = 0;
+    const at = (o) => (o.t != null ? o.t : t0 + (o.beat || 0) * B);
+    const len = (o, d) => (o.dur != null ? o.dur : o.beats != null ? o.beats * B : d);
+    const push = (e) => {
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      if (e.s < -0.1) return;
+      if (e.s < 0) { e.t += -e.s; e.s = 0; }
+      ev.push(e);
+    };
+    const hits = (str, rep, step, from, vel, fn) => {
+      for (let r = 0; r < rep; r++) {
+        for (let i = 0; i < str.length; i++) {
+          const c = str[i];
+          if (c !== "x" && c !== "X" && c !== "o") continue;
+          fn(t0 + (from + (r * str.length + i) * step) * B, vel * (c === "X" ? 1.25 : c === "o" ? 0.5 : 1));
+        }
+      }
+    };
+    const S = {
+      tempo(bpm, o = {}) { B = 60 / bpm; t0 = o.t0 || 0; },
+      beat: (n) => t0 + n * B,
+      toBeat: (t) => (t - t0) / B,
+      seed() {},
+      program(track, patch, o = {}) {
+        tracks[track] = { patch, gain: o.gain || 0, pan: o.pan || 0, rev: o.rev || 0, bright: o.bright ?? 1 };
+      },
+      note(track, p, o = {}) { push({ k: "n", track, m: midiOf(p), t: at(o), d: len(o, B), v: o.vel ?? 90 }); },
+      chord(track, ps, o = {}) { ps.forEach((p) => S.note(track, p, o)); },
+      pattern(track, str, o = {}) {
+        const pitches = o.pitch || ["C5"];
+        let k = 0;
+        const step = o.step ?? 0.5;
+        hits(str, o.repeat ?? 1, step, o.from || 0, o.vel ?? 80, (t, v) =>
+          push({ k: "n", track, m: midiOf(pitches[k++ % pitches.length]), t, d: o.dur ?? step * B * 0.9, v }));
+      },
+      drum(name, o = {}) { push({ k: "d", name, t: at(o), d: 0.3, v: o.vel ?? 90 }); },
+      drums(map, o = {}) {
+        for (const name of Object.keys(map)) {
+          hits(map[name], o.repeat ?? 1, o.step ?? 0.5, o.from || 0, o.vel ?? 80, (t, v) => push({ k: "d", name, t, d: 0.3, v }));
+        }
+      },
+      ticks(times, o = {}) { times.forEach((t) => push({ k: "f", name: "tick", t, d: 0.03, v: o.vel ?? 40, pitch: 0 })); },
+      fx(name, t, o = {}) { push({ k: "f", name, t, d: o.dur ?? 0.5, v: o.vel ?? 70, pitch: o.pitch || 0 }); },
+      run(track, ps, o = {}) {
+        const step = o.step ?? 0.1;
+        ps.forEach((p, i) => push({ k: "n", track, m: midiOf(p), t: o.t + i * step, d: step * 2.5, v: (o.vel ?? 70) + i * (o.cresc || 0) }));
+      },
+      master(o = {}) {
+        if (o.gain != null) master.gain = o.gain;
+        if (o.fadeOut != null) master.fadeOut = o.fadeOut;
+      },
+    };
+    if (scoreFn) scoreFn(S, T);
+    return { ev, tracks, master };
+  }
+
+  const db = (x) => Math.pow(10, x / 20);
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+  const audio = {
+    ctx: null, enabled: false, muted: false, score: null,
+    out: null, verb: null, noise: null, session: null, timer: 0,
+    voiceData: null, voiceBuf: null, voiceOut: null,
+  };
+  const DUCK = 0.4;
+
+  function setupAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    const ctx = (audio.ctx = new AC());
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -14;
+    comp.ratio.value = 4;
+    comp.connect(ctx.destination);
+    audio.out = ctx.createGain();
+    audio.out.gain.value = db(audio.score.master.gain);
+    audio.out.connect(comp);
+    // A small generated room for the reverb send.
+    const len = Math.floor(ctx.sampleRate * 2.4);
+    const ir = ctx.createBuffer(2, len, ctx.sampleRate);
+    const r = rng(9);
+    for (let c = 0; c < 2; c++) {
+      const d = ir.getChannelData(c);
+      for (let i = 0; i < len; i++) d[i] = (r() * 2 - 1) * Math.pow(1 - i / len, 3);
+    }
+    audio.verb = ctx.createConvolver();
+    audio.verb.buffer = ir;
+    const verbGain = ctx.createGain();
+    verbGain.gain.value = 0.5;
+    audio.verb.connect(verbGain);
+    verbGain.connect(audio.out);
+    const nb = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+    const nd = nb.getChannelData(0);
+    const r2 = rng(3);
+    for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
+    audio.noise = nb;
+    // The voice skips the music's compressor and goes straight out.
+    audio.voiceOut = ctx.createGain();
+    audio.voiceOut.gain.value = 1;
+    audio.voiceOut.connect(ctx.destination);
+    decodeVoice();
+    return true;
+  }
+
+  async function decodeVoice() {
+    if (!audio.ctx || audio.voiceBuf || !audio.voiceData) return;
+    try {
+      const data = await audio.voiceData;
+      if (!data || audio.voiceBuf) return;
+      audio.voiceBuf = await new Promise((ok, fail) => audio.ctx.decodeAudioData(data.slice(0), ok, fail));
+    } catch (e) {
+      return; // the lesson plays on without the voice
+    }
+    if (audio.session) startVoice(audio.session);
+  }
+
+  // The voice of one session, from the session's start point; the music dips under each line.
+  function startVoice(s) {
+    if (!audio.voiceBuf || s.voice) return;
+    const ctx = audio.ctx;
+    const at = Math.max(s.ctx0, ctx.currentTime + 0.02);
+    const off = s.film0 + (at - s.ctx0);
+    if (off >= audio.voiceBuf.duration) return;
+    const src = ctx.createBufferSource();
+    src.buffer = audio.voiceBuf;
+    src.connect(audio.voiceOut);
+    src.start(at, off);
+    s.voice = src;
+    for (const g of [s.duck.gain, s.send.gain]) {
+      for (const [a, b] of duckSpans) {
+        if (b <= off) continue;
+        const ca = at + (a - off), cb = at + (b - off);
+        if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
+        g.setValueAtTime(DUCK, cb);
+        g.linearRampToValueAtTime(1, cb + 0.5);
+      }
+    }
+  }
+
+  // One playback session: a bus that can be dropped as a whole on pause or seek.
+  function startSession(filmT) {
+    stopSession();
+    if (!audio.enabled || audio.muted) return;
+    const ctx = audio.ctx;
+    const bus = ctx.createGain();
+    const duck = ctx.createGain();
+    bus.connect(duck);
+    duck.connect(audio.out);
+    const send = ctx.createGain();
+    send.connect(audio.verb);
+    const tracks = {};
+    for (const [name, tr] of Object.entries(audio.score.tracks)) {
+      const g = ctx.createGain();
+      g.gain.value = db(tr.gain);
+      const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(bus); } else g.connect(bus);
+      const rs = ctx.createGain();
+      rs.gain.value = tr.rev;
+      g.connect(rs);
+      rs.connect(send);
+      tracks[name] = { node: g, def: tr };
+    }
+    const s = { bus, duck, send, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0, voice: null };
+    audio.session = s;
+    startVoice(s);
+    // Notes already sounding at the seek point start now with what is left of them.
+    for (const e of audio.score.ev) {
+      if (e.s >= filmT) break;
+      if (e.k === "n" && e.s + e.d > filmT + 0.15) sound(e, s, filmT, e.s + e.d - filmT);
+    }
+    s.idx = audio.score.ev.findIndex((e) => e.s >= filmT);
+    if (s.idx < 0) s.idx = audio.score.ev.length;
+    // Fade the master out over the last seconds of the lesson.
+    const fo = audio.score.master.fadeOut;
+    if (fo > 0) {
+      const a = Math.max(filmT, END - fo);
+      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT));
+      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT));
+    }
+    audio.timer = setInterval(() => pump(), 50);
+    pump();
+  }
+
+  function stopSession() {
+    clearInterval(audio.timer);
+    const s = audio.session;
+    audio.session = null;
+    if (!s) return;
+    const now = audio.ctx.currentTime;
+    s.bus.gain.cancelScheduledValues(now);
+    s.bus.gain.setTargetAtTime(0, now, 0.03);
+    s.send.gain.cancelScheduledValues(now);
+    s.send.gain.setTargetAtTime(0, now, 0.03);
+    if (s.voice) {
+      const v = s.voice;
+      try { v.stop(now + 0.05); } catch (e) { /* not started yet */ }
+      setTimeout(() => v.disconnect(), 400);
+    }
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); }, 400);
+  }
+
+  function pump() {
+    const s = audio.session;
+    if (!s) return;
+    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0);
+    const horizon = filmNow + 0.6;
+    const ev = audio.score.ev;
+    while (s.idx < ev.length && ev[s.idx].s <= horizon) {
+      const e = ev[s.idx++];
+      if (e.s >= s.film0) sound(e, s, e.s, e.d);
+    }
+  }
+
+  function sound(e, s, filmStart, dur) {
+    const ctx = audio.ctx;
+    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0));
+    const v = Math.pow(clamp01(e.v / 127), 1.5);
+    if (e.k === "n") {
+      const tr = s.tracks[e.track];
+      if (!tr) return;
+      voice(tr.def.patch, tr.node, hz(e.m), when, Math.max(0.05, dur), v, tr.def.bright);
+    } else if (e.k === "d") {
+      drum(e.name, s.bus, when, v);
+    } else {
+      fx(e.name, s.bus, s.send, when, e.d, v, e.pitch || 0);
+    }
+  }
+
+  function env(g, when, peak, attack, hold, release) {
+    peak = Math.max(peak, 0.0002);
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.linearRampToValueAtTime(peak, when + attack);
+    g.gain.setValueAtTime(peak, when + attack + hold);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + attack + hold + release);
+    return when + attack + hold + release + 0.05;
+  }
+  function osc(type, f, dest, when, stop, detune) {
+    const o = audio.ctx.createOscillator();
+    o.type = type;
+    o.frequency.value = f;
+    if (detune) o.detune.value = detune;
+    o.connect(dest);
+    o.start(when);
+    o.stop(stop);
+    return o;
+  }
+  function noiseSrc(dest, when, stop) {
+    const n = audio.ctx.createBufferSource();
+    n.buffer = audio.noise;
+    n.loop = true;
+    n.connect(dest);
+    n.start(when);
+    n.stop(stop);
+    return n;
+  }
+
+  function voice(patch, dest, f, when, dur, v, bright) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    let stop;
+    switch (patch) {
+      case "pad": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 700 + 900 * bright;
+        lp.connect(g);
+        stop = env(g, when, 0.1 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
+        osc("sawtooth", f, lp, when, stop, -8);
+        osc("sawtooth", f, lp, when, stop, 8);
+        break;
+      }
+      case "ep":
+      case "keys": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.22 * v + 0.0002, when + 0.008);
+        g.gain.exponentialRampToValueAtTime(0.08 * v + 0.0001, when + Math.min(dur, 0.9));
+        g.gain.exponentialRampToValueAtTime(0.0001, when + dur + 0.4);
+        stop = when + dur + 0.45;
+        osc("sine", f, g, when, stop);
+        const h2 = ctx.createGain();
+        h2.gain.value = 0.25;
+        h2.connect(g);
+        osc("sine", f * 2, h2, when, stop);
+        break;
+      }
+      case "bass": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 500;
+        lp.connect(g);
+        stop = env(g, when, 0.34 * v, 0.01, Math.max(0, dur - 0.1), 0.18);
+        osc("sine", f, lp, when, stop);
+        osc("triangle", f * 2, lp, when, stop);
+        break;
+      }
+      case "pluck": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.24 * v + 0.0002, when + 0.004);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + Math.min(1.1, dur + 0.45));
+        stop = when + Math.min(1.1, dur + 0.45) + 0.05;
+        osc("triangle", f, g, when, stop);
+        break;
+      }
+      default: {
+        // marimba, vibes, glock and anything unknown: a struck bar.
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.26 * v + 0.0002, when + 0.003);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + 0.7);
+        stop = when + 0.75;
+        osc("sine", f, g, when, stop);
+        const h4 = ctx.createGain();
+        h4.gain.value = 0.12;
+        h4.connect(g);
+        osc("sine", f * 4, h4, when, stop);
+      }
+    }
+  }
+
+  function drum(name, dest, when, v) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    if (name === "kick" || name === "tom") {
+      const o = osc("sine", 140, g, when, when + 0.4);
+      o.frequency.setValueAtTime(140, when);
+      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
+      env(g, when, 0.8 * v, 0.002, 0.02, 0.3);
+    } else {
+      const f = ctx.createBiquadFilter();
+      f.type = name === "sidestick" || name === "woodblock" ? "bandpass" : "highpass";
+      f.frequency.value = name === "sidestick" || name === "woodblock" ? 1900 : 7000;
+      f.connect(g);
+      noiseSrc(f, when, when + 0.2);
+      env(g, when, 0.22 * v, 0.001, 0.005, name === "openhat" ? 0.25 : 0.045);
+    }
+  }
+
+  function fx(name, dest, send, when, dur, v, pitch) {
+    const ctx = audio.ctx;
+    const tr = Math.pow(2, pitch / 12);
+    const g = ctx.createGain();
+    g.connect(dest);
+    const wet = ctx.createGain();
+    wet.gain.value = 0.35;
+    g.connect(wet);
+    wet.connect(send);
+    const r = rng(Math.floor(when * 1000));
+    switch (name) {
+      case "tick": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.frequency.value = 3000 + r() * 1500;
+        f.Q.value = 3;
+        f.connect(g);
+        noiseSrc(f, when, when + 0.06);
+        env(g, when, 0.5 * v, 0.001, 0.004, 0.025);
+        break;
+      }
+      case "click": {
+        osc("square", 1400, g, when, when + 0.06);
+        env(g, when, 0.12 * v, 0.001, 0.005, 0.03);
+        break;
+      }
+      case "ding": {
+        osc("sine", 1046.5 * tr, g, when, when + 1.6);
+        osc("sine", 1568 * tr, g, when, when + 1.6);
+        env(g, when, 0.16 * v, 0.004, 0.02, 1.4);
+        break;
+      }
+      case "chime": {
+        [0, 4, 7].forEach((st, i) => {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + i * 0.07;
+          osc("sine", 1046.5 * tr * Math.pow(2, st / 12), gi, t, t + 1);
+          env(gi, t, 0.14 * v, 0.003, 0.01, 0.9);
+        });
+        g.gain.value = 1;
+        break;
+      }
+      case "sparkle": {
+        for (let i = 0; i < 6; i++) {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + r() * 0.5;
+          osc("sine", 2000 + r() * 2200, gi, t, t + 0.2);
+          env(gi, t, 0.07 * v, 0.002, 0.01, 0.12);
+        }
+        break;
+      }
+      case "whoosh":
+      case "revswell": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.Q.value = 0.8;
+        f.frequency.setValueAtTime(300, when);
+        f.frequency.exponentialRampToValueAtTime(name === "whoosh" ? 2400 : 3200, when + dur);
+        f.connect(g);
+        noiseSrc(f, when, when + dur + 0.1);
+        g.gain.setValueAtTime(0.0001, when);
+        if (name === "whoosh") {
+          g.gain.linearRampToValueAtTime(0.3 * v, when + dur * 0.5);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur);
+        } else {
+          g.gain.exponentialRampToValueAtTime(0.28 * v + 0.0002, when + dur);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur + 0.06);
+        }
+        break;
+      }
+      case "thud": {
+        const o = osc("sine", 110, g, when, when + 0.4);
+        o.frequency.setValueAtTime(110, when);
+        o.frequency.exponentialRampToValueAtTime(45, when + 0.18);
+        env(g, when, 0.5 * v, 0.002, 0.02, 0.3);
+        break;
+      }
+      case "boing": {
+        const o = osc("sine", 220 * tr, g, when, when + 0.5);
+        o.frequency.setValueAtTime(220 * tr, when);
+        o.frequency.linearRampToValueAtTime(520 * tr, when + 0.12);
+        o.frequency.linearRampToValueAtTime(300 * tr, when + 0.4);
+        env(g, when, 0.2 * v, 0.005, 0.05, 0.35);
+        break;
+      }
+      default: {
+        // pop, and any name this synth does not know.
+        const o = osc("sine", 600 * tr, g, when, when + 0.2);
+        o.frequency.setValueAtTime(600 * tr, when);
+        o.frequency.exponentialRampToValueAtTime(1200 * tr, when + 0.06);
+        env(g, when, 0.3 * v, 0.002, 0.01, 0.12);
+      }
+    }
+  }
+
+  // ── Playback ───────────────────────────────────────────────────────────────
+  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1 };
+  let instances = [];
+
+  function sceneAt(t) {
+    for (let i = scenes.length - 1; i >= 0; i--) if (t >= scenes[i].start) return i;
+    return 0;
+  }
+
+  function renderAt(t) {
+    const i = sceneAt(t);
+    if (i !== state.current) {
+      instances.forEach((inst, k) => { inst.box.style.display = k === i ? "block" : "none"; });
+      state.current = i;
+    }
+    const inst = instances[i];
+    inst.def.render.call(inst.def, (Math.min(t, END - 1e-4) - inst.sc.start) / inst.sc.k, inst.kit);
+    ui.update(t);
+  }
+
+  function now() { return performance.now() / 1000; }
+
+  function play() {
+    if (state.t >= END - 0.01) state.t = 0;
+    state.playing = true;
+    state.wall0 = now();
+    state.t0 = state.t;
+    startSession(state.t);
+    ui.update(state.t);
+  }
+  function pause() {
+    state.playing = false;
+    stopSession();
+    ui.update(state.t);
+  }
+  function seek(t) {
+    state.t = clamp(t, 0, END);
+    state.wall0 = now();
+    state.t0 = state.t;
+    if (state.playing) startSession(state.t);
+    renderAt(state.t);
+  }
+  function tick() {
+    if (state.playing) {
+      state.t = state.t0 + (now() - state.wall0);
+      if (state.t >= END) {
+        state.t = END;
+        pause();
+      }
+      renderAt(state.t);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  async function enableAudio() {
+    if (audio.enabled) return;
+    if (!audio.ctx && !setupAudio()) return;
+    try { await audio.ctx.resume(); } catch (e) { /* stays suspended */ }
+    if (audio.ctx.state !== "running") return;
+    audio.enabled = true;
+    ui.sound();
+    if (state.playing) startSession(state.t);
+  }
+
+  // ── Controls ───────────────────────────────────────────────────────────────
+  const fmt = (t) => {
+    const s = Math.max(0, Math.floor(t));
+    return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  };
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" fill="currentColor"/></svg>',
+    replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6.5l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z" fill="currentColor"/></svg>',
+    on: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    off: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    full: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+
+  // ── Full screen ────────────────────────────────────────────────────────────
+  // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
+  // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
+  // course page the player asks the parent to grow the lesson to fill the whole screen instead.
+  const embedded = window.parent !== window;
+  const root = document.documentElement;
+  const fs = {
+    native: !!(document.fullscreenEnabled || document.webkitFullscreenEnabled),
+    pseudo: false,
+    available() { return this.native || embedded; },
+    active() { return !!(document.fullscreenElement || document.webkitFullscreenElement) || this.pseudo; },
+    async toggle() {
+      if (this.native) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* not locked */ }
+          await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        try {
+          await (root.requestFullscreen || root.webkitRequestFullscreen).call(root, { navigationUI: "hide" });
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock("landscape").catch(() => {});
+          return;
+        } catch (e) {
+          if (!embedded) return; // refused: fall through to the parent page below
+        }
+      }
+      this.pseudo = !this.pseudo;
+      window.parent.postMessage({ type: "futures-edge:fullscreen", on: this.pseudo }, location.origin);
+      ui.full();
+    },
+  };
+  document.addEventListener("fullscreenchange", () => ui.full());
+  document.addEventListener("webkitfullscreenchange", () => ui.full());
+  const ui = (() => {
+    const bar = h(
+      '<div class="fe-ui" role="group" aria-label="Lesson controls">' +
+        '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
+        '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
+        '<span class="fe-time"></span>' +
+        (lines.length ? '<button type="button" class="fe-btn fe-cc" aria-pressed="true" aria-label="Captions">CC</button>' : "") +
+        '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
+        (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
+      "</div>"
+    );
+    const hint = h('<button type="button" class="fe-hint">Click anywhere for sound</button>');
+    const cap = h('<p class="fe-cap" aria-live="off"></p>');
+    document.body.append(cap, bar, hint);
+    const cc = bar.querySelector(".fe-cc");
+    const fsb = bar.querySelector(".fe-fs");
+    if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
+    let ccOn = true, capText = null;
+    if (cc) cc.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ccOn = !ccOn;
+      cc.setAttribute("aria-pressed", String(ccOn));
+      capText = null;
+      api.update(state.t);
+    });
+    const pp = bar.querySelector(".fe-pp");
+    const trk = bar.querySelector(".fe-track");
+    const fill = trk.querySelector("i");
+    const time = bar.querySelector(".fe-time");
+    const snd = bar.querySelector(".fe-snd");
+    trk.setAttribute("aria-valuemax", String(Math.round(END)));
+    let idle = 0;
+    const wake = () => {
+      document.body.classList.remove("fe-idle");
+      clearTimeout(idle);
+      idle = setTimeout(() => { if (state.playing) document.body.classList.add("fe-idle"); }, 2600);
+    };
+    document.addEventListener("pointermove", wake);
+    pp.addEventListener("click", (e) => { e.stopPropagation(); enableAudio(); state.playing ? pause() : play(); wake(); });
+    snd.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (!audio.enabled) { await enableAudio(); return; }
+      audio.muted = !audio.muted;
+      if (audio.muted) stopSession(); else if (state.playing) startSession(state.t);
+      api.sound();
+    });
+    const seekTo = (clientX) => {
+      const r = trk.getBoundingClientRect();
+      seek(clamp01((clientX - r.left) / r.width) * END);
+    };
+    let drag = false;
+    trk.addEventListener("pointerdown", (e) => { e.stopPropagation(); enableAudio(); drag = true; trk.setPointerCapture(e.pointerId); seekTo(e.clientX); });
+    trk.addEventListener("pointermove", (e) => { if (drag) seekTo(e.clientX); });
+    trk.addEventListener("pointerup", () => { drag = false; });
+    trk.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { seek(state.t + 5); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { seek(state.t - 5); e.preventDefault(); }
+    });
+    // The first click anywhere turns the sound on; later clicks on the lesson pause and resume.
+    document.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".fe-ui")) return;
+      if (!audio.enabled) { enableAudio(); return; }
+      state.playing ? pause() : play();
+      wake();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
+      if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === "Escape" && fs.pseudo) fs.toggle();
+    });
+    const api = {
+      update(t) {
+        const done = !state.playing && t >= END - 0.01;
+        pp.innerHTML = state.playing ? ICON.pause : done ? ICON.replay : ICON.play;
+        pp.setAttribute("aria-label", state.playing ? "Pause" : done ? "Replay" : "Play");
+        fill.style.width = ((t / END) * 100).toFixed(3) + "%";
+        trk.setAttribute("aria-valuenow", String(Math.round(t)));
+        time.textContent = fmt(t) + " / " + fmt(END);
+        let text = "";
+        if (ccOn) for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = l.text;
+        if (text !== capText) {
+          capText = text;
+          cap.textContent = text;
+          cap.hidden = !text;
+        }
+        if (!state.playing) wake();
+      },
+      sound() {
+        const on = audio.enabled && !audio.muted;
+        snd.innerHTML = on ? ICON.on : ICON.off;
+        snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
+        hint.hidden = audio.enabled;
+      },
+      full() {
+        if (!fsb) return;
+        const on = fs.active();
+        fsb.innerHTML = on ? ICON.exit : ICON.full;
+        fsb.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+      },
+    };
+    api.sound();
+    api.full();
+    wake();
+    return api;
+  })();
+
+  // For tests and frame-by-frame capture: window.lessonPlayer.ready.then(() => { pause(); seek(12.5); }).
+  let markReady;
+  window.lessonPlayer = {
+    duration: END,
+    ready: new Promise((r) => { markReady = r; }),
+    play, pause, seek,
+    time: () => state.t,
+    score: () => audio.score,
+    voice: () => ({ lines, loaded: !!audio.voiceBuf, playing: !!(audio.session && audio.session.voice) }),
+  };
+
+  // ── Boot ───────────────────────────────────────────────────────────────────
+  async function boot() {
+    if (F.voice) {
+      audio.voiceData = fetch(F.voice.src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+    }
+    try {
+      await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
+    } catch (e) { /* system fonts stand in */ }
+    run("shared.js", makeKit(stage, 0, OLD_END));
+    for (const sc of scenes) {
+      const box = el("div", { class: "fe-scene" });
+      stage.append(box);
+      const kit = makeKit(box, sc.oldStart, sc.oldDur);
+      run("scene-" + sc.id + ".js", kit);
+      const def = defs[sc.id];
+      if (def && def.init) await def.init.call(def, kit);
+      instances.push({ sc, def, box, kit });
+    }
+    if (modules["score.js"]) run("score.js", makeKit(stage, 0, OLD_END));
+    audio.score = recordScore();
+    // Wait (briefly) for the images so the first frames do not pop in.
+    const imgs = Array.from(stage.querySelectorAll("img"));
+    await Promise.race([
+      Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })))),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+    instances.forEach((inst) => { inst.box.style.display = "none"; });
+    renderAt(0);
+    document.body.classList.add("fe-ready");
+    // A parent page that allows autoplay (iframe allow="autoplay" after a click) gets sound
+    // straight away; otherwise the first click turns it on.
+    if (setupAudio() && audio.ctx.state === "running") { audio.enabled = true; ui.sound(); }
+    play();
+    requestAnimationFrame(tick);
+    markReady();
+  }
+  boot().catch((e) => {
+    document.querySelector(".fe-loading").textContent = "This lesson could not start. Please reload the page.";
+    throw e;
+  });
+})();
+
+</script>
+</body>
+</html>

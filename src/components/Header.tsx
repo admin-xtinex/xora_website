@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { LINKS, NAV } from "@/lib/content";
-import { cn, scrollToId } from "@/lib/utils";
+import { linkClick, usePath } from "@/lib/router";
+import { cn } from "@/lib/utils";
 import { MagneticButton } from "./ui/MagneticButton";
 
 export function BrandLockup() {
@@ -15,10 +16,16 @@ export function BrandLockup() {
   );
 }
 
+// Home-page sections the scroll highlight follows (everything except the course page).
+const SECTIONS = NAV.filter((n) => n.href.startsWith("/#") || n.href === "/");
+
 export function Header() {
+  const path = usePath();
+  const onCourse = path === "/course";
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string>("home");
+  const [section, setSection] = useState<string>("home");
   const [open, setOpen] = useState(false);
+  const active = onCourse ? "course" : section;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -27,18 +34,19 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll-spy: the active item is the last nav section whose top has passed 40% of the viewport.
+  // Scroll highlight on the home page: the last section whose top has passed 40% of the viewport.
   useEffect(() => {
+    if (onCourse) return;
     let raf = 0;
     const update = () => {
       raf = 0;
       const line = window.innerHeight * 0.4;
-      let current: string = NAV[0].id;
-      for (const n of NAV) {
+      let current = "home";
+      for (const n of SECTIONS) {
         const el = document.getElementById(n.id);
         if (el && el.getBoundingClientRect().top <= line) current = n.id;
       }
-      setActive(current);
+      setSection(current);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -51,7 +59,7 @@ export function Header() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [onCourse]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -60,23 +68,15 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const go = (id: string) => {
-    setOpen(false);
-    scrollToId(id);
-  };
+  // Close the mobile menu whenever the page changes.
+  useEffect(() => setOpen(false), [path]);
+
+  const close = () => setOpen(false);
 
   return (
     <header className={cn("site-header", scrolled && "is-scrolled", open && "is-open")}>
       <div className="header-inner">
-        <a
-          href="#home"
-          className="brand-link"
-          aria-label="XTINEX XORA — back to top"
-          onClick={(e) => {
-            e.preventDefault();
-            go("home");
-          }}
-        >
+        <a href="/" className="brand-link" aria-label="XTINEX XORA — home" onClick={linkClick("/", close)}>
           <BrandLockup />
         </a>
 
@@ -85,13 +85,10 @@ export function Header() {
             {NAV.map((item) => (
               <li key={item.id}>
                 <a
-                  href={`#${item.id}`}
-                  aria-current={active === item.id ? "true" : undefined}
+                  href={item.href}
+                  aria-current={active === item.id ? (item.id === "course" ? "page" : "true") : undefined}
                   className={cn(active === item.id && "is-active")}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    go(item.id);
-                  }}
+                  onClick={linkClick(item.href)}
                 >
                   {item.label}
                 </a>
@@ -101,10 +98,12 @@ export function Header() {
         </nav>
 
         <div className="header-end">
-          <MagneticButton href={LINKS.getStarted} variant="ghost" className="header-cta">
-            Get Started
-            <ArrowRight size={16} aria-hidden />
-          </MagneticButton>
+          {!onCourse ? (
+            <MagneticButton href={LINKS.getStarted} variant="ghost" className="header-cta">
+              Get Started
+              <ArrowRight size={16} aria-hidden />
+            </MagneticButton>
+          ) : null}
           <button
             type="button"
             className="menu-toggle"
@@ -122,20 +121,20 @@ export function Header() {
         {NAV.map((item, i) => (
           <a
             key={item.id}
-            href={`#${item.id}`}
+            href={item.href}
+            aria-current={active === item.id ? "true" : undefined}
             style={{ transitionDelay: `${i * 40}ms` }}
-            onClick={(e) => {
-              e.preventDefault();
-              go(item.id);
-            }}
+            onClick={linkClick(item.href, close)}
           >
             {item.label}
           </a>
         ))}
-        <MagneticButton href={LINKS.getStarted} onClick={() => setOpen(false)}>
-          Get Started
-          <ArrowRight size={16} aria-hidden />
-        </MagneticButton>
+        {!onCourse ? (
+          <MagneticButton href={LINKS.getStarted} onClick={close}>
+            Get Started
+            <ArrowRight size={16} aria-hidden />
+          </MagneticButton>
+        ) : null}
       </div>
     </header>
   );

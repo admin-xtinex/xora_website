@@ -2,6 +2,7 @@ import { useRef, useState, type PointerEvent } from "react";
 import { motion, type MotionValue, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowRight, BookOpen, Play } from "lucide-react";
 import { HERO, LINKS } from "@/lib/content";
+import { linkClick } from "@/lib/router";
 import { HeroScene } from "./HeroScene";
 import { OverviewDialog } from "./OverviewDialog";
 import { Icon } from "./ui/Icon";
@@ -155,10 +156,7 @@ export function HeroSection() {
         href="#what"
         className="scroll-cue"
         aria-label="Scroll to what XORA does"
-        onClick={(e) => {
-          e.preventDefault();
-          document.getElementById("what")?.scrollIntoView({ behavior: "smooth" });
-        }}
+        onClick={linkClick("#what")}
       >
         <span />
       </a>

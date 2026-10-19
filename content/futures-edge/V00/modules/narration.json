@@ -1,0 +1,231 @@
+{
+  "about": "V00 voiceover script for ElevenLabs. Female tutor voice, warm and clear, unhurried. Each line is generated as its own clip and placed at film time t (seconds). say = what is spoken when it differs from text.",
+  "model": "eleven_multilingual_v2",
+  "lines": [
+    {
+      "id": "s1",
+      "scene": "signal",
+      "t": 0.5,
+      "text": "At first, markets look like noise. This course teaches you to read them, step by step."
+    },
+    {
+      "id": "w1",
+      "scene": "welcome",
+      "t": 9.5,
+      "text": "Hi, I'm your XORA tutor! Welcome to Futures Edge."
+    },
+    {
+      "id": "w2",
+      "scene": "welcome",
+      "t": 12.2,
+      "text": "Twenty-three short lessons, five phases, and no experience needed. Pause and replay any time."
+    },
+    {
+      "id": "f1",
+      "scene": "for-you",
+      "t": 18.4,
+      "text": "Never traded before? Not sure what BTC or USDT means? That's completely fine.",
+      "say": "Never traded before? Not sure what B T C, or U S D T means? That's completely fine."
+    },
+    {
+      "id": "f2",
+      "scene": "for-you",
+      "t": 24.4,
+      "text": "Every new word is explained before we use it."
+    },
+    {
+      "id": "l1",
+      "scene": "lesson",
+      "t": 28.3,
+      "text": "Each lesson works in five ways."
+    },
+    {
+      "id": "l2",
+      "scene": "lesson",
+      "t": 30.9,
+      "text": "Watch a short animation."
+    },
+    {
+      "id": "l3",
+      "scene": "lesson",
+      "t": 33.9,
+      "text": "Read simple notes."
+    },
+    {
+      "id": "l4",
+      "scene": "lesson",
+      "t": 36.9,
+      "text": "Flip through short slides."
+    },
+    {
+      "id": "l5",
+      "scene": "lesson",
+      "t": 39.9,
+      "text": "Try it yourself, with fictional prices."
+    },
+    {
+      "id": "l6",
+      "scene": "lesson",
+      "t": 42.9,
+      "text": "Then take a quick quiz. Every answer is explained."
+    },
+    {
+      "id": "p1",
+      "scene": "phases",
+      "t": 46.4,
+      "text": "Here's the path we'll walk together."
+    },
+    {
+      "id": "p2",
+      "scene": "phases",
+      "t": 49.7,
+      "text": "First, crypto foundations: what crypto is, and why prices move."
+    },
+    {
+      "id": "p3",
+      "scene": "phases",
+      "t": 53.2,
+      "text": "Then trading basics: long and short, orders, profit, loss and fees."
+    },
+    {
+      "id": "p4",
+      "scene": "phases",
+      "t": 56.7,
+      "text": "Next, how futures work, with margin, leverage and liquidation."
+    },
+    {
+      "id": "p5",
+      "scene": "phases",
+      "t": 60.2,
+      "text": "Then reading charts: candlesticks, trends and key levels."
+    },
+    {
+      "id": "p6",
+      "scene": "phases",
+      "t": 63.7,
+      "text": "And finally, scalping and risk management."
+    },
+    {
+      "id": "p7",
+      "scene": "phases",
+      "t": 67.2,
+      "text": "Three short checkpoints show you what to review."
+    },
+    {
+      "id": "d1",
+      "scene": "demo-only",
+      "t": 70.4,
+      "text": "Before we start: this course is for learning and demo practice only."
+    },
+    {
+      "id": "d2",
+      "scene": "demo-only",
+      "t": 75.5,
+      "text": "There's no live trading, and no real money."
+    },
+    {
+      "id": "d3",
+      "scene": "demo-only",
+      "t": 77.7,
+      "text": "We will never ask for your passwords, OTP codes or API keys.",
+      "say": "We will never ask for your passwords, O T P codes, or A P I keys."
+    },
+    {
+      "id": "d4",
+      "scene": "demo-only",
+      "t": 80.0,
+      "text": "And every price you see is fictional."
+    },
+    {
+      "id": "d5",
+      "scene": "demo-only",
+      "t": 82.4,
+      "text": "Practise first. Real money is never needed here."
+    },
+    {
+      "id": "r1",
+      "scene": "risk",
+      "t": 86.4,
+      "text": "Futures can lose money quickly."
+    },
+    {
+      "id": "r2",
+      "scene": "risk",
+      "t": 87.6,
+      "text": "Leverage makes losses bigger, not just gains."
+    },
+    {
+      "id": "r3",
+      "scene": "risk",
+      "t": 89.2,
+      "text": "Fees can turn a small win into a loss."
+    },
+    {
+      "id": "r4",
+      "scene": "risk",
+      "t": 90.9,
+      "text": "And signals can be wrong."
+    },
+    {
+      "id": "r5",
+      "scene": "risk",
+      "t": 92.9,
+      "text": "So you always have three choices: buy, sell, or wait."
+    },
+    {
+      "id": "r6",
+      "scene": "risk",
+      "t": 95.6,
+      "text": "If you're not sure, waiting is a decision too."
+    },
+    {
+      "id": "o1",
+      "scene": "outcomes",
+      "t": 100.3,
+      "text": "By the end, you should be able to:"
+    },
+    {
+      "id": "o2",
+      "scene": "outcomes",
+      "t": 101.8,
+      "text": "read the BTC USDT pair,",
+      "say": "read the B T C, U S D T pair,"
+    },
+    {
+      "id": "o3",
+      "scene": "outcomes",
+      "t": 103.05,
+      "text": "read a candlestick chart,"
+    },
+    {
+      "id": "o4",
+      "scene": "outcomes",
+      "t": 104.3,
+      "text": "tell spot from futures,"
+    },
+    {
+      "id": "o5",
+      "scene": "outcomes",
+      "t": 105.55,
+      "text": "explain why leverage is risky,"
+    },
+    {
+      "id": "o6",
+      "scene": "outcomes",
+      "t": 106.8,
+      "text": "and know when not to trade."
+    },
+    {
+      "id": "o7",
+      "scene": "outcomes",
+      "t": 108.2,
+      "text": "One lesson at a time."
+    },
+    {
+      "id": "e1",
+      "scene": "start",
+      "t": 111.3,
+      "text": "Up next: lesson one. What is cryptocurrency? See you there!"
+    }
+  ]
+}

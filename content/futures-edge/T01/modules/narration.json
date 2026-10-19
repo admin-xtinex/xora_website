@@ -1,0 +1,210 @@
+{
+  "about": "T01 voiceover script for ElevenLabs (female tutor voice, warm, clear, unhurried). Each line is generated as its own clip and placed at film time t (seconds). say = spoken form when it differs from text.",
+  "model": "eleven_multilingual_v2",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson one: what is cryptocurrency? Let's start at the very beginning."
+    },
+    {
+      "t": 8.4,
+      "text": "You've probably seen a screen like this. Prices that never sit still."
+    },
+    {
+      "t": 12.6,
+      "text": "BTC keeps moving. But what is BTC, really? By the end of this lesson, you'll know."
+    },
+    {
+      "t": 22.4,
+      "text": "Let's start with money. Money is value that people agree to accept."
+    },
+    {
+      "t": 26.8,
+      "text": "You hand it over, and you get food, a bus ticket, or rent paid."
+    },
+    {
+      "t": 29.6,
+      "text": "And most money today is already just numbers, stored in a bank's computers."
+    },
+    {
+      "t": 33.4,
+      "text": "Value is what something is worth to people. Money is a shared way to store and exchange it."
+    },
+    {
+      "t": 40.4,
+      "text": "A digital asset is anything of value that exists only as digital records."
+    },
+    {
+      "t": 44.2,
+      "text": "A bank balance. Points in a game. Airline miles."
+    },
+    {
+      "t": 48.2,
+      "text": "Cryptocurrency is one kind of digital asset, like BTC and ETH. But not every digital asset is crypto."
+    },
+    {
+      "t": 56.4,
+      "text": "Here's the key idea. Say a friend sends you a small amount of crypto."
+    },
+    {
+      "t": 60.6,
+      "text": "The payment is written into a shared record, called a ledger."
+    },
+    {
+      "t": 64.6,
+      "text": "Many computers around the world keep a copy, and they check each other."
+    },
+    {
+      "t": 68.8,
+      "text": "The records are grouped into blocks, linked in order. That's the blockchain."
+    },
+    {
+      "t": 73.0,
+      "text": "So there's no bank in the middle. The network keeps the record."
+    },
+    {
+      "t": 78.4,
+      "text": "Meet Bitcoin, symbol B T C: the first and best-known cryptocurrency."
+    },
+    {
+      "t": 82.4,
+      "text": "It launched in 2009, and no more than twenty-one million bitcoin can ever exist."
+    },
+    {
+      "t": 86.6,
+      "text": "One bitcoin can be split into tiny parts, so you can own a small piece, like 0.002 BTC.",
+      "say": "One bitcoin can be split into tiny parts, so you can own a small piece, like zero point zero zero two B T C."
+    },
+    {
+      "t": 92.4,
+      "text": "Here's a common mistake. There is no coin inside your phone."
+    },
+    {
+      "t": 97.6,
+      "text": "A wallet holds keys, which prove you control your crypto. The coins themselves are entries on the blockchain."
+    },
+    {
+      "t": 103.0,
+      "text": "On an exchange, the exchange holds the keys for you. Lose your keys, and you can lose access."
+    },
+    {
+      "t": 108.4,
+      "text": "Two words you'll hear: coins and tokens. A coin runs on its own blockchain."
+    },
+    {
+      "t": 112.4,
+      "text": "A token is built on top of an existing one. USDT is a token designed to track the US dollar.",
+      "say": "A token is built on top of an existing one. U S D T is a token designed to track the US dollar."
+    },
+    {
+      "t": 120.4,
+      "text": "Now a worked example. What is my BTC worth?"
+    },
+    {
+      "t": 122.8,
+      "text": "Say you hold 0.002 BTC, and one BTC costs 60,000 USDT.",
+      "say": "Say you hold zero point zero zero two B T C, and one B T C costs sixty thousand U S D T."
+    },
+    {
+      "t": 127.4,
+      "text": "Amount times price: 120 USDT. That's all it is.",
+      "say": "Amount times price: one hundred and twenty U S D T. That's all it is."
+    },
+    {
+      "t": 136.4,
+      "text": "Now watch what happens when the price moves."
+    },
+    {
+      "t": 139.6,
+      "text": "The price rises to 63,000. Your value rises to 126.",
+      "say": "The price rises to sixty-three thousand. Your value rises to one hundred and twenty-six."
+    },
+    {
+      "t": 145.8,
+      "text": "Then it falls to 57,000. Your value falls to 114.",
+      "say": "Then it falls to fifty-seven thousand. Your value falls to one hundred and fourteen."
+    },
+    {
+      "t": 150.8,
+      "text": "Notice: you still hold the same 0.002 BTC. Only its value changed.",
+      "say": "Notice: you still hold the same zero point zero zero two B T C. Only its value changed."
+    },
+    {
+      "t": 156.6,
+      "text": "Your turn. You hold 0.002 BTC, and the price is 65,000 USDT. What is it worth? Pause if you need more time.",
+      "say": "Your turn. You hold zero point zero zero two B T C, and the price is sixty-five thousand U S D T. What is it worth? Pause if you need more time."
+    },
+    {
+      "t": 165.2,
+      "text": "The answer: 130 USDT. Well done if you got it.",
+      "say": "The answer: one hundred and thirty U S D T. Well done if you got it."
+    },
+    {
+      "t": 172.4,
+      "text": "Quick check: crypto, or not crypto?"
+    },
+    {
+      "t": 176.0,
+      "text": "Bitcoin: crypto. Game points: not crypto. Ether: crypto. A bank balance: not crypto."
+    },
+    {
+      "t": 183.6,
+      "text": "And USDT? It counts too. It's a crypto token.",
+      "say": "And U S D T? It counts too. It's a crypto token."
+    },
+    {
+      "t": 188.4,
+      "text": "Before you go further, know the risks."
+    },
+    {
+      "t": 190.6,
+      "text": "No government stands behind crypto. If something goes wrong, nobody has to pay you back."
+    },
+    {
+      "t": 195.0,
+      "text": "Prices can rise or fall a lot in a single day."
+    },
+    {
+      "t": 198.4,
+      "text": "Lose your keys, or get tricked by a scammer, and your crypto can be gone for good."
+    },
+    {
+      "t": 202.0,
+      "text": "And owning BTC is not the same as trading futures, which are contracts about its price. We'll cover those later."
+    },
+    {
+      "t": 205.6,
+      "text": "Learn first, and never risk money you can't afford to lose."
+    },
+    {
+      "t": 210.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 211.6,
+      "text": "Cryptocurrency is a digital asset recorded on a shared blockchain."
+    },
+    {
+      "t": 214.4,
+      "text": "A wallet holds keys. The coins live on the blockchain."
+    },
+    {
+      "t": 216.8,
+      "text": "And value equals amount times price. The amount stays; the value moves."
+    },
+    {
+      "t": 219.6,
+      "text": "Check yourself: if BTC falls ten percent, what happens to your 0.002 BTC?",
+      "say": "Check yourself: if B T C falls ten percent, what happens to your zero point zero zero two B T C?"
+    },
+    {
+      "t": 224.2,
+      "text": "You still hold 0.002 BTC. Its value falls by ten percent.",
+      "say": "You still hold zero point zero zero two B T C. Its value falls by ten percent."
+    },
+    {
+      "t": 228.6,
+      "text": "Great start! Next up: why do crypto prices move? See you in lesson two."
+    }
+  ]
+}

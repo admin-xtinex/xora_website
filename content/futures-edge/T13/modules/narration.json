@@ -1,0 +1,213 @@
+{
+  "about": "T13 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson thirteen: liquidation, funding and futures risks. What can close a position for you."
+    },
+    {
+      "t": 8.4,
+      "text": "Imagine you open a 10x long. Then BTC falls, and you see this."
+    },
+    {
+      "t": 13.4,
+      "text": "Your position was closed by the exchange. You didn't press anything."
+    },
+    {
+      "t": 18.7,
+      "text": "That's called liquidation. Let's see how it happens, step by step."
+    },
+    {
+      "t": 26.4,
+      "text": "Start with your margin balance: your margin plus the open profit or loss."
+    },
+    {
+      "t": 32.1,
+      "text": "A 10x long: 100 USDT of margin, 1,000 USDT notional, entry 60,000."
+    },
+    {
+      "t": 37.3,
+      "text": "BTC falls 1%: 90 left. Falls 3%: 70 left. Falls 5%: only 50 left."
+    },
+    {
+      "t": 42.4,
+      "text": "Each fall eats into the room left above the maintenance level."
+    },
+    {
+      "t": 48.4,
+      "text": "Liquidation is a forced closure. The exchange closes your position for you."
+    },
+    {
+      "t": 54.2,
+      "text": "It happens when your margin balance falls to the maintenance level."
+    },
+    {
+      "t": 59.5,
+      "text": "You don't choose the price or the moment. Most or all of the margin can be gone."
+    },
+    {
+      "t": 65.6,
+      "text": "Like a rental firm taking the car back early. Each exchange has its own rules."
+    },
+    {
+      "t": 72.4,
+      "text": "Leverage changes how much room you have."
+    },
+    {
+      "t": 75.9,
+      "text": "Same 1,000 USDT position. At 10x you put in 100. At 4x, 250."
+    },
+    {
+      "t": 80.7,
+      "text": "A 5% fall costs 50 USDT either way. At 10x, half your margin is gone. At 4x, a fifth."
+    },
+    {
+      "t": 87.2,
+      "text": "More room is not safety. A big enough move can reach any level."
+    },
+    {
+      "t": 93.4,
+      "text": "Exchanges usually check liquidation against the mark price, not only the last trade."
+    },
+    {
+      "t": 99.8,
+      "text": "The mark price is a reference price the exchange works out, often from several markets."
+    },
+    {
+      "t": 106.4,
+      "text": "Here one odd trade spikes down. The last price jumps. The mark price moves much less."
+    },
+    {
+      "t": 112.9,
+      "text": "But in a real crash, it falls too."
+    },
+    {
+      "t": 117.4,
+      "text": "Now funding. Perpetual futures never expire, so they need a way to stay near the spot price."
+    },
+    {
+      "t": 124.3,
+      "text": "The funding rate sets a payment between longs and shorts, at set times, often every 8 hours."
+    },
+    {
+      "t": 131.2,
+      "text": "Positive rate: longs pay shorts. Negative rate: shorts pay longs."
+    },
+    {
+      "t": 136.3,
+      "text": "Example: 1,000 USDT times 0.01% is 0.10 USDT each time."
+    },
+    {
+      "t": 141.4,
+      "text": "Funding adds up when you hold a position for a long time."
+    },
+    {
+      "t": 146.0,
+      "text": "Three times a day for three days is nine payments: 0.90 USDT at 1,000 notional."
+    },
+    {
+      "t": 152.1,
+      "text": "At 10,000 notional, 9 USDT. Real rates change, and can be much higher."
+    },
+    {
+      "t": 157.6,
+      "text": "Funding comes out of your margin balance too."
+    },
+    {
+      "t": 162.4,
+      "text": "Gap risk. Sometimes price jumps from one level to another, with no trades in between."
+    },
+    {
+      "t": 168.9,
+      "text": "Your stop-loss is at 59,000. News hits. Price jumps from 59,600 straight to 58,300."
+    },
+    {
+      "t": 175.2,
+      "text": "The stop triggers, but it fills near 58,300. A bigger loss than planned."
+    },
+    {
+      "t": 180.8,
+      "text": "A gap can bring liquidation just as suddenly."
+    },
+    {
+      "t": 185.4,
+      "text": "A common mistake: thinking a stop-loss protects you from liquidation."
+    },
+    {
+      "t": 190.8,
+      "text": "With high leverage, the liquidation zone can sit closer than your stop."
+    },
+    {
+      "t": 196.3,
+      "text": "Then the position is liquidated before the stop is ever reached."
+    },
+    {
+      "t": 201.4,
+      "text": "And in a gap, a stop can fill late. A stop-loss is not liquidation insurance."
+    },
+    {
+      "t": 208.4,
+      "text": "Your turn. BTC is swinging hard before big news. Your buffer is small. You're unsure."
+    },
+    {
+      "t": 214.9,
+      "text": "What's the sensible choice: A, B or C? Pause if you need more time."
+    },
+    {
+      "t": 220.2,
+      "text": "C. Reduce your exposure or close, then wait. No trade is a real decision."
+    },
+    {
+      "t": 225.9,
+      "text": "Adding leverage to win it back makes the next move hit harder."
+    },
+    {
+      "t": 232.4,
+      "text": "Before you go further, know the risks of futures."
+    },
+    {
+      "t": 236.5,
+      "text": "Liquidation can take most or all of your margin, at a price you didn't choose."
+    },
+    {
+      "t": 242.5,
+      "text": "Funding is paid or charged every period, and the rate keeps changing."
+    },
+    {
+      "t": 247.9,
+      "text": "Gaps and slippage can make exits worse than planned."
+    },
+    {
+      "t": 252.2,
+      "text": "No strategy is guaranteed safe. When unsure, reduce exposure or choose no trade."
+    },
+    {
+      "t": 259.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 261.0,
+      "text": "Liquidation is a forced closure when your margin balance hits the maintenance level."
+    },
+    {
+      "t": 267.4,
+      "text": "Funding is a regular payment between longs and shorts on perpetual futures."
+    },
+    {
+      "t": 273.2,
+      "text": "A stop-loss is not liquidation insurance. Waiting is always allowed."
+    },
+    {
+      "t": 278.5,
+      "text": "Check yourself: can a stop-loss guarantee you won't be liquidated?"
+    },
+    {
+      "t": 283.7,
+      "text": "No. Stops can slip, and liquidation can come first."
+    },
+    {
+      "t": 288.8,
+      "text": "Phase 3 complete! Next up: Checkpoint A, a review of lessons T01 to T13."
+    }
+  ]
+}

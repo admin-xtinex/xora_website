@@ -1,0 +1,221 @@
+{
+  "about": "T12 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson twelve: margin and leverage. Why small price moves can feel very big."
+    },
+    {
+      "t": 8.4,
+      "text": "Two traders each put 100 USDT into the same BTC futures trade."
+    },
+    {
+      "t": 13.3,
+      "text": "BTC rises 2%. Trader A gains 2 USDT. Trader B gains 20 USDT."
+    },
+    {
+      "t": 18.2,
+      "text": "Then BTC falls to 2% below the start. A loses 2. B loses 20."
+    },
+    {
+      "t": 23.0,
+      "text": "Same coin, same move. What made the difference? Leverage."
+    },
+    {
+      "t": 28.4,
+      "text": "First word: margin. Initial margin is the money you set aside to open a futures position."
+    },
+    {
+      "t": 35.1,
+      "text": "Your futures wallet holds 500 USDT. You lock 100 USDT as margin. 400 stays free."
+    },
+    {
+      "t": 41.2,
+      "text": "Think of a deposit on a rented car. Any damage comes out of that deposit."
+    },
+    {
+      "t": 48.4,
+      "text": "Next: notional exposure. That's the full value of the position, in USDT."
+    },
+    {
+      "t": 54.0,
+      "text": "With 100 USDT of margin, you could hold a position worth 1,000 USDT."
+    },
+    {
+      "t": 59.3,
+      "text": "Price moves act on the full 1,000 USDT, not just on your 100."
+    },
+    {
+      "t": 66.4,
+      "text": "Leverage is how many times bigger the position is than your margin."
+    },
+    {
+      "t": 71.7,
+      "text": "At 1x, 100 USDT of margin holds 100 of notional. At 3x, 300. At 10x, 1,000."
+    },
+    {
+      "t": 77.5,
+      "text": "So notional is roughly margin times leverage. Your 100 USDT does not change."
+    },
+    {
+      "t": 83.4,
+      "text": "Leverage is like a magnifying glass. It enlarges every move, good and bad."
+    },
+    {
+      "t": 90.4,
+      "text": "Now one price path, three ways. Each trader is long with 100 USDT of margin."
+    },
+    {
+      "t": 96.3,
+      "text": "BTC rises 2%, to 61,200. 1x makes 2 USDT. 3x makes 6. 10x makes 20."
+    },
+    {
+      "t": 102.2,
+      "text": "Then it falls to 58,800, 2% below the start. Now 1x loses 2, 3x loses 6, 10x loses 20."
+    },
+    {
+      "t": 109.4,
+      "text": "The market moved the same for all three. Leverage only changed the size of the result."
+    },
+    {
+      "t": 117.4,
+      "text": "A worked example. Gross PnL is about notional times the signed percentage move."
+    },
+    {
+      "t": 123.6,
+      "text": "1,000 USDT times minus 2% is minus 20 USDT, before fees and funding."
+    },
+    {
+      "t": 128.9,
+      "text": "Divide by your margin: minus 20 over 100 is minus 20%."
+    },
+    {
+      "t": 133.3,
+      "text": "A 2% price move became 20% of your money."
+    },
+    {
+      "t": 138.4,
+      "text": "This works in both directions. Say BTC falls 10%."
+    },
+    {
+      "t": 142.5,
+      "text": "At 1x, you lose 10 USDT, 10% of your margin. At 10x, you lose 100 USDT: all of it, on paper."
+    },
+    {
+      "t": 149.6,
+      "text": "In reality, the exchange closes the position before that point. That's liquidation."
+    },
+    {
+      "t": 155.9,
+      "text": "Where exactly depends on its rules and costs."
+    },
+    {
+      "t": 160.4,
+      "text": "Maintenance margin is the minimum the exchange needs to keep your position open."
+    },
+    {
+      "t": 166.5,
+      "text": "Your margin balance is your margin plus any open profit or loss. Losses push it down."
+    },
+    {
+      "t": 173.0,
+      "text": "Fall to the maintenance level, and the exchange can close the position. Its rules set the level."
+    },
+    {
+      "t": 181.4,
+      "text": "You also choose a margin mode: isolated or cross."
+    },
+    {
+      "t": 185.5,
+      "text": "Isolated: losses on that position generally stay within the margin you gave it."
+    },
+    {
+      "t": 191.6,
+      "text": "Like a separate envelope of cash. The other 400 USDT is not touched by it."
+    },
+    {
+      "t": 197.3,
+      "text": "Cross: your whole futures balance backs your positions. One loss can reach far more."
+    },
+    {
+      "t": 203.7,
+      "text": "Neither mode is safe. They decide how far a loss can reach."
+    },
+    {
+      "t": 209.4,
+      "text": "A common mistake: thinking leverage is free extra money."
+    },
+    {
+      "t": 213.9,
+      "text": "It isn't. It's extra exposure. Losses on the full 1,000 come out of your 100."
+    },
+    {
+      "t": 219.8,
+      "text": "And no leverage number is safe. Lower leverage only means smaller swings."
+    },
+    {
+      "t": 227.4,
+      "text": "Your turn. Margin 50 USDT, 5x, long. BTC rises 4%. Find the notional, the PnL and the % of margin."
+    },
+    {
+      "t": 236.0,
+      "text": "Notional: 50 times 5 is 250 USDT. PnL: 250 times 4% is plus 10 USDT."
+    },
+    {
+      "t": 241.6,
+      "text": "That's 20% of your margin. Had BTC fallen 4%, it would be minus 10 USDT."
+    },
+    {
+      "t": 247.2,
+      "text": "Did you get it? Well done."
+    },
+    {
+      "t": 250.4,
+      "text": "Before you go further, know the risks."
+    },
+    {
+      "t": 253.7,
+      "text": "Leverage magnifies losses just as much as gains."
+    },
+    {
+      "t": 257.7,
+      "text": "If losses eat your margin, the exchange can close your position. More on that next lesson."
+    },
+    {
+      "t": 264.5,
+      "text": "Fees and funding are charged on the notional, so they grow with leverage."
+    },
+    {
+      "t": 270.2,
+      "text": "There is no safe leverage. And you can always choose WAIT, or no trade."
+    },
+    {
+      "t": 276.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 278.0,
+      "text": "Notional is about margin times leverage."
+    },
+    {
+      "t": 281.5,
+      "text": "Gross PnL is about notional times the signed move, before fees."
+    },
+    {
+      "t": 286.5,
+      "text": "Leverage magnifies gains and losses alike. No leverage is safe."
+    },
+    {
+      "t": 291.5,
+      "text": "Check yourself: 100 USDT of margin at 10x. BTC falls 3%. What's the PnL?"
+    },
+    {
+      "t": 297.1,
+      "text": "Minus 30 USDT, which is 30% of your margin."
+    },
+    {
+      "t": 301.8,
+      "text": "Next up, T13: liquidation, funding and futures risks. See you there!"
+    }
+  ]
+}

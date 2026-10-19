@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CPA · CPA Checkpoint A · XORA Futures Edge</title>
+<meta name="description" content="XORA Futures Edge lesson CPA, an animated lesson (4 min). Education only, not financial advice.">
+<style>
+@font-face { font-family:"Outfit";font-weight:400 700; src: url("CPA/fonts/outfit.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Manrope";font-weight:400 800; src: url("CPA/fonts/manrope.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:400; src: url("CPA/fonts/dm-mono-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:500; src: url("CPA/fonts/dm-mono-500.woff2") format("woff2"); font-display: block; }
+
+html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; color: #eef1f7;
+  font-family: "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden;
+  background: #02030a; transform-origin: 50% 50%;
+  --display: "Outfit", "Manrope", system-ui, sans-serif;
+  --sans: "Manrope", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace; }
+#stage .fe-scene { position: absolute; inset: 0; overflow: hidden; }
+body:not(.fe-ready) #stage { visibility: hidden; }
+.fe-loading { position: fixed; inset: 0; display: grid; place-items: center; margin: 0; font-size: 15px; color: #6b7489; }
+body.fe-ready .fe-loading { display: none; }
+.fe-ui { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 10; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 14px; background: rgba(7, 8, 20, 0.8); border: 1px solid rgba(130, 160, 255, 0.18);
+  backdrop-filter: blur(8px); transition: opacity 0.4s; }
+body.fe-idle .fe-ui { opacity: 0; }
+body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
+.fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
+  background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
+.fe-btn svg { width: 20px; height: 20px; }
+.fe-cc { font: 700 12px/1 "Manrope", system-ui, sans-serif; letter-spacing: 0.04em; color: #6b7489; }
+.fe-cc[aria-pressed="true"] { color: #eef1f7; box-shadow: inset 0 -2px 0 #3ecbff; }
+/* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
+.fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+  color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
+  transition: bottom 0.4s; pointer-events: none; }
+body.fe-idle .fe-cap { bottom: 20px; }
+.fe-cap[hidden], body:not(.fe-ready) .fe-cap { display: none; }
+.fe-track { position: relative; flex: 1; height: 6px; border-radius: 6px; background: rgba(238, 241, 247, 0.14);
+  cursor: pointer; touch-action: none; }
+.fe-track::before { content: ""; position: absolute; inset: -12px 0; }
+.fe-track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, #3ecbff, #a855f7); }
+.fe-time { flex: none; font: 500 13px/1 "DM Mono", ui-monospace, monospace; color: #b4bccb; font-variant-numeric: tabular-nums; }
+.fe-hint { position: fixed; top: 12px; right: 12px; z-index: 10; padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(62, 203, 255, 0.45); background: rgba(7, 8, 20, 0.82); color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif; }
+.fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
+@media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-height: 420px) {
+  .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
+  .fe-btn { width: 34px; height: 34px; }
+  .fe-btn svg { width: 18px; height: 18px; }
+  .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
+  body.fe-idle .fe-cap { bottom: 8px; }
+  .fe-hint { top: 6px; right: 6px; padding: 7px 12px; font-size: 12px; }
+}
+
+</style>
+</head>
+<body>
+<p class="fe-loading">Loading lesson…</p>
+<div id="stage" aria-label="CPA Checkpoint A" role="img"></div>
+<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/futures-edge/CPA/. Edit the source, not this file. -->
+<script>window.FILM = {"id":"CPA","width":1920,"height":1080,"scenes":[{"id":"title","name":"Checkpoint A","dur":8,"k":1,"oldStart":0,"oldDur":8},{"id":"how","name":"How it works","dur":19,"k":1,"oldStart":8,"oldDur":19},{"id":"q-phish","name":"Q1 account security","dur":21,"k":1,"oldStart":27,"oldDur":21},{"id":"q-spot","name":"Q2 spot vs futures","dur":21,"k":1,"oldStart":48,"oldDur":21},{"id":"q-net","name":"Q3 net result","dur":21,"k":1,"oldStart":69,"oldDur":21},{"id":"q-gap","name":"Q4 stop slippage","dur":21,"k":1,"oldStart":90,"oldDur":21},{"id":"q-lev","name":"Q5 leverage maths","dur":21,"k":1,"oldStart":111,"oldDur":21},{"id":"q-safe","name":"Q6 no safe leverage","dur":21,"k":1,"oldStart":132,"oldDur":21},{"id":"q-stop","name":"Q7 stop vs liquidation","dur":21,"k":1,"oldStart":153,"oldDur":21},{"id":"q-fund","name":"Q8 funding","dur":21,"k":1,"oldStart":174,"oldDur":21},{"id":"safety","name":"Critical safety","dur":30,"k":1,"oldStart":195,"oldDur":30},{"id":"revisit","name":"Where to revisit","dur":20,"k":1,"oldStart":225,"oldDur":20},{"id":"next","name":"Up next","dur":10,"k":1,"oldStart":245,"oldDur":10}],"voice":{"src":null,"lines":[{"t":0.6,"d":7.15,"text":"Checkpoint A. Let's review Phases 1 to 3, with extra care on leverage and safety."},{"t":8.4,"d":6.25,"text":"Eight questions on lessons T01 to T13. Most are about risk, because that matters most."},{"t":14.9,"d":6.15,"text":"Read each question, pick an answer, and pause the video whenever you need more time."},{"t":21.3,"d":5.45,"text":"It's not graded. Missing one just shows you what to revisit."},{"t":27.3,"d":7.05,"text":"Question one, from T04. 'Support' asks for your 2FA code and API secret key. What do you do?"},{"t":34.6,"d":6.35,"text":"C. Never share them. Open the official app yourself and contact support from there."},{"t":41.2,"d":6.55,"text":"B is tempting, but an API secret key can control your account too. Share neither."},{"t":48.3,"d":7.05,"text":"Question two, from T05 and T11. What is the key difference between spot and futures?"},{"t":55.6,"d":6.35,"text":"A. On spot you own the coin. Futures are contracts about its price."},{"t":62.2,"d":6.55,"text":"Not B: futures aren't cheap coins. They use margin, pay funding and can be liquidated."},{"t":69.3,"d":7.05,"text":"Question three, from T06 and T09. Gross +4 USDT. Fees: 3 to enter, 3 to exit. What's the net?"},{"t":76.6,"d":6.35,"text":"C, minus 2 USDT. Net is gross minus all fees: 4 minus 3 minus 3."},{"t":83.2,"d":6.55,"text":"B is only the gross result. Fees are paid whether the trade wins or loses."},{"t":90.3,"d":7.05,"text":"Question four, from T07 and T08. Your stop is at 59,000. Price gaps from 59,300 to 58,600."},{"t":97.6,"d":6.35,"text":"B. Near 58,600, or even worse. A stop is a trigger, not a price guarantee."},{"t":104.2,"d":6.55,"text":"A is the trap. In fast markets, no stop can promise its exact price."},{"t":111.3,"d":7.05,"text":"Question five, from T12. 100 USDT of margin at 10x, long. BTC falls 2%. What's the gross PnL?"},{"t":118.6,"d":6.35,"text":"B, minus 20 USDT. Notional is 1,000, and 1,000 times minus 2% is minus 20."},{"t":125.2,"d":6.55,"text":"A forgets the leverage. The move acts on the whole 1,000: that's 20% of your margin."},{"t":132.3,"d":7.05,"text":"Question six, from T12. Which statement about leverage is true?"},{"t":139.6,"d":6.35,"text":"B. Leverage magnifies gains and losses alike, compared with your margin."},{"t":146.2,"d":6.55,"text":"A is a myth. No leverage number is safe. Lower leverage only means smaller swings."},{"t":153.3,"d":7.05,"text":"Question seven, from T13. Can a stop-loss guarantee you won't be liquidated?"},{"t":160.6,"d":6.35,"text":"B. No. Stops can slip, and with high leverage, liquidation can come first."},{"t":167.2,"d":6.55,"text":"A is the dangerous one. A stop-loss is not liquidation insurance."},{"t":174.3,"d":7.05,"text":"Question eight, from T13. A long with 2,000 USDT notional. Funding rate +0.01%. What happens?"},{"t":181.6,"d":6.35,"text":"A. You pay 0.20 USDT: 2,000 times 0.01%. A positive rate means longs pay shorts."},{"t":188.2,"d":6.55,"text":"B has it backwards. Shorts pay longs only when the rate is negative."},{"t":195.4,"d":3.45,"text":"Before Phase 4, the critical safety points."},{"t":199.1,"d":6.25,"text":"Leverage magnifies losses. No leverage is safe, and liquidation can take your margin."},{"t":205.6,"d":5.05,"text":"A stop-loss is not liquidation insurance. Gaps and slippage happen."},{"t":210.9,"d":6.25,"text":"Never share passwords, OTP or 2FA codes, or API secret keys. Not even with 'support'."},{"t":217.4,"d":7.35,"text":"You can always choose WAIT, or no trade. And in this course, everything is demo only."},{"t":225.4,"d":3.15,"text":"Here's where to look if you missed one."},{"t":228.8,"d":5.55,"text":"Question one: T04. Two: T05 and T11. Three: T06 and T09. Four: T07 and T08."},{"t":234.6,"d":3.35,"text":"Five and six: T12. Seven and eight: T13."},{"t":238.2,"d":6.55,"text":"Rewatch any lesson, no penalty. Leverage and liquidation deserve a second look."},{"t":245.8,"d":8.95,"text":"Phase 4 starts next, with T14: candlesticks. Open, high, low and close. See you there!"}]},"assetBase":"CPA/assets/","assets":{"xtinex-x.png":{"mime":"image/png","w":320,"h":205},"tutor-present.webp":{"mime":"image/webp","w":546,"h":612},"tutor-checklist.webp":{"mime":"image/webp","w":185,"h":161},"tutor-calm.webp":{"mime":"image/webp","w":234,"h":174},"tutor-thumbs.webp":{"mime":"image/webp","w":181,"h":179},"tutor-celebrate.webp":{"mime":"image/webp","w":209,"h":171},"tutor-writing.webp":{"mime":"image/webp","w":191,"h":169},"tutor-explain.webp":{"mime":"image/webp","w":502,"h":602},"tutor-think.webp":{"mime":"image/webp","w":465,"h":656},"tutor-magnify.webp":{"mime":"image/webp","w":187,"h":170},"tutor-hi.webp":{"mime":"image/webp","w":518,"h":594},"tutor-read.webp":{"mime":"image/webp","w":190,"h":181},"tutor-cheer.webp":{"mime":"image/webp","w":207,"h":182},"tutor-confused.webp":{"mime":"image/webp","w":185,"h":169},"tutor-point.webp":{"mime":"image/webp","w":547,"h":568},"tutor-idea.webp":{"mime":"image/webp","w":169,"h":178},"tutor-wv1.webp":{"mime":"image/webp","w":381,"h":448},"tutor-wv2.webp":{"mime":"image/webp","w":374,"h":448},"tutor-wv3.webp":{"mime":"image/webp","w":363,"h":448},"tutor-wv4.webp":{"mime":"image/webp","w":375,"h":446},"tutor-wk0.webp":{"mime":"image/webp","w":353,"h":460},"tutor-wk1.webp":{"mime":"image/webp","w":361,"h":460},"tutor-wk2.webp":{"mime":"image/webp","w":345,"h":460},"tutor-wk3.webp":{"mime":"image/webp","w":365,"h":460},"tutor-wk4.webp":{"mime":"image/webp","w":375,"h":457},"tutor-wk5.webp":{"mime":"image/webp","w":364,"h":457},"tutor-wk6.webp":{"mime":"image/webp","w":354,"h":457},"tutor-wk7.webp":{"mime":"image/webp","w":365,"h":457}},"fontChecks":["400 40px \"Manrope\"","700 40px \"Outfit\"","600 40px \"Outfit\"","400 40px \"DM Mono\"","500 40px \"DM Mono\""],"modules":{"base.css":"#stage { --ground:#02030a; --main:#3ecbff; --second:#eef1f7; --accent:#a855f7; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }\n.ground { position:absolute; inset:0; background:radial-gradient(60% 55% at 88% 6%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), radial-gradient(55% 50% at 6% 98%, color-mix(in srgb, var(--main) 11%, transparent), transparent 70%), var(--ground) }\n.words { position:absolute; margin:0; display:flex; flex-direction:column; gap:24px } .words > * { margin:0 }\n.line { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:84px; line-height:1.05; font-weight:700; letter-spacing:-0.02em; text-wrap:balance }\n.sub { font-size:36px; line-height:1.45; color:color-mix(in srgb, var(--second) 72%, var(--ground)) }\n.kick { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.24em; text-transform:uppercase; color:var(--main) }\n.hl { color:var(--main) } .hv { color:var(--accent) }\n.art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }\n.glass { position:absolute; box-sizing:border-box; border-radius:28px; background:linear-gradient(180deg, color-mix(in srgb, var(--ground) 82%, var(--main)), color-mix(in srgb, var(--ground) 94%, var(--second))); border:1.5px solid color-mix(in srgb, var(--main) 22%, transparent); box-shadow:0 30px 80px rgba(0,0,0,.45) }\n.chip { display:inline-flex; align-items:center; gap:16px; padding:18px 30px; border-radius:999px; font-size:32px; font-weight:600; background:color-mix(in srgb, var(--ground) 88%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent); white-space:nowrap }\n.dot { width:14px; height:14px; border-radius:50%; background:var(--main); flex:none }\n.rule { height:4px; border-radius:4px; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.mono { font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums }\n.fict { font-family:var(--mono, ui-monospace, monospace); font-size:18px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 45%, var(--ground)) }\n.def { font-size:34px; line-height:1.45; font-weight:600 } .def b { color:var(--main); font-weight:700 }\n.lock { display:flex; align-items:center; gap:22px } .lock img { width:92px; height:59px; display:block }\n.lock-xt { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:600; font-size:40px; letter-spacing:.2em }\n.lock-bar { width:2px; height:46px; background:color-mix(in srgb, var(--second) 30%, transparent) }\n.lock-xo { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:700; font-size:40px; letter-spacing:.2em; color:var(--main) }\n.chrome { position:absolute; left:140px; right:140px; top:56px; display:flex; align-items:center; gap:28px; z-index:4 }\n.chrome span { font-family:var(--mono, ui-monospace, monospace); font-size:19px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 55%, var(--ground)); white-space:nowrap }\n.chrome div { flex:1; height:4px; border-radius:4px; background:color-mix(in srgb, var(--second) 10%, transparent); overflow:hidden } .chrome i { display:block; height:100%; width:0; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.tutor { position:absolute; inset:0; pointer-events:none; z-index:5 }\n.tutor-img { position:absolute; display:block; max-width:none; opacity:0 }\n.tutor-shadow { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--main) 38%, transparent), transparent) }\n.bubble { position:absolute; left:0; top:0; width:max-content; max-width:540px; box-sizing:border-box; padding:20px 28px; border-radius:26px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); box-shadow:0 18px 50px rgba(0,0,0,.45); opacity:0 }\n.bubble p { margin:0; font-size:30px; line-height:1.35; font-weight:600; color:var(--second) }\n.bubble::after { content:''; position:absolute; right:44px; bottom:-12px; width:22px; height:22px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border-right:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); border-bottom:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); transform:rotate(45deg) }\n.bubble.is-top::after { right:auto; left:calc(50% - 11px) }\n.box { position:absolute; margin:0; border:2px solid var(--second); box-sizing:border-box; font-size:30px; letter-spacing:.12em } .box::after { content:attr(data-label); position:absolute; left:14px; bottom:10px }\n","narration.json":"{\n  \"about\": \"CPA on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.\",\n  \"lines\": [\n    {\n      \"t\": 0.6,\n      \"text\": \"Checkpoint A. Let's review Phases 1 to 3, with extra care on leverage and safety.\"\n    },\n    {\n      \"t\": 8.4,\n      \"text\": \"Eight questions on lessons T01 to T13. Most are about risk, because that matters most.\"\n    },\n    {\n      \"t\": 14.9,\n      \"text\": \"Read each question, pick an answer, and pause the video whenever you need more time.\"\n    },\n    {\n      \"t\": 21.3,\n      \"text\": \"It's not graded. Missing one just shows you what to revisit.\"\n    },\n    {\n      \"t\": 27.3,\n      \"text\": \"Question one, from T04. 'Support' asks for your 2FA code and API secret key. What do you do?\"\n    },\n    {\n      \"t\": 34.6,\n      \"text\": \"C. Never share them. Open the official app yourself and contact support from there.\"\n    },\n    {\n      \"t\": 41.2,\n      \"text\": \"B is tempting, but an API secret key can control your account too. Share neither.\"\n    },\n    {\n      \"t\": 48.3,\n      \"text\": \"Question two, from T05 and T11. What is the key difference between spot and futures?\"\n    },\n    {\n      \"t\": 55.6,\n      \"text\": \"A. On spot you own the coin. Futures are contracts about its price.\"\n    },\n    {\n      \"t\": 62.2,\n      \"text\": \"Not B: futures aren't cheap coins. They use margin, pay funding and can be liquidated.\"\n    },\n    {\n      \"t\": 69.3,\n      \"text\": \"Question three, from T06 and T09. Gross +4 USDT. Fees: 3 to enter, 3 to exit. What's the net?\"\n    },\n    {\n      \"t\": 76.6,\n      \"text\": \"C, minus 2 USDT. Net is gross minus all fees: 4 minus 3 minus 3.\"\n    },\n    {\n      \"t\": 83.2,\n      \"text\": \"B is only the gross result. Fees are paid whether the trade wins or loses.\"\n    },\n    {\n      \"t\": 90.3,\n      \"text\": \"Question four, from T07 and T08. Your stop is at 59,000. Price gaps from 59,300 to 58,600.\"\n    },\n    {\n      \"t\": 97.6,\n      \"text\": \"B. Near 58,600, or even worse. A stop is a trigger, not a price guarantee.\"\n    },\n    {\n      \"t\": 104.2,\n      \"text\": \"A is the trap. In fast markets, no stop can promise its exact price.\"\n    },\n    {\n      \"t\": 111.3,\n      \"text\": \"Question five, from T12. 100 USDT of margin at 10x, long. BTC falls 2%. What's the gross PnL?\"\n    },\n    {\n      \"t\": 118.6,\n      \"text\": \"B, minus 20 USDT. Notional is 1,000, and 1,000 times minus 2% is minus 20.\"\n    },\n    {\n      \"t\": 125.2,\n      \"text\": \"A forgets the leverage. The move acts on the whole 1,000: that's 20% of your margin.\"\n    },\n    {\n      \"t\": 132.3,\n      \"text\": \"Question six, from T12. Which statement about leverage is true?\"\n    },\n    {\n      \"t\": 139.6,\n      \"text\": \"B. Leverage magnifies gains and losses alike, compared with your margin.\"\n    },\n    {\n      \"t\": 146.2,\n      \"text\": \"A is a myth. No leverage number is safe. Lower leverage only means smaller swings.\"\n    },\n    {\n      \"t\": 153.3,\n      \"text\": \"Question seven, from T13. Can a stop-loss guarantee you won't be liquidated?\"\n    },\n    {\n      \"t\": 160.6,\n      \"text\": \"B. No. Stops can slip, and with high leverage, liquidation can come first.\"\n    },\n    {\n      \"t\": 167.2,\n      \"text\": \"A is the dangerous one. A stop-loss is not liquidation insurance.\"\n    },\n    {\n      \"t\": 174.3,\n      \"text\": \"Question eight, from T13. A long with 2,000 USDT notional. Funding rate +0.01%. What happens?\"\n    },\n    {\n      \"t\": 181.6,\n      \"text\": \"A. You pay 0.20 USDT: 2,000 times 0.01%. A positive rate means longs pay shorts.\"\n    },\n    {\n      \"t\": 188.2,\n      \"text\": \"B has it backwards. Shorts pay longs only when the rate is negative.\"\n    },\n    {\n      \"t\": 195.4,\n      \"text\": \"Before Phase 4, the critical safety points.\"\n    },\n    {\n      \"t\": 199.1,\n      \"text\": \"Leverage magnifies losses. No leverage is safe, and liquidation can take your margin.\"\n    },\n    {\n      \"t\": 205.6,\n      \"text\": \"A stop-loss is not liquidation insurance. Gaps and slippage happen.\"\n    },\n    {\n      \"t\": 210.9,\n      \"text\": \"Never share passwords, OTP or 2FA codes, or API secret keys. Not even with 'support'.\"\n    },\n    {\n      \"t\": 217.4,\n      \"text\": \"You can always choose WAIT, or no trade. And in this course, everything is demo only.\"\n    },\n    {\n      \"t\": 225.4,\n      \"text\": \"Here's where to look if you missed one.\"\n    },\n    {\n      \"t\": 228.8,\n      \"text\": \"Question one: T04. Two: T05 and T11. Three: T06 and T09. Four: T07 and T08.\"\n    },\n    {\n      \"t\": 234.6,\n      \"text\": \"Five and six: T12. Seven and eight: T13.\"\n    },\n    {\n      \"t\": 238.2,\n      \"text\": \"Rewatch any lesson, no penalty. Leverage and liquidation deserve a second look.\"\n    },\n    {\n      \"t\": 245.8,\n      \"text\": \"Phase 4 starts next, with T14: candlesticks. Open, high, low and close. See you there!\"\n    }\n  ]\n}","scene-how.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst HOW = [\n  ['Read the question', '<rect x=\"14\" y=\"18\" width=\"60\" height=\"8\" rx=\"4\"/><rect x=\"14\" y=\"38\" width=\"48\" height=\"8\" rx=\"4\"/><rect x=\"14\" y=\"58\" width=\"54\" height=\"8\" rx=\"4\"/>'],\n  ['Pause and pick A, B, C or D', '<rect x=\"22\" y=\"16\" width=\"14\" height=\"56\" rx=\"4\"/><rect x=\"52\" y=\"16\" width=\"14\" height=\"56\" rx=\"4\"/>'],\n  ['Watch the 5-second countdown', '<circle cx=\"44\" cy=\"44\" r=\"30\" fill=\"none\" stroke-width=\"8\" style=\"stroke:color-mix(in srgb, var(--second) 14%, transparent)\"/><circle class=\"hw-arc\" cx=\"44\" cy=\"44\" r=\"30\" fill=\"none\" stroke-width=\"8\" stroke-linecap=\"round\" transform=\"rotate(-90 44 44)\" stroke-dasharray=\"188.5\" style=\"stroke:var(--main)\"/><text class=\"hw-n mono\" x=\"44\" y=\"54\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:30px\">5</text>'],\n  ['See the answer and why', '<path class=\"hw-tick\" d=\"M18 46 L36 64 L70 26\" pathLength=\"1\" fill=\"none\" stroke-width=\"9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/>'],\n];\nconst HOW_AT = [6.9, 8.3, 9.7, 12.5];\nkit.scene('how', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let cards = '';\n    HOW.forEach((s, i) => {\n      cards += '<div class=\"glass hw-c\" style=\"left:' + (140 + i * 400) + 'px;top:400px;width:370px;height:240px;padding:26px 30px;display:flex;flex-direction:column;gap:18px\">' +\n        '<div style=\"display:flex;align-items:center;gap:18px\"><span class=\"mono\" style=\"font-size:56px;color:var(--main)\">' + (i + 1) + '</span>' +\n        '<svg width=\"104\" height=\"104\" viewBox=\"0 0 88 88\" style=\"fill:var(--second)\">' + s[1] + '</svg></div>' +\n        '<p style=\"margin:0;font-size:30px;line-height:1.3;font-weight:600\">' + s[0] + '</p></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1500px\"><p class=\"kick hw-k\">Before we start</p>' +\n      '<h2 class=\"line hw-t\">How this checkpoint works</h2>' +\n      '<p class=\"sub hw-s\">8 questions from T01 to T13 · most are about risk</p></div>' + cards +\n      '<div class=\"hw-chips\" style=\"position:absolute;left:140px;top:700px;display:flex;gap:20px\"><span class=\"chip hw-ch\"><span class=\"dot\"></span>Not graded</span><span class=\"chip hw-ch\"><span class=\"dot\"></span>No penalty</span><span class=\"chip hw-ch\"><span class=\"dot\"></span>Retry any time</span></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.hw-k').style; this.t = q('.hw-t'); this.s = q('.hw-s');\n    this.cards = all('.hw-c').map((e) => e.style); this.chips = all('.hw-ch').map((e) => e.style);\n    this.arc = q('.hw-arc'); this.n = q('.hw-n'); this.tick = q('.hw-tick');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 6.6, pose: 'checklist' }, { t: 13.2, pose: 'calm' }],\n      says: [{ t0: 13.6, t1: 18.6, text: 'No pressure!' }],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.s, t, 1.4, { stagger: 0.07 });\n    let lit = -1;\n    HOW_AT.forEach((a, i) => { if (t >= a) lit = i; });\n    this.cards.forEach((c, i) => {\n      const a = 2.6 + i * 0.35, p = seg(t, a, a + 0.6);\n      c.opacity = eo(seg(t, a, a + 0.3));\n      const on = seg(t, HOW_AT[i], HOW_AT[i] + 0.5);\n      c.transform = 'translateY(' + lerp(36, 0, eo(p)).toFixed(1) + 'px) scale(' + (1 + 0.04 * Math.sin(Math.PI * on)).toFixed(4) + ')';\n      const hot = i === lit && t < 13.2;\n      c.borderColor = hot ? 'var(--main)' : 'color-mix(in srgb, var(--main) 22%, transparent)';\n      c.background = hot ? 'color-mix(in srgb, var(--ground) 76%, var(--main))' : '';\n    });\n    const cd = seg(t, 9.8, 12.3);\n    this.arc.setAttribute('stroke-dashoffset', (188.5 * cd).toFixed(1));\n    const n = String(Math.max(1, Math.min(5, Math.ceil(5 - cd * 5))));\n    if (this.n.textContent !== n) this.n.textContent = n;\n    const k = seg(t, 12.5, 13.0);\n    this.tick.setAttribute('stroke-dasharray', eo(k).toFixed(3) + ' 1'); this.tick.style.opacity = k > 0 ? 1 : 0;\n    this.chips.forEach((c, i) => {\n      const a = 13.5 + i * 0.4, p = seg(t, a, a + 0.5);\n      c.opacity = eo(seg(t, a, a + 0.3));\n      c.transform = 'translateY(' + lerp(24, 0, eo(p)).toFixed(1) + 'px) scale(' + lerp(0.9, 1, eob(p, 1.6)).toFixed(4) + ')';\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-next.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('next', {\n  init(kit) {\n    const pts = UI.walk(kit, 14, 96, 140, 1780, 930, 840, 18);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"nextA-g\" x1=\"0\" x2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient></defs>' +\n      '<path class=\"next-path\" d=\"' + UI.d(pts) + '\" pathLength=\"1\" fill=\"none\" stroke=\"url(#nextA-g)\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"opacity:.5\"/></svg>' +\n      '<div class=\"next-lock\" style=\"position:absolute;left:0;right:0;top:150px;display:flex;justify-content:center\"></div>' +\n      '<div class=\"words\" style=\"left:210px;top:300px;width:1500px;align-items:center;text-align:center;gap:28px\">' +\n      '<p class=\"kick next-k\">Checkpoint A complete · Phase 4 starts: T14</p>' +\n      '<h2 class=\"line next-t\" style=\"font-size:92px\">Candlesticks: Open, High, Low, Close</h2>' +\n      '<div class=\"rule next-r\" style=\"width:240px\"></div>' +\n      '<div class=\"chip next-c\" style=\"font-size:32px;padding:20px 38px;background:var(--main);color:var(--ground);border-color:var(--main)\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 28 28\"><path d=\"M7 4 L24 14 L7 24 Z\" style=\"fill:var(--ground)\"/></svg><span>Continue to lesson fourteen</span></div></div>' +\n      '<p class=\"fict next-f\" style=\"position:absolute;left:0;right:0;bottom:70px;margin:0;text-align:center\">Educational content only · Not financial advice · Crypto and futures involve risk</p>' +\n      '</div>'));\n    kit.stage.querySelector('.next-lock').append(UI.lockup(kit));\n    const q = (s) => kit.stage.querySelector(s);\n    this.path = q('.next-path'); this.lock = q('.next-lock').style; this.k = q('.next-k').style;\n    this.t = q('.next-t'); this.r = q('.next-r').style; this.c = q('.next-c').style; this.f = q('.next-f').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }, { t: 1.1, x: 1620, y: 965, s: 230, d: 1.0 }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.1, pose: 'walk', flip: true }, { t: 1.1, pose: 'wave' }, { t: 4.0, pose: 'present' }, { t: 6.8, pose: 'wave' }],\n      says: [{ t0: 1.3, t1: 5.6, text: 'On to charts!', side: 'top' }],\n    });\n  },\n  render(t) {\n    this.path.setAttribute('stroke-dasharray', eio(seg(t, 0, 2.6)) + ' 1');\n    const l = seg(t, 0.1, 0.8);\n    this.lock.opacity = eo(l);\n    this.lock.transform = 'scale(' + lerp(0.85, 1, eob(l, 1.6)) + ')';\n    this.k.opacity = eo(seg(t, 0.5, 1.0));\n    TextFx.fadeFromRight(this.t, t, 0.7);\n    this.r.transform = 'scaleX(' + eo(seg(t, 1.5, 2.2)) + ')';\n    const c = seg(t, 2.1, 2.7);\n    this.c.opacity = eo(seg(t, 2.1, 2.4));\n    this.c.transform = 'scale(' + (lerp(0.8, 1, eob(c, 1.7)) * kit.breathe(Math.max(0, t - 2.7), 0.015, 2.4)) + ')';\n    this.f.opacity = 0.9 * eo(seg(t, 2.8, 3.4));\n    this.tutor.render(t);\n  },\n});\n","scene-q-fund.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Funding: long 2,000 USDT notional, rate +0.01% → longs pay 0.20 USDT to shorts.\nkit.scene('q-fund', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const side = (cls, x, name) => '<div class=\"' + cls + '\" style=\"position:absolute;left:' + x + 'px;top:150px;width:170px;padding:14px 10px;box-sizing:border-box;border-radius:18px;text-align:center;border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent);background:color-mix(in srgb, var(--ground) 86%, var(--main))\"><p style=\"margin:0;font-size:26px;font-weight:700\">' + name + '</p><p class=\"mono ' + cls + '-v\" style=\"margin:4px 0 0;font-size:24px\">?</p></div>';\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">Funding time · rate +0.01%</p>' +\n      '<p class=\"mono qa8-f\" style=\"position:absolute;left:28px;top:66px;margin:0;font-size:26px\">2,000 × 0.01% = <span style=\"color:var(--accent)\">0.20 USDT</span></p>' +\n      side('qa8-l', 40, 'You (long)') + side('qa8-s', 350, 'Shorts') +\n      '<svg width=\"560\" height=\"340\" viewBox=\"0 0 560 340\" style=\"position:absolute;left:0;top:0\"><circle class=\"qa8-c\" r=\"16\" style=\"fill:var(--accent)\"/></svg>' +\n      '<p class=\"fict\" style=\"position:absolute;left:28px;top:296px;margin:0\">Fictional rate · real rates change</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 8, from: 'T13', q: 'Long, 2,000 USDT notional. Funding rate +0.01%. Then?',\n      opts: ['You pay 0.20 USDT', 'You receive 0.20 USDT', 'You pay 2 USDT', 'Nothing: funding is for shorts only'],\n      ok: 0, bad: 1, vis,\n      why: '2,000 × 0.01% = 0.20. Positive rate: longs pay shorts.',\n      whyNot: 'Backwards: shorts pay longs only when the rate is negative.',\n    });\n    const q = (s) => kit.stage.querySelector(s);\n    this.f = q('.qa8-f').style; this.c = q('.qa8-c'); this.lv = q('.qa8-l-v'); this.sv = q('.qa8-s-v');\n    this.sides = [q('.qa8-l').style, q('.qa8-s').style];\n  },\n  render(t) {\n    this.chrome(t);\n    this.sides.forEach((s, i) => { const a = 1.6 + i * 0.4, p = seg(t, a, a + 0.5); s.opacity = eo(seg(t, a, a + 0.3)); s.transform = 'translateY(' + lerp(20, 0, eo(p)).toFixed(1) + 'px)'; });\n    this.f.opacity = eo(seg(t, 7.7, 8.2));\n    // The payment flies from the long to the shorts after the reveal.\n    const p = seg(t, 8.0, 9.2), base = 1220;\n    const cx = lerp(125, 435, eio(p)), cy = 140 - Math.sin(Math.PI * p) * 60;\n    this.c.setAttribute('cx', cx.toFixed(1)); this.c.setAttribute('cy', cy.toFixed(1)); this.c.style.opacity = p > 0 && p < 1 ? 1 : 0;\n    UI.set(this.lv, t < 9.2 ? '?' : '−0.20');\n    UI.set(this.sv, t < 9.2 ? '?' : '+0.20');\n    this.lv.style.color = t < 9.2 ? 'var(--second)' : 'var(--accent)'; this.sv.style.color = t < 9.2 ? 'var(--second)' : 'var(--main)';\n    this.quiz(t);\n  },\n});\n","scene-q-gap.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Mini chart inside the visual panel (560 × 340): stop line at 59,000; price gaps from 59,300 to 58,600.\nconst QA4_Y = (p) => 120 + (59400 - p) / 1000 * 180;\nkit.scene('q-gap', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">Long · stop-loss 59,000</p>' +\n      '<svg width=\"560\" height=\"340\" viewBox=\"0 0 560 340\" style=\"position:absolute;left:0;top:0\">' +\n      '<line x1=\"28\" x2=\"530\" y1=\"' + QA4_Y(59000) + '\" y2=\"' + QA4_Y(59000) + '\" stroke-dasharray=\"10 8\" stroke-width=\"3\" style=\"stroke:var(--accent)\"/>' +\n      '<text x=\"420\" y=\"' + (QA4_Y(59000) - 10) + '\" style=\"fill:var(--accent);font-size:22px\">stop 59,000</text>' +\n      '<path class=\"qa4-a\" d=\"M28 ' + QA4_Y(59380) + ' L80 ' + QA4_Y(59340) + ' L130 ' + QA4_Y(59360) + ' L180 ' + QA4_Y(59320) + ' L230 ' + QA4_Y(59300) + '\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/>' +\n      '<line class=\"qa4-j\" x1=\"230\" x2=\"230\" y1=\"' + QA4_Y(59300) + '\" y2=\"' + QA4_Y(58600) + '\" stroke-width=\"3\" stroke-dasharray=\"4 8\" style=\"stroke:color-mix(in srgb, var(--second) 55%, transparent)\"/>' +\n      '<path class=\"qa4-b\" d=\"M230 ' + QA4_Y(58600) + ' L290 ' + QA4_Y(58620) + ' L350 ' + QA4_Y(58580) + ' L410 ' + QA4_Y(58600) + '\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/>' +\n      '<text class=\"qa4-t\" x=\"44\" y=\"' + (QA4_Y(58600) + 8) + '\" style=\"fill:var(--second);font-size:22px\">gap to 58,600</text>' +\n      '<circle class=\"qa4-f\" cx=\"230\" cy=\"' + QA4_Y(58600) + '\" r=\"12\" style=\"fill:var(--accent)\"/></svg>' +\n      '<p class=\"fict\" style=\"position:absolute;left:28px;top:304px;margin:0\">Fictional prices</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 4, from: 'T07 · T08', q: 'Stop at 59,000. Price gaps from 59,300 to 58,600. The fill?',\n      opts: ['Exactly 59,000, guaranteed', 'Near 58,600, or even worse', 'Cancelled, with no loss', 'Back at 59,300'],\n      ok: 1, bad: 0, vis,\n      why: 'The stop triggers, then fills at the next price available.',\n      whyNot: 'A stop is a trigger, not a price guarantee.',\n    });\n    const q = (s) => kit.stage.querySelector(s);\n    this.a = q('.qa4-a'); this.b = q('.qa4-b'); this.j = q('.qa4-j').style; this.tx = q('.qa4-t').style; this.f = q('.qa4-f').style;\n  },\n  render(t) {\n    this.chrome(t);\n    this.a.setAttribute('stroke-dasharray', eio(seg(t, 1.6, 2.8)).toFixed(3) + ' 1');\n    this.j.opacity = eo(seg(t, 3.0, 3.3)); this.tx.opacity = eo(seg(t, 3.2, 3.6));\n    this.b.setAttribute('stroke-dasharray', eio(seg(t, 3.2, 4.2)).toFixed(3) + ' 1'); this.b.style.opacity = t > 3.2 ? 1 : 0;\n    const fp = seg(t, 7.8, 8.3);\n    this.f.opacity = eo(fp); this.f.transformBox = 'fill-box'; this.f.transformOrigin = 'center'; this.f.transform = 'scale(' + lerp(0.3, 1, eob(fp, 1.8)).toFixed(3) + ')';\n    this.quiz(t);\n  },\n});\n","scene-q-lev.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nkit.scene('q-lev', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const tile = (cls, x, w, big, small) => '<div class=\"' + cls + '\" style=\"position:absolute;left:' + x + 'px;top:' + 86 + 'px;width:' + w + 'px;height:140px;box-sizing:border-box;border-radius:20px;padding:20px 16px;border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent);background:color-mix(in srgb, var(--ground) 86%, var(--main))\"><p class=\"mono ' + cls + '-n\" style=\"margin:0;font-size:32px\">' + big + '</p><p style=\"margin:6px 0 0;font-size:22px;color:color-mix(in srgb, var(--second) 65%, var(--ground))\">' + small + '</p></div>';\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">Gross PnL ≈ notional × move</p>' +\n      tile('qa5-a', 24, 160, '1,000', 'USDT notional') + '<span class=\"mono qa5-x\" style=\"position:absolute;left:192px;top:126px;font-size:36px;color:var(--main)\">×</span>' +\n      tile('qa5-p', 226, 140, '−2%', 'BTC move') + '<span class=\"mono qa5-e\" style=\"position:absolute;left:374px;top:126px;font-size:36px;color:var(--main)\">=</span>' +\n      tile('qa5-v', 406, 130, '?', 'USDT') +\n      '<p class=\"qa5-s\" style=\"position:absolute;left:28px;top:246px;margin:0;font-size:24px;color:color-mix(in srgb, var(--second) 75%, var(--ground))\">100 USDT margin × 10x = 1,000 notional</p>' +\n      '<p class=\"fict\" style=\"position:absolute;left:28px;top:296px;margin:0\">Fictional · before fees and funding</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 5, from: 'T12', q: '100 USDT margin, 10x long. BTC falls 2%. Gross PnL?',\n      opts: ['−2 USDT', '−20 USDT', '−200 USDT', '+20 USDT'],\n      ok: 1, bad: 0, vis,\n      why: '1,000 × −2% = −20 USDT. That is 20% of your margin.',\n      whyNot: '−2 forgets the leverage: the move acts on 1,000.',\n    });\n    const q = (s) => kit.stage.querySelector(s);\n    this.parts = ['.qa5-a', '.qa5-x', '.qa5-p', '.qa5-e', '.qa5-v', '.qa5-s'].map((s) => q(s).style);\n    this.v = q('.qa5-v-n'); this.vb = q('.qa5-v').style;\n  },\n  render(t) {\n    this.chrome(t);\n    const at = [1.6, 2.4, 2.7, 3.5, 3.8, 4.4];\n    this.parts.forEach((s, i) => { const p = seg(t, at[i], at[i] + 0.5); s.opacity = eo(seg(t, at[i], at[i] + 0.3)); s.transform = 'translateY(' + lerp(24, 0, eo(p)).toFixed(1) + 'px)'; });\n    const c = seg(t, 7.7, 8.7);\n    UI.set(this.v, t < 7.7 ? '?' : UI.sgn(-Math.round(20 * eo(c)), 0));\n    this.v.style.color = t < 7.7 ? 'var(--second)' : 'var(--accent)';\n    this.vb.borderColor = t > 7.7 ? 'var(--accent)' : 'color-mix(in srgb, var(--main) 30%, transparent)';\n    this.quiz(t);\n  },\n});\n","scene-q-net.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// A small waterfall: +4 gross, −3 entry fee, −3 exit fee → −2 net. 1 USDT = 26 px; zero line at y 200.\nconst QA3_Z = 200, QA3_K = 26;\nconst QA3_BARS = [['Gross', 0, 4, 'var(--main)'], ['Entry fee', 4, 1, 'var(--accent)'], ['Exit fee', 1, -2, 'var(--accent)'], ['Net', 0, -2, 'var(--accent)']];\nkit.scene('q-net', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let bars = '';\n    QA3_BARS.forEach((b, i) => {\n      const x = 40 + i * 128, top = QA3_Z - Math.max(b[1], b[2]) * QA3_K, h = Math.abs(b[2] - b[1]) * QA3_K;\n      bars += '<div class=\"qa3-b\" style=\"position:absolute;left:' + x + 'px;top:' + top + 'px;width:84px;height:' + h + 'px;border-radius:8px;background:' + b[3] + '\"></div>' +\n        '<p class=\"qa3-l\" style=\"position:absolute;left:' + (x - 20) + 'px;width:124px;top:' + (QA3_Z + 94) + 'px;margin:0;text-align:center;font-size:22px;color:color-mix(in srgb, var(--second) 70%, var(--ground))\">' + b[0] + '</p>' +\n        '<p class=\"mono qa3-v\" style=\"position:absolute;left:' + (x - 20) + 'px;width:124px;top:' + (top - 34) + 'px;margin:0;text-align:center;font-size:24px\">' + (i === 0 ? '+4' : i === 3 ? '?' : '−3') + '</p>';\n    });\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">Fees in USDT</p>' +\n      '<div style=\"position:absolute;left:24px;right:24px;top:' + QA3_Z + 'px;height:2px;background:color-mix(in srgb, var(--second) 40%, transparent)\"></div>' + bars +\n      '<p class=\"fict\" style=\"position:absolute;right:24px;top:24px;margin:0\">Fictional</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 3, from: 'T06 · T09', q: 'Gross +4 USDT. Fees: 3 to enter, 3 to exit. Net result?',\n      opts: ['+10 USDT', '+4 USDT', '−2 USDT', '+1 USDT'],\n      ok: 2, bad: 1, vis,\n      why: 'Net = gross − all fees: 4 − 3 − 3 = −2 USDT.',\n      whyNot: '+4 is the gross result. Fees are paid win or lose.',\n    });\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.bars = all('.qa3-b').map((e) => e.style); this.ls = all('.qa3-l').map((e) => e.style); this.vs = all('.qa3-v');\n  },\n  render(t) {\n    this.chrome(t);\n    const at = [1.6, 2.4, 3.2, 7.7];\n    this.bars.forEach((s, i) => {\n      const p = seg(t, at[i], at[i] + 0.5), up = QA3_BARS[i][2] > QA3_BARS[i][1];\n      s.transformOrigin = up ? '50% 100%' : '50% 0%';\n      s.transform = 'scaleY(' + eo(p).toFixed(3) + ')';\n      s.opacity = p > 0 ? 1 : 0;\n      this.ls[i].opacity = i === 3 ? eo(seg(t, 1.6, 2.0)) : eo(p);\n      this.vs[i].style.opacity = i === 3 ? eo(seg(t, 1.6, 2.0)) : eo(p);\n    });\n    UI.set(this.vs[3], t < 7.7 ? '?' : '−2');\n    this.vs[3].style.color = t < 7.7 ? 'var(--second)' : 'var(--accent)';\n    this.vs[3].style.top = (t < 7.7 ? QA3_Z - 34 : QA3_Z + 2 * QA3_K + 4) + 'px';\n    \n    this.quiz(t);\n  },\n});\n","scene-q-phish.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst QA1_FLAGS = [['Asks for codes', 96], ['Odd link', 160], ['Rushes you', 224]];\nkit.scene('q-phish', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let flags = '';\n    QA1_FLAGS.forEach((f) => { flags += '<span class=\"chip qa1-f\" style=\"position:absolute;right:20px;top:' + f[1] + 'px;font-size:22px;padding:6px 16px;gap:10px;background:color-mix(in srgb, var(--ground) 70%, var(--accent));border-color:var(--accent)\"><span class=\"dot\" style=\"background:var(--accent)\"></span>' + f[0] + '</span>'; });\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">Chat · “Exchange Support”</p>' +\n      '<div class=\"qa1-m\" style=\"position:absolute;left:24px;top:70px;width:300px;box-sizing:border-box;padding:16px 20px;border-radius:20px 20px 20px 6px;background:color-mix(in srgb, var(--ground) 80%, var(--second));font-size:23px;line-height:1.35\">' +\n      'To unlock withdrawals, send your 2FA code and API secret key now. <span class=\"mono\" style=\"font-size:21px;color:var(--main)\">verify-desk.example</span></div>' +\n      flags + '<p class=\"fict\" style=\"position:absolute;left:28px;top:304px;margin:0\">Educational mock · not a real message</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 1, from: 'T04', q: '“Support” asks for your 2FA code and API secret key.',\n      opts: ['Send both. Support needs them', 'Send the API key, keep the 2FA code', 'Share neither. Open the official app yourself', 'Send them if the message looks official'],\n      ok: 2, bad: 1, vis,\n      why: 'Real support never asks for passwords, OTP or 2FA codes, or secret keys.',\n      whyNot: 'An API secret key can also control your account.',\n    });\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.m = kit.stage.querySelector('.qa1-m').style; this.flags = all('.qa1-f').map((e) => e.style);\n  },\n  render(t) {\n    this.chrome(t);\n    const m = seg(t, 1.6, 2.2);\n    this.m.opacity = eo(m); this.m.transform = 'translateY(' + lerp(20, 0, eo(m)).toFixed(1) + 'px) scale(' + lerp(0.92, 1, eob(m, 1.6)).toFixed(4) + ')';\n    this.m.transformOrigin = '0 100%';\n    this.flags.forEach((s, i) => { const a = 7.8 + i * 0.5, p = seg(t, a, a + 0.4); s.opacity = eo(p); s.transform = 'scale(' + lerp(0.5, 1, eob(p, 1.8)).toFixed(4) + ')'; });\n    this.quiz(t);\n  },\n});\n","scene-q-safe.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Three leverage levels on the same ±2% move: bars grow both ways (share of a 100 USDT margin).\nconst QA6 = [[1, 2], [3, 6], [10, 20]];\nkit.scene('q-safe', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let rows = '';\n    QA6.forEach((r, i) => {\n      rows += '<div style=\"position:absolute;left:24px;right:24px;top:' + (80 + i * 70) + 'px;height:56px\">' +\n        '<span class=\"mono\" style=\"position:absolute;left:0;top:12px;font-size:26px\">' + r[0] + 'x</span>' +\n        '<div style=\"position:absolute;left:280px;top:8px;width:2px;height:40px;background:color-mix(in srgb, var(--second) 40%, transparent)\"></div>' +\n        '<div class=\"qa6-up\" style=\"position:absolute;left:282px;top:14px;height:13px;border-radius:0 6px 6px 0;background:var(--main)\"></div>' +\n        '<div class=\"qa6-dn\" style=\"position:absolute;right:230px;top:29px;height:13px;border-radius:6px 0 0 6px;background:var(--accent)\"></div>' +\n        '<span class=\"mono qa6-v\" style=\"position:absolute;right:0;top:12px;font-size:22px\">±' + r[1] + '%</span></div>';\n    });\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">Same ±2% move · % of margin</p>' + rows +\n      '<p class=\"fict\" style=\"position:absolute;left:28px;top:296px;margin:0\">Illustrative · before fees</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 6, from: 'T12', q: 'Which statement about leverage is true?',\n      opts: ['3x is always safe', 'It magnifies gains and losses alike', 'Higher leverage means higher profit', 'It changes how far the market moves'],\n      ok: 1, bad: 0, vis,\n      why: 'Results grow both ways, compared with your margin.',\n      whyNot: 'No leverage number is safe. Lower only means smaller swings.',\n    });\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.up = all('.qa6-up').map((e) => e.style); this.dn = all('.qa6-dn').map((e) => e.style); this.vs = all('.qa6-v').map((e) => e.style);\n  },\n  render(t) {\n    this.chrome(t);\n    QA6.forEach((r, i) => {\n      const a = 1.6 + i * 0.7, p = eio(seg(t, a, a + 0.8));\n      const w = (r[1] / 20 * 150 * p).toFixed(1) + 'px';\n      this.up[i].width = w; this.dn[i].width = w;\n      this.dn[i].right = 'calc(100% - 280px)';\n      this.vs[i].opacity = eo(seg(t, a + 0.5, a + 0.9));\n    });\n    this.quiz(t);\n  },\n});\n","scene-q-spot.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nkit.scene('q-spot', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const card = (cls, x, head, a, b, col) => '<div class=\"' + cls + '\" style=\"position:absolute;left:' + x + 'px;top:70px;width:244px;height:200px;box-sizing:border-box;border-radius:20px;padding:18px 20px;border:1.5px solid ' + col + ';background:color-mix(in srgb, var(--ground) 86%, var(--main))\">' +\n      '<p class=\"kick\" style=\"margin:0 0 10px;color:' + col + '\">' + head + '</p><p style=\"margin:0;font-size:26px;font-weight:700\">' + a + '</p><p style=\"margin:8px 0 0;font-size:22px;line-height:1.3;color:color-mix(in srgb, var(--second) 70%, var(--ground))\">' + b + '</p></div>';\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">Same coin, two products</p>' +\n      card('qa2-a', 24, 'Spot', '0.01 BTC', 'In your wallet. You own it.', 'var(--main)') +\n      card('qa2-b', 292, 'Futures', 'Long position', 'A contract on BTC’s price. Margin, funding, liquidation.', 'var(--accent)') +\n      '<p class=\"fict\" style=\"position:absolute;left:28px;top:296px;margin:0\">Fictional example</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 2, from: 'T05 · T11', q: 'What is the key difference between spot and futures?',\n      opts: ['Spot: you own the coin. Futures: a contract on its price', 'Futures are just a cheaper way to buy coins', 'Only spot positions can be liquidated', 'There is no real difference'],\n      ok: 0, bad: 1, vis,\n      why: 'Spot is ownership. Futures are contracts about the price.',\n      whyNot: 'Futures use margin, pay funding and can be liquidated.',\n    });\n    this.a = kit.stage.querySelector('.qa2-a').style; this.b = kit.stage.querySelector('.qa2-b').style;\n  },\n  render(t) {\n    this.chrome(t);\n    [this.a, this.b].forEach((s, i) => { const a = 1.6 + i * 0.6, p = seg(t, a, a + 0.5); s.opacity = eo(seg(t, a, a + 0.3)); s.transform = 'translateY(' + lerp(24, 0, eo(p)).toFixed(1) + 'px)'; });\n    this.quiz(t);\n  },\n});\n","scene-q-stop.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Concept mini chart: price falls into the liquidation zone before reaching a stop placed further away.\nkit.scene('q-stop', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const vis = '<p class=\"kick\" style=\"position:absolute;left:28px;top:22px;margin:0\">High-leverage long · concept</p>' +\n      '<svg width=\"560\" height=\"340\" viewBox=\"0 0 560 340\" style=\"position:absolute;left:0;top:0\">' +\n      '<rect class=\"qa7-z\" x=\"28\" y=\"170\" width=\"504\" height=\"40\" style=\"fill:color-mix(in srgb, var(--accent) 24%, transparent)\"/>' +\n      '<text class=\"qa7-zl\" x=\"36\" y=\"232\" style=\"fill:var(--accent);font-size:20px;font-weight:600\">liquidation zone</text>' +\n      '<line x1=\"28\" x2=\"532\" y1=\"268\" y2=\"268\" stroke-dasharray=\"10 8\" stroke-width=\"3\" style=\"stroke:var(--main)\"/>' +\n      '<text class=\"qa7-sl\" x=\"36\" y=\"296\" style=\"fill:var(--main);font-size:20px;font-weight:600\">stop-loss</text>' +\n      '<path class=\"qa7-p\" d=\"M28 80 L90 86 L150 78 L210 100 L260 130 L300 150 L340 186\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linejoin=\"round\" style=\"stroke:var(--second)\"/>' +\n      '<g class=\"qa7-x\"><circle cx=\"340\" cy=\"186\" r=\"14\" style=\"fill:var(--accent)\"/></g></svg>' +\n      '<p class=\"fict\" style=\"position:absolute;right:24px;top:296px;margin:0\">No real levels</p>';\n    this.quiz = UI.quiz(kit, {\n      n: 7, from: 'T13', q: 'Can a stop-loss guarantee you won’t be liquidated?',\n      opts: ['Yes. The stop always closes first', 'No. Stops can slip, and liquidation can come first', 'Yes, if the stop is far away', 'Only in cross margin'],\n      ok: 1, bad: 0, vis,\n      why: 'With high leverage, the liquidation zone can sit closer than your stop.',\n      whyNot: 'A stop-loss is not liquidation insurance.',\n    });\n    const q = (s) => kit.stage.querySelector(s);\n    this.p = q('.qa7-p'); this.x = q('.qa7-x').style; this.sl = q('.qa7-sl');\n  },\n  render(t) {\n    this.chrome(t);\n    this.p.setAttribute('stroke-dasharray', eio(seg(t, 1.6, 3.6)).toFixed(3) + ' 1');\n    const xp = seg(t, 7.8, 8.3);\n    this.x.opacity = eo(xp);\n    UI.set(this.sl, t >= 8.0 ? 'stop-loss · never reached' : 'stop-loss');\n    this.quiz(t);\n  },\n});\n","scene-revisit.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst REV = [\n  ['T04', 'Account safety', 'Q1', 3.8],\n  ['T05 · T11', 'Spot vs futures', 'Q2', 5.2],\n  ['T06 · T09', 'Gross, fees and net', 'Q3', 6.4],\n  ['T07 · T08', 'Stops and slippage', 'Q4', 7.6],\n  ['T12', 'Margin and leverage', 'Q5 · Q6', 9.6],\n  ['T13', 'Liquidation and funding', 'Q7 · Q8', 11.0],\n];\nkit.scene('revisit', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let rows = '';\n    REV.forEach((r, i) => {\n      rows += '<div class=\"glass rv-r\" style=\"left:' + (140 + (i % 2) * 830) + 'px;top:' + (390 + Math.floor(i / 2) * 106) + 'px;width:800px;height:90px;display:flex;align-items:center;gap:24px;padding:0 26px\">' +\n        '<span class=\"chip mono\" style=\"font-size:26px;padding:8px 20px;background:var(--main);color:var(--ground);border-color:var(--main)\">' + r[0] + '</span>' +\n        '<span style=\"flex:1;font-size:30px;font-weight:600;white-space:nowrap\">' + r[1] + '</span><span class=\"mono\" style=\"font-size:26px;color:var(--main)\">' + r[2] + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1500px\"><p class=\"kick rv-k\">Recap</p><h2 class=\"line rv-t\">Where to revisit</h2><p class=\"sub rv-s\">Missed one? Rewatch that lesson. No penalty.</p></div>' +\n      rows + '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.rv-k').style; this.t = q('.rv-t'); this.s = q('.rv-s');\n    this.rows = [...kit.stage.querySelectorAll('.rv-r')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'calm' }, { t: 0.6, pose: 'checklist' }, { t: 9.6, pose: 'point' }, { t: 13.2, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.s, t, 13.2, { stagger: 0.08 });\n    this.rows.forEach((s, i) => {\n      const a = REV[i][3], p = seg(t, a, a + 0.6), hi = Math.sin(Math.PI * seg(t, a + 0.4, a + 1.6));\n      s.opacity = eo(seg(t, a, a + 0.3));\n      s.transform = 'translateX(' + lerp(36, 0, eo(p)).toFixed(1) + 'px)';\n      s.borderColor = 'color-mix(in srgb, var(--main) ' + (22 + 60 * hi).toFixed(0) + '%, transparent)';\n      if (i >= 4) s.background = 'color-mix(in srgb, var(--ground) 82%, var(--accent))';\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-safety.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst SAFE = [\n  ['Leverage and liquidation', 'Leverage magnifies losses. No leverage is safe, and liquidation can take your margin.', 4.1],\n  ['Stops have limits', 'A stop-loss is not liquidation insurance. Gaps and slippage happen.', 10.6],\n  ['Guard your account', 'Never share passwords, OTP or 2FA codes, or API secret keys. Not even with “support”.', 15.9],\n  ['WAIT is a decision', 'You can always choose WAIT or NO_TRADE. In this course, everything is demo only.', 22.4],\n];\nkit.scene('safety', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let cards = '';\n    SAFE.forEach((r, i) => {\n      cards += '<div class=\"glass sf-c\" style=\"left:' + (140 + (i % 2) * 780) + 'px;top:' + (340 + Math.floor(i / 2) * 218) + 'px;width:750px;min-height:196px;padding:24px 34px\">' +\n        '<p class=\"kick\" style=\"margin:0 0 10px;color:var(--accent)\">' + r[0] + '</p><p style=\"margin:0;font-size:30px;line-height:1.4;font-weight:600\">' + r[1] + '</p></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:180px;width:1400px\"><p class=\"kick sf-k\" style=\"color:var(--accent)\">Critical safety</p>' +\n      '<h2 class=\"line sf-t\">Before Phase 4</h2></div>' + cards +\n      '</div>'));\n    this.k = kit.stage.querySelector('.sf-k').style; this.t = kit.stage.querySelector('.sf-t');\n    this.cards = [...kit.stage.querySelectorAll('.sf-c')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 1.0, pose: 'think' }, { t: 10.6, pose: 'magnify' }, { t: 15.9, pose: 'explain' }, { t: 22.4, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    let cur = -1;\n    SAFE.forEach((r, i) => { if (t >= r[2]) cur = i; });\n    this.cards.forEach((c, i) => {\n      const a = SAFE[i][2], p = seg(t, a, a + 0.7);\n      c.opacity = eo(seg(t, a, a + 0.35));\n      c.transform = 'translateY(' + (lerp(40, 0, eo(p)) - Math.max(0, t - a) * 0.5).toFixed(2) + 'px) scale(' + lerp(0.95, 1, eob(p, 1.5)).toFixed(4) + ')';\n      c.borderColor = i === cur ? 'color-mix(in srgb, var(--accent) 70%, transparent)' : 'color-mix(in srgb, var(--main) 22%, transparent)';\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-title.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('title', {\n  init(kit) {\n    let ticks = '';\n    for (let i = 0; i < 48; i++) {\n      const a = i / 48 * Math.PI * 2, r1 = 236, r2 = i % 4 ? 250 : 262;\n      ticks += '<line x1=\"' + (Math.cos(a) * r1).toFixed(1) + '\" y1=\"' + (Math.sin(a) * r1).toFixed(1) + '\" x2=\"' + (Math.cos(a) * r2).toFixed(1) + '\" y2=\"' + (Math.sin(a) * r2).toFixed(1) + '\"/>';\n    }\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"cpa-g\" x1=\"0\" x2=\"1\" y1=\"0\" y2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient>' +\n      '<radialGradient id=\"cpa-f\"><stop offset=\"0\" style=\"stop-color:color-mix(in srgb, var(--main) 26%, var(--ground))\"/><stop offset=\"1\" style=\"stop-color:var(--ground)\"/></radialGradient></defs>' +\n      '<g class=\"ti-ring\" transform=\"translate(1340 470)\">' +\n      '<circle r=\"300\" style=\"fill:url(#cpa-f);opacity:.8\"/>' +\n      '<g class=\"ti-ticks\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 55%, transparent)\">' + ticks + '</g>' +\n      '<circle r=\"200\" fill=\"none\" stroke=\"url(#cpa-g)\" stroke-width=\"10\"/>' +\n      '<circle r=\"168\" fill=\"none\" stroke-width=\"2\" style=\"stroke:color-mix(in srgb, var(--second) 25%, transparent)\"/>' +\n      '<path d=\"M0 -100 L80 -70 L80 0 Q80 70 0 105 Q-80 70 -80 0 L-80 -70 Z\" fill=\"none\" stroke-width=\"8\" stroke-linejoin=\"round\" style=\"stroke:color-mix(in srgb, var(--main) 55%, transparent)\"/><path class=\"ti-tick\" d=\"M-40 2 L-10 34 L46 -34\" pathLength=\"1\" fill=\"none\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/>' +\n      '<text y=\"160\" text-anchor=\"middle\" class=\"mono\" style=\"fill:color-mix(in srgb, var(--second) 70%, var(--ground));font-size:34px;letter-spacing:.2em\">T01–T13</text></g></svg>' +\n      '<div class=\"words\" style=\"left:140px;top:250px;width:900px\"><p class=\"kick ti-k\">Phase 3 · Checkpoint</p>' +\n      '<h1 class=\"line ti-t\" style=\"font-size:120px\">Checkpoint A</h1>' +\n      '<div class=\"rule ti-r\" style=\"width:260px\"></div>' +\n      '<p class=\"sub ti-s\">CPA · 8 questions · T01 to T13 · not graded</p></div>' +\n      '<p class=\"fict\" style=\"position:absolute;left:140px;bottom:80px;margin:0\">Education only · Not financial advice</p>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.ti-k').style; this.t = q('.ti-t'); this.r = q('.ti-r').style; this.s = q('.ti-s').style;\n    this.ring = q('.ti-ring'); this.ticks = q('.ti-ticks'); this.tick = q('.ti-tick');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: 2080, y: C.y, s: C.s }, { t: 2.6, x: C.x, y: C.y, s: C.s, d: 1.9, ease: (p) => kit.lerp(p, kit.eo(p), 0.5) }],\n      poses: [{ t: 0, pose: 'walk', flip: true }, { t: 2.6, pose: 'hi' }, { t: 5.4, pose: 'present' }],\n      says: [{ t0: 2.9, t1: 7.4, text: 'Review time. You got this.' }],\n    });\n  },\n  render(t) {\n    this.k.opacity = eo(seg(t, -0.6, -0.1));\n    TextFx.fadeFromRight(this.t, t, -0.9);\n    this.r.transformOrigin = '0 50%';\n    this.r.transform = 'scaleX(' + eo(seg(t, 0.2, 0.9)) + ')';\n    this.s.opacity = eo(seg(t, 0.6, 1.1));\n    const c = seg(t, -0.6, 0.6);\n    this.ring.setAttribute('transform', 'translate(1340 ' + (470 - t * 2).toFixed(1) + ') scale(' + (lerp(0.9, 1, eob(c, 1.6)) * (1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.2))).toFixed(4) + ')');\n    this.ring.style.opacity = eo(c);\n    this.ticks.setAttribute('transform', 'rotate(' + (t * 6).toFixed(2) + ')');\n    const k = seg(t, 1.0, 1.8);\n    this.tick.setAttribute('stroke-dasharray', eio(k).toFixed(3) + ' 1'); this.tick.style.opacity = k > 0 ? 1 : 0;\n    this.tutor.render(t);\n  },\n});\n","scenes.json":"{\n  \"v\": 1,\n  \"stage\": \"final\",\n  \"look\": \"XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner\",\n  \"palettes\": [\n    [\n      \"#02030a\",\n      \"#3ecbff\",\n      \"#eef1f7\",\n      \"#a855f7\"\n    ]\n  ],\n  \"theirs\": 1,\n  \"width\": 1920,\n  \"height\": 1080,\n  \"fps\": 60,\n  \"background\": \"#02030a\",\n  \"fonts\": {\n    \"display\": {\n      \"family\": \"Outfit\",\n      \"or\": \"plus-jakarta-sans\",\n      \"weights\": [\n        400,\n        600,\n        700\n      ]\n    },\n    \"sans\": \"manrope\",\n    \"mono\": \"dm-mono\"\n  },\n  \"scenes\": [\n    {\n      \"id\": \"title\",\n      \"name\": \"Checkpoint A\",\n      \"dur\": 8,\n      \"desc\": \"Title card: Phase 3 checkpoint CPA, review of T01 to T13; a ring with a shield draws in; the tutor walks in.\"\n    },\n    {\n      \"id\": \"how\",\n      \"name\": \"How it works\",\n      \"dur\": 19,\n      \"desc\": \"Eight questions from T01 to T13, most about risk: read, pause, pick, countdown, see why. Not graded.\"\n    },\n    {\n      \"id\": \"q-phish\",\n      \"name\": \"Q1 account security\",\n      \"dur\": 21,\n      \"desc\": \"T04: 'support' asks for a 2FA code and API secret key; never share either; open the official app yourself.\"\n    },\n    {\n      \"id\": \"q-spot\",\n      \"name\": \"Q2 spot vs futures\",\n      \"dur\": 21,\n      \"desc\": \"T05/T11: spot is owning the coin; futures are contracts on its price with margin, funding and liquidation.\"\n    },\n    {\n      \"id\": \"q-net\",\n      \"name\": \"Q3 net result\",\n      \"dur\": 21,\n      \"desc\": \"T06/T09: gross +4 USDT minus 3 + 3 USDT fees = -2 USDT net; bars fall below zero.\"\n    },\n    {\n      \"id\": \"q-gap\",\n      \"name\": \"Q4 stop slippage\",\n      \"dur\": 21,\n      \"desc\": \"T07/T08: stop at 59,000, price gaps 59,300 to 58,600; it may fill near 58,600 or worse.\"\n    },\n    {\n      \"id\": \"q-lev\",\n      \"name\": \"Q5 leverage maths\",\n      \"dur\": 21,\n      \"desc\": \"T12: 100 USDT margin at 10x, BTC -2%: notional 1,000 x -2% = -20 USDT, 20% of margin.\"\n    },\n    {\n      \"id\": \"q-safe\",\n      \"name\": \"Q6 no safe leverage\",\n      \"dur\": 21,\n      \"desc\": \"T12: leverage magnifies gains and losses alike; no leverage number is safe.\"\n    },\n    {\n      \"id\": \"q-stop\",\n      \"name\": \"Q7 stop vs liquidation\",\n      \"dur\": 21,\n      \"desc\": \"T13: a stop-loss cannot guarantee no liquidation; the liquidation zone can come first.\"\n    },\n    {\n      \"id\": \"q-fund\",\n      \"name\": \"Q8 funding\",\n      \"dur\": 21,\n      \"desc\": \"T13: long, 2,000 USDT notional, rate +0.01%: you pay 0.20 USDT.\"\n    },\n    {\n      \"id\": \"safety\",\n      \"name\": \"Critical safety\",\n      \"dur\": 30,\n      \"desc\": \"Leverage and liquidation, stop-loss limits, never share codes or keys, WAIT / NO_TRADE and demo only.\"\n    },\n    {\n      \"id\": \"revisit\",\n      \"name\": \"Where to revisit\",\n      \"dur\": 20,\n      \"desc\": \"Which lesson each question came from; rewatch with no penalty.\"\n    },\n    {\n      \"id\": \"next\",\n      \"name\": \"Up next\",\n      \"dur\": 10,\n      \"desc\": \"End card: Phase 4 starts with T14, Candlesticks: Open, High, Low, Close.\"\n    }\n  ]\n}","score.js":"kit.score(function (S, T) {\n  // No voice: the music is the only sound. A soft bed: pad and keys, a light pulse while the questions run, quieter for safety.\n  const BPM = 84, B = 60 / BPM, BAR = 4 * B;\n  S.tempo(BPM, { t0: 0 });\n  S.program('pad', 'pad', { rev: 0.7, gain: -6 });\n  S.program('keys', 'ep', { rev: 0.45, gain: -10 });\n  S.program('mal', 'pluck', { rev: 0.5, gain: -12, pan: 0.2 });\n  S.program('bass', 'bass', { gain: -10 });\n  const prog = [['D3', 'A3', 'E4', 'F#4'], ['B2', 'F#3', 'A3', 'D4'], ['G2', 'D3', 'F#3', 'B3'], ['A2', 'E3', 'A3', 'C#4']];\n  const roots = ['D2', 'B1', 'G1', 'A1'];\n  const tops = [['F#5', 'A5', 'E5'], ['D5', 'F#5', 'A5'], ['B4', 'D5', 'F#5'], ['C#5', 'E5', 'A5']];\n  const inR = (s, a, b) => s >= a - 0.1 && s < b - 0.1;\n  const pulse = (s) => inR(s, T['q-phish'], T.safety);\n  const quiet = (s) => inR(s, T.safety, T.revisit);\n  const bars = Math.floor(T.END / BAR);\n  for (let b = 0; b < bars; b++) {\n    const beat = b * 4, s = beat * B, c = prog[b % 4];\n    if (s >= T.next - 0.1) break;\n    S.chord('pad', c, { beat, beats: 4, vel: quiet(s) ? 26 : 32 });\n    if (!quiet(s)) S.chord('keys', c.slice(1), { beat, beats: 3, vel: 34 });\n    if (pulse(s)) { S.pattern('mal', 'x.x..x.x', { from: beat, repeat: 1, pitch: tops[b % 4], vel: 30 }); S.note('bass', roots[b % 4], { beat, beats: 3, vel: 46 }); }\n  }\n  const steps = (a, b) => { const ts = []; for (let s = a + 0.18; s < b; s += 0.364) ts.push(s); S.ticks(ts, { vel: 24 }); };\n  steps(T.title, T.title + 2.6); steps(T.next + 0.1, T.next + 1.1);\n  S.fx('pop', T.title + 2.9, { vel: 26, pitch: 7 }); S.fx('chime', T.title + 1.4, { vel: 30 });\n  for (let i = 0; i < 4; i++) S.fx('pop', T.how + 2.6 + i * 0.35, { vel: 26, pitch: 5 });\n  [6.9, 8.3, 9.7, 12.5].forEach((a) => S.fx('tick', T.how + a, { vel: 30 }));\n  for (let i = 0; i < 3; i++) S.fx('pop', T.how + 13.5 + i * 0.4, { vel: 30, pitch: 7 });\n  ['q-phish', 'q-spot', 'q-net', 'q-gap', 'q-lev', 'q-safe', 'q-stop', 'q-fund'].forEach((id) => {\n    const s = T[id];\n    S.fx('whoosh', s + 0.1, { dur: 0.8, vel: 18 });\n    for (let i = 0; i < 4; i++) S.fx('pop', s + 1.2 + i * 0.25, { vel: 24, pitch: 4 + i });\n    for (let i = 0; i < 5; i++) S.fx('tick', s + 2.5 + i, { vel: 28 });\n    S.fx('chime', s + 7.6, { vel: 40 });\n    S.fx('ding', s + 7.9, { vel: 30 });\n    S.fx('thud', s + 14.3, { vel: 24 });\n  });\n  S.fx('ding', T['q-lev'] + 8.6, { vel: 26 }); S.fx('whoosh', T['q-fund'] + 8.0, { dur: 1.2, vel: 22 }); S.fx('thud', T['q-stop'] + 7.8, { vel: 30 });\n  for (let i = 0; i < 3; i++) S.fx('pop', T['q-phish'] + 7.8 + i * 0.5, { vel: 28, pitch: -3 });\n  [4.1, 10.6, 15.9, 22.4].forEach((a) => S.fx('pop', T.safety + a, { vel: 30 }));\n  [3.8, 5.2, 6.4, 7.6, 9.6, 11.0].forEach((a) => S.fx('pop', T.revisit + a, { vel: 32, pitch: 7 }));\n  S.fx('ding', T.revisit + 13.2, { vel: 34 });\n  S.fx('revswell', T.next, { dur: 1.6, vel: 44 });\n  S.chord('pad', ['D3', 'A3', 'D4', 'F#4'], { t: T.next, dur: 9, vel: 40 });\n  S.chord('keys', ['D3', 'A3', 'D4', 'F#4', 'A4'], { t: T.next + 0.7, dur: 8, vel: 50 });\n  S.run('mal', ['D5', 'E5', 'F#5', 'A5', 'B5', 'D6'], { t: T.next + 1.4, step: 0.12, vel: 40, cresc: 6 });\n  S.master({ gain: -10, music: 21.5, fadeOut: 2.5 });\n});\n","shared.js":"window.UI = {\n  LESSON: 'CPA · Checkpoint A',\n  TOTAL: 255,\n  lockup(kit) {\n    return kit.h('<div class=\"lock\"><img alt=\"\" src=\"' + kit.assets.url('xtinex-x.png') + '\"><span class=\"lock-xt\">XTINEX</span><span class=\"lock-bar\"></span><span class=\"lock-xo\">XORA</span></div>');\n  },\n  // Lesson header: lesson name and a progress bar across the whole film.\n  chrome(kit) {\n    const el = kit.h('<div class=\"chrome\"><span>' + kit.esc(UI.LESSON) + '</span><div><i></i></div></div>');\n    kit.stage.append(el);\n    const bar = el.querySelector('i').style, start = kit.start;\n    return (t) => { bar.width = (Math.min(1, (start + t) / UI.TOTAL) * 100).toFixed(2) + '%'; };\n  },\n  // Set text only when it changes.\n  set(el, v) { v = String(v); if (el.textContent !== v) el.textContent = v; },\n  // Signed amount: +10.00 / −10.00 (true minus sign).\n  sgn(n, dp) { const v = Math.abs(n) < 1e-9 ? 0 : n; return (v > 0 ? '+' : v < 0 ? '−' : '') + UI.fmt(Math.abs(v), dp); },\n  // Entrance: fade in and rise from dy px, starting at a, over d seconds. Optional fade-out window [o0, o1].\n  rise(kit, st, t, a, d, dy, o0, o1) {\n    const p = kit.seg(t, a, a + (d || 0.6));\n    const out = o0 == null ? 0 : kit.ei(kit.seg(t, o0, o1));\n    st.opacity = (kit.eo(kit.seg(t, a, a + (d || 0.6) * 0.6)) * (1 - out)).toFixed(3);\n    st.transform = 'translateY(' + kit.lerp(dy == null ? 30 : dy, 0, kit.eo(p)).toFixed(1) + 'px)';\n    return p;\n  },\n  // Countdown ring centred at cx, cy: shown from tIn, a pause sign, then n seconds counting down from t0, gone by tOut.\n  ring(kit, cx, cy, r, tIn, t0, n, tOut, label) {\n    const C = 2 * Math.PI * r;\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"ui-ring\" transform=\"translate(' + cx + ' ' + cy + ')\">' +\n      '<circle r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" style=\"stroke:color-mix(in srgb, var(--second) 10%, transparent)\"/>' +\n      '<circle class=\"ui-arc\" r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" stroke-linecap=\"round\" transform=\"rotate(-90)\" stroke-dasharray=\"' + C.toFixed(1) + '\" style=\"stroke:var(--main)\"/>' +\n      '<g class=\"ui-pause\"><rect x=\"-24\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/><rect x=\"8\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/></g>' +\n      '<text class=\"ui-n mono\" y=\"26\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:72px\"></text>' +\n      (label ? '<text y=\"' + (-r - 30) + '\" text-anchor=\"middle\" style=\"fill:color-mix(in srgb, var(--second) 62%, var(--ground));font-size:26px\">' + kit.esc(label) + '</text>' : '') + '</g></svg>');\n    kit.stage.append(svg);\n    const g = svg.querySelector('.ui-ring'), arc = svg.querySelector('.ui-arc'), pause = svg.querySelector('.ui-pause').style, num = svg.querySelector('.ui-n');\n    return (t) => {\n      const p = kit.seg(t, tIn, tIn + 0.5);\n      g.style.opacity = kit.eo(p) * (1 - kit.ei(kit.seg(t, tOut - 0.4, tOut)));\n      g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ') scale(' + kit.lerp(0.8, 1, kit.eob(p, 1.6)).toFixed(4) + ')');\n      arc.setAttribute('stroke-dashoffset', (C * kit.seg(t, t0, t0 + n)).toFixed(1));\n      const txt = t < t0 ? '' : String(Math.max(0, Math.min(n, Math.ceil(n - (t - t0)))));\n      if (num.textContent !== txt) num.textContent = txt;\n      pause.opacity = t < t0 ? 1 : 0;\n    };\n  },\n  // Checkpoint question. cfg: n, from, q (headline), opts[4], ok (right index), bad (tempting wrong index), why, whyNot,\n  // vis (HTML inside the visual panel), R (answer revealed), N (why-not shown). Returns render(t) for the shared parts.\n  quiz(kit, cfg) {\n    const L = 'ABCD', R = cfg.R || 7.6, N = cfg.N || 14.2;\n    let rows = '';\n    cfg.opts.forEach((o, i) => {\n      const mark = i === cfg.ok ? '<path class=\"qz-ok\" d=\"M10 23 L19 32 L35 13\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/>'\n        : i === cfg.bad ? '<path class=\"qz-no\" d=\"M13 13 L31 31 M31 13 L13 31\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" style=\"stroke:var(--accent)\"/>' : '';\n      rows += '<div class=\"qz-o\" style=\"display:flex;align-items:center;gap:22px;padding:13px 22px;border-radius:20px;border:2px solid color-mix(in srgb, var(--second) 14%, transparent);background:color-mix(in srgb, var(--ground) 90%, var(--main))\">' +\n        '<span class=\"qz-l mono\" style=\"width:50px;height:50px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:26px;border:2px solid color-mix(in srgb, var(--main) 45%, transparent)\">' + L[i] + '</span>' +\n        '<span style=\"font-size:30px;font-weight:600;line-height:1.3;flex:1\">' + o + '</span>' +\n        '<svg width=\"44\" height=\"44\" viewBox=\"0 0 44 44\" style=\"flex:none\">' + mark + '</svg></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:150px;width:1010px;gap:20px\"><p class=\"kick qz-k\">Question ' + cfg.n + ' of 8 · from ' + cfg.from + '</p>' +\n      '<h2 class=\"line qz-t\" style=\"font-size:64px\">' + cfg.q + '</h2>' +\n      '<div style=\"margin-top:14px;display:flex;flex-direction:column;gap:14px\">' + rows + '</div></div>' +\n      '<div class=\"glass qz-vis\" style=\"left:1220px;top:150px;width:560px;height:340px\">' + cfg.vis + '</div>' +\n      '<div class=\"glass qz-why\" style=\"left:1220px;top:508px;width:560px;padding:18px 28px;display:flex;flex-direction:column;gap:14px\">' +\n      '<div><p class=\"kick\" style=\"margin:0 0 4px\">Why ' + L[cfg.ok] + '</p><p style=\"margin:0;font-size:28px;line-height:1.32;font-weight:600\">' + cfg.why + '</p></div>' +\n      '<div class=\"qz-w2\"><p class=\"kick\" style=\"margin:0 0 4px;color:var(--accent)\">Why not ' + L[cfg.bad] + '</p><p style=\"margin:0;font-size:28px;line-height:1.32;font-weight:600\">' + cfg.whyNot + '</p></div></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    const k = q('.qz-k').style, head = q('.qz-t'), vis = q('.qz-vis').style, why = q('.qz-why').style, w2 = q('.qz-w2').style;\n    const os = all('.qz-o').map((e) => e.style), ls = all('.qz-l').map((e) => e.style), ok = q('.qz-ok'), no = q('.qz-no');\n    const ring = UI.ring(kit, 1500, 650, 80, 2.1, 2.5, 5, R + 0.3, 'Pause to think');\n    const C = UI.CORNER;\n    const tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: cfg.poses || [{ t: 0, pose: 'explain' }, { t: 0.5, pose: 'read' }, { t: 2.5, pose: 'think' }, { t: R, pose: 'cheer' }, { t: R + 2.2, pose: 'explain' }, { t: N, pose: 'magnify' }],\n      says: cfg.says || [],\n    });\n    const { seg, eo, ei, eob, lerp, TextFx } = kit;\n    const mix = (c, p, base) => 'color-mix(in srgb, ' + c + ' ' + (base + (100 - base) * p).toFixed(0) + '%, transparent)';\n    return (t) => {\n      k.opacity = eo(seg(t, 0, 0.5));\n      TextFx.fadeFromRight(head, t, 0.1, { stagger: 0.06 });\n      const vp = seg(t, 0.7, 1.4);\n      vis.opacity = eo(vp); vis.transform = 'translateY(' + lerp(30, 0, eo(vp)).toFixed(1) + 'px)';\n      const rv = eo(seg(t, R, R + 0.5)), nb = eo(seg(t, N, N + 0.5));\n      os.forEach((s, i) => {\n        const a = 1.2 + i * 0.25, p = eo(seg(t, a, a + 0.5)), good = i === cfg.ok, tempt = i === cfg.bad;\n        const dim = good ? 1 : tempt ? lerp(lerp(1, 0.5, rv), 1, nb) : lerp(1, 0.4, rv);\n        s.opacity = (eo(seg(t, a, a + 0.3)) * dim).toFixed(3);\n        s.transform = 'translateX(' + lerp(30, 0, p).toFixed(1) + 'px) scale(' + (good ? lerp(1, 1.025, Math.sin(Math.PI * seg(t, R, R + 0.7)) * 0.6 + rv * 0.4) : 1).toFixed(4) + ')';\n        s.transformOrigin = '0 50%';\n        if (good) { s.borderColor = mix('var(--main)', rv, 14); s.background = 'color-mix(in srgb, var(--ground) ' + lerp(90, 74, rv).toFixed(0) + '%, var(--main))'; ls[i].background = rv > 0.5 ? 'var(--main)' : 'transparent'; ls[i].color = rv > 0.5 ? 'var(--ground)' : 'var(--second)'; }\n        if (tempt) s.borderColor = nb > 0 ? mix('var(--accent)', nb, 14) : mix('var(--second)', 0, 14);\n      });\n      const po = seg(t, R + 0.2, R + 0.7), pn = seg(t, N + 0.1, N + 0.6);\n      ok.setAttribute('stroke-dasharray', eo(po).toFixed(3) + ' 1'); ok.style.opacity = po > 0 ? 1 : 0;\n      no.setAttribute('stroke-dasharray', eo(pn).toFixed(3) + ' 1'); no.style.opacity = pn > 0 ? 1 : 0;\n      const wp = seg(t, R + 0.3, R + 0.9);\n      why.opacity = eo(wp); why.transform = 'translateY(' + lerp(24, 0, eo(wp)).toFixed(1) + 'px)';\n      w2.opacity = nb; w2.transform = 'translateX(' + lerp(20, 0, nb).toFixed(1) + 'px)';\n      ring(t);\n      tutor.render(t);\n    };\n  },\n  fmt(n, dp) { return n.toLocaleString('en-US', { minimumFractionDigits: dp || 0, maximumFractionDigits: dp || 0 }); },\n  // Deterministic fictional price walk: returns [[x,y],...] across x0..x1.\n  walk(kit, seed, n, x0, x1, y0, y1, amp) {\n    const r = kit.rng(seed); const pts = []; let v = 0;\n    for (let i = 0; i < n; i++) {\n      v += (r() - 0.5) * amp; v *= 0.86;\n      const p = i / (n - 1);\n      pts.push([x0 + (x1 - x0) * p, y0 + (y1 - y0) * p + v]);\n    }\n    return pts;\n  },\n  d(pts) { return pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' '); },\n  // The tutor sits in this corner between scenes: feet x, feet y, brain width (px).\n  CORNER: { x: 1735, y: 1042, s: 160 },\n  // Side speech bubbles sit this far higher than in T01, so they clear the two-line caption band (y ≈ 784–930).\n  LIFT: 96,\n  // The brain tutor. cfg.keys: [{t, x, y, s, d?, ease?}] feet position and brain width, each key reached at t after a d-second move.\n  // cfg.poses: [{t, pose, flip?}] ('wave' and 'walk' play their frame loops). cfg.says: [{t0, t1, text, side?: 'left'|'top'}].\n  tutor(kit, cfg) {\n    const M = kit.json('tutor.json');\n    const root = kit.h('<div class=\"tutor\"></div>');\n    const shadow = kit.h('<div class=\"tutor-shadow\"></div>');\n    root.append(shadow);\n    const imgs = {};\n    for (const n of Object.keys(M)) {\n      const im = kit.h('<img class=\"tutor-img\" alt=\"\" src=\"' + kit.assets.url('tutor-' + n + '.webp') + '\">');\n      imgs[n] = im.style; root.append(im);\n    }\n    const says = (cfg.says || []).map((s) => {\n      const b = kit.h('<div class=\"bubble' + (s.side === 'top' ? ' is-top' : '') + '\"><p>' + kit.esc(s.text) + '</p></div>');\n      root.append(b);\n      return Object.assign({}, s, { st: b.style });\n    });\n    kit.stage.append(root);\n    const keys = cfg.keys, poses = cfg.poses;\n    const LOOPS = {\n      wave: { f: ['wv1', 'wv2', 'wv3', 'wv4', 'wv3', 'wv2'], fps: 7 },\n      walk: { f: ['wk0', 'wk1', 'wk2', 'wk3', 'wk4', 'wk5', 'wk6', 'wk7'], fps: 11 },\n    };\n    const name = (p, dt) => { const L = LOOPS[p.pose]; return L ? L.f[Math.floor(Math.max(0, dt) * L.fps) % L.f.length] : p.pose; };\n    let shown = [];\n    const place = (n, flip, x, y, s, op, sc, lift) => {\n      const m = M[n], st = imgs[n], k = s / m.bw;\n      st.width = (m.w * k).toFixed(1) + 'px'; st.height = (m.h * k).toFixed(1) + 'px';\n      st.left = (x - m.ax * k).toFixed(1) + 'px'; st.top = (y - m.feet * k).toFixed(1) + 'px';\n      st.transformOrigin = (m.ax * k).toFixed(1) + 'px ' + (m.feet * k).toFixed(1) + 'px';\n      st.transform = 'translateY(' + lift.toFixed(2) + 'px) scale(' + (flip ? -sc : sc).toFixed(4) + ',' + sc.toFixed(4) + ')';\n      st.opacity = op;\n      shown.push(n);\n    };\n    const api = {\n      at(t) {\n        let x = keys[0].x, y = keys[0].y, s = keys[0].s;\n        for (let i = 1; i < keys.length; i++) {\n          const a = keys[i - 1], b = keys[i], d = b.d == null ? 0.8 : b.d;\n          const p = kit.seg(t, b.t - d, b.t);\n          if (p <= 0) break;\n          const e = (b.ease || kit.eio)(p);\n          x = kit.lerp(a.x, b.x, e); y = kit.lerp(a.y, b.y, e); s = kit.lerp(a.s, b.s, e);\n        }\n        return { x, y, s };\n      },\n      render(t) {\n        for (const n of shown) imgs[n].opacity = 0;\n        shown = [];\n        const { x, y, s } = api.at(t);\n        let i = 0;\n        for (let j = 0; j < poses.length; j++) if (poses[j].t <= t) i = j;\n        const cur = poses[i], dt = t - cur.t;\n        const sw = i > 0 ? kit.clamp01(dt / 0.18) : 1;\n        const pop = i > 0 ? kit.clamp01(dt / 0.32) : 1;\n        const bob = Math.sin(t * 2 * Math.PI / 2.6) * s * 0.025;\n        const hop = cur.pose === 'walk' ? 0 : Math.sin(Math.PI * pop) * s * 0.07;\n        const step = cur.pose === 'walk' ? Math.abs(Math.sin(dt * Math.PI * 2.75)) * s * 0.03 : 0;\n        const breathe = 1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.1);\n        const sc = breathe * (cur.pose === 'walk' ? 1 : kit.lerp(0.93, 1, kit.eob(pop, 1.8)));\n        if (sw < 1) { const pv = poses[i - 1]; place(name(pv, t - pv.t), !!pv.flip, x, y, s, 1 - sw, breathe, bob); }\n        place(name(cur, dt), !!cur.flip, x, y, s, sw, sc, bob - hop - step);\n        const sh = shadow.style;\n        sh.left = (x - s * 0.6).toFixed(1) + 'px'; sh.top = (y - s * 0.07).toFixed(1) + 'px';\n        sh.width = (s * 1.2).toFixed(1) + 'px'; sh.height = (s * 0.16).toFixed(1) + 'px';\n        sh.opacity = 0.75 - (hop + step) / s;\n        for (const b of says) {\n          const p = kit.seg(t, b.t0, b.t0 + 0.32), o = kit.seg(t, b.t1 - 0.25, b.t1);\n          b.st.opacity = kit.eo(p) * (1 - kit.ei(o));\n          if (b.st.opacity === '0') continue;\n          const g = kit.lerp(0.88, 1, kit.eob(p, 1.6)) * kit.lerp(1, 0.96, kit.ei(o));\n          if (b.side === 'top') {\n            b.st.transformOrigin = '50% 100%';\n            b.st.transform = 'translate(' + x.toFixed(1) + 'px,' + (y - s * 1.42).toFixed(1) + 'px) translate(-50%,-100%) scale(' + g.toFixed(4) + ')';\n          } else {\n            b.st.transformOrigin = '100% 100%';\n            b.st.transform = 'translate(' + (x - s * 0.18).toFixed(1) + 'px,' + (y - s * 1.12 - UI.LIFT).toFixed(1) + 'px) translate(-100%,-100%) scale(' + g.toFixed(4) + ')';\n          }\n        }\n      },\n    };\n    return api;\n  },\n};\n","tutor.json":"{\n  \"present\": {\n    \"w\": 546,\n    \"h\": 612,\n    \"ax\": 218,\n    \"feet\": 605,\n    \"bw\": 421\n  },\n  \"checklist\": {\n    \"w\": 185,\n    \"h\": 161,\n    \"ax\": 97.5,\n    \"feet\": 153,\n    \"bw\": 138\n  },\n  \"calm\": {\n    \"w\": 234,\n    \"h\": 174,\n    \"ax\": 111.0,\n    \"feet\": 167,\n    \"bw\": 138\n  },\n  \"thumbs\": {\n    \"w\": 181,\n    \"h\": 179,\n    \"ax\": 102.0,\n    \"feet\": 172,\n    \"bw\": 138\n  },\n  \"celebrate\": {\n    \"w\": 209,\n    \"h\": 171,\n    \"ax\": 100.5,\n    \"feet\": 165,\n    \"bw\": 138\n  },\n  \"writing\": {\n    \"w\": 191,\n    \"h\": 169,\n    \"ax\": 111.5,\n    \"feet\": 161,\n    \"bw\": 138\n  },\n  \"explain\": {\n    \"w\": 502,\n    \"h\": 602,\n    \"ax\": 275,\n    \"feet\": 594,\n    \"bw\": 394\n  },\n  \"think\": {\n    \"w\": 465,\n    \"h\": 656,\n    \"ax\": 229,\n    \"feet\": 648,\n    \"bw\": 452\n  },\n  \"magnify\": {\n    \"w\": 187,\n    \"h\": 170,\n    \"ax\": 85.5,\n    \"feet\": 163,\n    \"bw\": 138\n  },\n  \"hi\": {\n    \"w\": 518,\n    \"h\": 594,\n    \"ax\": 298,\n    \"feet\": 587,\n    \"bw\": 408\n  },\n  \"read\": {\n    \"w\": 190,\n    \"h\": 181,\n    \"ax\": 82.5,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"cheer\": {\n    \"w\": 207,\n    \"h\": 182,\n    \"ax\": 105.0,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"confused\": {\n    \"w\": 185,\n    \"h\": 169,\n    \"ax\": 85.0,\n    \"feet\": 162,\n    \"bw\": 138\n  },\n  \"point\": {\n    \"w\": 547,\n    \"h\": 568,\n    \"ax\": 210,\n    \"feet\": 561,\n    \"bw\": 415\n  },\n  \"idea\": {\n    \"w\": 169,\n    \"h\": 178,\n    \"ax\": 69.5,\n    \"feet\": 171,\n    \"bw\": 138\n  },\n  \"wv1\": {\n    \"w\": 381,\n    \"h\": 448,\n    \"ax\": 163.5,\n    \"feet\": 434,\n    \"bw\": 305\n  },\n  \"wv2\": {\n    \"w\": 374,\n    \"h\": 448,\n    \"ax\": 165.0,\n    \"feet\": 436,\n    \"bw\": 305\n  },\n  \"wv3\": {\n    \"w\": 363,\n    \"h\": 448,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wv4\": {\n    \"w\": 375,\n    \"h\": 446,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wk0\": {\n    \"w\": 353,\n    \"h\": 460,\n    \"ax\": 162.5,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk1\": {\n    \"w\": 361,\n    \"h\": 460,\n    \"ax\": 164.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk2\": {\n    \"w\": 345,\n    \"h\": 460,\n    \"ax\": 170.5,\n    \"feet\": 448,\n    \"bw\": 310\n  },\n  \"wk3\": {\n    \"w\": 365,\n    \"h\": 460,\n    \"ax\": 164.0,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk4\": {\n    \"w\": 375,\n    \"h\": 457,\n    \"ax\": 167.5,\n    \"feet\": 444,\n    \"bw\": 310\n  },\n  \"wk5\": {\n    \"w\": 364,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk6\": {\n    \"w\": 354,\n    \"h\": 457,\n    \"ax\": 166.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk7\": {\n    \"w\": 365,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  }\n}"}};</script>
+<script>
+/* XORA Futures Edge lesson player.
+ *
+ * Plays a lesson written as scene modules (content/futures-edge/<id>/modules) as a plain web
+ * page. Everything on screen is a pure function of the lesson time t, so the page can pause,
+ * seek and replay at any point. It provides the small "kit" the scenes are written against
+ * (stage, easing, TextFx, assets, json) and a WebAudio synth for score.js.
+ *
+ * With a voiceover, build-lesson.mjs lengthens some scenes so the narration fits: a scene with
+ * stretch factor k plays its animation and sound effects k times slower. Scene code still sees the
+ * authored timeline (kit.start, kit.dur and t), so nothing in the modules changes. The voice is
+ * one mixed track; the music dips under each line, and the CC button shows the line as text.
+ *
+ * build-lesson.mjs inlines this file into public/futures-edge/lessons/<id>.html, after a
+ * `window.FILM = {...}` block that carries the scene list, module texts and asset paths.
+ */
+(function () {
+  "use strict";
+
+  const F = window.FILM;
+  const W = F.width;
+  const H = F.height;
+
+  // ── Maths and easing ───────────────────────────────────────────────────────
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const clamp01 = (x) => clamp(x, 0, 1);
+  const seg = (t, a, b) => (b <= a ? (t >= b ? 1 : 0) : clamp01((t - a) / (b - a)));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const eo = (x) => 1 - Math.pow(1 - clamp01(x), 3);
+  const ei = (x) => Math.pow(clamp01(x), 3);
+  const eio = (x) => {
+    x = clamp01(x);
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  };
+  const eob = (x, s = 1.4) => {
+    x = clamp01(x);
+    return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2);
+  };
+  const rng = (seed) => {
+    let a = seed >>> 0 || 1;
+    return () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+  const breathe = (t, amt = 0.012, period = 3.2) => 1 + amt * Math.sin((2 * Math.PI * t) / period);
+
+  // ── DOM helpers ────────────────────────────────────────────────────────────
+  const h = (html) => {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = String(html).trim();
+    return tpl.content.firstElementChild;
+  };
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const el = (tag, o = {}, children = []) => {
+    const e = document.createElement(tag);
+    if (o.class) e.className = o.class;
+    if (o.style) e.setAttribute("style", o.style);
+    if (o.text != null) e.textContent = o.text;
+    if (o.html != null) e.innerHTML = o.html;
+    for (const [k, v] of Object.entries(o.attrs || {})) e.setAttribute(k, v);
+    for (const c of children) e.append(c);
+    return e;
+  };
+
+  // Words of an element as inline-block spans (inline markup such as <b> is kept).
+  const wordCache = new WeakMap();
+  function words(root) {
+    let list = wordCache.get(root);
+    if (list) return list;
+    list = [];
+    const walk = (node) => {
+      for (const child of Array.from(node.childNodes)) {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const part of child.textContent.split(/(\s+)/)) {
+            if (!part) continue;
+            if (/^\s+$/.test(part)) {
+              frag.append(document.createTextNode(part));
+            } else {
+              const s = document.createElement("span");
+              s.textContent = part;
+              s.style.display = "inline-block";
+              frag.append(s);
+              list.push(s);
+            }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      }
+    };
+    walk(root);
+    wordCache.set(root, list);
+    return list;
+  }
+  const TextFx = {
+    fadeFromRight(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.11, d = o.dur ?? 0.5, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = eo(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = p;
+        s.style.transform = "translateX(" + ((1 - p) * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+    fadeOutLeft(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.04, d = o.dur ?? 0.35, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = ei(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = 1 - p;
+        s.style.transform = "translateX(" + (-p * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+  };
+
+  // ── The kit the scene modules use ──────────────────────────────────────────
+  const modules = F.modules;
+  const jsonCache = {};
+  const assets = {
+    url: (name) => F.assetBase + name,
+    has: (name) => Object.prototype.hasOwnProperty.call(F.assets, name),
+    list: () => Object.keys(F.assets),
+  };
+  const defs = {};
+  let scoreFn = null;
+
+  // start/dur: the scene in the played timeline; oldStart/oldDur: as authored (k = dur / oldDur).
+  let acc = 0;
+  const scenes = F.scenes.map((s) => {
+    const o = Object.assign({ k: 1, oldStart: acc, oldDur: s.dur }, s, { start: acc });
+    acc += s.dur;
+    return o;
+  });
+  const END = acc;
+  const OLD_END = scenes.reduce((a, s) => a + s.oldDur, 0);
+  // Authored time to played time.
+  function warp(x) {
+    for (let i = scenes.length - 1; i >= 0; i--) {
+      const s = scenes[i];
+      if (x >= s.oldStart) return s.start + (x - s.oldStart) * s.k;
+    }
+    return x;
+  }
+  // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
+  const lines = (F.voice && F.voice.lines) || [];
+  // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
+  const duckSpans = [];
+  if (F.voice && F.voice.src) for (const l of lines) {
+    const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
+    if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
+  }
+
+  function makeKit(box, start, dur) {
+    return {
+      stage: box, start, dur, W, H,
+      seg, lerp, eo, ei, eio, eob, clamp, clamp01, rng, breathe, TextFx, h, el, esc,
+      assets,
+      module: (n) => (n in modules ? modules[n] : null),
+      json: (n) => (jsonCache[n] ??= JSON.parse(modules[n])),
+      modules: () => Object.keys(modules),
+      scene: (id, def) => { defs[id] = def; },
+      score: (fn) => { scoreFn = fn; },
+    };
+  }
+  const run = (name, kit) => new Function("kit", modules[name] + "\n//# sourceURL=" + F.id + "/" + name)(kit);
+
+  // ── Stage ──────────────────────────────────────────────────────────────────
+  const stage = document.getElementById("stage");
+  const css = document.createElement("style");
+  css.textContent = modules["base.css"] || "";
+  document.head.append(css);
+
+  function fit() {
+    const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+  }
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 200));
+  fit();
+
+  // ── Audio: score.js recorded as events, then synthesised with WebAudio ─────
+  function midiOf(p) {
+    if (typeof p === "number") return p;
+    const m = /^([A-Ga-g])([#b]?)(-?\d)$/.exec(String(p).trim());
+    if (!m) return 72;
+    const base = { c: 0, d: 2, e: 4, f: 5, g: 7, a: 9, b: 11 }[m[1].toLowerCase()];
+    return 12 * (Number(m[3]) + 1) + base + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
+  }
+
+  // score.js runs twice: the music against the played timeline, the sound effects against the
+  // authored one and then moved onto the played one, so each cue stays with its animation.
+  function recordScore() {
+    const T = { END };
+    for (const s of scenes) T[s.id] = s.start;
+    const music = recordPass(T);
+    const Told = { END: OLD_END };
+    for (const s of scenes) Told[s.id] = s.oldStart;
+    const cues = recordPass(Told);
+    const ev = music.ev.filter((e) => e.k !== "f");
+    for (const e of cues.ev) {
+      if (e.k !== "f") continue;
+      e.t = warp(e.t);
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      ev.push(e);
+    }
+    ev.sort((a, b) => a.s - b.s);
+    return { ev, tracks: music.tracks, master: music.master };
+  }
+
+  function recordPass(T) {
+    const ev = [];
+    const tracks = {};
+    const master = { gain: -6, music: 0, fadeOut: 1 };
+    let B = 0.5, t0 = 0;
+    const at = (o) => (o.t != null ? o.t : t0 + (o.beat || 0) * B);
+    const len = (o, d) => (o.dur != null ? o.dur : o.beats != null ? o.beats * B : d);
+    const push = (e) => {
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      if (e.s < -0.1) return;
+      if (e.s < 0) { e.t += -e.s; e.s = 0; }
+      ev.push(e);
+    };
+    const hits = (str, rep, step, from, vel, fn) => {
+      for (let r = 0; r < rep; r++) {
+        for (let i = 0; i < str.length; i++) {
+          const c = str[i];
+          if (c !== "x" && c !== "X" && c !== "o") continue;
+          fn(t0 + (from + (r * str.length + i) * step) * B, vel * (c === "X" ? 1.25 : c === "o" ? 0.5 : 1));
+        }
+      }
+    };
+    const S = {
+      tempo(bpm, o = {}) { B = 60 / bpm; t0 = o.t0 || 0; },
+      beat: (n) => t0 + n * B,
+      toBeat: (t) => (t - t0) / B,
+      seed() {},
+      program(track, patch, o = {}) {
+        tracks[track] = { patch, gain: o.gain || 0, pan: o.pan || 0, rev: o.rev || 0, bright: o.bright ?? 1 };
+      },
+      note(track, p, o = {}) { push({ k: "n", track, m: midiOf(p), t: at(o), d: len(o, B), v: o.vel ?? 90 }); },
+      chord(track, ps, o = {}) { ps.forEach((p) => S.note(track, p, o)); },
+      pattern(track, str, o = {}) {
+        const pitches = o.pitch || ["C5"];
+        let k = 0;
+        const step = o.step ?? 0.5;
+        hits(str, o.repeat ?? 1, step, o.from || 0, o.vel ?? 80, (t, v) =>
+          push({ k: "n", track, m: midiOf(pitches[k++ % pitches.length]), t, d: o.dur ?? step * B * 0.9, v }));
+      },
+      drum(name, o = {}) { push({ k: "d", name, t: at(o), d: 0.3, v: o.vel ?? 90 }); },
+      drums(map, o = {}) {
+        for (const name of Object.keys(map)) {
+          hits(map[name], o.repeat ?? 1, o.step ?? 0.5, o.from || 0, o.vel ?? 80, (t, v) => push({ k: "d", name, t, d: 0.3, v }));
+        }
+      },
+      ticks(times, o = {}) { times.forEach((t) => push({ k: "f", name: "tick", t, d: 0.03, v: o.vel ?? 40, pitch: 0 })); },
+      fx(name, t, o = {}) { push({ k: "f", name, t, d: o.dur ?? 0.5, v: o.vel ?? 70, pitch: o.pitch || 0 }); },
+      run(track, ps, o = {}) {
+        const step = o.step ?? 0.1;
+        ps.forEach((p, i) => push({ k: "n", track, m: midiOf(p), t: o.t + i * step, d: step * 2.5, v: (o.vel ?? 70) + i * (o.cresc || 0) }));
+      },
+      master(o = {}) {
+        if (o.gain != null) master.gain = o.gain;
+        if (o.music != null) master.music = o.music;
+        if (o.fadeOut != null) master.fadeOut = o.fadeOut;
+      },
+    };
+    if (scoreFn) scoreFn(S, T);
+    return { ev, tracks, master };
+  }
+
+  const db = (x) => Math.pow(10, x / 20);
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+  const audio = {
+    ctx: null, enabled: false, muted: false, score: null,
+    out: null, verb: null, noise: null, session: null, timer: 0,
+    voiceData: null, voiceBuf: null, voiceOut: null,
+  };
+  const DUCK = 0.4;
+
+  function setupAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    const ctx = (audio.ctx = new AC());
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -14;
+    comp.ratio.value = 4;
+    comp.connect(ctx.destination);
+    audio.out = ctx.createGain();
+    audio.out.gain.value = db(audio.score.master.gain);
+    audio.out.connect(comp);
+    // A small generated room for the reverb send.
+    const len = Math.floor(ctx.sampleRate * 2.4);
+    const ir = ctx.createBuffer(2, len, ctx.sampleRate);
+    const r = rng(9);
+    for (let c = 0; c < 2; c++) {
+      const d = ir.getChannelData(c);
+      for (let i = 0; i < len; i++) d[i] = (r() * 2 - 1) * Math.pow(1 - i / len, 3);
+    }
+    audio.verb = ctx.createConvolver();
+    audio.verb.buffer = ir;
+    const verbGain = ctx.createGain();
+    verbGain.gain.value = 0.5;
+    audio.verb.connect(verbGain);
+    verbGain.connect(audio.out);
+    const nb = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+    const nd = nb.getChannelData(0);
+    const r2 = rng(3);
+    for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
+    audio.noise = nb;
+    // The voice skips the music's compressor and goes straight out.
+    audio.voiceOut = ctx.createGain();
+    audio.voiceOut.gain.value = 1;
+    audio.voiceOut.connect(ctx.destination);
+    decodeVoice();
+    return true;
+  }
+
+  async function decodeVoice() {
+    if (!audio.ctx || audio.voiceBuf || !audio.voiceData) return;
+    try {
+      const data = await audio.voiceData;
+      if (!data || audio.voiceBuf) return;
+      audio.voiceBuf = await new Promise((ok, fail) => audio.ctx.decodeAudioData(data.slice(0), ok, fail));
+    } catch (e) {
+      return; // the lesson plays on without the voice
+    }
+    if (audio.session) startVoice(audio.session);
+  }
+
+  // The voice of one session, from the session's start point; the music dips under each line.
+  function startVoice(s) {
+    if (!audio.voiceBuf || s.voice) return;
+    const ctx = audio.ctx;
+    const at = Math.max(s.ctx0, ctx.currentTime + 0.02);
+    const off = s.film0 + (at - s.ctx0);
+    if (off >= audio.voiceBuf.duration) return;
+    const src = ctx.createBufferSource();
+    src.buffer = audio.voiceBuf;
+    src.connect(audio.voiceOut);
+    src.start(at, off);
+    s.voice = src;
+    for (const g of [s.duck.gain, s.send.gain]) {
+      for (const [a, b] of duckSpans) {
+        if (b <= off) continue;
+        const ca = at + (a - off), cb = at + (b - off);
+        if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
+        g.setValueAtTime(DUCK, cb);
+        g.linearRampToValueAtTime(1, cb + 0.5);
+      }
+    }
+  }
+
+  // One playback session: a bus that can be dropped as a whole on pause or seek.
+  function startSession(filmT) {
+    stopSession();
+    if (!audio.enabled || audio.muted) return;
+    const ctx = audio.ctx;
+    const bus = ctx.createGain();
+    const duck = ctx.createGain();
+    bus.connect(duck);
+    duck.connect(audio.out);
+    const send = ctx.createGain();
+    send.connect(audio.verb);
+    // The instruments (not the drums or sound effects) go through their own level, master({ music }).
+    const music = ctx.createGain();
+    music.gain.value = db(audio.score.master.music);
+    music.connect(bus);
+    const musicSend = ctx.createGain();
+    musicSend.gain.value = music.gain.value;
+    musicSend.connect(send);
+    const tracks = {};
+    for (const [name, tr] of Object.entries(audio.score.tracks)) {
+      const g = ctx.createGain();
+      g.gain.value = db(tr.gain);
+      const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(music); } else g.connect(music);
+      const rs = ctx.createGain();
+      rs.gain.value = tr.rev;
+      g.connect(rs);
+      rs.connect(musicSend);
+      tracks[name] = { node: g, def: tr };
+    }
+    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0, voice: null };
+    audio.session = s;
+    startVoice(s);
+    // Notes already sounding at the seek point start now with what is left of them.
+    for (const e of audio.score.ev) {
+      if (e.s >= filmT) break;
+      if (e.k === "n" && e.s + e.d > filmT + 0.15) sound(e, s, filmT, e.s + e.d - filmT);
+    }
+    s.idx = audio.score.ev.findIndex((e) => e.s >= filmT);
+    if (s.idx < 0) s.idx = audio.score.ev.length;
+    // Fade the master out over the last seconds of the lesson.
+    const fo = audio.score.master.fadeOut;
+    if (fo > 0) {
+      const a = Math.max(filmT, END - fo);
+      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT));
+      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT));
+    }
+    audio.timer = setInterval(() => pump(), 50);
+    pump();
+  }
+
+  function stopSession() {
+    clearInterval(audio.timer);
+    const s = audio.session;
+    audio.session = null;
+    if (!s) return;
+    const now = audio.ctx.currentTime;
+    s.bus.gain.cancelScheduledValues(now);
+    s.bus.gain.setTargetAtTime(0, now, 0.03);
+    s.send.gain.cancelScheduledValues(now);
+    s.send.gain.setTargetAtTime(0, now, 0.03);
+    if (s.voice) {
+      const v = s.voice;
+      try { v.stop(now + 0.05); } catch (e) { /* not started yet */ }
+      setTimeout(() => v.disconnect(), 400);
+    }
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); s.music.disconnect(); s.musicSend.disconnect(); }, 400);
+  }
+
+  function pump() {
+    const s = audio.session;
+    if (!s) return;
+    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0);
+    const horizon = filmNow + 0.6;
+    const ev = audio.score.ev;
+    while (s.idx < ev.length && ev[s.idx].s <= horizon) {
+      const e = ev[s.idx++];
+      if (e.s >= s.film0) sound(e, s, e.s, e.d);
+    }
+  }
+
+  function sound(e, s, filmStart, dur) {
+    const ctx = audio.ctx;
+    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0));
+    const v = Math.pow(clamp01(e.v / 127), 1.5);
+    if (e.k === "n") {
+      const tr = s.tracks[e.track];
+      if (!tr) return;
+      voice(tr.def.patch, tr.node, hz(e.m), when, Math.max(0.05, dur), v, tr.def.bright);
+    } else if (e.k === "d") {
+      drum(e.name, s.bus, when, v);
+    } else {
+      fx(e.name, s.bus, s.send, when, e.d, v, e.pitch || 0);
+    }
+  }
+
+  function env(g, when, peak, attack, hold, release) {
+    peak = Math.max(peak, 0.0002);
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.linearRampToValueAtTime(peak, when + attack);
+    g.gain.setValueAtTime(peak, when + attack + hold);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + attack + hold + release);
+    return when + attack + hold + release + 0.05;
+  }
+  function osc(type, f, dest, when, stop, detune) {
+    const o = audio.ctx.createOscillator();
+    o.type = type;
+    o.frequency.value = f;
+    if (detune) o.detune.value = detune;
+    o.connect(dest);
+    o.start(when);
+    o.stop(stop);
+    return o;
+  }
+  function noiseSrc(dest, when, stop) {
+    const n = audio.ctx.createBufferSource();
+    n.buffer = audio.noise;
+    n.loop = true;
+    n.connect(dest);
+    n.start(when);
+    n.stop(stop);
+    return n;
+  }
+
+  function voice(patch, dest, f, when, dur, v, bright) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    let stop;
+    switch (patch) {
+      case "pad": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 700 + 900 * bright;
+        lp.connect(g);
+        stop = env(g, when, 0.22 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
+        osc("sawtooth", f, lp, when, stop, -8);
+        osc("sawtooth", f, lp, when, stop, 8);
+        break;
+      }
+      case "ep":
+      case "keys": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.22 * v + 0.0002, when + 0.008);
+        g.gain.exponentialRampToValueAtTime(0.08 * v + 0.0001, when + Math.min(dur, 0.9));
+        g.gain.exponentialRampToValueAtTime(0.0001, when + dur + 0.4);
+        stop = when + dur + 0.45;
+        osc("sine", f, g, when, stop);
+        const h2 = ctx.createGain();
+        h2.gain.value = 0.25;
+        h2.connect(g);
+        osc("sine", f * 2, h2, when, stop);
+        break;
+      }
+      case "bass": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 500;
+        lp.connect(g);
+        stop = env(g, when, 0.34 * v, 0.01, Math.max(0, dur - 0.1), 0.18);
+        osc("sine", f, lp, when, stop);
+        osc("triangle", f * 2, lp, when, stop);
+        break;
+      }
+      case "pluck": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.24 * v + 0.0002, when + 0.004);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + Math.min(1.1, dur + 0.45));
+        stop = when + Math.min(1.1, dur + 0.45) + 0.05;
+        osc("triangle", f, g, when, stop);
+        break;
+      }
+      default: {
+        // marimba, vibes, glock and anything unknown: a struck bar.
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.26 * v + 0.0002, when + 0.003);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + 0.7);
+        stop = when + 0.75;
+        osc("sine", f, g, when, stop);
+        const h4 = ctx.createGain();
+        h4.gain.value = 0.12;
+        h4.connect(g);
+        osc("sine", f * 4, h4, when, stop);
+      }
+    }
+  }
+
+  function drum(name, dest, when, v) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    if (name === "kick" || name === "tom") {
+      const o = osc("sine", 140, g, when, when + 0.4);
+      o.frequency.setValueAtTime(140, when);
+      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
+      env(g, when, 0.8 * v, 0.002, 0.02, 0.3);
+    } else {
+      const f = ctx.createBiquadFilter();
+      f.type = name === "sidestick" || name === "woodblock" ? "bandpass" : "highpass";
+      f.frequency.value = name === "sidestick" || name === "woodblock" ? 1900 : 7000;
+      f.connect(g);
+      noiseSrc(f, when, when + 0.2);
+      env(g, when, 0.22 * v, 0.001, 0.005, name === "openhat" ? 0.25 : 0.045);
+    }
+  }
+
+  function fx(name, dest, send, when, dur, v, pitch) {
+    const ctx = audio.ctx;
+    const tr = Math.pow(2, pitch / 12);
+    const g = ctx.createGain();
+    g.connect(dest);
+    const wet = ctx.createGain();
+    wet.gain.value = 0.35;
+    g.connect(wet);
+    wet.connect(send);
+    const r = rng(Math.floor(when * 1000));
+    switch (name) {
+      case "tick": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.frequency.value = 3000 + r() * 1500;
+        f.Q.value = 3;
+        f.connect(g);
+        noiseSrc(f, when, when + 0.06);
+        env(g, when, 0.5 * v, 0.001, 0.004, 0.025);
+        break;
+      }
+      case "click": {
+        osc("square", 1400, g, when, when + 0.06);
+        env(g, when, 0.12 * v, 0.001, 0.005, 0.03);
+        break;
+      }
+      case "ding": {
+        osc("sine", 1046.5 * tr, g, when, when + 1.6);
+        osc("sine", 1568 * tr, g, when, when + 1.6);
+        env(g, when, 0.16 * v, 0.004, 0.02, 1.4);
+        break;
+      }
+      case "chime": {
+        [0, 4, 7].forEach((st, i) => {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + i * 0.07;
+          osc("sine", 1046.5 * tr * Math.pow(2, st / 12), gi, t, t + 1);
+          env(gi, t, 0.14 * v, 0.003, 0.01, 0.9);
+        });
+        g.gain.value = 1;
+        break;
+      }
+      case "sparkle": {
+        for (let i = 0; i < 6; i++) {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + r() * 0.5;
+          osc("sine", 2000 + r() * 2200, gi, t, t + 0.2);
+          env(gi, t, 0.07 * v, 0.002, 0.01, 0.12);
+        }
+        break;
+      }
+      case "whoosh":
+      case "revswell": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.Q.value = 0.8;
+        f.frequency.setValueAtTime(300, when);
+        f.frequency.exponentialRampToValueAtTime(name === "whoosh" ? 2400 : 3200, when + dur);
+        f.connect(g);
+        noiseSrc(f, when, when + dur + 0.1);
+        g.gain.setValueAtTime(0.0001, when);
+        if (name === "whoosh") {
+          g.gain.linearRampToValueAtTime(0.3 * v, when + dur * 0.5);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur);
+        } else {
+          g.gain.exponentialRampToValueAtTime(0.28 * v + 0.0002, when + dur);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur + 0.06);
+        }
+        break;
+      }
+      case "thud": {
+        const o = osc("sine", 110, g, when, when + 0.4);
+        o.frequency.setValueAtTime(110, when);
+        o.frequency.exponentialRampToValueAtTime(45, when + 0.18);
+        env(g, when, 0.5 * v, 0.002, 0.02, 0.3);
+        break;
+      }
+      case "boing": {
+        const o = osc("sine", 220 * tr, g, when, when + 0.5);
+        o.frequency.setValueAtTime(220 * tr, when);
+        o.frequency.linearRampToValueAtTime(520 * tr, when + 0.12);
+        o.frequency.linearRampToValueAtTime(300 * tr, when + 0.4);
+        env(g, when, 0.2 * v, 0.005, 0.05, 0.35);
+        break;
+      }
+      default: {
+        // pop, and any name this synth does not know.
+        const o = osc("sine", 600 * tr, g, when, when + 0.2);
+        o.frequency.setValueAtTime(600 * tr, when);
+        o.frequency.exponentialRampToValueAtTime(1200 * tr, when + 0.06);
+        env(g, when, 0.3 * v, 0.002, 0.01, 0.12);
+      }
+    }
+  }
+
+  // ── Playback ───────────────────────────────────────────────────────────────
+  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1 };
+  let instances = [];
+
+  function sceneAt(t) {
+    for (let i = scenes.length - 1; i >= 0; i--) if (t >= scenes[i].start) return i;
+    return 0;
+  }
+
+  function renderAt(t) {
+    const i = sceneAt(t);
+    if (i !== state.current) {
+      instances.forEach((inst, k) => { inst.box.style.display = k === i ? "block" : "none"; });
+      state.current = i;
+    }
+    const inst = instances[i];
+    inst.def.render.call(inst.def, (Math.min(t, END - 1e-4) - inst.sc.start) / inst.sc.k, inst.kit);
+    ui.update(t);
+  }
+
+  function now() { return performance.now() / 1000; }
+
+  function play() {
+    if (state.t >= END - 0.01) state.t = 0;
+    state.playing = true;
+    state.wall0 = now();
+    state.t0 = state.t;
+    startSession(state.t);
+    ui.update(state.t);
+  }
+  function pause() {
+    state.playing = false;
+    stopSession();
+    ui.update(state.t);
+  }
+  function seek(t) {
+    state.t = clamp(t, 0, END);
+    state.wall0 = now();
+    state.t0 = state.t;
+    if (state.playing) startSession(state.t);
+    renderAt(state.t);
+  }
+  function tick() {
+    if (state.playing) {
+      state.t = state.t0 + (now() - state.wall0);
+      if (state.t >= END) {
+        state.t = END;
+        pause();
+      }
+      renderAt(state.t);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  async function enableAudio() {
+    if (audio.enabled) return;
+    if (!audio.ctx && !setupAudio()) return;
+    try { await audio.ctx.resume(); } catch (e) { /* stays suspended */ }
+    if (audio.ctx.state !== "running") return;
+    audio.enabled = true;
+    ui.sound();
+    if (state.playing) startSession(state.t);
+  }
+
+  // ── Controls ───────────────────────────────────────────────────────────────
+  const fmt = (t) => {
+    const s = Math.max(0, Math.floor(t));
+    return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  };
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" fill="currentColor"/></svg>',
+    replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6.5l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z" fill="currentColor"/></svg>',
+    on: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    off: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    full: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+
+  // ── Full screen ────────────────────────────────────────────────────────────
+  // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
+  // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
+  // course page the player asks the parent to grow the lesson to fill the whole screen instead.
+  const embedded = window.parent !== window;
+  const root = document.documentElement;
+  const fs = {
+    native: !!(document.fullscreenEnabled || document.webkitFullscreenEnabled),
+    pseudo: false,
+    available() { return this.native || embedded; },
+    active() { return !!(document.fullscreenElement || document.webkitFullscreenElement) || this.pseudo; },
+    async toggle() {
+      if (this.native) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* not locked */ }
+          await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        try {
+          await (root.requestFullscreen || root.webkitRequestFullscreen).call(root, { navigationUI: "hide" });
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock("landscape").catch(() => {});
+          return;
+        } catch (e) {
+          if (!embedded) return; // refused: fall through to the parent page below
+        }
+      }
+      this.pseudo = !this.pseudo;
+      window.parent.postMessage({ type: "futures-edge:fullscreen", on: this.pseudo }, location.origin);
+      ui.full();
+    },
+  };
+  document.addEventListener("fullscreenchange", () => ui.full());
+  document.addEventListener("webkitfullscreenchange", () => ui.full());
+  const ui = (() => {
+    const bar = h(
+      '<div class="fe-ui" role="group" aria-label="Lesson controls">' +
+        '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
+        '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
+        '<span class="fe-time"></span>' +
+        (lines.length ? '<button type="button" class="fe-btn fe-cc" aria-pressed="true" aria-label="Captions">CC</button>' : "") +
+        '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
+        (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
+      "</div>"
+    );
+    const hint = h('<button type="button" class="fe-hint">Click anywhere for sound</button>');
+    const cap = h('<p class="fe-cap" aria-live="off"></p>');
+    document.body.append(cap, bar, hint);
+    const cc = bar.querySelector(".fe-cc");
+    const fsb = bar.querySelector(".fe-fs");
+    if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
+    let ccOn = true, capText = null;
+    if (cc) cc.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ccOn = !ccOn;
+      cc.setAttribute("aria-pressed", String(ccOn));
+      capText = null;
+      api.update(state.t);
+    });
+    const pp = bar.querySelector(".fe-pp");
+    const trk = bar.querySelector(".fe-track");
+    const fill = trk.querySelector("i");
+    const time = bar.querySelector(".fe-time");
+    const snd = bar.querySelector(".fe-snd");
+    trk.setAttribute("aria-valuemax", String(Math.round(END)));
+    let idle = 0;
+    const wake = () => {
+      document.body.classList.remove("fe-idle");
+      clearTimeout(idle);
+      idle = setTimeout(() => { if (state.playing) document.body.classList.add("fe-idle"); }, 2600);
+    };
+    document.addEventListener("pointermove", wake);
+    pp.addEventListener("click", (e) => { e.stopPropagation(); enableAudio(); state.playing ? pause() : play(); wake(); });
+    snd.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (!audio.enabled) { await enableAudio(); return; }
+      audio.muted = !audio.muted;
+      if (audio.muted) stopSession(); else if (state.playing) startSession(state.t);
+      api.sound();
+    });
+    const seekTo = (clientX) => {
+      const r = trk.getBoundingClientRect();
+      seek(clamp01((clientX - r.left) / r.width) * END);
+    };
+    let drag = false;
+    trk.addEventListener("pointerdown", (e) => { e.stopPropagation(); enableAudio(); drag = true; trk.setPointerCapture(e.pointerId); seekTo(e.clientX); });
+    trk.addEventListener("pointermove", (e) => { if (drag) seekTo(e.clientX); });
+    trk.addEventListener("pointerup", () => { drag = false; });
+    trk.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { seek(state.t + 5); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { seek(state.t - 5); e.preventDefault(); }
+    });
+    // The first click anywhere turns the sound on; later clicks on the lesson pause and resume.
+    document.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".fe-ui")) return;
+      if (!audio.enabled) { enableAudio(); return; }
+      state.playing ? pause() : play();
+      wake();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
+      if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === "Escape" && fs.pseudo) fs.toggle();
+    });
+    const api = {
+      update(t) {
+        const done = !state.playing && t >= END - 0.01;
+        pp.innerHTML = state.playing ? ICON.pause : done ? ICON.replay : ICON.play;
+        pp.setAttribute("aria-label", state.playing ? "Pause" : done ? "Replay" : "Play");
+        fill.style.width = ((t / END) * 100).toFixed(3) + "%";
+        trk.setAttribute("aria-valuenow", String(Math.round(t)));
+        time.textContent = fmt(t) + " / " + fmt(END);
+        let text = "";
+        if (ccOn) for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = l.text;
+        if (text !== capText) {
+          capText = text;
+          cap.textContent = text;
+          cap.hidden = !text;
+        }
+        if (!state.playing) wake();
+      },
+      sound() {
+        const on = audio.enabled && !audio.muted;
+        snd.innerHTML = on ? ICON.on : ICON.off;
+        snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
+        hint.hidden = audio.enabled;
+      },
+      full() {
+        if (!fsb) return;
+        const on = fs.active();
+        fsb.innerHTML = on ? ICON.exit : ICON.full;
+        fsb.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+      },
+    };
+    api.sound();
+    api.full();
+    wake();
+    return api;
+  })();
+
+  // For tests and frame-by-frame capture: window.lessonPlayer.ready.then(() => { pause(); seek(12.5); }).
+  let markReady;
+  window.lessonPlayer = {
+    duration: END,
+    ready: new Promise((r) => { markReady = r; }),
+    play, pause, seek,
+    time: () => state.t,
+    score: () => audio.score,
+    // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
+    audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
+    voice: () => ({ lines, loaded: !!audio.voiceBuf, playing: !!(audio.session && audio.session.voice) }),
+  };
+
+  // ── Boot ───────────────────────────────────────────────────────────────────
+  async function boot() {
+    if (F.voice && F.voice.src) {
+      audio.voiceData = fetch(F.voice.src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+    }
+    try {
+      await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
+    } catch (e) { /* system fonts stand in */ }
+    run("shared.js", makeKit(stage, 0, OLD_END));
+    for (const sc of scenes) {
+      const box = el("div", { class: "fe-scene" });
+      stage.append(box);
+      const kit = makeKit(box, sc.oldStart, sc.oldDur);
+      run("scene-" + sc.id + ".js", kit);
+      const def = defs[sc.id];
+      if (def && def.init) await def.init.call(def, kit);
+      instances.push({ sc, def, box, kit });
+    }
+    if (modules["score.js"]) run("score.js", makeKit(stage, 0, OLD_END));
+    audio.score = recordScore();
+    // Wait (briefly) for the images so the first frames do not pop in.
+    const imgs = Array.from(stage.querySelectorAll("img"));
+    await Promise.race([
+      Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })))),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+    instances.forEach((inst) => { inst.box.style.display = "none"; });
+    renderAt(0);
+    document.body.classList.add("fe-ready");
+    // A parent page that allows autoplay (iframe allow="autoplay" after a click) gets sound
+    // straight away; otherwise the first click turns it on.
+    if (setupAudio() && audio.ctx.state === "running") { audio.enabled = true; ui.sound(); }
+    play();
+    requestAnimationFrame(tick);
+    markReady();
+  }
+  boot().catch((e) => {
+    document.querySelector(".fe-loading").textContent = "This lesson could not start. Please reload the page.";
+    throw e;
+  });
+})();
+
+</script>
+</body>
+</html>

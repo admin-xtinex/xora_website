@@ -1,0 +1,123 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson twelve",
+      "dur": 8,
+      "desc": "Title card: Phase 3, lesson T12, Margin and Leverage; a lever balances a small margin block against a big exposure block; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Same move, different results",
+      "dur": 20,
+      "desc": "Two traders put 100 USDT into a BTC long, one at 1x and one at 10x; BTC rises 2% then falls 2% below the start; their PnL meters move 2 against 20 USDT."
+    },
+    {
+      "id": "margin",
+      "name": "Margin is a deposit",
+      "dur": 20,
+      "desc": "Initial margin defined: 100 USDT moves from a 500 USDT futures wallet into a locked margin box; rental-car deposit analogy."
+    },
+    {
+      "id": "notional",
+      "name": "Notional exposure",
+      "dur": 18,
+      "desc": "Notional defined: a 100 USDT margin block and a 1,000 USDT position bar; about 0.0167 BTC at 60,000 USDT."
+    },
+    {
+      "id": "leverage",
+      "name": "Leverage",
+      "dur": 24,
+      "desc": "Leverage = notional / margin: a selector steps 1x, 3x, 10x while the margin bar stays 100 and the notional bar grows to 300 and 1,000; magnifying-glass analogy."
+    },
+    {
+      "id": "path",
+      "name": "One path, three leverages",
+      "dur": 27,
+      "desc": "One fictional price path (60,000 to 61,200 to 58,800) drives three PnL meters at 1x, 3x and 10x: +2/+6/+20 then -2/-6/-20 USDT."
+    },
+    {
+      "id": "example",
+      "name": "Worked example",
+      "dur": 21,
+      "desc": "Gross PnL = notional x signed % move: 1,000 x (-2%) = -20 USDT; return on margin -20 / 100 = -20%."
+    },
+    {
+      "id": "both",
+      "name": "Both directions",
+      "dur": 22,
+      "desc": "BTC falls 10%: at 1x the margin falls from 100 to 90; at 10x the whole 100 is gone on paper; liquidation would come before that, at a point set by exchange rules."
+    },
+    {
+      "id": "maint",
+      "name": "Maintenance margin",
+      "dur": 21,
+      "desc": "Maintenance margin defined; a margin-balance gauge (margin + unrealized PnL) sinks toward an unnumbered line set by the exchange."
+    },
+    {
+      "id": "modes",
+      "name": "Isolated and cross",
+      "dur": 28,
+      "desc": "Isolated margin: a loss drains only the 100 USDT assigned to the position. Cross margin: the same loss can draw on the whole 500 USDT futures balance."
+    },
+    {
+      "id": "mistake",
+      "name": "Common mistake",
+      "dur": 18,
+      "desc": "Misconception: leverage is free extra money. Correction: it is extra exposure; losses on the full notional come out of your margin; no leverage is safe."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 23,
+      "desc": "Pause and calculate: 50 USDT margin, 5x, BTC +4%: notional 250 USDT, PnL +10 USDT, +20% of margin; a 4% fall would be -10 USDT."
+    },
+    {
+      "id": "risks",
+      "name": "Know the risks",
+      "dur": 26,
+      "desc": "Magnified losses, liquidation, costs on the notional, no safe leverage; WAIT and NO_TRADE are always allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 25,
+      "desc": "Three key points and one check question: 100 USDT at 10x, BTC -3% gives -30 USDT."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T13, Liquidation, Funding and Futures Risks."
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "about": "CPA on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Checkpoint A. Let's review Phases 1 to 3, with extra care on leverage and safety."
+    },
+    {
+      "t": 8.4,
+      "text": "Eight questions on lessons T01 to T13. Most are about risk, because that matters most."
+    },
+    {
+      "t": 14.9,
+      "text": "Read each question, pick an answer, and pause the video whenever you need more time."
+    },
+    {
+      "t": 21.3,
+      "text": "It's not graded. Missing one just shows you what to revisit."
+    },
+    {
+      "t": 27.3,
+      "text": "Question one, from T04. 'Support' asks for your 2FA code and API secret key. What do you do?"
+    },
+    {
+      "t": 34.6,
+      "text": "C. Never share them. Open the official app yourself and contact support from there."
+    },
+    {
+      "t": 41.2,
+      "text": "B is tempting, but an API secret key can control your account too. Share neither."
+    },
+    {
+      "t": 48.3,
+      "text": "Question two, from T05 and T11. What is the key difference between spot and futures?"
+    },
+    {
+      "t": 55.6,
+      "text": "A. On spot you own the coin. Futures are contracts about its price."
+    },
+    {
+      "t": 62.2,
+      "text": "Not B: futures aren't cheap coins. They use margin, pay funding and can be liquidated."
+    },
+    {
+      "t": 69.3,
+      "text": "Question three, from T06 and T09. Gross +4 USDT. Fees: 3 to enter, 3 to exit. What's the net?"
+    },
+    {
+      "t": 76.6,
+      "text": "C, minus 2 USDT. Net is gross minus all fees: 4 minus 3 minus 3."
+    },
+    {
+      "t": 83.2,
+      "text": "B is only the gross result. Fees are paid whether the trade wins or loses."
+    },
+    {
+      "t": 90.3,
+      "text": "Question four, from T07 and T08. Your stop is at 59,000. Price gaps from 59,300 to 58,600."
+    },
+    {
+      "t": 97.6,
+      "text": "B. Near 58,600, or even worse. A stop is a trigger, not a price guarantee."
+    },
+    {
+      "t": 104.2,
+      "text": "A is the trap. In fast markets, no stop can promise its exact price."
+    },
+    {
+      "t": 111.3,
+      "text": "Question five, from T12. 100 USDT of margin at 10x, long. BTC falls 2%. What's the gross PnL?"
+    },
+    {
+      "t": 118.6,
+      "text": "B, minus 20 USDT. Notional is 1,000, and 1,000 times minus 2% is minus 20."
+    },
+    {
+      "t": 125.2,
+      "text": "A forgets the leverage. The move acts on the whole 1,000: that's 20% of your margin."
+    },
+    {
+      "t": 132.3,
+      "text": "Question six, from T12. Which statement about leverage is true?"
+    },
+    {
+      "t": 139.6,
+      "text": "B. Leverage magnifies gains and losses alike, compared with your margin."
+    },
+    {
+      "t": 146.2,
+      "text": "A is a myth. No leverage number is safe. Lower leverage only means smaller swings."
+    },
+    {
+      "t": 153.3,
+      "text": "Question seven, from T13. Can a stop-loss guarantee you won't be liquidated?"
+    },
+    {
+      "t": 160.6,
+      "text": "B. No. Stops can slip, and with high leverage, liquidation can come first."
+    },
+    {
+      "t": 167.2,
+      "text": "A is the dangerous one. A stop-loss is not liquidation insurance."
+    },
+    {
+      "t": 174.3,
+      "text": "Question eight, from T13. A long with 2,000 USDT notional. Funding rate +0.01%. What happens?"
+    },
+    {
+      "t": 181.6,
+      "text": "A. You pay 0.20 USDT: 2,000 times 0.01%. A positive rate means longs pay shorts."
+    },
+    {
+      "t": 188.2,
+      "text": "B has it backwards. Shorts pay longs only when the rate is negative."
+    },
+    {
+      "t": 195.4,
+      "text": "Before Phase 4, the critical safety points."
+    },
+    {
+      "t": 199.1,
+      "text": "Leverage magnifies losses. No leverage is safe, and liquidation can take your margin."
+    },
+    {
+      "t": 205.6,
+      "text": "A stop-loss is not liquidation insurance. Gaps and slippage happen."
+    },
+    {
+      "t": 210.9,
+      "text": "Never share passwords, OTP or 2FA codes, or API secret keys. Not even with 'support'."
+    },
+    {
+      "t": 217.4,
+      "text": "You can always choose WAIT, or no trade. And in this course, everything is demo only."
+    },
+    {
+      "t": 225.4,
+      "text": "Here's where to look if you missed one."
+    },
+    {
+      "t": 228.8,
+      "text": "Question one: T04. Two: T05 and T11. Three: T06 and T09. Four: T07 and T08."
+    },
+    {
+      "t": 234.6,
+      "text": "Five and six: T12. Seven and eight: T13."
+    },
+    {
+      "t": 238.2,
+      "text": "Rewatch any lesson, no penalty. Leverage and liquidation deserve a second look."
+    },
+    {
+      "t": 245.8,
+      "text": "Phase 4 starts next, with T14: candlesticks. Open, high, low and close. See you there!"
+    }
+  ]
+}

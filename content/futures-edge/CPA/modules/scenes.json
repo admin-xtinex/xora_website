@@ -1,0 +1,111 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Checkpoint A",
+      "dur": 8,
+      "desc": "Title card: Phase 3 checkpoint CPA, review of T01 to T13; a ring with a shield draws in; the tutor walks in."
+    },
+    {
+      "id": "how",
+      "name": "How it works",
+      "dur": 19,
+      "desc": "Eight questions from T01 to T13, most about risk: read, pause, pick, countdown, see why. Not graded."
+    },
+    {
+      "id": "q-phish",
+      "name": "Q1 account security",
+      "dur": 21,
+      "desc": "T04: 'support' asks for a 2FA code and API secret key; never share either; open the official app yourself."
+    },
+    {
+      "id": "q-spot",
+      "name": "Q2 spot vs futures",
+      "dur": 21,
+      "desc": "T05/T11: spot is owning the coin; futures are contracts on its price with margin, funding and liquidation."
+    },
+    {
+      "id": "q-net",
+      "name": "Q3 net result",
+      "dur": 21,
+      "desc": "T06/T09: gross +4 USDT minus 3 + 3 USDT fees = -2 USDT net; bars fall below zero."
+    },
+    {
+      "id": "q-gap",
+      "name": "Q4 stop slippage",
+      "dur": 21,
+      "desc": "T07/T08: stop at 59,000, price gaps 59,300 to 58,600; it may fill near 58,600 or worse."
+    },
+    {
+      "id": "q-lev",
+      "name": "Q5 leverage maths",
+      "dur": 21,
+      "desc": "T12: 100 USDT margin at 10x, BTC -2%: notional 1,000 x -2% = -20 USDT, 20% of margin."
+    },
+    {
+      "id": "q-safe",
+      "name": "Q6 no safe leverage",
+      "dur": 21,
+      "desc": "T12: leverage magnifies gains and losses alike; no leverage number is safe."
+    },
+    {
+      "id": "q-stop",
+      "name": "Q7 stop vs liquidation",
+      "dur": 21,
+      "desc": "T13: a stop-loss cannot guarantee no liquidation; the liquidation zone can come first."
+    },
+    {
+      "id": "q-fund",
+      "name": "Q8 funding",
+      "dur": 21,
+      "desc": "T13: long, 2,000 USDT notional, rate +0.01%: you pay 0.20 USDT."
+    },
+    {
+      "id": "safety",
+      "name": "Critical safety",
+      "dur": 30,
+      "desc": "Leverage and liquidation, stop-loss limits, never share codes or keys, WAIT / NO_TRADE and demo only."
+    },
+    {
+      "id": "revisit",
+      "name": "Where to revisit",
+      "dur": 20,
+      "desc": "Which lesson each question came from; rewatch with no penalty."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: Phase 4 starts with T14, Candlesticks: Open, High, Low, Close."
+    }
+  ]
+}

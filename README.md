@@ -17,6 +17,8 @@ npm run build    # typecheck + production build to dist/
   `FuturesEdgeSection`, `JourneySection`, `IntelligenceShowcaseSection`, `DifferenceSection`,
   `TrustNoticeSection`, `FinalCTASection`, `Footer`; shared pieces in `components/ui/`
 - `src/styles.css` — brand tokens (same palette/fonts as xtinex.com) and section styles
+- `src/components/futures-edge/` — the Futures Edge course section (`#course`): title cards, locked lessons,
+  video dialog. How to add videos and release lessons: `docs/futures-edge-course.md`
 - `public/brand/` — reused XTINEX/XORA brand media; the hero plays `xora-flow.mp4` (market-flow brain video, reversed, crossfaded loop)
 
 Charts and tickers on the page are illustrative (seeded data), not live market data.

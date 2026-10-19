@@ -3,6 +3,7 @@ import { DifferenceSection } from "./components/DifferenceSection";
 import { FinalCTASection } from "./components/FinalCTASection";
 import { Footer } from "./components/Footer";
 import { FuturesEdgeSection } from "./components/FuturesEdgeSection";
+import { CourseCatalog } from "./components/futures-edge/CourseCatalog";
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
 import { IntelligenceShowcaseSection } from "./components/IntelligenceShowcaseSection";
@@ -22,6 +23,7 @@ export function App() {
         <HeroSection />
         <ValueSection />
         <FuturesEdgeSection />
+        <CourseCatalog />
         <JourneySection />
         <IntelligenceShowcaseSection />
         <DifferenceSection />

@@ -1,12 +1,13 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/brand/*", "/fonts/*"]
+    "exclude": ["/assets/*", "/brand/*", "/fonts/*", "/futures-edge/*"]
   },
   "routes": [
     { "route": "/assets/*", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
     { "route": "/brand/*", "headers": { "Cache-Control": "public, max-age=604800" } },
-    { "route": "/fonts/*", "headers": { "Cache-Control": "public, max-age=2592000, immutable" } }
+    { "route": "/fonts/*", "headers": { "Cache-Control": "public, max-age=2592000, immutable" } },
+    { "route": "/futures-edge/*", "headers": { "Cache-Control": "public, max-age=86400" } }
   ],
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",

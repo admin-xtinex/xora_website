@@ -140,7 +140,7 @@ export function FuturesEdgeSection() {
           </Reveal>
 
           <Reveal delay={0.24}>
-            <MagneticButton href={LINKS.getStarted}>
+            <MagneticButton href={LINKS.course}>
               Start Futures Edge
               <ArrowRight size={17} aria-hidden />
             </MagneticButton>

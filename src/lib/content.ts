@@ -6,11 +6,13 @@ export const LINKS = {
   // In-page anchors until the Futures Edge app / sign-up routes are public.
   getStarted: "#start",
   futuresEdge: "#futures-edge",
+  course: "#course",
 } as const;
 
 export const NAV = [
   { id: "home", label: "Home" },
   { id: "futures-edge", label: "Futures Edge" },
+  { id: "course", label: "Course" },
   { id: "journey", label: "Learn" },
   { id: "intelligence", label: "Practice" },
   { id: "about", label: "About" },

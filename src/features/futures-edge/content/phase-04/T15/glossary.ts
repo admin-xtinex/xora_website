@@ -1,0 +1,46 @@
+import type { GlossaryEntry } from '@futures-edge/contracts';
+
+export const glossaryEntries: GlossaryEntry[] = [
+  {
+    id: 'timeframe',
+    term: 'Timeframe',
+    plainDefinition: 'How much time each candle on a chart covers, such as 1 minute, 5 minutes or 15 minutes.',
+    technicalMeaning: 'The interval length used to group trades into candles. A 1m chart draws one candle per minute; a 15m chart draws one candle per 15 minutes from the same trades. Changing the timeframe changes the drawing, not the trades.',
+    example: 'The same fictional 15 minutes of DEMO/USDT trading is 15 candles on a 1m chart, 3 candles on a 5m chart and 1 candle on a 15m chart.',
+    relatedTermIds: ['candlestick', 'candle-aggregation', 'ohlc'],
+    notSameAs: [{ text: 'A timeframe is not how long you hold a trade. It is only how much time one candle summarises.' }],
+    introducedIn: 'T15',
+    aliases: ['chart interval'],
+  },
+  {
+    id: 'candle-aggregation',
+    term: 'Candle aggregation',
+    plainDefinition: 'Combining several small candles into one bigger candle.',
+    technicalMeaning: 'Building a longer-interval candle from consecutive shorter ones: open = first open, high = highest high, low = lowest low, close = last close. The result must match what you would get from the raw trades directly.',
+    example: 'Five fictional 1m candles with opens 100.00 … and highs up to 100.80, lows down to 99.70 and a last close of 100.50 make one 5m candle: O 100.00 · H 100.80 · L 99.70 · C 100.50.',
+    relatedTermIds: ['timeframe', 'ohlc', 'high-price', 'low-price'],
+    notSameAs: [{ text: 'Aggregation is not averaging. The 5m high is the single highest high, not the average of the five highs.' }],
+    introducedIn: 'T15',
+  },
+  {
+    id: 'market-noise',
+    term: 'Market noise',
+    plainDefinition: 'Small, random-looking ups and downs that do not show a clear direction.',
+    technicalMeaning: 'Short-term price fluctuation that changes direction often and carries little lasting information. It is most visible on short timeframes, where each candle covers only a few trades. Noise can look like a signal (a meaningful, repeatable clue) but often is not.',
+    example: 'On a fictional 1m chart, candles flip bullish, bullish, bearish, bearish, bullish within 5 minutes, while the single 5m candle simply closes 0.50 higher.',
+    relatedTermIds: ['timeframe', 'volatility', 'higher-timeframe-context'],
+    notSameAs: [{ text: 'Noise is not a signal. A signal is a clue you have reason to think is meaningful; noise is movement that mostly is not.' }],
+    introducedIn: 'T15',
+    aliases: ['noise'],
+  },
+  {
+    id: 'higher-timeframe-context',
+    term: 'Higher-timeframe context',
+    plainDefinition: 'Looking at a longer timeframe to see the bigger picture around a short-term move.',
+    technicalMeaning: 'Checking what a 5m, 15m or longer chart shows before reading a 1m move, so that a small dip or spike is seen inside the larger shape. It gives background, not certainty: the bigger view can change too.',
+    example: 'A fictional 1m candle falls 0.70, but the 15m candle for the same period is bullish (O 100.00, C 100.90), so the dip is small within a rising quarter-hour.',
+    relatedTermIds: ['timeframe', 'market-noise', 'candle-aggregation'],
+    introducedIn: 'T15',
+    aliases: ['HTF context', 'bigger picture'],
+  },
+];

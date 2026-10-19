@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect } from "react";
 import { MotionConfig } from "motion/react";
 import { DifferenceSection } from "./components/DifferenceSection";
 import { FinalCTASection } from "./components/FinalCTASection";
@@ -12,6 +12,12 @@ import { JourneySection } from "./components/JourneySection";
 import { TrustNoticeSection } from "./components/TrustNoticeSection";
 import { ValueSection } from "./components/ValueSection";
 import { scrollToTarget, usePath } from "./lib/router";
+import { isFuturesEdgePath } from "./features/futures-edge";
+
+// Interactive Futures Edge lessons (slides, notes, practice, quizzes) at /learn/futures-edge.
+// Only reachable when the build-time flag VITE_FUTURES_EDGE_ENABLED is exactly "true".
+const FUTURES_EDGE_ENABLED = import.meta.env.VITE_FUTURES_EDGE_ENABLED === "true";
+const FuturesEdgeApp = FUTURES_EDGE_ENABLED ? lazy(() => import("./features/futures-edge/platform/FuturesEdgeApp")) : null;
 
 const TITLES: Record<string, string> = {
   "/": "XORA — AI-Powered Trading Intelligence | XTINEX",
@@ -43,6 +49,17 @@ function CoursePage() {
 
 export function App() {
   const path = usePath();
+  if (FuturesEdgeApp && isFuturesEdgePath(path)) {
+    return (
+      <Suspense fallback={<p style={{ padding: 24 }}>Loading XORA Futures Edge…</p>}>
+        <FuturesEdgeApp />
+      </Suspense>
+    );
+  }
+  return <SitePages path={path} />;
+}
+
+function SitePages({ path }: { path: string }) {
   const page = path === "/course" ? "/course" : "/";
 
   useEffect(() => {

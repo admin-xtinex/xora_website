@@ -1,0 +1,52 @@
+import type { GlossaryEntry } from '@futures-edge/contracts';
+
+export const glossaryEntries: GlossaryEntry[] = [
+  {
+    id: 'false-signal',
+    term: 'False signal',
+    plainDefinition: 'Something on the chart that looked like a reason to act, but the move did not continue.',
+    technicalMeaning: 'An observation (breakout, strong candle, volume spike) that resembled a setup’s entry trigger but was followed by price action that invalidated the idea. Only known afterwards; before the fact it is just weak or conflicting evidence.',
+    example: 'A fictional candle closes at 100.90, above 100.60 resistance, then price falls back to 99.90 two candles later.',
+    relatedTermIds: ['fakeout', 'confirmation', 'entry-trigger'],
+    notSameAs: [{ text: 'A false signal is not a mistake by the learner. A well-reasoned decision can meet a false signal; what matters is that the invalidation point and size were planned.' }],
+    introducedIn: 'T21',
+  },
+  {
+    id: 'relative-volume',
+    term: 'Relative volume',
+    plainDefinition: 'How busy one candle is compared with the recent normal.',
+    technicalMeaning: 'Volume of the current candle divided by the average volume of a chosen number of earlier candles. Above 1 means busier than usual; below 1 means quieter. The look-back length changes the number.',
+    example: 'Breakout candle volume 900, average of the 8 earlier candles 1,200: relative volume 900 ÷ 1,200 = 0.75 (fictional).',
+    relatedTermIds: ['trading-volume', 'lookback-window', 'breakout'],
+    notSameAs: [{ text: 'Relative volume is not direction. High volume shows activity, not whether buyers or sellers will win next.' }],
+    introducedIn: 'T21',
+  },
+  {
+    id: 'chasing',
+    term: 'Chasing',
+    plainDefinition: 'Jumping into a move after it has already run, because you fear missing it.',
+    technicalMeaning: 'Entering far from the planned entry area after price has moved, which increases the distance to the invalidation point and shrinks the remaining room to the target, so the reward-to-risk ratio worsens.',
+    example: 'Planned entry 100.70 (ratio 3). Chased entry 101.50 with the same stop 100.30 and target 101.90: ratio about 0.33 (fictional).',
+    relatedTermIds: ['entry-price', 'risk-reward-ratio', 'invalidation-point'],
+    introducedIn: 'T21',
+  },
+  {
+    id: 'choppy-range',
+    term: 'Choppy range',
+    plainDefinition: 'A market that keeps jumping up and down inside a small box without going anywhere.',
+    technicalMeaning: 'A sideways market where price repeatedly crosses the middle of a narrow range and small breakouts fail quickly. Signals inside it conflict often, and costs take a larger share of each small move.',
+    example: 'Fictional price swings between 99.60 and 100.60 eight times in ten minutes, with no follow-through on either side.',
+    relatedTermIds: ['sideways-market', 'price-range', 'market-noise'],
+    introducedIn: 'T21',
+  },
+  {
+    id: 'no-trade',
+    term: 'NO_TRADE',
+    plainDefinition: 'A decision not to take the trade at all.',
+    technicalMeaning: 'An active, recorded decision that the evidence does not justify a position (weak, conflicting or missing). Shown in this course as DEMO NO_TRADE. Unlike WAIT, it closes the idea rather than postponing it.',
+    example: 'Breakout on 0.75 relative volume with a long upper wick and fading follow-through: DEMO NO_TRADE (fictional).',
+    relatedTermIds: ['wait-decision', 'trade-checklist', 'false-signal'],
+    notSameAs: [{ text: 'NO_TRADE is not WAIT. WAIT keeps watching for a trigger; NO_TRADE drops the idea for now.' }],
+    introducedIn: 'T21',
+  },
+];

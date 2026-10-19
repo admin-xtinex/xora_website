@@ -1,10 +1,7 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-// The XORA story loop: the original brain video, regraded frame by frame so
-// losing (red) trades on the left pass through the XORA brain and leave as a
-// green rising chart on the right. Encoded forward + reverse, so it loops
-// without a seam.
+// The original XORA brain loop video, played as is.
 
 export function HeroScene({ className }: { className?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -31,8 +28,8 @@ export function HeroScene({ className }: { className?: string }) {
         <video
           ref={ref}
           className="scene-layer scene-video"
-          src="/brand/xora-story.mp4"
-          poster="/brand/xora-story-poster.webp"
+          src="/brand/xora-loop.mp4"
+          poster="/brand/xora-loop-poster.webp"
           muted
           loop
           playsInline

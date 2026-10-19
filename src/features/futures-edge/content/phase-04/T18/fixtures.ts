@@ -87,7 +87,7 @@ const RANGE_B: Row[] = [
   [103.2, 104.1, 102.4, 102.8, 640],
 ];
 
-const ohlc = (id: string, rows: Row[], labels?: string[]): Fixture => ({
+const ohlc = (id: `FX-${string}`, rows: Row[], labels?: string[]): Fixture => ({
   id,
   kind: 'ohlc-series',
   fictional: true,

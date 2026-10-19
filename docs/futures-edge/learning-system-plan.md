@@ -1,7 +1,7 @@
 # XORA Futures Edge: learning system build plan (single-session build)
 
 Updated Mon 19 Oct 2026 IST. Branch: `futures-edge/learning-system` (local worktree `xora_website-edge`, cut from `origin/feature/futures-edge` @ `b062268`).
-Status keys: Not started / In progress / Complete / Blocked.
+Status keys: Not started / In progress / Complete / Blocked. **All rows Complete as of 19 Oct 2026 — see release-report.md and content-inventory.md.**
 
 ## Audit summary (read-only, 19 Oct 2026)
 

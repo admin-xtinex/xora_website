@@ -17,7 +17,7 @@ import { isFuturesEdgePath } from "./features/futures-edge";
 // Interactive Futures Edge lessons (slides, notes, practice, quizzes) at /learn/futures-edge.
 // Only reachable when the build-time flag VITE_FUTURES_EDGE_ENABLED is exactly "true".
 const FUTURES_EDGE_ENABLED = import.meta.env.VITE_FUTURES_EDGE_ENABLED === "true";
-const FuturesEdgeApp = lazy(() => import("./features/futures-edge/platform/FuturesEdgeApp"));
+const FuturesEdgeApp = FUTURES_EDGE_ENABLED ? lazy(() => import("./features/futures-edge/platform/FuturesEdgeApp")) : null;
 
 const TITLES: Record<string, string> = {
   "/": "XORA — AI-Powered Trading Intelligence | XTINEX",
@@ -49,7 +49,7 @@ function CoursePage() {
 
 export function App() {
   const path = usePath();
-  if (FUTURES_EDGE_ENABLED && isFuturesEdgePath(path)) {
+  if (FuturesEdgeApp && isFuturesEdgePath(path)) {
     return (
       <Suspense fallback={<p style={{ padding: 24 }}>Loading XORA Futures Edge…</p>}>
         <FuturesEdgeApp />

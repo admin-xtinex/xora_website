@@ -41,7 +41,7 @@ export const LESSONS: Lesson[] = [
   { id: "T02", kind: "lesson", phase: 1, title: "Why Do Crypto Prices Move?", line: "Buyers, sellers, demand, supply and volatility.", minutes: 5, status: "available", pose: "think" },
   { id: "T03", kind: "lesson", phase: 1, title: "Trading Pairs: BTC/USDT", line: "Base and quote assets, and what a price really means.", minutes: 4, status: "available", pose: "explain" },
   { id: "T04", kind: "lesson", phase: 1, title: "What Does an Exchange Do?", line: "Order books, bid and ask, spread and account safety.", minutes: 4, status: "available", pose: "point" },
-  { id: "CP1", kind: "checkpoint", phase: 1, title: "Foundations Checkpoint", line: "A short review of lessons T01 to T04.", minutes: 4, status: "available", pose: "hi" },
+  { id: "CP1", kind: "checkpoint", phase: 1, title: "Foundations Checkpoint", line: "A video recap of T01 to T04: 8 questions to pause and answer.", minutes: 4, status: "available", pose: "hi" },
 
   { id: "T05", kind: "lesson", phase: 2, title: "Buy, Sell, Long and Short", line: "Owning an asset versus holding a position.", minutes: 5, status: "available", pose: "point" },
   { id: "T06", kind: "lesson", phase: 2, title: "Entry, Exit and Profit/Loss", line: "Work out gross and net results, with fees.", minutes: 5, status: "available", pose: "explain" },
@@ -53,7 +53,7 @@ export const LESSONS: Lesson[] = [
   { id: "T11", kind: "lesson", phase: 3, title: "Spot vs Futures", line: "Owning coins versus a contract about their price.", minutes: 5, status: "available", pose: "think" },
   { id: "T12", kind: "lesson", phase: 3, title: "Margin and Leverage", line: "Why leverage magnifies losses as well as gains.", minutes: 5, status: "available", pose: "explain" },
   { id: "T13", kind: "lesson", phase: 3, title: "Liquidation, Funding and Futures Risks", line: "What can close a position for you, and when to stay out.", minutes: 5, status: "available", pose: "think", flip: true },
-  { id: "CPA", kind: "checkpoint", phase: 3, title: "Checkpoint A", line: "Review T01 to T13, with extra focus on leverage and safety.", minutes: 4, status: "available", pose: "hi" },
+  { id: "CPA", kind: "checkpoint", phase: 3, title: "Checkpoint A", line: "A video recap of T01 to T13: 8 questions, mostly on leverage and safety.", minutes: 4, status: "available", pose: "hi" },
 
   { id: "T14", kind: "lesson", phase: 4, title: "Candlesticks: Open, High, Low, Close", line: "Read one candle, then a whole chart.", minutes: 6, status: "locked", pose: "present" },
   { id: "T15", kind: "lesson", phase: 4, title: "1m / 5m / 15m Timeframes", line: "The same market, grouped in different time windows.", minutes: 5, status: "locked", pose: "point" },
@@ -66,7 +66,7 @@ export const LESSONS: Lesson[] = [
   { id: "T21", kind: "lesson", phase: 5, title: "Confirmation, False Signals and NO_TRADE", line: "Why waiting is a decision too.", minutes: 6, status: "locked", pose: "explain" },
   { id: "T22", kind: "lesson", phase: 5, title: "Position Sizing and Risk Budget", line: "Size a position from the risk you accept.", minutes: 6, status: "locked", pose: "point" },
   { id: "T23", kind: "lesson", phase: 5, title: "Full Scalping Decision Lifecycle", line: "A complete demo walkthrough, from chart to journal.", minutes: 8, status: "locked", pose: "present" },
-  { id: "CPB", kind: "checkpoint", phase: 5, title: "Checkpoint B", line: "Review T14 to T23 with chart and risk tasks.", minutes: 4, status: "locked", pose: "hi", flip: true },
+  { id: "CPB", kind: "checkpoint", phase: 5, title: "Checkpoint B", line: "A video recap of T14 to T23: chart and risk questions to pause and answer.", minutes: 4, status: "locked", pose: "hi", flip: true },
 ];
 
 export const cardSrc = (id: string) => `/futures-edge/cards/${id}.webp`;

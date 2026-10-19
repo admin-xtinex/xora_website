@@ -148,10 +148,11 @@
     }
     return x;
   }
+  // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
   const lines = (F.voice && F.voice.lines) || [];
-  // Stretches where the music dips: each line plus a little either side, close ones joined.
+  // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
   const duckSpans = [];
-  for (const l of lines) {
+  if (F.voice && F.voice.src) for (const l of lines) {
     const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
     if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
   }
@@ -886,12 +887,14 @@
     play, pause, seek,
     time: () => state.t,
     score: () => audio.score,
+    // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
+    audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
     voice: () => ({ lines, loaded: !!audio.voiceBuf, playing: !!(audio.session && audio.session.voice) }),
   };
 
   // ── Boot ───────────────────────────────────────────────────────────────────
   async function boot() {
-    if (F.voice) {
+    if (F.voice && F.voice.src) {
       audio.voiceData = fetch(F.voice.src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
     }
     try {

@@ -11,6 +11,7 @@
 // scene is lengthened (never shortened) just enough for its lines to play one after another
 // near the moments they were written for, and the player slows that scene's animation and
 // sound effects by the same factor. Needs ffmpeg and ffprobe on the PATH when voice/ exists.
+// Without voice/, the narration lines are still shown as captions at their written times.
 import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -51,8 +52,9 @@ body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
 .fe-btn svg { width: 20px; height: 20px; }
 .fe-cc { font: 700 12px/1 "Manrope", system-ui, sans-serif; letter-spacing: 0.04em; color: #6b7489; }
 .fe-cc[aria-pressed="true"] { color: #eef1f7; box-shadow: inset 0 -2px 0 #3ecbff; }
-.fe-cap { position: fixed; left: 50%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
-  max-width: min(78vw, 980px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+/* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
+.fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
   color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
   transition: bottom 0.4s; pointer-events: none; }
 body.fe-idle .fe-cap { bottom: 20px; }
@@ -161,6 +163,18 @@ function build(id) {
     const total = scenes.reduce((a, x) => a + x.dur, 0);
     mixVoice(src, plan, total, join(dest, "voice.mp3"));
     voice = { src: `${id}/voice.mp3`, lines: plan.lines.map(({ t, d, text }) => ({ t, d: Math.round(d * 1000) / 1000, text })) };
+  } else if (modules["narration.json"]) {
+    // Captions only: each line stays up until shortly before the next one (or its scene's end).
+    const lines = JSON.parse(modules["narration.json"]).lines;
+    const ends = scenes.map((x) => x.oldStart + x.oldDur);
+    voice = {
+      src: null,
+      lines: lines.map((l, i) => {
+        const sceneEnd = ends.find((e) => e > l.t) ?? ends[ends.length - 1];
+        const next = i + 1 < lines.length ? lines[i + 1].t : Infinity;
+        return { t: l.t, d: Math.round((Math.min(next, sceneEnd) - 0.25 - l.t) * 1000) / 1000, text: l.text };
+      }),
+    };
   }
 
   const FILM = {

@@ -32,8 +32,9 @@ body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
 .fe-btn svg { width: 20px; height: 20px; }
 .fe-cc { font: 700 12px/1 "Manrope", system-ui, sans-serif; letter-spacing: 0.04em; color: #6b7489; }
 .fe-cc[aria-pressed="true"] { color: #eef1f7; box-shadow: inset 0 -2px 0 #3ecbff; }
-.fe-cap { position: fixed; left: 50%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
-  max-width: min(78vw, 980px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+/* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
+.fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
   color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
   transition: bottom 0.4s; pointer-events: none; }
 body.fe-idle .fe-cap { bottom: 20px; }
@@ -215,10 +216,11 @@ body.fe-idle .fe-cap { bottom: 20px; }
     }
     return x;
   }
+  // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
   const lines = (F.voice && F.voice.lines) || [];
-  // Stretches where the music dips: each line plus a little either side, close ones joined.
+  // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
   const duckSpans = [];
-  for (const l of lines) {
+  if (F.voice && F.voice.src) for (const l of lines) {
     const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
     if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
   }
@@ -953,12 +955,14 @@ body.fe-idle .fe-cap { bottom: 20px; }
     play, pause, seek,
     time: () => state.t,
     score: () => audio.score,
+    // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
+    audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
     voice: () => ({ lines, loaded: !!audio.voiceBuf, playing: !!(audio.session && audio.session.voice) }),
   };
 
   // ── Boot ───────────────────────────────────────────────────────────────────
   async function boot() {
-    if (F.voice) {
+    if (F.voice && F.voice.src) {
       audio.voiceData = fetch(F.voice.src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
     }
     try {

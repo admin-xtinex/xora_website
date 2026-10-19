@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-// The original XORA brain loop video, played as is.
+// The XORA hero loop: a rotating glowing brain, played as is.
 
 export function HeroScene({ className }: { className?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -28,8 +28,8 @@ export function HeroScene({ className }: { className?: string }) {
         <video
           ref={ref}
           className="scene-layer scene-video"
-          src="/brand/xora-loop.mp4"
-          poster="/brand/xora-loop-poster.webp"
+          src="/brand/xora-brain.mp4"
+          poster="/brand/xora-brain-poster.webp"
           muted
           loop
           playsInline

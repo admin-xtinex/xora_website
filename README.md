@@ -17,7 +17,7 @@ npm run build    # typecheck + production build to dist/
   `FuturesEdgeSection`, `JourneySection`, `IntelligenceShowcaseSection`, `DifferenceSection`,
   `TrustNoticeSection`, `FinalCTASection`, `Footer`; shared pieces in `components/ui/`
 - `src/styles.css` — brand tokens (same palette/fonts as xtinex.com) and section styles
-- `public/brand/` — reused XTINEX/XORA brand media; the hero plays the original `xora-loop.mp4` as is
+- `public/brand/` — reused XTINEX/XORA brand media; the hero plays `xora-brain.mp4` (rotating glowing brain loop) as is
 
 Charts and tickers on the page are illustrative (seeded data), not live market data.
 Animations respect `prefers-reduced-motion`; the hero video stays paused for reduced motion and Save-Data.

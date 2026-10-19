@@ -466,13 +466,13 @@
   --w: max(112vw, 180svh, 1240px);
   position: absolute;
   width: var(--w);
-  left: calc(61vw - var(--w) * 0.587);
-  top: calc(46% - var(--w) * 0.202);
+  left: calc(64vw - var(--w) * 0.535);
+  top: calc(46% - var(--w) * 0.231);
 }
 .scene {
   position: relative;
   width: 100%;
-  aspect-ratio: 1264 / 720;
+  aspect-ratio: 1280 / 720;
   overflow: hidden;
 }
 .scene-inner {
@@ -1712,7 +1712,7 @@
 .overview-scene {
   display: block;
   width: 100%;
-  aspect-ratio: 1264 / 720;
+  aspect-ratio: 1280 / 720;
 }
 .overview-close {
   position: absolute;
@@ -1897,7 +1897,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .hero-scene {
-    left: calc(66vw - var(--w) * 0.587);
+    left: calc(68vw - var(--w) * 0.535);
   }
   .float-btc {
     left: 54%;
@@ -1982,7 +1982,7 @@
   }
   .hero-scene {
     --w: 200vw;
-    left: calc(50vw - var(--w) * 0.587);
+    left: calc(50vw - var(--w) * 0.535);
     top: calc(var(--header-h) - 18vw);
   }
   .hero-veil {

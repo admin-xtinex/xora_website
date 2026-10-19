@@ -21,7 +21,7 @@ const CHART_UP = fromCloses(100.0, [101.0, 100.5, 101.8, 101.2, 102.6, 102.0, 10
 /** Sample chart 3: swings turning inside roughly the same band (sideways). */
 const CHART_SIDEWAYS = fromCloses(100.2, [101.6, 100.2, 101.5, 100.1, 101.7, 100.3, 101.5, 100.2, 101.6]);
 
-const ohlc = (id: string, candles: ReturnType<typeof fromCloses>, labels?: string[]): Fixture => ({
+const ohlc = (id: `FX-${string}`, candles: ReturnType<typeof fromCloses>, labels?: string[]): Fixture => ({
   id,
   kind: 'ohlc-series',
   fictional: true,

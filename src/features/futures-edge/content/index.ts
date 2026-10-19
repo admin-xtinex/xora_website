@@ -14,7 +14,8 @@ const idOf = (path: string) => /\/(T\d\d)\//.exec(path)?.[1] as LessonId | undef
 export const LESSON_META: Partial<Record<LessonId, LessonMeta>> = {};
 for (const [path, m] of Object.entries(metaModules)) { const id = idOf(path); if (id) LESSON_META[id] = m.meta; }
 
-export const AVAILABLE_LESSONS: readonly LessonId[] = LESSON_IDS.filter((id) => LESSON_META[id] !== undefined);
+const withLesson = new Set(Object.keys(lessonLoaders).map(idOf));
+export const AVAILABLE_LESSONS: readonly LessonId[] = LESSON_IDS.filter((id) => LESSON_META[id] !== undefined && withLesson.has(id));
 
 /** Course glossary built from every lesson's own entries (each term has one owning lesson). */
 export const COURSE_GLOSSARY: ReadonlyMap<string, GlossaryEntry> = (() => {

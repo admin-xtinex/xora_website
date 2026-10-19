@@ -94,3 +94,39 @@ describe('course home', () => {
     expect(screen.queryByText(/guaranteed profit/i)).toBeNull();
   });
 });
+
+describe('checkpoints', () => {
+  it('CPA: answering everything correctly passes and is saved; a wrong safety item blocks the pass', async () => {
+    const { loadCheckpoint } = await import('../assessment/checkpoints');
+    const cpa = await loadCheckpoint('CPA');
+    for (const wrongSafety of [true, false]) {
+      cleanup();
+      localStorage.clear();
+      window.history.pushState({}, '', '/learn/futures-edge/checkpoint/cpa');
+      render(<FuturesEdgeApp />);
+      fireEvent.click(await screen.findByRole('button', { name: 'Start checkpoint' }));
+      let missedOnce = false;
+      for (const q of cpa.items) {
+        const quiz = await screen.findByLabelText('Checkpoint questions');
+        if (q.answer.kind === 'numeric') {
+          fireEvent.change(within(quiz).getByRole('textbox'), { target: { value: String(q.answer.value) } });
+        } else if (q.answer.kind === 'choice') {
+          const target = wrongSafety && q.safetyCritical && !missedOnce ? (q.choices ?? []).find((c) => c.id !== (q.answer as { choiceId: string }).choiceId)?.id : q.answer.choiceId;
+          if (target !== q.answer.choiceId) missedOnce = true;
+          const text = (q.choices ?? []).find((c) => c.id === target)?.text ?? '';
+          const input = within(quiz).getAllByRole('radio').find((el) => el.closest('label')?.textContent?.includes(text.slice(0, 30)));
+          fireEvent.click(input as HTMLElement);
+        }
+        fireEvent.click(within(quiz).getByRole('button', { name: /Next question|See my result/ }));
+      }
+      const saved = JSON.parse(localStorage.getItem(`${LOCAL_PROGRESS_KEY_PREFIX}local-anonymous`) ?? '{}');
+      expect(saved.checkpoints.CPA.passed).toBe(!wrongSafety);
+      expect(await screen.findByText(wrongSafety ? /safety-critical item was missed/ : /every safety-critical item correctly/)).toBeTruthy();
+    }
+  });
+  it('CPB loads 25 questions including the T14 chart tasks', async () => {
+    window.history.pushState({}, '', '/learn/futures-edge/checkpoint/cpb');
+    render(<FuturesEdgeApp />);
+    expect(await screen.findByText(/25 questions covering T14–T23/)).toBeTruthy();
+  });
+});

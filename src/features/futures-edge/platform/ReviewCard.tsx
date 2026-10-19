@@ -1,6 +1,6 @@
 /** One-screen recap: takeaways, three key terms, safety note, retrieval question, next actions. */
 import { useState } from 'react';
-import type { Lesson, LessonId, Progress } from '@futures-edge/contracts';
+import { PHASES, type Lesson, type LessonId, type Progress } from '@futures-edge/contracts';
 import { RichText } from './RichText';
 import { Link } from './router';
 import { useGlossary } from './hooks';
@@ -31,6 +31,7 @@ export function ReviewCard({ lesson, progress, onPractice, onRetake, nextId }: {
         <button type="button" className="fel-btn" onClick={onPractice}>Practice again</button>
         <button type="button" className="fel-btn" onClick={onRetake}>Retake quiz</button>
         <button type="button" className="fel-btn" onClick={() => window.print()}>Print this card</button>
+        {(() => { const ph = PHASES.find((x) => x.tutorialIds[x.tutorialIds.length - 1] === lesson.id && x.checkpointAfter); return ph?.checkpointAfter && ph.checkpointAfter !== 'CPB' ? <Link className="fel-btn" to={{ kind: 'checkpoint', id: ph.checkpointAfter }}>Take checkpoint {ph.checkpointAfter}</Link> : null; })()}
         {nextId ? <Link className="fel-btn fel-btn-primary" to={{ kind: 'lesson', id: nextId }}>Continue to {nextId}</Link> : <Link className="fel-btn fel-btn-primary" to={{ kind: 'checkpoint', id: 'CPB' }}>Continue to the final checkpoint</Link>}
       </div>
     </section>

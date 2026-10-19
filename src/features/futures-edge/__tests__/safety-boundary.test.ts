@@ -1,3 +1,4 @@
+/// <reference types="node" />
 /**
  * Safety boundary: the learning module must not be able to reach a network, an exchange, keys or accounts.
  * Scans every source file of the module (content included) for forbidden APIs and endpoints.

@@ -358,8 +358,8 @@ export function MarginBufferScene({ params, p }: SceneProps) {
   const liqP = liq.ok ? liq.value.liquidationPrice : NaN;
   const hit = equity <= maint;
   const box = { x: 56, y: 28, w: 340, h: 290 };
-  const sc = makeScale([...path, liqP].filter(Number.isFinite), path.length, box);
   const isoCross = variant === 'isolated-vs-cross';
+  const sc = makeScale([...path, ...(isoCross ? [] : [liqP])].filter(Number.isFinite), path.length, box);
   const wallet = numOr(params['walletBalance'], margin * 3);
   const crossEquity = wallet + pnl;
   return (
@@ -367,7 +367,7 @@ export function MarginBufferScene({ params, p }: SceneProps) {
       <FictionalBadge text="CONCEPTUAL — NOT AN EXCHANGE MODEL" />
       <PriceAxis scale={sc} box={box} />
       <HLine y={sc.y(entry)} x1={box.x} x2={box.x + box.w} label={`Entry ${fmt(entry, 2)}`} side="left" />
-      {Number.isFinite(liqP) ? <HLine y={sc.y(liqP)} x1={box.x} x2={box.x + box.w} label={`≈ Liquidation ${fmt(liqP, 2)}`} cls="fel-svg-level-stop" side="left" /> : null}
+      {Number.isFinite(liqP) && !isoCross ? <HLine y={sc.y(liqP)} x1={box.x} x2={box.x + box.w} label={`≈ Liquidation ${fmt(liqP, 2)}`} cls="fel-svg-level-stop" side="left" /> : null}
       <path d={pathD(path, sc, vis)} className="fel-svg-price" />
       {isoCross ? (
         <g>

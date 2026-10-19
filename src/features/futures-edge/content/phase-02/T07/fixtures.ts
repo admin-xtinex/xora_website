@@ -1,7 +1,7 @@
 import type { Fixture } from '@futures-edge/contracts';
 
 const LABEL = 'Fictional educational data — not a real market';
-const UNITS = { price: 'USDT per DEMO', time: 'ms' };
+const UNITS = { price: 'USDT per DEMO', time: 'ms' } as const;
 
 export const fixtures: Fixture[] = [
   {

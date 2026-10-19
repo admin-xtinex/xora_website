@@ -33,7 +33,8 @@ export const fixtures: Fixture[] = [
     data: {
       interval: '1m',
       label: 'fictional',
-      ticks: NEWS_PATH.map((p, i) => ({ t: i * 60_000, p, ...(i === 5 ? { mark: 'Surprise news' } : {}) })),
+      ticks: NEWS_PATH.map((p, i) => ({ t: i * 60_000, p })),
+      note: 'Surprise news arrives at index 5 (minute 5).',
     },
     version: '1.0.0',
   },

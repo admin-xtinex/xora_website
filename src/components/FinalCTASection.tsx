@@ -21,7 +21,7 @@ export function FinalCTASection() {
           <p className="final-body">{FINAL.body}</p>
         </Reveal>
         <Reveal delay={0.12} className="final-ctas">
-          <MagneticButton href={LINKS.futuresEdge}>
+          <MagneticButton href={LINKS.course}>
             Start Futures Edge
             <ArrowRight size={17} aria-hidden />
           </MagneticButton>

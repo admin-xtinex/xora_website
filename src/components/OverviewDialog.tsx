@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
+import { HeroScene } from "./HeroScene";
 
 const BEATS = [
   { k: "01", t: "Market noise", d: "Thousands of candles, conflicting signals, constant movement." },
@@ -10,7 +11,6 @@ const BEATS = [
 
 export function OverviewDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
-  const video = useRef<HTMLVideoElement>(null);
   const [beat, setBeat] = useState(0);
 
   useEffect(() => {
@@ -19,10 +19,8 @@ export function OverviewDialog({ open, onClose }: { open: boolean; onClose: () =
     if (open && !d.open) {
       d.showModal();
       setBeat(0);
-      video.current?.play().catch(() => undefined);
     } else if (!open && d.open) {
       d.close();
-      video.current?.pause();
     }
   }, [open]);
 
@@ -44,7 +42,7 @@ export function OverviewDialog({ open, onClose }: { open: boolean; onClose: () =
         <button type="button" className="overview-close" onClick={onClose} aria-label="Close overview">
           <X size={20} />
         </button>
-        <video ref={video} src="/brand/xora-core.mp4" poster="/brand/xora-core-poster.webp" muted loop playsInline />
+        {open ? <HeroScene className="overview-scene" /> : <div className="overview-scene" />}
         <div className="overview-caption" aria-live="polite">
           <span className="overview-k">{BEATS[beat].k}</span>
           <div>

@@ -1,0 +1,233 @@
+{
+  "about": "T16 captions, written as a warm, clear tutor speaking; can be recorded as voiceover later. Times in seconds from the start of the lesson.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson sixteen: trend and market structure."
+    },
+    {
+      "t": 4.6,
+      "text": "We'll read the shape of price, one peak and dip at a time."
+    },
+    {
+      "t": 10.3,
+      "text": "Here is a fictional BTC chart. Is price going up, down, or nowhere?"
+    },
+    {
+      "t": 15.6,
+      "text": "One candle cannot tell you. Look at the peaks and the dips instead."
+    },
+    {
+      "t": 20.9,
+      "text": "The pattern they make is called market structure."
+    },
+    {
+      "t": 25.0,
+      "text": "It describes the past. It does not promise the future."
+    },
+    {
+      "t": 30.4,
+      "text": "A swing high is a peak: price rose, then turned down."
+    },
+    {
+      "t": 34.8,
+      "text": "A swing low is a dip: price fell, then turned up."
+    },
+    {
+      "t": 38.9,
+      "text": "Think of a hilly road. The hilltops are swing highs, the valleys swing lows."
+    },
+    {
+      "t": 44.8,
+      "text": "A peak is only clear after price turns away from it."
+    },
+    {
+      "t": 50.4,
+      "text": "An uptrend has higher highs and higher lows."
+    },
+    {
+      "t": 54.2,
+      "text": "Each peak tops the last one: 60,100, then 60,200, then 60,300."
+    },
+    {
+      "t": 59.2,
+      "text": "Each dip stays above the last one: 59,980, then 60,080, then 60,180."
+    },
+    {
+      "t": 64.6,
+      "text": "Like climbing stairs: a step up, a small step back, then up again."
+    },
+    {
+      "t": 69.8,
+      "text": "HH means higher high. HL means higher low."
+    },
+    {
+      "t": 74.4,
+      "text": "A downtrend is the mirror: lower highs and lower lows."
+    },
+    {
+      "t": 78.9,
+      "text": "Peaks: 60,320, then 60,220, then 60,120. Each one is lower."
+    },
+    {
+      "t": 83.6,
+      "text": "Dips: 60,200, then 60,100, then 60,000. LH and LL for short."
+    },
+    {
+      "t": 88.5,
+      "text": "Lower highs, lower lows: a downtrend, so far."
+    },
+    {
+      "t": 94.4,
+      "text": "Sideways means neither: highs and lows stay at about the same levels."
+    },
+    {
+      "t": 99.9,
+      "text": "Peaks near 60,200, dips near 60,000. Price moves, but goes nowhere."
+    },
+    {
+      "t": 105.2,
+      "text": "This is also called a range. No clear direction is an answer too."
+    },
+    {
+      "t": 112.4,
+      "text": "Now watch structure change as price writes the chart."
+    },
+    {
+      "t": 116.8,
+      "text": "Higher highs, higher lows: an uptrend."
+    },
+    {
+      "t": 121.0,
+      "text": "Each new label appears only after price turns. That is how swings work."
+    },
+    {
+      "t": 127.0,
+      "text": "Then a peak that is not higher: the climb stalls, sideways."
+    },
+    {
+      "t": 131.8,
+      "text": "A lower high, then a lower low. The structure has turned down."
+    },
+    {
+      "t": 136.8,
+      "text": "Structure tells you what changed. It cannot tell you what comes next."
+    },
+    {
+      "t": 143.4,
+      "text": "Let's check with numbers. Compare each peak with the last peak."
+    },
+    {
+      "t": 148.4,
+      "text": "60,240 minus 60,290 is minus 50. A lower high."
+    },
+    {
+      "t": 152.4,
+      "text": "60,060 minus 60,150 is minus 90. A lower low."
+    },
+    {
+      "t": 156.3,
+      "text": "Both changed: the uptrend's pattern of higher highs and lows is broken."
+    },
+    {
+      "t": 163.4,
+      "text": "A common mistake: one big green candle does not make an uptrend."
+    },
+    {
+      "t": 168.5,
+      "text": "Here, a big jump, but the highs and lows are still falling."
+    },
+    {
+      "t": 173.2,
+      "text": "Trend comes from the pattern of swings, not from one candle."
+    },
+    {
+      "t": 178.1,
+      "text": "And always say which timeframe you mean."
+    },
+    {
+      "t": 182.4,
+      "text": "Your turn. Three fictional charts: A, B and C."
+    },
+    {
+      "t": 186.3,
+      "text": "Which is an uptrend, which a downtrend, which sideways? Pause if you need time."
+    },
+    {
+      "t": 192.4,
+      "text": "A: lower highs and lower lows. A downtrend."
+    },
+    {
+      "t": 196.1,
+      "text": "B: highs and lows at the same levels. Sideways."
+    },
+    {
+      "t": 200.1,
+      "text": "C: higher highs and higher lows. An uptrend."
+    },
+    {
+      "t": 203.9,
+      "text": "Well done if you got all three."
+    },
+    {
+      "t": 208.4,
+      "text": "Be honest about the limits. Spotting swings is partly a judgement call."
+    },
+    {
+      "t": 214.0,
+      "text": "Two people can mark the same chart differently, and both can be fair."
+    },
+    {
+      "t": 219.4,
+      "text": "Tiny wiggles are usually ignored. A different timeframe can show a different trend."
+    },
+    {
+      "t": 226.4,
+      "text": "Before we move on, a few honest limits."
+    },
+    {
+      "t": 229.8,
+      "text": "A trend can end at any time, often without warning."
+    },
+    {
+      "t": 234.0,
+      "text": "Buying late into a long trend can mean buying near the top."
+    },
+    {
+      "t": 238.8,
+      "text": "Structure is not a signal to trade. WAIT and NO_TRADE are always allowed."
+    },
+    {
+      "t": 246.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 248.0,
+      "text": "Uptrend: higher highs and higher lows. Downtrend: lower highs and lower lows."
+    },
+    {
+      "t": 253.9,
+      "text": "Sideways: highs and lows stay at about the same levels."
+    },
+    {
+      "t": 258.4,
+      "text": "Swings are only clear after price turns, and they are a judgement call."
+    },
+    {
+      "t": 263.9,
+      "text": "Check yourself: peaks 60,300 then 60,240; dips 60,150 then 60,060. What is it?"
+    },
+    {
+      "t": 270.0,
+      "text": "Lower highs and lower lows: a downtrend, so far."
+    },
+    {
+      "t": 274.6,
+      "text": "Great work! Next up: support, resistance, breakout and fakeout."
+    },
+    {
+      "t": 280.0,
+      "text": "See you in lesson seventeen."
+    }
+  ]
+}

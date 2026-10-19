@@ -1,0 +1,237 @@
+{
+  "about": "T15 captions, written as a warm, clear tutor speaking; can be recorded as voiceover later. Times in seconds from the start of the lesson.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson fifteen: 1-minute, 5-minute and 15-minute timeframes."
+    },
+    {
+      "t": 5.4,
+      "text": "Same market, grouped in different time windows."
+    },
+    {
+      "t": 10.4,
+      "text": "Here are fifteen minutes of a fictional BTC chart, one candle per minute."
+    },
+    {
+      "t": 16.1,
+      "text": "Tap 5m: now there are three candles. Tap 15m: just one."
+    },
+    {
+      "t": 20.6,
+      "text": "Did the market change? No. Only the way it is grouped."
+    },
+    {
+      "t": 25.0,
+      "text": "That grouping is called a timeframe."
+    },
+    {
+      "t": 29.4,
+      "text": "A timeframe is how much time each candle covers."
+    },
+    {
+      "t": 33.4,
+      "text": "On a 1-minute chart, each candle is one minute. On a 5-minute chart, five."
+    },
+    {
+      "t": 39.2,
+      "text": "Like a diary: notes for each day, a summary each week, one for the month."
+    },
+    {
+      "t": 44.9,
+      "text": "Same life, different summaries. Same trades, different candles."
+    },
+    {
+      "t": 50.4,
+      "text": "Let's build one 5-minute candle from five 1-minute candles."
+    },
+    {
+      "t": 55.2,
+      "text": "Open: the first minute's open. 60,000."
+    },
+    {
+      "t": 58.6,
+      "text": "High: the highest high of all five. That is 60,110, in minute four."
+    },
+    {
+      "t": 63.9,
+      "text": "Low: the lowest low of all five. 59,980, in the first minute."
+    },
+    {
+      "t": 68.8,
+      "text": "Close: the last minute's close. 60,090."
+    },
+    {
+      "t": 72.2,
+      "text": "Watch them merge: open 60,000, high 60,110, low 59,980, close 60,090."
+    },
+    {
+      "t": 78.6,
+      "text": "It is green, because 60,090 closed above 60,000."
+    },
+    {
+      "t": 84.4,
+      "text": "Fifteen minutes works the same way. Take all fifteen 1-minute candles."
+    },
+    {
+      "t": 89.9,
+      "text": "First open, 60,000. Highest high, 60,170. Lowest low, 59,920."
+    },
+    {
+      "t": 94.8,
+      "text": "Last close, 60,150. One green 15-minute candle."
+    },
+    {
+      "t": 98.8,
+      "text": "The three 5-minute candles give the same answer. The maths always agrees."
+    },
+    {
+      "t": 105.4,
+      "text": "Now one chart, one time axis. Under it all, the same price path."
+    },
+    {
+      "t": 110.5,
+      "text": "Switch to 1-minute: fifteen narrow candles sit on the path."
+    },
+    {
+      "t": 115.3,
+      "text": "Switch to 5-minute: they merge into three wider ones."
+    },
+    {
+      "t": 119.7,
+      "text": "Switch to 15-minute: one candle for the whole stretch."
+    },
+    {
+      "t": 124.1,
+      "text": "The path never moved. Only the grouping changed."
+    },
+    {
+      "t": 129.4,
+      "text": "Short timeframes show every small back-and-forth. That is called noise."
+    },
+    {
+      "t": 134.9,
+      "text": "On the 1-minute chart, 10:05 to 10:07 looks like a big drop."
+    },
+    {
+      "t": 139.7,
+      "text": "On the 15-minute view, that drop is just a dip inside one green candle."
+    },
+    {
+      "t": 145.2,
+      "text": "A signal is a change big enough to stand out from the noise. It is still no promise."
+    },
+    {
+      "t": 152.4,
+      "text": "Higher-timeframe context: check the bigger view first."
+    },
+    {
+      "t": 157.2,
+      "text": "Like a map: zoom out to see the city, then zoom in to find the street."
+    },
+    {
+      "t": 162.7,
+      "text": "Look at 15m for the big picture, then 5m and 1m for detail."
+    },
+    {
+      "t": 167.4,
+      "text": "If the views disagree, that is a reason to be careful, or to wait."
+    },
+    {
+      "t": 173.4,
+      "text": "A common mistake: averaging the 1-minute highs to get the 5-minute high."
+    },
+    {
+      "t": 179.0,
+      "text": "The average of these five highs is 60,060. That is wrong."
+    },
+    {
+      "t": 183.6,
+      "text": "The 5-minute high is the highest of them: 60,120. Price really reached it."
+    },
+    {
+      "t": 189.3,
+      "text": "Open is first, close is last, high is highest, low is lowest. No averages."
+    },
+    {
+      "t": 195.4,
+      "text": "Your turn. Here are five 1-minute candles, from 10:10 to 10:14."
+    },
+    {
+      "t": 200.4,
+      "text": "What are the 5-minute open, high, low and close? Pause if you need time."
+    },
+    {
+      "t": 206.0,
+      "text": "Open 60,010, the first open. Close 60,150, the last close."
+    },
+    {
+      "t": 210.7,
+      "text": "High 60,170, the highest high. Low 59,990, the lowest low."
+    },
+    {
+      "t": 215.4,
+      "text": "A green 5-minute candle. Well done if you got all four."
+    },
+    {
+      "t": 220.4,
+      "text": "Quick check: is each one a change in the view, or a real market event?"
+    },
+    {
+      "t": 225.9,
+      "text": "Switching timeframes and wider candles: just the view."
+    },
+    {
+      "t": 232.0,
+      "text": "Trades and price moves are the market. The view only groups them."
+    },
+    {
+      "t": 238.4,
+      "text": "Before we move on, a few honest limits."
+    },
+    {
+      "t": 241.8,
+      "text": "Shorter timeframes are noisier. More candles do not mean more good chances."
+    },
+    {
+      "t": 247.6,
+      "text": "Trading every small move piles up fees and mistakes."
+    },
+    {
+      "t": 251.9,
+      "text": "No timeframe predicts the future. WAIT and NO_TRADE are always allowed."
+    },
+    {
+      "t": 258.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 260.0,
+      "text": "A timeframe is how much time each candle covers."
+    },
+    {
+      "t": 264.0,
+      "text": "To combine candles: first open, highest high, lowest low, last close."
+    },
+    {
+      "t": 269.4,
+      "text": "Check the bigger view for context. Short timeframes are noisy."
+    },
+    {
+      "t": 274.3,
+      "text": "Check yourself: five 1-minute candles, the last closes at 60,090. The 5-minute close?"
+    },
+    {
+      "t": 281.0,
+      "text": "60,090. The 5-minute close is always the last 1-minute close."
+    },
+    {
+      "t": 286.6,
+      "text": "Great work! Next up: trend and market structure."
+    },
+    {
+      "t": 291.0,
+      "text": "See you in lesson sixteen."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson fifteen",
+      "dur": 10,
+      "desc": "Title card: Phase 4, lesson T15, 1m / 5m / 15m Timeframes; fifteen small candles fold into three and then one; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Same market, three views",
+      "dur": 19,
+      "desc": "A fictional 15-minute BTC chart; a 1m / 5m / 15m switch turns fifteen candles into three and then one; the market did not change."
+    },
+    {
+      "id": "timeframe",
+      "name": "What a timeframe is",
+      "dur": 21,
+      "desc": "Timeframe defined: the time each candle covers; fifteen 1-minute cells group into 5-minute and 15-minute blocks; diary analogy (days, weeks, a month)."
+    },
+    {
+      "id": "build5",
+      "name": "Build a 5-minute candle",
+      "dur": 34,
+      "desc": "Five 1-minute candles and their OHLC table: open = first open 60,000, high = highest high 60,110, low = lowest low 59,980, close = last close 60,090; they merge into one green 5-minute candle."
+    },
+    {
+      "id": "build15",
+      "name": "Build a 15-minute candle",
+      "dur": 21,
+      "desc": "All fifteen minutes give open 60,000, high 60,170, low 59,920, close 60,150; the three 5-minute candles give the same result."
+    },
+    {
+      "id": "switch",
+      "name": "One path, three views",
+      "dur": 24,
+      "desc": "One fictional price path on a 10:00 to 10:15 axis; 1m, 5m and 15m candles are drawn over the same path; the path never moves."
+    },
+    {
+      "id": "noise",
+      "name": "Noise and signal",
+      "dur": 23,
+      "desc": "Noise defined: the 1-minute drop from 10:05 looks big; on the 15-minute view it is a dip inside one green candle; signal defined, still no promise."
+    },
+    {
+      "id": "context",
+      "name": "Higher-timeframe context",
+      "dur": 21,
+      "desc": "Context defined: check the bigger view first; map zoom analogy; 15m, 5m and 1m panels; disagreement is a reason for care or WAIT."
+    },
+    {
+      "id": "mistake",
+      "name": "No averages",
+      "dur": 22,
+      "desc": "Common mistake: averaging highs gives 60,060; the 5-minute high is the highest high, 60,120."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 25,
+      "desc": "Pause and combine five 1-minute candles (10:10 to 10:14): open 60,010, high 60,170, low 59,990, close 60,150."
+    },
+    {
+      "id": "sort",
+      "name": "View or market?",
+      "dur": 18,
+      "desc": "Four statements are sorted: switching timeframe and wider candles are the view; a trade and a price move are the market."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 20,
+      "desc": "Short timeframes are noisy, more candles are not more chances, frequent trading adds fees, no timeframe predicts; WAIT and NO_TRADE are allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 28,
+      "desc": "Three key points and one question: the 5-minute close is the last 1-minute close, 60,090."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T16, Trend and Market Structure."
+    }
+  ]
+}

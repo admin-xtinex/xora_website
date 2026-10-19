@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson sixteen",
+      "dur": 10,
+      "desc": "Title card: Phase 4, lesson T16, Trend and Market Structure; a zig-zag path climbs with HH and HL marks; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Up, down or nowhere?",
+      "dur": 20,
+      "desc": "A fictional BTC chart zig-zags; one candle cannot say where price is going; the peaks and dips light up: market structure."
+    },
+    {
+      "id": "swings",
+      "name": "Peaks and dips",
+      "dur": 20,
+      "desc": "Swing high (peak) and swing low (dip) defined; hilly road analogy; a peak is only clear after price turns away."
+    },
+    {
+      "id": "uptrend",
+      "name": "Uptrend",
+      "dur": 24,
+      "desc": "Higher highs 60,100, 60,200, 60,300 and higher lows 59,980, 60,080, 60,180 write onto the chart like a staircase; HH and HL labels."
+    },
+    {
+      "id": "downtrend",
+      "name": "Downtrend",
+      "dur": 20,
+      "desc": "Lower highs 60,320, 60,220, 60,120 and lower lows 60,200, 60,100, 60,000; LH and LL labels."
+    },
+    {
+      "id": "sideways",
+      "name": "Sideways",
+      "dur": 18,
+      "desc": "Peaks near 60,200 and dips near 60,000 inside a shaded band: a range, no clear direction."
+    },
+    {
+      "id": "structure",
+      "name": "Structure changes",
+      "dur": 31,
+      "desc": "One path writes: higher highs and lows, a stalled peak (sideways), then a lower high and a lower low; labels appear only after each turn."
+    },
+    {
+      "id": "numbers",
+      "name": "Check with numbers",
+      "dur": 20,
+      "desc": "Worked example: 60,240 - 60,290 = -50 (lower high); 60,060 - 60,150 = -90 (lower low); the uptrend pattern is broken."
+    },
+    {
+      "id": "mistake",
+      "name": "One candle is not a trend",
+      "dur": 19,
+      "desc": "Common mistake: a big green candle inside lower highs and lower lows; trend comes from swings, on a stated timeframe."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 26,
+      "desc": "Pause and classify three fictional charts: A downtrend, B sideways, C uptrend."
+    },
+    {
+      "id": "subjective",
+      "name": "A judgement call",
+      "dur": 18,
+      "desc": "Two markings of the same chart; tiny wiggles ignored; a different timeframe can show a different trend."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 20,
+      "desc": "Trends end without warning, buying late can mean buying near the top, structure is not a signal; WAIT and NO_TRADE are always allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 28,
+      "desc": "Three key points and one question: peaks 60,300 then 60,240, dips 60,150 then 60,060 is a downtrend so far."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T17, Support, Resistance, Breakout, Fakeout."
+    }
+  ]
+}

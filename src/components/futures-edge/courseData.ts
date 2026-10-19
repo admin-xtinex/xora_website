@@ -55,9 +55,9 @@ export const LESSONS: Lesson[] = [
   { id: "T13", kind: "lesson", phase: 3, title: "Liquidation, Funding and Futures Risks", line: "What can close a position for you, and when to stay out.", minutes: 5, status: "available", pose: "think", flip: true },
   { id: "CPA", kind: "checkpoint", phase: 3, title: "Checkpoint A", line: "A video recap of T01 to T13: 8 questions, mostly on leverage and safety.", minutes: 4, status: "available", pose: "hi" },
 
-  { id: "T14", kind: "lesson", phase: 4, title: "Candlesticks: Open, High, Low, Close", line: "Read one candle, then a whole chart.", minutes: 6, status: "locked", pose: "present" },
-  { id: "T15", kind: "lesson", phase: 4, title: "1m / 5m / 15m Timeframes", line: "The same market, grouped in different time windows.", minutes: 5, status: "locked", pose: "point" },
-  { id: "T16", kind: "lesson", phase: 4, title: "Trend and Market Structure", line: "Higher highs, lower lows, and sideways markets.", minutes: 5, status: "locked", pose: "think" },
+  { id: "T14", kind: "lesson", phase: 4, title: "Candlesticks: Open, High, Low, Close", line: "Read one candle, then a whole chart.", minutes: 5, status: "available", pose: "present" },
+  { id: "T15", kind: "lesson", phase: 4, title: "1m / 5m / 15m Timeframes", line: "The same market, grouped in different time windows.", minutes: 5, status: "available", pose: "point" },
+  { id: "T16", kind: "lesson", phase: 4, title: "Trend and Market Structure", line: "Higher highs, lower lows, and sideways markets.", minutes: 5, status: "available", pose: "think" },
   { id: "T17", kind: "lesson", phase: 4, title: "Support, Resistance, Breakout, Fakeout", line: "Price zones, and what counts as confirmation.", minutes: 6, status: "locked", pose: "explain" },
   { id: "T18", kind: "lesson", phase: 4, title: "Volume, Volatility and Range", line: "How busy and how jumpy a market is.", minutes: 5, status: "locked", pose: "present", flip: true },
 

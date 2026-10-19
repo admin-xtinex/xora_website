@@ -1,0 +1,245 @@
+{
+  "about": "T14 captions, written as a warm, clear tutor speaking; can be recorded as voiceover later. Times in seconds from the start of the lesson.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson fourteen: candlesticks. Open, high, low and close."
+    },
+    {
+      "t": 5.4,
+      "text": "Almost every price chart you will see is drawn this way."
+    },
+    {
+      "t": 10.4,
+      "text": "Here is one minute of a fictional BTC price, drawn as a line."
+    },
+    {
+      "t": 15.4,
+      "text": "A line shows every wiggle. Now watch it squeeze into one shape."
+    },
+    {
+      "t": 20.4,
+      "text": "That shape is a candle. It keeps just four prices from the minute."
+    },
+    {
+      "t": 25.6,
+      "text": "Candles side by side make a chart."
+    },
+    {
+      "t": 29.4,
+      "text": "A candle sums up one time window, such as one minute, with four prices."
+    },
+    {
+      "t": 35.0,
+      "text": "Open is the first price. Close is the last. High and low are the extremes."
+    },
+    {
+      "t": 40.8,
+      "text": "Think of one day's temperature: first reading, hottest, coldest, last."
+    },
+    {
+      "t": 46.4,
+      "text": "Same idea. A candle is a price summary, not a prediction."
+    },
+    {
+      "t": 52.4,
+      "text": "Let's watch a 1-minute candle form."
+    },
+    {
+      "t": 55.6,
+      "text": "It starts at 60,000 USDT. That first price is the open."
+    },
+    {
+      "t": 60.2,
+      "text": "Price dips below the open, so the forming body is red. The lowest point is the low."
+    },
+    {
+      "t": 66.6,
+      "text": "Now price climbs above the open: the body turns green. Each new top is the high."
+    },
+    {
+      "t": 72.8,
+      "text": "Until the minute ends, the last price keeps changing. The candle is not finished."
+    },
+    {
+      "t": 79.0,
+      "text": "Time is up. The last price, 60,080, becomes the close. The candle is done."
+    },
+    {
+      "t": 84.8,
+      "text": "Open, high, low, close: four numbers that tell this minute's story."
+    },
+    {
+      "t": 91.4,
+      "text": "Let's name the parts. The thick part is the body, between open and close."
+    },
+    {
+      "t": 97.2,
+      "text": "The thin lines are wicks, also called shadows. They reach the high and the low."
+    },
+    {
+      "t": 103.4,
+      "text": "Body: 60,080 minus 60,000 is 80 USDT. Upper wick: 40. Lower wick: 60."
+    },
+    {
+      "t": 108.9,
+      "text": "The range, high minus low, is 180 USDT. More than half of it is wick."
+    },
+    {
+      "t": 115.4,
+      "text": "Up or down? Compare the close with the open."
+    },
+    {
+      "t": 119.2,
+      "text": "Close above open: an up candle, also called bullish. Usually drawn green."
+    },
+    {
+      "t": 124.9,
+      "text": "Close below open: a down candle, called bearish. Usually drawn red."
+    },
+    {
+      "t": 130.2,
+      "text": "Same high and low, same 80 USDT body. Only the direction differs."
+    },
+    {
+      "t": 135.4,
+      "text": "Colours are just an app setting. Open versus close is what counts."
+    },
+    {
+      "t": 141.4,
+      "text": "Sometimes the close lands almost exactly on the open."
+    },
+    {
+      "t": 145.8,
+      "text": "Here: open 60,000, close 60,005. The body is just 5 USDT thin."
+    },
+    {
+      "t": 150.8,
+      "text": "That is a doji. Buyers and sellers ended the minute about even."
+    },
+    {
+      "t": 155.9,
+      "text": "A doji does not tell you what comes next."
+    },
+    {
+      "t": 160.3,
+      "text": "Four prices, but they are not free. Two rules always hold."
+    },
+    {
+      "t": 165.0,
+      "text": "The high can never be below the open or the close. It is the top."
+    },
+    {
+      "t": 170.2,
+      "text": "The low can never be above them either. It is the bottom."
+    },
+    {
+      "t": 174.9,
+      "text": "Drop the close below the open, and the candle turns red."
+    },
+    {
+      "t": 179.5,
+      "text": "Rule check: high is at or above both, low at or below both. Always."
+    },
+    {
+      "t": 186.4,
+      "text": "One candle covers one minute. Put candles side by side, and you get a chart."
+    },
+    {
+      "t": 192.3,
+      "text": "Time runs left to right. Price runs bottom to top."
+    },
+    {
+      "t": 196.5,
+      "text": "Each new candle opens near where the last one closed."
+    },
+    {
+      "t": 200.8,
+      "text": "The candle on the far right is still forming. It can change until its minute ends."
+    },
+    {
+      "t": 208.4,
+      "text": "A common mistake: reading the top of the wick as the close."
+    },
+    {
+      "t": 213.2,
+      "text": "Price did touch 60,200 in that minute, but it did not stay there."
+    },
+    {
+      "t": 218.4,
+      "text": "The close is the edge of the body. On this green candle, the top edge: 60,040."
+    },
+    {
+      "t": 224.4,
+      "text": "Wick tips are the high and low. Body edges are the open and close."
+    },
+    {
+      "t": 230.4,
+      "text": "Your turn. Read this candle's open, high, low and close."
+    },
+    {
+      "t": 234.9,
+      "text": "Is it an up or a down candle? Pause if you need more time."
+    },
+    {
+      "t": 240.4,
+      "text": "Open 60,150 at the top of the red body. Close 60,000 at the bottom."
+    },
+    {
+      "t": 245.8,
+      "text": "High 60,200, low 59,950. Close is 150 below open: a down candle."
+    },
+    {
+      "t": 251.0,
+      "text": "Well done if you got it."
+    },
+    {
+      "t": 254.4,
+      "text": "Before we move on, keep these limits in mind."
+    },
+    {
+      "t": 258.2,
+      "text": "A candle shows what already happened. It does not predict the next one."
+    },
+    {
+      "t": 263.8,
+      "text": "The last candle can still change. Big wicks mean fast moves and more slippage."
+    },
+    {
+      "t": 269.9,
+      "text": "Nothing here is a signal. Waiting, or no trade at all, is always allowed."
+    },
+    {
+      "t": 276.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 278.0,
+      "text": "A candle sums up one time window: open, high, low and close."
+    },
+    {
+      "t": 282.8,
+      "text": "Body edges are open and close. Wick tips are high and low."
+    },
+    {
+      "t": 287.5,
+      "text": "Up candles close above the open; down candles close below."
+    },
+    {
+      "t": 292.9,
+      "text": "Check yourself: a red body runs from 60,100 down to 60,020. Where did it open?"
+    },
+    {
+      "t": 299.0,
+      "text": "At 60,100, the top of the red body. It closed lower, at 60,020."
+    },
+    {
+      "t": 305.6,
+      "text": "Great work! Next up: 1-minute, 5-minute and 15-minute timeframes."
+    },
+    {
+      "t": 310.8,
+      "text": "See you in lesson fifteen."
+    }
+  ]
+}

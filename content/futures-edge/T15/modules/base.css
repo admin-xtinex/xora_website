@@ -1,0 +1,44 @@
+#stage { --ground:#02030a; --main:#3ecbff; --second:#eef1f7; --accent:#a855f7; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }
+.ground { position:absolute; inset:0; background:radial-gradient(60% 55% at 88% 6%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), radial-gradient(55% 50% at 6% 98%, color-mix(in srgb, var(--main) 11%, transparent), transparent 70%), var(--ground) }
+.words { position:absolute; margin:0; display:flex; flex-direction:column; gap:24px } .words > * { margin:0 }
+.line { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:84px; line-height:1.05; font-weight:700; letter-spacing:-0.02em; text-wrap:balance }
+.sub { font-size:36px; line-height:1.45; color:color-mix(in srgb, var(--second) 72%, var(--ground)) }
+.kick { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.24em; text-transform:uppercase; color:var(--main) }
+.hl { color:var(--main) } .hv { color:var(--accent) }
+.art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }
+.glass { position:absolute; box-sizing:border-box; border-radius:28px; background:linear-gradient(180deg, color-mix(in srgb, var(--ground) 82%, var(--main)), color-mix(in srgb, var(--ground) 94%, var(--second))); border:1.5px solid color-mix(in srgb, var(--main) 22%, transparent); box-shadow:0 30px 80px rgba(0,0,0,.45) }
+.chip { display:inline-flex; align-items:center; gap:16px; padding:18px 30px; border-radius:999px; font-size:32px; font-weight:600; background:color-mix(in srgb, var(--ground) 88%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent); white-space:nowrap }
+.dot { width:14px; height:14px; border-radius:50%; background:var(--main); flex:none }
+.rule { height:4px; border-radius:4px; background:linear-gradient(90deg, var(--main), var(--accent)) }
+.mono { font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums }
+.fict { font-family:var(--mono, ui-monospace, monospace); font-size:18px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 45%, var(--ground)) }
+.def { font-size:34px; line-height:1.45; font-weight:600 } .def b { color:var(--main); font-weight:700 }
+.lock { display:flex; align-items:center; gap:22px } .lock img { width:92px; height:59px; display:block }
+.lock-xt { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:600; font-size:40px; letter-spacing:.2em }
+.lock-bar { width:2px; height:46px; background:color-mix(in srgb, var(--second) 30%, transparent) }
+.lock-xo { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:700; font-size:40px; letter-spacing:.2em; color:var(--main) }
+.chrome { position:absolute; left:140px; right:140px; top:56px; display:flex; align-items:center; gap:28px; z-index:4 }
+.chrome span { font-family:var(--mono, ui-monospace, monospace); font-size:19px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 55%, var(--ground)); white-space:nowrap }
+.chrome div { flex:1; height:4px; border-radius:4px; background:color-mix(in srgb, var(--second) 10%, transparent); overflow:hidden } .chrome i { display:block; height:100%; width:0; background:linear-gradient(90deg, var(--main), var(--accent)) }
+.tutor { position:absolute; inset:0; pointer-events:none; z-index:5 }
+.tutor-img { position:absolute; display:block; max-width:none; opacity:0 }
+.tutor-shadow { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--main) 38%, transparent), transparent) }
+.bubble { position:absolute; left:0; top:0; width:max-content; max-width:540px; box-sizing:border-box; padding:20px 28px; border-radius:26px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); box-shadow:0 18px 50px rgba(0,0,0,.45); opacity:0 }
+.bubble p { margin:0; font-size:30px; line-height:1.35; font-weight:600; color:var(--second) }
+.bubble::after { content:''; position:absolute; right:44px; bottom:-12px; width:22px; height:22px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border-right:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); border-bottom:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); transform:rotate(45deg) }
+.bubble.is-top::after { right:auto; left:calc(50% - 11px) }
+.box { position:absolute; margin:0; border:2px solid var(--second); box-sizing:border-box; font-size:30px; letter-spacing:.12em } .box::after { content:attr(data-label); position:absolute; left:14px; bottom:10px }
+/* T14: candle colours (most apps: green up, red down) and small chart labels */
+#stage { --up:#2fd897; --down:#ff5c7c }
+.up { color:var(--up) } .dn { color:var(--down) }
+.tag { position:absolute; margin:0; padding:6px 14px; border-radius:10px; font-family:var(--mono, ui-monospace, monospace); font-size:24px; white-space:nowrap; background:color-mix(in srgb, var(--ground) 80%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 35%, transparent) }
+.axis { font-family:var(--mono, ui-monospace, monospace); font-size:22px; fill:color-mix(in srgb, var(--second) 50%, var(--ground)) }
+.row { display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding:14px 0; border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent) }
+.row > span:first-child { font-size:28px; color:color-mix(in srgb, var(--second) 70%, var(--ground)) }
+.row > .mono { font-size:42px }
+/* T15: OHLC tables */
+.otab { position:absolute; box-sizing:border-box; display:grid; grid-template-columns:118px repeat(4, 1fr); row-gap:4px; font-family:var(--mono, ui-monospace, monospace); font-size:28px; font-variant-numeric:tabular-nums }
+.otab > span { padding:8px 10px; border-radius:10px; text-align:right; white-space:nowrap }
+.otab > span.h { font-family:var(--sans, system-ui, sans-serif); font-size:22px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 55%, var(--ground)) }
+.otab > span.tm { text-align:left; color:color-mix(in srgb, var(--second) 65%, var(--ground)) }
+.otab > span.res { border-top:2px solid color-mix(in srgb, var(--main) 50%, transparent); border-radius:0 0 10px 10px; padding-top:12px }

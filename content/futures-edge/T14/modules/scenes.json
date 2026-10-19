@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson fourteen",
+      "dur": 10,
+      "desc": "Title card: Phase 4, lesson T14, Candlesticks: open, high, low, close; a glowing candle with its four price ticks; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "From line to candle",
+      "dur": 19,
+      "desc": "One fictional minute of BTC drawn as a line squeezes into a single candle; its four prices tag on; more candles line up into a chart."
+    },
+    {
+      "id": "window",
+      "name": "Four prices",
+      "dur": 23,
+      "desc": "A candle sums up one time window: open, high, low, close defined; a day of temperature readings (24, 22, 33, 29 C) forms the same shape."
+    },
+    {
+      "id": "live",
+      "name": "Watch one form",
+      "dur": 39,
+      "desc": "A live 1-minute fictional candle: open 60,000, the price dips (red body) to a low of 59,940, climbs (green) to a high of 60,120, and closes at 60,080."
+    },
+    {
+      "id": "anatomy",
+      "name": "Body and wicks",
+      "dur": 24,
+      "desc": "Body and wicks defined on the finished candle: body 80, upper wick 40, lower wick 60, range 180 USDT."
+    },
+    {
+      "id": "updown",
+      "name": "Up and down candles",
+      "dur": 26,
+      "desc": "Close above open: up (bullish), usually green; close below open: down (bearish), usually red; same high, low and 80 USDT body."
+    },
+    {
+      "id": "doji",
+      "name": "Doji",
+      "dur": 19,
+      "desc": "The close slides to 60,005: a 5 USDT body, a doji; buyers and sellers ended about even; no prediction."
+    },
+    {
+      "id": "rules",
+      "name": "The two rules",
+      "dur": 26,
+      "desc": "Four sliders: moving the close above the high pushes the high up; moving the open below the low pushes the low down; the candle turns red when close < open."
+    },
+    {
+      "id": "chart",
+      "name": "From candle to chart",
+      "dur": 22,
+      "desc": "The candle slides into a 12-candle fictional chart: time left to right, price bottom to top, each open near the last close, the last candle still forming."
+    },
+    {
+      "id": "mistake",
+      "name": "Wick is not close",
+      "dur": 22,
+      "desc": "Common mistake: the wick top 60,200 read as the close; a dot travels up and back to 60,040; the close is the body edge."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 24,
+      "desc": "Pause and read a red candle: open 60,150, high 60,200, low 59,950, close 60,000; a down candle, 150 USDT below the open."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 22,
+      "desc": "A candle describes the past, the newest one is still forming, long wicks mean fast moves and slippage, WAIT and NO_TRADE are always allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 29,
+      "desc": "Three key points and one question: where did a red candle from 60,100 to 60,020 open?"
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T15, 1m / 5m / 15m timeframes."
+    }
+  ]
+}

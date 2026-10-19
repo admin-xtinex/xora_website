@@ -17,11 +17,11 @@ npm run build    # typecheck + production build to dist/
   `FuturesEdgeSection`, `JourneySection`, `IntelligenceShowcaseSection`, `DifferenceSection`,
   `TrustNoticeSection`, `FinalCTASection`, `Footer`; shared pieces in `components/ui/`
 - `src/styles.css` — brand tokens (same palette/fonts as xtinex.com) and section styles
-- `public/brand/` — reused XTINEX/XORA brand media; `xora-hero.webp` is the hero artwork that
-  `HeroScene` animates with a WebGL shader (red trades → XORA brain → green), falling back to the still image
+- `public/brand/` — reused XTINEX/XORA brand media; `xora-story.mp4` is the original `xora-loop.mp4`
+  regraded frame by frame (red trades → XORA brain → green chart) by `tools/regrade-hero.py`
 
 Charts and tickers on the page are illustrative (seeded data), not live market data.
-Animations respect `prefers-reduced-motion`; the hero shader stays off for reduced motion.
+Animations respect `prefers-reduced-motion`; the hero video stays paused for reduced motion and Save-Data.
 
 ## Deploy
 

@@ -2,16 +2,26 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { motion, type MotionValue, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowRight, BookOpen, Play } from "lucide-react";
 import { HERO, LINKS } from "@/lib/content";
-import { toSmoothPath, walk } from "@/lib/series";
+import { rng, toSmoothPath } from "@/lib/series";
 import { NeuralField } from "./NeuralField";
+import { TradeFlow } from "./TradeFlow";
 import { OverviewDialog } from "./OverviewDialog";
 import { Icon } from "./ui/Icon";
 import { MagneticButton } from "./ui/MagneticButton";
 import { Sparkline } from "./ui/Sparkline";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const FLOW = toSmoothPath(walk(36, 7, 0.9, 1.1), 1600, 220, 12);
-const FLOW_2 = toSmoothPath(walk(36, 19, 0.6, 1.4), 1600, 220, 12);
+// Price falls into the core, then climbs out of it — the red → green story.
+function vShape(seed: number, low = 0.66) {
+  const r = rng(seed);
+  return Array.from({ length: 40 }, (_, i) => {
+    const t = i / 39;
+    const base = t < low ? 70 - (t / low) * 58 : 12 + ((t - low) / (1 - low)) * 88;
+    return base + (r() - 0.5) * 12;
+  });
+}
+const FLOW = toSmoothPath(vShape(7), 1600, 220, 12);
+const FLOW_2 = toSmoothPath(vShape(19, 0.62), 1600, 220, 12);
 const PILLARS = ["Analyze", "Plan", "Practice", "Improve"];
 const BARS = [28, 36, 30, 44, 40, 52, 47, 60, 56, 70, 64, 82];
 
@@ -37,6 +47,7 @@ function useCoreVideo() {
 
 export function HeroSection() {
   const section = useRef<HTMLElement>(null);
+  const core = useRef<HTMLDivElement>(null);
   const video = useCoreVideo();
   const [overview, setOverview] = useState(false);
   const reduce = useReducedMotion();
@@ -68,7 +79,7 @@ export function HeroSection() {
     <section id="home" ref={section} className="hero" onPointerMove={onPointerMove} aria-labelledby="hero-title">
       <motion.div className="hero-stage" style={{ y: stageY, scale: stageS }} aria-hidden>
         <div className="hero-aurora" />
-        <motion.div className="hero-core" style={coreP}>
+        <motion.div ref={core} className="hero-core" style={coreP}>
           <video
             ref={video}
             className="hero-video"
@@ -89,18 +100,21 @@ export function HeroSection() {
         </motion.div>
 
         <NeuralField className="hero-field" />
+        <TradeFlow anchor={core} className="hero-trades" />
+
 
         <svg className="hero-flow" viewBox="0 0 1600 220" preserveAspectRatio="none">
           <defs>
             <linearGradient id="flowStroke" x1="0" x2="1">
-              <stop offset="0" stopColor="#3ecbff" stopOpacity="0" />
-              <stop offset="0.25" stopColor="#3ecbff" />
-              <stop offset="0.7" stopColor="#a855f7" />
-              <stop offset="1" stopColor="#d946ef" />
+              <stop offset="0" stopColor="#ff3b5c" stopOpacity="0" />
+              <stop offset="0.3" stopColor="#ff3b5c" />
+              <stop offset="0.62" stopColor="#a855f7" />
+              <stop offset="0.78" stopColor="#22e3a0" />
+              <stop offset="1" stopColor="#22e3a0" />
             </linearGradient>
             <linearGradient id="flowFill" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stopColor="#4f8ef7" stopOpacity="0.16" />
-              <stop offset="1" stopColor="#4f8ef7" stopOpacity="0" />
+              <stop offset="0" stopColor="#a855f7" stopOpacity="0.14" />
+              <stop offset="1" stopColor="#a855f7" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path d={`${FLOW} L1600,220 L0,220 Z`} fill="url(#flowFill)" />
@@ -120,13 +134,6 @@ export function HeroSection() {
             <span className="float-sym">BTCUSDT</span>
             <span className="float-up">+2.48%</span>
             <Sparkline seed={11} width={118} height={34} />
-          </div>
-        </motion.div>
-        <motion.div className="float float-eth" style={farP}>
-          <div className="float-card">
-            <span className="float-sym">ETHUSDT</span>
-            <span className="float-up">+1.32%</span>
-            <Sparkline seed={23} width={118} height={34} drift={0.4} />
           </div>
         </motion.div>
         <motion.div className="float float-pillars" style={farP}>

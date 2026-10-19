@@ -462,9 +462,9 @@
 }
 .hero-core {
   position: absolute;
-  right: -7vw;
-  top: max(calc(var(--header-h) - 10px), calc(50% - 22vw));
-  width: 74vw;
+  right: 4vw;
+  top: max(calc(var(--header-h) - 10px), calc(50% - 19vw));
+  width: 66vw;
   max-width: 1500px;
   aspect-ratio: 1264 / 720;
 }
@@ -474,8 +474,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  -webkit-mask-image: radial-gradient(ellipse 52% 60% at 57% 50%, #000 52%, transparent 86%);
-  mask-image: radial-gradient(ellipse 52% 60% at 57% 50%, #000 52%, transparent 86%);
+  /* Brain + platform only: the red/green market story is drawn live by TradeFlow. */
+  -webkit-mask-image: radial-gradient(ellipse 30% 50% at 60% 50%, #000 50%, transparent 100%);
+  mask-image: radial-gradient(ellipse 30% 50% at 60% 50%, #000 50%, transparent 100%);
   filter: saturate(1.15) contrast(1.05);
 }
 .hero-core-glow {
@@ -510,6 +511,12 @@
   height: 100%;
   opacity: 0.75;
 }
+.hero-trades {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 .hero-flow {
   position: absolute;
   left: 0;
@@ -524,7 +531,7 @@
   stroke-width: 2;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  filter: drop-shadow(0 0 6px rgba(62, 203, 255, 0.7));
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
   animation: draw 3.2s var(--ease) 0.6s forwards;
 }
 .flow-line-2 {
@@ -555,26 +562,19 @@
   animation: bob 7s ease-in-out infinite;
 }
 .float-btc {
-  left: 49%;
-  top: 23%;
-}
-.float-eth {
-  left: 47%;
-  top: 45%;
-}
-.float-eth .float-card {
-  animation-delay: -3s;
+  left: 50%;
+  top: 14%;
 }
 .float-pillars {
-  right: 3%;
-  top: 17%;
+  right: 2%;
+  top: 13%;
 }
 .float-pillars .float-card {
   animation-delay: -1.5s;
 }
 .float-intel {
-  right: 4%;
-  bottom: 21%;
+  right: 3%;
+  bottom: 15%;
 }
 .float-intel .float-card {
   animation-delay: -4.5s;
@@ -1950,13 +1950,10 @@
   .value-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .float-eth {
-    display: none;
-  }
   .hero-core {
-    width: 90vw;
-    right: -22vw;
-    top: max(calc(var(--header-h) - 10px), calc(50% - 26vw));
+    width: 80vw;
+    right: -6vw;
+    top: max(calc(var(--header-h) - 10px), calc(50% - 23vw));
   }
   .float-btc {
     left: 56%;
@@ -2041,7 +2038,7 @@
   }
   .hero-core {
     width: 150vw;
-    right: -30vw;
+    right: -15vw;
     left: auto;
     top: calc(var(--header-h) - 6vw);
   }
@@ -2059,9 +2056,7 @@
     display: none;
   }
   .float-btc {
-    left: auto;
-    right: 16px;
-    top: calc(var(--header-h) + 8px);
+    display: none;
   }
   .scroll-cue {
     display: none;

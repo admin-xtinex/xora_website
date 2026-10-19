@@ -1,0 +1,129 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson seven",
+      "dur": 9,
+      "desc": "Title card: Phase 2, lesson T07, Market, Limit and Stop Orders; the tutor walks in."
+    },
+    {
+      "id": "intent",
+      "name": "An order is an instruction",
+      "dur": 19,
+      "desc": "An order ticket fills in side and amount; its type and price are still open; three order types appear."
+    },
+    {
+      "id": "book",
+      "name": "The order book",
+      "dur": 19,
+      "desc": "Fictional order book: asks above, bids below, the spread between; a small buy meets an ask and fills."
+    },
+    {
+      "id": "market",
+      "name": "Market order",
+      "dur": 24,
+      "desc": "A market buy for 0.01 BTC eats two ask levels; the average price 60,016 USDT is worked out."
+    },
+    {
+      "id": "slippage",
+      "name": "Slippage",
+      "dur": 23,
+      "desc": "The asks jump before the order arrives: expected 60,010, filled 60,100; 0.90 USDT extra on 0.01 BTC."
+    },
+    {
+      "id": "limit",
+      "name": "Limit order",
+      "dur": 23,
+      "desc": "A limit buy at 59,950 rests in the book; price comes down and it fills for 599.50 USDT."
+    },
+    {
+      "id": "unfilled",
+      "name": "A limit may not fill",
+      "dur": 17,
+      "desc": "A limit buy at 59,900 waits; price dips to 59,920 and rises away; the order stays unfilled."
+    },
+    {
+      "id": "partial",
+      "name": "Partial fill",
+      "dur": 16,
+      "desc": "Only 0.004 of a 0.01 BTC limit buy fills; the remaining 0.006 keeps waiting."
+    },
+    {
+      "id": "stop",
+      "name": "Stop order",
+      "dur": 26,
+      "desc": "A stop at 59,500 waits; price falls and touches the trigger; a market sell fills at 59,480."
+    },
+    {
+      "id": "gap",
+      "name": "Stops can slip",
+      "dur": 20,
+      "desc": "Price gaps from above the trigger to 59,200; the stop fills there, 3 USDT worse on 0.01 BTC."
+    },
+    {
+      "id": "compare",
+      "name": "Side by side",
+      "dur": 18,
+      "desc": "Market, limit and stop compared on speed, price control and fill certainty."
+    },
+    {
+      "id": "mistake",
+      "name": "Common mistake",
+      "dur": 18,
+      "desc": "The belief that a stop guarantees the exit price is crossed out and corrected."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 24,
+      "desc": "Pause and choose an order type for a scenario; the limit buy is revealed with its trade-off; waiting is also allowed."
+    },
+    {
+      "id": "risks",
+      "name": "Know the risks",
+      "dur": 22,
+      "desc": "Slippage, unfilled and partial orders, stops filling past the trigger, and the choice not to trade."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 22,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T08, stop-loss and take-profit."
+    }
+  ]
+}

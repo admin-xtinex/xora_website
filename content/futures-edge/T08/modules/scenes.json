@@ -1,0 +1,129 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson eight",
+      "dur": 9,
+      "desc": "Title card: Phase 2, lesson T08, Stop-Loss and Take-Profit; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "When do you get out?",
+      "dur": 17,
+      "desc": "A long position falls with no plan; the loss meter keeps growing while the trader freezes."
+    },
+    {
+      "id": "plan",
+      "name": "A trade plan",
+      "dur": 20,
+      "desc": "Entry, stop-loss and take-profit lines draw onto a fictional chart; for a short the lines flip."
+    },
+    {
+      "id": "sl",
+      "name": "Stop-loss",
+      "dur": 21,
+      "desc": "Stop-loss defined; price falls to 59,400 and the PnL meter stops at about −6 USDT before fees."
+    },
+    {
+      "id": "tp",
+      "name": "Take-profit",
+      "dur": 20,
+      "desc": "Take-profit defined; price rises to 61,200 and the PnL meter stops at about +12 USDT before fees."
+    },
+    {
+      "id": "trigger",
+      "name": "Trigger and execution",
+      "dur": 20,
+      "desc": "Trigger price 59,400 versus execution price 59,380; the loss becomes −6.20 USDT."
+    },
+    {
+      "id": "rr",
+      "name": "Risk/reward ratio",
+      "dur": 23,
+      "desc": "Risk 6 USDT and reward 12 USDT shown as bars; ratio 1 to 2, before fees, not a win chance."
+    },
+    {
+      "id": "bull",
+      "name": "Scenario: price rises",
+      "dur": 19,
+      "desc": "Price climbs to the take-profit; it triggers and fills; the stop-loss is cancelled."
+    },
+    {
+      "id": "bear",
+      "name": "Scenario: price falls",
+      "dur": 18,
+      "desc": "Price falls to the stop-loss; it fills at 59,390 for about −6.10 USDT."
+    },
+    {
+      "id": "gap",
+      "name": "Scenario: a gap",
+      "dur": 20,
+      "desc": "Price gaps from 59,700 to 59,100; the stop fills there for about −9 USDT."
+    },
+    {
+      "id": "miss",
+      "name": "Target missed",
+      "dur": 20,
+      "desc": "Price reaches 61,150, turns down, and the unfilled take-profit leaves the unrealized gain to shrink."
+    },
+    {
+      "id": "mistake",
+      "name": "Common mistake",
+      "dur": 19,
+      "desc": "The belief that risk/reward is a win chance is corrected with ten fictional trades."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 23,
+      "desc": "Pause and work out risk, reward and ratio for a plan; the answer 5, 10, 1 to 2 is revealed."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 24,
+      "desc": "Stops slip, targets can be missed, liquidation can come first with leverage, and waiting is allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 25,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T09, fees, spread and slippage."
+    }
+  ]
+}

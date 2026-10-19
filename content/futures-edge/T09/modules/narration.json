@@ -1,0 +1,201 @@
+{
+  "about": "T09 captions, shown on screen while the lesson plays (no voice yet). Each line starts at film time t (seconds); they can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson nine: fees, spread and slippage."
+    },
+    {
+      "t": 4.2,
+      "text": "The small costs that can turn a win into a loss."
+    },
+    {
+      "t": 9.4,
+      "text": "Here's a tiny trade: 0.01 BTC. The price on the chart goes from 60,000 to 60,080."
+    },
+    {
+      "t": 15.7,
+      "text": "On the chart, that looks like a gain of 0.80 USDT. Easy money?"
+    },
+    {
+      "t": 20.7,
+      "text": "Not so fast. Three costs are waiting: fees, spread and slippage."
+    },
+    {
+      "t": 26.4,
+      "text": "A trading fee is charged each time an order fills, as a percentage of the position value."
+    },
+    {
+      "t": 33.4,
+      "text": "Like a booking fee on a ticket: you pay it every time, whether things go well or not."
+    },
+    {
+      "t": 40.1,
+      "text": "0.01 BTC at 60,000 is 600 USDT. At 0.05%, the fee is 0.30 USDT, on entry and again on exit."
+    },
+    {
+      "t": 48.4,
+      "text": "Many exchanges charge two rates. A taker order fills at once against the book, like a market order."
+    },
+    {
+      "t": 56,
+      "text": "A maker order waits in the book, like a limit order, and adds to it. Makers often pay less."
+    },
+    {
+      "t": 63.1,
+      "text": "In this example: maker 0.02%, taker 0.05%. Real rates vary by exchange and account."
+    },
+    {
+      "t": 70.4,
+      "text": "The spread is the gap between the best ask and the best bid."
+    },
+    {
+      "t": 75.3,
+      "text": "Like a money changer: one price to buy from them, a lower price to sell back."
+    },
+    {
+      "t": 81.8,
+      "text": "Ask 60,005, bid 59,995: spread 10. Buy and sell at once, and you lose 0.10 USDT on 0.01 BTC."
+    },
+    {
+      "t": 90.4,
+      "text": "Slippage, from T07: the fill is worse than the price you expected."
+    },
+    {
+      "t": 95.8,
+      "text": "Say each market order slips 10 USDT per BTC, on the way in and on the way out."
+    },
+    {
+      "t": 102.1,
+      "text": "That is 20 per BTC, or 0.20 USDT on 0.01 BTC."
+    },
+    {
+      "t": 107.4,
+      "text": "Futures have one more cost: funding. It's a regular payment between long and short traders."
+    },
+    {
+      "t": 114.5,
+      "text": "It's separate from trading fees. You may pay it, or receive it, depending on the rate."
+    },
+    {
+      "t": 121.3,
+      "text": "Example: a 0.01% rate on 600 USDT is 0.06 USDT, each funding time. T13 covers it."
+    },
+    {
+      "t": 128.4,
+      "text": "Now let's add it all up for our tiny trade."
+    },
+    {
+      "t": 132.2,
+      "text": "Chart gain: plus 0.80. Spread: minus 0.10. Slippage: minus 0.20."
+    },
+    {
+      "t": 137.4,
+      "text": "Fees on entry and exit: minus 0.60 USDT."
+    },
+    {
+      "t": 141.1,
+      "text": "Net result: minus 0.10 USDT. A gross winner became a net loser."
+    },
+    {
+      "t": 146.3,
+      "text": "Funding is left out here, because this trade was closed within minutes."
+    },
+    {
+      "t": 153.4,
+      "text": "The break-even move is how far price must move just to cover your costs."
+    },
+    {
+      "t": 159.2,
+      "text": "Fees alone: 2 × 0.05% = 0.10%. On 60,000, that's 60 USDT per BTC."
+    },
+    {
+      "t": 164.6,
+      "text": "Add spread and slippage, and it's about 90 USDT per BTC, or 0.15%, before you make anything."
+    },
+    {
+      "t": 173.4,
+      "text": "A common mistake: fees look tiny, so people ignore them."
+    },
+    {
+      "t": 178.2,
+      "text": "But 20 small trades at 0.60 USDT of fees each cost 12 USDT, win or lose."
+    },
+    {
+      "t": 184.2,
+      "text": "Small, frequent trades feel the costs most. Count them before you trade."
+    },
+    {
+      "t": 191.4,
+      "text": "Your turn. Buy 0.01 BTC at 60,000, sell at 60,040. Fees: 0.30 USDT on each side."
+    },
+    {
+      "t": 198,
+      "text": "Ignore spread and slippage. What is the gross result, and the net? Pause if you need to."
+    },
+    {
+      "t": 205.1,
+      "text": "Gross: 40 × 0.01 = plus 0.40 USDT. Fees: 0.60. Net: minus 0.20 USDT."
+    },
+    {
+      "t": 210.8,
+      "text": "A winner on the chart, a loser in your account."
+    },
+    {
+      "t": 215.4,
+      "text": "Before any trade, check your real costs."
+    },
+    {
+      "t": 219.1,
+      "text": "Your actual fee rate and account tier. The spread right now. How deep the book is."
+    },
+    {
+      "t": 225.8,
+      "text": "The funding rate and time. And does the move you expect beat the break-even move?"
+    },
+    {
+      "t": 232.5,
+      "text": "If not, NO_TRADE is the sensible choice."
+    },
+    {
+      "t": 237.4,
+      "text": "This lesson used a simple model, with example numbers."
+    },
+    {
+      "t": 242.1,
+      "text": "Real fees depend on your exchange and account tier. Check them before you act."
+    },
+    {
+      "t": 248.5,
+      "text": "Fees are charged on the full position value, not just the money you put in."
+    },
+    {
+      "t": 254.7,
+      "text": "And slippage grows in fast markets."
+    },
+    {
+      "t": 259.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 261.2,
+      "text": "Fees are charged on entry and exit, as a percentage of position value."
+    },
+    {
+      "t": 266.9,
+      "text": "Spread and slippage quietly worsen your prices. Funding is a separate futures cost."
+    },
+    {
+      "t": 273.6,
+      "text": "Check yourself: the move you expect is smaller than the break-even move. What do you do?"
+    },
+    {
+      "t": 280.5,
+      "text": "Don't trade. Choose WAIT, or NO_TRADE."
+    },
+    {
+      "t": 285.6,
+      "text": "Well done! That completes Phase 2. Next up, T10: a tour of an exchange platform."
+    }
+  ]
+}

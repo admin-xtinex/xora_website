@@ -1,0 +1,209 @@
+{
+  "about": "T08 captions, shown on screen while the lesson plays (no voice yet). Each line starts at film time t (seconds); they can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson eight: stop-loss and take-profit."
+    },
+    {
+      "t": 4.2,
+      "text": "Plan your exit before you enter."
+    },
+    {
+      "t": 9.4,
+      "text": "Imagine you buy BTC, and the price starts to fall. When do you get out?"
+    },
+    {
+      "t": 15.6,
+      "text": "Deciding in the moment, under stress, is hard. Many beginners freeze, and the loss grows."
+    },
+    {
+      "t": 22.4,
+      "text": "So plan both exits before you enter."
+    },
+    {
+      "t": 26.4,
+      "text": "A trade plan has three prices: where you enter, where you get out if wrong, and where you take profit."
+    },
+    {
+      "t": 34.2,
+      "text": "Entry 60,000. Stop-loss 59,400, below. Take-profit 61,200, above."
+    },
+    {
+      "t": 39.5,
+      "text": "For a short, it flips: the stop-loss goes above, the take-profit below."
+    },
+    {
+      "t": 46.4,
+      "text": "A stop-loss is an order that closes your position if price moves against you, to limit the loss."
+    },
+    {
+      "t": 53.9,
+      "text": "Like a seat belt: it reduces the harm, but it can't prevent the crash."
+    },
+    {
+      "t": 59.5,
+      "text": "Long 0.01 BTC at 60,000, stop at 59,400: loss about 600 × 0.01 = 6 USDT, before fees."
+    },
+    {
+      "t": 67.4,
+      "text": "A take-profit closes your position when price reaches your target, to lock in a gain."
+    },
+    {
+      "t": 74.1,
+      "text": "Like getting off the bus at the stop you planned, not riding on and hoping."
+    },
+    {
+      "t": 80.1,
+      "text": "Take-profit at 61,200: gain about 1,200 × 0.01 = 12 USDT, before fees."
+    },
+    {
+      "t": 87.4,
+      "text": "Two prices matter. The trigger price starts the exit. The execution price is where it actually fills."
+    },
+    {
+      "t": 95.2,
+      "text": "Stop trigger 59,400. In a quick move, it fills at 59,380."
+    },
+    {
+      "t": 100,
+      "text": "Loss: (59,380 − 60,000) × 0.01 = −6.20 USDT. A little worse than planned."
+    },
+    {
+      "t": 107.4,
+      "text": "The risk/reward ratio compares what you could lose with what you could gain."
+    },
+    {
+      "t": 113.4,
+      "text": "Risk: 600 per BTC, or 6 USDT. Reward: 1,200 per BTC, or 12 USDT."
+    },
+    {
+      "t": 118.7,
+      "text": "12 divided by 6 is 2. So this plan is 1 to 2: you risk 1 to aim for 2."
+    },
+    {
+      "t": 124.5,
+      "text": "All before fees. And it says nothing about how likely a win is."
+    },
+    {
+      "t": 130.4,
+      "text": "Scenario one: price rises to 61,200. The take-profit triggers and fills."
+    },
+    {
+      "t": 136.4,
+      "text": "Result: about plus 12 USDT before fees. The trade is closed."
+    },
+    {
+      "t": 142.2,
+      "text": "On many platforms, when one exit fills, the other is cancelled. Check yours."
+    },
+    {
+      "t": 149.4,
+      "text": "Scenario two: price falls. The stop-loss triggers at 59,400 and fills at 59,390."
+    },
+    {
+      "t": 156,
+      "text": "Result: about minus 6.10 USDT before fees. A small, planned loss."
+    },
+    {
+      "t": 161.6,
+      "text": "Losing trades are normal. The stop kept this one small."
+    },
+    {
+      "t": 167.4,
+      "text": "Scenario three: bad news, and price gaps from 59,700 straight to 59,100."
+    },
+    {
+      "t": 173.4,
+      "text": "The stop triggers, but the first available price is 59,100."
+    },
+    {
+      "t": 178.6,
+      "text": "Loss: about 9 USDT, not the 6 you planned. Triggered is not the same as filled at your price."
+    },
+    {
+      "t": 187.4,
+      "text": "A take-profit can also stay unfilled. Price reaches 61,150, just short of your 61,200."
+    },
+    {
+      "t": 194.4,
+      "text": "Then it turns down. No profit was taken, and the gain on screen shrinks."
+    },
+    {
+      "t": 200.4,
+      "text": "Unrealized profit is not money in hand until the position is closed."
+    },
+    {
+      "t": 207.4,
+      "text": "A common mistake: thinking a 1 to 2 plan means you will probably win."
+    },
+    {
+      "t": 213.2,
+      "text": "Risk/reward is about size, not chance. A plan can be 1 to 3 and still lose most of the time."
+    },
+    {
+      "t": 220.6,
+      "text": "Judge the setup separately, and keep WAIT as an option."
+    },
+    {
+      "t": 226.4,
+      "text": "Your turn. Long 0.01 BTC at 60,000. Stop-loss 59,500. Take-profit 61,000."
+    },
+    {
+      "t": 232.6,
+      "text": "Work out the risk, the reward, and the ratio, before fees. Pause if you need to."
+    },
+    {
+      "t": 239.1,
+      "text": "Risk: 500 × 0.01 = 5 USDT. Reward: 1,000 × 0.01 = 10 USDT."
+    },
+    {
+      "t": 244.2,
+      "text": "So it is 1 to 2, before fees. Did you get it?"
+    },
+    {
+      "t": 249.4,
+      "text": "Stop-loss and take-profit help, but they have limits."
+    },
+    {
+      "t": 254.1,
+      "text": "Stops can slip in fast moves, and take-profits may not fill."
+    },
+    {
+      "t": 259.3,
+      "text": "In futures with leverage (T12), the exchange can force-close a losing position. That is liquidation."
+    },
+    {
+      "t": 267.3,
+      "text": "If you can't decide where your stop goes, that's a sign to wait."
+    },
+    {
+      "t": 273.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 275.2,
+      "text": "Plan entry, stop-loss and take-profit before you enter."
+    },
+    {
+      "t": 280,
+      "text": "Trigger is not execution: stops can slip, and targets can be missed."
+    },
+    {
+      "t": 285.7,
+      "text": "Risk/reward compares sizes, not chances."
+    },
+    {
+      "t": 289.5,
+      "text": "Check yourself: risk 8 USDT, reward 12 USDT. What's the ratio?"
+    },
+    {
+      "t": 294.7,
+      "text": "1 to 1.5: 12 divided by 8."
+    },
+    {
+      "t": 298.6,
+      "text": "Well done! Next up, T09: fees, spread and slippage, the costs that eat small wins."
+    }
+  ]
+}

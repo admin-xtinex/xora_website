@@ -1,0 +1,221 @@
+{
+  "about": "T07 captions, shown on screen while the lesson plays (no voice yet). Each line starts at film time t (seconds); they can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson seven: market, limit and stop orders."
+    },
+    {
+      "t": 4.4,
+      "text": "Three ways to tell an exchange what you want."
+    },
+    {
+      "t": 9.4,
+      "text": "In T06 you worked out profit and loss. Now: how do you actually get into a trade?"
+    },
+    {
+      "t": 15.7,
+      "text": "You place an order: an instruction to the exchange to buy or sell, how much, and on what terms."
+    },
+    {
+      "t": 22.9,
+      "text": "There are three main types. Let's meet them one by one."
+    },
+    {
+      "t": 28.4,
+      "text": "Remember the order book from T04? Sellers' asks sit on top, buyers' bids below."
+    },
+    {
+      "t": 34.6,
+      "text": "The gap between the best ask and the best bid is the spread."
+    },
+    {
+      "t": 39.5,
+      "text": "When your order meets an order on the other side, a trade happens. That is called a fill."
+    },
+    {
+      "t": 47.4,
+      "text": "A market order says: buy or sell right now, at the best price available."
+    },
+    {
+      "t": 53.1,
+      "text": "Like buying at a stall at whatever price is asked today: quick, but you don't pick the price."
+    },
+    {
+      "t": 60.2,
+      "text": "Here we buy 0.01 BTC. It takes 0.004 at 60,010, then 0.006 at 60,020."
+    },
+    {
+      "t": 65.7,
+      "text": "Average price: 60,016 USDT. Fast, but the price was not fixed."
+    },
+    {
+      "t": 71.4,
+      "text": "Slippage is the difference between the price you expected and the price you actually got."
+    },
+    {
+      "t": 78.2,
+      "text": "You saw a best ask of 60,010. But news hits, and the sellers move up in a flash."
+    },
+    {
+      "t": 84.4,
+      "text": "Your market order fills at 60,100. That is 90 USDT per BTC worse than expected."
+    },
+    {
+      "t": 90.6,
+      "text": "On 0.01 BTC, you paid 0.90 USDT more."
+    },
+    {
+      "t": 94.4,
+      "text": "A limit order says: buy or sell only at my price, or a better one."
+    },
+    {
+      "t": 99.7,
+      "text": "Like telling a shopkeeper: call me if the price drops to my number."
+    },
+    {
+      "t": 105.1,
+      "text": "We place a limit buy for 0.01 BTC at 59,950. It waits in the book."
+    },
+    {
+      "t": 110.4,
+      "text": "Price comes down, a seller meets our price, and it fills: 599.50 USDT, no more."
+    },
+    {
+      "t": 117.4,
+      "text": "But a limit order is not guaranteed to fill."
+    },
+    {
+      "t": 121.2,
+      "text": "Here our limit buy at 59,900 waits. Price dips to 59,920, then rises away."
+    },
+    {
+      "t": 127,
+      "text": "Our price was never reached, so nothing was bought. The order is still waiting."
+    },
+    {
+      "t": 134.4,
+      "text": "Sometimes only part of an order fills. That is a partial fill."
+    },
+    {
+      "t": 139.4,
+      "text": "We want 0.01 BTC at 59,950, but only 0.004 is sold at that price."
+    },
+    {
+      "t": 144.6,
+      "text": "0.004 filled, 0.006 still waiting. You hold less than you planned."
+    },
+    {
+      "t": 150.4,
+      "text": "A stop order waits for a trigger price. Until then, nothing happens."
+    },
+    {
+      "t": 155.8,
+      "text": "When the market reaches the trigger, the stop sends an order, often a market order."
+    },
+    {
+      "t": 162.2,
+      "text": "Think of a tripwire: nothing happens until price touches it, then the order goes out."
+    },
+    {
+      "t": 168.8,
+      "text": "We hold 0.01 BTC with a stop at 59,500. Price falls, touches it, and it sells at 59,480."
+    },
+    {
+      "t": 176.4,
+      "text": "In a fast fall, price can jump straight past your trigger."
+    },
+    {
+      "t": 181.2,
+      "text": "Trigger 59,500. The next trade is at 59,200. Your stop fills near 59,200."
+    },
+    {
+      "t": 187,
+      "text": "That is 300 USDT per BTC of slippage, or 3 USDT on 0.01 BTC."
+    },
+    {
+      "t": 191.9,
+      "text": "A stop is a trigger, not a promise of price."
+    },
+    {
+      "t": 196.4,
+      "text": "Let's compare. A market order is fast, but the price is not fixed."
+    },
+    {
+      "t": 201.7,
+      "text": "A limit order controls the price, but it may fill late, in part, or never."
+    },
+    {
+      "t": 207.5,
+      "text": "A stop waits for its trigger. Once triggered, the price can still slip."
+    },
+    {
+      "t": 214.4,
+      "text": "A common mistake: thinking a stop order guarantees your exit price."
+    },
+    {
+      "t": 219.8,
+      "text": "It doesn't. It guarantees a trigger, and in a fast market the fill can be much worse."
+    },
+    {
+      "t": 226.4,
+      "text": "Plan for slippage, and never treat a stop as perfect protection."
+    },
+    {
+      "t": 232.4,
+      "text": "Your turn. BTC is at 60,000. You want to buy only if it drops to 59,500, and you can wait."
+    },
+    {
+      "t": 239.3,
+      "text": "Which order type fits? Market, limit, or stop? Think it over."
+    },
+    {
+      "t": 244.3,
+      "text": "A limit buy at 59,500. The trade-off: price may never get there, and that's okay."
+    },
+    {
+      "t": 250.6,
+      "text": "Waiting, with no order at all, is always a choice too."
+    },
+    {
+      "t": 256.4,
+      "text": "Before you place any order, know what can go wrong."
+    },
+    {
+      "t": 260.7,
+      "text": "Market orders can slip, most of all when prices move fast or the book is thin."
+    },
+    {
+      "t": 266.8,
+      "text": "Limit orders may fill only in part, or not at all."
+    },
+    {
+      "t": 271,
+      "text": "Stops can fill well past the trigger. And choosing not to trade is always allowed."
+    },
+    {
+      "t": 278.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 280.2,
+      "text": "Market: fast, price not fixed. Limit: your price or better, fill not guaranteed."
+    },
+    {
+      "t": 286.4,
+      "text": "Stop: waits for a trigger, then the fill can slip."
+    },
+    {
+      "t": 290.6,
+      "text": "Check yourself: which order type can stay unfilled forever?"
+    },
+    {
+      "t": 295.4,
+      "text": "A limit order, if its price is never reached."
+    },
+    {
+      "t": 300.6,
+      "text": "Well done! Next up, T08: stop-loss and take-profit. Plan your exit before you enter."
+    }
+  ]
+}

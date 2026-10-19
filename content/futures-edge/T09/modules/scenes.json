@@ -1,0 +1,123 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson nine",
+      "dur": 9,
+      "desc": "Title card: Phase 2, lesson T09, Fees, Spread and Slippage; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "A tiny win?",
+      "dur": 17,
+      "desc": "A small trade shows +0.80 USDT on the chart; three cost tags appear: fees, spread, slippage."
+    },
+    {
+      "id": "fee",
+      "name": "Trading fees",
+      "dur": 22,
+      "desc": "Fee defined as a percentage of position value; 600 USDT at 0.05% costs 0.30 USDT on entry and on exit."
+    },
+    {
+      "id": "maker",
+      "name": "Maker and taker",
+      "dur": 22,
+      "desc": "A taker order fills at once against the book; a maker order rests in it; example rates 0.05% and 0.02%."
+    },
+    {
+      "id": "spread",
+      "name": "Spread",
+      "dur": 20,
+      "desc": "Best ask 60,005 and best bid 59,995: buying and selling at once loses the 10 USDT spread, 0.10 USDT on 0.01 BTC."
+    },
+    {
+      "id": "slip",
+      "name": "Slippage",
+      "dur": 17,
+      "desc": "Expected and actual fill prices on entry and exit: 10 worse each way, 0.20 USDT on 0.01 BTC."
+    },
+    {
+      "id": "funding",
+      "name": "Funding",
+      "dur": 21,
+      "desc": "Funding passes between longs and shorts each funding time; 0.01% on 600 USDT is 0.06 USDT."
+    },
+    {
+      "id": "add",
+      "name": "Add it up",
+      "dur": 25,
+      "desc": "A waterfall: chart gain +0.80, minus spread, slippage and fees, ends at a net −0.10 USDT."
+    },
+    {
+      "id": "breakeven",
+      "name": "Break-even move",
+      "dur": 20,
+      "desc": "Price must rise about 90 USDT per BTC (0.15%) before the trade makes anything; the net meter crosses zero."
+    },
+    {
+      "id": "mistake",
+      "name": "Common mistake",
+      "dur": 18,
+      "desc": "Twenty small trades stack 0.60 USDT of fees each into 12 USDT."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 24,
+      "desc": "Pause and work out gross and net for a small trade; the answer +0.40 gross, −0.20 net is revealed."
+    },
+    {
+      "id": "check",
+      "name": "Check first",
+      "dur": 22,
+      "desc": "A checklist of real costs ticks through; if the expected move is below break-even, NO_TRADE."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 22,
+      "desc": "A model with example numbers; real rates vary; fees on full position value; slippage grows in fast markets."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 26,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: Phase 2 complete; next lesson T10, exchange platform tour."
+    }
+  ]
+}

@@ -16,6 +16,7 @@
   "mimeTypes": {
     ".webp": "image/webp",
     ".woff2": "font/woff2",
-    ".mp4": "video/mp4"
+    ".mp4": "video/mp4",
+    ".mp3": "audio/mpeg"
   }
 }

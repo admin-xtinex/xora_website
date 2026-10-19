@@ -3,9 +3,15 @@
 //   node tools/futures-edge-lessons/build-lesson.mjs          # every lesson in content/futures-edge
 //   node tools/futures-edge-lessons/build-lesson.mjs T01      # just one
 //
-// Reads content/futures-edge/<id>/ (modules/, assets/, film.json) and writes
+// Reads content/futures-edge/<id>/ (modules/, assets/, voice/, film.json) and writes
 //   public/futures-edge/lessons/<id>.html   one page: player, scene code and styles inline
-//   public/futures-edge/lessons/<id>/       its images and fonts, loaded by relative path
+//   public/futures-edge/lessons/<id>/       its images, fonts and voice track, loaded by relative path
+//
+// Voiceover: voice/NN.mp3 is line NN of modules/narration.json. The voice sets the pace: each
+// scene is lengthened (never shortened) just enough for its lines to play one after another
+// near the moments they were written for, and the player slows that scene's animation and
+// sound effects by the same factor. Needs ffmpeg and ffprobe on the PATH when voice/ exists.
+import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -43,6 +49,14 @@ body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
 .fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
   background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
 .fe-btn svg { width: 20px; height: 20px; }
+.fe-cc { font: 700 12px/1 "Manrope", system-ui, sans-serif; letter-spacing: 0.04em; color: #6b7489; }
+.fe-cc[aria-pressed="true"] { color: #eef1f7; box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-cap { position: fixed; left: 50%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(78vw, 980px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+  color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
+  transition: bottom 0.4s; pointer-events: none; }
+body.fe-idle .fe-cap { bottom: 20px; }
+.fe-cap[hidden], body:not(.fe-ready) .fe-cap { display: none; }
 .fe-track { position: relative; flex: 1; height: 6px; border-radius: 6px; background: rgba(238, 241, 247, 0.14);
   cursor: pointer; touch-action: none; }
 .fe-track::before { content: ""; position: absolute; inset: -12px 0; }
@@ -53,9 +67,70 @@ body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
   font: 600 14px/1 "Manrope", system-ui, sans-serif; }
 .fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
 @media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-height: 420px) {
+  .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
+  .fe-btn { width: 34px; height: 34px; }
+  .fe-btn svg { width: 18px; height: 18px; }
+  .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
+  body.fe-idle .fe-cap { bottom: 8px; }
+  .fe-hint { top: 6px; right: 6px; padding: 7px 12px; font-size: 12px; }
+}
 `;
 
 const scriptSafe = (s) => s.replace(/<\/(script)/gi, "<\\/$1");
+
+// Voice timing: the clips play 6% faster (pitch kept), a gap of GAP s between lines, and a line may
+// start at most MAX_DRIFT s after the moment it was written for; a scene ends TAIL s after its last line.
+const VOICE_TEMPO = 1.06;
+const GAP = 0.3;
+const TAIL = 0.4;
+const MAX_DRIFT = 1.5;
+
+const probe = (file) =>
+  Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]).toString().trim());
+
+// Returns each scene's stretch factor k and each line's start in the stretched timeline.
+function planVoice(scenes, lines, durs) {
+  const plan = { scenes: [], lines: [] };
+  let oldStart = 0;
+  let newStart = 0;
+  for (const sc of scenes) {
+    const idx = lines.map((l, i) => i).filter((i) => lines[i].t >= oldStart && lines[i].t < oldStart + sc.dur);
+    let k = 1;
+    let starts = [];
+    for (;;) {
+      starts = [];
+      let prevEnd = -Infinity;
+      let drift = 0;
+      for (const i of idx) {
+        const want = (lines[i].t - oldStart) * k;
+        const at = Math.max(want, prevEnd + GAP);
+        drift = Math.max(drift, at - want);
+        starts.push(at);
+        prevEnd = at + durs[i];
+      }
+      if (idx.length && (prevEnd > sc.dur * k - TAIL || drift > MAX_DRIFT)) k += 0.01;
+      else break;
+    }
+    k = Math.round(k * 100) / 100;
+    const dur = Math.round(sc.dur * k * 100) / 100;
+    plan.scenes.push({ id: sc.id, name: sc.name, dur, k, oldStart, oldDur: sc.dur });
+    idx.forEach((i, j) => plan.lines.push({ i, t: Math.round((newStart + starts[j]) * 1000) / 1000, d: durs[i], text: lines[i].text }));
+    oldStart += sc.dur;
+    newStart += dur;
+  }
+  return plan;
+}
+
+// Mixes every line into one track at its planned time (mono MP3, loudness-normalised).
+function mixVoice(src, plan, total, out) {
+  const args = ["-v", "error", "-y"];
+  for (const l of plan.lines) args.push("-i", join(src, "voice", String(l.i).padStart(2, "0") + ".mp3"));
+  const chains = plan.lines.map((l, j) => `[${j}:a]atempo=${VOICE_TEMPO},adelay=${Math.round(l.t * 1000)}:all=1[v${j}]`);
+  const mix = plan.lines.map((l, j) => `[v${j}]`).join("") + `amix=inputs=${plan.lines.length}:normalize=0:dropout_transition=0,apad,atrim=0:${total},loudnorm=I=-16:TP=-1.5:LRA=11[out]`;
+  args.push("-filter_complex", chains.join(";") + ";" + mix, "-map", "[out]", "-ac", "1", "-ar", "44100", "-b:a", "96k", out);
+  execFileSync("ffmpeg", args);
+}
 
 function build(id) {
   const src = join(contentDir, id);
@@ -72,11 +147,28 @@ function build(id) {
   for (const name of Object.keys(manifest)) copyFileSync(join(src, "assets", name), join(dest, "assets", name));
   for (const f of FONTS) copyFileSync(f.from, join(dest, "fonts", f.file));
 
+  // With a voiceover, the voice sets each scene's length; without one, the authored lengths stand.
+  let scenes = cut.scenes.map(({ id: sid, name, dur }, i, all) => ({
+    id: sid, name, dur, k: 1, oldStart: all.slice(0, i).reduce((a, x) => a + x.dur, 0), oldDur: dur,
+  }));
+  let voice = null;
+  const voiceDir = join(src, "voice");
+  if (existsSync(voiceDir) && modules["narration.json"]) {
+    const lines = JSON.parse(modules["narration.json"]).lines;
+    const durs = lines.map((l, i) => probe(join(voiceDir, String(i).padStart(2, "0") + ".mp3")) / VOICE_TEMPO);
+    const plan = planVoice(cut.scenes, lines, durs);
+    scenes = plan.scenes;
+    const total = scenes.reduce((a, x) => a + x.dur, 0);
+    mixVoice(src, plan, total, join(dest, "voice.mp3"));
+    voice = { src: `${id}/voice.mp3`, lines: plan.lines.map(({ t, d, text }) => ({ t, d: Math.round(d * 1000) / 1000, text })) };
+  }
+
   const FILM = {
     id,
     width: cut.width,
     height: cut.height,
-    scenes: cut.scenes.map(({ id: sid, name, dur }) => ({ id: sid, name, dur })),
+    scenes,
+    voice,
     assetBase: `${id}/assets/`,
     assets: manifest,
     fontChecks: FONT_CHECKS,
@@ -85,7 +177,7 @@ function build(id) {
   const fontFaces = FONTS.map((f) => `@font-face { ${f.face}; src: url("${id}/fonts/${f.file}") format("woff2"); font-display: block; }`).join("\n");
   const css = PLAYER_CSS.replace("WIDTH", cut.width).replace("HEIGHT", cut.height).replace("BG", cut.background || "#02030a");
   const runtime = readFileSync(join(here, "runtime.js"), "utf8");
-  const total = cut.scenes.reduce((s, x) => s + x.dur, 0);
+  const total = scenes.reduce((s, x) => s + x.dur, 0);
   const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -110,7 +202,7 @@ ${scriptSafe(runtime)}
 </html>
 `;
   writeFileSync(join(outDir, `${id}.html`), html);
-  console.log(`lesson ${id}: ${cut.scenes.length} scenes, ${total}s, ${Object.keys(manifest).length} images -> public/futures-edge/lessons/${id}.html`);
+  console.log(`lesson ${id}: ${scenes.length} scenes, ${total.toFixed(1)}s${voice ? `, ${voice.lines.length} voice lines` : ""}, ${Object.keys(manifest).length} images -> public/futures-edge/lessons/${id}.html`);
 }
 
 const ids = process.argv.slice(2);

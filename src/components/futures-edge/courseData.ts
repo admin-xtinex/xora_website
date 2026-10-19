@@ -35,9 +35,9 @@ export const PHASES: Phase[] = [
 ];
 
 export const LESSONS: Lesson[] = [
-  { id: "V00", kind: "intro", phase: 0, title: "Welcome to XORA Futures Edge", line: "How the course works, the five phases, and why it is demo only.", minutes: 2, status: "available", pose: "wave" },
+  { id: "V00", kind: "intro", phase: 0, title: "Welcome to XORA Futures Edge", line: "How the course works, the five phases, and why it is demo only.", minutes: 3, status: "available", pose: "wave" },
 
-  { id: "T01", kind: "lesson", phase: 1, title: "What Is Cryptocurrency?", line: "Digital assets, the blockchain, Bitcoin and wallets.", minutes: 4, status: "available", pose: "present" },
+  { id: "T01", kind: "lesson", phase: 1, title: "What Is Cryptocurrency?", line: "Digital assets, the blockchain, Bitcoin and wallets.", minutes: 5, status: "available", pose: "present" },
   { id: "T02", kind: "lesson", phase: 1, title: "Why Do Crypto Prices Move?", line: "Buyers, sellers, demand, supply and volatility.", minutes: 4, status: "locked", pose: "think" },
   { id: "T03", kind: "lesson", phase: 1, title: "Trading Pairs: BTC/USDT", line: "Base and quote assets, and what a price really means.", minutes: 4, status: "locked", pose: "explain" },
   { id: "T04", kind: "lesson", phase: 1, title: "What Does an Exchange Do?", line: "Order books, bid and ask, spread and account safety.", minutes: 5, status: "locked", pose: "point" },

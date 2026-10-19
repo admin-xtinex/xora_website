@@ -11,8 +11,8 @@ marked `locked` are dimmed, show a "Coming soon" badge and cannot be opened.
 | `src/components/futures-edge/course.css` | Its styles. Every class is prefixed `fe-`; colours come from the `@theme` tokens in `src/styles.css`. |
 | `public/futures-edge/cards/<id>.webp` | The title cards, 1280×720. |
 | `public/futures-edge/lessons/<id>.html` | The lesson animations: each one a self-contained HTML page. Built from `content/`, do not edit by hand. |
-| `public/futures-edge/lessons/<id>/` | That lesson's images and fonts, loaded by the page with relative paths. |
-| `content/futures-edge/<id>/` | Each lesson's source: scene code, styles, tutor setup, music and narration script (see its README). |
+| `public/futures-edge/lessons/<id>/` | That lesson's images, fonts and voice track (`voice.mp3`), loaded by the page with relative paths. |
+| `content/futures-edge/<id>/` | Each lesson's source: scene code, styles, tutor setup, music, narration script and recorded voice lines (see its README). |
 | `tools/futures-edge-lessons/` | The lesson player (`runtime.js`) and the build script that makes the pages from `content/`. |
 | `tools/futures-edge-cards/` | The title-card renderer, with the tutor poses and fonts it uses. |
 
@@ -30,6 +30,7 @@ marked `locked` are dimmed, show a "Coming soon" badge and cannot be opened.
    node tools/futures-edge-lessons/build-lesson.mjs <id>   # or no id to rebuild every lesson
    ```
    This writes `public/futures-edge/lessons/<id>.html` and `public/futures-edge/lessons/<id>/`.
+   With a `voice/` folder it also mixes the voice track, which needs `ffmpeg` and `ffprobe`.
 3. In `courseData.ts`, set that lesson's `status` to `"available"`.
 4. Build and deploy (README, "Azure Static Web Apps").
 
@@ -37,15 +38,37 @@ To change a lesson that is already out, edit its files in `content/futures-edge/
 again. The dialog checks the page exists before loading it; if it is missing it says "This lesson
 is not available yet."
 
-V00 and T01 are available.
+V00 and T01 are available, both with a voiceover.
+
+### Voiceover
+
+Each line of `modules/narration.json` is recorded as its own file, `content/futures-edge/<id>/voice/NN.mp3`
+(`00.mp3` is the first line). V00 and T01 use the ElevenLabs voice **Alice** (`Xb7hH8MSUJpSbSDYk0k2`,
+model `eleven_multilingual_v2`, stability 0.5, similarity 0.75, style 0.15). To change a line, edit its
+text in `narration.json`, record that one line again with the same voice and settings, save it over its
+`NN.mp3`, and rebuild. A new line needs a new number, so add it at the end of its scene or renumber the
+files after it.
+
+The build lets the voice set the pace: the lines play 6% faster than recorded, one after another, and
+any scene they do not fit in is slowed down until they do (its animation and sound effects stretch by
+the same factor; the music is laid out again for the new length). V00 runs about 2:42 and T01 about
+5:09 with the voice. The ElevenLabs plan must include commercial use before these recordings go on
+the public site.
 
 ### How a lesson page behaves
 
 - It starts playing as soon as it loads, scaled to fill a 16:9 frame (letterboxed in other shapes).
 - Browsers block sound until the viewer interacts, so the page shows "Click anywhere for sound".
-  The first click turns the music on. After that a click pauses or resumes, and Space does too.
-- The control bar has play/pause (replay at the end), a seek bar (arrow keys move 5 s) and a sound
-  toggle. It fades out while the lesson plays and the pointer is still.
+  The first click turns the voice and music on. After that a click pauses or resumes, and Space does too.
+  The music dips while the tutor speaks.
+- The control bar has play/pause (replay at the end), a seek bar (arrow keys move 5 s), CC (captions
+  of the voiceover, on by default, so the lesson can be followed with the sound off), a sound toggle
+  and full screen (F key). It fades out while the lesson plays and the pointer is still.
+- Full screen uses the browser's Fullscreen API (desktop, Android, iPad) and turns a phone to
+  landscape where the browser allows it. iPhone Safari has no Fullscreen API for pages, so there the
+  lesson asks the course page to grow its dialog to fill the screen (`futures-edge:fullscreen`
+  message); turning the phone sideways then gives the full-width picture. Escape or the same button
+  goes back.
 - It needs no network beyond its own files: no CDN, no fonts from Google, no claude.ai.
 
 | Lesson | Where it was authored (the source of record is now `content/futures-edge/<id>/`) |
@@ -69,7 +92,7 @@ Needs Node 22.18+ (it runs TypeScript directly) and Playwright with Chromium. If
 ## Notes
 
 - **Hosting size.** A lesson page is about 100–120 KB, plus 1.5–2.5 MB of images and fonts in its
-  folder (mostly the tutor poses). All 27 lessons come to roughly 50–60 MB. Check this against the
+  folder (mostly the tutor poses) and 2–4 MB of voice. All 27 lessons come to roughly 120–150 MB. Check this against the
   Azure Static Web Apps plan's app-size limit as lessons are added; the tutor images could later be
   shared between lessons instead of copied into each folder.
 - **Safety.** The section is static: no trading endpoints, no API keys, no account data. It always

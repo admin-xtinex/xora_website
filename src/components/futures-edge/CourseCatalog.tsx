@@ -103,6 +103,19 @@ function LessonCard({ lesson: l, onPlay }: { lesson: Lesson; onPlay: () => void 
 function LessonDialog({ lesson, onClose }: { lesson: Lesson | null; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
   const [state, setState] = useState<"checking" | "ready" | "missing">("checking");
+  // iPhone Safari has no Fullscreen API for pages: the lesson player asks for this instead,
+  // and the dialog grows to fill the screen.
+  const [full, setFull] = useState(false);
+
+  useEffect(() => {
+    setFull(false);
+    if (!lesson) return;
+    const onMessage = (e: MessageEvent) => {
+      if (e.origin === window.location.origin && e.data?.type === "futures-edge:fullscreen") setFull(!!e.data.on);
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [lesson]);
 
   useEffect(() => {
     const d = ref.current;
@@ -128,7 +141,7 @@ function LessonDialog({ lesson, onClose }: { lesson: Lesson | null; onClose: () 
   return (
     <dialog
       ref={ref}
-      className="fe-dialog"
+      className={full ? "fe-dialog fe-dialog--full" : "fe-dialog"}
       aria-label={lesson ? `${lesson.id}: ${lesson.title}` : "Lesson"}
       onClose={onClose}
       onClick={(e) => {

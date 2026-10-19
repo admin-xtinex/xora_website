@@ -5,6 +5,11 @@
  * seek and replay at any point. It provides the small "kit" the scenes are written against
  * (stage, easing, TextFx, assets, json) and a WebAudio synth for score.js.
  *
+ * With a voiceover, build-lesson.mjs lengthens some scenes so the narration fits: a scene with
+ * stretch factor k plays its animation and sound effects k times slower. Scene code still sees the
+ * authored timeline (kit.start, kit.dur and t), so nothing in the modules changes. The voice is
+ * one mixed track; the music dips under each line, and the CC button shows the line as text.
+ *
  * build-lesson.mjs inlines this file into public/futures-edge/lessons/<id>.html, after a
  * `window.FILM = {...}` block that carries the scene list, module texts and asset paths.
  */
@@ -126,13 +131,30 @@
   const defs = {};
   let scoreFn = null;
 
+  // start/dur: the scene in the played timeline; oldStart/oldDur: as authored (k = dur / oldDur).
   let acc = 0;
   const scenes = F.scenes.map((s) => {
-    const o = Object.assign({}, s, { start: acc });
+    const o = Object.assign({ k: 1, oldStart: acc, oldDur: s.dur }, s, { start: acc });
     acc += s.dur;
     return o;
   });
   const END = acc;
+  const OLD_END = scenes.reduce((a, s) => a + s.oldDur, 0);
+  // Authored time to played time.
+  function warp(x) {
+    for (let i = scenes.length - 1; i >= 0; i--) {
+      const s = scenes[i];
+      if (x >= s.oldStart) return s.start + (x - s.oldStart) * s.k;
+    }
+    return x;
+  }
+  const lines = (F.voice && F.voice.lines) || [];
+  // Stretches where the music dips: each line plus a little either side, close ones joined.
+  const duckSpans = [];
+  for (const l of lines) {
+    const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
+    if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
+  }
 
   function makeKit(box, start, dur) {
     return {
@@ -159,6 +181,7 @@
     stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
   }
   window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 200));
   fit();
 
   // ── Audio: score.js recorded as events, then synthesised with WebAudio ─────
@@ -170,7 +193,27 @@
     return 12 * (Number(m[3]) + 1) + base + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
   }
 
+  // score.js runs twice: the music against the played timeline, the sound effects against the
+  // authored one and then moved onto the played one, so each cue stays with its animation.
   function recordScore() {
+    const T = { END };
+    for (const s of scenes) T[s.id] = s.start;
+    const music = recordPass(T);
+    const Told = { END: OLD_END };
+    for (const s of scenes) Told[s.id] = s.oldStart;
+    const cues = recordPass(Told);
+    const ev = music.ev.filter((e) => e.k !== "f");
+    for (const e of cues.ev) {
+      if (e.k !== "f") continue;
+      e.t = warp(e.t);
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      ev.push(e);
+    }
+    ev.sort((a, b) => a.s - b.s);
+    return { ev, tracks: music.tracks, master: music.master };
+  }
+
+  function recordPass(T) {
     const ev = [];
     const tracks = {};
     const master = { gain: -6, fadeOut: 1 };
@@ -226,12 +269,7 @@
         if (o.fadeOut != null) master.fadeOut = o.fadeOut;
       },
     };
-    if (scoreFn) {
-      const T = { END };
-      for (const s of scenes) T[s.id] = s.start;
-      scoreFn(S, T);
-    }
-    ev.sort((a, b) => a.s - b.s);
+    if (scoreFn) scoreFn(S, T);
     return { ev, tracks, master };
   }
 
@@ -241,7 +279,9 @@
   const audio = {
     ctx: null, enabled: false, muted: false, score: null,
     out: null, verb: null, noise: null, session: null, timer: 0,
+    voiceData: null, voiceBuf: null, voiceOut: null,
   };
+  const DUCK = 0.4;
 
   function setupAudio() {
     const AC = window.AudioContext || window.webkitAudioContext;
@@ -273,7 +313,47 @@
     const r2 = rng(3);
     for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
     audio.noise = nb;
+    // The voice skips the music's compressor and goes straight out.
+    audio.voiceOut = ctx.createGain();
+    audio.voiceOut.gain.value = 1;
+    audio.voiceOut.connect(ctx.destination);
+    decodeVoice();
     return true;
+  }
+
+  async function decodeVoice() {
+    if (!audio.ctx || audio.voiceBuf || !audio.voiceData) return;
+    try {
+      const data = await audio.voiceData;
+      if (!data || audio.voiceBuf) return;
+      audio.voiceBuf = await new Promise((ok, fail) => audio.ctx.decodeAudioData(data.slice(0), ok, fail));
+    } catch (e) {
+      return; // the lesson plays on without the voice
+    }
+    if (audio.session) startVoice(audio.session);
+  }
+
+  // The voice of one session, from the session's start point; the music dips under each line.
+  function startVoice(s) {
+    if (!audio.voiceBuf || s.voice) return;
+    const ctx = audio.ctx;
+    const at = Math.max(s.ctx0, ctx.currentTime + 0.02);
+    const off = s.film0 + (at - s.ctx0);
+    if (off >= audio.voiceBuf.duration) return;
+    const src = ctx.createBufferSource();
+    src.buffer = audio.voiceBuf;
+    src.connect(audio.voiceOut);
+    src.start(at, off);
+    s.voice = src;
+    for (const g of [s.duck.gain, s.send.gain]) {
+      for (const [a, b] of duckSpans) {
+        if (b <= off) continue;
+        const ca = at + (a - off), cb = at + (b - off);
+        if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
+        g.setValueAtTime(DUCK, cb);
+        g.linearRampToValueAtTime(1, cb + 0.5);
+      }
+    }
   }
 
   // One playback session: a bus that can be dropped as a whole on pause or seek.
@@ -282,7 +362,9 @@
     if (!audio.enabled || audio.muted) return;
     const ctx = audio.ctx;
     const bus = ctx.createGain();
-    bus.connect(audio.out);
+    const duck = ctx.createGain();
+    bus.connect(duck);
+    duck.connect(audio.out);
     const send = ctx.createGain();
     send.connect(audio.verb);
     const tracks = {};
@@ -297,8 +379,9 @@
       rs.connect(send);
       tracks[name] = { node: g, def: tr };
     }
-    const s = { bus, send, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0 };
+    const s = { bus, duck, send, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0, voice: null };
     audio.session = s;
+    startVoice(s);
     // Notes already sounding at the seek point start now with what is left of them.
     for (const e of audio.score.ev) {
       if (e.s >= filmT) break;
@@ -325,8 +408,14 @@
     const now = audio.ctx.currentTime;
     s.bus.gain.cancelScheduledValues(now);
     s.bus.gain.setTargetAtTime(0, now, 0.03);
+    s.send.gain.cancelScheduledValues(now);
     s.send.gain.setTargetAtTime(0, now, 0.03);
-    setTimeout(() => { s.bus.disconnect(); s.send.disconnect(); }, 400);
+    if (s.voice) {
+      const v = s.voice;
+      try { v.stop(now + 0.05); } catch (e) { /* not started yet */ }
+      setTimeout(() => v.disconnect(), 400);
+    }
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); }, 400);
   }
 
   function pump() {
@@ -579,7 +668,7 @@
       state.current = i;
     }
     const inst = instances[i];
-    inst.def.render.call(inst.def, Math.min(t, END - 1e-4) - inst.sc.start, inst.kit);
+    inst.def.render.call(inst.def, (Math.min(t, END - 1e-4) - inst.sc.start) / inst.sc.k, inst.kit);
     ui.update(t);
   }
 
@@ -638,18 +727,68 @@
     replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6.5l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z" fill="currentColor"/></svg>',
     on: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
     off: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    full: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   };
+
+  // ── Full screen ────────────────────────────────────────────────────────────
+  // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
+  // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
+  // course page the player asks the parent to grow the lesson to fill the whole screen instead.
+  const embedded = window.parent !== window;
+  const root = document.documentElement;
+  const fs = {
+    native: !!(document.fullscreenEnabled || document.webkitFullscreenEnabled),
+    pseudo: false,
+    available() { return this.native || embedded; },
+    active() { return !!(document.fullscreenElement || document.webkitFullscreenElement) || this.pseudo; },
+    async toggle() {
+      if (this.native) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* not locked */ }
+          await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        try {
+          await (root.requestFullscreen || root.webkitRequestFullscreen).call(root, { navigationUI: "hide" });
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock("landscape").catch(() => {});
+          return;
+        } catch (e) {
+          if (!embedded) return; // refused: fall through to the parent page below
+        }
+      }
+      this.pseudo = !this.pseudo;
+      window.parent.postMessage({ type: "futures-edge:fullscreen", on: this.pseudo }, location.origin);
+      ui.full();
+    },
+  };
+  document.addEventListener("fullscreenchange", () => ui.full());
+  document.addEventListener("webkitfullscreenchange", () => ui.full());
   const ui = (() => {
     const bar = h(
       '<div class="fe-ui" role="group" aria-label="Lesson controls">' +
         '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
         '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
         '<span class="fe-time"></span>' +
+        (lines.length ? '<button type="button" class="fe-btn fe-cc" aria-pressed="true" aria-label="Captions">CC</button>' : "") +
         '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
+        (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
       "</div>"
     );
     const hint = h('<button type="button" class="fe-hint">Click anywhere for sound</button>');
-    document.body.append(bar, hint);
+    const cap = h('<p class="fe-cap" aria-live="off"></p>');
+    document.body.append(cap, bar, hint);
+    const cc = bar.querySelector(".fe-cc");
+    const fsb = bar.querySelector(".fe-fs");
+    if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
+    let ccOn = true, capText = null;
+    if (cc) cc.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ccOn = !ccOn;
+      cc.setAttribute("aria-pressed", String(ccOn));
+      capText = null;
+      api.update(state.t);
+    });
     const pp = bar.querySelector(".fe-pp");
     const trk = bar.querySelector(".fe-track");
     const fill = trk.querySelector("i");
@@ -692,6 +831,8 @@
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
+      if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === "Escape" && fs.pseudo) fs.toggle();
     });
     const api = {
       update(t) {
@@ -701,6 +842,13 @@
         fill.style.width = ((t / END) * 100).toFixed(3) + "%";
         trk.setAttribute("aria-valuenow", String(Math.round(t)));
         time.textContent = fmt(t) + " / " + fmt(END);
+        let text = "";
+        if (ccOn) for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = l.text;
+        if (text !== capText) {
+          capText = text;
+          cap.textContent = text;
+          cap.hidden = !text;
+        }
         if (!state.playing) wake();
       },
       sound() {
@@ -709,8 +857,15 @@
         snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
         hint.hidden = audio.enabled;
       },
+      full() {
+        if (!fsb) return;
+        const on = fs.active();
+        fsb.innerHTML = on ? ICON.exit : ICON.full;
+        fsb.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+      },
     };
     api.sound();
+    api.full();
     wake();
     return api;
   })();
@@ -723,24 +878,28 @@
     play, pause, seek,
     time: () => state.t,
     score: () => audio.score,
+    voice: () => ({ lines, loaded: !!audio.voiceBuf, playing: !!(audio.session && audio.session.voice) }),
   };
 
   // ── Boot ───────────────────────────────────────────────────────────────────
   async function boot() {
+    if (F.voice) {
+      audio.voiceData = fetch(F.voice.src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+    }
     try {
       await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
     } catch (e) { /* system fonts stand in */ }
-    run("shared.js", makeKit(stage, 0, END));
+    run("shared.js", makeKit(stage, 0, OLD_END));
     for (const sc of scenes) {
       const box = el("div", { class: "fe-scene" });
       stage.append(box);
-      const kit = makeKit(box, sc.start, sc.dur);
+      const kit = makeKit(box, sc.oldStart, sc.oldDur);
       run("scene-" + sc.id + ".js", kit);
       const def = defs[sc.id];
       if (def && def.init) await def.init.call(def, kit);
       instances.push({ sc, def, box, kit });
     }
-    if (modules["score.js"]) run("score.js", makeKit(stage, 0, END));
+    if (modules["score.js"]) run("score.js", makeKit(stage, 0, OLD_END));
     audio.score = recordScore();
     // Wait (briefly) for the images so the first frames do not pop in.
     const imgs = Array.from(stage.querySelectorAll("img"));

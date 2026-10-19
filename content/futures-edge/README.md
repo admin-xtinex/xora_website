@@ -13,12 +13,17 @@ into the runnable page `public/futures-edge/lessons/<id>.html` (see `docs/future
     scene-<id>.js      one file per scene, in the order of scenes.json
     tutor.json         tutor pose table: size, brain centre (ax), feet line and brain width of each image
     score.js           the music and sound effects, written as notes and cues against scene start times
-    narration.json     the voiceover script: each line with the time it starts (not played yet)
+    narration.json     the voiceover script: each line with the time it was written to start
   assets/
     assets.json        every image the lesson uses, with its size
     tutor-*.webp       tutor poses (wv* is the waving loop, wk* the walk cycle)
     xtinex-x.png       the XTINEX mark
+  voice/
+    NN.mp3             line NN of narration.json, recorded (00.mp3 is the first line)
 ```
+
+With `voice/`, the build lengthens any scene whose lines do not fit and the player slows that scene
+down to match; scene code always sees the authored times, so nothing here needs changing for it.
 
 ## How a scene is written
 
@@ -50,7 +55,7 @@ transitions, timers or `Math.random`: use `t` and `kit.rng(seed)`.
 ## Editing
 
 1. Change files under `modules/` (or add images to `assets/` and list them in `assets.json`).
-2. Rebuild: `node tools/futures-edge-lessons/build-lesson.mjs <id>`.
+2. Rebuild: `node tools/futures-edge-lessons/build-lesson.mjs <id>` (needs `ffmpeg` when `voice/` exists).
 3. Check it: `npm run build && npm run preview`, open `http://localhost:5181/futures-edge/lessons/<id>.html`.
 
 All prices and names shown in the lessons are fictional and labelled as such.

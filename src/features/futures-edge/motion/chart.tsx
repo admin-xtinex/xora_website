@@ -45,7 +45,7 @@ export function signed(n: number, decimals?: number): string {
 
 export function Frame({ children, label, title }: { children: ReactNode; label: string; title?: string }) {
   return (
-    <svg className="fe-scene-svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label} preserveAspectRatio="xMidYMid meet">
+    <svg className="fel-scene-svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label} preserveAspectRatio="xMidYMid meet">
       {title ? <title>{title}</title> : null}
       {children}
     </svg>
@@ -53,7 +53,7 @@ export function Frame({ children, label, title }: { children: ReactNode; label: 
 }
 
 export function FictionalBadge({ x = W - 8, y = 16, text = 'FICTIONAL DATA' }: { x?: number; y?: number; text?: string }) {
-  return <text x={x} y={y} textAnchor="end" className="fe-svg-badge">{text}</text>;
+  return <text x={x} y={y} textAnchor="end" className="fel-svg-badge">{text}</text>;
 }
 
 export function PriceAxis({ scale, ticks = 4, box = PLOT, decimals }: { scale: Scale; ticks?: number; box?: Box; decimals?: number }) {
@@ -62,8 +62,8 @@ export function PriceAxis({ scale, ticks = 4, box = PLOT, decimals }: { scale: S
     <g aria-hidden>
       {vals.map((v, k) => (
         <g key={k}>
-          <line x1={box.x} x2={box.x + box.w} y1={scale.y(v)} y2={scale.y(v)} className="fe-svg-grid" />
-          <text x={box.x - 6} y={scale.y(v) + 4} textAnchor="end" className="fe-svg-axis">{fmt(v, decimals)}</text>
+          <line x1={box.x} x2={box.x + box.w} y1={scale.y(v)} y2={scale.y(v)} className="fel-svg-grid" />
+          <text x={box.x - 6} y={scale.y(v) + 4} textAnchor="end" className="fel-svg-axis">{fmt(v, decimals)}</text>
         </g>
       ))}
     </g>
@@ -100,23 +100,23 @@ export interface CandleShape { o: number; h: number; l: number; c: number }
 export function Candle({ c, x, width, scale, label, highlight }: { c: CandleShape; x: number; width: number; scale: Scale; label?: string; highlight?: boolean }) {
   const up = c.c > c.o;
   const down = c.c < c.o;
-  const cls = up ? 'fe-svg-up' : down ? 'fe-svg-down' : 'fe-svg-flat';
+  const cls = up ? 'fel-svg-up' : down ? 'fel-svg-down' : 'fel-svg-flat';
   const top = scale.y(Math.max(c.o, c.c));
   const bot = scale.y(Math.min(c.o, c.c));
   return (
-    <g className={`${cls}${highlight ? ' fe-svg-hl' : ''}`}>
-      <line x1={x} x2={x} y1={scale.y(c.h)} y2={scale.y(c.l)} className="fe-svg-wick" />
-      <rect x={x - width / 2} y={top} width={width} height={Math.max(2, bot - top)} rx={2} className={up ? 'fe-svg-body-up' : down ? 'fe-svg-body-down' : 'fe-svg-body-flat'} />
-      {label ? <text x={x} y={scale.y(c.l) + 16} textAnchor="middle" className="fe-svg-small">{label}</text> : null}
+    <g className={`${cls}${highlight ? ' fel-svg-hl' : ''}`}>
+      <line x1={x} x2={x} y1={scale.y(c.h)} y2={scale.y(c.l)} className="fel-svg-wick" />
+      <rect x={x - width / 2} y={top} width={width} height={Math.max(2, bot - top)} rx={2} className={up ? 'fel-svg-body-up' : down ? 'fel-svg-body-down' : 'fel-svg-body-flat'} />
+      {label ? <text x={x} y={scale.y(c.l) + 16} textAnchor="middle" className="fel-svg-small">{label}</text> : null}
     </g>
   );
 }
 
-export function HLine({ y, x1 = PLOT.x, x2 = PLOT.x + PLOT.w, label, cls = 'fe-svg-level', side = 'right' }: { y: number; x1?: number; x2?: number; label?: string; cls?: string; side?: 'left' | 'right' }) {
+export function HLine({ y, x1 = PLOT.x, x2 = PLOT.x + PLOT.w, label, cls = 'fel-svg-level', side = 'right' }: { y: number; x1?: number; x2?: number; label?: string; cls?: string; side?: 'left' | 'right' }) {
   return (
     <g>
       <line x1={x1} x2={x2} y1={y} y2={y} className={cls} />
-      {label ? <text x={side === 'right' ? x2 - 4 : x1 + 4} y={y - 5} textAnchor={side === 'right' ? 'end' : 'start'} className="fe-svg-label">{label}</text> : null}
+      {label ? <text x={side === 'right' ? x2 - 4 : x1 + 4} y={y - 5} textAnchor={side === 'right' ? 'end' : 'start'} className="fel-svg-label">{label}</text> : null}
     </g>
   );
 }
@@ -125,10 +125,10 @@ export function HLine({ y, x1 = PLOT.x, x2 = PLOT.x + PLOT.w, label, cls = 'fe-s
 export function Card({ x, y, w, h, title, lines, tone }: { x: number; y: number; w: number; h: number; title: string; lines: string[]; tone?: 'up' | 'down' | 'warn' | 'neutral' }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx={10} className={`fe-svg-card fe-svg-card-${tone ?? 'neutral'}`} />
-      <text x={x + 12} y={y + 22} className="fe-svg-card-title">{title}</text>
+      <rect x={x} y={y} width={w} height={h} rx={10} className={`fel-svg-card fel-svg-card-${tone ?? 'neutral'}`} />
+      <text x={x + 12} y={y + 22} className="fel-svg-card-title">{title}</text>
       {lines.map((l, k) => (
-        <text key={k} x={x + 12} y={y + 44 + k * 20} className="fe-svg-card-line">{l}</text>
+        <text key={k} x={x + 12} y={y + 44 + k * 20} className="fel-svg-card-line">{l}</text>
       ))}
     </g>
   );
@@ -139,10 +139,10 @@ export function Bar({ x, y, w, h = 18, frac, label, value, tone }: { x: number; 
   const f = clamp(frac, 0, 1);
   return (
     <g>
-      <text x={x} y={y - 6} className="fe-svg-label">{label}</text>
-      <rect x={x} y={y} width={w} height={h} rx={h / 2} className="fe-svg-track" />
-      <rect x={x} y={y} width={Math.max(0, w * f)} height={h} rx={h / 2} className={`fe-svg-fill-${tone}`} />
-      <text x={x + w} y={y - 6} textAnchor="end" className="fe-svg-label">{value}</text>
+      <text x={x} y={y - 6} className="fel-svg-label">{label}</text>
+      <rect x={x} y={y} width={w} height={h} rx={h / 2} className="fel-svg-track" />
+      <rect x={x} y={y} width={Math.max(0, w * f)} height={h} rx={h / 2} className={`fel-svg-fill-${tone}`} />
+      <text x={x + w} y={y - 6} textAnchor="end" className="fel-svg-label">{value}</text>
     </g>
   );
 }
@@ -154,11 +154,11 @@ export function SignedBar({ x, y, w, h = 18, value, maxAbs, label, valueText }: 
   const len = (w / 2) * f;
   return (
     <g>
-      <text x={x} y={y - 6} className="fe-svg-label">{label}</text>
-      <text x={x + w} y={y - 6} textAnchor="end" className={`fe-svg-label ${value > 0 ? 'fe-svg-text-up' : value < 0 ? 'fe-svg-text-down' : ''}`}>{valueText}</text>
-      <rect x={x} y={y} width={w} height={h} rx={h / 2} className="fe-svg-track" />
-      <rect x={value >= 0 ? mid : mid - len} y={y} width={len} height={h} rx={4} className={value >= 0 ? 'fe-svg-fill-up' : 'fe-svg-fill-down'} />
-      <line x1={mid} x2={mid} y1={y - 3} y2={y + h + 3} className="fe-svg-mid" />
+      <text x={x} y={y - 6} className="fel-svg-label">{label}</text>
+      <text x={x + w} y={y - 6} textAnchor="end" className={`fel-svg-label ${value > 0 ? 'fel-svg-text-up' : value < 0 ? 'fel-svg-text-down' : ''}`}>{valueText}</text>
+      <rect x={x} y={y} width={w} height={h} rx={h / 2} className="fel-svg-track" />
+      <rect x={value >= 0 ? mid : mid - len} y={y} width={len} height={h} rx={4} className={value >= 0 ? 'fel-svg-fill-up' : 'fel-svg-fill-down'} />
+      <line x1={mid} x2={mid} y1={y - 3} y2={y + h + 3} className="fel-svg-mid" />
     </g>
   );
 }

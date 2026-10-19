@@ -13,13 +13,13 @@ export function TextCardScene({ params, p }: SceneProps) {
   const items = strs(params['items']);
   const shown = items.length === 0 ? 0 : Math.ceil(clamp(p * 1.15, 0, 1) * items.length);
   return (
-    <div className={`fe-textcard fe-textcard-${variant}`}>
-      <p className="fe-textcard-heading">{strOr(params['heading'], '')}</p>
+    <div className={`fel-textcard fel-textcard-${variant}`}>
+      <p className="fel-textcard-heading">{strOr(params['heading'], '')}</p>
       {items.length > 0 ? (
-        <ol className={`fe-textcard-list ${variant === 'recap' ? 'is-numbered' : ''}`}>
+        <ol className={`fel-textcard-list ${variant === 'recap' ? 'is-numbered' : ''}`}>
           {items.map((it, k) => (
             <li key={k} className={k < shown ? 'is-on' : 'is-off'} aria-hidden={k >= shown}>
-              {TEXT_ICONS[variant] ? <span className="fe-textcard-icon" aria-hidden>{TEXT_ICONS[variant]}</span> : null}
+              {TEXT_ICONS[variant] ? <span className="fel-textcard-icon" aria-hidden>{TEXT_ICONS[variant]}</span> : null}
               <span>{it}</span>
             </li>
           ))}
@@ -41,19 +41,19 @@ export function ValueExchangeScene({ params, p }: SceneProps) {
     return (
       <Frame label={`A shared ledger records ${entries.length} fictional transfers`}>
         <FictionalBadge />
-        <text x={40} y={44} className="fe-svg-title">Shared record (ledger)</text>
+        <text x={40} y={44} className="fel-svg-title">Shared record (ledger)</text>
         {entries.map((e, k) => {
           const y = 70 + k * 52;
           const on = k < shown;
           return (
             <g key={k} opacity={on ? 1 : 0.15}>
-              <rect x={40} y={y} width={560} height={40} rx={8} className="fe-svg-card" />
-              <text x={56} y={y + 25} className="fe-svg-card-line">#{k + 1}  {strOr(e['from'], '')} → {strOr(e['to'], '')}</text>
-              <text x={584} y={y + 25} textAnchor="end" className="fe-svg-card-title">{fmt(numOr(e['amount'], 0))} {asset}</text>
+              <rect x={40} y={y} width={560} height={40} rx={8} className="fel-svg-card" />
+              <text x={56} y={y + 25} className="fel-svg-card-line">#{k + 1}  {strOr(e['from'], '')} → {strOr(e['to'], '')}</text>
+              <text x={584} y={y + 25} textAnchor="end" className="fel-svg-card-title">{fmt(numOr(e['amount'], 0))} {asset}</text>
             </g>
           );
         })}
-        <text x={40} y={H - 16} className="fe-svg-small">The balance is an entry in this record, not a physical coin inside a phone.</text>
+        <text x={40} y={H - 16} className="fel-svg-small">The balance is an entry in this record, not a physical coin inside a phone.</text>
       </Frame>
     );
   }
@@ -66,9 +66,9 @@ export function ValueExchangeScene({ params, p }: SceneProps) {
         <FictionalBadge />
         <Card x={40} y={110} w={220} h={110} title="You give" lines={[`${fmt(numOr(give['amount'], 0))} ${strOr(give['asset'], '')}`]} tone="neutral" />
         <Card x={380} y={110} w={220} h={110} title="You receive" lines={[`${fmt(numOr(get['amount'], 0))} ${strOr(get['asset'], '')}`]} tone={t >= 1 ? 'up' : 'neutral'} />
-        <circle cx={lerp(270, 370, t)} cy={150} r={8} className="fe-svg-dot-buy" />
-        <circle cx={lerp(370, 270, t)} cy={185} r={8} className="fe-svg-dot-sell" />
-        <text x={W / 2} y={260} textAnchor="middle" className="fe-svg-label">{t >= 1 ? 'Swap complete: value changed hands at one agreed price' : 'Both sides agree on a price…'}</text>
+        <circle cx={lerp(270, 370, t)} cy={150} r={8} className="fel-svg-dot-buy" />
+        <circle cx={lerp(370, 270, t)} cy={185} r={8} className="fel-svg-dot-sell" />
+        <text x={W / 2} y={260} textAnchor="middle" className="fel-svg-label">{t >= 1 ? 'Swap complete: value changed hands at one agreed price' : 'Both sides agree on a price…'}</text>
       </Frame>
     );
   }
@@ -95,8 +95,8 @@ export function ValueExchangeScene({ params, p }: SceneProps) {
       <FictionalBadge />
       <Card x={30} y={70} w={300} h={190} title={`${fmt(quantity, 4)} ${asset} × price`} tone={value > first ? 'up' : value < first ? 'down' : 'neutral'}
         lines={[`Price: ${fmt(price, 2)} ${quote} per ${asset}`, `Value: ${fmt(value, 2)} ${quote}`, `Change: ${value >= first ? '+' : '−'}${fmt(Math.abs(value - first), 2)} ${quote}`, 'Quantity did not change.', 'Only the price did.']} />
-      <path d={pathD(prices, sc, idx + 1)} className="fe-svg-price" />
-      <text x={360} y={290} className="fe-svg-small">Fictional {asset}/{quote} price</text>
+      <path d={pathD(prices, sc, idx + 1)} className="fel-svg-price" />
+      <text x={360} y={290} className="fel-svg-small">Fictional {asset}/{quote} price</text>
     </Frame>
   );
 }
@@ -125,13 +125,13 @@ export function SupplyDemandScene({ params, p }: SceneProps) {
   return (
     <Frame label={`Illustrative model: ${buyers} buyers, ${sellers} sellers, price ${fmt(price, 2)}`}>
       <FictionalBadge text="ILLUSTRATIVE MODEL — NOT A REAL MARKET" />
-      <text x={90} y={44} textAnchor="middle" className="fe-svg-label">Buyers: {buyers}</text>
-      {dots(buyers, 90, 'fe-svg-dot-buy')}
-      <text x={550} y={44} textAnchor="middle" className="fe-svg-label">Sellers: {sellers}</text>
-      {dots(sellers, 550, 'fe-svg-dot-sell')}
-      <path d={pathD(hist, sc)} className="fe-svg-price" />
-      <text x={320} y={300} textAnchor="middle" className="fe-svg-title">{fmt(price, 2)}</text>
-      <text x={320} y={322} textAnchor="middle" className="fe-svg-small">{variant === 'thin-market' ? 'Few orders: one trade moves price a lot' : 'Toy price = base + step × (buyers − sellers)'}</text>
+      <text x={90} y={44} textAnchor="middle" className="fel-svg-label">Buyers: {buyers}</text>
+      {dots(buyers, 90, 'fel-svg-dot-buy')}
+      <text x={550} y={44} textAnchor="middle" className="fel-svg-label">Sellers: {sellers}</text>
+      {dots(sellers, 550, 'fel-svg-dot-sell')}
+      <path d={pathD(hist, sc)} className="fel-svg-price" />
+      <text x={320} y={300} textAnchor="middle" className="fel-svg-title">{fmt(price, 2)}</text>
+      <text x={320} y={322} textAnchor="middle" className="fel-svg-small">{variant === 'thin-market' ? 'Few orders: one trade moves price a lot' : 'Toy price = base + step × (buyers − sellers)'}</text>
     </Frame>
   );
 }
@@ -148,14 +148,14 @@ export function TradingPairScene({ params, p }: SceneProps) {
     return (
       <Frame label={`${base}/${quote}: ${base} is the base asset, ${quote} is the quote asset`}>
         <FictionalBadge />
-        <text x={W / 2} y={150} textAnchor="middle" className="fe-svg-hero">{base}/{quote}</text>
+        <text x={W / 2} y={150} textAnchor="middle" className="fel-svg-hero">{base}/{quote}</text>
         <g opacity={t}>
-          <line x1={250} x2={200} y1={165} y2={230} className="fe-svg-pointer" />
-          <text x={200} y={252} textAnchor="middle" className="fe-svg-label">BASE: the thing being priced</text>
-          <line x1={390} x2={440} y1={165} y2={230} className="fe-svg-pointer" />
-          <text x={440} y={252} textAnchor="middle" className="fe-svg-label">QUOTE: the unit of the price</text>
+          <line x1={250} x2={200} y1={165} y2={230} className="fel-svg-pointer" />
+          <text x={200} y={252} textAnchor="middle" className="fel-svg-label">BASE: the thing being priced</text>
+          <line x1={390} x2={440} y1={165} y2={230} className="fel-svg-pointer" />
+          <text x={440} y={252} textAnchor="middle" className="fel-svg-label">QUOTE: the unit of the price</text>
         </g>
-        <text x={W / 2} y={310} opacity={phase(p, 0.6, 0.9)} textAnchor="middle" className="fe-svg-small">Symbol on many platforms: {base}{quote} (no slash)</text>
+        <text x={W / 2} y={310} opacity={phase(p, 0.6, 0.9)} textAnchor="middle" className="fel-svg-small">Symbol on many platforms: {base}{quote} (no slash)</text>
       </Frame>
     );
   }
@@ -165,14 +165,14 @@ export function TradingPairScene({ params, p }: SceneProps) {
     return (
       <Frame label={`Value of different ${base} quantities at ${fmt(price, 2)} ${quote}`}>
         <FictionalBadge />
-        <text x={40} y={44} className="fe-svg-title">Same price, different quantity</text>
+        <text x={40} y={44} className="fel-svg-title">Same price, different quantity</text>
         {qs.map((q, k) => {
           const v = q * price * phase(p, k * 0.3, k * 0.3 + 0.4);
           return (
             <g key={k}>
-              <text x={40} y={100 + k * 80} className="fe-svg-label">{q} {base} × {fmt(price, 2)}</text>
-              <rect x={40} y={110 + k * 80} width={Math.max(4, (v / max) * 540)} height={26} rx={6} className="fe-svg-fill-neutral" />
-              <text x={600} y={100 + k * 80} textAnchor="end" className="fe-svg-card-title">{fmt(v, 2)} {quote}</text>
+              <text x={40} y={100 + k * 80} className="fel-svg-label">{q} {base} × {fmt(price, 2)}</text>
+              <rect x={40} y={110 + k * 80} width={Math.max(4, (v / max) * 540)} height={26} rx={6} className="fel-svg-fill-neutral" />
+              <text x={600} y={100 + k * 80} textAnchor="end" className="fel-svg-card-title">{fmt(v, 2)} {quote}</text>
             </g>
           );
         })}
@@ -186,9 +186,9 @@ export function TradingPairScene({ params, p }: SceneProps) {
       <Frame label={`${amt} ${quote} ÷ ${price} = ${fmt(amt / price, 6)} ${base}`}>
         <FictionalBadge />
         <Card x={30} y={110} w={180} h={90} title="Spend" lines={[`${fmt(amt, 2)} ${quote}`]} />
-        <text x={W / 2} y={160} textAnchor="middle" className="fe-svg-title">÷ {fmt(price, 2)}</text>
+        <text x={W / 2} y={160} textAnchor="middle" className="fel-svg-title">÷ {fmt(price, 2)}</text>
         <Card x={430} y={110} w={180} h={90} title="Receive" lines={[`${fmt((amt / price) * t, 6)} ${base}`]} tone={t >= 1 ? 'up' : 'neutral'} />
-        <text x={W / 2} y={260} textAnchor="middle" className="fe-svg-small">quantity = quote amount ÷ price (fees ignored)</text>
+        <text x={W / 2} y={260} textAnchor="middle" className="fel-svg-small">quantity = quote amount ÷ price (fees ignored)</text>
       </Frame>
     );
   }
@@ -200,10 +200,10 @@ export function TradingPairScene({ params, p }: SceneProps) {
     return (
       <Frame label={`Price label updates to ${fmt(pr, 2)}; ${qty} ${base} worth ${fmt(pr * qty, 2)} ${quote}`}>
         <FictionalBadge />
-        <rect x={170} y={70} width={300} height={90} rx={14} className="fe-svg-card" />
-        <text x={W / 2} y={128} textAnchor="middle" className="fe-svg-hero-sm">1 {base} = {fmt(pr, 2)} {quote}</text>
-        <text x={W / 2} y={220} textAnchor="middle" className="fe-svg-title">{qty} {base} = {fmt(pr * qty, 2)} {quote}</text>
-        <text x={W / 2} y={260} textAnchor="middle" className="fe-svg-small">Update {idx + 1} of {prices.length}: the label changes, your quantity does not</text>
+        <rect x={170} y={70} width={300} height={90} rx={14} className="fel-svg-card" />
+        <text x={W / 2} y={128} textAnchor="middle" className="fel-svg-hero-sm">1 {base} = {fmt(pr, 2)} {quote}</text>
+        <text x={W / 2} y={220} textAnchor="middle" className="fel-svg-title">{qty} {base} = {fmt(pr * qty, 2)} {quote}</text>
+        <text x={W / 2} y={260} textAnchor="middle" className="fel-svg-small">Update {idx + 1} of {prices.length}: the label changes, your quantity does not</text>
       </Frame>
     );
   }
@@ -213,11 +213,11 @@ export function TradingPairScene({ params, p }: SceneProps) {
     <Frame label={`Price tag: 1 ${base} = ${fmt(price, 2)} ${quote}`}>
       <FictionalBadge />
       <g opacity={t} transform={`translate(0 ${(1 - t) * 20})`}>
-        <rect x={150} y={100} width={340} height={110} rx={16} className="fe-svg-card" />
-        <text x={W / 2} y={150} textAnchor="middle" className="fe-svg-hero-sm">1 {base}</text>
-        <text x={W / 2} y={188} textAnchor="middle" className="fe-svg-title">costs {fmt(price, 2)} {quote}</text>
+        <rect x={150} y={100} width={340} height={110} rx={16} className="fel-svg-card" />
+        <text x={W / 2} y={150} textAnchor="middle" className="fel-svg-hero-sm">1 {base}</text>
+        <text x={W / 2} y={188} textAnchor="middle" className="fel-svg-title">costs {fmt(price, 2)} {quote}</text>
       </g>
-      <text x={W / 2} y={260} opacity={phase(p, 0.5, 0.9)} textAnchor="middle" className="fe-svg-small">Like a shop label: the price of one item, written in another unit</text>
+      <text x={W / 2} y={260} opacity={phase(p, 0.5, 0.9)} textAnchor="middle" className="fel-svg-small">Like a shop label: the price of one item, written in another unit</text>
     </Frame>
   );
 }
@@ -254,9 +254,9 @@ export function OrderBookScene({ params, p }: SceneProps) {
     const left = Math.max(0, l.quantity - used);
     return (
       <g key={`${kind}${l.price}`}>
-        <rect x={140} y={y} width={(left / maxQ) * 180} height={rowH - 4} rx={4} className={kind === 'ask' ? 'fe-svg-fill-down' : 'fe-svg-fill-up'} opacity={0.55} />
-        <text x={130} y={y + 15} textAnchor="end" className={kind === 'ask' ? 'fe-svg-text-down' : 'fe-svg-text-up'}>{fmt(l.price, 2)}</text>
-        <text x={330} y={y + 15} className="fe-svg-small">{fmt(left, 3)}{used > 0 ? ` (−${fmt(used, 3)})` : ''}</text>
+        <rect x={140} y={y} width={(left / maxQ) * 180} height={rowH - 4} rx={4} className={kind === 'ask' ? 'fel-svg-fill-down' : 'fel-svg-fill-up'} opacity={0.55} />
+        <text x={130} y={y + 15} textAnchor="end" className={kind === 'ask' ? 'fel-svg-text-down' : 'fel-svg-text-up'}>{fmt(l.price, 2)}</text>
+        <text x={330} y={y + 15} className="fel-svg-small">{fmt(left, 3)}{used > 0 ? ` (−${fmt(used, 3)})` : ''}</text>
       </g>
     );
   };
@@ -274,13 +274,13 @@ export function OrderBookScene({ params, p }: SceneProps) {
   return (
     <Frame label={`Fictional order book. Best bid ${bestBid ?? 'none'}, best ask ${bestAsk ?? 'none'}${spread !== undefined ? `, spread ${fmt(spread, 2)}` : ''}`}>
       <FictionalBadge />
-      <text x={40} y={28} className="fe-svg-label">ASKS (sellers)</text>
+      <text x={40} y={28} className="fel-svg-label">ASKS (sellers)</text>
       {shownAsks.map((l, k) => row(l, 36 + k * rowH, 'ask'))}
-      <line x1={40} x2={420} y1={midY} y2={midY} className="fe-svg-grid" />
+      <line x1={40} x2={420} y1={midY} y2={midY} className="fel-svg-grid" />
       {spread !== undefined ? (
-        <text x={40} y={midY + 4} className={`fe-svg-label ${variant === 'bid-ask-spread' ? 'fe-svg-hl-text' : ''}`} opacity={variant === 'bid-ask-spread' ? phase(p, 0.2, 0.5) : 1}>Spread {fmt(spread, 2)}</text>
-      ) : <text x={40} y={midY + 4} className="fe-svg-label fe-svg-text-down">Empty side: nobody to trade with</text>}
-      <text x={40} y={midY + 26} className="fe-svg-label">BIDS (buyers)</text>
+        <text x={40} y={midY + 4} className={`fel-svg-label ${variant === 'bid-ask-spread' ? 'fel-svg-hl-text' : ''}`} opacity={variant === 'bid-ask-spread' ? phase(p, 0.2, 0.5) : 1}>Spread {fmt(spread, 2)}</text>
+      ) : <text x={40} y={midY + 4} className="fel-svg-label fel-svg-text-down">Empty side: nobody to trade with</text>}
+      <text x={40} y={midY + 26} className="fel-svg-label">BIDS (buyers)</text>
       {shownBids.map((l, k) => row(l, midY + 34 + k * rowH, 'bid'))}
       {inc ? <Card x={440} y={90} w={180} h={40 + lines.length * 20} title="Incoming order" lines={lines} tone={res && res.ok && res.value.remainingQuantity > 0 && t >= 1 ? 'warn' : 'neutral'} /> : null}
     </Frame>
@@ -330,13 +330,13 @@ export function OrderPlacementScene({ params, p }: SceneProps) {
       <PriceAxis scale={sc} box={box} />
       {orders.map((o, k) => {
         const lv = o.price ?? o.trigger;
-        return lv !== undefined ? <HLine key={`l${k}`} y={sc.y(lv)} x1={box.x} x2={box.x + box.w} label={`${o.label}`} cls={o.type.startsWith('stop') ? 'fe-svg-level-stop' : 'fe-svg-level'} side="left" /> : null;
+        return lv !== undefined ? <HLine key={`l${k}`} y={sc.y(lv)} x1={box.x} x2={box.x + box.w} label={`${o.label}`} cls={o.type.startsWith('stop') ? 'fel-svg-level-stop' : 'fel-svg-level'} side="left" /> : null;
       })}
-      <path d={pathD(path, sc, visible)} className="fe-svg-price" />
+      <path d={pathD(path, sc, visible)} className="fel-svg-price" />
       {orders.map((o, k) => {
         const ev = orderEvents(path, o, slip);
         if (ev.fillAt === null || ev.fillPrice === null || visible - 1 < ev.fillAt) return null;
-        return <circle key={`f${k}`} cx={sc.x(ev.fillAt)} cy={sc.y(ev.fillPrice)} r={6} className={o.side === 'buy' ? 'fe-svg-dot-buy' : 'fe-svg-dot-sell'} />;
+        return <circle key={`f${k}`} cx={sc.x(ev.fillAt)} cy={sc.y(ev.fillPrice)} r={6} className={o.side === 'buy' ? 'fel-svg-dot-buy' : 'fel-svg-dot-sell'} />;
       })}
       {orders.map((o, k) => {
         const ev = orderEvents(path, o, slip);
@@ -372,16 +372,16 @@ export function MockTerminalScene({ params, p }: SceneProps) {
   const active = order[idx];
   return (
     <Frame label={`Fictional generic trading screen; highlighted: ${active ? AREAS[active]?.name : 'none'}`}>
-      <text x={W / 2} y={H - 4} textAnchor="middle" className="fe-svg-badge">EDUCATIONAL MOCK — NOT A REAL EXCHANGE SCREEN</text>
+      <text x={W / 2} y={H - 4} textAnchor="middle" className="fel-svg-badge">EDUCATIONAL MOCK — NOT A REAL EXCHANGE SCREEN</text>
       {Object.entries(AREAS).map(([key, a]) => (
         <g key={key} opacity={key === active ? 1 : 0.45}>
-          <rect x={a.x} y={a.y} width={a.w} height={a.h} rx={6} className={key === active ? 'fe-svg-area-on' : 'fe-svg-area'} />
-          <text x={a.x + 8} y={a.y + 18} className="fe-svg-small">{a.name}</text>
+          <rect x={a.x} y={a.y} width={a.w} height={a.h} rx={6} className={key === active ? 'fel-svg-area-on' : 'fel-svg-area'} />
+          <text x={a.x + 8} y={a.y + 18} className="fel-svg-small">{a.name}</text>
         </g>
       ))}
-      <text x={144} y={66} className="fe-svg-label">{strOr(params['symbol'], 'DEMO/USDT')} · Perpetual · fictional</text>
-      {active ? <text x={W / 2} y={H - 22} textAnchor="middle" className="fe-svg-label fe-svg-hl-text">Step {idx + 1} of {order.length}: {AREAS[active]?.name}</text> : null}
-      {[0, 1, 2, 3, 4].map((k) => <text key={k} x={16} y={70 + k * 26} className="fe-svg-small">{['DEMO/USDT', 'TOY/USDT', 'MOCK/USDT', 'SAMPLE/USDT', 'TEST/USDT'][k]}</text>)}
+      <text x={144} y={66} className="fel-svg-label">{strOr(params['symbol'], 'DEMO/USDT')} · Perpetual · fictional</text>
+      {active ? <text x={W / 2} y={H - 22} textAnchor="middle" className="fel-svg-label fel-svg-hl-text">Step {idx + 1} of {order.length}: {AREAS[active]?.name}</text> : null}
+      {[0, 1, 2, 3, 4].map((k) => <text key={k} x={16} y={70 + k * 26} className="fel-svg-small">{['DEMO/USDT', 'TOY/USDT', 'MOCK/USDT', 'SAMPLE/USDT', 'TEST/USDT'][k]}</text>)}
     </Frame>
   );
 }

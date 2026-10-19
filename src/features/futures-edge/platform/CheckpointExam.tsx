@@ -36,23 +36,23 @@ export function CheckpointExam({ id }: { id: CheckpointId }) {
     })();
     return () => { alive = false; };
   }, [id]);
-  if (!data) return <div className="fe-loading" role="status">Loading checkpoint…</div>;
-  if ('error' in data) return <div className="fe-error" role="alert">{data.error}</div>;
+  if (!data) return <div className="fel-loading" role="status">Loading checkpoint…</div>;
+  if ('error' in data) return <div className="fel-error" role="alert">{data.error}</div>;
   const { config, questions, fixtures } = data;
   const prog = checkpoints[id];
   return (
-    <main className="fe-page" id="fe-main">
-      <p className="fe-crumbs"><Link to={{ kind: 'home' }}>Course</Link> › Checkpoint</p>
+    <main className="fel-page" id="fel-main">
+      <p className="fel-crumbs"><Link to={{ kind: 'home' }}>Course</Link> › Checkpoint</p>
       <h1>{config.title}</h1>
       <p><RichText text={config.disclaimer} /></p>
-      <ul className="fe-meta-list">
+      <ul className="fel-meta-list">
         <li>{questions.length} questions covering {config.coversLessonIds[0]}–{config.coversLessonIds[config.coversLessonIds.length - 1]}</li>
         <li>Target: {Math.round(config.passThreshold * 100)}%{config.safetyCriticalMustBeCorrect ? ', and every safety-critical item correct' : ''}</li>
         <li>{config.gating ? 'Recommended before moving on' : 'Optional: it does not lock any lesson'} · unlimited retries</li>
         {prog ? <li>Your attempts: {prog.attempts.length}{prog.passed ? ' · passed ✓' : ''} (saved on this device only)</li> : null}
       </ul>
       {!started ? (
-        <button type="button" className="fe-btn fe-btn-primary" onClick={() => setStarted(true)}>Start checkpoint</button>
+        <button type="button" className="fel-btn fel-btn-primary" onClick={() => setStarted(true)}>Start checkpoint</button>
       ) : (
         <>
           <QuizRunner key={attempt} questions={questions} mode="exam" attempt={attempt} passThreshold={config.passThreshold} getFixture={(f) => fixtures.get(f)}
@@ -63,9 +63,9 @@ export function CheckpointExam({ id }: { id: CheckpointId }) {
               recordCheckpoint(id, config.version, toAttempt({ kind: 'checkpoint', checkpointId: id }, config.version, questions, resp, t, t), passed);
             }} />
           {last ? (
-            <div className="fe-row fe-wrap">
-              <button type="button" className="fe-btn fe-btn-primary" onClick={() => { setAttempt((a) => a + 1); setLast(null); }}>Try again</button>
-              <Link className="fe-btn" to={{ kind: 'home' }}>Back to the course</Link>
+            <div className="fel-row fel-wrap">
+              <button type="button" className="fel-btn fel-btn-primary" onClick={() => { setAttempt((a) => a + 1); setLast(null); }}>Try again</button>
+              <Link className="fel-btn" to={{ kind: 'home' }}>Back to the course</Link>
             </div>
           ) : null}
           {last && id === 'CPB' && last.score >= config.passThreshold && last.safetyCriticalAllCorrect ? <CertificatePreview /> : null}
@@ -77,11 +77,11 @@ export function CheckpointExam({ id }: { id: CheckpointId }) {
 
 function CertificatePreview() {
   return (
-    <section className="fe-certificate" aria-label="Learning certificate preview">
-      <p className="fe-small fe-muted">LEARNING CERTIFICATE — PREVIEW</p>
+    <section className="fel-certificate" aria-label="Learning certificate preview">
+      <p className="fel-small fel-muted">LEARNING CERTIFICATE — PREVIEW</p>
       <h2>XORA Futures Edge · Course completed</h2>
       <p>You completed 23 lessons and the final checkpoint of this educational course.</p>
-      <p className="fe-small">This is <strong>not</strong> a professional certification, not financial advice and not permission or proof of readiness to trade. Practice stays simulated; real trading can lose money.</p>
+      <p className="fel-small">This is <strong>not</strong> a professional certification, not financial advice and not permission or proof of readiness to trade. Practice stays simulated; real trading can lose money.</p>
     </section>
   );
 }

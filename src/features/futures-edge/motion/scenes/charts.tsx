@@ -27,16 +27,16 @@ export function CandleFormationScene({ params, p, fixture }: SceneProps) {
         <Candle c={c} x={x} width={48} scale={sc} />
         {parts.map((pt, k) => (
           <g key={k} opacity={phase(p, pt.at, pt.at + 0.15)}>
-            <line x1={300} x2={300} y1={sc.y(pt.y1)} y2={sc.y(pt.y2)} className="fe-svg-bracket" />
-            <text x={312} y={(sc.y(pt.y1) + sc.y(pt.y2)) / 2 + 4} className="fe-svg-label">{pt.label}</text>
+            <line x1={300} x2={300} y1={sc.y(pt.y1)} y2={sc.y(pt.y2)} className="fel-svg-bracket" />
+            <text x={312} y={(sc.y(pt.y1) + sc.y(pt.y2)) / 2 + 4} className="fel-svg-label">{pt.label}</text>
           </g>
         ))}
         <g opacity={phase(p, 0.75, 0.9)}>
-          <line x1={180} x2={180} y1={sc.y(c.h)} y2={sc.y(c.l)} className="fe-svg-bracket" />
-          <text x={170} y={(sc.y(c.h) + sc.y(c.l)) / 2} textAnchor="end" className="fe-svg-label">Range {a.ok ? fmt(a.value.range, 2) : ''}</text>
-          <text x={170} y={(sc.y(c.h) + sc.y(c.l)) / 2 + 18} textAnchor="end" className="fe-svg-small">high − low</text>
+          <line x1={180} x2={180} y1={sc.y(c.h)} y2={sc.y(c.l)} className="fel-svg-bracket" />
+          <text x={170} y={(sc.y(c.h) + sc.y(c.l)) / 2} textAnchor="end" className="fel-svg-label">Range {a.ok ? fmt(a.value.range, 2) : ''}</text>
+          <text x={170} y={(sc.y(c.h) + sc.y(c.l)) / 2 + 18} textAnchor="end" className="fel-svg-small">high − low</text>
         </g>
-        <text x={W / 2 + 120} y={60} className="fe-svg-small">body + upper wick + lower wick = range</text>
+        <text x={W / 2 + 120} y={60} className="fel-svg-small">body + upper wick + lower wick = range</text>
       </Frame>
     );
   }
@@ -50,7 +50,7 @@ export function CandleFormationScene({ params, p, fixture }: SceneProps) {
       return (
         <Frame label={`Sorting ${cs.length} fictional candles into bullish, bearish and doji`}>
           <FictionalBadge />
-          {cols.map((name, k) => <text key={name} x={110 + k * 210} y={40} textAnchor="middle" className="fe-svg-title">{name.toUpperCase()}</text>)}
+          {cols.map((name, k) => <text key={name} x={110 + k * 210} y={40} textAnchor="middle" className="fel-svg-title">{name.toUpperCase()}</text>)}
           {cs.map((c, k) => {
             if (k >= shown) return null;
             const col = place[k] as number;
@@ -68,14 +68,14 @@ export function CandleFormationScene({ params, p, fixture }: SceneProps) {
         <FictionalBadge />
         <PriceAxis scale={sc} />
         {cs.map((c, k) => (k < shown ? <Candle key={k} c={c} x={PLOT.x + ((k + 0.5) * PLOT.w) / cs.length} width={Math.min(44, PLOT.w / cs.length / 2)} scale={sc} label={c.label} highlight={k === shown - 1} /> : null))}
-        {latest ? <text x={PLOT.x} y={20} className="fe-svg-label">{latest.label}: {dirWord(latest)}</text> : null}
+        {latest ? <text x={PLOT.x} y={20} className="fel-svg-label">{latest.label}: {dirWord(latest)}</text> : null}
       </Frame>
     );
   }
   // forming: a 1-minute candle built from fictional ticks
   const ticks = ticksOf(fixture);
   const ps = ticks.map((t) => t.p);
-  if (ps.length < 2) return <Frame label="No fixture data"><text x={20} y={40} className="fe-svg-label">Fixture data missing</text></Frame>;
+  if (ps.length < 2) return <Frame label="No fixture data"><text x={20} y={40} className="fel-svg-label">Fixture data missing</text></Frame>;
   const rg = nums(params['range']);
   const q = lerp(rg[0] ?? 0, rg[1] ?? 1, p);
   const vis = 1 + q * (ps.length - 1);
@@ -93,14 +93,14 @@ export function CandleFormationScene({ params, p, fixture }: SceneProps) {
     <Frame label={`Forming 1-minute candle: open ${fmt(o, 2)}, high so far ${fmt(h, 2)}, low so far ${fmt(l, 2)}, ${done ? 'close' : 'last'} ${fmt(last, 2)}`}>
       <FictionalBadge />
       <PriceAxis scale={sc} box={box} />
-      <path d={pathD(ps, sc, vis)} className="fe-svg-price" />
-      <text x={box.x} y={20} className="fe-svg-small">Last traded price, second by second (fictional) · {done ? '60' : secs}s</text>
-      <HLine y={sc.y(o)} x1={box.x} x2={cx + 60} label={`Open ${fmt(o, 2)}`} cls="fe-svg-level-faint" side="left" />
+      <path d={pathD(ps, sc, vis)} className="fel-svg-price" />
+      <text x={box.x} y={20} className="fel-svg-small">Last traded price, second by second (fictional) · {done ? '60' : secs}s</text>
+      <HLine y={sc.y(o)} x1={box.x} x2={cx + 60} label={`Open ${fmt(o, 2)}`} cls="fel-svg-level-faint" side="left" />
       <Candle c={{ o, h, l, c: last }} x={cx} width={44} scale={sc} />
-      {sc.y(o) - sc.y(h) > 12 ? <text x={cx + 30} y={sc.y(h) + 4} className="fe-svg-small">High {fmt(h, 2)}</text> : null}
-      {sc.y(l) - sc.y(o) > 12 ? <text x={cx + 30} y={sc.y(l) + 4} className="fe-svg-small">Low {fmt(l, 2)}</text> : null}
-      <text x={cx - 30} y={sc.y(last) + 4} textAnchor="end" className="fe-svg-label">{done ? 'Close' : 'Last'} {fmt(last, 2)}</text>
-      {done ? <text x={cx} y={340} textAnchor="middle" className="fe-svg-label">{dirWord({ o, h, l, c: last })}</text> : <text x={cx} y={340} textAnchor="middle" className="fe-svg-small">Candle still forming…</text>}
+      {sc.y(o) - sc.y(h) > 12 ? <text x={cx + 30} y={sc.y(h) + 4} className="fel-svg-small">High {fmt(h, 2)}</text> : null}
+      {sc.y(l) - sc.y(o) > 12 ? <text x={cx + 30} y={sc.y(l) + 4} className="fel-svg-small">Low {fmt(l, 2)}</text> : null}
+      <text x={cx - 30} y={sc.y(last) + 4} textAnchor="end" className="fel-svg-label">{done ? 'Close' : 'Last'} {fmt(last, 2)}</text>
+      {done ? <text x={cx} y={340} textAnchor="middle" className="fel-svg-label">{dirWord({ o, h, l, c: last })}</text> : <text x={cx} y={340} textAnchor="middle" className="fel-svg-small">Candle still forming…</text>}
     </Frame>
   );
 }
@@ -127,13 +127,13 @@ export function TimeframeAggregationScene({ params, p, fixture }: SceneProps) {
         const w = Math.min(g, raw.length - k * g) * slot;
         return (
           <g key={`b${k}`}>
-            <rect x={x0 + 2} y={PLOT.y} width={w - 4} height={PLOT.h} rx={6} className="fe-svg-group" opacity={tBrackets} />
+            <rect x={x0 + 2} y={PLOT.y} width={w - 4} height={PLOT.h} rx={6} className="fel-svg-group" opacity={tBrackets} />
             <g opacity={tMerge}><Candle c={b} x={x0 + w / 2} width={Math.min(60, w * 0.5)} scale={sc} highlight /></g>
-            <text x={x0 + w / 2} y={PLOT.y + PLOT.h + 20} textAnchor="middle" className="fe-svg-small" opacity={tMerge}>{tf} #{k + 1}{b.partial ? ' (unfinished)' : ''}</text>
+            <text x={x0 + w / 2} y={PLOT.y + PLOT.h + 20} textAnchor="middle" className="fel-svg-small" opacity={tMerge}>{tf} #{k + 1}{b.partial ? ' (unfinished)' : ''}</text>
           </g>
         );
       })}
-      <text x={PLOT.x} y={18} className="fe-svg-small">{tMerge > 0.5 ? `Open = first open · High = highest high · Low = lowest low · Close = last close` : `${raw.length} × 1m candles, same raw data`}</text>
+      <text x={PLOT.x} y={18} className="fel-svg-small">{tMerge > 0.5 ? `Open = first open · High = highest high · Low = lowest low · Close = last close` : `${raw.length} × 1m candles, same raw data`}</text>
     </Frame>
   );
 }
@@ -163,14 +163,14 @@ export function MarketStructureScene({ params, p }: SceneProps) {
     <Frame label={`Fictional swings labelled ${labels.slice(2, shown).join(', ')}. ${verdict}`}>
       <FictionalBadge />
       <PriceAxis scale={sc} />
-      <path d={pathD(pts, sc, vis)} className="fe-svg-price" />
+      <path d={pathD(pts, sc, vis)} className="fel-svg-price" />
       {pts.slice(0, shown).map((v, i) => (labels[i] ? (
         <g key={i}>
-          <circle cx={sc.x(i)} cy={sc.y(v)} r={5} className="fe-svg-dot-mark" />
-          <text x={sc.x(i)} y={sc.y(v) + (i > 0 && v > (pts[i - 1] as number) ? -12 : 20)} textAnchor="middle" className="fe-svg-label">{labels[i]}</text>
+          <circle cx={sc.x(i)} cy={sc.y(v)} r={5} className="fel-svg-dot-mark" />
+          <text x={sc.x(i)} y={sc.y(v) + (i > 0 && v > (pts[i - 1] as number) ? -12 : 20)} textAnchor="middle" className="fel-svg-label">{labels[i]}</text>
         </g>
       ) : null))}
-      <text x={PLOT.x} y={20} className="fe-svg-label">{verdict}</text>
+      <text x={PLOT.x} y={20} className="fel-svg-label">{verdict}</text>
     </Frame>
   );
 }
@@ -197,11 +197,11 @@ export function SupportResistanceScene({ params, p }: SceneProps) {
     <Frame label={`Fictional ${kind} zone ${fmt(lo, 2)} to ${fmt(hi, 2)}, visited ${touches} times so far`}>
       <FictionalBadge />
       <PriceAxis scale={sc} />
-      <rect x={PLOT.x} y={sc.y(hi)} width={PLOT.w} height={Math.max(4, sc.y(lo) - sc.y(hi))} className={kind === 'support' ? 'fe-svg-zone-support' : 'fe-svg-zone-resistance'} />
-      <text x={PLOT.x + 6} y={sc.y(hi) - 6} className="fe-svg-label">{kind === 'support' ? 'Support ZONE' : 'Resistance ZONE'} {fmt(lo, 2)}–{fmt(hi, 2)}</text>
-      <path d={pathD(pts, sc, vis)} className="fe-svg-price" />
-      <text x={PLOT.x + PLOT.w} y={20} textAnchor="end" className="fe-svg-label">Visits: {touches}</text>
-      <text x={PLOT.x} y={20} className="fe-svg-small">A zone is an area, not one exact price.</text>
+      <rect x={PLOT.x} y={sc.y(hi)} width={PLOT.w} height={Math.max(4, sc.y(lo) - sc.y(hi))} className={kind === 'support' ? 'fel-svg-zone-support' : 'fel-svg-zone-resistance'} />
+      <text x={PLOT.x + 6} y={sc.y(hi) - 6} className="fel-svg-label">{kind === 'support' ? 'Support ZONE' : 'Resistance ZONE'} {fmt(lo, 2)}–{fmt(hi, 2)}</text>
+      <path d={pathD(pts, sc, vis)} className="fel-svg-price" />
+      <text x={PLOT.x + PLOT.w} y={20} textAnchor="end" className="fel-svg-label">Visits: {touches}</text>
+      <text x={PLOT.x} y={20} className="fel-svg-small">A zone is an area, not one exact price.</text>
     </Frame>
   );
 }
@@ -219,15 +219,15 @@ export function BranchingScene({ params, p, fixture }: SceneProps) {
   const tFut = phase(p, 0.35, 1);
   const pastEnd = past.length - 1;
   const xs = (i: number) => sc.x(i);
-  const cls = ['fe-svg-branch-a', 'fe-svg-branch-b', 'fe-svg-branch-c', 'fe-svg-branch-d'];
+  const cls = ['fel-svg-branch-a', 'fel-svg-branch-b', 'fel-svg-branch-c', 'fel-svg-branch-d'];
   return (
     <Frame label={`Same fictional past, ${branches.length} possible futures: ${branches.map((b) => b.label).join('; ')}`}>
       <FictionalBadge text="EDUCATIONAL SIMULATION" />
       <PriceAxis scale={sc} />
       {data.level ? <HLine y={sc.y(data.level.price)} label={data.level.label} /> : null}
-      <path d={pathD(past, sc, 1 + tPast * (past.length - 1))} className="fe-svg-price" />
-      <line x1={xs(pastEnd)} x2={xs(pastEnd)} y1={PLOT.y} y2={PLOT.y + PLOT.h} className="fe-svg-now" opacity={tPast >= 1 ? 1 : 0} />
-      <text x={xs(pastEnd) + 4} y={PLOT.y + 12} className="fe-svg-small" opacity={tPast >= 1 ? 1 : 0}>NOW — the future is unknown</text>
+      <path d={pathD(past, sc, 1 + tPast * (past.length - 1))} className="fel-svg-price" />
+      <line x1={xs(pastEnd)} x2={xs(pastEnd)} y1={PLOT.y} y2={PLOT.y + PLOT.h} className="fel-svg-now" opacity={tPast >= 1 ? 1 : 0} />
+      <text x={xs(pastEnd) + 4} y={PLOT.y + 12} className="fel-svg-small" opacity={tPast >= 1 ? 1 : 0}>NOW — the future is unknown</text>
       {tPast >= 1 ? branches.map((b, k) => {
         const pts = [past[pastEnd] as number, ...b.points];
         const d = pts.map((v, i) => `${i === 0 ? 'M' : 'L'}${xs(pastEnd + i).toFixed(1)},${sc.y(v).toFixed(1)}`);
@@ -236,7 +236,7 @@ export function BranchingScene({ params, p, fixture }: SceneProps) {
         return (
           <g key={b.id}>
             <path d={d.slice(0, Math.max(1, Math.floor(n))).join(' ')} className={cls[k % cls.length]} />
-            {tFut >= 1 ? <text x={xs(pastEnd + pts.length - 1) - 4} y={sc.y(end) - 8} textAnchor="end" className="fe-svg-label">{b.label}</text> : null}
+            {tFut >= 1 ? <text x={xs(pastEnd + pts.length - 1) - 4} y={sc.y(end) - 8} textAnchor="end" className="fel-svg-label">{b.label}</text> : null}
           </g>
         );
       }) : null}
@@ -265,13 +265,13 @@ export function VolumeBarsScene({ params, p, fixture }: SceneProps) {
       {cs.map((c, k) => (k < shown ? (
         <g key={k}>
           <Candle c={c} x={top.x + (k + 0.5) * slot} width={Math.max(4, slot * 0.55)} scale={sc} highlight={highlight.includes(k)} />
-          <rect x={bot.x + k * slot + slot * 0.2} y={bot.y + bot.h - ((c.v ?? 0) / vmax) * bot.h} width={slot * 0.6} height={((c.v ?? 0) / vmax) * bot.h} className={highlight.includes(k) ? 'fe-svg-vol-hl' : c.c >= c.o ? 'fe-svg-vol-up' : 'fe-svg-vol-down'} />
-          {labels[k] ? <text x={top.x + (k + 0.5) * slot} y={bot.y + bot.h + 14} textAnchor="middle" className="fe-svg-small">{labels[k]}</text> : null}
+          <rect x={bot.x + k * slot + slot * 0.2} y={bot.y + bot.h - ((c.v ?? 0) / vmax) * bot.h} width={slot * 0.6} height={((c.v ?? 0) / vmax) * bot.h} className={highlight.includes(k) ? 'fel-svg-vol-hl' : c.c >= c.o ? 'fel-svg-vol-up' : 'fel-svg-vol-down'} />
+          {labels[k] ? <text x={top.x + (k + 0.5) * slot} y={bot.y + bot.h + 14} textAnchor="middle" className="fel-svg-small">{labels[k]}</text> : null}
         </g>
       ) : null))}
-      <line x1={bot.x} x2={bot.x + bot.w} y1={bot.y + bot.h - (avg / vmax) * bot.h} y2={bot.y + bot.h - (avg / vmax) * bot.h} className="fe-svg-level-faint" />
-      <text x={bot.x - 6} y={bot.y + 10} textAnchor="end" className="fe-svg-small">Vol</text>
-      <text x={bot.x + bot.w} y={bot.y - 4} textAnchor="end" className="fe-svg-small">dashed line = average volume</text>
+      <line x1={bot.x} x2={bot.x + bot.w} y1={bot.y + bot.h - (avg / vmax) * bot.h} y2={bot.y + bot.h - (avg / vmax) * bot.h} className="fel-svg-level-faint" />
+      <text x={bot.x - 6} y={bot.y + 10} textAnchor="end" className="fel-svg-small">Vol</text>
+      <text x={bot.x + bot.w} y={bot.y - 4} textAnchor="end" className="fel-svg-small">dashed line = average volume</text>
     </Frame>
   );
 }
@@ -291,13 +291,13 @@ export function RangeOverlayScene({ params, p, fixture }: SceneProps) {
     <Frame label={r.ok ? `Lookback of ${win} candles ending at candle ${end + 1}: high ${fmt(r.value.max, 2)}, low ${fmt(r.value.min, 2)}, range ${fmt(r.value.rangePercent, 2)}%` : 'Range not available'}>
       <FictionalBadge />
       <PriceAxis scale={sc} />
-      {r.ok ? <rect x={PLOT.x + r.value.startIndex * slot} y={PLOT.y} width={(r.value.endIndex - r.value.startIndex + 1) * slot} height={PLOT.h} className="fe-svg-group" /> : null}
+      {r.ok ? <rect x={PLOT.x + r.value.startIndex * slot} y={PLOT.y} width={(r.value.endIndex - r.value.startIndex + 1) * slot} height={PLOT.h} className="fel-svg-group" /> : null}
       {cs.map((c, k) => <Candle key={k} c={c} x={PLOT.x + (k + 0.5) * slot} width={Math.max(3, slot * 0.55)} scale={sc} />)}
       {r.ok ? (
         <g>
-          <HLine y={sc.y(r.value.max)} label={`Previous high ${fmt(r.value.max, 2)}`} cls="fe-svg-level-target" side="left" />
-          <HLine y={sc.y(r.value.min)} label={`Previous low ${fmt(r.value.min, 2)}`} cls="fe-svg-level-stop" side="left" />
-          <text x={PLOT.x + PLOT.w} y={20} textAnchor="end" className="fe-svg-label">Range {fmt(r.value.range, 2)} ({fmt(r.value.rangePercent, 2)}%) over last {win}</text>
+          <HLine y={sc.y(r.value.max)} label={`Previous high ${fmt(r.value.max, 2)}`} cls="fel-svg-level-target" side="left" />
+          <HLine y={sc.y(r.value.min)} label={`Previous low ${fmt(r.value.min, 2)}`} cls="fel-svg-level-stop" side="left" />
+          <text x={PLOT.x + PLOT.w} y={20} textAnchor="end" className="fel-svg-label">Range {fmt(r.value.range, 2)} ({fmt(r.value.rangePercent, 2)}%) over last {win}</text>
         </g>
       ) : null}
     </Frame>

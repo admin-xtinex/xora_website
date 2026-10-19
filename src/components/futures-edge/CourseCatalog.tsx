@@ -53,6 +53,11 @@ export function CourseCatalog() {
           );
         })}
 
+        {import.meta.env.VITE_FUTURES_EDGE_ENABLED === "true" ? (
+          <p className="fe-note">
+            Want to practise? <a href="/learn/futures-edge">Open the interactive lessons</a>: slides, notes, hands-on exercises and quizzes for all 23 lessons.
+          </p>
+        ) : null}
         <p className="fe-note">
           Education and demo practice only. No live trading, no real money. All prices in the lessons are fictional.
         </p>

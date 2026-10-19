@@ -15,5 +15,7 @@ export default defineConfig({
   test: {
     include: ["src/**/*.test.{ts,tsx}"],
     environment: "node",
+    // The content gate discovers lessons with import.meta.glob; a cached transform would hide newly added lessons.
+    fsModuleCache: false,
   },
 });

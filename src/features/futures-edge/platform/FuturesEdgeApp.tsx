@@ -1,4 +1,4 @@
-/** Course shell: header, safety banner, routes, glossary drawer, progress provider. Scoped under .fe-root. */
+/** Course shell: header, safety banner, routes, glossary drawer, progress provider. Scoped under .fel-root. */
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { BrandLockup } from '@/components/Header';
 import { COURSE_GLOSSARY } from '../content';
@@ -26,24 +26,25 @@ export function FuturesEdgeApp() {
   return (
     <GlossaryContext.Provider value={glossary}>
       <ProgressProvider>
-        <div className="fe-root">
-          <a className="fe-skip" href="#fe-main">Skip to content</a>
-          <header className="fe-header">
-            <a href="/" className="fe-brand" aria-label="XORA home"><BrandLockup /></a>
-            <nav aria-label="Course" className="fe-header-nav">
+        <div className="fel-root">
+          <a className="fel-skip" href="#fel-main">Skip to content</a>
+          <header className="fel-header">
+            <a href="/" className="fel-brand" aria-label="XORA home"><BrandLockup /></a>
+            <nav aria-label="Course" className="fel-header-nav">
               <Link to={{ kind: 'home' }}>Course</Link>
               <Link to={{ kind: 'glossary' }}>Glossary</Link>
+              <a href="/course">Video lessons</a>
             </nav>
           </header>
-          <p className="fe-banner" role="note">Education only · all market data is fictional · no real orders, no API keys</p>
+          <p className="fel-banner" role="note">Education only · all market data is fictional · no real orders, no API keys</p>
           {route.kind === 'home' ? <CourseHome /> : null}
           {route.kind === 'lesson' ? <LessonPlayer id={route.id} /> : null}
           {route.kind === 'checkpoint' ? <CheckpointExam id={route.id} /> : null}
           {route.kind === 'glossary' ? <GlossaryPage /> : null}
           {route.kind === 'not-found' ? (
-            <main className="fe-page" id="fe-main"><h1>Page not found</h1><p><Link to={{ kind: 'home' }}>Go to the course home</Link></p></main>
+            <main className="fel-page" id="fel-main"><h1>Page not found</h1><p><Link to={{ kind: 'home' }}>Go to the course home</Link></p></main>
           ) : null}
-          <footer className="fe-footer">
+          <footer className="fel-footer">
             <p>XORA Futures Edge by XTINEX. Educational content with fictional data. Not financial advice. No profit is promised or implied; trading crypto futures can lose money.</p>
           </footer>
           <GlossaryDrawer termId={term} onClose={close} />

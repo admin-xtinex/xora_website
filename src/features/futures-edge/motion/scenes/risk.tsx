@@ -27,8 +27,8 @@ export function PositionSizingScene({ params, p }: SceneProps) {
     return (
       <Frame label={steps.join(' ')}>
         <FictionalBadge />
-        <text x={40} y={44} className="fe-svg-title">{side.toUpperCase()} size from a risk budget (simple model)</text>
-        {steps.slice(0, shown).map((s, k) => <text key={k} x={40} y={90 + k * 38} className={k === steps.length - 1 ? 'fe-svg-small' : 'fe-svg-label'}>{s}</text>)}
+        <text x={40} y={44} className="fel-svg-title">{side.toUpperCase()} size from a risk budget (simple model)</text>
+        {steps.slice(0, shown).map((s, k) => <text key={k} x={40} y={90 + k * 38} className={k === steps.length - 1 ? 'fel-svg-small' : 'fel-svg-label'}>{s}</text>)}
       </Frame>
     );
   }
@@ -47,7 +47,7 @@ export function PositionSizingScene({ params, p }: SceneProps) {
             value={r.ok ? `notional ${fmt(r.value.notional, 2)} USDT` : r.error.message} tone={r.ok ? 'neutral' : 'down'} />
         </g>
       ))}
-      <text x={40} y={340} className="fe-svg-small">Same money at risk. A wider stop means a smaller position.</text>
+      <text x={40} y={340} className="fel-svg-small">Same money at risk. A wider stop means a smaller position.</text>
     </Frame>
   );
 }
@@ -67,21 +67,21 @@ export function TradeLifecycleScene({ params, p }: SceneProps) {
       <FictionalBadge text="EDUCATIONAL SIMULATION" />
       {steps.map((s, k) => (
         <g key={k}>
-          <circle cx={36} cy={44 + k * 36} r={11} className={k < active ? 'fe-svg-step-done' : k === active ? 'fe-svg-step-on' : 'fe-svg-step'} />
-          <text x={36} y={48 + k * 36} textAnchor="middle" className="fe-svg-step-num">{k + 1}</text>
-          <text x={56} y={49 + k * 36} className={k === active ? 'fe-svg-label' : 'fe-svg-small'}>{s.length > 30 ? `${s.slice(0, 29)}…` : s}</text>
+          <circle cx={36} cy={44 + k * 36} r={11} className={k < active ? 'fel-svg-step-done' : k === active ? 'fel-svg-step-on' : 'fel-svg-step'} />
+          <text x={36} y={48 + k * 36} textAnchor="middle" className="fel-svg-step-num">{k + 1}</text>
+          <text x={56} y={49 + k * 36} className={k === active ? 'fel-svg-label' : 'fel-svg-small'}>{s.length > 30 ? `${s.slice(0, 29)}…` : s}</text>
         </g>
       ))}
       {path.length > 1 ? (
         <g>
-          <path d={pathD(path, sc, vis)} className="fe-svg-price" />
-          <text x={box.x} y={box.y - 10} className="fe-svg-small">Fictional DEMO/USDT · now {fmt(priceAt(path, vis), 2)}</text>
+          <path d={pathD(path, sc, vis)} className="fel-svg-price" />
+          <text x={box.x} y={box.y - 10} className="fel-svg-small">Fictional DEMO/USDT · now {fmt(priceAt(path, vis), 2)}</text>
         </g>
       ) : null}
       {decision && (variant === 'decision-gate' ? p > 0.5 : p > 0.7) ? (
         <Card x={300} y={284} w={320} h={60} title={`DEMO decision: ${decision}`} lines={[outcome || ' ']} tone={decision === 'NO_TRADE' || decision === 'WAIT' ? 'neutral' : 'warn'} />
       ) : null}
-      {variant === 'journal' ? <text x={W - 20} y={350} textAnchor="end" className="fe-svg-small">Judge the process, not only the result.</text> : null}
+      {variant === 'journal' ? <text x={W - 20} y={350} textAnchor="end" className="fel-svg-small">Judge the process, not only the result.</text> : null}
     </Frame>
   );
 }

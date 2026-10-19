@@ -39,25 +39,25 @@ export function QuizRunner({ questions, mode, attempt, getFixture, onFinish, pas
     const passed = result.score >= passThreshold && result.safetyCriticalAllCorrect;
     const missed = result.perQuestion.filter((x) => !x.correct);
     return (
-      <section className="fe-quiz-result" aria-live="polite">
+      <section className="fel-quiz-result" aria-live="polite">
         <h3>{mode === 'exam' ? 'Checkpoint result' : 'Quiz result'}</h3>
-        <p className="fe-score">{result.correctCount} of {result.total} correct ({Math.round(result.score * 100)}%)</p>
+        <p className="fel-score">{result.correctCount} of {result.total} correct ({Math.round(result.score * 100)}%)</p>
         <p>{passed ? 'You reached the target score and answered every safety-critical item correctly.' : result.score >= passThreshold ? 'Good score, but at least one safety-critical item was missed. Review it below and try again.' : `The target is ${Math.round(passThreshold * 100)}%. Review the items below and try again: retries are unlimited.`}</p>
         {missed.length ? (
-          <div className="fe-remediation">
+          <div className="fel-remediation">
             <h4>Review these</h4>
             <ul>
               {missed.map(({ question }) => (
                 <li key={question.id}>
-                  <p>{question.safetyCritical ? <span className="fe-chip fe-chip-warn">Safety-critical</span> : null} <RichText text={question.prompt} /></p>
-                  <p className="fe-small"><strong>Correct idea: </strong><RichText text={question.rationale} /></p>
-                  {question.remediationRef ? <Link className="fe-link" to={{ kind: 'lesson', id: question.remediationRef.lessonId }}>Revisit {question.remediationRef.lessonId}</Link> : null}
+                  <p>{question.safetyCritical ? <span className="fel-chip fel-chip-warn">Safety-critical</span> : null} <RichText text={question.prompt} /></p>
+                  <p className="fel-small"><strong>Correct idea: </strong><RichText text={question.rationale} /></p>
+                  {question.remediationRef ? <Link className="fel-link" to={{ kind: 'lesson', id: question.remediationRef.lessonId }}>Revisit {question.remediationRef.lessonId}</Link> : null}
                 </li>
               ))}
             </ul>
           </div>
         ) : null}
-        <p className="fe-small fe-muted">Scores measure understanding in this course only. They are not a qualification and never unlock real trading.</p>
+        <p className="fel-small fel-muted">Scores measure understanding in this course only. They are not a qualification and never unlock real trading.</p>
       </section>
     );
   }
@@ -74,13 +74,13 @@ export function QuizRunner({ questions, mode, attempt, getFixture, onFinish, pas
   const multi = q.type === 'multi';
 
   return (
-    <section className="fe-quiz" aria-label={mode === 'exam' ? 'Checkpoint questions' : 'Quiz'}>
-      <p className="fe-quiz-count">Question {idx + 1} of {questions.length}{q.safetyCritical ? <span className="fe-chip fe-chip-warn">Safety-critical</span> : null}</p>
-      <fieldset className="fe-question">
+    <section className="fel-quiz" aria-label={mode === 'exam' ? 'Checkpoint questions' : 'Quiz'}>
+      <p className="fel-quiz-count">Question {idx + 1} of {questions.length}{q.safetyCritical ? <span className="fel-chip fel-chip-warn">Safety-critical</span> : null}</p>
+      <fieldset className="fel-question">
         <legend><RichText text={q.prompt} /></legend>
         {q.fixtureId ? <FixtureFigure fixture={getFixture(q.fixtureId)} caption="Fictional chart for this question." alt="Fictional chart for this question" /> : null}
         {q.type === 'numeric' ? (
-          <label className="fe-field">
+          <label className="fel-field">
             <span>Answer {q.answer.kind === 'numeric' ? `(${q.answer.unit}${q.answer.rounding ? `, ${q.answer.rounding.decimals} dp` : ''})` : ''}</span>
             <input type="text" inputMode="decimal" value={texts[q.id] ?? ''}
               onChange={(e) => { const v = e.target.value; setTexts((t) => ({ ...t, [q.id]: v })); const n = parseNum(v); setR(n === null ? {} : { numeric: n }); }} />
@@ -88,13 +88,13 @@ export function QuizRunner({ questions, mode, attempt, getFixture, onFinish, pas
         ) : q.type === 'ordering' ? (
           <OrderingInput ids={r?.choiceIds ?? ids} labels={byId} onChange={(o) => setR({ choiceIds: o })} />
         ) : (
-          <div className="fe-choices">
+          <div className="fel-choices">
             {ids.map((cid) => {
               const c = byId.get(cid);
               if (!c) return null;
               const on = r?.choiceIds?.includes(cid) ?? false;
               return (
-                <label key={cid} className={`fe-choice ${on ? 'is-on' : ''}`}>
+                <label key={cid} className={`fel-choice ${on ? 'is-on' : ''}`}>
                   <input type={multi ? 'checkbox' : 'radio'} name={`${q.id}-${attempt}`} checked={on}
                     onChange={() => setR({ choiceIds: multi ? (on ? (r?.choiceIds ?? []).filter((x) => x !== cid) : [...(r?.choiceIds ?? []), cid]) : [cid] })} />
                   <span>{c.decision ? <strong>DEMO {c.decision.replace('_', ' ')}: </strong> : null}<RichText text={c.text} /></span>
@@ -105,16 +105,16 @@ export function QuizRunner({ questions, mode, attempt, getFixture, onFinish, pas
         )}
       </fieldset>
       {mode === 'lesson' && isChecked ? (
-        <div className={`fe-feedback ${correct ? 'fe-feedback-correct' : 'fe-feedback-incorrect'}`} role="status">
+        <div className={`fel-feedback ${correct ? 'fel-feedback-correct' : 'fel-feedback-incorrect'}`} role="status">
           <p><strong>{correct ? 'Correct. ' : 'Not quite. '}</strong><RichText text={feedbackFor(q, r)} /></p>
-          {!correct ? <p className="fe-small">Why the right answer is right: <RichText text={q.rationale} /></p> : null}
+          {!correct ? <p className="fel-small">Why the right answer is right: <RichText text={q.rationale} /></p> : null}
         </div>
       ) : null}
-      <div className="fe-row">
-        <button type="button" className="fe-btn" disabled={idx === 0} onClick={() => setIdx(idx - 1)}>Previous</button>
-        {mode === 'lesson' && !isChecked ? <button type="button" className="fe-btn fe-btn-primary" disabled={!answered} onClick={() => setChecked((c) => ({ ...c, [q.id]: true }))}>Check answer</button> : null}
-        {(mode === 'exam' || isChecked) && !last ? <button type="button" className="fe-btn fe-btn-primary" disabled={!answered} onClick={() => setIdx(idx + 1)}>Next question</button> : null}
-        {(mode === 'exam' || isChecked) && last ? <button type="button" className="fe-btn fe-btn-primary" disabled={!answered || questions.some((x) => { const y = responses[x.id]; return !y || ((y.choiceIds?.length ?? 0) === 0 && y.numeric === undefined); })} onClick={finish}>See my result</button> : null}
+      <div className="fel-row">
+        <button type="button" className="fel-btn" disabled={idx === 0} onClick={() => setIdx(idx - 1)}>Previous</button>
+        {mode === 'lesson' && !isChecked ? <button type="button" className="fel-btn fel-btn-primary" disabled={!answered} onClick={() => setChecked((c) => ({ ...c, [q.id]: true }))}>Check answer</button> : null}
+        {(mode === 'exam' || isChecked) && !last ? <button type="button" className="fel-btn fel-btn-primary" disabled={!answered} onClick={() => setIdx(idx + 1)}>Next question</button> : null}
+        {(mode === 'exam' || isChecked) && last ? <button type="button" className="fel-btn fel-btn-primary" disabled={!answered || questions.some((x) => { const y = responses[x.id]; return !y || ((y.choiceIds?.length ?? 0) === 0 && y.numeric === undefined); })} onClick={finish}>See my result</button> : null}
       </div>
     </section>
   );
@@ -123,13 +123,13 @@ export function QuizRunner({ questions, mode, attempt, getFixture, onFinish, pas
 function OrderingInput({ ids, labels, onChange }: { ids: string[]; labels: Map<string, { text: string }>; onChange: (o: string[]) => void }) {
   const move = (i: number, d: -1 | 1) => { const n = [...ids]; const j = i + d; if (j < 0 || j >= n.length) return; [n[i], n[j]] = [n[j] as string, n[i] as string]; onChange(n); };
   return (
-    <ol className="fe-sequence">
+    <ol className="fel-sequence">
       {ids.map((id, i) => (
         <li key={id}>
-          <span className="fe-seq-text"><RichText text={labels.get(id)?.text ?? id} /></span>
-          <span className="fe-seq-btns">
-            <button type="button" className="fe-btn fe-btn-icon" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Move up">↑</button>
-            <button type="button" className="fe-btn fe-btn-icon" onClick={() => move(i, 1)} disabled={i === ids.length - 1} aria-label="Move down">↓</button>
+          <span className="fel-seq-text"><RichText text={labels.get(id)?.text ?? id} /></span>
+          <span className="fel-seq-btns">
+            <button type="button" className="fel-btn fel-btn-icon" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Move up">↑</button>
+            <button type="button" className="fel-btn fel-btn-icon" onClick={() => move(i, 1)} disabled={i === ids.length - 1} aria-label="Move down">↓</button>
           </span>
         </li>
       ))}

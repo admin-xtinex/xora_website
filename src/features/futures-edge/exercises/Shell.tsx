@@ -16,31 +16,31 @@ export function ExerciseShell({ exercise, status, feedback, onReset, children, d
 }) {
   const [hints, setHints] = useState<Record<string, boolean>>({});
   return (
-    <section className="fe-exercise" aria-labelledby={`${exercise.id}-title`}>
-      <header className="fe-exercise-head">
+    <section className="fel-exercise" aria-labelledby={`${exercise.id}-title`}>
+      <header className="fel-exercise-head">
         <h3 id={`${exercise.id}-title`}><RichText text={exercise.title} /></h3>
-        <p className="fe-badge-fictional">{exercise.fictionalDataLabel}</p>
+        <p className="fel-badge-fictional">{exercise.fictionalDataLabel}</p>
       </header>
       <p><RichText text={exercise.instructions} /></p>
-      <ol className="fe-exercise-steps">
+      <ol className="fel-exercise-steps">
         {exercise.steps.map((s) => (
           <li key={s.id}>
             <RichText text={s.prompt} />{' '}
-            <button type="button" className="fe-link" aria-expanded={!!hints[s.id]} onClick={() => setHints((h) => ({ ...h, [s.id]: !h[s.id] }))}>
+            <button type="button" className="fel-link" aria-expanded={!!hints[s.id]} onClick={() => setHints((h) => ({ ...h, [s.id]: !h[s.id] }))}>
               {hints[s.id] ? 'Hide hint' : 'Hint'}
             </button>
-            {hints[s.id] ? <p className="fe-hint"><RichText text={s.hint} /></p> : null}
+            {hints[s.id] ? <p className="fel-hint"><RichText text={s.hint} /></p> : null}
           </li>
         ))}
       </ol>
-      <div className="fe-exercise-body">{children}</div>
-      <div className={`fe-feedback fe-feedback-${status}`} role="status" aria-live="polite">
+      <div className="fel-exercise-body">{children}</div>
+      <div className={`fel-feedback fel-feedback-${status}`} role="status" aria-live="polite">
         {feedback}
-        {done ? <p className="fe-explanation"><strong>Why: </strong><RichText text={exercise.explanation} /></p> : null}
+        {done ? <p className="fel-explanation"><strong>Why: </strong><RichText text={exercise.explanation} /></p> : null}
       </div>
-      <div className="fe-row">
-        <button type="button" className="fe-btn" onClick={() => { setHints({}); onReset(); }}>Reset</button>
-        {done ? <span className="fe-done-chip">Practice complete ✓</span> : null}
+      <div className="fel-row">
+        <button type="button" className="fel-btn" onClick={() => { setHints({}); onReset(); }}>Reset</button>
+        {done ? <span className="fel-done-chip">Practice complete ✓</span> : null}
       </div>
     </section>
   );
@@ -49,11 +49,11 @@ export function ExerciseShell({ exercise, status, feedback, onReset, children, d
 /** Numeric text input that accepts "1,234.5" and reports a number or null. */
 export function NumberField({ id, label, value, onChange, unit, step }: { id: string; label: string; value: string; onChange: (v: string) => void; unit?: string | undefined; step?: number | undefined }) {
   return (
-    <label className="fe-field" htmlFor={id}>
+    <label className="fel-field" htmlFor={id}>
       <span>{label}</span>
-      <span className="fe-field-row">
+      <span className="fel-field-row">
         <input id={id} type="text" inputMode="decimal" autoComplete="off" value={value} onChange={(e) => onChange(e.target.value)} {...(step ? { 'data-step': step } : {})} />
-        {unit ? <span className="fe-unit">{unit}</span> : null}
+        {unit ? <span className="fel-unit">{unit}</span> : null}
       </span>
     </label>
   );
@@ -72,9 +72,9 @@ export function SliderField({ id, label, min, max, step, value, onChange, unit }
   const [last, setLast] = useState(value);
   if (last !== value) { setLast(value); setText(String(value)); }
   return (
-    <div className="fe-slider">
+    <div className="fel-slider">
       <label htmlFor={`${id}-r`}>{label}{unit ? ` (${unit})` : ''}</label>
-      <div className="fe-field-row">
+      <div className="fel-field-row">
         <input id={`${id}-r`} type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} />
         <input aria-label={`${label} value`} type="text" inputMode="decimal" value={text}
           onChange={(e) => { setText(e.target.value); const n = parseNum(e.target.value); if (n !== null && n >= min && n <= max) onChange(n); }} />

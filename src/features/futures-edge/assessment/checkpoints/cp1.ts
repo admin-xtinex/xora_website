@@ -1,0 +1,111 @@
+/** CP1 · after T04 · 8 items · non-gating foundations review. All prices fictional. */
+import type { CheckpointConfig } from '@futures-edge/contracts';
+
+const cp1: CheckpointConfig = {
+  id: 'CP1',
+  title: 'Checkpoint 1 · Crypto foundations (optional)',
+  afterLessonId: 'T04',
+  coversLessonIds: ['T01', 'T02', 'T03', 'T04'],
+  questionIds: [],
+  passThreshold: 0.8,
+  safetyCriticalMustBeCorrect: true,
+  gating: false,
+  questionCount: { min: 8, max: 8 },
+  version: '1.0.0',
+  disclaimer: 'A short, optional review of T01–T04. It locks nothing. All prices are fictional. A score here is not financial advice and not permission to trade.',
+  items: [
+    {
+      id: 'CP1-Q01', type: 'single', cognitiveTag: 'recall', linkedLessonId: 'T01', remediationRef: { lessonId: 'T01' }, shuffleChoices: true,
+      prompt: 'Which statement about a cryptocurrency balance is correct?',
+      choices: [
+        { id: 'a', text: 'It is a record on a shared digital ledger, and its value in USDT can change a lot.' },
+        { id: 'b', text: 'It is a physical coin stored inside your phone.' },
+        { id: 'c', text: 'A government guarantees its value.' },
+        { id: 'd', text: 'Its price only goes up over time.' },
+      ],
+      answer: { kind: 'choice', choiceId: 'a' },
+      rationale: 'Crypto is a digital asset recorded on a ledger. Nobody guarantees its price, and prices can swing widely.',
+      misconceptionFeedback: { b: 'The phone holds access to the record, not a coin.', c: 'No government guarantees cryptocurrency prices.', d: 'Prices move both ways, sometimes sharply.' },
+      learningOutcome: 'Describe a crypto holding as a ledger record with a volatile price.',
+    },
+    {
+      id: 'CP1-Q02', type: 'numeric', cognitiveTag: 'calculation', linkedLessonId: 'T01', remediationRef: { lessonId: 'T01' },
+      prompt: 'You hold 0.002 BTC. In a fictional example the price is 50,000 USDT per BTC. What is the holding worth in USDT?',
+      answer: { kind: 'numeric', value: 100, tolerance: 0.005, unit: 'USDT', rounding: { decimals: 2 } },
+      rationale: 'Value = 0.002 × 50,000 = 100 USDT.',
+      learningOutcome: 'Value a holding as quantity × price.',
+    },
+    {
+      id: 'CP1-Q03', type: 'single', cognitiveTag: 'interpretation', linkedLessonId: 'T02', remediationRef: { lessonId: 'T02' }, shuffleChoices: true,
+      prompt: 'In a fictional market, many buyers want to buy right now and few people want to sell. What usually happens to the price, and how sure is it?',
+      choices: [
+        { id: 'a', text: 'It tends to rise, but news, liquidity and big orders can change that quickly; nothing is certain.' },
+        { id: 'b', text: 'It must rise by a fixed amount.' },
+        { id: 'c', text: 'It must fall, because buyers push prices down.' },
+        { id: 'd', text: 'Nothing changes; only the number of people matters, not how eager they are.' },
+      ],
+      answer: { kind: 'choice', choiceId: 'a' },
+      rationale: 'Stronger demand than supply tends to push price up, but it is a tendency, not a rule.',
+      misconceptionFeedback: { b: 'There is no fixed amount; markets are not that simple.', c: 'Eager buyers tend to push prices up, not down.', d: 'How eager each side is matters, not just headcount.' },
+      learningOutcome: 'Relate demand and supply to price movement without treating it as certain.',
+    },
+    {
+      id: 'CP1-Q04', type: 'single', cognitiveTag: 'recall', linkedLessonId: 'T03', remediationRef: { lessonId: 'T03' }, shuffleChoices: true,
+      prompt: 'In the pair BTC/USDT, which statement is correct?',
+      choices: [
+        { id: 'a', text: 'BTC is the base asset being priced; the price is written in USDT, the quote asset.' },
+        { id: 'b', text: 'USDT is the base asset; the price is written in BTC.' },
+        { id: 'c', text: 'Both are the same coin with two names.' },
+        { id: 'd', text: 'The slash means BTC is divided by USDT in your wallet.' },
+      ],
+      answer: { kind: 'choice', choiceId: 'a' },
+      rationale: 'The first asset (base) is what you price; the second (quote) is the unit of the price.',
+      misconceptionFeedback: { b: 'The order is reversed: the quote is the second asset.', c: 'They are two different assets.', d: 'The slash only separates the two assets of the pair.' },
+      learningOutcome: 'Identify the base and quote assets of a pair.',
+    },
+    {
+      id: 'CP1-Q05', type: 'numeric', cognitiveTag: 'calculation', linkedLessonId: 'T03', remediationRef: { lessonId: 'T03' },
+      prompt: 'DEMO/USDT trades at a fictional 12.50. How many DEMO does 250 USDT buy, ignoring fees?',
+      answer: { kind: 'numeric', value: 20, tolerance: 0.005, unit: 'DEMO', rounding: { decimals: 2 } },
+      rationale: 'Quantity = 250 ÷ 12.50 = 20 DEMO.',
+      learningOutcome: 'Convert a quote amount into a base quantity.',
+    },
+    {
+      id: 'CP1-Q06', type: 'single', cognitiveTag: 'mistake-risk', linkedLessonId: 'T03', safetyCritical: true, safetyTopic: 'stablecoin-risk', remediationRef: { lessonId: 'T03' }, shuffleChoices: true,
+      prompt: 'A friend says: “USDT is a stablecoin, so it can never lose its 1-dollar value.” What is the best reply?',
+      choices: [
+        { id: 'a', text: 'A stablecoin aims to stay near its target, but the peg is not guaranteed and has broken for some coins.' },
+        { id: 'b', text: 'Correct: stablecoins are risk-free.' },
+        { id: 'c', text: 'Stablecoins are government money, so they are insured.' },
+        { id: 'd', text: 'Stablecoins move more than Bitcoin.' },
+      ],
+      answer: { kind: 'choice', choiceId: 'a' },
+      rationale: 'A peg is a target, not a promise. Stablecoins carry issuer, reserve and market risks.',
+      misconceptionFeedback: { b: 'No crypto asset is risk-free.', c: 'Stablecoins are issued by companies, not governments, and are generally not insured deposits.', d: 'They are designed to move much less; the risk is a sudden break, not everyday swings.' },
+      learningOutcome: 'Explain that a stablecoin peg can fail.',
+    },
+    {
+      id: 'CP1-Q07', type: 'numeric', cognitiveTag: 'calculation', linkedLessonId: 'T04', remediationRef: { lessonId: 'T04' },
+      prompt: 'A fictional order book shows a best bid of 99.80 and a best ask of 100.10. What is the spread in USDT?',
+      answer: { kind: 'numeric', value: 0.3, tolerance: 0.005, unit: 'USDT', rounding: { decimals: 2 } },
+      rationale: 'Spread = best ask − best bid = 100.10 − 99.80 = 0.30 USDT.',
+      learningOutcome: 'Compute the spread from the best bid and ask.',
+    },
+    {
+      id: 'CP1-Q08', type: 'scenario', cognitiveTag: 'mistake-risk', linkedLessonId: 'T04', safetyCritical: true, safetyTopic: 'account-security', remediationRef: { lessonId: 'T04' }, shuffleChoices: true,
+      prompt: 'Someone in a chat says they are “exchange support” and asks for the one-time code (OTP) you just received, to “verify your account”. What do you do?',
+      choices: [
+        { id: 'a', text: 'Never share it. Real support never asks for passwords, OTP codes or secret keys. Use the official app or site yourself.' },
+        { id: 'b', text: 'Share it quickly so the account is not blocked.' },
+        { id: 'c', text: 'Share it only if they know your email address.' },
+        { id: 'd', text: 'Send your password instead of the code.' },
+      ],
+      answer: { kind: 'choice', choiceId: 'a' },
+      rationale: 'An OTP lets someone act as you. Urgency and “support” messages are classic phishing signs.',
+      misconceptionFeedback: { b: 'Urgency is a scam tactic; sharing the code can hand over the account.', c: 'Knowing your email proves nothing; it is often public.', d: 'Never share a password with anyone.' },
+      learningOutcome: 'Refuse to share passwords, OTP codes or keys.',
+    },
+  ],
+};
+
+export default cp1;

@@ -38,14 +38,14 @@ export function DefinitionTooltip({ termId, label }: { termId: string; label?: s
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [show]);
   const shown = label ?? entry?.term ?? termId.replace(/-/g, ' ');
-  if (!entry) return <span className="fe-term-plain">{shown}</span>;
+  if (!entry) return <span className="fel-term-plain">{shown}</span>;
   return (
-    <span className="fe-term" ref={ref}>
-      <button type="button" className="fe-term-btn" aria-expanded={show} aria-controls={id} onClick={() => setShow((v) => !v)}>{shown}</button>
+    <span className="fel-term" ref={ref}>
+      <button type="button" className="fel-term-btn" aria-expanded={show} aria-controls={id} onClick={() => setShow((v) => !v)}>{shown}</button>
       {show ? (
-        <span className="fe-term-pop" id={id} role="note">
+        <span className="fel-term-pop" id={id} role="note">
           <strong>{entry.term}:</strong> {entry.plainDefinition}
-          <button type="button" className="fe-link" onClick={() => { setShow(false); open(termId); }}>More about “{entry.term}”</button>
+          <button type="button" className="fel-link" onClick={() => { setShow(false); open(termId); }}>More about “{entry.term}”</button>
         </span>
       ) : null}
     </span>

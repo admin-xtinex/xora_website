@@ -136,8 +136,8 @@ describe('PnL and costs', () => {
     const r = val(feesNet({ side: 'long', entry: 100, exit: 100.05, quantity: 10, entryFeeRate: 0.0005, exitFeeRate: 0.0005 }));
     expect(r.grossPnl).toBe(0.5);
     expect(r.entryFee).toBe(0.5);
-    expect(r.exitFee).toBe(0.500025);
-    expect(r.netPnl).toBe(-0.500025);
+    expect(r.exitFee).toBe(0.50025);
+    expect(r.netPnl).toBe(-0.50025);
     const withCosts = val(feesNet({ side: 'short', entry: 200, exit: 198, quantity: 1, entryFeeRate: 0.0002, exitFeeRate: 0.0005, spreadCost: 0.05, slippageCost: 0.04 }));
     expect(withCosts).toMatchObject({ grossPnl: 2, entryFee: 0.04, exitFee: 0.099, otherCosts: 0.09, totalCosts: 0.229, netPnl: 1.771 });
     expect(code(feesNet({ side: 'long', entry: 100, exit: 101, quantity: 1, entryFeeRate: 0.5, exitFeeRate: 0.0005 }))).toBe('OUT_OF_RANGE');

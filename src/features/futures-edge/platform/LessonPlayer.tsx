@@ -16,6 +16,7 @@ import { RichText } from './RichText';
 import { useProgress } from './progress-context';
 import { Link } from './router';
 import { useGlossary } from './hooks';
+import { VideoLesson } from './VideoLesson';
 
 const MODES: Array<{ id: LessonMode; label: string }> = [
   { id: 'animation', label: 'Watch animation' },
@@ -34,11 +35,11 @@ export function LessonPlayer({ id }: { id: LessonId }) {
     loadLesson(id).then((r) => { if (alive) setState(r); }, (e: unknown) => { if (alive) setState({ error: e instanceof Error ? e.message : 'Could not load this lesson.' }); });
     return () => { alive = false; };
   }, [id]);
-  if (!state) return <div className="fe-loading" role="status">Loading lesson {id}…</div>;
+  if (!state) return <div className="fel-loading" role="status">Loading lesson {id}…</div>;
   if ('error' in state) return (
-    <div className="fe-error" role="alert">
+    <div className="fel-error" role="alert">
       <p>{state.error}</p>
-      <button type="button" className="fe-btn" onClick={() => window.location.reload()}>Try again</button>
+      <button type="button" className="fel-btn" onClick={() => window.location.reload()}>Try again</button>
     </div>
   );
   return <LessonView key={state.lesson.id} lesson={state.lesson} fixtures={state.fixtures} />;
@@ -71,14 +72,14 @@ function LessonView({ lesson, fixtures }: { lesson: Lesson; fixtures: Fixture[] 
   const done = prog?.completed === true;
 
   return (
-    <div className={`fe-lesson ${sidebar ? '' : 'no-sidebar'}`}>
-      <nav className="fe-sidebar" aria-label="Course phases">
-        <button type="button" className="fe-btn fe-btn-small fe-sidebar-toggle" aria-expanded={sidebar} onClick={() => setSidebar((v) => !v)}>{sidebar ? 'Hide lessons' : 'Show lessons'}</button>
+    <div className={`fel-lesson ${sidebar ? '' : 'no-sidebar'}`}>
+      <nav className="fel-sidebar" aria-label="Course phases">
+        <button type="button" className="fel-btn fel-btn-small fel-sidebar-toggle" aria-expanded={sidebar} onClick={() => setSidebar((v) => !v)}>{sidebar ? 'Hide lessons' : 'Show lessons'}</button>
         {sidebar ? PHASES.map((p) => (
-          <div key={p.id} className="fe-side-phase">
-            <p className="fe-side-phase-title">Phase {p.order}: {p.title}</p>
+          <div key={p.id} className="fel-side-phase">
+            <p className="fel-side-phase-title">Phase {p.order}: {p.title}</p>
             <ul>{p.tutorialIds.map((t) => (
-              <li key={t}><Link to={{ kind: 'lesson', id: t }} className={`fe-side-link ${t === lesson.id ? 'is-current' : ''}`} aria-current={t === lesson.id ? 'page' : undefined}>
+              <li key={t}><Link to={{ kind: 'lesson', id: t }} className={`fel-side-link ${t === lesson.id ? 'is-current' : ''}`} aria-current={t === lesson.id ? 'page' : undefined}>
                 {lessons[t]?.completed ? '✓ ' : ''}{t} · {LESSON_META[t]?.title ?? LESSON_WORKING_TITLES[t]}
               </Link></li>
             ))}</ul>
@@ -86,33 +87,34 @@ function LessonView({ lesson, fixtures }: { lesson: Lesson; fixtures: Fixture[] 
         )) : null}
       </nav>
 
-      <main className="fe-lesson-main" id="fe-main">
-        <p className="fe-crumbs"><Link to={{ kind: 'home' }}>Course</Link> › Phase {phase?.order}: {phase?.title} › {lesson.id}</p>
-        <h1 className="fe-lesson-title"><RichText text={lesson.title} /></h1>
-        <p className="fe-lesson-summary"><RichText text={lesson.summary} /></p>
-        <p className="fe-meta">{lesson.durationMinutes} min · {lesson.difficulty.replace('-', ' ')} · content v{lesson.version}{done ? ' · ✓ completed' : ''}</p>
-        <details className="fe-details fe-objectives">
+      <main className="fel-lesson-main" id="fel-main">
+        <p className="fel-crumbs"><Link to={{ kind: 'home' }}>Course</Link> › Phase {phase?.order}: {phase?.title} › {lesson.id}</p>
+        <h1 className="fel-lesson-title"><RichText text={lesson.title} /></h1>
+        <p className="fel-lesson-summary"><RichText text={lesson.summary} /></p>
+        <p className="fel-meta">{lesson.durationMinutes} min · {lesson.difficulty.replace('-', ' ')} · content v{lesson.version}{done ? ' · ✓ completed' : ''}</p>
+        <details className="fel-details fel-objectives">
           <summary>What you will be able to do</summary>
           <ul>{lesson.objectives.map((o, k) => <li key={k}><RichText text={o} /></li>)}</ul>
-          {lesson.prerequisites.length ? <p className="fe-small">Helps to know first: {lesson.prerequisites.map((p, k) => <span key={p}>{k ? ', ' : ''}<Link to={{ kind: 'lesson', id: p }}>{p} {LESSON_META[p]?.title ?? ''}</Link></span>)}</p> : null}
+          {lesson.prerequisites.length ? <p className="fel-small">Helps to know first: {lesson.prerequisites.map((p, k) => <span key={p}>{k ? ', ' : ''}<Link to={{ kind: 'lesson', id: p }}>{p} {LESSON_META[p]?.title ?? ''}</Link></span>)}</p> : null}
         </details>
-        <p className="fe-badge-fictional" role="note">{lesson.fictionalDataNotice}</p>
+        <p className="fel-badge-fictional" role="note">{lesson.fictionalDataNotice}</p>
 
-        <div className="fe-tabs" role="tablist" aria-label="Lesson formats">
+        <div className="fel-tabs" role="tablist" aria-label="Lesson formats">
           {MODES.map((m) => (
-            <button key={m.id} type="button" role="tab" id={`tab-${m.id}`} aria-selected={mode === m.id} aria-controls="fe-panel" className={`fe-tab ${mode === m.id ? 'is-on' : ''}`} onClick={() => pick(m.id)}>
+            <button key={m.id} type="button" role="tab" id={`tab-${m.id}`} aria-selected={mode === m.id} aria-controls="fel-panel" className={`fel-tab ${mode === m.id ? 'is-on' : ''}`} onClick={() => pick(m.id)}>
               {m.label}
               <StatusDot lesson={lesson} mode={m.id} />
             </button>
           ))}
         </div>
 
-        <div id="fe-panel" role="tabpanel" aria-labelledby={`tab-${mode}`} className="fe-panel-main">
+        <div id="fel-panel" role="tabpanel" aria-labelledby={`tab-${mode}`} className="fel-panel-main">
+          {mode === 'animation' ? <VideoLesson id={lesson.id} /> : null}
           {mode === 'animation' ? <StoryboardTimeline scenes={lesson.animationScenes} getFixture={getFixture} initialStep={initialScene} onStepChange={onStep} onSceneComplete={onScene} title={lesson.title} /> : null}
           {mode === 'slides' ? <SlideDeck slides={lesson.slides} ctx={ctx} initial={initialSlide} onView={onSlide} title={lesson.title} /> : null}
           {mode === 'notes' ? <NotesReader lesson={lesson} ctx={ctx} onRead={onRead} /> : null}
           {mode === 'practice' ? (
-            <div className="fe-practice">
+            <div className="fel-practice">
               {lesson.exercises.map((x) => {
                 const W = EXERCISE_WIDGETS[x.type];
                 return <W key={x.id} exercise={x} fixture={getFixture(x.fixtureId)} onComplete={() => record(lesson, { kind: 'exercise', id: x.id })} />;
@@ -123,25 +125,25 @@ function LessonView({ lesson, fixtures }: { lesson: Lesson; fixtures: Fixture[] 
             <div>
               <QuizRunner key={attempt} questions={lesson.quizQuestions} mode="lesson" attempt={attempt} getFixture={getFixture} passThreshold={lesson.completionRequirements.minQuizScore}
                 onFinish={(resp) => { const t = new Date().toISOString(); record(lesson, { kind: 'quiz', attempt: toAttempt({ kind: 'lesson', lessonId: lesson.id }, lesson.version, lesson.quizQuestions, resp, t, t) }); }} />
-              <button type="button" className="fe-btn" onClick={() => setAttempt((a) => a + 1)}>Retake quiz</button>
+              <button type="button" className="fel-btn" onClick={() => setAttempt((a) => a + 1)}>Retake quiz</button>
             </div>
           ) : null}
           {mode === 'review' ? <ReviewCard lesson={lesson} progress={prog} onPractice={() => pick('practice')} onRetake={() => { setAttempt((a) => a + 1); pick('quiz'); }} nextId={nextId} /> : null}
         </div>
       </main>
 
-      <aside className="fe-defs" aria-label="Definitions in this lesson">
-        <h2 className="fe-defs-title">Definitions</h2>
+      <aside className="fel-defs" aria-label="Definitions in this lesson">
+        <h2 className="fel-defs-title">Definitions</h2>
         <ul>{lesson.glossaryEntries.map((g) => (
-          <li key={g.id}><button type="button" className="fe-link" onClick={() => open(g.id)}>{g.term}</button><span className="fe-small"> — <RichText text={g.plainDefinition} /></span></li>
+          <li key={g.id}><button type="button" className="fel-link" onClick={() => open(g.id)}>{g.term}</button><span className="fel-small"> — <RichText text={g.plainDefinition} /></span></li>
         ))}</ul>
-        <div className="fe-callout fe-callout-safety"><p className="fe-callout-title">Safety</p><p><RichText text={lesson.reviewCard.safetyNote} /></p></div>
+        <div className="fel-callout fel-callout-safety"><p className="fel-callout-title">Safety</p><p><RichText text={lesson.reviewCard.safetyNote} /></p></div>
         <LessonChecklist lesson={lesson} />
       </aside>
 
-      <div className="fe-bottom-bar" role="navigation" aria-label="Lesson navigation">
-        {mi > 0 ? <button type="button" className="fe-btn" onClick={() => pick((MODES[mi - 1] as (typeof MODES)[number]).id)}>◀ {MODES[mi - 1]?.label}</button> : prevId ? <Link className="fe-btn" to={{ kind: 'lesson', id: prevId }}>◀ {prevId}</Link> : <span />}
-        {mi < MODES.length - 1 ? <button type="button" className="fe-btn fe-btn-primary" onClick={() => pick((MODES[mi + 1] as (typeof MODES)[number]).id)}>{MODES[mi + 1]?.label} ▶</button> : nextId ? <Link className="fe-btn fe-btn-primary" to={{ kind: 'lesson', id: nextId }}>Next lesson ▶</Link> : <Link className="fe-btn fe-btn-primary" to={{ kind: 'checkpoint', id: 'CPB' }}>Final checkpoint ▶</Link>}
+      <div className="fel-bottom-bar" role="navigation" aria-label="Lesson navigation">
+        {mi > 0 ? <button type="button" className="fel-btn" onClick={() => pick((MODES[mi - 1] as (typeof MODES)[number]).id)}>◀ {MODES[mi - 1]?.label}</button> : prevId ? <Link className="fel-btn" to={{ kind: 'lesson', id: prevId }}>◀ {prevId}</Link> : <span />}
+        {mi < MODES.length - 1 ? <button type="button" className="fel-btn fel-btn-primary" onClick={() => pick((MODES[mi + 1] as (typeof MODES)[number]).id)}>{MODES[mi + 1]?.label} ▶</button> : nextId ? <Link className="fel-btn fel-btn-primary" to={{ kind: 'lesson', id: nextId }}>Next lesson ▶</Link> : <Link className="fel-btn fel-btn-primary" to={{ kind: 'checkpoint', id: 'CPB' }}>Final checkpoint ▶</Link>}
       </div>
     </div>
   );
@@ -157,7 +159,7 @@ function StatusDot({ lesson, mode }: { lesson: Lesson; mode: LessonMode }) {
           : mode === 'practice' ? lesson.exercises.every((x) => p.practiced.exerciseIdsCompleted.includes(x.id))
             : mode === 'quiz' ? (p.assessed.bestScore ?? 0) >= lesson.completionRequirements.minQuizScore && p.assessed.safetyCriticalPassed
               : p.completed;
-  return ok ? <span className="fe-tab-ok" aria-label="done"> ✓</span> : null;
+  return ok ? <span className="fel-tab-ok" aria-label="done"> ✓</span> : null;
 }
 
 function LessonChecklist({ lesson }: { lesson: Lesson }) {
@@ -170,9 +172,9 @@ function LessonChecklist({ lesson }: { lesson: Lesson }) {
     { t: `Quiz ≥ ${Math.round(cr.minQuizScore * 100)}%${cr.requireSafetyCriticalCorrect ? ' incl. safety items' : ''}`, ok: !!p && (p.assessed.bestScore ?? 0) >= cr.minQuizScore && (!cr.requireSafetyCriticalCorrect || p.assessed.safetyCriticalPassed) },
   ];
   return (
-    <div className="fe-lesson-check">
-      <p className="fe-small"><strong>To complete this lesson</strong> (saved on this device only)</p>
-      <ul className="fe-checklist">{items.map((i) => <li key={i.t} className={i.ok ? 'is-done' : ''}>{i.ok ? '✓' : '○'} {i.t}</li>)}</ul>
+    <div className="fel-lesson-check">
+      <p className="fel-small"><strong>To complete this lesson</strong> (saved on this device only)</p>
+      <ul className="fel-checklist">{items.map((i) => <li key={i.t} className={i.ok ? 'is-done' : ''}>{i.ok ? '✓' : '○'} {i.t}</li>)}</ul>
     </div>
   );
 }

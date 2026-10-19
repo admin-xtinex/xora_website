@@ -14,7 +14,7 @@ export function FixtureChart({ fixture, params, label }: { fixture: WidgetProps[
   if (params['showChart'] !== true || !fixture) return null;
   const cs = candlesOf(fixture);
   const pts = ticksOf(fixture).map((t) => t.p);
-  return <div className="fe-figure"><MiniChart candles={cs} points={cs.length ? [] : pts} labels={labelsOf(fixture)} label={label} /></div>;
+  return <div className="fel-figure"><MiniChart candles={cs} points={cs.length ? [] : pts} labels={labelsOf(fixture)} label={label} /></div>;
 }
 
 /** Numeric check shared by several widgets. */
@@ -35,16 +35,16 @@ export function NumericAnswers({ exercise, onAllCorrect, done }: { exercise: Wid
     if (fields.every((f) => res[f.key])) onAllCorrect();
   };
   return (
-    <div className="fe-numeric-answers">
-      <div className="fe-grid-fields">
+    <div className="fel-numeric-answers">
+      <div className="fel-grid-fields">
         {fields.map((f) => (
           <div key={f.key}>
             <NumberField id={`${exercise.id}-${f.key}`} label={`${f.label}${f.decimals !== undefined ? ` (${f.decimals} dp)` : ''}`} unit={f.unit} value={vals[f.key] ?? ''} onChange={(v) => setVals((s) => ({ ...s, [f.key]: v }))} />
-            {checked ? <span className={checked[f.key] ? 'fe-ok' : 'fe-bad'}>{checked[f.key] ? '✓ correct' : done ? `answer: ${fmt(f.value, f.decimals)}` : '✗ not yet'}</span> : null}
+            {checked ? <span className={checked[f.key] ? 'fel-ok' : 'fel-bad'}>{checked[f.key] ? '✓ correct' : done ? `answer: ${fmt(f.value, f.decimals)}` : '✗ not yet'}</span> : null}
           </div>
         ))}
       </div>
-      <button type="button" className="fe-btn fe-btn-primary" onClick={check}>Check</button>
+      <button type="button" className="fel-btn fel-btn-primary" onClick={check}>Check</button>
     </div>
   );
 }
@@ -69,17 +69,17 @@ export function ChoiceFeedbackWidget({ exercise, fixture, onComplete }: WidgetPr
     <ExerciseShell exercise={exercise} status={status} done={done} onReset={() => { setSel([]); setStatus('idle'); }}
       feedback={status === 'correct' ? <p>Correct.</p> : status === 'incorrect' ? <p>{wrongNotes.length ? wrongNotes.map((n, k) => <span key={k}><RichText text={n} /> </span>) : multi ? 'Not quite. Check which options you included or left out.' : 'Not quite. Try again; use the hints if you need them.'}</p> : null}>
       <FixtureChart fixture={fixture} params={p} label={exercise.title} />
-      <fieldset className="fe-choices">
-        <legend className="fe-sr">{exercise.title}</legend>
+      <fieldset className="fel-choices">
+        <legend className="fel-sr">{exercise.title}</legend>
         {(exercise.choices ?? []).map((c) => (
-          <label key={c.id} className={`fe-choice ${sel.includes(c.id) ? 'is-on' : ''}`}>
+          <label key={c.id} className={`fel-choice ${sel.includes(c.id) ? 'is-on' : ''}`}>
             <input type={multi ? 'checkbox' : 'radio'} name={exercise.id} checked={sel.includes(c.id)}
               onChange={() => { setStatus('idle'); setSel((s) => (multi ? (s.includes(c.id) ? s.filter((x) => x !== c.id) : [...s, c.id]) : [c.id])); }} />
             <span>{c.decision ? <strong>DEMO {c.decision.replace('_', ' ')}: </strong> : null}<RichText text={c.text} /></span>
           </label>
         ))}
       </fieldset>
-      <button type="button" className="fe-btn fe-btn-primary" disabled={sel.length === 0} onClick={check}>Check</button>
+      <button type="button" className="fel-btn fel-btn-primary" disabled={sel.length === 0} onClick={check}>Check</button>
     </ExerciseShell>
   );
 }
@@ -106,26 +106,26 @@ export function ClassifyWidget({ exercise, fixture, onComplete }: WidgetProps) {
       onReset={() => { setPick({}); setChecked(false); }}
       feedback={checked ? <p>{right} of {items.length} placed correctly.{right < items.length ? ' Items marked ✗ need another look.' : ''}</p> : null}>
       <FixtureChart fixture={fixture} params={p} label={exercise.title} />
-      <div className="fe-classify">
+      <div className="fel-classify">
         {items.map((it) => {
           const ok = pick[it.id] === answer.get(it.id);
           return (
-            <fieldset key={it.id} className="fe-classify-item">
-              <legend><RichText text={it.text} /> {checked ? <span className={ok ? 'fe-ok' : 'fe-bad'}>{ok ? '✓' : '✗'}</span> : null}</legend>
-              <div className="fe-seg">
+            <fieldset key={it.id} className="fel-classify-item">
+              <legend><RichText text={it.text} /> {checked ? <span className={ok ? 'fel-ok' : 'fel-bad'}>{ok ? '✓' : '✗'}</span> : null}</legend>
+              <div className="fel-seg">
                 {buckets.map((b) => (
-                  <label key={b.id} className={`fe-seg-opt ${pick[it.id] === b.id ? 'is-on' : ''}`}>
+                  <label key={b.id} className={`fel-seg-opt ${pick[it.id] === b.id ? 'is-on' : ''}`}>
                     <input type="radio" name={`${exercise.id}-${it.id}`} checked={pick[it.id] === b.id} onChange={() => { setChecked(false); setPick((s) => ({ ...s, [it.id]: b.id })); }} />
                     <span>{b.label}</span>
                   </label>
                 ))}
               </div>
-              {checked && !ok && typeof itemFb[it.id] === 'string' ? <p className="fe-hint"><RichText text={itemFb[it.id] as string} /></p> : null}
+              {checked && !ok && typeof itemFb[it.id] === 'string' ? <p className="fel-hint"><RichText text={itemFb[it.id] as string} /></p> : null}
             </fieldset>
           );
         })}
       </div>
-      <button type="button" className="fe-btn fe-btn-primary" disabled={Object.keys(pick).length < items.length} onClick={check}>Check</button>
+      <button type="button" className="fel-btn fel-btn-primary" disabled={Object.keys(pick).length < items.length} onClick={check}>Check</button>
     </ExerciseShell>
   );
 }
@@ -142,10 +142,10 @@ export function NumericCalculatorWidget({ exercise, fixture, onComplete }: Widge
   const candle = ci !== undefined ? cs[ci] : undefined;
   return (
     <ExerciseShell exercise={exercise} status={done ? 'correct' : 'idle'} done={done} onReset={() => setKey((k) => k + 1)} feedback={done ? <p>All values correct.</p> : null}>
-      {candle ? <div className="fe-figure fe-figure-small"><MiniChart candles={[candle]} labels={[labelsOf(fixture)[ci as number] ?? '']} label={`Fictional candle O ${candle.o} H ${candle.h} L ${candle.l} C ${candle.c}`} lines={[{ price: candle.h, label: `High ${candle.h}`, cls: 'fe-svg-level-faint' }, { price: candle.l, label: `Low ${candle.l}`, cls: 'fe-svg-level-faint' }]} /></div> : <FixtureChart fixture={fixture} params={p} label={exercise.title} />}
+      {candle ? <div className="fel-figure fel-figure-small"><MiniChart candles={[candle]} labels={[labelsOf(fixture)[ci as number] ?? '']} label={`Fictional candle O ${candle.o} H ${candle.h} L ${candle.l} C ${candle.c}`} lines={[{ price: candle.h, label: `High ${candle.h}`, cls: 'fel-svg-level-faint' }, { price: candle.l, label: `Low ${candle.l}`, cls: 'fel-svg-level-faint' }]} /></div> : <FixtureChart fixture={fixture} params={p} label={exercise.title} />}
       {given.length ? (
-        <table className="fe-table fe-table-compact">
-          <caption className="fe-sr">Given values</caption>
+        <table className="fel-table fel-table-compact">
+          <caption className="fel-sr">Given values</caption>
           <tbody>{given.map((g, k) => <tr key={k}><th scope="row">{strOr(g['label'], '')}</th><td>{typeof g['value'] === 'number' ? fmt(g['value'], typeof g['decimals'] === 'number' ? g['decimals'] : undefined) : strOr(g['value'], '')} {strOr(g['unit'], '')}</td></tr>)}</tbody>
         </table>
       ) : null}
@@ -173,18 +173,18 @@ export function SequenceOrderWidget({ exercise, onComplete }: WidgetProps) {
   return (
     <ExerciseShell exercise={exercise} status={!checked ? 'idle' : right === order.length ? 'correct' : 'partial'} done={done} onReset={() => { setOrder(initial); setChecked(false); }}
       feedback={checked ? <p>{right} of {order.length} in the right position.</p> : null}>
-      <ol className="fe-sequence">
+      <ol className="fel-sequence">
         {order.map((it, i) => (
           <li key={it.id} className={checked ? (it.id === target[i] ? 'is-ok' : 'is-bad') : ''}>
-            <span className="fe-seq-text"><RichText text={it.text} /></span>
-            <span className="fe-seq-btns">
-              <button type="button" className="fe-btn fe-btn-icon" onClick={() => move(i, -1)} disabled={i === 0} aria-label={`Move “${it.text}” up`}>↑</button>
-              <button type="button" className="fe-btn fe-btn-icon" onClick={() => move(i, 1)} disabled={i === order.length - 1} aria-label={`Move “${it.text}” down`}>↓</button>
+            <span className="fel-seq-text"><RichText text={it.text} /></span>
+            <span className="fel-seq-btns">
+              <button type="button" className="fel-btn fel-btn-icon" onClick={() => move(i, -1)} disabled={i === 0} aria-label={`Move “${it.text}” up`}>↑</button>
+              <button type="button" className="fel-btn fel-btn-icon" onClick={() => move(i, 1)} disabled={i === order.length - 1} aria-label={`Move “${it.text}” down`}>↓</button>
             </span>
           </li>
         ))}
       </ol>
-      <button type="button" className="fe-btn fe-btn-primary" onClick={check}>Check order</button>
+      <button type="button" className="fel-btn fel-btn-primary" onClick={check}>Check order</button>
     </ExerciseShell>
   );
 }
@@ -211,34 +211,34 @@ export function SliderExploreWidget({ exercise, fixture, onComplete }: WidgetPro
   const note = strOr(p['note'], '');
   return (
     <ExerciseShell exercise={exercise} status={done ? 'correct' : 'idle'} done={done} onReset={() => { setVals(init()); setTouched([]); setKey((k) => k + 1); }}
-      feedback={res && !res.ok ? <p className="fe-bad">{res.error.message}</p> : null}>
+      feedback={res && !res.ok ? <p className="fel-bad">{res.error.message}</p> : null}>
       <FixtureChart fixture={fixture} params={p} label={exercise.title} />
       {sideToggle ? (
-        <div className="fe-seg" role="radiogroup" aria-label="Side">
+        <div className="fel-seg" role="radiogroup" aria-label="Side">
           {(['long', 'short'] as const).map((s) => (
-            <label key={s} className={`fe-seg-opt ${side === s ? 'is-on' : ''}`}><input type="radio" name={`${exercise.id}-side`} checked={side === s} onChange={() => setSide(s)} /><span>{s === 'long' ? 'LONG' : 'SHORT'}</span></label>
+            <label key={s} className={`fel-seg-opt ${side === s ? 'is-on' : ''}`}><input type="radio" name={`${exercise.id}-side`} checked={side === s} onChange={() => setSide(s)} /><span>{s === 'long' ? 'LONG' : 'SHORT'}</span></label>
           ))}
         </div>
       ) : null}
-      <div className="fe-sliders">
+      <div className="fel-sliders">
         {sliders.map((s) => (
           <SliderField key={`${s.key}-${key}`} id={`${exercise.id}-${s.key}`} label={s.label} unit={s.unit} min={s.min} max={s.max} step={s.step} value={vals[s.key] ?? s.value}
             onChange={(v) => { setVals((x) => ({ ...x, [s.key]: v })); setTouched((t) => (t.includes(s.key) ? t : [...t, s.key])); }} />
         ))}
       </div>
       {res && res.ok ? (
-        <dl className="fe-outputs" aria-live="polite">
+        <dl className="fel-outputs" aria-live="polite">
           {outputs.map((o) => (
-            <div key={o.key} className="fe-output"><dt>{o.label}</dt><dd>{res.value[o.key] !== undefined ? `${fmt(res.value[o.key] as number, o.decimals)} ${o.unit}` : '—'}</dd></div>
+            <div key={o.key} className="fel-output"><dt>{o.label}</dt><dd>{res.value[o.key] !== undefined ? `${fmt(res.value[o.key] as number, o.decimals)} ${o.unit}` : '—'}</dd></div>
           ))}
         </dl>
       ) : null}
-      {res && res.ok && res.approximate ? <p className="fe-small fe-muted">Illustrative/approximate model: {res.assumptions.join('; ')}.</p> : null}
-      {note ? <p className="fe-small"><RichText text={note} /></p> : null}
+      {res && res.ok && res.approximate ? <p className="fel-small fel-muted">Illustrative/approximate model: {res.assumptions.join('; ')}.</p> : null}
+      {note ? <p className="fel-small"><RichText text={note} /></p> : null}
       {ev.kind === 'numeric' || ev.kind === 'numeric-set' ? <NumericAnswers exercise={exercise} done={done} onAllCorrect={finish} /> : null}
       {ev.kind === 'exact-choice' || ev.kind === 'choice-set' ? <InlineChoice exercise={exercise} onCorrect={finish} /> : null}
       {ev.kind === 'rubric' || ev.kind === 'constraint' ? (
-        <button type="button" className="fe-btn fe-btn-primary" disabled={!allTouched} onClick={finish}>{allTouched ? 'I have explored every control' : 'Move every control at least once'}</button>
+        <button type="button" className="fel-btn fel-btn-primary" disabled={!allTouched} onClick={finish}>{allTouched ? 'I have explored every control' : 'Move every control at least once'}</button>
       ) : null}
     </ExerciseShell>
   );
@@ -254,17 +254,17 @@ export function InlineChoice({ exercise, onCorrect }: { exercise: WidgetProps['e
   const [res, setRes] = useState<boolean | null>(null);
   const q = strOr(exercise.parameters['question'], '');
   return (
-    <fieldset className="fe-choices">
+    <fieldset className="fel-choices">
       <legend>{q ? <RichText text={q} /> : 'Your answer'}</legend>
       {(exercise.choices ?? []).map((c) => (
-        <label key={c.id} className={`fe-choice ${sel.includes(c.id) ? 'is-on' : ''}`}>
+        <label key={c.id} className={`fel-choice ${sel.includes(c.id) ? 'is-on' : ''}`}>
           <input type={multi ? 'checkbox' : 'radio'} name={`${exercise.id}-q`} checked={sel.includes(c.id)} onChange={() => { setRes(null); setSel((s) => (multi ? (s.includes(c.id) ? s.filter((x) => x !== c.id) : [...s, c.id]) : [c.id])); }} />
           <span>{c.decision ? <strong>DEMO {c.decision.replace('_', ' ')}: </strong> : null}<RichText text={c.text} /></span>
         </label>
       ))}
-      <button type="button" className="fe-btn fe-btn-primary" disabled={!sel.length} onClick={() => { const ok = sel.length === correct.size && sel.every((x) => correct.has(x)); setRes(ok); if (ok) onCorrect(); }}>Check</button>
-      {res === false ? <p className="fe-bad">{sel.map((x) => (typeof fb[x] === 'string' ? (fb[x] as string) : '')).filter(Boolean).join(' ') || 'Not quite. Look at the numbers again.'}</p> : null}
-      {res === true ? <p className="fe-ok">Correct.</p> : null}
+      <button type="button" className="fel-btn fel-btn-primary" disabled={!sel.length} onClick={() => { const ok = sel.length === correct.size && sel.every((x) => correct.has(x)); setRes(ok); if (ok) onCorrect(); }}>Check</button>
+      {res === false ? <p className="fel-bad">{sel.map((x) => (typeof fb[x] === 'string' ? (fb[x] as string) : '')).filter(Boolean).join(' ') || 'Not quite. Look at the numbers again.'}</p> : null}
+      {res === true ? <p className="fel-ok">Correct.</p> : null}
     </fieldset>
   );
 }

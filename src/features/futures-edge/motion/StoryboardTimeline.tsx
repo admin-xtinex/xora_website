@@ -89,61 +89,61 @@ export function StoryboardTimeline({ scenes, getFixture, initialStep = 0, onStep
   const ended = step === scenes.length - 1 && elapsed >= dur;
 
   return (
-    <section className="fe-storyboard" aria-label={`Animated scene: ${title}`}>
-      <div className="fe-stage" ref={stageRef}>
+    <section className="fel-storyboard" aria-label={`Animated scene: ${title}`}>
+      <div className="fel-stage" ref={stageRef}>
         {asText ? (
-          <ol className="fe-transcript">
+          <ol className="fel-transcript">
             {scenes.map((s, k) => (
               <li key={s.id} className={k === step ? 'is-current' : ''}>
                 <p><strong>Step {k + 1}.</strong> <RichText text={s.caption} /></p>
                 {s.narration ? <p><RichText text={s.narration} /></p> : null}
-                <p className="fe-muted"><RichText text={s.reducedMotionDescription} /></p>
+                <p className="fel-muted"><RichText text={s.reducedMotionDescription} /></p>
               </li>
             ))}
           </ol>
         ) : Renderer ? (
           <Renderer params={scene.parameters} p={p} {...(fixture ? { fixture } : {})} />
         ) : (
-          <p className="fe-error">This scene type is not available.</p>
+          <p className="fel-error">This scene type is not available.</p>
         )}
       </div>
 
-      <div className="fe-caption" aria-live="polite" aria-atomic="true">
-        <span className="fe-caption-step">Step {step + 1} of {scenes.length}</span>
+      <div className="fel-caption" aria-live="polite" aria-atomic="true">
+        <span className="fel-caption-step">Step {step + 1} of {scenes.length}</span>
         <RichText text={scene.caption} />
       </div>
-      {reduced && !asText ? <p className="fe-reduced-note"><RichText text={scene.reducedMotionDescription} /></p> : null}
-      {scene.pauseForInteraction && p >= 1 ? <p className="fe-tip"><RichText text={scene.pauseForInteraction.prompt} /></p> : null}
+      {reduced && !asText ? <p className="fel-reduced-note"><RichText text={scene.reducedMotionDescription} /></p> : null}
+      {scene.pauseForInteraction && p >= 1 ? <p className="fel-tip"><RichText text={scene.pauseForInteraction.prompt} /></p> : null}
 
-      <div className="fe-controls" role="group" aria-label="Animation controls">
-        <button type="button" className="fe-btn" onClick={() => goTo(step - 1)} disabled={step === 0} aria-label="Previous step">◀ Prev</button>
+      <div className="fel-controls" role="group" aria-label="Animation controls">
+        <button type="button" className="fel-btn" onClick={() => goTo(step - 1)} disabled={step === 0} aria-label="Previous step">◀ Prev</button>
         {!reduced ? (
-          <button type="button" className="fe-btn fe-btn-primary" onClick={() => { if (ended) goTo(0, true); else setPlaying((v) => !v); }} aria-pressed={playing}>
+          <button type="button" className="fel-btn fel-btn-primary" onClick={() => { if (ended) goTo(0, true); else setPlaying((v) => !v); }} aria-pressed={playing}>
             {playing ? 'Pause' : ended ? 'Replay' : elapsed > 0 ? 'Resume' : 'Play'}
           </button>
         ) : null}
-        <button type="button" className="fe-btn" onClick={() => goTo(step + 1, playing)} disabled={step === scenes.length - 1} aria-label="Next step">Next ▶</button>
-        {!reduced ? <button type="button" className="fe-btn" onClick={() => setElapsed(dur)} aria-label="Skip to the end of this step">Skip</button> : null}
-        <button type="button" className="fe-btn" onClick={() => goTo(0)}>Restart</button>
+        <button type="button" className="fel-btn" onClick={() => goTo(step + 1, playing)} disabled={step === scenes.length - 1} aria-label="Next step">Next ▶</button>
+        {!reduced ? <button type="button" className="fel-btn" onClick={() => setElapsed(dur)} aria-label="Skip to the end of this step">Skip</button> : null}
+        <button type="button" className="fel-btn" onClick={() => goTo(0)}>Restart</button>
         {!reduced ? (
-          <label className="fe-speed">
+          <label className="fel-speed">
             Speed
             <select value={speed} onChange={(e) => setSpeed(Number(e.target.value) as PlaybackSpeed)}>
               {PLAYBACK_SPEEDS.map((s) => <option key={s} value={s}>{s}×</option>)}
             </select>
           </label>
         ) : null}
-        <button type="button" className="fe-btn" onClick={() => setAsText((v) => !v)} aria-pressed={asText}>{asText ? 'Show animation' : 'Read as text'}</button>
+        <button type="button" className="fel-btn" onClick={() => setAsText((v) => !v)} aria-pressed={asText}>{asText ? 'Show animation' : 'Read as text'}</button>
       </div>
-      <progress className="fe-timeline-progress" max={totalMs} value={doneMs} aria-label="Timeline progress" />
-      <ol className="fe-steps" aria-label="Animation steps">
+      <progress className="fel-timeline-progress" max={totalMs} value={doneMs} aria-label="Timeline progress" />
+      <ol className="fel-steps" aria-label="Animation steps">
         {scenes.map((s, k) => (
           <li key={s.id}>
-            <button type="button" className={`fe-step-dot ${k === step ? 'is-current' : ''}`} onClick={() => goTo(k)} aria-current={k === step ? 'step' : undefined} aria-label={`Go to step ${k + 1}`}>{k + 1}</button>
+            <button type="button" className={`fel-step-dot ${k === step ? 'is-current' : ''}`} onClick={() => goTo(k)} aria-current={k === step ? 'step' : undefined} aria-label={`Go to step ${k + 1}`}>{k + 1}</button>
           </li>
         ))}
       </ol>
-      {reduced ? <p className="fe-muted fe-small">Reduced motion is on: each step shows its final state with a written description.</p> : null}
+      {reduced ? <p className="fel-muted fel-small">Reduced motion is on: each step shows its final state with a written description.</p> : null}
     </section>
   );
 }

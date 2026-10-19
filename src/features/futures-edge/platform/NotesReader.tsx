@@ -15,26 +15,26 @@ export function NotesReader({ lesson, ctx, onRead }: { lesson: Lesson; ctx: Bloc
   }, [onRead]);
   const terms = lesson.glossaryEntries;
   return (
-    <article className="fe-notes" aria-label={`Notes: ${lesson.title}`}>
-      <div className="fe-row fe-noprint"><button type="button" className="fe-btn fe-btn-small" onClick={() => window.print()}>Print notes</button></div>
-      <h2 className="fe-print-only">{lesson.title}</h2>
-      <p className="fe-badge-fictional">{lesson.fictionalDataNotice}</p>
+    <article className="fel-notes" aria-label={`Notes: ${lesson.title}`}>
+      <div className="fel-row fel-noprint"><button type="button" className="fel-btn fel-btn-small" onClick={() => window.print()}>Print notes</button></div>
+      <h2 className="fel-print-only">{lesson.title}</h2>
+      <p className="fel-badge-fictional">{lesson.fictionalDataNotice}</p>
       {lesson.notesSections.map((s) => s.heading === 'learn-more' || s.collapsedByDefault ? (
-        <details key={s.id} id={s.id} className="fe-details fe-notes-more">
+        <details key={s.id} id={s.id} className="fel-details fel-notes-more">
           <summary><RichText text={s.title} /></summary>
           <Blocks blocks={s.blocks} ctx={ctx} />
         </details>
       ) : (
-        <section key={s.id} id={s.id} className="fe-notes-section">
+        <section key={s.id} id={s.id} className="fel-notes-section">
           <h3><RichText text={s.title} /></h3>
           <Blocks blocks={s.blocks} ctx={ctx} />
         </section>
       ))}
       {terms.length ? (
-        <section className="fe-notes-section">
+        <section className="fel-notes-section">
           <h3>Key definitions</h3>
-          <div className="fe-table-wrap">
-            <table className="fe-table">
+          <div className="fel-table-wrap">
+            <table className="fel-table">
               <caption>Terms introduced in this lesson</caption>
               <thead><tr><th scope="col">Term</th><th scope="col">Meaning</th><th scope="col">Example</th></tr></thead>
               <tbody>{terms.map((g) => <tr key={g.id}><th scope="row">{g.term}</th><td><RichText text={g.plainDefinition} /></td><td><RichText text={g.example} /></td></tr>)}</tbody>
@@ -42,15 +42,15 @@ export function NotesReader({ lesson, ctx, onRead }: { lesson: Lesson; ctx: Bloc
           </div>
         </section>
       ) : null}
-      <section className="fe-notes-section">
+      <section className="fel-notes-section">
         <h3>Misconceptions to avoid</h3>
-        <ul className="fe-misconceptions">{lesson.commonMistakes.map((m, k) => <li key={k}><p><strong>Myth: </strong><RichText text={m.mistake} /></p><p><strong>Instead: </strong><RichText text={m.correction} /></p></li>)}</ul>
+        <ul className="fel-misconceptions">{lesson.commonMistakes.map((m, k) => <li key={k}><p><strong>Myth: </strong><RichText text={m.mistake} /></p><p><strong>Instead: </strong><RichText text={m.correction} /></p></li>)}</ul>
       </section>
-      <section className="fe-notes-section">
+      <section className="fel-notes-section">
         <h3>Recap</h3>
         <ul>{lesson.takeaways.map((t, k) => <li key={k}><RichText text={t} /></li>)}</ul>
       </section>
-      <div ref={end} aria-hidden className="fe-end-marker" />
+      <div ref={end} aria-hidden className="fel-end-marker" />
     </article>
   );
 }

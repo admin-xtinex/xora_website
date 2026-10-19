@@ -33,6 +33,8 @@ export interface CheckpointState {
   history: HistorySummary;
   status: CheckpointStatus;
   isPreview: boolean;
+  /** Why it is a preview: questions still missing, or all present but some awaiting review (CPB-Q03/Q04). */
+  previewReason?: 'incomplete' | 'provisional';
   record: CompletionRecord;
 }
 
@@ -155,7 +157,7 @@ export class ProgressService {
       p.passed = passed; p.checkpointVersion = build.plan.version; p.lastUpdatedAt = now;
       await this.adapter.saveCheckpoint(p);
     }
-    return { progress: p, history, status, isPreview, record: completionRecord({ kind: 'checkpoint', checkpointId: build.plan.id }, passed, passed ? p.lastUpdatedAt : null) };
+    return { progress: p, history, status, isPreview, ...(isPreview ? { previewReason: build.status === 'provisional' ? 'provisional' as const : 'incomplete' as const } : {}), record: completionRecord({ kind: 'checkpoint', checkpointId: build.plan.id }, passed, passed ? p.lastUpdatedAt : null) };
   }
 
   async recordCheckpointAttempt(build: CheckpointBuild, result: AttemptResult): Promise<CheckpointState> {

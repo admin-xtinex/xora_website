@@ -7,7 +7,8 @@ import {
   answeredCount, blockedByRemediation, currentQuestion, initSession, sessionReducer,
   type SessionConfig, type SessionState,
 } from '../engine/session';
-import type { AttemptResult } from '../engine/types';
+import type { AttemptResult, SafetyFailure } from '../engine/types';
+import type { AnchorIndex, RemediationTarget } from '../engine/remediation';
 import { SAFETY_TOPIC_LABELS } from '../engine/strings';
 import { EducationOnlyNotice } from './EducationOnlyNotice';
 import { FeedbackPanel } from './FeedbackPanel';
@@ -25,7 +26,10 @@ export interface QuizRunnerProps {
   onFinish?: (result: AttemptResult) => void;
   onRetry?: (last: AttemptResult) => void;
   onRemediate?: (last: AttemptResult) => void;
-  onOpenRemediation?: (lessonId: string, anchorId?: string) => void;
+  /** lessonId/anchorId come from the resolved target (anchorId only when it passed the D-67 checks). */
+  onOpenRemediation?: (lessonId: string, anchorId?: string, target?: RemediationTarget) => void;
+  /** Optional anchor index (anchorIndexFromLessons) so missing anchors fall back to the lesson start. */
+  anchorExists?: AnchorIndex;
   renderRichText?: RichTextRenderer;
   renderFixture?: (fixtureId: string) => ReactNode;
 }
@@ -50,7 +54,8 @@ export function QuizRunner(props: QuizRunnerProps) {
         <h2 id="fe-assess-runner-title" ref={headingRef} tabIndex={-1}>{props.title}: results</h2>
         <SafetyCriticalCallout
           failures={r.safetyFailures} renderRichText={rt}
-          {...(props.onOpenRemediation ? { onOpenRemediation: (f: (typeof r.safetyFailures)[number]) => props.onOpenRemediation?.(f.remediationRef?.lessonId ?? r.results.find((x) => x.questionId === f.questionId)?.linkedLessonId ?? '', f.remediationRef?.anchorId) } : {})}
+          {...(props.anchorExists ? { anchorExists: props.anchorExists } : {})}
+          {...(props.onOpenRemediation ? { onOpenRemediation: (_f: SafetyFailure, t: RemediationTarget) => props.onOpenRemediation?.(t.lessonId, t.anchorId, t) } : {})}
         />
         <RetryPanel
           result={r}

@@ -4,6 +4,7 @@
 import type {
   ChoiceId, DecisionWord, LessonId, Question, QuestionId, QuizAttempt, RichText, SafetyTopic, QuestionAttempt,
 } from '../../contracts';
+import type { RemediationTarget } from './remediation';
 
 export type AttemptScope = QuizAttempt['scope'];
 /** Same shape as the contract's QuestionAttempt.response. Ordering answers use `choiceIds` in the learner's order. */
@@ -77,6 +78,9 @@ export interface SafetyFailure {
   correction: RichText;
   misconception?: RichText;
   remediationRef?: Question['remediationRef'];
+  linkedLessonId: LessonId;
+  /** Where "Review" sends the learner (D-67 anchor rules; falls back to the lesson start). See engine/remediation.ts. */
+  remediationTarget: RemediationTarget;
 }
 
 export type FailReason =

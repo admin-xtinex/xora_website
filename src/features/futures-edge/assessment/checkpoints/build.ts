@@ -23,9 +23,17 @@ export interface CheckpointGap {
   draftSource?: string;
 }
 
+export interface CheckpointPendingConfirmation { slotIndex: number; questionId: CheckpointQuestionId; note: string }
+
 export interface CheckpointBuild {
   plan: CheckpointPlan;
-  status: 'ready' | 'incomplete';
+  /**
+   * ready = every slot resolved, nothing pending, no errors → can record a pass.
+   * provisional = every slot resolved but some item awaits an external confirmation → preview only.
+   * incomplete = gaps remain → preview only.
+   */
+  status: 'ready' | 'provisional' | 'incomplete';
+  pendingConfirmations: CheckpointPendingConfirmation[];
   config: CheckpointConfig;
   manifest: QuestionSetManifest;
   resolvedQuestions: Question[];
@@ -69,6 +77,8 @@ export function buildCheckpoint(
   const authored = new Map(authoredItems.map((q) => [q.id, q]));
   const plannedTopics = new Set<SafetyTopic>();
   const seen = new Set<string>();
+  const used = new Set<string>();
+  const pendingConfirmations: CheckpointPendingConfirmation[] = [];
   let plannedCount = 0;
 
   plan.slots.forEach((s, i) => {
@@ -114,6 +124,30 @@ export function buildCheckpoint(
         owner: staged ? 'EDGE-09' : s.owner, note: staged ? `${s.note}; lesson is now staged by ${s.owner}, EDGE-09 picks ${s.count} item id(s)` : s.note,
       });
       gapIssue(sp, 'CP_GAP', staged ? `${s.lessonId}: lesson staged, ${s.count} item(s) still to be referenced (EDGE-09)` : `${s.lessonId}: ${s.count} item(s) pending (${s.owner})`);
+    } else if (s.kind === 'checkpoint-item') {
+      plannedCount += 1;
+      if (seen.has(s.id)) err(sp, 'CP_DUPLICATE_REF', `${s.id} referenced twice`);
+      seen.add(s.id);
+      if (s.expect?.safetyTopic) plannedTopics.add(s.expect.safetyTopic);
+      const q = authored.get(s.id);
+      if (!q) {
+        gaps.push({ slotIndex: i, kind: 'checkpoint-item-not-authored', questionId: s.id, count: 1, owner: 'EDGE-09', note: `${s.purpose}: slot expects an authored item (${s.basis}) but none was passed to buildCheckpoint` });
+        gapIssue(sp, 'CP_GAP', `${s.id} (${s.purpose}) not passed in authoredItems`);
+        return;
+      }
+      used.add(s.id);
+      const r = validateAssessmentQuestion(q, `${sp}.item`, { checkpointId: plan.id });
+      errors.push(...r.errors); warnings.push(...r.warnings);
+      if (!plan.coversLessonIds.includes(q.linkedLessonId)) err(sp, 'CP_SLOT_OUTSIDE_COVERAGE', `${q.id} linked to ${q.linkedLessonId}`);
+      if (s.expect?.safetyTopic && !(q.safetyCritical && q.safetyTopic === s.expect.safetyTopic)) {
+        err(sp, 'CP_EXPECT_MISMATCH', `${q.id} expected safety-critical topic ${s.expect.safetyTopic}, got ${q.safetyCritical ? q.safetyTopic : 'not safety-critical'}`);
+      }
+      if (s.expect?.abstain !== undefined && bestAnswerIsAbstain(q) !== s.expect.abstain) err(sp, 'CP_EXPECT_MISMATCH', `${q.id} expected best answer abstain=${s.expect.abstain}`);
+      if (s.pendingConfirmation) {
+        pendingConfirmations.push({ slotIndex: i, questionId: s.id, note: s.pendingConfirmation });
+        (opts.requireReady ? err : warn)(sp, 'CP_PENDING_CONFIRMATION', `${s.id}: ${s.pendingConfirmation}`);
+      }
+      items.push(q); resolved.push(q);
     } else {
       plannedCount += 1;
       s.wants?.forEach((t) => plannedTopics.add(t));
@@ -126,9 +160,11 @@ export function buildCheckpoint(
       const r = validateAssessmentQuestion(q, `${sp}.item`, { checkpointId: plan.id });
       errors.push(...r.errors); warnings.push(...r.warnings);
       if (!plan.coversLessonIds.includes(q.linkedLessonId)) err(sp, 'CP_SLOT_OUTSIDE_COVERAGE', `${q.id} linked to ${q.linkedLessonId}`);
+      used.add(s.id);
       items.push(q); resolved.push(q);
     }
   });
+  for (const q of authoredItems) if (!used.has(q.id)) warn(`${P}.items`, 'CP_ITEM_UNUSED', `${q.id} was passed in authoredItems but no slot uses it`);
 
   // Plan-level rules
   if (plannedCount < plan.questionCount.min || plannedCount > plan.questionCount.max) err(`${P}.slots`, 'CP_PLAN_COUNT', `plan has ${plannedCount} items; expected ${plan.questionCount.min}–${plan.questionCount.max}`);
@@ -145,8 +181,8 @@ export function buildCheckpoint(
   const safetyTopics: CheckpointBuild['coverage']['safetyTopics'] = {};
   for (const q of resolved) if (q.safetyCritical && q.safetyTopic) safetyTopics[q.safetyTopic] = (safetyTopics[q.safetyTopic] ?? 0) + 1;
   const abstainItems = resolved.filter(bestAnswerIsAbstain).length;
-  const status: CheckpointBuild['status'] = gaps.length === 0 ? 'ready' : 'incomplete';
-  const coverageIssue = status === 'ready' ? err : warn;
+  const status: CheckpointBuild['status'] = gaps.length > 0 ? 'incomplete' : pendingConfirmations.length > 0 ? 'provisional' : 'ready';
+  const coverageIssue = status === 'incomplete' ? warn : err;
   for (const t of plan.mandatorySafetyTopics) if (!safetyTopics[t]) coverageIssue(`${P}`, 'CP_MANDATORY_TOPIC_UNRESOLVED', `no resolved safety-critical ${t} item yet`);
   if (abstainItems < plan.minAbstainItems) coverageIssue(`${P}`, 'CP_ABSTAIN_MIN', `${abstainItems} resolved abstain items; need ≥${plan.minAbstainItems}`);
 
@@ -166,7 +202,7 @@ export function buildCheckpoint(
     policy: { passThreshold: plan.passThreshold, safetyCriticalMustBeCorrect: plan.safetyCriticalMustBeCorrect },
   });
   return {
-    plan, status, config, manifest, resolvedQuestions: resolved, plannedCount, resolvedCount: resolved.length, gaps,
+    plan, status, pendingConfirmations, config, manifest, resolvedQuestions: resolved, plannedCount, resolvedCount: resolved.length, gaps,
     coverage: { byLesson, safetyTopics, abstainItems },
     report: { ok: errors.length === 0, errors, warnings },
   };

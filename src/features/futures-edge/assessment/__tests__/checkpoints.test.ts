@@ -36,6 +36,11 @@ function syntheticComplete(plan: CheckpointPlan) {
       byLesson.set(s.lessonId, [...(byLesson.get(s.lessonId) ?? []), make(id, s.lessonId, topic, topic === 'no-trade')]);
       return { kind: 'lesson-question' as const, questionId: id, lessonId: s.lessonId, ...(topic ? { expect: { safetyTopic: topic } } : {}) };
     });
+    if (s.kind === 'checkpoint-item') {
+      const { pendingConfirmation: _pending, ...rest } = s;
+      items.push({ ...make(s.id, plan.coversLessonIds.at(-1) as LessonId, s.expect?.safetyTopic, s.expect?.abstain), id: s.id } as Question & { id: CheckpointQuestionId });
+      return [rest];
+    }
     const topic = s.wants?.[0];
     items.push({ ...make(s.id, plan.coversLessonIds.at(-1) as LessonId, topic, topic === 'no-trade' || topic === 'loss-limits'), id: s.id } as Question & { id: CheckpointQuestionId });
     return [s];
@@ -67,7 +72,9 @@ describe('checkpoint plans (data configs)', () => {
     assert.deepEqual(CPA_PLAN.mandatorySafetyTopics, ['leverage', 'liquidation', 'execution', 'account-security']);
     assert.equal(CPB_PLAN.afterLessonId, 'T23'); assert.deepEqual(CPB_PLAN.coversLessonIds, ['T14', 'T15', 'T16', 'T17', 'T18', 'T19', 'T20', 'T21', 'T22', 'T23']);
     for (const t of ['leverage', 'liquidation', 'loss-limits'] as const) assert.ok(CPB_PLAN.mandatorySafetyTopics.includes(t));
-    assert.equal(CPB_PLAN.slots.filter((s) => s.kind === 'checkpoint-item-pending').length, 5, '2 chart + 2 risk math + 1 demo scenario');
+    const cpItems = CPB_PLAN.slots.filter((s) => s.kind === 'checkpoint-item');
+    assert.deepEqual(cpItems.map((s) => s.kind === 'checkpoint-item' ? s.purpose : ''), ['chart-interpretation', 'chart-interpretation', 'risk-math', 'risk-math', 'demo-scenario'], '2 chart + 2 risk math + 1 demo scenario');
+    assert.equal(CPB_PLAN.slots.filter((s) => s.kind === 'checkpoint-item-pending' || s.kind === 'lesson-pending').length, 0, 'CPB v0.3.0 has no pending slots');
     assert.equal(CP1_PLAN.gating, false); assert.equal(CPA_PLAN.gating, true); assert.equal(CPB_PLAN.gating, true);
     for (const p of [CP1_PLAN, CPA_PLAN, CPB_PLAN]) assert.equal(p.passThreshold, 0.8);
   });

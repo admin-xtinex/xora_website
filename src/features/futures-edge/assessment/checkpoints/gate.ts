@@ -24,7 +24,8 @@ export function checkpointGate(plan: CheckpointPlan, course: CourseSummary, stat
   const passed = state?.status === 'passed';
   const isPreview = state?.isPreview ?? false;
   let message: string;
-  if (isPreview) message = 'Preview: some questions for this checkpoint are still being written. You can practise, but a preview cannot be passed.';
+  if (isPreview && state?.previewReason === 'provisional') message = 'Preview: every question is written, but some are still being checked. You can practise, but a preview cannot be passed.';
+  else if (isPreview) message = 'Preview: some questions for this checkpoint are still being written. You can practise, but a preview cannot be passed.';
   else if (passed) message = 'Passed. This is a learning milestone only, not permission to trade.';
   else if (recommendedFirst.length) message = `You can start now. We recommend finishing ${recommendedFirst.join(', ')} first.`;
   else message = 'Ready when you are. You can retake it as many times as you like.';

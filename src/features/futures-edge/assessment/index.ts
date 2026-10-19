@@ -17,6 +17,10 @@ export {
   initSession, sessionReducer, currentQuestion, answeredCount, blockedByRemediation, parseNumericInput,
   type SessionConfig, type SessionState, type SessionAction, type FeedbackMode,
 } from './engine/session';
+export {
+  resolveRemediationTarget, parseRemediationAnchor, anchorIndexFromLessons,
+  type RemediationTarget, type RemediationAnchorKind, type RemediationFallbackReason, type AnchorIndex,
+} from './engine/remediation';
 export { seededShuffle } from './engine/shuffle';
 export { sha256Hex, canonicalJson } from './engine/hash';
 export {
@@ -26,15 +30,16 @@ export {
 export { buildQuestionBank, type QuestionBank } from './question-sets/bank';
 export {
   validateAssessmentQuestion, validateLessonQuestionSet, validatePhase5Abstention, validateManifestIntegrity,
-  bestAnswerIsAbstain, numericRoundingIssues, REQUIRED_SAFETY_TOPICS_BY_LESSON, PHASE5_LESSON_IDS,
-  type AssessmentReport, type NumericRoundingIssue,
+  bestAnswerIsAbstain, numericRoundingIssues, remediationRefIssues, REQUIRED_SAFETY_TOPICS_BY_LESSON, PHASE5_LESSON_IDS,
+  type AssessmentReport, type NumericRoundingIssue, type RemediationRefIssue,
 } from './question-sets/validator';
 export type { CheckpointPlan, CheckpointSlot, AuthorBot } from './checkpoints/plan';
 export { CP1_PLAN } from './checkpoints/cp1';
 export { CPA_PLAN } from './checkpoints/cpa';
 export { CPB_PLAN } from './checkpoints/cpb';
+export { CPB_ITEMS, CPB_ITEM_PROVENANCE, type CheckpointItem, type CheckpointItemProvenance } from './checkpoints/cpb-items';
 export { CHECKPOINT_DISCLAIMER } from './checkpoints/disclaimer';
-export { buildCheckpoint, type CheckpointBuild, type CheckpointGap } from './checkpoints/build';
+export { buildCheckpoint, type CheckpointBuild, type CheckpointGap, type CheckpointPendingConfirmation } from './checkpoints/build';
 export { checkpointGate, type CheckpointGateView } from './checkpoints/gate';
 export type { AssessmentStorageAdapter, PersistenceMode, StorageIssue } from './progress/adapter';
 export { LocalOnlyDemoProgressAdapter, type LocalDemoAdapterOptions } from './progress/local-demo-adapter';

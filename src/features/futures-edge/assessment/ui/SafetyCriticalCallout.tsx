@@ -3,12 +3,16 @@
  * Uses role="alert" so screen readers announce it once when it appears.
  */
 import type { SafetyFailure } from '../engine/types';
+import { resolveRemediationTarget, type AnchorIndex, type RemediationTarget } from '../engine/remediation';
 import { SAFETY_FAIL_HEADLINE, SAFETY_TOPIC_LABELS } from '../engine/strings';
 import { plainRichText, type RichTextRenderer } from './RichText';
 
-export function SafetyCriticalCallout({ failures, onOpenRemediation, renderRichText, headline = SAFETY_FAIL_HEADLINE }: {
+export function SafetyCriticalCallout({ failures, onOpenRemediation, renderRichText, headline = SAFETY_FAIL_HEADLINE, anchorExists }: {
   failures: readonly SafetyFailure[];
-  onOpenRemediation?: (f: SafetyFailure) => void;
+  /** Receives the resolved target (D-67 anchor rules, lesson-start fallback) alongside the failure. */
+  onOpenRemediation?: (f: SafetyFailure, target: RemediationTarget) => void;
+  /** Optional anchor index from the loaded lessons (anchorIndexFromLessons); unknown anchors fall back to the lesson start. */
+  anchorExists?: AnchorIndex;
   renderRichText?: RichTextRenderer;
   headline?: string;
 }) {
@@ -20,7 +24,9 @@ export function SafetyCriticalCallout({ failures, onOpenRemediation, renderRichT
       <h3 id="fe-assess-safety-title">Safety check: {topics.map((t) => SAFETY_TOPIC_LABELS[t] ?? t).join(', ')}</h3>
       <p>{headline}</p>
       <ul>
-        {failures.map((f) => (
+        {failures.map((f) => {
+          const target = resolveRemediationTarget(f, anchorExists ? { anchorExists } : {});
+          return (
           <li key={f.questionId} data-question-id={f.questionId} data-safety-topic={f.safetyTopic}>
             <p className="fe-assess-safety__topic">{SAFETY_TOPIC_LABELS[f.safetyTopic] ?? f.safetyTopic}</p>
             <p className="fe-assess-safety__prompt">{rt(f.prompt)}</p>
@@ -31,12 +37,16 @@ export function SafetyCriticalCallout({ failures, onOpenRemediation, renderRichT
               {f.misconception ? (<><dt>Why your answer is risky</dt><dd>{rt(f.misconception)}</dd></>) : null}
             </dl>
             {onOpenRemediation ? (
-              <button type="button" onClick={() => onOpenRemediation(f)}>
-                Review {f.remediationRef?.lessonId ?? 'the lesson'}{f.remediationRef?.anchorId ? ` (${f.remediationRef.anchorId})` : ''}
+              <button
+                type="button" onClick={() => onOpenRemediation(f, target)}
+                data-remediation-lesson={target.lessonId} data-remediation-anchor={target.anchorId ?? ''} data-remediation-kind={target.anchorKind}
+              >
+                {target.label}
               </button>
             ) : null}
           </li>
-        ))}
+          );
+        })}
       </ul>
     </section>
   );

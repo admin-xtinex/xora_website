@@ -17,6 +17,18 @@ export type CheckpointSlot =
     }
   /** Lesson has no authored questions yet; N items to be picked once it exists. */
   | { kind: 'lesson-pending'; lessonId: LessonId; count: number; owner: AuthorBot; wants?: SafetyTopic[]; note: string }
+  /**
+   * Checkpoint-only item (CPx-Qnn) authored by EDGE-09 (passed to buildCheckpoint as `authoredItems`).
+   * `expect` is checked like a lesson-question slot. `pendingConfirmation` keeps the build PROVISIONAL (resolved, but
+   * not passable) until the named external confirmation arrives; it is an error in integration mode (requireReady).
+   */
+  | {
+      kind: 'checkpoint-item'; id: CheckpointQuestionId;
+      purpose: 'chart-interpretation' | 'risk-math' | 'demo-scenario' | 'foundations-review';
+      basis: string;
+      expect?: { safetyTopic?: SafetyTopic; abstain?: boolean };
+      pendingConfirmation?: string;
+    }
   /** Checkpoint-only item (CPx-Qnn) that EDGE-09 authors once its dependencies exist. Not authored yet. */
   | {
       kind: 'checkpoint-item-pending'; id: CheckpointQuestionId;

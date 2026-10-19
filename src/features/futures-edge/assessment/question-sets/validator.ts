@@ -12,6 +12,7 @@ import {
   type Lesson, type LessonId, type Question, type SafetyTopic, type ValidationIssue,
 } from '../../contracts';
 import { verifyManifest, type QuestionSetManifest } from './manifest';
+import { anchorIndexFromLessons, parseRemediationAnchor, type AnchorIndex } from '../engine/remediation';
 
 export interface AssessmentReport { ok: boolean; errors: ValidationIssue[]; warnings: ValidationIssue[] }
 
@@ -77,6 +78,22 @@ export function numericRoundingIssues(q: Pick<Question, 'answer'>): NumericRound
   return out;
 }
 
+export interface RemediationRefIssue { code: 'Q_REMEDIATION_REF_INVALID' | 'Q_REMEDIATION_ANCHOR_FORMAT' | 'Q_REMEDIATION_ANCHOR_OTHER_LESSON' | 'Q_REMEDIATION_ANCHOR_TRANSITIONAL' | 'Q_REMEDIATION_ANCHOR_NOT_FOUND'; message: string }
+
+/** D-67 remediationRef rules. Pass `anchorExists` (anchorIndexFromLessons) to also check the anchor exists. */
+export function remediationRefIssues(ref: unknown, anchorExists?: AnchorIndex): RemediationRefIssue[] {
+  if (typeof ref !== 'object' || ref === null || !isLessonId((ref as { lessonId?: unknown }).lessonId)) return [{ code: 'Q_REMEDIATION_REF_INVALID', message: 'remediationRef needs lessonId T01..T23' }];
+  const { lessonId, anchorId } = ref as { lessonId: LessonId; anchorId?: unknown };
+  if (anchorId === undefined) return [];
+  const a = parseRemediationAnchor(anchorId);
+  if (!a) return [{ code: 'Q_REMEDIATION_ANCHOR_FORMAT', message: `anchorId ${JSON.stringify(anchorId)} must be a slide (Tnn-Snn) or notes section (Tnn-Nnn) id; the link falls back to the lesson start` }];
+  if (a.lessonId !== lessonId) return [{ code: 'Q_REMEDIATION_ANCHOR_OTHER_LESSON', message: `anchorId ${String(anchorId)} is not inside ${lessonId}; the link falls back to the lesson start` }];
+  const out: RemediationRefIssue[] = [];
+  if (a.transitional) out.push({ code: 'Q_REMEDIATION_ANCHOR_TRANSITIONAL', message: `scene anchor ${String(anchorId)} is transitional in contracts 1.x (D-67): point to the slide or notes section that explains it` });
+  if (anchorExists && !anchorExists(lessonId, anchorId as string)) out.push({ code: 'Q_REMEDIATION_ANCHOR_NOT_FOUND', message: `${String(anchorId)} does not exist in ${lessonId}; the link falls back to the lesson start` });
+  return out;
+}
+
 /** Validate one question with contract + EDGE-09 rules. `expect` = owning lesson or checkpoint id prefix. */
 export function validateAssessmentQuestion(q: unknown, path: string, expect?: { lessonId?: LessonId; checkpointId?: string }): AssessmentReport {
   const is = new Issues();
@@ -107,6 +124,12 @@ export function validateAssessmentQuestion(q: unknown, path: string, expect?: { 
     is.err(`${path}.safetyTopic`, 'Q_SAFETY_TOPIC_MISSING', 'safety-critical items need a safetyTopic so failures can be surfaced by topic');
   }
   if (x.safetyCritical === true && !x.remediationRef) is.warn(`${path}.remediationRef`, 'Q_SAFETY_REMEDIATION_MISSING', 'safety-critical item has no remediationRef; the correction falls back to the linked lesson');
+  if (x.remediationRef !== undefined) {
+    // D-67 (contracts v1.3.1, mirrored here while the repo is on v1.3.0): anchor format + same-lesson prefix.
+    // Lesson items: warnings for the author. Checkpoint-owned items (EDGE-09): errors.
+    const sev = expect?.checkpointId ? is.err.bind(is) : is.warn.bind(is);
+    for (const n of remediationRefIssues(x.remediationRef)) sev(`${path}.remediationRef`, n.code, n.message);
+  }
   if (x.shuffleChoices === true && choices.some((c) => typeof c?.text === 'string' && UNSAFE_TO_SHUFFLE.test(c.text))) {
     is.err(`${path}.shuffleChoices`, 'Q_SHUFFLE_UNSAFE', 'a choice refers to other choices by position ("all of the above", "option b"); shuffling would break it');
   }
@@ -135,11 +158,16 @@ export function validateLessonQuestionSet(lesson: Lesson, opts: LessonCheckOptio
   const qs = Array.isArray(lesson.quizQuestions) ? lesson.quizQuestions : [];
   if (qs.length < LESSON_QUESTIONS_MIN || qs.length > LESSON_QUESTIONS_MAX) is.err(`${P}.quizQuestions`, 'L_QUESTION_COUNT', `has ${qs.length} questions; expected ${LESSON_QUESTIONS_MIN}–${LESSON_QUESTIONS_MAX}`);
   const seen = new Set<string>();
+  const anchors = anchorIndexFromLessons([lesson]);
   qs.forEach((q, i) => {
     is.absorb(validateAssessmentQuestion(q, `${P}.quizQuestions[${i}]`, { lessonId: lesson.id }));
     if (seen.has(q.id)) is.err(`${P}.quizQuestions[${i}].id`, 'Q_DUPLICATE_ID', `duplicate question id ${q.id}`);
     seen.add(q.id);
     if (q.linkedLessonId !== lesson.id) is.err(`${P}.quizQuestions[${i}].linkedLessonId`, 'Q_LINKED_LESSON', `must be ${lesson.id}`);
+    // Anchor existence inside this lesson (refs into other lessons are checked course-wide, see tools/report-banks).
+    if (q.remediationRef !== undefined) {
+      for (const n of remediationRefIssues(q.remediationRef, anchors)) if (n.code === 'Q_REMEDIATION_ANCHOR_NOT_FOUND') is.warn(`${P}.quizQuestions[${i}].remediationRef`, n.code, n.message);
+    }
   });
   const tags = new Set(qs.map((q) => q.cognitiveTag));
   if (!tags.has('interpretation')) is.warn(`${P}.quizQuestions`, 'L_COGNITIVE_MIX', 'no interpretation question');

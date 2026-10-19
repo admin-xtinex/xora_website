@@ -7,7 +7,7 @@
  *     (see README "Real-bank run").
  * The first source that provides a lesson id wins.
  */
-import type { Lesson } from '../../contracts';
+import type { Fixture, Lesson } from '../../contracts';
 import { nodeFs, nodeProcess, nodeUrl } from './node-builtins';
 
 export interface LoadedLesson { source: string; path: string; lesson: Lesson }
@@ -34,4 +34,14 @@ export async function loadLessons(roots: readonly string[] = bankRoots()): Promi
     }
   }
   return [...seen.values()].sort((a, b) => a.lesson.id.localeCompare(b.lesson.id));
+}
+
+/** Read-only: the lesson-local fixtures next to a loaded lesson (`Tnn/fixtures.ts`, export `fixtures`), if any. */
+export async function loadLessonFixtures(l: LoadedLesson): Promise<Fixture[]> {
+  const fs = nodeFs();
+  const { pathToFileURL } = nodeUrl();
+  const path = l.path.replace(/lesson\.ts$/, 'fixtures.ts');
+  if (!fs.existsSync(path)) return [];
+  const mod = (await import(pathToFileURL(path).href)) as { fixtures?: unknown };
+  return Array.isArray(mod.fixtures) ? (mod.fixtures as Fixture[]) : [];
 }

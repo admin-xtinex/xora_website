@@ -12,6 +12,7 @@ import {
   type QuestionAttempt, type QuestionId, type QuizAttempt, type SafetyTopic,
 } from '../../contracts';
 import { EDUCATION_ONLY_NOTICE } from './strings';
+import { resolveRemediationTarget } from './remediation';
 import type {
   AbstentionInfo, AbstentionSummary, AttemptKind, AttemptResult, AttemptScope, ChoiceFeedback, FailReason, LearnerResponse,
   QuestionResult, ResponseStatus, SafetyFailure, ScoringPolicy, TopicTally,
@@ -221,6 +222,8 @@ export function gradeAttempt(input: GradeAttemptInput): AttemptResult {
     learnerAnswerText: r.learnerAnswerText, correctAnswerText: r.correctAnswerText, correction: r.rationale,
     ...(r.misconception !== undefined ? { misconception: r.misconception } : {}),
     ...(r.remediationRef !== undefined ? { remediationRef: r.remediationRef } : {}),
+    linkedLessonId: r.linkedLessonId,
+    remediationTarget: resolveRemediationTarget({ remediationRef: r.remediationRef, linkedLessonId: r.linkedLessonId }),
   }));
   const bySafetyTopic: Partial<Record<SafetyTopic, TopicTally>> = {};
   for (const r of results) {

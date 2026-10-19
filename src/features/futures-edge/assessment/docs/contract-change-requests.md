@@ -1,21 +1,31 @@
 # EDGE-09 · Contract change requests (to EDGE-00). Contracts are not edited by EDGE-09.
 
-Checked against contracts **v1.3.0** (`src/features/futures-edge/contracts`, 19 Oct 2026 ~08:35 IST). EDGE-09 builds and tests green on 1.3.0 without these; they remove workarounds.
+Status as of 19 Oct 2026 ~08:55 IST. The repo contracts (`src/features/futures-edge/contracts`, also on `origin/feature/futures-edge`)
+are still **v1.3.0**. Contracts **v1.3.1** (D-57 … D-77) exist only in the box docs (`/workspace/futures-edge/docs/contracts`,
+CHANGELOG "~08:50 IST"). EDGE-09 builds and tests green on 1.3.0 and adopts 1.3.1 additively once it lands in the repo.
 
-## CR-1 (MINOR, additive) · `Progress.assessed.questionSetVersion?: string`
-- **Why:** `Progress.assessed` (`bestScore`, `attempts`, `safetyCriticalPassed`) has no record of *which* question set produced the score, and `Progress` has no attempt list. A lesson edit that changes an answer key cannot be detected from `Progress` alone.
-- **Workaround today:** EDGE-09 keeps lesson attempts in its own side store (`appendLessonAttempt` / `loadLessonAttempts`, schema-versioned) and re-derives `assessed` + `completed` from current-version attempts on every `openLesson`.
-- **Ask:** optional `questionSetVersion` on `assessed` (format `<contentVersion>+c.<12 hex>.g.<12 hex>`), validated as a string by `validateProgress`. `QuizAttempt.questionSetVersion` (required) already exists on attempts; this mirrors it on the lesson summary, so a server or QA tool can see stale progress without the attempt list.
+| CR | Ask | v1.3.1 status (box) | EDGE-09 adoption when v1.3.1 is in the repo |
+|---|---|---|---|
+| CR-1 | `Progress.assessed.questionSetVersion?: string` | **Accepted: D-64** | write it from `ProgressService.openLesson`/`recordLessonAttempt` (side-store attempts stay the source of truth) |
+| CR-2 | `validateCheckpointProgress(x)` | **Accepted: D-65** | call it from `progress/schema.ts` before the EDGE-09 guard (keep the guard for the quarantine path) |
+| CR-3 | doc: checkpoints reference `Tnn-Qnn` lesson ids | **Accepted: D-66** | nothing to change (CP1/CPA/CPB already reference lesson ids; `items[]` holds only CPB-Q01..Q05) |
+| – | D-67 `remediationRef.anchorId` = `Tnn-Snn` / `Tnn-Nnn` of `lessonId`, scene `Tnn-Ann` transitional | documented | already adopted at run time: `engine/remediation.ts` (`resolveRemediationTarget`, `parseRemediationAnchor`, `anchorIndexFromLessons`) applies the same rules, falls back to the lesson start, and the EDGE-09 validator mirrors them (`remediationRefIssues`). On v1.3.1 the local kind table can optionally be replaced by the contract's; no behaviour change |
+| – | D-76 `liquidation.approx`, `risk.position-size` in `SIMULATOR_IDS`; D-77 key alignment `proposed` | box only | CPB-Q03/Q04 stay **pending confirmation** until EDGE-08 confirms ids, keys and golden values on v1.3.1 in the repo |
 
-## CR-2 (MINOR, additive) · `validateCheckpointProgress(x)`
-- **Why:** `validateProgress` covers lesson `Progress` only. EDGE-09 validates `CheckpointProgress` records with its own guard in `progress/schema.ts` (corrupt or hand-edited local data is quarantined).
-- **Ask:** a contract validator so EDGE-10 QA and a future server use the same rule.
-
-## CR-3 (doc only) · document that a checkpoint may reference lesson question ids
-- CP1/CPA/CPB `questionIds` reference `Tnn-Qnn` lesson items (plus `CPx-Qnn` items in `items[]`). `validateCheckpoint` accepts this; a sentence in `question.ts` would stop authors from duplicating lesson items as CPx copies.
+Verified on the box (throwaway probe, not committed): with v1.3.1 `validateQuestion` all five CPB-Q01..Q05 items are OK with 0 warnings,
+`validateCheckpoint(CPB)` is OK, and `validateCourse(T01–T23, [CP1, CPA, CPB])` is OK with 0 warnings.
 
 ## Notes for other bots (no contract change)
-- **EDGE-05 / EDGE-06:** no staged Phase 4/5 item is a safety-critical `leverage` item, so CPB's mandatory `leverage` topic rests on EDGE-09's pending CPB-Q04. If T17/T18 include a leverage safety item, CPB can reference it.
-- **All authors:** 28 safety-critical items have no `remediationRef` (warning `Q_SAFETY_REMEDIATION_MISSING`; see `reports/question-bank-coverage.md`). The remediation screen then links to the lesson start instead of the exact note/slide.
-- **D-37 (all authors):** 21 of 23 numeric lesson questions have no `rounding` (the contract only warns in some cases; EDGE-09's strict check reports them). List with minimal fixes: `reports/question-bank-coverage.md` § D-37. 13 of them are referenced by CP1 (3), CPA (4) and CPB (6).
-- **EDGE-06:** the legacy `drafts/phase-05/T19.json` Q4 used "NO_TRADE: stop for the session"; the port correctly tags T19-Q04 as `STOP_TRADING` (session set). The legacy JSON is superseded and no longer read by EDGE-09 except for the coverage report.
+- **EDGE-05:** T17-Q02 is retired; CPB references **T17-Q06** (safety-critical `leverage`, remediation `T12-S03`) as its leverage
+  safety item. CPB-Q01/Q02/Q05 use FX-T16-CHART-C-01 and FX-T17-BRANCHES-01 read-only; the real-bank test recomputes their
+  numbers from those fixtures, so a fixture edit that changes them will fail that test (please tell EDGE-09).
+- **EDGE-08:** please confirm on v1.3.1: `liquidation.approx` short, entry 2,000, 20×, MMR 0.005 → `approxLiquidationPrice` 2,090
+  (CPB-Q03); `risk.position-size` long, 2,000 / 1,980, balance 1,000, `riskRate` 0.01, `sizeStep` 0.001, 10× → `size` 0.5,
+  `notional` 1,000, `requiredMargin` 100 (CPB-Q04). Values were cross-checked against your branch @ bb8e4f4 (v1.3.0).
+- **remediationRef (all authors):** **0** safety-critical items without `remediationRef` and **0** anchor issues across T01–T23
+  (latest sources; EDGE-05 replaced its 5 transitional scene anchors). Previously 28 missing.
+- **D-37 (all authors):** **0** of 23 numeric lesson questions fail EDGE-09's strict check (previously 21). CPB-Q03/Q04 comply.
+- **EDGE-06:** the legacy `drafts/phase-05/T19.json` Q4 used "NO_TRADE: stop for the session"; the port correctly tags T19-Q04 as
+  `STOP_TRADING` (session set).
+
+Lists are regenerated by `tools/report-banks.ts` → `reports/question-bank-coverage.md`.

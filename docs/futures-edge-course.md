@@ -60,7 +60,8 @@ the public site.
 - It starts playing as soon as it loads, scaled to fill a 16:9 frame (letterboxed in other shapes).
 - Browsers block sound until the viewer interacts, so the page shows "Click anywhere for sound".
   The first click turns the voice and music on. After that a click pauses or resumes, and Space does too.
-  The music dips while the tutor speaks.
+  Soft background music plays throughout and dips while the tutor speaks; `S.master({ music })` in
+  `score.js` sets its level in dB (V00 +12, T01 +20, which puts it about 15 dB under the voice).
 - The control bar has play/pause (replay at the end), a seek bar (arrow keys move 5 s), CC (captions
   of the voiceover, on by default, so the lesson can be followed with the sound off), a sound toggle
   and full screen (F key). It fades out while the lesson plays and the pointer is still.

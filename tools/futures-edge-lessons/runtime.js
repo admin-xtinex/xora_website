@@ -216,7 +216,7 @@
   function recordPass(T) {
     const ev = [];
     const tracks = {};
-    const master = { gain: -6, fadeOut: 1 };
+    const master = { gain: -6, music: 0, fadeOut: 1 };
     let B = 0.5, t0 = 0;
     const at = (o) => (o.t != null ? o.t : t0 + (o.beat || 0) * B);
     const len = (o, d) => (o.dur != null ? o.dur : o.beats != null ? o.beats * B : d);
@@ -266,6 +266,7 @@
       },
       master(o = {}) {
         if (o.gain != null) master.gain = o.gain;
+        if (o.music != null) master.music = o.music;
         if (o.fadeOut != null) master.fadeOut = o.fadeOut;
       },
     };
@@ -367,19 +368,26 @@
     duck.connect(audio.out);
     const send = ctx.createGain();
     send.connect(audio.verb);
+    // The instruments (not the drums or sound effects) go through their own level, master({ music }).
+    const music = ctx.createGain();
+    music.gain.value = db(audio.score.master.music);
+    music.connect(bus);
+    const musicSend = ctx.createGain();
+    musicSend.gain.value = music.gain.value;
+    musicSend.connect(send);
     const tracks = {};
     for (const [name, tr] of Object.entries(audio.score.tracks)) {
       const g = ctx.createGain();
       g.gain.value = db(tr.gain);
       const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
-      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(bus); } else g.connect(bus);
+      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(music); } else g.connect(music);
       const rs = ctx.createGain();
       rs.gain.value = tr.rev;
       g.connect(rs);
-      rs.connect(send);
+      rs.connect(musicSend);
       tracks[name] = { node: g, def: tr };
     }
-    const s = { bus, duck, send, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0, voice: null };
+    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0, voice: null };
     audio.session = s;
     startVoice(s);
     // Notes already sounding at the seek point start now with what is left of them.
@@ -415,7 +423,7 @@
       try { v.stop(now + 0.05); } catch (e) { /* not started yet */ }
       setTimeout(() => v.disconnect(), 400);
     }
-    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); }, 400);
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); s.music.disconnect(); s.musicSend.disconnect(); }, 400);
   }
 
   function pump() {
@@ -484,7 +492,7 @@
         lp.type = "lowpass";
         lp.frequency.value = 700 + 900 * bright;
         lp.connect(g);
-        stop = env(g, when, 0.1 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
+        stop = env(g, when, 0.22 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
         osc("sawtooth", f, lp, when, stop, -8);
         osc("sawtooth", f, lp, when, stop, 8);
         break;

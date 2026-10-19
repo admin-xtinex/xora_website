@@ -40,5 +40,5 @@ kit.score(function (S, T) {
   S.chord('pad', ['D3', 'A3', 'D4', 'F#4'], { t: T.next, dur: 9, vel: 40 });
   S.chord('keys', ['D3', 'A3', 'D4', 'F#4', 'A4'], { t: T.next + 0.7, dur: 8, vel: 50 });
   S.run('mal', ['D5', 'E5', 'F#5', 'A5', 'B5', 'D6'], { t: T.next + 1.4, step: 0.12, vel: 40, cresc: 6 });
-  S.master({ gain: -10, fadeOut: 2.5 });
+  S.master({ gain: -10, music: 20, fadeOut: 2.5 });
 });

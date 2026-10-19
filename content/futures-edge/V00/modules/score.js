@@ -55,5 +55,5 @@ kit.score(function (S, T) {
   S.fx('pop', T.welcome + 1.5, { vel: 28 });
   [[T.welcome, 1.5], [T.welcome, 3.9], [T.welcome, 6.4], [T['for-you'], 1.9], [T['for-you'], 7.5], [T.lesson, 0.7], [T.phases, 0.6], [T['demo-only'], 12.4], [T.risk, 10.0], [T.outcomes, 7.7], [T.start, 1.3]]
     .forEach((b) => S.fx('pop', b[0] + b[1], { vel: 30, pitch: 7 }));
-  S.master({ gain: -8, fadeOut: 2.5 });
+  S.master({ gain: -8, music: 12, fadeOut: 2.5 });
 });

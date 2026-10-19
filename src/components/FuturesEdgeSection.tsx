@@ -3,18 +3,25 @@ import { ArrowRight, ChevronRight, CircleCheck, Lock, Play } from "lucide-react"
 import { EDGE, LINKS } from "@/lib/content";
 import { revealTransition, useSeen } from "@/lib/seen";
 import { cn } from "@/lib/utils";
+import { LESSONS, PHASES } from "./futures-edge/courseData";
 import { MagneticButton } from "./ui/MagneticButton";
 import { Reveal } from "./ui/Reveal";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
-const DONE = EDGE.modules.filter((m) => m.state === "done").length;
-const PCT = Math.round((DONE / EDGE.modules.length) * 100);
+// The preview is the real course, read from its catalogue: phases, lesson counts and which videos are released.
+const LESSONS_ONLY = LESSONS.filter((l) => l.kind === "lesson");
+const VIDEOS_READY = LESSONS.filter((l) => l.status === "available").length;
+const PCT = Math.round((VIDEOS_READY / LESSONS.length) * 100);
+const COURSE_PHASES = PHASES.filter((p) => p.id > 0).map((p) => {
+  const items = LESSONS_ONLY.filter((l) => l.phase === p.id);
+  const ready = items.filter((l) => l.status === "available").length;
+  return { ...p, count: items.length, ready, state: ready === items.length ? "done" : ready > 0 ? "active" : "locked" };
+});
+const FIRST = LESSONS_ONLY[0]!;
 const R = 34;
 const C = 2 * Math.PI * R;
 
 function LearningPreview() {
-  const next = EDGE.modules.find((m) => m.state === "active")!;
-  const nextIndex = EDGE.modules.indexOf(next) + 1;
   const [ring, ringSeen] = useSeen<SVGSVGElement>();
   const [list, listSeen] = useSeen<HTMLOListElement>();
   return (
@@ -23,7 +30,7 @@ function LearningPreview() {
         <i />
         <i />
         <i />
-        <span>Futures Edge · Guided Onboarding</span>
+        <span>Futures Edge · The course</span>
       </div>
 
       <div className="edge-top">
@@ -47,11 +54,11 @@ function LearningPreview() {
               transition={revealTransition(ringSeen, { duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 })}
             />
           </svg>
-          <span className="ring-label">{PCT}%</span>
+          <span className="ring-label">{VIDEOS_READY}</span>
           <div>
-            <strong>Learning progress</strong>
+            <strong>{LESSONS_ONLY.length} lessons, {COURSE_PHASES.length} phases</strong>
             <span>
-              {DONE} of {EDGE.modules.length} modules completed
+              {VIDEOS_READY} of {LESSONS.length} videos released
             </span>
           </div>
         </div>
@@ -60,45 +67,45 @@ function LearningPreview() {
             <Play size={16} fill="currentColor" />
           </span>
           <div>
-            <span className="tag">Next up</span>
-            <strong>{next.title}</strong>
+            <span className="tag">Start here</span>
+            <strong>{FIRST.title}</strong>
             <span>
-              Module {nextIndex} · {next.mins} min
+              {FIRST.id} · {FIRST.minutes}-min video
             </span>
           </div>
         </div>
       </div>
 
       <ol ref={list} className="module-list">
-        {EDGE.modules.map((m, i) => (
+        {COURSE_PHASES.map((m, i) => (
           <motion.li
-            key={m.title}
+            key={m.id}
             className={cn("module", `is-${m.state}`)}
             initial={{ opacity: 0, x: 16 }}
             animate={listSeen === "idle" ? { opacity: 0, x: 16 } : { opacity: 1, x: 0 }}
             transition={revealTransition(listSeen, { duration: 0.6, delay: 0.2 + i * 0.06, ease: [0.16, 1, 0.3, 1] })}
           >
-            <span className="module-n">{i + 1}</span>
+            <span className="module-n">{m.id}</span>
             <div className="module-text">
-              <strong>{m.title}</strong>
-              <span>{m.line}</span>
+              <strong>{m.name}</strong>
+              <span>{m.goal}</span>
             </div>
             <span className="module-state">
               {m.state === "done" ? (
                 <>
-                  <CircleCheck size={15} aria-hidden /> Completed
+                  <CircleCheck size={15} aria-hidden /> Videos ready
                 </>
               ) : m.state === "active" ? (
                 <>
-                  <ChevronRight size={15} aria-hidden /> In progress
+                  <ChevronRight size={15} aria-hidden /> {m.ready} of {m.count} videos
                 </>
               ) : (
                 <>
-                  <Lock size={14} aria-hidden /> Locked
+                  <Lock size={14} aria-hidden /> Videos soon
                 </>
               )}
             </span>
-            <span className="module-mins">{m.mins} min</span>
+            <span className="module-mins">{m.count} lessons</span>
           </motion.li>
         ))}
       </ol>

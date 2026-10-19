@@ -1,7 +1,7 @@
 /** Formal checkpoints (CP1, CPA, CPB): exam mode, safety-critical tracking, remediation, unlimited retries. */
 import { useEffect, useState } from 'react';
 import type { CheckpointConfig, CheckpointId, Fixture, FixtureId, Question } from '@futures-edge/contracts';
-import { lessonIdOf } from '@futures-edge/contracts';
+import { LESSON_IDS, lessonIdOf } from '@futures-edge/contracts';
 import { loadCheckpoint } from '../assessment/checkpoints';
 import { loadLesson } from '../content';
 import { toAttempt, type GradeResult } from '../assessment/grader';
@@ -9,6 +9,7 @@ import { QuizRunner } from './QuizRunner';
 import { RichText } from './RichText';
 import { useProgress } from './progress-context';
 import { Link } from './router';
+import { VideoLesson } from './VideoLesson';
 
 interface Loaded { config: CheckpointConfig; questions: Question[]; fixtures: Map<FixtureId, Fixture> }
 
@@ -51,6 +52,7 @@ export function CheckpointExam({ id }: { id: CheckpointId }) {
         <li>{config.gating ? 'Recommended before moving on' : 'Optional: it does not lock any lesson'} · unlimited retries</li>
         {prog ? <li>Your attempts: {prog.attempts.length}{prog.passed ? ' · passed ✓' : ''} (saved on this device only)</li> : null}
       </ul>
+      <VideoLesson id={id} label="Video recap" note="Watch the recap first, pausing to answer each question, then take the checkpoint." />
       {!started ? (
         <button type="button" className="fel-btn fel-btn-primary" onClick={() => setStarted(true)}>Start checkpoint</button>
       ) : (
@@ -80,7 +82,7 @@ function CertificatePreview() {
     <section className="fel-certificate" aria-label="Learning certificate preview">
       <p className="fel-small fel-muted">LEARNING CERTIFICATE — PREVIEW</p>
       <h2>XORA Futures Edge · Course completed</h2>
-      <p>You completed 23 lessons and the final checkpoint of this educational course.</p>
+      <p>You completed all {LESSON_IDS.length} lessons and the final checkpoint of this educational course.</p>
       <p className="fel-small">This is <strong>not</strong> a professional certification, not financial advice and not permission or proof of readiness to trade. Practice stays simulated; real trading can lose money.</p>
     </section>
   );

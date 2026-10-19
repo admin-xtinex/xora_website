@@ -5,6 +5,7 @@ import { LESSON_META } from '../content';
 import { CHECKPOINT_TITLES } from '../assessment/checkpoints';
 import { useProgress } from './progress-context';
 import { Link } from './router';
+import { VideoLesson, videoFor } from './VideoLesson';
 
 const DIAGNOSTIC = [
   { id: 'd1', q: 'Do you know what BTC/USDT means?', start: 'T03' as LessonId },
@@ -27,14 +28,15 @@ export function CourseHome() {
       <section className="fel-hero-panel">
         <p className="fel-kicker">XORA Futures Edge</p>
         <h1>Learn crypto futures from zero, one small step at a time</h1>
-        <p>23 short lessons in 5 phases. Each lesson has an animation, slides, written notes, a hands-on exercise and a quiz, all built from the same content. Every price is fictional, and nothing here can place a real order.</p>
+        <p>{LESSON_IDS.length} short lessons in {PHASES.length} phases. Each lesson has a narrated video (where released), an animation, slides, written notes, a hands-on exercise and a quiz, all built from the same content. Every price is fictional, and nothing here can place a real order.</p>
         <p className="fel-small fel-muted">Education and simulated practice only. Not financial advice. Trading crypto futures can lose more than you expect; waiting or not trading is always allowed.</p>
         <div className="fel-row fel-wrap">
           <Link className="fel-btn fel-btn-primary" to={{ kind: 'lesson', id: recent?.lessonId ?? 'T01' }}>{recent ? `Continue ${recent.lessonId}` : 'Start with T01'}</Link>
           <Link className="fel-btn" to={{ kind: 'glossary' }}>Open glossary</Link>
         </div>
-        <p className="fel-small" aria-live="polite">{ready ? `${completed} of 23 lessons completed` : 'Loading your progress…'} · progress is saved on this device only.</p>
-        <progress className="fel-course-progress" max={23} value={completed} aria-label="Course progress" />
+        <p className="fel-small" aria-live="polite">{ready ? `${completed} of ${LESSON_IDS.length} lessons completed` : 'Loading your progress…'} · progress is saved on this device only.</p>
+        <progress className="fel-course-progress" max={LESSON_IDS.length} value={completed} aria-label="Course progress" />
+        <VideoLesson id="V00" label="Welcome video" note="How the course works, the five phases, and why everything is demo only." />
       </section>
 
       <section className="fel-section" aria-labelledby="diag-h">
@@ -80,6 +82,7 @@ export function CourseHome() {
                         <span className="fel-card-id">{id}</span>
                         <span className="fel-card-title">{m?.title ?? LESSON_WORKING_TITLES[id]}</span>
                         <span className="fel-card-sum">{m?.summary ?? ''}</span>
+                        {videoFor(id) ? <span className="fel-card-video">▶ {videoFor(id)?.minutes}-min video</span> : null}
                         <span className="fel-card-meta">{m ? `${m.durationMinutes} min` : ''}{p ? ` · ${p.completed ? '✓ completed' : p.assessed.bestScore !== null ? `quiz best ${Math.round(p.assessed.bestScore * 100)}%` : 'started'}` : ''}</span>
                       </Link>
                     </li>
@@ -90,6 +93,7 @@ export function CourseHome() {
                 <Link to={{ kind: 'checkpoint', id: ph.checkpointAfter }} className={`fel-checkpoint-card ${checkpoints[ph.checkpointAfter]?.passed ? 'is-done' : ''}`}>
                   <span className="fel-badge">{checkpoints[ph.checkpointAfter]?.passed ? '🏅 Passed' : 'Checkpoint'}</span>
                   <span>{CHECKPOINT_TITLES[ph.checkpointAfter]}</span>
+                  {videoFor(ph.checkpointAfter) ? <span className="fel-card-video">▶ video recap</span> : null}
                 </Link>
               ) : null}
             </li>

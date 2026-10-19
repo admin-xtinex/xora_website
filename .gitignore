@@ -3,3 +3,5 @@ dist
 .DS_Store
 *.log
 .env*
+# Non-secret build settings, kept in git
+!.env.production

@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { FOOTER, LINKS } from "@/lib/content";
-import { scrollToId } from "@/lib/utils";
+import { linkClick } from "@/lib/router";
 import { BrandLockup } from "./Header";
 
 export function Footer() {
@@ -21,15 +21,7 @@ export function Footer() {
             <ul>
               {g.links.map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={(e) => {
-                      if (l.href.startsWith("#")) {
-                        e.preventDefault();
-                        scrollToId(l.href.slice(1));
-                      }
-                    }}
-                  >
+                  <a href={l.href} onClick={linkClick(l.href)}>
                     {l.label}
                   </a>
                 </li>

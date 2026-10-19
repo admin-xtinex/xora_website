@@ -3,19 +3,20 @@
 export const LINKS = {
   xtinex: "https://www.xtinex.com",
   contact: "mailto:info@xtinex.com",
-  // In-page anchors until the Futures Edge app / sign-up routes are public.
-  getStarted: "#start",
-  futuresEdge: "#futures-edge",
-  course: "#course",
+  // Every call to action lands on the course page; section links go to the home page.
+  getStarted: "/course",
+  course: "/course",
+  futuresEdge: "/#futures-edge",
 } as const;
 
+// `id` is the home-page section (for the scroll highlight); `href` is where the link goes.
 export const NAV = [
-  { id: "home", label: "Home" },
-  { id: "futures-edge", label: "Futures Edge" },
-  { id: "course", label: "Course" },
-  { id: "journey", label: "Learn" },
-  { id: "intelligence", label: "Practice" },
-  { id: "about", label: "About" },
+  { id: "home", href: "/", label: "Home" },
+  { id: "futures-edge", href: "/#futures-edge", label: "Futures Edge" },
+  { id: "course", href: "/course", label: "Course" },
+  { id: "journey", href: "/#journey", label: "Learn" },
+  { id: "intelligence", href: "/#intelligence", label: "Practice" },
+  { id: "about", href: "/#about", label: "About" },
 ] as const;
 
 export const HERO = {
@@ -161,19 +162,20 @@ export const FOOTER = {
     {
       title: "XORA",
       links: [
-        { label: "Overview", href: "#home" },
-        { label: "What XORA Does", href: "#what" },
-        { label: "Market Intelligence", href: "#intelligence" },
-        { label: "Get Started", href: "#start" },
+        { label: "Overview", href: "/" },
+        { label: "What XORA Does", href: "/#what" },
+        { label: "Market Intelligence", href: "/#intelligence" },
+        { label: "Get Started", href: "/course" },
       ],
     },
     {
       title: "Futures Edge",
       links: [
-        { label: "Introduction", href: "#futures-edge" },
-        { label: "Learning Path", href: "#journey" },
-        { label: "Demo Practice", href: "#intelligence" },
-        { label: "Risk Notice", href: "#trust" },
+        { label: "Introduction", href: "/#futures-edge" },
+        { label: "Course", href: "/course" },
+        { label: "Learning Path", href: "/#journey" },
+        { label: "Demo Practice", href: "/#intelligence" },
+        { label: "Risk Notice", href: "/#trust" },
       ],
     },
     {

@@ -1,7 +1,7 @@
 # XORA Futures Edge course section
 
-The `#course` section lists every Futures Edge video (27 in total) as a title card, grouped by
-phase. Lessons marked `available` run their web animation in a dialog (no MP4 files); lessons
+The course is its own page, **/course** (xora.xtinex.com/course). It lists all 27 Futures Edge lessons as
+title cards, grouped by phase. Lessons marked `available` run their web animation in a dialog (no MP4 files); lessons
 marked `locked` are dimmed, show a "Coming soon" badge and cannot be opened.
 
 | Path | What it is |
@@ -13,8 +13,9 @@ marked `locked` are dimmed, show a "Coming soon" badge and cannot be opened.
 | `public/futures-edge/lessons/<id>.html` | The lesson animations: each one a self-contained HTML page (add them as they are ready). |
 | `tools/futures-edge-cards/` | The title-card renderer, with the tutor poses and fonts it uses. |
 
-The section is wired in by `src/App.tsx` (after `FuturesEdgeSection`). It also adds **Course** to
-the header navigation (`NAV` in `src/lib/content.ts`), and points "Start Futures Edge" at it.
+`src/App.tsx` renders it as the `/course` page (client routing in `src/lib/router.ts`; Azure serves
+`/course` through the `navigationFallback` rewrite). **Course** is in the header navigation (`NAV` in
+`src/lib/content.ts`), and every Get Started / Start Futures Edge button links to it.
 `public/staticwebapp.config.json` serves `/futures-edge/*` as files instead of rewriting them to
 `index.html`.
 

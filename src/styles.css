@@ -710,6 +710,13 @@
   animation: cue 2s ease-in-out infinite;
 }
 
+/* ---------- course page ---------- */
+
+.course-page {
+  min-height: 100svh;
+  padding-top: var(--header-h);
+}
+
 /* ---------- what xora does ---------- */
 
 .value-grid {

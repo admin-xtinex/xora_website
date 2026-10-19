@@ -26,3 +26,15 @@ Animations respect `prefers-reduced-motion`; the hero video stays paused for red
 
 `Dockerfile` builds the site and serves `dist/` with nginx on port 80 (`/health` for probes),
 the same contract as the xtinex.com website image.
+
+### Azure Static Web Apps (current preview)
+
+Live on the **Free** plan: `xora-website` in resource group `rg-xora-web` (East Asia),
+https://gentle-stone-0d854db00.2.azurestaticapps.net. `public/staticwebapp.config.json` sets SPA fallback,
+cache headers and MIME types. Redeploy from this folder:
+
+```bash
+npm run build
+npx @azure/static-web-apps-cli@2 deploy ./dist --env production \
+  --deployment-token "$(az staticwebapp secrets list -n xora-website -g rg-xora-web --query properties.apiKey -o tsv)"
+```

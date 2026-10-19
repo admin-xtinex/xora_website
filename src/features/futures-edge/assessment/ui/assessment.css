@@ -1,0 +1,19 @@
+/* EDGE-09 assessment styles. Imported by EDGE-01's platform layout (not by the components, so tests stay DOM-free).
+   Uses the host tokens aliased under .fe-root (architecture.md §3.1 A6) with safe fallbacks. */
+.fe-root .fe-assess-question { border: 1px solid var(--color-line, #2a3550); border-radius: 12px; padding: 1rem; }
+.fe-root .fe-assess-choices { list-style: none; padding: 0; display: grid; gap: .5rem; }
+.fe-root .fe-assess-choices li { display: flex; gap: .6rem; align-items: flex-start; min-height: 44px; }
+.fe-root .fe-assess-choices input { width: 1.25rem; height: 1.25rem; margin-top: .15rem; }
+.fe-root .fe-assess-order button, .fe-root .fe-assess-runner button { min-height: 44px; min-width: 44px; }
+.fe-root .fe-assess-badge--safety { color: var(--color-magenta, #ff6aa8); font-weight: 600; margin-right: .5rem; }
+.fe-root .fe-assess-safety { border: 2px solid var(--color-magenta, #ff6aa8); border-radius: 12px; padding: 1rem; }
+.fe-root .fe-assess-feedback--correct { border-left: 4px solid var(--color-cyan, #4fe3ff); padding-left: .75rem; }
+.fe-root .fe-assess-feedback--wrong { border-left: 4px solid var(--color-magenta, #ff6aa8); padding-left: .75rem; }
+.fe-root .fe-assess-edu { font-size: .9rem; color: var(--color-muted, #a8b3c7); }
+.fe-root .fe-assess-progress__bar { height: .5rem; background: var(--color-line, #2a3550); border-radius: 999px; overflow: hidden; }
+.fe-root .fe-assess-progress__bar > span { display: block; height: 100%; background: var(--grad-brand, #4fe3ff); }
+.fe-root :focus-visible { outline: 3px solid var(--color-cyan, #4fe3ff); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .fe-root .fe-assess-progress__bar > span { transition: none; } }
+.fe-root .fe-assess-runner__progress { height: 6px; border-radius: 3px; background: var(--fe-surface-2, rgba(127,127,127,.25)); overflow: hidden; }
+.fe-root .fe-assess-runner__bar { display: block; height: 100%; background: var(--fe-accent, currentColor); }
+@media (prefers-reduced-motion: no-preference) { .fe-root .fe-assess-runner__bar { transition: width .2s ease; } }

@@ -785,6 +785,7 @@
         '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
         '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
         '<span class="fe-time"></span>' +
+        (lines.length ? '<button type="button" class="fe-btn fe-lang" aria-label="Language">EN</button>' : "") +
         (lines.length ? '<div class="fe-ccw"><button type="button" class="fe-btn fe-cc" aria-haspopup="true" aria-expanded="false">CC</button>' +
           '<div class="fe-ccm" role="menu" aria-label="Subtitles" hidden>' +
           CC_LANGS.map((l) => '<button type="button" role="menuitemradio" data-lang="' + l.id + '"' + (l.id === "ml" ? ' lang="ml"' : "") + '>' + l.label + '</button>').join("") +
@@ -815,6 +816,18 @@
       api.update(state.t);
       api.cc();
     };
+    // Language toggle: switches voice track (EN / ML) and reloads.
+    const langBtn = bar.querySelector(".fe-lang");
+    if (langBtn) {
+      langBtn.textContent = voiceLang === "ml" ? "മ" : "EN";
+      langBtn.setAttribute("aria-label", voiceLang === "ml" ? "Switch to English" : "Switch to Malayalam");
+      langBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const next = voiceLang === "ml" ? "en" : "ml";
+        try { localStorage.setItem("fe-voice-lang", next); } catch (e) {}
+        location.reload();
+      });
+    }
     const openMenu = (open) => {
       if (!ccMenu) return;
       ccMenu.hidden = !open;
@@ -948,9 +961,21 @@
   };
 
   // ── Boot ───────────────────────────────────────────────────────────────────
+  // Voice language: "en" (default) or "ml". Preference is remembered.
+  let voiceLang = "en";
+  try {
+    const saved = localStorage.getItem("fe-voice-lang");
+    if (saved === "ml" || saved === "en") voiceLang = saved;
+  } catch (e) {}
+  function voiceSrc() {
+    if (!F.voice || !F.voice.src) return null;
+    if (voiceLang === "ml") return F.voice.src.replace(/voice\.mp3$/, "voice-ml.mp3");
+    return F.voice.src;
+  }
   async function boot() {
-    if (F.voice && F.voice.src) {
-      audio.voiceData = fetch(F.voice.src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+    const src = voiceSrc();
+    if (src) {
+      audio.voiceData = fetch(src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
     }
     try {
       await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));

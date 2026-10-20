@@ -1,6 +1,6 @@
 import { useSyncExternalStore, type MouseEvent } from "react";
 
-// A tiny client router: two pages ("/" and "/course") plus in-page anchors.
+// A tiny client router: the home page, the /course page (or the course app) plus in-page anchors.
 // Links are plain hrefs such as "/course", "/#journey" or "#what".
 
 const listeners = new Set<() => void>();
@@ -33,7 +33,7 @@ export function scrollToTarget(id: string | null, smooth: boolean) {
   else window.scrollTo({ top: 0, behavior });
 }
 
-export function navigate(href: string) {
+export function navigate(href: string, replace = false) {
   const url = new URL(href, location.href);
   const path = normalise(url.pathname);
   const id = url.hash ? decodeURIComponent(url.hash.slice(1)) : null;
@@ -45,8 +45,10 @@ export function navigate(href: string) {
   }
 
   // New page: App scrolls to the top (or the #section) as soon as it has rendered.
-  history.pushState(null, "", path + (url.hash || ""));
+  history[replace ? "replaceState" : "pushState"](null, "", path + (url.hash || ""));
   listeners.forEach((l) => l());
+  // The course app keeps its own router; tell it the address changed.
+  window.dispatchEvent(new Event("fe:navigate"));
 }
 
 /** onClick for <a href>: handles internal links client-side, leaves the rest to the browser. */

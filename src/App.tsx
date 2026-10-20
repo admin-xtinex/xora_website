@@ -11,7 +11,7 @@ import { IntelligenceShowcaseSection } from "./components/IntelligenceShowcaseSe
 import { JourneySection } from "./components/JourneySection";
 import { TrustNoticeSection } from "./components/TrustNoticeSection";
 import { ValueSection } from "./components/ValueSection";
-import { scrollToTarget, usePath } from "./lib/router";
+import { navigate, scrollToTarget, usePath } from "./lib/router";
 import { isFuturesEdgePath } from "./features/futures-edge";
 
 // Interactive Futures Edge lessons (slides, notes, practice, quizzes) at /learn/futures-edge.
@@ -49,9 +49,14 @@ function CoursePage() {
 
 export function App() {
   const path = usePath();
+  // The old video-catalogue address now opens the course, where every lesson carries its video.
+  useLayoutEffect(() => {
+    if (FuturesEdgeApp && path === "/course") navigate("/learn/futures-edge", true);
+  }, [path]);
+  if (FuturesEdgeApp && path === "/course") return null;
   if (FuturesEdgeApp && isFuturesEdgePath(path)) {
     return (
-      <Suspense fallback={<p style={{ padding: 24 }}>Loading XORA Futures Edge…</p>}>
+      <Suspense fallback={<p role="status" style={{ minHeight: "100vh", margin: 0, display: "grid", placeItems: "center", color: "#b4bccb" }}>Loading the course…</p>}>
         <FuturesEdgeApp />
       </Suspense>
     );

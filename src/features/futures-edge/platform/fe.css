@@ -62,6 +62,10 @@
 .fel-btn:hover:not(:disabled) { border-color: var(--fel-cyan); }
 .fel-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .fel-btn-primary { background: var(--grad-btn, linear-gradient(100deg, #7c3aed, #4f8ef7)); border-color: transparent; color: #fff; }
+/* link-buttons and link-cards: the generic `.fel-root a` cyan must not win over their own colours */
+.fel-root a.fel-card { color: var(--fel-fg); }
+.fel-root a.fel-btn { color: var(--fel-fg); }
+.fel-root a.fel-btn-primary { color: #fff; }
 .fel-btn-small { min-height: 36px; padding: 4px 12px; font-size: 0.875rem; }
 .fel-btn-icon { min-width: var(--fel-tap); padding: 4px; }
 .fel-link { background: none; border: 0; color: var(--fel-cyan); font: inherit; text-decoration: underline; cursor: pointer; padding: 4px 2px; min-height: 32px; }
@@ -81,7 +85,10 @@
 
 /* ---------- home ---------- */
 .fel-hero-panel { border: 1px solid var(--fel-border); background: var(--glass-bg, var(--fel-panel)); border-radius: 20px; padding: clamp(18px, 4vw, 36px); margin-top: 12px; }
-.fel-course-progress, .fel-timeline-progress { width: 100%; height: 8px; accent-color: var(--fel-cyan); }
+.fel-course-progress, .fel-timeline-progress { width: 100%; height: 8px; accent-color: var(--fel-cyan); appearance: none; border: 0; border-radius: 999px; overflow: hidden; background: rgba(238, 241, 247, 0.1); }
+.fel-course-progress::-webkit-progress-bar, .fel-timeline-progress::-webkit-progress-bar { background: rgba(238, 241, 247, 0.1); border-radius: 999px; }
+.fel-course-progress::-webkit-progress-value, .fel-timeline-progress::-webkit-progress-value { background: linear-gradient(90deg, var(--fel-cyan), var(--fel-violet)); border-radius: 999px; }
+.fel-course-progress::-moz-progress-bar, .fel-timeline-progress::-moz-progress-bar { background: linear-gradient(90deg, var(--fel-cyan), var(--fel-violet)); border-radius: 999px; }
 .fel-diag { border: 0; padding: 0; margin: 10px 0; }
 .fel-diag legend { font-weight: 600; margin-bottom: 4px; }
 .fel-roadmap { list-style: none; padding: 0; counter-reset: none; }
@@ -169,6 +176,11 @@
 .fel-textcard-icon { min-width: 1.6em; height: 1.6em; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; background: rgba(62, 203, 255, 0.15); color: var(--fel-cyan); }
 .fel-textcard-risk-warning, .fel-textcard-red-flags { background: linear-gradient(180deg, rgba(251, 191, 36, 0.07), transparent); }
 .fel-textcard-risk-warning .fel-textcard-icon, .fel-textcard-red-flags .fel-textcard-icon { background: rgba(251, 191, 36, 0.18); color: var(--fel-warn); }
+/* Phones: a text card is taller than a 16:9 box, so the stage grows to fit it instead of clipping the heading. */
+@media (max-width: 640px) {
+  .fel-stage:has(> .fel-textcard) { aspect-ratio: auto; min-height: 200px; }
+  .fel-stage > .fel-textcard { position: static; }
+}
 
 /* svg classes */
 .fel-scene-svg text { font-family: var(--font-sans, sans-serif); fill: var(--fel-fg); }
@@ -398,10 +410,23 @@
   .fel-stage, .fel-figure { border-color: #888; }
 }
 
-/* ---------- narrated video (site /course lessons) ---------- */
-.fel-video { border: 1px solid var(--fel-border); border-radius: 18px; padding: 12px; margin-bottom: 14px; background: var(--fel-panel-2); }
-.fel-video-title { font-size: 1rem !important; margin: 0 !important; flex: 1; }
-.fel-video-stage iframe, .fel-video-stage img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+/* ---------- narrated video: one part of a lesson, collapsed to a row until played ---------- */
+.fel-video { border: 1px solid var(--fel-border); border-radius: var(--fel-radius); padding: 10px; margin-bottom: 14px; background: var(--fel-panel-2); }
+.fel-video-row { display: flex; align-items: center; gap: 12px; }
+.fel-video-thumb { flex: none; width: 66px; height: 66px; border-radius: 10px; object-fit: cover; object-position: 100% 50%; background: var(--fel-ink); }
+.fel-video-text { flex: 1; min-width: 0; }
+.fel-video-text p { margin: 0; }
+.fel-video-title { font-weight: 700; }
+.fel-video.is-open .fel-video-stage { margin-top: 10px; }
+.fel-video-stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-width: 560px) {
+  .fel-video-row { flex-wrap: wrap; }
+  .fel-video-thumb { width: 52px; height: 52px; }
+  .fel-video-row .fel-btn { width: 100%; }
+}
+/* course home: welcome video under the hero, video chip on lesson cards */
+.fel-hero-panel .fel-video { margin: 16px 0 4px; }
+.fel-card-video { display: inline-flex; align-self: flex-start; gap: 4px; font-size: 0.72rem; font-weight: 700; color: var(--fel-cyan); border: 1px solid var(--fel-border); border-radius: 999px; padding: 1px 8px; }
 
 /* ---------- small screens: header must never widen the page ---------- */
 .fel-header { flex-wrap: wrap; row-gap: 4px; }

@@ -22,6 +22,14 @@ export function durationOf(s: AnimationScene): number {
   return s.durationMs ?? sceneRegistry.get(s.type)?.defaultDurationMs ?? 30_000;
 }
 
+/**
+ * How long a step actually plays. Authored durations (20-35 s) are narration budgets; one scene's motion is a single
+ * build-up, so it plays in 5-10 s and then holds on its final frame for the learner to read.
+ */
+export function playMsOf(s: AnimationScene): number {
+  return Math.min(10_000, Math.max(5_000, durationOf(s) / 3));
+}
+
 export function StoryboardTimeline({ scenes, getFixture, initialStep = 0, onStepChange, onSceneComplete, title }: StoryboardProps) {
   const reduced = useReducedMotion();
   const [step, setStep] = useState(() => Math.min(Math.max(0, initialStep), scenes.length - 1));
@@ -32,8 +40,9 @@ export function StoryboardTimeline({ scenes, getFixture, initialStep = 0, onStep
   const [visible, setVisible] = useState(true);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const scene = scenes[step] as AnimationScene;
-  const dur = durationOf(scene);
-  const p = reduced ? 1 : Math.min(1, elapsed / dur);
+  const dur = playMsOf(scene);
+  // A step that is not playing and not mid-way shows its finished frame, so the stage is never an empty box.
+  const p = reduced || (!playing && elapsed === 0) ? 1 : Math.min(1, elapsed / dur);
 
   // Visibility: pause the loop when off-screen or the tab is hidden.
   useEffect(() => {
@@ -84,8 +93,8 @@ export function StoryboardTimeline({ scenes, getFixture, initialStep = 0, onStep
 
   const Renderer = sceneRegistry.get(scene.type)?.render;
   const fixture = scene.fixtureId ? getFixture(scene.fixtureId) : undefined;
-  const totalMs = useMemo(() => scenes.reduce((n, s) => n + durationOf(s), 0), [scenes]);
-  const doneMs = scenes.slice(0, step).reduce((n, s) => n + durationOf(s), 0) + (reduced ? dur : elapsed);
+  const totalMs = useMemo(() => scenes.reduce((n, s) => n + playMsOf(s), 0), [scenes]);
+  const doneMs = scenes.slice(0, step).reduce((n, s) => n + playMsOf(s), 0) + (reduced ? dur : elapsed);
   const ended = step === scenes.length - 1 && elapsed >= dur;
 
   return (

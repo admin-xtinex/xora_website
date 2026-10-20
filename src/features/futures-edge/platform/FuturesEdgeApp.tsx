@@ -33,7 +33,7 @@ export function FuturesEdgeApp() {
             <nav aria-label="Course" className="fel-header-nav">
               <Link to={{ kind: 'home' }}>Course</Link>
               <Link to={{ kind: 'glossary' }}>Glossary</Link>
-              <a href="/course">Video lessons</a>
+              <a href="/">XORA home</a>
             </nav>
           </header>
           <p className="fel-banner" role="note">Education only · all market data is fictional · no real orders, no API keys</p>

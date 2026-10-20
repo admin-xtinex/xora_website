@@ -1,5 +1,5 @@
 /**
- * One lesson: Watch animation / View slides / Read notes / Try it / Take quiz / Review, all from the same lesson data.
+ * One lesson: Watch (video + animation) / View slides / Read notes / Try it / Take quiz / Review, all from the same lesson data.
  * Desktop: phase sidebar + main + definitions panel. Mobile: single column with a sticky Back/Next bar.
  */
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -19,7 +19,7 @@ import { useGlossary } from './hooks';
 import { VideoLesson } from './VideoLesson';
 
 const MODES: Array<{ id: LessonMode; label: string }> = [
-  { id: 'animation', label: 'Watch animation' },
+  { id: 'animation', label: 'Watch' },
   { id: 'slides', label: 'View slides' },
   { id: 'notes', label: 'Read notes' },
   { id: 'practice', label: 'Try it' },

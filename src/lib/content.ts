@@ -1,11 +1,15 @@
 // All page copy lives here so wording can change without touching layout.
 
+// With the interactive course built in (VITE_FUTURES_EDGE_ENABLED), it is the course: every course link goes there
+// and its lessons carry the videos. Without it, /course is the video catalogue.
+const COURSE = import.meta.env.VITE_FUTURES_EDGE_ENABLED === "true" ? "/learn/futures-edge" : "/course";
+
 export const LINKS = {
   xtinex: "https://www.xtinex.com",
   contact: "mailto:info@xtinex.com",
   // Every call to action lands on the course page; section links go to the home page.
-  getStarted: "/course",
-  course: "/course",
+  getStarted: COURSE,
+  course: COURSE,
   futuresEdge: "/#futures-edge",
 } as const;
 
@@ -13,7 +17,7 @@ export const LINKS = {
 export const NAV = [
   { id: "home", href: "/", label: "Home" },
   { id: "futures-edge", href: "/#futures-edge", label: "Futures Edge" },
-  { id: "course", href: "/course", label: "Course" },
+  { id: "course", href: COURSE, label: "Course" },
   { id: "journey", href: "/#journey", label: "Learn" },
   { id: "intelligence", href: "/#intelligence", label: "Practice" },
   { id: "about", href: "/#about", label: "About" },
@@ -67,27 +71,18 @@ export const EDGE = {
   title: "XORA Futures Edge",
   sub: "Learn the strategy. Understand the risk.",
   body:
-    "Futures Edge is the structured entry point into XORA. Short, focused modules take you from the basics of a futures contract to reading XORA’s analysis — with demo practice at every step and no real funds required.",
+    "Futures Edge is the structured entry point into XORA. Short, focused lessons take you from “what is a cryptocurrency?” to a complete demo trading decision — each with a narrated video, hands-on practice and a quiz, and no real funds required.",
   topics: [
     "Crypto futures basics",
     "Scalping concepts",
     "Leverage & margin awareness",
     "Risk management",
     "Binance basics",
-    "XORA analysis basics",
+    "Charts & market structure",
     "Guided modules",
     "Demo preparation",
   ],
   flow: ["Learn", "Understand", "Practice", "Qualify"],
-  modules: [
-    { title: "Introduction to Crypto Futures", line: "What futures are and how they work", mins: 10, state: "done" },
-    { title: "Crypto Futures Basics", line: "Contract types and market mechanics", mins: 12, state: "active" },
-    { title: "Binance Futures Basics", line: "Platform walkthrough and order types", mins: 15, state: "locked" },
-    { title: "Long vs Short", line: "When and why to use each side", mins: 12, state: "locked" },
-    { title: "Leverage & Margin", line: "Margin types and liquidation risk", mins: 15, state: "locked" },
-    { title: "Stop-Loss & Risk Management", line: "Protecting capital, sizing positions", mins: 12, state: "locked" },
-    { title: "XORA Analysis Basics", line: "Reading XORA levels and scenarios", mins: 15, state: "locked" },
-  ],
 } as const;
 
 export const JOURNEY = {
@@ -165,14 +160,14 @@ export const FOOTER = {
         { label: "Overview", href: "/" },
         { label: "What XORA Does", href: "/#what" },
         { label: "Market Intelligence", href: "/#intelligence" },
-        { label: "Get Started", href: "/course" },
+        { label: "Get Started", href: COURSE },
       ],
     },
     {
       title: "Futures Edge",
       links: [
         { label: "Introduction", href: "/#futures-edge" },
-        { label: "Course", href: "/course" },
+        { label: "Course", href: COURSE },
         { label: "Learning Path", href: "/#journey" },
         { label: "Demo Practice", href: "/#intelligence" },
         { label: "Risk Notice", href: "/#trust" },

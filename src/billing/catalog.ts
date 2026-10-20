@@ -119,8 +119,8 @@ export const PLAN_FEATURES: FeatureRow[] = [
 export const COURSE_FEATURES = {
   free: ["Welcome video and the first lessons (V00, T01, T02)", "Glossary of trading terms", "Progress saved to your account"],
   full: [
-    "All 27 animated video lessons and checkpoints across five phases",
-    "Voiceover on the welcome video, all 23 lessons and CP1; English and Malayalam subtitles throughout",
+    "All animated video lessons and checkpoints, including Phase 6 · XORA Intelligence",
+    "Voiceover on the welcome video, lessons T01–T23 and CP1; English and Malayalam subtitles throughout",
     "Slides, notes, hands-on practice and quizzes for every lesson",
     "Checkpoints A and B with explained answers",
     "Lifetime access during preview (no automatic expiry)",

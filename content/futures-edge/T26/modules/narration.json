@@ -1,0 +1,193 @@
+{
+  "about": "T26 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson twenty-six: understanding AI decisions. Phase 6, XORA Intelligence."
+    },
+    {
+      "t": 8.4,
+      "text": "In T25 you saw how XORA analyses a coin. Now: what does it decide, and why?"
+    },
+    {
+      "t": 14.4,
+      "text": "For each coin, XORA's engine gives one of three answers. It's not a prediction."
+    },
+    {
+      "t": 20.6,
+      "text": "It is the result of rule-based checks."
+    },
+    {
+      "t": 24.4,
+      "text": "Answer one: BUY, also called long. You gain if the price rises after you enter."
+    },
+    {
+      "t": 30.6,
+      "text": "Answer two: SELL, also called SHORT. You gain if the price falls after you enter."
+    },
+    {
+      "t": 36.9,
+      "text": "Answer three: NO TRADE. You stand aside and wait. No setup right now."
+    },
+    {
+      "t": 42.4,
+      "text": "A plan is for one candle only: BUY if price trades above 60,120, for example."
+    },
+    {
+      "t": 49.4,
+      "text": "How does XORA choose? With checks: yes-or-no tests written as rules in code."
+    },
+    {
+      "t": 55.4,
+      "text": "Like a pilot's checklist before take-off. Each item is ticked, or it isn't."
+    },
+    {
+      "t": 61.3,
+      "text": "The filters use common techniques: trend, support and resistance, volume, momentum and more."
+    },
+    {
+      "t": 69.4,
+      "text": "Confidence is a score for how much evidence agrees with a setup."
+    },
+    {
+      "t": 74.6,
+      "text": "Think of witnesses. One witness is weak. Several who agree, independently, are stronger."
+    },
+    {
+      "t": 81.4,
+      "text": "Each confirmation that agrees raises the score. A check that disagrees, or has no data, adds nothing."
+    },
+    {
+      "t": 91.4,
+      "text": "In the app, this is the ENTRY CHECKLIST. Each check shows a tick or a cross."
+    },
+    {
+      "t": 97.4,
+      "text": "BUY shows 72% / 60%: a score of 72, against your minimum of 60. It meets it, so it's READY."
+    },
+    {
+      "t": 104.4,
+      "text": "SELL shows 55% / 60%. Below your minimum, so no READY badge, and no sell."
+    },
+    {
+      "t": 110.2,
+      "text": "Fictional numbers, of course."
+    },
+    {
+      "t": 113.4,
+      "text": "A common mistake: reading 72% as a 72% chance of winning."
+    },
+    {
+      "t": 118.1,
+      "text": "That's wrong. The app itself says: confidence is evidence strength, not a chance of winning."
+    },
+    {
+      "t": 125.1,
+      "text": "A READY trade can still lose. Every trade needs a stop and a size you can afford."
+    },
+    {
+      "t": 132.4,
+      "text": "Even a READY setup must pass safety checks. Any one of them can block the trade."
+    },
+    {
+      "t": 138.6,
+      "text": "Is the spread too wide? Is the market too thin? Is the data stale, or the plan expired?"
+    },
+    {
+      "t": 145.3,
+      "text": "Is the stop too tight or too wide? Is there too little room to the next level?"
+    },
+    {
+      "t": 151.4,
+      "text": "If any check fails: no trade."
+    },
+    {
+      "t": 155.4,
+      "text": "Markets are often unclear. Price chops sideways, and the checks disagree."
+    },
+    {
+      "t": 161.2,
+      "text": "Then XORA shows No trade, with its reasons, and keeps watching. That's a good outcome."
+    },
+    {
+      "t": 167.8,
+      "text": "No trade means no loss. Waiting is a decision, and often the wise one."
+    },
+    {
+      "t": 174.4,
+      "text": "In Trade Settings you choose a confidence threshold: Enter only at or above. Default: 50%."
+    },
+    {
+      "t": 181.3,
+      "text": "From 50% up, XORA uses several indicators for confirmation. Higher means more must agree."
+    },
+    {
+      "t": 188.1,
+      "text": "45% is special. It's not 45% confidence: XORA then looks for chart-pattern setups instead."
+    },
+    {
+      "t": 195.0,
+      "text": "Entry modes change the filters: Basic looks for chances, Secure wants more confirmation, Advanced adds more."
+    },
+    {
+      "t": 204.4,
+      "text": "Auto trade approval is off by default. A triggered setup waits for you to tap Approve."
+    },
+    {
+      "t": 211.0,
+      "text": "Approve before its one-minute candle ends, or it expires."
+    },
+    {
+      "t": 215.7,
+      "text": "With auto approval on, the engine enters by itself, within your settings."
+    },
+    {
+      "t": 221.5,
+      "text": "Your own BUY or SHORT tap is always your call. The sheet says if the engine agrees."
+    },
+    {
+      "t": 230.4,
+      "text": "Your turn. Read the checklist and choose an answer. Pause if you need more time."
+    },
+    {
+      "t": 242.0,
+      "text": "Answer B. 68 is below your minimum of 70, so no READY, and no trade."
+    },
+    {
+      "t": 247.4,
+      "text": "And C is wrong: confidence is not a chance of winning."
+    },
+    {
+      "t": 252.4,
+      "text": "Before you trust any decision, know its limits."
+    },
+    {
+      "t": 256.4,
+      "text": "XORA does not guarantee profits. Rules can be wrong, and losing trades happen."
+    },
+    {
+      "t": 262.5,
+      "text": "Prices can jump past a stop, fees add up, and leverage makes losses bigger."
+    },
+    {
+      "t": 268.4,
+      "text": "So practise in DEMO first. This is education, not financial advice."
+    },
+    {
+      "t": 274.4,
+      "text": "Recap. XORA gives three answers: BUY, SELL or SHORT, or NO TRADE, from rule-based checks."
+    },
+    {
+      "t": 281.2,
+      "text": "Confidence is evidence strength, checked against your minimum. Safety checks can still say no."
+    },
+    {
+      "t": 288.4,
+      "text": "Check yourself: 80% / 60%, but the spread is too wide. Trade? No, the safety check blocks it."
+    },
+    {
+      "t": 296.6,
+      "text": "Next: T27, reading XORA trading insights. XORA does not guarantee profits. Demo first. Not financial advice."
+    }
+  ]
+}

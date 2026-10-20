@@ -1,0 +1,177 @@
+{
+  "about": "T24 captions (no voiceover yet): Meet XORA. Each line starts at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Phase six, lesson T24: meet XORA. Time to see the app that does the checking with you."
+    },
+    {
+      "t": 8.4,
+      "text": "XORA is an app that watches crypto coins, finds trade setups and helps you manage trades."
+    },
+    {
+      "t": 15.2,
+      "text": "Behind it is one engine. It runs in three account modes: Demo, Live and Live Support."
+    },
+    {
+      "t": 22.0,
+      "text": "Demo uses simulated fills: no real money. Live sends real Binance futures orders. Live Support only alerts you."
+    },
+    {
+      "t": 30.4,
+      "text": "Demo is the default. Start there, like a pilot in a flight simulator."
+    },
+    {
+      "t": 36.3,
+      "text": "Five tabs sit along the bottom: Home, Signals, XORA in the centre, Trades and Settings."
+    },
+    {
+      "t": 43.0,
+      "text": "Home is your overview. Signals is for studying a coin. XORA manages an open trade."
+    },
+    {
+      "t": 49.4,
+      "text": "Trades is your history. Settings holds your rules."
+    },
+    {
+      "t": 54.4,
+      "text": "Home first. At the top: a countdown to the next engine check, and setups waiting."
+    },
+    {
+      "t": 61.2,
+      "text": "A pill shows DEMO or LIVE. Then the Bitcoin card, today's result, open P&L and trades in use."
+    },
+    {
+      "t": 68.4,
+      "text": "Your coins show a status: in trade, buy, sell, cooldown or watching. All numbers are fictional."
+    },
+    {
+      "t": 76.4,
+      "text": "Signals is where you read one coin. Pick up to 20 coins yourself, or use Xora AI coin selection."
+    },
+    {
+      "t": 84.0,
+      "text": "Each coin has a price chart, a trade opportunity card, and an entry checklist: a tick or cross per check."
+    },
+    {
+      "t": 92.0,
+      "text": "Two buttons stay at the bottom: BUY / LONG and SHORT / SELL, for your own manual orders."
+    },
+    {
+      "t": 100.4,
+      "text": "The XORA tab is the control room for an open trade: entry, leverage, margin, and the risk zone, the stop."
+    },
+    {
+      "t": 108.6,
+      "text": "Unrealised P&L moves with price. The trailing stop can follow price and lock in some profit."
+    },
+    {
+      "t": 115.8,
+      "text": "If you want out, CLOSE POSITION ends the trade yourself, at any time."
+    },
+    {
+      "t": 122.4,
+      "text": "Trades shows My Trades: an overview, the full list, and insights. Losing trades are listed too."
+    },
+    {
+      "t": 129.6,
+      "text": "Settings holds Binance Connect, Trade Settings, Notifications and About."
+    },
+    {
+      "t": 137.4,
+      "text": "Here is the workflow XORA supports."
+    },
+    {
+      "t": 141.2,
+      "text": "One: choose coins, or use Xora AI coin selection. Two: read a coin on Signals."
+    },
+    {
+      "t": 147.4,
+      "text": "Three: a setup triggers. Four: approve it, place your own BUY or SHORT, or simply skip it."
+    },
+    {
+      "t": 154.4,
+      "text": "Five: manage the open trade on the XORA tab. Six: review it later in Trades."
+    },
+    {
+      "t": 161.4,
+      "text": "Auto trade approval is off by default. A triggered setup then waits for you to tap Approve."
+    },
+    {
+      "t": 168.4,
+      "text": "The approval has a short timer. If you do nothing, it expires and no trade is opened."
+    },
+    {
+      "t": 175.0,
+      "text": "On a manual order, the sheet tells you if the engine agrees, or if this one is your call."
+    },
+    {
+      "t": 182.4,
+      "text": "Trade Settings are your rules: capital per trade, leverage, concurrent trades, coin selection and more."
+    },
+    {
+      "t": 190.2,
+      "text": "Example: 3 USDT margin at 10x leverage controls a 30 USDT position. Leverage magnifies losses too."
+    },
+    {
+      "t": 197.8,
+      "text": "With 2 concurrent trades, up to 60 USDT of positions can be open at once. Fictional example."
+    },
+    {
+      "t": 206.4,
+      "text": "Now the safety settings. Every trade gets a stop. If a stop cannot be placed, the trade is closed."
+    },
+    {
+      "t": 213.8,
+      "text": "Concurrent trades caps open trades, one per coin. A daily stop loss pauses new entries until 00:00 IST."
+    },
+    {
+      "t": 222.0,
+      "text": "For Live, use an API key with futures trading on and withdrawals disabled. The secret is stored encrypted."
+    },
+    {
+      "t": 232.4,
+      "text": "A common mistake: switching to Live on day one with high leverage, because the app looks smart."
+    },
+    {
+      "t": 239.8,
+      "text": "Better: practise in Demo first, keep leverage low, and treat every setup as a maybe, not a promise."
+    },
+    {
+      "t": 250.4,
+      "text": "Your turn. Auto trade approval is off, and a setup triggers. What happens next?"
+    },
+    {
+      "t": 260.0,
+      "text": "It waits for your Approve. If you don't approve before it expires, no trade is opened."
+    },
+    {
+      "t": 268.3,
+      "text": "Know the limits. XORA is a tool, not a guarantee. Setups can fail, and stops can slip in fast markets."
+    },
+    {
+      "t": 276.0,
+      "text": "In Live, losses are real money, and leverage makes them bigger. Fees come out of every trade."
+    },
+    {
+      "t": 283.1,
+      "text": "XORA does not guarantee profits. Demo first. This is not financial advice."
+    },
+    {
+      "t": 289.4,
+      "text": "Recap. One engine, three modes, and Demo is where you start."
+    },
+    {
+      "t": 294.3,
+      "text": "Five tabs, one workflow: coins, Signals, a setup, your approval, the XORA tab, then Trades."
+    },
+    {
+      "t": 301.3,
+      "text": "And safety first: a stop on every trade, a daily stop loss, and withdrawals off on your API key."
+    },
+    {
+      "t": 309.6,
+      "text": "Next, T25: how XORA analyses a coin. XORA does not guarantee profits. Demo first. Not financial advice."
+    }
+  ]
+}

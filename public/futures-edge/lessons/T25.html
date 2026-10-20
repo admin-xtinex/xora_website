@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T25 · How XORA Analyses a Coin · XORA Futures Edge</title>
+<meta name="description" content="XORA Futures Edge lesson T25, an animated lesson (5 min). Education only, not financial advice.">
+<style>
+@font-face { font-family:"Outfit";font-weight:400 700; src: url("T25/fonts/outfit.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Manrope";font-weight:400 800; src: url("T25/fonts/manrope.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:400; src: url("T25/fonts/dm-mono-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:500; src: url("T25/fonts/dm-mono-500.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:400; src: url("T25/fonts/noto-sans-malayalam-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:600; src: url("T25/fonts/noto-sans-malayalam-600.woff2") format("woff2"); font-display: block; }
+
+html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; color: #eef1f7;
+  font-family: "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden;
+  background: #02030a; transform-origin: 50% 50%;
+  --display: "Outfit", "Manrope", system-ui, sans-serif;
+  --sans: "Manrope", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace; }
+#stage .fe-scene { position: absolute; inset: 0; overflow: hidden; }
+body:not(.fe-ready) #stage { visibility: hidden; }
+.fe-loading { position: fixed; inset: 0; display: grid; place-items: center; margin: 0; font-size: 15px; color: #6b7489; }
+body.fe-ready .fe-loading { display: none; }
+.fe-ui { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 10; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 14px; background: rgba(7, 8, 20, 0.8); border: 1px solid rgba(130, 160, 255, 0.18);
+  backdrop-filter: blur(8px); transition: opacity 0.4s; }
+body.fe-idle .fe-ui { opacity: 0; }
+body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
+.fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
+  background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
+.fe-btn svg { width: 20px; height: 20px; }
+.fe-ccw { position: relative; flex: none; }
+.fe-sp, .fe-lang { width: auto; min-width: 40px; padding: 0 8px; font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums; color: #eef1f7; }
+.fe-spw .fe-ccm { min-width: 96px; }
+.fe-cc { font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; letter-spacing: 0.04em; color: #eef1f7;
+  box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-cc.is-off { color: #6b7489; box-shadow: none; }
+.fe-ccm { position: absolute; right: 0; bottom: calc(100% + 10px); display: grid; min-width: 150px; padding: 6px; border-radius: 12px;
+  background: rgba(7, 8, 20, 0.96); border: 1px solid rgba(130, 160, 255, 0.25); }
+.fe-ccm[hidden] { display: none; }
+.fe-ccm button { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: none; color: #eef1f7; font: 600 15px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; text-align: left; cursor: pointer; }
+.fe-ccm button:hover, .fe-ccm button:focus-visible { background: rgba(238, 241, 247, 0.08); outline: none; }
+.fe-ccm button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+.fe-ccm button[aria-checked="true"]::before { background: #3ecbff; }
+.fe-cap:lang(ml) { font-family: "Noto Sans Malayalam", "Manrope", system-ui, sans-serif; line-height: 1.55; }
+/* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
+.fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+  color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
+  transition: bottom 0.4s; pointer-events: none; }
+body.fe-idle .fe-cap { bottom: 20px; }
+.fe-cap[hidden], body:not(.fe-ready) .fe-cap { display: none; }
+.fe-track { position: relative; flex: 1; height: 6px; border-radius: 6px; background: rgba(238, 241, 247, 0.14);
+  cursor: pointer; touch-action: none; }
+.fe-track::before { content: ""; position: absolute; inset: -12px 0; }
+.fe-track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, #3ecbff, #a855f7); }
+.fe-time { flex: none; font: 500 13px/1 "DM Mono", ui-monospace, monospace; color: #b4bccb; font-variant-numeric: tabular-nums; }
+.fe-hint { position: fixed; top: 12px; right: 12px; z-index: 10; padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(62, 203, 255, 0.45); background: rgba(7, 8, 20, 0.82); color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif; }
+.fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
+@media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-width: 400px) { .fe-ui { gap: 4px; padding: 6px; } .fe-sp, .fe-lang { min-width: 34px; padding: 0 4px; } }
+@media (max-height: 420px) {
+  .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
+  .fe-btn { width: 34px; height: 34px; }
+  .fe-sp, .fe-lang { width: auto; min-width: 34px; }
+  .fe-btn svg { width: 18px; height: 18px; }
+  .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
+  body.fe-idle .fe-cap { bottom: 8px; }
+  .fe-hint { top: 6px; right: 6px; padding: 7px 12px; font-size: 12px; }
+}
+
+</style>
+</head>
+<body>
+<p class="fe-loading">Loading lesson…</p>
+<div id="stage" aria-label="T25 How XORA Analyses a Coin" role="img"></div>
+<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/futures-edge/T25/. Edit the source, not this file. -->
+<script>window.FILM = {"id":"T25","width":1920,"height":1080,"scenes":[{"id":"title","name":"How XORA analyses a coin","dur":8,"k":1,"oldStart":0,"oldDur":8},{"id":"hook","name":"The routine","dur":19,"k":1,"oldStart":8,"oldDur":19},{"id":"candles","name":"Candles in","dur":21,"k":1,"oldStart":27,"oldDur":21},{"id":"closed","name":"Closed candles only","dur":21,"k":1,"oldStart":48,"oldDur":21},{"id":"volatility","name":"Volatility","dur":21,"k":1,"oldStart":69,"oldDur":21},{"id":"trend","name":"Swings and trend","dur":24,"k":1,"oldStart":90,"oldDur":24},{"id":"zones","name":"Support and resistance zones","dur":20,"k":1,"oldStart":114,"oldDur":20},{"id":"movement","name":"Movement","dur":21,"k":1,"oldStart":134,"oldDur":21},{"id":"setups","name":"Candidate setups","dur":22,"k":1,"oldStart":155,"oldDur":22},{"id":"plan","name":"A plan for one candle","dur":28,"k":1,"oldStart":177,"oldDur":28},{"id":"trigger","name":"At the trigger","dur":22,"k":1,"oldStart":205,"oldDur":22},{"id":"mistake","name":"A common mistake","dur":16,"k":1,"oldStart":227,"oldDur":16},{"id":"try","name":"Try it","dur":18,"k":1,"oldStart":243,"oldDur":18},{"id":"risks","name":"Know the limits","dur":19,"k":1,"oldStart":261,"oldDur":19},{"id":"recap","name":"Recap","dur":19,"k":1,"oldStart":280,"oldDur":19},{"id":"next","name":"Up next","dur":10,"k":1,"oldStart":299,"oldDur":10}],"voice":{"src":null,"lines":[{"t":0.6,"d":7.15,"text":"Lesson T25: how XORA analyses a coin. Let's look inside the routine.","ml":"പാഠം T25: XORA ഒരു കോയിൻ എങ്ങനെ വിശകലനം ചെയ്യുന്നു. ആ ദിനചര്യയുടെ ഉള്ളിലേക്ക് നോക്കാം."},{"t":8.4,"d":5.85,"text":"What does XORA do with a coin? Every minute, it runs the same careful routine.","ml":"XORA ഒരു കോയിനുമായി എന്ത് ചെയ്യും? ഓരോ മിനിറ്റിലും അത് ഒരേ ശ്രദ്ധയുള്ള ദിനചര്യ നടത്തും."},{"t":14.5,"d":5.95,"text":"Candles in. Then volatility, swings, trend, zones, movement and possible setups.","ml":"ആദ്യം candle-കൾ. പിന്നെ volatility, swings, trend, zones, movement, സാധ്യമായ setup-കൾ."},{"t":20.7,"d":6.05,"text":"Out comes a plan for one candle, or no plan. Let's follow one fictional coin.","ml":"ഫലം ഒരു candle-ന് മാത്രമുള്ള ഒരു പ്ലാൻ, അല്ലെങ്കിൽ പ്ലാനേ ഇല്ല. ഒരു സാങ്കൽപ്പിക കോയിൻ പിന്തുടരാം."},{"t":27.4,"d":7.15,"text":"It starts with history: the coin's recent 1-minute candles. Each shows open, high, low and close.","ml":"തുടക്കം ചരിത്രത്തിൽ നിന്ന്: കോയിന്റെ അടുത്തകാലത്തെ 1-minute candle-കൾ. ഓരോന്നും open, high, low, close കാണിക്കും."},{"t":34.8,"d":5.85,"text":"XORA also checks bigger timeframes, like 5 and 15 minutes, and the order book.","ml":"XORA വലിയ timeframe-കളും നോക്കും, 5, 15 മിനിറ്റ് പോലെ, പിന്നെ order book-ഉം."},{"t":40.9,"d":6.85,"text":"These are common techniques. XORA's filters draw on them; the exact rules are its own.","ml":"ഇവ സാധാരണ ടെക്നിക്കുകളാണ്. XORA-യുടെ filter-കൾ ഇവ ഉപയോഗിക്കുന്നു; കൃത്യമായ നിയമങ്ങൾ അതിന്റെ സ്വന്തം."},{"t":48.4,"d":6.75,"text":"One rule matters a lot: XORA uses closed candles only. A forming candle can still change.","ml":"ഒരു നിയമം വളരെ പ്രധാനം: XORA അടഞ്ഞ candle-കൾ മാത്രമേ ഉപയോഗിക്കൂ. രൂപപ്പെടുന്ന candle ഇനിയും മാറാം."},{"t":55.4,"d":6.75,"text":"Its high, low and colour can flip before the minute ends, so a signal from it could vanish.","ml":"മിനിറ്റ് തീരും മുൻപ് അതിന്റെ high, low, നിറം മാറാം. അതിൽ നിന്നുള്ള സിഗ്നൽ അപ്രത്യക്ഷമാകാം."},{"t":62.4,"d":6.35,"text":"So at every candle close, the engine makes a fresh plan for each coin.","ml":"അതുകൊണ്ട് ഓരോ candle close-ലും engine ഓരോ കോയിനും പുതിയൊരു പ്ലാൻ ഉണ്ടാക്കും."},{"t":69.4,"d":6.95,"text":"Next: volatility, how much price usually moves. A common measure is ATR, average true range.","ml":"അടുത്തത്: volatility, വില സാധാരണ എത്ര നീങ്ങുന്നു എന്ന്. ഒരു സാധാരണ അളവ് ATR, average true range."},{"t":76.6,"d":6.95,"text":"Simple version: average recent candle sizes. 60, 50, 40, 50 and 100 USDT average 60 USDT.","ml":"ലളിതമായി: അടുത്ത candle-കളുടെ വലിപ്പത്തിന്റെ ശരാശരി. 60, 50, 40, 50, 100 USDT-ന്റെ ശരാശരി 60 USDT."},{"t":83.8,"d":5.95,"text":"Stops need room beyond that normal noise, or they get hit for no real reason.","ml":"Stop-ന് ഈ സാധാരണ ഇളക്കത്തിനപ്പുറം ഇടം വേണം, അല്ലെങ്കിൽ കാരണമില്ലാതെ അത് hit ആകും."},{"t":90.4,"d":7.15,"text":"Swing points are turning points: a high with lower highs on both sides, or a low with higher lows.","ml":"Swing point-കൾ തിരിവുകളാണ്: ഇരുവശത്തും താഴ്ന്ന high-കളുള്ള ഒരു high, അല്ലെങ്കിൽ ഉയർന്ന low-കളുള്ള ഒരു low."},{"t":97.8,"d":7.35,"text":"Highs go 60,100 then 60,250. Lows go 59,900 then 60,040. Higher highs and higher lows: UP.","ml":"High-കൾ 60,100, പിന്നെ 60,250. Low-കൾ 59,900, പിന്നെ 60,040. ഉയർന്ന high-ഉം ഉയർന്ന low-ഉം: UP."},{"t":105.4,"d":8.35,"text":"Lower highs and lower lows mean DOWN. Anything else is RANGE. Each timeframe gets its own trend.","ml":"താഴ്ന്ന high-ഉം താഴ്ന്ന low-ഉം ആണെങ്കിൽ DOWN. ബാക്കിയെല്ലാം RANGE. ഓരോ timeframe-നും സ്വന്തം trend."},{"t":114.4,"d":5.15,"text":"Swing lows and highs show where buyers or sellers stepped in before.","ml":"Swing low-കളും high-കളും മുമ്പ് buyers അല്ലെങ്കിൽ sellers ഇടപെട്ട ഇടങ്ങൾ കാണിക്കും."},{"t":119.8,"d":7.15,"text":"XORA draws zones around them: support below price, resistance above. A zone is a band, not a line.","ml":"XORA അവയ്ക്ക് ചുറ്റും zone-കൾ വരയ്ക്കും: വിലയ്ക്ക് താഴെ support, മുകളിൽ resistance. Zone ഒരു വരയല്ല, ഒരു ബാൻഡ്."},{"t":127.2,"d":6.55,"text":"Fictional zones here: support 60,000 to 60,060, resistance 60,480 to 60,530.","ml":"ഇവിടെ സാങ്കൽപ്പിക zone-കൾ: support 60,000 മുതൽ 60,060 വരെ, resistance 60,480 മുതൽ 60,530 വരെ."},{"t":134.4,"d":6.55,"text":"Then movement. Momentum asks how strongly price is moving. RSI is one well-known gauge.","ml":"പിന്നെ movement. വില എത്ര ശക്തമായി നീങ്ങുന്നു എന്ന് momentum ചോദിക്കും. RSI അതിന്റെ ഒരു പ്രശസ്ത അളവാണ്."},{"t":141.2,"d":6.75,"text":"Pressure compares buyers and sellers trading at market. Volume shows activity versus usual.","ml":"Pressure, market-ൽ ട്രേഡ് ചെയ്യുന്ന buyers-നെയും sellers-നെയും താരതമ്യം ചെയ്യും. Volume സാധാരണയെക്കാൾ എത്ര തിരക്കെന്ന് കാണിക്കും."},{"t":148.2,"d":6.55,"text":"Strong, agreeing movement adds evidence. Weak or mixed movement is a reason to wait.","ml":"ശക്തമായ, ഒത്തുപോകുന്ന movement തെളിവ് കൂട്ടും. ദുർബലമോ കലർന്നതോ ആണെങ്കിൽ wait ചെയ്യാൻ കാരണം."},{"t":155.4,"d":4.55,"text":"Now XORA looks for candidate setups, the shapes it trades.","ml":"ഇനി XORA candidate setup-കൾ തിരയും, അത് ട്രേഡ് ചെയ്യുന്ന രൂപങ്ങൾ."},{"t":160.2,"d":6.65,"text":"A reaction at support: price dips into the zone and bounces. Or a rejection at resistance.","ml":"Support-ൽ ഒരു reaction: വില zone-ലേക്ക് ഇറങ്ങി തിരിച്ചുകയറും. അല്ലെങ്കിൽ resistance-ൽ ഒരു rejection."},{"t":167.1,"d":9.65,"text":"A breakout: a close beyond a level. Or a retest: price comes back to a broken level and holds.","ml":"ഒരു breakout: ഒരു level-ന് അപ്പുറം close. അല്ലെങ്കിൽ ഒരു retest: തകർന്ന level-ലേക്ക് വില തിരിച്ചുവന്ന് പിടിച്ചുനിൽക്കും."},{"t":177.4,"d":6.05,"text":"Our coin dipped into support and closed back up. That candle is the setup candle.","ml":"നമ്മുടെ കോയിൻ support-ലേക്ക് ഇറങ്ങി, മുകളിൽ close ചെയ്തു. ആ candle ആണ് setup candle."},{"t":183.7,"d":6.95,"text":"The plan: BUY if price trades above the setup candle's high, 60,120. That price is the trigger.","ml":"പ്ലാൻ: setup candle-ന്റെ high ആയ 60,120-ന് മുകളിൽ വില ട്രേഡ് ചെയ്താൽ BUY. ആ വിലയാണ് trigger."},{"t":190.9,"d":6.45,"text":"The stop sits beyond the support zone, at 59,940. Risk: 180 USDT per BTC, about 0.30%.","ml":"Stop support zone-ന് അപ്പുറം, 59,940-ൽ. റിസ്ക്: ഒരു BTC-ക്ക് 180 USDT, ഏകദേശം 0.30%."},{"t":197.6,"d":7.15,"text":"The next resistance is 360 USDT above the trigger: 2 R, twice the risk.","ml":"അടുത്ത resistance trigger-ന് 360 USDT മുകളിലാണ്: 2 R, റിസ്കിന്റെ ഇരട്ടി."},{"t":205.4,"d":5.75,"text":"The next candle opens. Price climbs above 60,120, so the plan triggers.","ml":"അടുത്ത candle തുടങ്ങുന്നു. വില 60,120-ന് മുകളിൽ കയറുന്നു, അങ്ങനെ പ്ലാൻ trigger ആകുന്നു."},{"t":211.4,"d":6.25,"text":"At the trigger, every check runs again. If something has changed, there is no trade.","ml":"Trigger-ൽ എല്ലാ check-ഉം വീണ്ടും നടക്കും. എന്തെങ്കിലും മാറിയിട്ടുണ്ടെങ്കിൽ ട്രേഡ് ഇല്ല."},{"t":217.9,"d":8.85,"text":"And if price never reaches 60,120 before the candle closes, the plan expires. A fresh plan follows.","ml":"Candle close ആകും മുൻപ് വില 60,120 എത്തിയില്ലെങ്കിൽ, പ്ലാൻ expire ആകും. പിന്നാലെ പുതിയ പ്ലാൻ വരും."},{"t":227.4,"d":5.35,"text":"A common mistake: reading a plan as a prediction that price will go up.","ml":"ഒരു സാധാരണ തെറ്റ്: പ്ലാനിനെ വില കയറും എന്ന പ്രവചനമായി വായിക്കുന്നത്."},{"t":233,"d":9.75,"text":"It is only an if. Most plans expire, no trade is normal, and triggered trades can still lose.","ml":"അത് ഒരു 'എങ്കിൽ' മാത്രം. മിക്ക പ്ലാനുകളും expire ആകും, ട്രേഡ് ഇല്ലാത്തത് സാധാരണം, trigger ആയ ട്രേഡും നഷ്ടത്തിലാകാം."},{"t":243.4,"d":9.35,"text":"Your turn. The setup candle's high is 60,120. The next candle reaches 60,100, then closes. What happens?","ml":"നിന്റെ ഊഴം. Setup candle-ന്റെ high 60,120. അടുത്ത candle 60,100 വരെ എത്തി close ആകുന്നു. എന്ത് സംഭവിക്കും?"},{"t":253,"d":7.75,"text":"The trigger was never reached, so no trade. The plan expires, and a fresh plan comes at the close.","ml":"Trigger എത്തിയില്ല, അതുകൊണ്ട് ട്രേഡ് ഇല്ല. പ്ലാൻ expire ആകും, close-ൽ പുതിയ പ്ലാൻ വരും."},{"t":261.3,"d":6.45,"text":"Remember the limits. These checks read the past. They cannot know what price does next.","ml":"പരിധികൾ ഓർക്കുക. ഈ check-കൾ ഭൂതകാലം വായിക്കുന്നു. വില അടുത്തത് എന്ത് ചെയ്യുമെന്ന് അവയ്ക്ക് അറിയില്ല."},{"t":268,"d":4.95,"text":"Fast markets can jump past a stop, and fees apply to every trade.","ml":"വേഗമുള്ള മാർക്കറ്റിൽ വില stop-നെ ചാടിക്കടക്കാം, ഓരോ ട്രേഡിനും ഫീസും ഉണ്ട്."},{"t":273.2,"d":6.55,"text":"XORA does not guarantee profits. Use Demo first. This is not financial advice.","ml":"XORA ലാഭം ഗ്യാരന്റി ചെയ്യുന്നില്ല. ആദ്യം Demo ഉപയോഗിക്കുക. ഇത് സാമ്പത്തിക ഉപദേശമല്ല."},{"t":280.4,"d":5.25,"text":"Recap. XORA reads closed candles and makes a fresh plan every minute.","ml":"ചുരുക്കം. XORA അടഞ്ഞ candle-കൾ വായിക്കുന്നു, ഓരോ മിനിറ്റിലും പുതിയ പ്ലാൻ ഉണ്ടാക്കുന്നു."},{"t":285.9,"d":5.95,"text":"It checks volatility, swings, trend, zones and movement, then looks for a setup.","ml":"Volatility, swings, trend, zones, movement നോക്കി, പിന്നെ ഒരു setup തിരയും."},{"t":292.1,"d":6.65,"text":"A plan is an if for one candle: a trigger, a stop beyond the level, and checks again.","ml":"പ്ലാൻ ഒരു candle-നുള്ള 'എങ്കിൽ' ആണ്: ഒരു trigger, level-ന് അപ്പുറം stop, പിന്നെ വീണ്ടും check."},{"t":299.6,"d":9.15,"text":"Next, T26: understanding AI decisions. XORA does not guarantee profits. Demo first. Not financial advice.","ml":"അടുത്തത് T26: AI തീരുമാനങ്ങൾ മനസ്സിലാക്കാം. XORA ലാഭം ഗ്യാരന്റി ചെയ്യുന്നില്ല. ആദ്യം Demo. സാമ്പത്തിക ഉപദേശമല്ല."}]},"assetBase":"T25/assets/","assets":{"tutor-checklist.webp":{"mime":"image/webp","w":185,"h":161},"tutor-cheer.webp":{"mime":"image/webp","w":207,"h":182},"tutor-confused.webp":{"mime":"image/webp","w":185,"h":169},"tutor-explain.webp":{"mime":"image/webp","w":502,"h":602},"tutor-idea.webp":{"mime":"image/webp","w":169,"h":178},"tutor-idle.webp":{"mime":"image/webp","w":331,"h":446},"tutor-magnify.webp":{"mime":"image/webp","w":187,"h":170},"tutor-point.webp":{"mime":"image/webp","w":547,"h":568},"tutor-present.webp":{"mime":"image/webp","w":546,"h":612},"tutor-read.webp":{"mime":"image/webp","w":190,"h":181},"tutor-think.webp":{"mime":"image/webp","w":465,"h":656},"tutor-thumbs.webp":{"mime":"image/webp","w":181,"h":179},"tutor-wk0.webp":{"mime":"image/webp","w":353,"h":460},"tutor-wk1.webp":{"mime":"image/webp","w":361,"h":460},"tutor-wk2.webp":{"mime":"image/webp","w":345,"h":460},"tutor-wk3.webp":{"mime":"image/webp","w":365,"h":460},"tutor-wk4.webp":{"mime":"image/webp","w":375,"h":457},"tutor-wk5.webp":{"mime":"image/webp","w":364,"h":457},"tutor-wk6.webp":{"mime":"image/webp","w":354,"h":457},"tutor-wk7.webp":{"mime":"image/webp","w":365,"h":457},"tutor-wv1.webp":{"mime":"image/webp","w":381,"h":448},"tutor-wv2.webp":{"mime":"image/webp","w":374,"h":448},"tutor-wv3.webp":{"mime":"image/webp","w":363,"h":448},"tutor-wv4.webp":{"mime":"image/webp","w":375,"h":446},"xtinex-x.png":{"mime":"image/png","w":320,"h":205},"tutor-laptop.webp":{"mime":"image/webp","w":185,"h":170},"tutor-pointer.webp":{"mime":"image/webp","w":248,"h":171},"tutor-calm.webp":{"mime":"image/webp","w":234,"h":174},"tutor-typing.webp":{"mime":"image/webp","w":207,"h":175},"tutor-candles.webp":{"mime":"image/webp","w":257,"h":160},"tutor-hi.webp":{"mime":"image/webp","w":518,"h":594},"tutor-celebrate.webp":{"mime":"image/webp","w":209,"h":171}},"fontChecks":["600 40px \"Noto Sans Malayalam\"","400 40px \"Manrope\"","700 40px \"Outfit\"","600 40px \"Outfit\"","400 40px \"DM Mono\"","500 40px \"DM Mono\""],"modules":{"base.css":"#stage { --ground:#02030a; --main:#3ecbff; --second:#eef1f7; --accent:#a855f7; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }\n.ground { position:absolute; inset:0; background:radial-gradient(60% 55% at 88% 6%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), radial-gradient(55% 50% at 6% 98%, color-mix(in srgb, var(--main) 11%, transparent), transparent 70%), var(--ground) }\n.words { position:absolute; margin:0; display:flex; flex-direction:column; gap:24px } .words > * { margin:0 }\n.line { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:84px; line-height:1.05; font-weight:700; letter-spacing:-0.02em; text-wrap:balance }\n.sub { font-size:36px; line-height:1.45; color:color-mix(in srgb, var(--second) 72%, var(--ground)) }\n.kick { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.24em; text-transform:uppercase; color:var(--main) }\n.hl { color:var(--main) } .hv { color:var(--accent) }\n.art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }\n.glass { position:absolute; box-sizing:border-box; border-radius:28px; background:linear-gradient(180deg, color-mix(in srgb, var(--ground) 82%, var(--main)), color-mix(in srgb, var(--ground) 94%, var(--second))); border:1.5px solid color-mix(in srgb, var(--main) 22%, transparent); box-shadow:0 30px 80px rgba(0,0,0,.45) }\n.chip { display:inline-flex; align-items:center; gap:16px; padding:18px 30px; border-radius:999px; font-size:32px; font-weight:600; background:color-mix(in srgb, var(--ground) 88%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent); white-space:nowrap }\n.dot { width:14px; height:14px; border-radius:50%; background:var(--main); flex:none }\n.rule { height:4px; border-radius:4px; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.mono { font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums }\n.fict { font-family:var(--mono, ui-monospace, monospace); font-size:18px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 45%, var(--ground)) }\n.def { font-size:34px; line-height:1.45; font-weight:600 } .def b { color:var(--main); font-weight:700 }\n.lock { display:flex; align-items:center; gap:22px } .lock img { width:92px; height:59px; display:block }\n.lock-xt { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:600; font-size:40px; letter-spacing:.2em }\n.lock-bar { width:2px; height:46px; background:color-mix(in srgb, var(--second) 30%, transparent) }\n.lock-xo { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:700; font-size:40px; letter-spacing:.2em; color:var(--main) }\n.chrome { position:absolute; left:140px; right:140px; top:56px; display:flex; align-items:center; gap:28px; z-index:4 }\n.chrome span { font-family:var(--mono, ui-monospace, monospace); font-size:19px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 55%, var(--ground)); white-space:nowrap }\n.chrome div { flex:1; height:4px; border-radius:4px; background:color-mix(in srgb, var(--second) 10%, transparent); overflow:hidden } .chrome i { display:block; height:100%; width:0; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.tutor { position:absolute; inset:0; pointer-events:none; z-index:5 }\n.tutor-img { position:absolute; display:block; max-width:none; opacity:0 }\n.tutor-shadow { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--main) 38%, transparent), transparent) }\n.bubble { position:absolute; left:0; top:0; width:max-content; max-width:540px; box-sizing:border-box; padding:20px 28px; border-radius:26px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); box-shadow:0 18px 50px rgba(0,0,0,.45); opacity:0 }\n.bubble p { margin:0; font-size:30px; line-height:1.35; font-weight:600; color:var(--second) }\n.bubble::after { content:''; position:absolute; right:44px; bottom:-12px; width:22px; height:22px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border-right:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); border-bottom:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); transform:rotate(45deg) }\n.bubble.is-top::after { right:auto; left:calc(50% - 11px) }\n.box { position:absolute; margin:0; border:2px solid var(--second); box-sizing:border-box; font-size:30px; letter-spacing:.12em } .box::after { content:attr(data-label); position:absolute; left:14px; bottom:10px }\n/* T14: candle colours (most apps: green up, red down) and small chart labels */\n#stage { --up:#2fd897; --down:#ff5c7c }\n.up { color:var(--up) } .dn { color:var(--down) }\n.tag { position:absolute; margin:0; padding:6px 14px; border-radius:10px; font-family:var(--mono, ui-monospace, monospace); font-size:24px; white-space:nowrap; background:color-mix(in srgb, var(--ground) 80%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 35%, transparent) }\n.axis { font-family:var(--mono, ui-monospace, monospace); font-size:22px; fill:color-mix(in srgb, var(--second) 50%, var(--ground)) }\n.row { display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding:14px 0; border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent) }\n.row > span:first-child { font-size:28px; color:color-mix(in srgb, var(--second) 70%, var(--ground)) }\n.row > .mono { font-size:42px }\n/* Phase 6: generic phone mock of the XORA app */\n.ph { position:absolute; box-sizing:border-box; border-radius:58px; background:#0a0d19; border:2px solid color-mix(in srgb, var(--main) 38%, transparent); box-shadow:0 40px 90px rgba(0,0,0,.55), inset 0 0 0 7px #04050c; z-index:2 }\n.ph-scr { position:absolute; inset:14px; border-radius:46px; overflow:hidden; background:linear-gradient(180deg, #080b18, #03040b) }\n.ph-sb { position:absolute; left:34px; right:30px; top:14px; display:flex; justify-content:space-between; align-items:center; font-size:22px; color:color-mix(in srgb, var(--second) 75%, var(--ground)) }\n.ph-env { padding:2px 12px; border-radius:999px; font-size:22px; color:var(--main); border:1.5px solid color-mix(in srgb, var(--main) 55%, transparent) }\n.ph-body { position:absolute; left:18px; right:18px; top:58px; bottom:98px; overflow:visible }\n.ph-tabs { position:absolute; left:0; right:0; bottom:0; height:90px; display:flex; align-items:center; justify-content:space-around; padding:0 6px; border-top:1.5px solid color-mix(in srgb, var(--second) 10%, transparent); background:#070915 }\n.ph-tab { display:flex; flex-direction:column; align-items:center; gap:2px; font-size:22px; font-weight:600; color:color-mix(in srgb, var(--second) 55%, var(--ground)) }\n.ph-tx { margin-top:-14px }\n.ph-xb { width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--display, sans-serif); font-weight:700; font-size:28px; color:var(--ground); background:linear-gradient(135deg, var(--main), var(--accent)); box-shadow:0 0 0 5px #070915 }\n.ph-lab { position:absolute; margin:0; text-align:center; font-size:19px; line-height:1.5; letter-spacing:.12em }\n.pc { box-sizing:border-box; border-radius:20px; padding:12px 16px; background:color-mix(in srgb, var(--ground) 84%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 22%, transparent) }\n.pk { margin:0; font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.08em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 58%, var(--ground)) }\n.pv { margin:0; font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums; font-size:30px; color:var(--second) }\n.pt { margin:0; font-size:24px; line-height:1.35; font-weight:600 }\n.pill { display:inline-flex; align-items:center; gap:8px; padding:4px 14px; border-radius:999px; font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.06em; border:1.5px solid currentColor; white-space:nowrap }\n.btn { display:flex; align-items:center; justify-content:center; border-radius:16px; font-weight:700; font-size:24px; letter-spacing:.04em; white-space:nowrap }\n.flow { position:absolute; box-sizing:border-box; display:flex; flex-direction:column; gap:8px; padding:18px 22px; border-radius:22px; background:color-mix(in srgb, var(--ground) 86%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent) }\n","narration.json":"{\n  \"about\": \"T25 captions (no voiceover yet): How XORA analyses a coin. Each line starts at film time t (seconds); can be recorded as voiceover later.\",\n  \"lines\": [\n    {\n      \"t\": 0.6,\n      \"text\": \"Lesson T25: how XORA analyses a coin. Let's look inside the routine.\"\n    },\n    {\n      \"t\": 8.4,\n      \"text\": \"What does XORA do with a coin? Every minute, it runs the same careful routine.\"\n    },\n    {\n      \"t\": 14.5,\n      \"text\": \"Candles in. Then volatility, swings, trend, zones, movement and possible setups.\"\n    },\n    {\n      \"t\": 20.7,\n      \"text\": \"Out comes a plan for one candle, or no plan. Let's follow one fictional coin.\"\n    },\n    {\n      \"t\": 27.4,\n      \"text\": \"It starts with history: the coin's recent 1-minute candles. Each shows open, high, low and close.\"\n    },\n    {\n      \"t\": 34.8,\n      \"text\": \"XORA also checks bigger timeframes, like 5 and 15 minutes, and the order book.\"\n    },\n    {\n      \"t\": 40.9,\n      \"text\": \"These are common techniques. XORA's filters draw on them; the exact rules are its own.\"\n    },\n    {\n      \"t\": 48.4,\n      \"text\": \"One rule matters a lot: XORA uses closed candles only. A forming candle can still change.\"\n    },\n    {\n      \"t\": 55.4,\n      \"text\": \"Its high, low and colour can flip before the minute ends, so a signal from it could vanish.\"\n    },\n    {\n      \"t\": 62.4,\n      \"text\": \"So at every candle close, the engine makes a fresh plan for each coin.\"\n    },\n    {\n      \"t\": 69.4,\n      \"text\": \"Next: volatility, how much price usually moves. A common measure is ATR, average true range.\"\n    },\n    {\n      \"t\": 76.6,\n      \"text\": \"Simple version: average recent candle sizes. 60, 50, 40, 50 and 100 USDT average 60 USDT.\"\n    },\n    {\n      \"t\": 83.8,\n      \"text\": \"Stops need room beyond that normal noise, or they get hit for no real reason.\"\n    },\n    {\n      \"t\": 90.4,\n      \"text\": \"Swing points are turning points: a high with lower highs on both sides, or a low with higher lows.\"\n    },\n    {\n      \"t\": 97.8,\n      \"text\": \"Highs go 60,100 then 60,250. Lows go 59,900 then 60,040. Higher highs and higher lows: UP.\"\n    },\n    {\n      \"t\": 105.4,\n      \"text\": \"Lower highs and lower lows mean DOWN. Anything else is RANGE. Each timeframe gets its own trend.\"\n    },\n    {\n      \"t\": 114.4,\n      \"text\": \"Swing lows and highs show where buyers or sellers stepped in before.\"\n    },\n    {\n      \"t\": 119.8,\n      \"text\": \"XORA draws zones around them: support below price, resistance above. A zone is a band, not a line.\"\n    },\n    {\n      \"t\": 127.2,\n      \"text\": \"Fictional zones here: support 60,000 to 60,060, resistance 60,480 to 60,530.\"\n    },\n    {\n      \"t\": 134.4,\n      \"text\": \"Then movement. Momentum asks how strongly price is moving. RSI is one well-known gauge.\"\n    },\n    {\n      \"t\": 141.2,\n      \"text\": \"Pressure compares buyers and sellers trading at market. Volume shows activity versus usual.\"\n    },\n    {\n      \"t\": 148.2,\n      \"text\": \"Strong, agreeing movement adds evidence. Weak or mixed movement is a reason to wait.\"\n    },\n    {\n      \"t\": 155.4,\n      \"text\": \"Now XORA looks for candidate setups, the shapes it trades.\"\n    },\n    {\n      \"t\": 160.2,\n      \"text\": \"A reaction at support: price dips into the zone and bounces. Or a rejection at resistance.\"\n    },\n    {\n      \"t\": 167.1,\n      \"text\": \"A breakout: a close beyond a level. Or a retest: price comes back to a broken level and holds.\"\n    },\n    {\n      \"t\": 177.4,\n      \"text\": \"Our coin dipped into support and closed back up. That candle is the setup candle.\"\n    },\n    {\n      \"t\": 183.7,\n      \"text\": \"The plan: BUY if price trades above the setup candle's high, 60,120. That price is the trigger.\"\n    },\n    {\n      \"t\": 190.9,\n      \"text\": \"The stop sits beyond the support zone, at 59,940. Risk: 180 USDT per BTC, about 0.30%.\"\n    },\n    {\n      \"t\": 197.6,\n      \"text\": \"The next resistance is 360 USDT above the trigger: 2 R, twice the risk.\"\n    },\n    {\n      \"t\": 205.4,\n      \"text\": \"The next candle opens. Price climbs above 60,120, so the plan triggers.\"\n    },\n    {\n      \"t\": 211.4,\n      \"text\": \"At the trigger, every check runs again. If something has changed, there is no trade.\"\n    },\n    {\n      \"t\": 217.9,\n      \"text\": \"And if price never reaches 60,120 before the candle closes, the plan expires. A fresh plan follows.\"\n    },\n    {\n      \"t\": 227.4,\n      \"text\": \"A common mistake: reading a plan as a prediction that price will go up.\"\n    },\n    {\n      \"t\": 233.0,\n      \"text\": \"It is only an if. Most plans expire, no trade is normal, and triggered trades can still lose.\"\n    },\n    {\n      \"t\": 243.4,\n      \"text\": \"Your turn. The setup candle's high is 60,120. The next candle reaches 60,100, then closes. What happens?\"\n    },\n    {\n      \"t\": 253.0,\n      \"text\": \"The trigger was never reached, so no trade. The plan expires, and a fresh plan comes at the close.\"\n    },\n    {\n      \"t\": 261.3,\n      \"text\": \"Remember the limits. These checks read the past. They cannot know what price does next.\"\n    },\n    {\n      \"t\": 268.0,\n      \"text\": \"Fast markets can jump past a stop, and fees apply to every trade.\"\n    },\n    {\n      \"t\": 273.2,\n      \"text\": \"XORA does not guarantee profits. Use Demo first. This is not financial advice.\"\n    },\n    {\n      \"t\": 280.4,\n      \"text\": \"Recap. XORA reads closed candles and makes a fresh plan every minute.\"\n    },\n    {\n      \"t\": 285.9,\n      \"text\": \"It checks volatility, swings, trend, zones and movement, then looks for a setup.\"\n    },\n    {\n      \"t\": 292.1,\n      \"text\": \"A plan is an if for one candle: a trigger, a stop beyond the level, and checks again.\"\n    },\n    {\n      \"t\": 299.6,\n      \"text\": \"Next, T26: understanding AI decisions. XORA does not guarantee profits. Demo first. Not financial advice.\"\n    }\n  ]\n}","scene-candles.js":"const { seg, eo, ei, eob, lerp } = kit;\nconst CN_L = [['1-minute candles', 'Newest: O 60,070 · H 60,120 · L 60,020 · C 60,110', 2.0], ['Bigger timeframes', '5m · 15m · 1h candles', 8.2], ['Order book', 'Bids and asks waiting to trade', 10.4]];\nkit.scene('candles', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'cn', { draw: 1.0, k: 0.18 });\n    let rows = '';\n    CN_L.forEach((r) => { rows += '<div class=\"cn-r\" style=\"display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\"><span class=\"dot\" style=\"margin-top:12px\"></span><div style=\"display:flex;flex-direction:column;gap:4px\"><span style=\"font-size:30px;font-weight:700\">' + r[0] + '</span><span style=\"font-size:26px;color:color-mix(in srgb, var(--second) 64%, var(--ground))\">' + r[1] + '</span></div></div>'; });\n    kit.stage.append(kit.h('<div class=\"glass cn-p\" style=\"left:1230px;top:290px;width:460px;padding:20px 30px\"><p class=\"kick\" style=\"margin:0 0 4px\">What XORA reads</p>' + rows + '</div>'));\n    const D = UI.D, x = D.x(23);\n    this.ch.ov.innerHTML = '<rect class=\"cn-an\" x=\"' + (x - 24) + '\" y=\"' + (D.y(60120) - 14).toFixed(1) + '\" width=\"48\" height=\"' + (D.y(60020) - D.y(60120) + 28).toFixed(1) + '\" rx=\"8\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--second);opacity:0\"/>';\n    this.head = UI.head(kit, 'Step 1 · data', 'Candles in');\n    this.p = kit.stage.querySelector('.cn-p').style; this.rs = [...kit.stage.querySelectorAll('.cn-r')].map((e) => e.style);\n    this.an = kit.stage.querySelector('.cn-an').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'candles' }, { t: 7.8, pose: 'read' }, { t: 13.9, pose: 'explain' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.ch.render(t);\n    this.an.opacity = eo(seg(t, 2.2, 2.7)) * (1 - ei(seg(t, 7.6, 8.1)));\n    UI.rise(kit, this.p, t, 1.6, 0.6, 24);\n    this.rs.forEach((s, i) => UI.rise(kit, s, t, CN_L[i][2], 0.5, 14));\n    this.tutor.render(t);\n  },\n});\n","scene-closed.js":"const { seg, eo, ei, eob, eio, lerp, clamp01 } = kit;\n// The forming candle (index 23 here) wobbles until it closes at t = 10.6.\nconst CL_END = 10.6;\nconst CL_F = (t) => {\n  const k = clamp01(t / CL_END), c0 = 60070;\n  const wob = 34 * Math.sin(t * 2.3) + 18 * Math.sin(t * 5.1);\n  return c0 + (60110 - c0) * k + wob * (1 - k * k);\n};\nkit.scene('closed', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'cl', { n: 23, cap: 24 });\n    const D = UI.D, x = D.x(23);\n    this.ch.ov.innerHTML = '<rect class=\"cl-box\" x=\"' + (x - 26) + '\" y=\"300\" width=\"52\" height=\"400\" rx=\"10\" fill=\"none\" stroke-width=\"3\" stroke-dasharray=\"8 8\" style=\"stroke:#ffb547\"/>';\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"glass cl-a\" style=\"left:1230px;top:290px;width:460px;padding:20px 28px;border-color:#ffb547\"><p class=\"kick\" style=\"margin:0 0 8px;color:#ffb547\">Still forming</p><p style=\"margin:0;font-size:28px;line-height:1.4;font-weight:600\">Not used yet. Its high, low and close can still change.</p><p class=\"mono cl-v\" style=\"margin:10px 0 0;font-size:30px\"></p></div>' +\n      '<div class=\"glass cl-b\" style=\"left:1230px;top:290px;width:460px;padding:20px 28px;border-color:var(--up)\"><p class=\"kick\" style=\"margin:0 0 8px;color:var(--up)\">Closed ✓</p><p style=\"margin:0;font-size:28px;line-height:1.4;font-weight:600\">Locked in. Now it counts.</p></div>' +\n      '<div class=\"glass cl-k\" style=\"left:1230px;top:470px;width:460px;padding:20px 28px\"><p class=\"kick\" style=\"margin:0 0 8px\">At every close</p><p style=\"margin:0;font-size:28px;line-height:1.4;font-weight:600\">A fresh plan for each coin</p><p class=\"mono cl-clk\" style=\"margin:10px 0 0;font-size:30px;color:var(--main)\"></p></div>' +\n      '</div>'));\n    this.head = UI.head(kit, 'Step 1 · the golden rule', 'Closed candles only');\n    const q = (s) => kit.stage.querySelector(s);\n    this.box = q('.cl-box'); this.a = q('.cl-a').style; this.b = q('.cl-b').style; this.c = q('.cl-k').style; this.v = q('.cl-v'); this.clk = q('.cl-clk');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'magnify' }, { t: 7.4, pose: 'confused' }, { t: 10.8, pose: 'thumbs' }, { t: 14.4, pose: 'present' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    const live = t < CL_END;\n    let hi = 60070, lo = 60070;\n    for (let s = 0; s <= Math.min(t, CL_END) + 1e-6; s += 0.1) { const v = CL_F(s); hi = Math.max(hi, v); lo = Math.min(lo, v); }\n    const cl = live ? CL_F(t) : 60110;\n    if (!live) { hi = 60120; lo = 60020; }\n    const lc = [60070, Math.max(hi, 60070), Math.min(lo, 60070), cl];\n    lc.live = live && t > 0.8;\n    this.ch.render(t, 1, t > 0.8 ? lc : null);\n    this.box.style.opacity = (live ? eo(seg(t, 0.8, 1.2)) * (0.6 + 0.4 * Math.sin(t * 6)) : 1 - eo(seg(t, CL_END, CL_END + 0.4))).toFixed(3);\n    UI.rise(kit, this.a, t, 1.2, 0.6, 20, CL_END - 0.2, CL_END + 0.2);\n    UI.set(this.v, 'close now ' + UI.fmt(Math.round(cl)));\n    this.v.style.color = cl >= 60070 ? 'var(--up)' : 'var(--down)';\n    UI.rise(kit, this.b, t, CL_END + 0.1, 0.5, 14);\n    UI.rise(kit, this.c, t, 14.4, 0.6, 20);\n    UI.set(this.clk, t < 14.4 ? '' : '10:24 → plan · 10:25 → new plan');\n    this.tutor.render(t);\n  },\n});\n","scene-hook.js":"const { seg, eo, ei, eob, eio, lerp } = kit;\nconst HK = [['1-minute candles', 'closed ones only', 2.0], ['Volatility & swings', 'ATR, turning points', 7.2], ['Trend', 'per timeframe', 8.2], ['Zones', 'support, resistance', 9.2],\n  ['Movement', 'momentum, pressure, volume', 10.4], ['Candidate setups', 'reaction, breakout, retest', 11.6], ['A plan for one candle', 'or no plan at all', 13.2]];\nkit.scene('hook', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let html = '', lines = '';\n    const P = HK.map((h, i) => [140 + (i % 4) * 390, i < 4 ? 330 : 560]);\n    P[4][0] += 195; P[5][0] += 195; P[6][0] += 195;\n    HK.forEach((h, i) => {\n      html += '<div class=\"glass hk-c\" style=\"left:' + P[i][0] + 'px;top:' + P[i][1] + 'px;width:360px;height:170px;padding:20px 24px;display:flex;flex-direction:column;gap:8px' + (i === 6 ? ';border-color:var(--main)' : '') + '\">' +\n        '<span class=\"mono\" style=\"font-size:24px;color:var(--main)\">' + String(i + 1).padStart(2, '0') + '</span><span style=\"font-size:31px;font-weight:700;line-height:1.15\">' + h[0] + '</span><span style=\"font-size:24px;color:color-mix(in srgb, var(--second) 62%, var(--ground))\">' + h[1] + '</span></div>';\n      if (i) lines += '<line class=\"hk-l\" x1=\"' + (P[i - 1][0] + 180) + '\" y1=\"' + (P[i - 1][1] + 85) + '\" x2=\"' + (P[i][0] + 180) + '\" y2=\"' + (P[i][1] + 85) + '\" pathLength=\"1\" stroke-width=\"4\" style=\"stroke:color-mix(in srgb, var(--main) 55%, transparent)\"/>';\n    });\n    kit.stage.append(kit.h('<div><svg class=\"art\" viewBox=\"0 0 1920 1080\">' + lines + '</svg>' + html + '</div>'));\n    this.head = UI.head(kit, 'Every minute, for every coin', 'Inside the routine');\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.cs = all('.hk-c').map((e) => e.style); this.ls = all('.hk-l');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 0.6, pose: 'think' }, { t: 6.5, pose: 'pointer' }, { t: 12.7, pose: 'idea' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.cs.forEach((s, i) => {\n      const a = HK[i][2], p = seg(t, a, a + 0.6);\n      s.opacity = eo(seg(t, a, a + 0.35)).toFixed(3);\n      s.transform = 'translateY(' + lerp(26, 0, eo(p)).toFixed(1) + 'px) scale(' + lerp(0.94, 1, eob(p, 1.6)).toFixed(4) + ')';\n      UI.glow(s, eo(seg(t, a, a + 0.3)) * (1 - ei(seg(t, a + 0.9, a + 1.4))) + (i === 6 ? eo(seg(t, 13.6, 14.0)) * (0.7 + 0.3 * Math.sin(t * 3)) : 0));\n    });\n    this.ls.forEach((l, i) => l.setAttribute('stroke-dasharray', eio(seg(t, HK[i + 1][2] - 0.5, HK[i + 1][2])) + ' 1'));\n    this.tutor.render(t);\n  },\n});\n","scene-mistake.js":"const { seg, eo, ei, eob, eio, lerp } = kit;\nkit.scene('mistake', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"glass mk-a\" style=\"left:140px;top:300px;width:760px;height:400px;padding:28px 36px;border-color:color-mix(in srgb, var(--down) 55%, transparent)\"><p class=\"kick\" style=\"margin:0 0 18px;color:var(--down)\">Mistake</p>' +\n      '<p class=\"mono\" style=\"margin:0;font-size:34px;color:var(--up)\">BUY if price trades above 60,120</p><p style=\"margin:24px 0 0;font-size:56px;line-height:1\">↓</p>' +\n      '<p style=\"margin:18px 0 0;font-size:38px;font-weight:700\">\"So price will go up!\"</p>' +\n      '<svg class=\"mk-x\" width=\"760\" height=\"400\" viewBox=\"0 0 760 400\" style=\"position:absolute;left:0;top:0\"><path d=\"M160 210 L600 340 M600 210 L160 340\" pathLength=\"1\" fill=\"none\" stroke-width=\"10\" stroke-linecap=\"round\" style=\"stroke:color-mix(in srgb, var(--down) 70%, transparent)\"/></svg></div>' +\n      '<div class=\"glass mk-b\" style=\"left:940px;top:300px;width:740px;height:400px;padding:28px 36px;border-color:color-mix(in srgb, var(--up) 55%, transparent)\"><p class=\"kick\" style=\"margin:0 0 10px;color:var(--up)\">Better</p>' +\n      ['A plan is an <b class=\"hl\">if</b>, not a forecast', 'Most plans <b class=\"hl\">expire</b> untouched', '<b class=\"hl\">No trade</b> is a normal result', 'Triggered trades can still <b class=\"dn\">lose</b>'].map((s) => '<div class=\"mk-g\" style=\"display:flex;align-items:center;gap:18px;padding:14px 0\"><b style=\"color:var(--up);font-size:32px\">✓</b><span style=\"font-size:31px;font-weight:600\">' + s + '</span></div>').join('') + '</div></div>'));\n    this.head = UI.head(kit, 'Common mistake', 'A plan is not a prediction');\n    const q = (s) => kit.stage.querySelector(s);\n    this.a = q('.mk-a').style; this.b = q('.mk-b').style; this.x = q('.mk-x path');\n    this.gs = [...kit.stage.querySelectorAll('.mk-g')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'confused' }, { t: 5.6, pose: 'think' }, { t: 6.0, pose: 'idea' }, { t: 12.0, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    UI.rise(kit, this.a, t, 0.5, 0.6, 30);\n    this.x.setAttribute('stroke-dasharray', eio(seg(t, 4.6, 5.4)) + ' 1');\n    this.a.opacity = (eo(seg(t, 0.5, 0.9)) * lerp(1, 0.6, eo(seg(t, 5.8, 6.4)))).toFixed(3);\n    UI.rise(kit, this.b, t, 6.0, 0.6, 30);\n    this.gs.forEach((s, i) => UI.rise(kit, s, t, 6.8 + i * 1.4, 0.5, 14));\n    this.tutor.render(t);\n  },\n});\n","scene-movement.js":"const { seg, eo, ei, eob, eio, lerp } = kit;\nkit.scene('movement', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'mv', { vol: true });\n    const D = UI.D;\n    this.ch.ov.innerHTML = '<line class=\"mv-avg\" x1=\"' + D.X0 + '\" x2=\"' + D.X1 + '\" y1=\"' + (740 - 0.58 * 40).toFixed(1) + '\" y2=\"' + (740 - 0.58 * 40).toFixed(1) + '\" stroke-width=\"2.5\" stroke-dasharray=\"8 6\" style=\"stroke:#ffb547\"/><text x=\"' + (D.X1 + 16) + '\" y=\"' + (740 - 0.58 * 40 + 8).toFixed(1) + '\" class=\"mv-at mono\" style=\"fill:#ffb547;font-size:22px\">avg</text>';\n    const meter = (cls, k, a, b) => '<div class=\"glass ' + cls + '\" style=\"left:1230px;width:460px;padding:16px 28px\"><p class=\"kick\" style=\"margin:0 0 10px\">' + k + '</p>' +\n      '<div style=\"height:20px;border-radius:10px;background:color-mix(in srgb, var(--second) 10%, transparent);overflow:hidden;position:relative\"><i class=\"' + cls + '-b\" style=\"position:absolute;left:0;top:0;bottom:0;width:0;border-radius:10px\"></i></div>' +\n      '<div style=\"display:flex;justify-content:space-between;margin-top:8px;font-size:24px;color:color-mix(in srgb, var(--second) 64%, var(--ground))\"><span>' + a + '</span><span>' + b + '</span></div></div>';\n    kit.stage.append(kit.h('<div>' + meter('mv-m1', 'Momentum · e.g. RSI', 'weak', 'strong') + meter('mv-m2', 'Pressure', 'sellers', 'buyers') + meter('mv-m3', 'Volume · vs usual', 'quiet', 'busy') + '</div>'));\n    this.head = UI.head(kit, 'Step 4 · movement', 'Is there push behind it?');\n    const q = (s) => kit.stage.querySelector(s);\n    [['m', 290, 1], ['p', 425, 2], ['v', 560, 3]].forEach((k) => { const st = q('.mv-m' + k[2]).style; st.top = k[1] + 'px'; this[k[0]] = st; this[k[0] + 'b'] = q('.mv-m' + k[2] + '-b').style; });\n    this.avg = q('.mv-avg').style; this.at = q('.mv-at').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'candles' }, { t: 7.2, pose: 'magnify' }, { t: 14.2, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.ch.render(t);\n    UI.rise(kit, this.m, t, 1.6, 0.6, 20); UI.rise(kit, this.p, t, 7.6, 0.6, 20); UI.rise(kit, this.v, t, 10.4, 0.6, 20);\n    const mm = lerp(0.3, 0.68, eio(seg(t, 2.6, 5.0))) + 0.02 * Math.sin(t * 3);\n    this.mb.width = (mm * 100).toFixed(1) + '%'; this.mb.background = 'linear-gradient(90deg, var(--main), var(--accent))';\n    const pp = lerp(0.5, 0.66, eio(seg(t, 8.4, 10.0))) + 0.015 * Math.sin(t * 2.4);\n    this.pb.width = '100%'; this.pb.background = 'linear-gradient(90deg, var(--down) 0%, var(--down) ' + ((1 - pp) * 100).toFixed(1) + '%, var(--up) ' + ((1 - pp) * 100).toFixed(1) + '%, var(--up) 100%)';\n    const vv = lerp(0.35, 0.8, eio(seg(t, 11.2, 12.6)));\n    this.vb.width = (vv * 100).toFixed(1) + '%'; this.vb.background = '#ffb547';\n    this.avg.opacity = eo(seg(t, 10.8, 11.4)); this.at.opacity = this.avg.opacity;\n    this.tutor.render(t);\n  },\n});\n","scene-next.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('next', {\n  init(kit) {\n    const pts = UI.walk(kit, 11, 96, 140, 1780, 930, 840, 18);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"next-g\" x1=\"0\" x2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient></defs>' +\n      '<path class=\"next-path\" d=\"' + UI.d(pts) + '\" pathLength=\"1\" fill=\"none\" stroke=\"url(#next-g)\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"opacity:.5\"/></svg>' +\n      '<div class=\"next-lock\" style=\"position:absolute;left:0;right:0;top:150px;display:flex;justify-content:center\"></div>' +\n      '<div class=\"words\" style=\"left:210px;top:320px;width:1500px;align-items:center;text-align:center;gap:28px\">' +\n      '<p class=\"kick next-k\">Lesson T25 complete · Up next: T26</p>' +\n      '<h2 class=\"line next-t\" style=\"font-size:100px\">Understanding AI decisions</h2>' +\n      '<div class=\"rule next-r\" style=\"width:240px\"></div>' +\n      '<div class=\"chip next-c\" style=\"font-size:32px;padding:20px 38px;background:var(--main);color:var(--ground);border-color:var(--main)\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 28 28\"><path d=\"M7 4 L24 14 L7 24 Z\" style=\"fill:var(--ground)\"/></svg><span>Continue to T26</span></div></div>' +\n      '<p class=\"fict next-f\" style=\"position:absolute;left:0;right:0;top:662px;margin:0;text-align:center;font-size:22px\">XORA does not guarantee profits · Demo first · Not financial advice</p>' +\n      '</div>'));\n    kit.stage.querySelector('.next-lock').append(UI.lockup(kit));\n    const q = (s) => kit.stage.querySelector(s);\n    this.path = q('.next-path'); this.lock = q('.next-lock').style; this.k = q('.next-k').style;\n    this.t = q('.next-t'); this.r = q('.next-r').style; this.c = q('.next-c').style; this.f = q('.next-f').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }, { t: 1.1, x: 1620, y: 965, s: 230, d: 1.0 }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.1, pose: 'walk', flip: true }, { t: 1.1, pose: 'wave' }, { t: 4.0, pose: 'present' }, { t: 6.8, pose: 'wave' }],\n      says: [{ t0: 1.3, t1: 5.6, text: 'See you in T26!', side: 'top' }],\n    });\n  },\n  render(t) {\n    this.path.setAttribute('stroke-dasharray', eio(seg(t, 0, 2.6)) + ' 1');\n    const l = seg(t, 0.1, 0.8);\n    this.lock.opacity = eo(l);\n    this.lock.transform = 'scale(' + lerp(0.85, 1, eob(l, 1.6)) + ')';\n    this.k.opacity = eo(seg(t, 0.5, 1.0));\n    TextFx.fadeFromRight(this.t, t, 0.7);\n    this.r.transform = 'scaleX(' + eo(seg(t, 1.5, 2.2)) + ')';\n    const c = seg(t, 2.1, 2.7);\n    this.c.opacity = eo(seg(t, 2.1, 2.4));\n    this.c.transform = 'scale(' + (lerp(0.8, 1, eob(c, 1.7)) * kit.breathe(Math.max(0, t - 2.7), 0.015, 2.4)) + ')';\n    this.f.opacity = 0.9 * eo(seg(t, 2.8, 3.4));\n    this.tutor.render(t);\n  },\n});\n","scene-plan.js":"const { seg, eo, ei, eob, eio, lerp } = kit;\nkit.scene('plan', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'pl', {});\n    const D = UI.D, x23 = D.x(23);\n    this.ch.under.innerHTML = UI.band(60000, 60060, 'var(--up)') + UI.band(60480, 60530, 'var(--down)');\n    const lab = (cls, p, col, txt, x) => '<g class=\"' + cls + '\"><text x=\"' + (x || 220) + '\" y=\"' + (D.y(p) - 10).toFixed(1) + '\" class=\"mono\" style=\"fill:' + col + ';font-size:23px\">' + txt + '</text></g>';\n    this.ch.ov.innerHTML = '<rect class=\"pl-sc\" x=\"' + (x23 - 22) + '\" y=\"' + (D.y(60120) - 12).toFixed(1) + '\" width=\"44\" height=\"' + (D.y(60020) - D.y(60120) + 24).toFixed(1) + '\" rx=\"8\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--second)\"/>' +\n      '<g class=\"pl-tl\">' + UI.hline(60120, 'var(--main)', '10 7') + '</g>' + lab('pl-tt', 60120, 'var(--main)', 'TRIGGER 60,120', 170) +\n      '<g class=\"pl-sl\">' + UI.hline(59940, 'var(--down)', '10 7') + '</g>' + lab('pl-st', 59940, 'var(--down)', 'STOP 59,940', 170) +\n      '<g class=\"pl-nl\">' + UI.hline(60480, '#ffb547', '10 7') + '</g>' + lab('pl-nt', 60480, '#ffb547', 'NEXT RES. 60,480', 820) +\n      '<g class=\"pl-br\"><line x1=\"1076\" x2=\"1076\" y1=\"' + D.y(60120).toFixed(1) + '\" y2=\"' + D.y(59940).toFixed(1) + '\" stroke-width=\"6\" style=\"stroke:var(--down)\"/><line x1=\"1076\" x2=\"1076\" y1=\"' + D.y(60480).toFixed(1) + '\" y2=\"' + D.y(60120).toFixed(1) + '\" stroke-width=\"6\" style=\"stroke:var(--up)\"/></g>';\n    const row = (cls, k, v, c) => '<div class=\"row ' + cls + '\" style=\"padding:9px 0\"><span style=\"font-size:26px\">' + k + '</span><span class=\"mono\" style=\"font-size:30px' + (c ? ';color:' + c : '') + '\">' + v + '</span></div>';\n    kit.stage.append(kit.h('<div class=\"glass pl-p\" style=\"left:1230px;top:290px;width:470px;padding:18px 28px\"><p class=\"kick\" style=\"margin:0 0 4px\">Trade plan · fictional</p>' +\n      '<p class=\"pl-v\" style=\"margin:6px 0;font-size:28px;font-weight:700;color:var(--up)\">BUY if price trades above 60,120</p>' +\n      row('pl-r1', 'Entry (trigger)', '60,120') + row('pl-r2', 'Stop', '59,940', 'var(--down)') + row('pl-r3', 'Risk', '180 · 0.30%', 'var(--down)') + row('pl-r4', 'Next res.', '60,480 · 2.0 R', 'var(--up)') +\n      '<p class=\"fict pl-f\" style=\"margin:10px 0 0;letter-spacing:.06em;text-transform:none;font-size:20px;line-height:1.4\">Plan for this candle only; every check runs again when it triggers</p></div>'));\n    this.head = UI.head(kit, 'Step 6 · the plan', 'A plan for one candle');\n    const q = (s) => kit.stage.querySelector(s);\n    this.sc = q('.pl-sc').style;\n    this.tl = q('.pl-tl line'); this.tt = q('.pl-tt').style; this.sl = q('.pl-sl line'); this.st = q('.pl-st').style; this.nl = q('.pl-nl line'); this.nt = q('.pl-nt').style; this.br = q('.pl-br').style;\n    this.p = q('.pl-p').style; this.v = q('.pl-v').style; this.rs = [1, 2, 3, 4].map((i) => q('.pl-r' + i).style); this.f = q('.pl-f').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'magnify' }, { t: 6.7, pose: 'point', flip: true }, { t: 13.9, pose: 'think' }, { t: 20.6, pose: 'checklist' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.ch.render(t, (i) => (i === 23 ? 1 : lerp(1, 0.55, eo(seg(t, 1.0, 1.6)))));\n    this.sc.opacity = eo(seg(t, 1.6, 2.1)) * (0.7 + 0.3 * Math.sin(t * 4));\n    this.tl.style.opacity = eo(seg(t, 8.0, 8.6)); this.tt.opacity = eo(seg(t, 8.4, 8.9));\n    this.sl.setAttribute('stroke-dasharray', '10 7'); this.sl.style.opacity = eo(seg(t, 14.4, 15.0)); this.st.opacity = eo(seg(t, 14.8, 15.3));\n    this.nl.setAttribute('stroke-dasharray', '10 7'); this.nl.style.opacity = eo(seg(t, 21.0, 21.6)); this.nt.opacity = eo(seg(t, 21.4, 21.9));\n    this.tl.setAttribute('stroke-dasharray', '10 7');\n    this.br.opacity = eo(seg(t, 22.4, 23.0));\n    UI.rise(kit, this.p, t, 7.0, 0.6, 20);\n    this.v.opacity = eo(seg(t, 7.6, 8.1));\n    const at = [9.0, 15.2, 16.6, 22.2];\n    this.rs.forEach((s, i) => UI.rise(kit, s, t, at[i], 0.5, 10));\n    this.f.opacity = eo(seg(t, 24.0, 24.6));\n    this.tutor.render(t);\n  },\n});\n","scene-recap.js":"const { seg, eo, lerp } = kit;\nconst RECAP = [['XORA reads closed candles only, and makes a fresh plan every minute.', 0.6],\n  ['Volatility, swings, trend, zones and movement, then a candidate setup.', 6.1],\n  ['A plan is an if for one candle: trigger, stop beyond the level, checks again.', 12.3]];\nkit.scene('recap', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let items = '';\n    RECAP.forEach((s) => {\n      items += '<div class=\"rc-i\" style=\"display:flex;align-items:center;gap:26px\"><svg width=\"50\" height=\"50\" viewBox=\"0 0 52 52\" style=\"flex:none\"><circle cx=\"26\" cy=\"26\" r=\"23\" fill=\"none\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 45%, transparent)\"/>' +\n        '<path class=\"rc-tick\" d=\"M15 27 L23 35 L38 18\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/></svg><span style=\"font-size:34px;font-weight:600\">' + s[0] + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"words\" style=\"left:140px;top:170px;width:1450px\"><p class=\"kick rc-k\">Recap</p><h2 class=\"line rc-t\">Three things to remember</h2>' +\n      '<div style=\"display:flex;flex-direction:column;gap:34px;margin-top:24px\">' + items + '</div></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.rc-k').style; this.t = q('.rc-t');\n    this.items = [...kit.stage.querySelectorAll('.rc-i')].map((e) => e.style);\n    this.ticks = [...kit.stage.querySelectorAll('.rc-tick')];\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'checklist' }, { t: 12.3, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    kit.TextFx.fadeFromRight(this.t, t, 0.1);\n    this.items.forEach((s, i) => {\n      const a = RECAP[i][1];\n      s.opacity = eo(seg(t, a, a + 0.4));\n      s.transform = 'translateX(' + lerp(26, 0, eo(seg(t, a, a + 0.5))) + 'px)';\n      this.ticks[i].setAttribute('stroke-dasharray', eo(seg(t, a + 0.5, a + 0.9)) + ' 1');\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-risks.js":"const { seg, eo, eob, lerp } = kit;\nconst RK = [\n  ['Checks read the past', 'Candles, zones and movement describe what already happened. The next move is unknown.', 0.6],\n  ['Stops can slip', 'In a fast market price can jump past a stop, so a loss can be bigger than planned.', 7.0],\n  ['Fees on every trade', 'Fees are paid on every trade, win or lose. Small trades feel them most.', 9.6],\n  ['Demo first', 'XORA does not guarantee profits. This is not financial advice.', 12.2],\n];\nkit.scene('risks', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let cards = '';\n    RK.forEach((r, i) => {\n      cards += '<div class=\"glass rk-c\" style=\"left:' + (140 + (i % 2) * 780) + 'px;top:' + (300 + Math.floor(i / 2) * 230) + 'px;width:750px;min-height:206px;padding:24px 34px' + (i === 3 ? ';border-color:var(--main)' : '') + '\">' +\n        '<p class=\"kick\" style=\"margin:0 0 10px;color:' + (i === 3 ? 'var(--main)' : 'var(--accent)') + '\">' + r[0] + '</p><p style=\"margin:0;font-size:30px;line-height:1.4;font-weight:600\">' + r[1] + '</p></div>';\n    });\n    kit.stage.append(kit.h('<div>' + cards + '</div>'));\n    this.head = UI.head(kit, 'Before you switch anything on', 'Know the limits', { kc: 'var(--accent)' });\n    this.cards = [...kit.stage.querySelectorAll('.rk-c')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'think' }, { t: 8.0, pose: 'magnify' }, { t: 15.1, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.cards.forEach((c, i) => {\n      const a = RK[i][2], p = seg(t, a, a + 0.7);\n      c.opacity = eo(seg(t, a, a + 0.35));\n      c.transform = 'translateY(' + (lerp(40, 0, eo(p)) - Math.max(0, t - a) * 0.5).toFixed(2) + 'px) scale(' + lerp(0.95, 1, eob(p, 1.5)) + ')';\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-setups.js":"const { seg, eo, ei, eob, eio, lerp, clamp01 } = kit;\n// Four mini charts, each a price path through keys [[s, v]] (s: 0..1 of the animation, v: 0 bottom .. 1 top) and a level line.\nconst SU = [\n  ['Reaction at support', 'Dips into the zone, bounces', 'var(--up)', 0.3, [[0, 0.75], [0.35, 0.35], [0.5, 0.26], [0.65, 0.42], [1, 0.7]], 5.2],\n  ['Rejection at resistance', 'Pokes into the zone, turns down', 'var(--down)', 0.7, [[0, 0.25], [0.35, 0.62], [0.5, 0.74], [0.65, 0.58], [1, 0.3]], 8.4],\n  ['Breakout', 'Closes beyond a level', 'var(--main)', 0.55, [[0, 0.3], [0.3, 0.5], [0.45, 0.4], [0.7, 0.62], [1, 0.82]], 12.1],\n  ['Retest', 'Comes back to the broken level, holds', 'var(--accent)', 0.5, [[0, 0.3], [0.3, 0.68], [0.55, 0.52], [0.7, 0.55], [1, 0.8]], 15.0],\n];\nconst SU_W = 330, SU_H = 150;\nconst SU_V = (keys, s) => { let v = keys[0][1]; for (let i = 1; i < keys.length; i++) { const a = keys[i - 1], b = keys[i]; if (s >= a[0]) v = lerp(a[1], b[1], eio(clamp01((s - a[0]) / (b[0] - a[0])))); } return v; };\nkit.scene('setups', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let html = '';\n    SU.forEach((s, i) => {\n      const x = 140 + (i % 2) * 780, y = 290 + Math.floor(i / 2) * 230, ly = (SU_H - s[3] * SU_H).toFixed(1);\n      html += '<div class=\"glass su-c\" style=\"left:' + x + 'px;top:' + y + 'px;width:750px;height:210px;padding:20px 26px;display:flex;gap:24px;align-items:center\">' +\n        '<svg width=\"' + SU_W + '\" height=\"' + SU_H + '\" viewBox=\"0 0 ' + SU_W + ' ' + SU_H + '\" style=\"flex:none;overflow:visible\">' +\n        (i === 0 || i === 1 ? '<rect x=\"0\" y=\"' + (+ly - 14) + '\" width=\"' + SU_W + '\" height=\"28\" rx=\"6\" style=\"fill:color-mix(in srgb, ' + s[2] + ' 18%, transparent)\"/>' : '') +\n        '<line x1=\"0\" x2=\"' + SU_W + '\" y1=\"' + ly + '\" y2=\"' + ly + '\" stroke-width=\"2.5\" stroke-dasharray=\"8 6\" style=\"stroke:' + s[2] + '\"/>' +\n        '<path class=\"su-p\" fill=\"none\" stroke-width=\"5\" stroke-linejoin=\"round\" stroke-linecap=\"round\" style=\"stroke:var(--second)\"/><circle class=\"su-d\" r=\"8\" style=\"fill:' + s[2] + '\"/></svg>' +\n        '<div style=\"display:flex;flex-direction:column;gap:8px\"><span style=\"font-size:32px;font-weight:700;line-height:1.15\">' + s[0] + '</span><span style=\"font-size:28px;line-height:1.3;color:color-mix(in srgb, var(--second) 66%, var(--ground))\">' + s[1] + '</span></div></div>';\n    });\n    kit.stage.append(kit.h('<div>' + html + '</div>'));\n    this.head = UI.head(kit, 'Step 5 · candidate setups', 'The shapes XORA looks for');\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.cs = all('.su-c').map((e) => e.style); this.ps = all('.su-p'); this.ds = all('.su-d');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 5.2, pose: 'pointer' }, { t: 12.1, pose: 'explain' }, { t: 18.6, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    SU.forEach((s, i) => {\n      UI.rise(kit, this.cs[i], t, 1.0 + i * 0.3, 0.6, 24);\n      const k = clamp01((t - s[5]) / 2.6);\n      let d = '';\n      for (let j = 0; j <= 60 * k; j++) { const u = j / 60; d += (j ? 'L' : 'M') + (u * SU_W).toFixed(1) + ' ' + (SU_H - SU_V(s[4], u) * SU_H).toFixed(1); }\n      this.ps[i].setAttribute('d', d || 'M0 0');\n      this.ds[i].setAttribute('cx', (k * SU_W).toFixed(1)); this.ds[i].setAttribute('cy', (SU_H - SU_V(s[4], k) * SU_H).toFixed(1));\n      this.ds[i].style.opacity = t > s[5] ? 1 : 0;\n      UI.glow(this.cs[i], eo(seg(t, s[5], s[5] + 0.3)) * (1 - ei(seg(t, s[5] + 2.6, s[5] + 3.2))));\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-title.js":"const { seg, eo, eob, lerp, TextFx } = kit;\nconst TT_C = [[0, 40, -50, 20], [20, 60, 0, 50], [50, 70, 10, 30], [30, 40, -40, -30], [-30, 0, -60, -10], [-10, 50, -20, 40], [40, 90, 30, 80]];\nkit.scene('title', {\n  init(kit) {\n    let ticks = '';\n    for (let i = 0; i < 48; i++) {\n      const a = i / 48 * Math.PI * 2, r1 = 236, r2 = i % 4 ? 250 : 262;\n      ticks += '<line x1=\"' + (Math.cos(a) * r1).toFixed(1) + '\" y1=\"' + (Math.sin(a) * r1).toFixed(1) + '\" x2=\"' + (Math.cos(a) * r2).toFixed(1) + '\" y2=\"' + (Math.sin(a) * r2).toFixed(1) + '\"/>';\n    }\n    this.cd = UI.cdl(kit, 'tt-c', TT_C.length);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"t25-g\" x1=\"0\" x2=\"1\" y1=\"0\" y2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient>' +\n      '<radialGradient id=\"t25-f\"><stop offset=\"0\" style=\"stop-color:color-mix(in srgb, var(--main) 26%, var(--ground))\"/><stop offset=\"1\" style=\"stop-color:var(--ground)\"/></radialGradient></defs>' +\n      '<g class=\"tt-coin\" transform=\"translate(1340 470)\"><circle r=\"300\" style=\"fill:url(#t25-f);opacity:.8\"/>' +\n      '<g class=\"tt-ticks\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 55%, transparent)\">' + ticks + '</g>' +\n      '<circle r=\"200\" fill=\"none\" stroke=\"url(#t25-g)\" stroke-width=\"10\"/>' + this.cd.html + '</g></svg>' +\n      '<div class=\"words\" style=\"left:140px;top:230px;width:900px\"><p class=\"kick title-k\">Phase 6 · XORA Intelligence</p>' +\n      '<h1 class=\"line title-t\" style=\"font-size:112px\">How XORA analyses a coin</h1>' +\n      '<div class=\"rule title-r\" style=\"width:260px\"></div>' +\n      '<p class=\"sub title-s\">Lesson T25 · about 5 minutes</p></div>' +\n      '<p class=\"fict\" style=\"position:absolute;left:140px;top:690px;margin:0\">Education only · Not financial advice</p></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.title-k').style; this.t = q('.title-t'); this.r = q('.title-r').style; this.s = q('.title-s').style;\n    this.coin = q('.tt-coin'); this.ticks = q('.tt-ticks');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: 2080, y: C.y, s: C.s }, { t: 2.6, x: C.x, y: C.y, s: C.s, d: 1.9, ease: (p) => kit.lerp(p, kit.eo(p), 0.5) }],\n      poses: [{ t: 0, pose: 'walk', flip: true }, { t: 2.6, pose: 'present' }, { t: 5.2, pose: 'candles' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.k.opacity = eo(seg(t, -0.6, -0.1));\n    TextFx.fadeFromRight(this.t, t, -0.9);\n    this.r.transformOrigin = '0 50%';\n    this.r.transform = 'scaleX(' + eo(seg(t, 0.2, 0.9)) + ')';\n    this.s.opacity = eo(seg(t, 0.6, 1.1));\n    const c = seg(t, -0.6, 0.6);\n    this.coin.setAttribute('transform', 'translate(1340 ' + (470 - t * 2).toFixed(1) + ') scale(' + (lerp(0.9, 1, eob(c, 1.6)) * (1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.2))).toFixed(4) + ')');\n    this.coin.style.opacity = eo(c);\n    this.ticks.setAttribute('transform', 'rotate(' + (t * 6).toFixed(2) + ')');\n    const Y = (v) => -v * 1.3 + 30;\n    TT_C.forEach((k, i) => {\n      const a = 0.4 + i * 0.5, p = eo(seg(t, a, a + 0.5));\n      this.cd.set(i, { x: -120 + i * 40, w: 24, o: k[0], h: k[0] + (k[1] - k[0]) * p, l: k[0] + (k[2] - k[0]) * p, c: k[0] + (k[3] - k[0]) * p, y: Y, op: eo(seg(t, a, a + 0.2)) });\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-trend.js":"const { seg, eo, ei, eob, eio, lerp } = kit;\nconst TR_SW = [[8, 'L', 59900, 1.6], [11, 'H', 60100, 2.4], [13, 'L', 60040, 3.2], [17, 'H', 60250, 4.0]];\nkit.scene('trend', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'tr', {});\n    const D = UI.D;\n    let ov = '';\n    TR_SW.forEach((s) => {\n      const x = D.x(s[0]), y = s[1] === 'H' ? D.y(s[2]) - 22 : D.y(s[2]) + 22, ty = s[1] === 'H' ? y - 18 : y + 38;\n      ov += '<g class=\"tr-m\"><circle cx=\"' + x + '\" cy=\"' + y.toFixed(1) + '\" r=\"10\" style=\"fill:' + (s[1] === 'H' ? 'var(--accent)' : 'var(--main)') + '\"/><text x=\"' + x + '\" y=\"' + ty.toFixed(1) + '\" text-anchor=\"middle\" class=\"mono\" style=\"fill:var(--second);font-size:22px\">' + UI.fmt(s[2]) + '</text></g>';\n    });\n    const ar = (a, b, col, lab) => {\n      const x1 = D.x(a[0]), x2 = D.x(b[0]), y1 = a[1] === 'H' ? D.y(a[2]) - 22 : D.y(a[2]) + 22, y2 = b[1] === 'H' ? D.y(b[2]) - 22 : D.y(b[2]) + 22;\n      return '<g class=\"tr-a\"><line x1=\"' + x1 + '\" y1=\"' + y1.toFixed(1) + '\" x2=\"' + x2 + '\" y2=\"' + y2.toFixed(1) + '\" pathLength=\"1\" stroke-width=\"4\" stroke-dasharray=\"1 1\" style=\"stroke:' + col + '\"/></g>';\n    };\n    ov += ar(TR_SW[1], TR_SW[3], 'var(--accent)') + ar(TR_SW[0], TR_SW[2], 'var(--main)');\n    this.ch.ov.innerHTML = ov;\n    const tf = (k, v, c) => '<div class=\"tr-t\" style=\"display:flex;justify-content:space-between;padding:10px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\"><span class=\"mono\" style=\"font-size:28px\">' + k + '</span><span style=\"font-size:30px;font-weight:700;color:' + c + '\">' + v + '</span></div>';\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"glass tr-r\" style=\"left:1230px;top:290px;width:460px;padding:20px 30px\"><p class=\"kick\" style=\"margin:0 0 6px\">The rule</p>' +\n      '<p style=\"margin:0;font-size:28px;line-height:1.45;font-weight:600\"><b class=\"up\">UP</b>: higher high + higher low<br><b class=\"dn\">DOWN</b>: lower high + lower low<br><b style=\"color:#ffb547\">RANGE</b>: anything else</p></div>' +\n      '<div class=\"glass tr-f\" style=\"left:1230px;top:530px;width:460px;padding:14px 30px\"><p class=\"kick\" style=\"margin:0 0 2px\">Trend · fictional</p>' + tf('1m', '▲ Up', 'var(--up)') + tf('5m', '▲ Up', 'var(--up)') + tf('15m', 'Range', '#ffb547') + '</div></div>'));\n    this.head = UI.head(kit, 'Step 2 · swings and trend', 'Which way is it going?');\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.ms = all('.tr-m').map((e) => e.style); this.as = all('.tr-a line');\n    this.r = kit.stage.querySelector('.tr-r').style; this.f = kit.stage.querySelector('.tr-f').style; this.ts = all('.tr-t').map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'pointer' }, { t: 7.8, pose: 'magnify' }, { t: 15.4, pose: 'present' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.ch.render(t);\n    this.ms.forEach((s, i) => { const a = TR_SW[i][3], p = seg(t, a, a + 0.4); s.opacity = eo(p); });\n    this.as.forEach((l, i) => l.setAttribute('stroke-dasharray', eio(seg(t, 9.6 + i * 2.2, 10.6 + i * 2.2)) + ' 1'));\n    UI.rise(kit, this.r, t, 12.6, 0.6, 20);\n    UI.rise(kit, this.f, t, 16.2, 0.6, 20);\n    this.ts.forEach((s, i) => UI.rise(kit, s, t, 18.6 + i * 0.8, 0.4, 10));\n    this.tutor.render(t);\n  },\n});\n","scene-trigger.js":"const { seg, eo, ei, eob, eio, lerp, clamp01 } = kit;\n// The trigger candle (index 24) forms from t = 0.8 and closes at 11.8; price passes 60,120 at about t = 3.6.\nconst TG_K = [[0.8, 60110], [2.0, 60100], [3.6, 60125], [5.0, 60160], [7.0, 60190], [9.0, 60150], [11.8, 60170]];\nconst TG_CK = ['Data is fresh', 'Still at support', 'Movement agrees', 'Within your settings'];\nkit.scene('trigger', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'tg', { cap: 25 });\n    const D = UI.D;\n    this.ch.under.innerHTML = UI.band(60000, 60060, 'var(--up)');\n    this.ch.ov.innerHTML = '<g>' + UI.hline(60120, 'var(--main)', '10 7') + '</g><text x=\"170\" y=\"' + (D.y(60120) - 10).toFixed(1) + '\" class=\"mono\" style=\"fill:var(--main);font-size:23px\">TRIGGER 60,120</text>' +\n      '<g>' + UI.hline(59940, 'var(--down)', '10 7') + '</g><text x=\"170\" y=\"' + (D.y(59940) - 10).toFixed(1) + '\" class=\"mono\" style=\"fill:var(--down);font-size:23px\">STOP 59,940</text>' +\n      '<circle class=\"tg-fl\" cx=\"' + D.x(24) + '\" cy=\"' + D.y(60120).toFixed(1) + '\" r=\"20\" fill=\"none\" stroke-width=\"4\" style=\"stroke:var(--main)\"/>';\n    let ck = '';\n    TG_CK.forEach((c) => { ck += '<div class=\"tg-k\" style=\"display:flex;align-items:center;gap:14px;padding:6px 0\"><b class=\"up\" style=\"font-size:30px;width:30px\">✓</b><span style=\"font-size:28px\">' + c + '</span></div>'; });\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"glass tg-a\" style=\"left:1230px;top:290px;width:470px;padding:18px 28px;border-color:var(--main)\"><p class=\"kick\" style=\"margin:0 0 6px\">Triggered at 60,120</p><p style=\"margin:0 0 6px;font-size:27px;font-weight:600\">Every check runs again:</p>' + ck +\n      '<p class=\"tg-ok\" style=\"margin:8px 0 0;font-size:27px;font-weight:700;color:var(--up)\">Ready: you approve, or auto approval enters</p></div>' +\n      '<div class=\"glass tg-b\" style=\"left:1230px;top:290px;width:470px;padding:20px 28px;border-color:#ffb547\"><p class=\"kick\" style=\"margin:0 0 8px;color:#ffb547\">No trigger by the close?</p><p style=\"margin:0;font-size:28px;line-height:1.4;font-weight:600\">The plan expires. No trade. A fresh plan is made at the close.</p></div></div>'));\n    this.head = UI.head(kit, 'Step 7 · the next candle', 'At the trigger');\n    const q = (s) => kit.stage.querySelector(s);\n    this.fl = q('.tg-fl').style; this.a = q('.tg-a').style; this.b = q('.tg-b').style; this.ok = q('.tg-ok').style;\n    this.ks = [...kit.stage.querySelectorAll('.tg-k')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'candles' }, { t: 4.0, pose: 'cheer' }, { t: 6.4, pose: 'checklist' }, { t: 12.9, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    const tt = Math.min(t, 11.8);\n    let hi = 60110, lo = 60110;\n    for (let s = 0.8; s <= tt + 1e-6; s += 0.1) { const v = UI.path(TG_K, s); hi = Math.max(hi, v); lo = Math.min(lo, v); }\n    const live = [60110, hi, lo, t > 0.8 ? UI.path(TG_K, tt) : 60110];\n    live.live = t < 11.8;\n    this.ch.render(t, 1, t > 0.8 ? live : null);\n    const f = seg(t, 3.6, 4.6);\n    this.fl.opacity = (f > 0 && f < 1 ? 1 - f : 0).toFixed(3);\n    this.fl.transformBox = 'fill-box'; this.fl.transformOrigin = 'center'; this.fl.transform = 'scale(' + lerp(0.6, 2.4, f).toFixed(3) + ')';\n    UI.rise(kit, this.a, t, 4.0, 0.6, 20, 12.6, 13.1);\n    this.ks.forEach((s, i) => UI.rise(kit, s, t, 7.2 + i * 0.8, 0.4, 8));\n    this.ok.opacity = eo(seg(t, 10.6, 11.1));\n    UI.rise(kit, this.b, t, 13.2, 0.6, 20);\n    this.tutor.render(t);\n  },\n});\n","scene-try.js":"const { seg, eo, ei, eob, lerp } = kit;\nconst TY_OPT = ['A trade opens at 60,100', 'No trigger, no trade: a fresh plan at the close', 'The plan stays open for the rest of the day'];\nkit.scene('try', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let opts = '';\n    TY_OPT.forEach((o, i) => { opts += '<div class=\"ty-o\" style=\"display:flex;align-items:center;gap:20px;padding:14px 22px;border-radius:18px;border:1.5px solid color-mix(in srgb, var(--second) 16%, transparent)\"><span class=\"mono\" style=\"font-size:28px;color:var(--main)\">' + 'ABC'[i] + '</span><span style=\"font-size:30px;font-weight:600\">' + o + '</span></div>'; });\n    kit.stage.append(kit.h('<div><div class=\"glass ty-q\" style=\"left:140px;top:290px;width:1000px;padding:24px 34px\"><p class=\"fict\" style=\"margin:0 0 10px\">Question · fictional</p>' +\n      '<p class=\"def\" style=\"margin:0\">Plan: <b>BUY if price trades above 60,120</b>. The next candle only reaches <b>60,100</b>, then closes. What happens?</p></div>' +\n      '<div class=\"ty-os\" style=\"position:absolute;left:140px;top:510px;width:1000px;display:flex;flex-direction:column;gap:12px\">' + opts + '</div>' +\n      '<div class=\"glass ty-a\" style=\"left:1230px;top:380px;width:470px;padding:22px 28px;border-color:var(--up)\"><p class=\"kick\" style=\"margin:0 0 8px;color:var(--up)\">Answer: B</p><p style=\"margin:0;font-size:29px;line-height:1.4;font-weight:600\">60,100 never touched 60,120, so the plan expired. A plan lasts one candle.</p></div></div>'));\n    this.head = UI.head(kit, 'Your turn', 'Pause and think');\n    this.ring = UI.ring(kit, 1420, 470, 110, 3.0, 4.0, 5, 9.6, 'Think');\n    const q = (s) => kit.stage.querySelector(s);\n    this.q = q('.ty-q').style; this.os = [...kit.stage.querySelectorAll('.ty-o')].map((e) => e.style); this.a = q('.ty-a').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 3.4, pose: 'think' }, { t: 10.0, pose: 'cheer' }, { t: 13.0, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    UI.rise(kit, this.q, t, 0.6, 0.6, 24);\n    this.os.forEach((s, i) => {\n      UI.rise(kit, s, t, 1.4 + i * 0.4, 0.5, 16);\n      const r = eo(seg(t, 10.0, 10.5));\n      if (i === 1) { s.background = 'color-mix(in srgb, var(--up) ' + Math.round(20 * r) + '%, transparent)'; s.borderColor = r > 0.5 ? 'var(--up)' : ''; }\n      else s.opacity = (eo(seg(t, 1.4 + i * 0.4, 1.8 + i * 0.4)) * lerp(1, 0.45, r)).toFixed(3);\n    });\n    this.ring(t);\n    UI.rise(kit, this.a, t, 10.4, 0.5, 16);\n    this.tutor.render(t);\n  },\n});\n","scene-volatility.js":"const { seg, eo, ei, eob, eio, lerp } = kit;\nconst VO_I = [19, 20, 21, 22, 23];\nkit.scene('volatility', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'vo', {});\n    const D = UI.D;\n    let ov = '';\n    VO_I.forEach((i, j) => {\n      const c = D.C[i], x = D.x(i) + 0, y1 = D.y(c[1]), y2 = D.y(c[2]);\n      ov += '<g class=\"vo-b\"><line x1=\"' + (x - 18) + '\" x2=\"' + (x + 18) + '\" y1=\"' + y1.toFixed(1) + '\" y2=\"' + y1.toFixed(1) + '\" stroke-width=\"3\" style=\"stroke:#ffb547\"/><line x1=\"' + (x - 18) + '\" x2=\"' + (x + 18) + '\" y1=\"' + y2.toFixed(1) + '\" y2=\"' + y2.toFixed(1) + '\" stroke-width=\"3\" style=\"stroke:#ffb547\"/>' +\n        '<text x=\"' + x + '\" y=\"' + (y2 + 34 + (j % 2) * 28).toFixed(1) + '\" text-anchor=\"middle\" class=\"mono\" style=\"fill:#ffb547;font-size:23px\">' + (c[1] - c[2]) + '</text></g>';\n    });\n    this.ch.ov.innerHTML = ov;\n    kit.stage.append(kit.h('<div><div class=\"glass vo-p\" style=\"left:1230px;top:290px;width:460px;padding:22px 30px\"><p class=\"kick\" style=\"margin:0 0 10px\">Simple ATR</p>' +\n      '<p class=\"mono vo-e\" style=\"margin:0;font-size:27px;line-height:1.5;white-space:nowrap\">(60+50+40+50+100) ÷ 5</p><p class=\"mono vo-r\" style=\"margin:6px 0 0;font-size:44px;color:#ffb547\">= 60 USDT</p>' +\n      '<p class=\"vo-n\" style=\"margin:14px 0 0;font-size:28px;line-height:1.4;font-weight:600\">A typical 1-minute candle here spans about 60 USDT.</p>' +\n      '<p class=\"vo-s\" style=\"margin:14px 0 0;padding-top:12px;border-top:1.5px solid color-mix(in srgb, var(--down) 50%, transparent);font-size:28px;line-height:1.4;font-weight:600;color:color-mix(in srgb, var(--down) 70%, var(--second))\">A stop inside normal noise gets hit for no real reason.</p></div></div>'));\n    this.head = UI.head(kit, 'Step 2 · volatility', 'How much does it move?');\n    const q = (s) => kit.stage.querySelector(s);\n    this.bs = [...kit.stage.querySelectorAll('.vo-b')].map((e) => e.style); this.p = q('.vo-p').style; this.e = q('.vo-e').style; this.r = q('.vo-r').style; this.n = q('.vo-n').style; this.s = q('.vo-s').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'think' }, { t: 7.6, pose: 'read' }, { t: 14.8, pose: 'explain' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    const dim = (i) => (i >= 19 ? 1 : lerp(1, 0.35, eo(seg(t, 7.6, 8.2))));\n    this.ch.render(t, dim);\n    this.bs.forEach((s, i) => { const a = 8.2 + i * 0.6; s.opacity = eo(seg(t, a, a + 0.3)); });\n    UI.rise(kit, this.p, t, 7.6, 0.6, 20);\n    this.e.opacity = eo(seg(t, 11.4, 11.9)); this.r.opacity = eo(seg(t, 12.4, 12.9)); this.n.opacity = eo(seg(t, 13.0, 13.5));\n    UI.rise(kit, this.s, t, 14.8, 0.6, 16);\n    this.tutor.render(t);\n  },\n});\n","scene-zones.js":"const { seg, eo, ei, eob, eio, lerp } = kit;\nkit.scene('zones', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.ch = UI.chart(kit, 'zn', {});\n    const D = UI.D;\n    this.ch.under.innerHTML = '<g class=\"zn-s\">' + UI.band(60000, 60060, 'var(--up)') + '</g><g class=\"zn-r\">' + UI.band(60480, 60530, 'var(--down)') + '</g>';\n    this.ch.ov.innerHTML = '<g class=\"zn-d\"><circle cx=\"' + D.x(8) + '\" cy=\"' + (D.y(59900) + 22) + '\" r=\"10\" style=\"fill:var(--main)\"/><circle cx=\"' + D.x(13) + '\" cy=\"' + (D.y(60040) + 22) + '\" r=\"10\" style=\"fill:var(--main)\"/><circle cx=\"' + D.x(2) + '\" cy=\"' + (D.y(60500) - 22) + '\" r=\"10\" style=\"fill:var(--accent)\"/></g>';\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"glass zn-a\" style=\"left:1230px;top:290px;width:460px;padding:20px 30px;border-color:color-mix(in srgb, var(--down) 60%, transparent)\"><p class=\"kick\" style=\"margin:0 0 6px;color:var(--down)\">Resistance zone</p><p class=\"mono\" style=\"margin:0;font-size:34px\">60,480 – 60,530</p><p style=\"margin:6px 0 0;font-size:26px;color:color-mix(in srgb, var(--second) 66%, var(--ground))\">Sellers stepped in here before</p></div>' +\n      '<div class=\"glass zn-b\" style=\"left:1230px;top:480px;width:460px;padding:20px 30px;border-color:color-mix(in srgb, var(--up) 60%, transparent)\"><p class=\"kick\" style=\"margin:0 0 6px;color:var(--up)\">Support zone</p><p class=\"mono\" style=\"margin:0;font-size:34px\">60,000 – 60,060</p><p style=\"margin:6px 0 0;font-size:26px;color:color-mix(in srgb, var(--second) 66%, var(--ground))\">Buyers stepped in here before</p></div></div>'));\n    this.head = UI.head(kit, 'Step 3 · levels', 'Zones, not lines');\n    const q = (s) => kit.stage.querySelector(s);\n    this.s = q('.zn-s'); this.r = q('.zn-r'); this.d = q('.zn-d').style; this.a = q('.zn-a').style; this.b = q('.zn-b').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'magnify' }, { t: 5.8, pose: 'point', flip: true }, { t: 13.2, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.ch.render(t);\n    this.d.opacity = eo(seg(t, 1.6, 2.2)) * (0.6 + 0.4 * Math.sin(t * 4));\n    const zs = seg(t, 6.8, 7.8), zr = seg(t, 9.0, 10.0);\n    this.s.style.opacity = eo(zs); this.s.setAttribute('transform', 'translate(0 ' + (lerp(1, 0, eo(zs)) * 0).toFixed(1) + ')');\n    this.r.style.opacity = eo(zr);\n    this.s.style.transformOrigin = '50% ' + UI.D.y(60030) + 'px'; this.s.style.transform = 'scaleY(' + lerp(0.1, 1, eob(zs, 1.4)).toFixed(3) + ')';\n    this.r.style.transformOrigin = '50% ' + UI.D.y(60505) + 'px'; this.r.style.transform = 'scaleY(' + lerp(0.1, 1, eob(zr, 1.4)).toFixed(3) + ')';\n    UI.rise(kit, this.a, t, 13.2, 0.6, 20); UI.rise(kit, this.b, t, 14.0, 0.6, 20);\n    this.tutor.render(t);\n  },\n});\n","scenes.json":"{\n  \"v\": 1,\n  \"stage\": \"final\",\n  \"look\": \"XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner\",\n  \"palettes\": [\n    [\n      \"#02030a\",\n      \"#3ecbff\",\n      \"#eef1f7\",\n      \"#a855f7\"\n    ]\n  ],\n  \"theirs\": 1,\n  \"width\": 1920,\n  \"height\": 1080,\n  \"fps\": 60,\n  \"background\": \"#02030a\",\n  \"fonts\": {\n    \"display\": {\n      \"family\": \"Outfit\",\n      \"or\": \"plus-jakarta-sans\",\n      \"weights\": [\n        400,\n        600,\n        700\n      ]\n    },\n    \"sans\": \"manrope\",\n    \"mono\": \"dm-mono\"\n  },\n  \"scenes\": [\n    {\n      \"id\": \"title\",\n      \"name\": \"How XORA analyses a coin\",\n      \"dur\": 8,\n      \"desc\": \"Title card: Phase 6 XORA Intelligence, lesson T25; the tutor walks in beside a turning candle ring.\"\n    },\n    {\n      \"id\": \"hook\",\n      \"name\": \"The routine\",\n      \"dur\": 19,\n      \"desc\": \"Seven steps light up in order: candles, volatility and swings, trend, zones, movement, setups, a plan for one candle.\"\n    },\n    {\n      \"id\": \"candles\",\n      \"name\": \"Candles in\",\n      \"dur\": 21,\n      \"desc\": \"A fictional BTC/USDT 1-minute chart draws in; side panel lists the data: 1-minute history, bigger timeframes, order book.\"\n    },\n    {\n      \"id\": \"closed\",\n      \"name\": \"Closed candles only\",\n      \"dur\": 21,\n      \"desc\": \"The last candle flickers while forming and is ignored; when it closes it is locked in and a fresh plan is made.\"\n    },\n    {\n      \"id\": \"volatility\",\n      \"name\": \"Volatility\",\n      \"dur\": 21,\n      \"desc\": \"Volatility: the five latest candle ranges 60, 50, 40, 50, 100 USDT average 60 USDT (a simple ATR).\"\n    },\n    {\n      \"id\": \"trend\",\n      \"name\": \"Swings and trend\",\n      \"dur\": 24,\n      \"desc\": \"Swing highs and lows are marked; highs 60,100 to 60,250 and lows 59,900 to 60,040 make an UP trend; trend per timeframe panel.\"\n    },\n    {\n      \"id\": \"zones\",\n      \"name\": \"Support and resistance zones\",\n      \"dur\": 20,\n      \"desc\": \"Zones are drawn around swing points: support 60,000 to 60,060, resistance 60,480 to 60,530.\"\n    },\n    {\n      \"id\": \"movement\",\n      \"name\": \"Movement\",\n      \"dur\": 21,\n      \"desc\": \"Three meters: momentum rising, buyer pressure growing, volume above its recent average.\"\n    },\n    {\n      \"id\": \"setups\",\n      \"name\": \"Candidate setups\",\n      \"dur\": 22,\n      \"desc\": \"Four mini charts: reaction at support, rejection at resistance, breakout, retest.\"\n    },\n    {\n      \"id\": \"plan\",\n      \"name\": \"A plan for one candle\",\n      \"dur\": 28,\n      \"desc\": \"Setup candle at support; trigger 60,120, stop 59,940, risk 180 USDT per BTC (0.30%), next resistance 60,480 (2 R).\"\n    },\n    {\n      \"id\": \"trigger\",\n      \"name\": \"At the trigger\",\n      \"dur\": 22,\n      \"desc\": \"The next candle trades above 60,120; every check runs again and passes; otherwise the plan expires at the close.\"\n    },\n    {\n      \"id\": \"mistake\",\n      \"name\": \"A common mistake\",\n      \"dur\": 16,\n      \"desc\": \"Mistake: reading the plan as a prediction; correction: it is an if, most plans expire, triggered trades can lose.\"\n    },\n    {\n      \"id\": \"try\",\n      \"name\": \"Try it\",\n      \"dur\": 18,\n      \"desc\": \"Pause and answer: the next candle only reaches 60,100; answer: no trigger, no trade, a fresh plan at the close.\"\n    },\n    {\n      \"id\": \"risks\",\n      \"name\": \"Know the limits\",\n      \"dur\": 19,\n      \"desc\": \"Risk cards: checks read the past, gaps and slippage, fees, demo first.\"\n    },\n    {\n      \"id\": \"recap\",\n      \"name\": \"Recap\",\n      \"dur\": 19,\n      \"desc\": \"Three points: closed candles and a fresh plan every minute; the analysis steps; a plan is an if for one candle.\"\n    },\n    {\n      \"id\": \"next\",\n      \"name\": \"Up next\",\n      \"dur\": 10,\n      \"desc\": \"End card: next lesson T26, understanding AI decisions; risk line.\"\n    }\n  ]\n}","score.js":"kit.score(function (S, T) {\n  // A quiet bed for a lesson that will carry a voiceover: pad and soft keys, a light pulse in the hands-on parts.\n  const BPM = 84, B = 60 / BPM, BAR = 4 * B;\n  S.tempo(BPM, { t0: 0 });\n  S.program('pad', 'pad', { rev: 0.7, gain: -6 });\n  S.program('keys', 'ep', { rev: 0.45, gain: -10 });\n  S.program('mal', 'pluck', { rev: 0.5, gain: -12, pan: 0.2 });\n  S.program('bass', 'bass', { gain: -10 });\n  const prog = [['D3', 'A3', 'E4', 'F#4'], ['B2', 'F#3', 'A3', 'D4'], ['G2', 'D3', 'F#3', 'B3'], ['A2', 'E3', 'A3', 'C#4']];\n  const roots = ['D2', 'B1', 'G1', 'A1'];\n  const tops = [['F#5', 'A5', 'E5'], ['D5', 'F#5', 'A5'], ['B4', 'D5', 'F#5'], ['C#5', 'E5', 'A5']];\n  const inR = (s, a, b) => s >= a - 0.1 && s < b - 0.1;\n  const pulse = (s) => inR(s, T.setups, T.mistake);\n  const quiet = (s) => inR(s, T.risks, T.recap);\n  const bars = Math.floor(T.END / BAR);\n  for (let b = 0; b < bars; b++) {\n    const beat = b * 4, s = beat * B, c = prog[b % 4];\n    if (s >= T.next - 0.1) break;\n    S.chord('pad', c, { beat, beats: 4, vel: quiet(s) ? 26 : 32 });\n    if (!quiet(s)) S.chord('keys', c.slice(1), { beat, beats: 3, vel: 34 });\n    if (pulse(s)) { S.pattern('mal', 'x.x..x.x', { from: beat, repeat: 1, pitch: tops[b % 4], vel: 28 }); S.note('bass', roots[b % 4], { beat, beats: 3, vel: 42 }); }\n  }\n  const steps = (a, b) => { const ts = []; for (let s = a + 0.18; s < b; s += 0.364) ts.push(s); S.ticks(ts, { vel: 24 }); };\n  steps(T.title, T.title + 2.6); steps(T.next + 0.1, T.next + 1.1);\n  [[T.title, 2.9], [T.candles, 1.6], [T.closed, 1.2], [T.closed, 14.4], [T.volatility, 7.6], [T.trend, 12.6], [T.trend, 16.2], [T.zones, 13.2], [T.zones, 14.0], [T.movement, 1.6], [T.movement, 7.6], [T.movement, 10.4],\n   [T.plan, 7.0], [T.mistake, 6.0], [T.recap, 0.6], [T.recap, 6.1], [T.recap, 12.3], [T.next, 1.3]].forEach((b) => S.fx('pop', b[0] + b[1], { vel: 28, pitch: 7 }));\n  for (let i = 0; i < 7; i++) S.fx('pop', T.title + 0.4 + i * 0.5, { vel: 18, pitch: 4 });\n  [2.0, 7.2, 8.2, 9.2, 10.4, 11.6, 13.2].forEach((a, i) => S.fx(i === 6 ? 'chime' : 'tick', T.hook + a, { vel: 28 }));\n  for (let i = 0; i < 24; i += 2) S.fx('tick', T.candles + 1.0 + i * 0.18, { vel: 14 });\n  [2.0, 8.2, 10.4].forEach((a) => S.fx('pop', T.candles + a, { vel: 24 }));\n  S.fx('thud', T.closed + 10.6, { vel: 30 }); S.fx('ding', T.closed + 10.7, { vel: 30 });\n  for (let i = 0; i < 5; i++) S.fx('tick', T.volatility + 8.2 + i * 0.6, { vel: 26 });\n  S.fx('ding', T.volatility + 12.4, { vel: 34 });\n  [1.6, 2.4, 3.2, 4.0].forEach((a) => S.fx('pop', T.trend + a, { vel: 24 }));\n  S.fx('whoosh', T.trend + 9.6, { dur: 0.9, vel: 18 }); S.fx('whoosh', T.trend + 11.8, { dur: 0.9, vel: 18 });\n  S.fx('whoosh', T.zones + 6.8, { dur: 1.0, vel: 20 }); S.fx('whoosh', T.zones + 9.0, { dur: 1.0, vel: 20 });\n  [5.2, 8.4, 12.1, 15.0].forEach((a) => S.fx('chime', T.setups + a, { vel: 24 }));\n  for (let i = 0; i < 4; i++) S.fx('pop', T.setups + 1.0 + i * 0.3, { vel: 20 });\n  S.fx('ding', T.plan + 8.4, { vel: 32 }); S.fx('thud', T.plan + 14.8, { vel: 26 }); S.fx('ding', T.plan + 21.4, { vel: 30 });\n  S.fx('chime', T.trigger + 3.6, { vel: 40 });\n  for (let i = 0; i < 4; i++) S.fx('tick', T.trigger + 7.2 + i * 0.8, { vel: 28 });\n  S.fx('ding', T.trigger + 10.6, { vel: 34 }); S.fx('pop', T.trigger + 13.2, { vel: 26 });\n  S.fx('thud', T.mistake + 4.6, { vel: 30 });\n  for (let i = 0; i < 4; i++) S.fx('pop', T.mistake + 6.8 + i * 1.4, { vel: 26 });\n  S.fx('pop', T.try + 0.6, { vel: 28 });\n  for (let i = 0; i < 5; i++) S.fx('tick', T.try + 4.0 + i, { vel: 30 });\n  S.fx('chime', T.try + 10.0, { vel: 40 });\n  [0.6, 7.0, 9.6, 12.2].forEach((a) => S.fx('pop', T.risks + a, { vel: 24 }));\n  S.fx('revswell', T.next, { dur: 1.6, vel: 44 });\n  S.chord('pad', ['D3', 'A3', 'D4', 'F#4'], { t: T.next, dur: 9, vel: 40 });\n  S.chord('keys', ['D3', 'A3', 'D4', 'F#4', 'A4'], { t: T.next + 0.7, dur: 8, vel: 50 });\n  S.run('mal', ['D5', 'E5', 'F#5', 'A5', 'B5', 'D6'], { t: T.next + 1.4, step: 0.12, vel: 40, cresc: 6 });\n  S.master({ gain: -10, music: 22, fadeOut: 2.5 });\n});\n","shared.js":"window.UI = {\n  LESSON: 'T25 · How XORA analyses a coin',\n  TOTAL: 309,\n  lockup(kit) {\n    return kit.h('<div class=\"lock\"><img alt=\"\" src=\"' + kit.assets.url('xtinex-x.png') + '\"><span class=\"lock-xt\">XTINEX</span><span class=\"lock-bar\"></span><span class=\"lock-xo\">XORA</span></div>');\n  },\n  // Lesson header: lesson name and a progress bar across the whole film.\n  chrome(kit) {\n    const el = kit.h('<div class=\"chrome\"><span>' + kit.esc(UI.LESSON) + '</span><div><i></i></div></div>');\n    kit.stage.append(el);\n    const bar = el.querySelector('i').style, start = kit.start;\n    return (t) => { bar.width = (Math.min(1, (start + t) / UI.TOTAL) * 100).toFixed(2) + '%'; };\n  },\n  // Set text only when it changes.\n  set(el, v) { v = String(v); if (el.textContent !== v) el.textContent = v; },\n  // Signed amount: +10.00 / −10.00 (true minus sign).\n  sgn(n, dp) { const v = Math.abs(n) < 1e-9 ? 0 : n; return (v > 0 ? '+' : v < 0 ? '−' : '') + UI.fmt(Math.abs(v), dp); },\n  // Entrance: fade in and rise from dy px, starting at a, over d seconds. Optional fade-out window [o0, o1].\n  rise(kit, st, t, a, d, dy, o0, o1) {\n    const p = kit.seg(t, a, a + (d || 0.6));\n    const out = o0 == null ? 0 : kit.ei(kit.seg(t, o0, o1));\n    st.opacity = (kit.eo(kit.seg(t, a, a + (d || 0.6) * 0.6)) * (1 - out)).toFixed(3);\n    st.transform = 'translateY(' + kit.lerp(dy == null ? 30 : dy, 0, kit.eo(p)).toFixed(1) + 'px)';\n    return p;\n  },\n  // Countdown ring centred at cx, cy: shown from tIn, a pause sign, then n seconds counting down from t0, gone by tOut.\n  ring(kit, cx, cy, r, tIn, t0, n, tOut, label) {\n    const C = 2 * Math.PI * r;\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"ui-ring\" transform=\"translate(' + cx + ' ' + cy + ')\">' +\n      '<circle r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" style=\"stroke:color-mix(in srgb, var(--second) 10%, transparent)\"/>' +\n      '<circle class=\"ui-arc\" r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" stroke-linecap=\"round\" transform=\"rotate(-90)\" stroke-dasharray=\"' + C.toFixed(1) + '\" style=\"stroke:var(--main)\"/>' +\n      '<g class=\"ui-pause\"><rect x=\"-24\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/><rect x=\"8\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/></g>' +\n      '<text class=\"ui-n mono\" y=\"26\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:72px\"></text>' +\n      (label ? '<text y=\"' + (-r - 30) + '\" text-anchor=\"middle\" style=\"fill:color-mix(in srgb, var(--second) 62%, var(--ground));font-size:26px\">' + kit.esc(label) + '</text>' : '') + '</g></svg>');\n    kit.stage.append(svg);\n    const g = svg.querySelector('.ui-ring'), arc = svg.querySelector('.ui-arc'), pause = svg.querySelector('.ui-pause').style, num = svg.querySelector('.ui-n');\n    return (t) => {\n      const p = kit.seg(t, tIn, tIn + 0.5);\n      g.style.opacity = kit.eo(p) * (1 - kit.ei(kit.seg(t, tOut - 0.4, tOut)));\n      g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ') scale(' + kit.lerp(0.8, 1, kit.eob(p, 1.6)).toFixed(4) + ')');\n      arc.setAttribute('stroke-dashoffset', (C * kit.seg(t, t0, t0 + n)).toFixed(1));\n      const txt = t < t0 ? '' : String(Math.max(0, Math.min(n, Math.ceil(n - (t - t0)))));\n      if (num.textContent !== txt) num.textContent = txt;\n      pause.opacity = t < t0 ? 1 : 0;\n    };\n  },\n  fmt(n, dp) { return n.toLocaleString('en-US', { minimumFractionDigits: dp || 0, maximumFractionDigits: dp || 0 }); },\n  // Deterministic fictional price walk: returns [[x,y],...] across x0..x1.\n  walk(kit, seed, n, x0, x1, y0, y1, amp) {\n    const r = kit.rng(seed); const pts = []; let v = 0;\n    for (let i = 0; i < n; i++) {\n      v += (r() - 0.5) * amp; v *= 0.86;\n      const p = i / (n - 1);\n      pts.push([x0 + (x1 - x0) * p, y0 + (y1 - y0) * p + v]);\n    }\n    return pts;\n  },\n  d(pts) { return pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' '); },\n  // The tutor sits in this corner between scenes: feet x, feet y, brain width (px).\n  CORNER: { x: 1735, y: 1042, s: 160 },\n  // Side speech bubbles sit this far higher than in T01, so they clear the two-line caption band (y ≈ 784–930).\n  LIFT: 96,\n  // The brain tutor. cfg.keys: [{t, x, y, s, d?, ease?}] feet position and brain width, each key reached at t after a d-second move.\n  // cfg.poses: [{t, pose, flip?}] ('wave' and 'walk' play their frame loops). cfg.says: [{t0, t1, text, side?: 'left'|'top'}].\n  tutor(kit, cfg) {\n    const M = kit.json('tutor.json');\n    const root = kit.h('<div class=\"tutor\"></div>');\n    const shadow = kit.h('<div class=\"tutor-shadow\"></div>');\n    root.append(shadow);\n    const imgs = {};\n    for (const n of Object.keys(M)) {\n      const im = kit.h('<img class=\"tutor-img\" alt=\"\" src=\"' + kit.assets.url('tutor-' + n + '.webp') + '\">');\n      imgs[n] = im.style; root.append(im);\n    }\n    const says = (cfg.says || []).map((s) => {\n      const b = kit.h('<div class=\"bubble' + (s.side === 'top' ? ' is-top' : '') + '\"><p>' + kit.esc(s.text) + '</p></div>');\n      root.append(b);\n      return Object.assign({}, s, { st: b.style });\n    });\n    kit.stage.append(root);\n    const keys = cfg.keys, poses = cfg.poses;\n    const LOOPS = {\n      wave: { f: ['wv1', 'wv2', 'wv3', 'wv4', 'wv3', 'wv2'], fps: 7 },\n      walk: { f: ['wk0', 'wk1', 'wk2', 'wk3', 'wk4', 'wk5', 'wk6', 'wk7'], fps: 11 },\n    };\n    const name = (p, dt) => { const L = LOOPS[p.pose]; return L ? L.f[Math.floor(Math.max(0, dt) * L.fps) % L.f.length] : p.pose; };\n    let shown = [];\n    const place = (n, flip, x, y, s, op, sc, lift) => {\n      const m = M[n], st = imgs[n], k = s / m.bw;\n      st.width = (m.w * k).toFixed(1) + 'px'; st.height = (m.h * k).toFixed(1) + 'px';\n      st.left = (x - m.ax * k).toFixed(1) + 'px'; st.top = (y - m.feet * k).toFixed(1) + 'px';\n      st.transformOrigin = (m.ax * k).toFixed(1) + 'px ' + (m.feet * k).toFixed(1) + 'px';\n      st.transform = 'translateY(' + lift.toFixed(2) + 'px) scale(' + (flip ? -sc : sc).toFixed(4) + ',' + sc.toFixed(4) + ')';\n      st.opacity = op;\n      shown.push(n);\n    };\n    const api = {\n      at(t) {\n        let x = keys[0].x, y = keys[0].y, s = keys[0].s;\n        for (let i = 1; i < keys.length; i++) {\n          const a = keys[i - 1], b = keys[i], d = b.d == null ? 0.8 : b.d;\n          const p = kit.seg(t, b.t - d, b.t);\n          if (p <= 0) break;\n          const e = (b.ease || kit.eio)(p);\n          x = kit.lerp(a.x, b.x, e); y = kit.lerp(a.y, b.y, e); s = kit.lerp(a.s, b.s, e);\n        }\n        return { x, y, s };\n      },\n      render(t) {\n        for (const n of shown) imgs[n].opacity = 0;\n        shown = [];\n        const { x, y, s } = api.at(t);\n        let i = 0;\n        for (let j = 0; j < poses.length; j++) if (poses[j].t <= t) i = j;\n        const cur = poses[i], dt = t - cur.t;\n        const sw = i > 0 ? kit.clamp01(dt / 0.18) : 1;\n        const pop = i > 0 ? kit.clamp01(dt / 0.32) : 1;\n        const bob = Math.sin(t * 2 * Math.PI / 2.6) * s * 0.025;\n        const hop = cur.pose === 'walk' ? 0 : Math.sin(Math.PI * pop) * s * 0.07;\n        const step = cur.pose === 'walk' ? Math.abs(Math.sin(dt * Math.PI * 2.75)) * s * 0.03 : 0;\n        const breathe = 1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.1);\n        const sc = breathe * (cur.pose === 'walk' ? 1 : kit.lerp(0.93, 1, kit.eob(pop, 1.8)));\n        if (sw < 1) { const pv = poses[i - 1]; place(name(pv, t - pv.t), !!pv.flip, x, y, s, 1 - sw, breathe, bob); }\n        place(name(cur, dt), !!cur.flip, x, y, s, sw, sc, bob - hop - step);\n        const sh = shadow.style;\n        sh.left = (x - s * 0.6).toFixed(1) + 'px'; sh.top = (y - s * 0.07).toFixed(1) + 'px';\n        sh.width = (s * 1.2).toFixed(1) + 'px'; sh.height = (s * 0.16).toFixed(1) + 'px';\n        sh.opacity = 0.75 - (hop + step) / s;\n        for (const b of says) {\n          const p = kit.seg(t, b.t0, b.t0 + 0.32), o = kit.seg(t, b.t1 - 0.25, b.t1);\n          b.st.opacity = kit.eo(p) * (1 - kit.ei(o));\n          if (b.st.opacity === '0') continue;\n          const g = kit.lerp(0.88, 1, kit.eob(p, 1.6)) * kit.lerp(1, 0.96, kit.ei(o));\n          if (b.side === 'top') {\n            b.st.transformOrigin = '50% 100%';\n            b.st.transform = 'translate(' + x.toFixed(1) + 'px,' + (y - s * 1.42).toFixed(1) + 'px) translate(-50%,-100%) scale(' + g.toFixed(4) + ')';\n          } else {\n            b.st.transformOrigin = '100% 100%';\n            b.st.transform = 'translate(' + (x - s * 0.18).toFixed(1) + 'px,' + (y - s * 1.12 - UI.LIFT).toFixed(1) + 'px) translate(-100%,-100%) scale(' + g.toFixed(4) + ')';\n          }\n        }\n      },\n    };\n    return api;\n  },\n  // ── Chart helpers (from T14) ──\n  // Piecewise eased value through keys [[t, v], ...].\n  path(keys, t) {\n    const K = UI.K; let v = keys[0][1];\n    for (let i = 1; i < keys.length; i++) { const a = keys[i - 1], b = keys[i]; if (t >= a[0]) v = K.lerp(a[1], b[1], K.eio(K.clamp01((t - a[0]) / (b[0] - a[0])))); }\n    return v;\n  },\n  // Price grid for a chart: horizontal lines with price labels to the right of x1.\n  grid(x0, x1, yOf, lo, hi, step) {\n    let g = '';\n    for (let p = lo; p <= hi + 1e-6; p += step) {\n      const y = yOf(p).toFixed(1);\n      g += '<line x1=\"' + x0 + '\" x2=\"' + x1 + '\" y1=\"' + y + '\" y2=\"' + y + '\" style=\"stroke:color-mix(in srgb, var(--second) 9%, transparent);stroke-width:1.5\"/>' +\n        '<text x=\"' + (x1 + 16) + '\" y=\"' + (+y + 8) + '\" class=\"mono\" style=\"fill:color-mix(in srgb, var(--second) 50%, var(--ground));font-size:22px\">' + UI.fmt(p) + '</text>';\n    }\n    return g;\n  },\n  // Same grid with the price labels on the left, ending at x0 - 14.\n  gridL(x0, x1, yOf, lo, hi, step) {\n    let g = '';\n    for (let p = lo; p <= hi + 1e-6; p += step) {\n      const y = yOf(p).toFixed(1);\n      g += '<line x1=\"' + x0 + '\" x2=\"' + x1 + '\" y1=\"' + y + '\" y2=\"' + y + '\" style=\"stroke:color-mix(in srgb, var(--second) 9%, transparent);stroke-width:1.5\"/>' +\n        '<text x=\"' + (x0 - 14) + '\" y=\"' + (+y + 8) + '\" text-anchor=\"end\" class=\"mono\" style=\"fill:color-mix(in srgb, var(--second) 50%, var(--ground));font-size:22px\">' + UI.fmt(p) + '</text>';\n    }\n    return g;\n  },\n  // Polyline of a price function f(s) for s in [s0, s1], mapped with xOf and yOf.\n  line(f, s0, s1, xOf, yOf, dt) {\n    let d = '';\n    for (let s = s0; s <= s1 + 1e-6; s += dt || 0.05) d += (d ? 'L' : 'M') + xOf(s).toFixed(1) + ' ' + yOf(f(s)).toFixed(1);\n    return d || 'M0 0';\n  },\n  // ── Candle helpers (T14) ──\n  // n SVG candles: html to place inside an <svg>; set(i, c) draws candle i with\n  // c = {x, w, o, h, l, c, y: price → y, op?, live?, col?}. Up (close ≥ open) is --up, down is --down.\n  cdl(kit, cls, n) {\n    let html = '';\n    for (let i = 0; i < n; i++) html += '<g class=\"' + cls + '\"><line class=\"' + cls + '-w\" stroke-linecap=\"round\"/><rect class=\"' + cls + '-b\" rx=\"4\"/></g>';\n    let G, W, B;\n    return {\n      html,\n      set(i, c) {\n        if (!G) { const all = (s) => [...kit.stage.querySelectorAll(s)]; G = all('.' + cls); W = all('.' + cls + '-w'); B = all('.' + cls + '-b'); }\n        const col = c.col || (c.c >= c.o ? 'var(--up)' : 'var(--down)');\n        const yt = c.y(Math.max(c.o, c.c)), yb = c.y(Math.min(c.o, c.c)), bh = Math.max(c.min == null ? 4 : c.min, yb - yt), ym = (yt + yb) / 2;\n        const w = W[i], b = B[i], sw = Math.max(3, c.w * 0.07);\n        w.setAttribute('x1', c.x.toFixed(1)); w.setAttribute('x2', c.x.toFixed(1));\n        w.setAttribute('y1', c.y(c.h).toFixed(1)); w.setAttribute('y2', c.y(c.l).toFixed(1));\n        w.setAttribute('stroke-width', sw.toFixed(1)); w.style.stroke = col;\n        b.setAttribute('x', (c.x - c.w / 2).toFixed(1)); b.setAttribute('width', c.w.toFixed(1));\n        b.setAttribute('y', (ym - bh / 2).toFixed(1)); b.setAttribute('height', bh.toFixed(1));\n        b.setAttribute('stroke-width', (sw * 0.8).toFixed(1));\n        b.style.stroke = col;\n        b.style.fill = c.live ? 'color-mix(in srgb, ' + col + ' 38%, var(--ground))' : col;\n        G[i].style.opacity = c.op == null ? 1 : c.op;\n      },\n    };\n  },\n  // Header: eyebrow + headline at top left. Returns render(t).\n  head(kit, kick, title, o) {\n    o = o || {};\n    const el = kit.h('<div class=\"words\" style=\"left:140px;top:' + (o.top || 124) + 'px;width:' + (o.w || 960) + 'px;gap:14px\"><p class=\"kick\"' + (o.kc ? ' style=\"color:' + o.kc + '\"' : '') + '>' + kick + '</p>' +\n      '<h2 class=\"line\" style=\"font-size:' + (o.fs || 68) + 'px\">' + title + '</h2></div>');\n    kit.stage.append(el);\n    const k = el.querySelector('.kick').style, h = el.querySelector('.line');\n    return (t) => { k.opacity = kit.eo(kit.seg(t, 0, 0.5)); kit.TextFx.fadeFromRight(h, t, 0.1); };\n  },\n  // ── Phase 6: a clean, generic phone mock of the XORA app (illustrative only) ──\n  TABS: ['Home', 'Signals', 'XORA', 'Trades', 'Settings'],\n  icon(n) {\n    const s = 'fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"';\n    const p = {\n      Home: '<path d=\"M4 13 L14 4 L24 13 M7 11 V23 H21 V11\" ' + s + '/>',\n      Signals: '<path d=\"M3 16 H8 L11 7 L16 21 L19 13 H25\" ' + s + '/>',\n      Trades: '<path d=\"M5 7 H23 M5 14 H23 M5 21 H16\" ' + s + '/>',\n      Settings: '<circle cx=\"14\" cy=\"14\" r=\"4.5\" ' + s + '/><path d=\"M14 3 V7 M14 21 V25 M3 14 H7 M21 14 H25 M6.2 6.2 L9 9 M19 19 L21.8 21.8 M6.2 21.8 L9 19 M19 9 L21.8 6.2\" ' + s + '/>',\n    };\n    return '<svg width=\"30\" height=\"30\" viewBox=\"0 0 28 28\">' + (p[n] || '') + '</svg>';\n  },\n  // o: {x, y, w, h, tab (index lit), body (html), label (true shows the mock label above)}. Returns {el, q(sel), all(sel), lit(i, v), render(t, a, out0, out1)}.\n  phone(kit, o) {\n    const w = o.w || 460, h = o.h || 650;\n    let tabs = '';\n    UI.TABS.forEach((n, i) => {\n      tabs += n === 'XORA'\n        ? '<div class=\"ph-tab ph-tx\"><span class=\"ph-xb\">X</span><span>XORA</span></div>'\n        : '<div class=\"ph-tab\">' + UI.icon(n) + '<span>' + n + '</span></div>';\n    });\n    const el = kit.h('<div class=\"ph\" style=\"left:' + o.x + 'px;top:' + o.y + 'px;width:' + w + 'px;height:' + h + 'px\">' +\n      '<div class=\"ph-scr\"><div class=\"ph-sb mono\"><span>9:41</span><svg width=\"44\" height=\"22\" viewBox=\"0 0 44 22\"><rect x=\"1\" y=\"2\" width=\"36\" height=\"18\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><rect x=\"5\" y=\"6\" width=\"24\" height=\"10\" rx=\"2\" fill=\"currentColor\"/><rect x=\"39\" y=\"8\" width=\"3\" height=\"6\" rx=\"1\" fill=\"currentColor\"/></svg></div>' +\n      '<div class=\"ph-body\">' + (o.body || '') + '</div><div class=\"ph-tabs\">' + tabs + '</div></div></div>');\n    kit.stage.append(el);\n    let lab = null;\n    if (o.label !== false) {\n      lab = kit.h('<p class=\"fict ph-lab\" style=\"left:' + (o.x - 40) + 'px;top:' + (o.y - 62) + 'px;width:' + (w + 80) + 'px\">Illustrative mock of the XORA app<br>numbers are fictional</p>');\n      kit.stage.append(lab);\n    }\n    const tabEls = [...el.querySelectorAll('.ph-tab')];\n    const st = el.style, ls = lab && lab.style;\n    const api = {\n      el,\n      q: (s) => el.querySelector(s),\n      all: (s) => [...el.querySelectorAll(s)],\n      lit(i, v) { tabEls.forEach((e, j) => { const on = j === i ? v : 0; e.style.color = 'color-mix(in srgb, var(--main) ' + Math.round(on * 100) + '%, color-mix(in srgb, var(--second) 55%, var(--ground)))'; }); },\n      // a: entrance start; out0/out1: optional fade-out window.\n      render(t, a, out0, out1) {\n        const p = kit.seg(t, a, a + 0.8), out = out0 == null ? 0 : kit.ei(kit.seg(t, out0, out1));\n        st.opacity = (kit.eo(kit.seg(t, a, a + 0.45)) * (1 - out)).toFixed(3);\n        st.transform = 'translateY(' + (kit.lerp(60, 0, kit.eo(p)) + Math.sin(t * 2 * Math.PI / 5.2) * 4).toFixed(1) + 'px) scale(' + kit.lerp(0.94, 1, kit.eob(p, 1.5)).toFixed(4) + ')';\n        if (ls) ls.opacity = (0.95 * kit.eo(kit.seg(t, a + 0.4, a + 1.0)) * (1 - out)).toFixed(3);\n      },\n    };\n    api.lit(o.tab == null ? -1 : o.tab, 1);\n    return api;\n  },\n  // Scrolled phone content: fade each child of box by how much of it sits inside the visible 0..h band (sc = scroll px).\n  fit(box, sc, h) {\n    for (const e of box.children) {\n      const y0 = e.offsetTop - sc, y1 = y0 + e.offsetHeight;\n      const v = Math.min(1, Math.max(0, y1 / 30), Math.max(0, (h - y0) / 30));\n      e.style.opacity = v.toFixed(3);\n      e.style.visibility = v < 0.02 ? 'hidden' : 'visible';\n    }\n  },\n  // Soft highlight ring on an element (v 0..1).\n  glow(st, v, col) { col = col || 'var(--main)'; st.boxShadow = v > 0.01 ? '0 0 0 ' + (3 * v).toFixed(1) + 'px ' + col + ', 0 0 ' + (26 * v).toFixed(0) + 'px color-mix(in srgb, ' + col + ' 45%, transparent)' : 'none'; },\n  // A callout card (glass) on the left: kicker + text. Returns its style.\n  card(kit, x, y, w, kick, text, o) {\n    o = o || {};\n    const el = kit.h('<div class=\"glass ' + (o.cls || '') + '\" style=\"left:' + x + 'px;top:' + y + 'px;width:' + w + 'px;padding:' + (o.pad || '22px 30px') + (o.bc ? ';border-color:' + o.bc : '') + '\">' +\n      (kick ? '<p class=\"kick\" style=\"margin:0 0 10px' + (o.kc ? ';color:' + o.kc : '') + '\">' + kick + '</p>' : '') +\n      '<p style=\"margin:0;font-size:' + (o.fs || 30) + 'px;line-height:1.4;font-weight:600\">' + text + '</p></div>');\n    kit.stage.append(el);\n    return el.style;\n  },\n  // Typewriter: show the first part of s, from time a at cps characters per second.\n  type(el, s, t, a, cps) {\n    const n = Math.max(0, Math.min(s.length, Math.floor((t - a) * (cps || 30))));\n    UI.set(el, s.slice(0, n));\n    return n >= s.length;\n  },\n  // mm:ss countdown text.\n  mmss(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); },\n  // ── T25: one fictional BTC/USDT 1-minute chart used by every step ──\n  D: {\n    // [open, high, low, close]; 0–23 closed, 24 is the trigger candle.\n    C: [[60420, 60470, 60380, 60450], [60450, 60490, 60430, 60480], [60480, 60500, 60400, 60420], [60420, 60440, 60300, 60320], [60320, 60350, 60200, 60230],\n      [60230, 60260, 60100, 60130], [60130, 60170, 60020, 60050], [60050, 60080, 59930, 59960], [59960, 60010, 59900, 59990], [59990, 60060, 59970, 60040],\n      [60040, 60090, 60020, 60070], [60070, 60100, 60030, 60060], [60060, 60085, 60045, 60055], [60055, 60070, 60040, 60065], [60065, 60120, 60050, 60110],\n      [60110, 60170, 60100, 60160], [60160, 60210, 60140, 60200], [60200, 60250, 60180, 60230], [60230, 60240, 60170, 60180], [60180, 60200, 60140, 60150],\n      [60150, 60160, 60110, 60120], [60120, 60130, 60090, 60100], [60100, 60110, 60060, 60070], [60070, 60120, 60020, 60110], [60110, 60190, 60100, 60170]],\n    V: [0.5, 0.45, 0.6, 0.7, 0.8, 0.75, 0.7, 0.85, 0.9, 0.6, 0.5, 0.45, 0.4, 0.42, 0.6, 0.65, 0.6, 0.55, 0.5, 0.45, 0.42, 0.4, 0.45, 0.95, 0.7],\n    x: (i) => 196 + i * 36,\n    y: (p) => 700 - (p - 59850) * 0.58,\n    X0: 160, X1: 1090,\n  },\n  // The chart: grid, candles (o.n of them, default 24), optional volume. o.draw: candles draw in from this time.\n  // Returns {cd, ov (an SVG group for overlays), render(t, dim, live)} where live = [o,h,l,c] overrides the candle at index o.n - 1 + 1.\n  chart(kit, cls, o) {\n    o = o || {};\n    const D = UI.D, n = o.n || 24, cap = o.cap || n, cd = UI.cdl(kit, cls + '-c', cap);\n    let vol = '';\n    if (o.vol) for (let i = 0; i < cap; i++) vol += '<rect class=\"' + cls + '-v\" x=\"' + (D.x(i) - 11) + '\" y=\"' + (740 - D.V[i] * 40).toFixed(1) + '\" width=\"22\" height=\"' + (D.V[i] * 40).toFixed(1) + '\" rx=\"3\" style=\"fill:color-mix(in srgb, var(--main) 40%, transparent)\"/>';\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"' + cls + '-g\">' + UI.grid(D.X0, D.X1, D.y, 59900, 60500, 100) + '</g><g class=\"' + cls + '-u\"></g>' + vol + cd.html + '<g class=\"' + cls + '-o\"></g></svg>');\n    kit.stage.append(svg);\n    const f = kit.h('<p class=\"fict\" style=\"position:absolute;left:' + D.X0 + 'px;top:262px;margin:0\">' + (o.label || 'BTC/USDT · 1-minute · fictional prices · illustrative, not real market data') + '</p>');\n    kit.stage.append(f);\n    const g = svg.querySelector('.' + cls + '-g').style, fs = f.style, vs = [...svg.querySelectorAll('.' + cls + '-v')].map((e) => e.style);\n    return {\n      cd, svg, under: svg.querySelector('.' + cls + '-u'), ov: svg.querySelector('.' + cls + '-o'),\n      render(t, dim, live) {\n        const K = kit, d0 = o.draw == null ? -10 : o.draw, a0 = o.at || 0, m = dim == null ? 1 : dim;\n        g.opacity = K.eo(K.seg(t, a0, a0 + 0.6)); fs.opacity = 0.9 * K.eo(K.seg(t, a0 + 0.3, a0 + 0.9));\n        for (let i = 0; i < cap; i++) {\n          let c = D.C[i], s = d0 + i * (o.k || 0.12), p = K.eo(K.seg(t, s, s + 0.4)), isLive = false;\n          if (i >= n) { if (!live) { cd.set(i, { x: D.x(i), w: 22, o: c[0], h: c[0], l: c[0], c: c[0], y: D.y, op: 0 }); if (vs[i]) vs[i].opacity = 0; continue; } c = live; p = 1; isLive = !!live.live; }\n          const dm = typeof m === 'function' ? m(i) : m;\n          cd.set(i, { x: D.x(i), w: 22, o: c[0], h: c[0] + (c[1] - c[0]) * p, l: c[0] + (c[2] - c[0]) * p, c: c[0] + (c[3] - c[0]) * p, y: D.y, op: K.eo(K.seg(t, s, s + 0.2)) * dm, live: isLive });\n          if (vs[i]) vs[i].opacity = K.eo(K.seg(t, s, s + 0.3)) * dm;\n        }\n      },\n    };\n  },\n  hline(p, color, dash, x0, x1) {\n    const y = UI.D.y(p).toFixed(1);\n    return '<line x1=\"' + (x0 || UI.D.X0) + '\" x2=\"' + (x1 || UI.D.X1) + '\" y1=\"' + y + '\" y2=\"' + y + '\" pathLength=\"1\" stroke-width=\"3\"' + (dash ? ' stroke-dasharray=\"' + dash + '\"' : '') + ' style=\"stroke:' + color + '\"/>';\n  },\n  band(a, b, color, x0, x1) {\n    const Y = UI.D.y;\n    return '<rect x=\"' + (x0 || UI.D.X0) + '\" width=\"' + ((x1 || UI.D.X1) - (x0 || UI.D.X0)) + '\" y=\"' + Y(b).toFixed(1) + '\" height=\"' + (Y(a) - Y(b)).toFixed(1) + '\" rx=\"6\" style=\"fill:color-mix(in srgb, ' + color + ' 16%, transparent);stroke:color-mix(in srgb, ' + color + ' 60%, transparent);stroke-width:2\"/>';\n  },\n};\nUI.K = kit;\n","tutor.json":"{\n  \"idle\": {\n    \"w\": 331,\n    \"h\": 446,\n    \"ax\": 164.5,\n    \"feet\": 432,\n    \"bw\": 305\n  },\n  \"wv1\": {\n    \"w\": 381,\n    \"h\": 448,\n    \"ax\": 163.5,\n    \"feet\": 434,\n    \"bw\": 305\n  },\n  \"wv2\": {\n    \"w\": 374,\n    \"h\": 448,\n    \"ax\": 165.0,\n    \"feet\": 436,\n    \"bw\": 305\n  },\n  \"wv3\": {\n    \"w\": 363,\n    \"h\": 448,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wv4\": {\n    \"w\": 375,\n    \"h\": 446,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wk0\": {\n    \"w\": 353,\n    \"h\": 460,\n    \"ax\": 162.5,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk1\": {\n    \"w\": 361,\n    \"h\": 460,\n    \"ax\": 164.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk2\": {\n    \"w\": 345,\n    \"h\": 460,\n    \"ax\": 170.5,\n    \"feet\": 448,\n    \"bw\": 310\n  },\n  \"wk3\": {\n    \"w\": 365,\n    \"h\": 460,\n    \"ax\": 164.0,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk4\": {\n    \"w\": 375,\n    \"h\": 457,\n    \"ax\": 167.5,\n    \"feet\": 444,\n    \"bw\": 310\n  },\n  \"wk5\": {\n    \"w\": 364,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk6\": {\n    \"w\": 354,\n    \"h\": 457,\n    \"ax\": 166.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk7\": {\n    \"w\": 365,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"present\": {\n    \"w\": 546,\n    \"h\": 612,\n    \"ax\": 218,\n    \"feet\": 605,\n    \"bw\": 421\n  },\n  \"explain\": {\n    \"w\": 502,\n    \"h\": 602,\n    \"ax\": 275,\n    \"feet\": 594,\n    \"bw\": 394\n  },\n  \"think\": {\n    \"w\": 465,\n    \"h\": 656,\n    \"ax\": 229,\n    \"feet\": 648,\n    \"bw\": 452\n  },\n  \"point\": {\n    \"w\": 547,\n    \"h\": 568,\n    \"ax\": 210,\n    \"feet\": 561,\n    \"bw\": 415\n  },\n  \"confused\": {\n    \"w\": 185,\n    \"h\": 169,\n    \"ax\": 85.0,\n    \"feet\": 162,\n    \"bw\": 138\n  },\n  \"thumbs\": {\n    \"w\": 181,\n    \"h\": 179,\n    \"ax\": 102.0,\n    \"feet\": 172,\n    \"bw\": 138\n  },\n  \"cheer\": {\n    \"w\": 207,\n    \"h\": 182,\n    \"ax\": 105.0,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"idea\": {\n    \"w\": 169,\n    \"h\": 178,\n    \"ax\": 69.5,\n    \"feet\": 171,\n    \"bw\": 138\n  },\n  \"magnify\": {\n    \"w\": 187,\n    \"h\": 170,\n    \"ax\": 85.5,\n    \"feet\": 163,\n    \"bw\": 138\n  },\n  \"read\": {\n    \"w\": 190,\n    \"h\": 181,\n    \"ax\": 82.5,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"checklist\": {\n    \"w\": 185,\n    \"h\": 161,\n    \"ax\": 97.5,\n    \"feet\": 153,\n    \"bw\": 138\n  },\n  \"laptop\": {\n    \"w\": 185,\n    \"h\": 170,\n    \"ax\": 82.0,\n    \"feet\": 164,\n    \"bw\": 138\n  },\n  \"pointer\": {\n    \"w\": 248,\n    \"h\": 171,\n    \"ax\": 74.5,\n    \"feet\": 164,\n    \"bw\": 138\n  },\n  \"calm\": {\n    \"w\": 234,\n    \"h\": 174,\n    \"ax\": 111.0,\n    \"feet\": 167,\n    \"bw\": 138\n  },\n  \"typing\": {\n    \"w\": 207,\n    \"h\": 175,\n    \"ax\": 74.0,\n    \"feet\": 167,\n    \"bw\": 138\n  },\n  \"candles\": {\n    \"w\": 257,\n    \"h\": 160,\n    \"ax\": 70.5,\n    \"feet\": 151,\n    \"bw\": 138\n  },\n  \"hi\": {\n    \"w\": 518,\n    \"h\": 594,\n    \"ax\": 298,\n    \"feet\": 587,\n    \"bw\": 408\n  },\n  \"celebrate\": {\n    \"w\": 209,\n    \"h\": 171,\n    \"ax\": 100.5,\n    \"feet\": 165,\n    \"bw\": 138\n  }\n}"}};</script>
+<script>
+/* XORA Futures Edge lesson player.
+ *
+ * Plays a lesson written as scene modules (content/futures-edge/<id>/modules) as a plain web
+ * page. Everything on screen is a pure function of the lesson time t, so the page can pause,
+ * seek and replay at any point. It provides the small "kit" the scenes are written against
+ * (stage, easing, TextFx, assets, json) and a WebAudio synth for score.js.
+ *
+ * With a voiceover, build-lesson.mjs lengthens some scenes so the narration fits: a scene with
+ * stretch factor k plays its animation and sound effects k times slower. Scene code still sees the
+ * authored timeline (kit.start, kit.dur and t), so nothing in the modules changes. The voice is
+ * one mixed track; the music dips under each line, and the CC button shows the line as text.
+ *
+ * build-lesson.mjs inlines this file into public/futures-edge/lessons/<id>.html, after a
+ * `window.FILM = {...}` block that carries the scene list, module texts and asset paths.
+ */
+(function () {
+  "use strict";
+
+  const F = window.FILM;
+  const W = F.width;
+  const H = F.height;
+
+  // ── Maths and easing ───────────────────────────────────────────────────────
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const clamp01 = (x) => clamp(x, 0, 1);
+  const seg = (t, a, b) => (b <= a ? (t >= b ? 1 : 0) : clamp01((t - a) / (b - a)));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const eo = (x) => 1 - Math.pow(1 - clamp01(x), 3);
+  const ei = (x) => Math.pow(clamp01(x), 3);
+  const eio = (x) => {
+    x = clamp01(x);
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  };
+  const eob = (x, s = 1.4) => {
+    x = clamp01(x);
+    return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2);
+  };
+  const rng = (seed) => {
+    let a = seed >>> 0 || 1;
+    return () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+  const breathe = (t, amt = 0.012, period = 3.2) => 1 + amt * Math.sin((2 * Math.PI * t) / period);
+
+  // ── DOM helpers ────────────────────────────────────────────────────────────
+  const h = (html) => {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = String(html).trim();
+    return tpl.content.firstElementChild;
+  };
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const el = (tag, o = {}, children = []) => {
+    const e = document.createElement(tag);
+    if (o.class) e.className = o.class;
+    if (o.style) e.setAttribute("style", o.style);
+    if (o.text != null) e.textContent = o.text;
+    if (o.html != null) e.innerHTML = o.html;
+    for (const [k, v] of Object.entries(o.attrs || {})) e.setAttribute(k, v);
+    for (const c of children) e.append(c);
+    return e;
+  };
+
+  // Words of an element as inline-block spans (inline markup such as <b> is kept).
+  const wordCache = new WeakMap();
+  function words(root) {
+    let list = wordCache.get(root);
+    if (list) return list;
+    list = [];
+    const walk = (node) => {
+      for (const child of Array.from(node.childNodes)) {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const part of child.textContent.split(/(\s+)/)) {
+            if (!part) continue;
+            if (/^\s+$/.test(part)) {
+              frag.append(document.createTextNode(part));
+            } else {
+              const s = document.createElement("span");
+              s.textContent = part;
+              s.style.display = "inline-block";
+              frag.append(s);
+              list.push(s);
+            }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      }
+    };
+    walk(root);
+    wordCache.set(root, list);
+    return list;
+  }
+  const TextFx = {
+    fadeFromRight(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.11, d = o.dur ?? 0.5, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = eo(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = p;
+        s.style.transform = "translateX(" + ((1 - p) * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+    fadeOutLeft(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.04, d = o.dur ?? 0.35, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = ei(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = 1 - p;
+        s.style.transform = "translateX(" + (-p * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+  };
+
+  // ── The kit the scene modules use ──────────────────────────────────────────
+  const modules = F.modules;
+  const jsonCache = {};
+  const assets = {
+    url: (name) => F.assetBase + name,
+    has: (name) => Object.prototype.hasOwnProperty.call(F.assets, name),
+    list: () => Object.keys(F.assets),
+  };
+  const defs = {};
+  let scoreFn = null;
+
+  // start/dur: the scene in the played timeline; oldStart/oldDur: as authored (k = dur / oldDur).
+  let acc = 0;
+  const scenes = F.scenes.map((s) => {
+    const o = Object.assign({ k: 1, oldStart: acc, oldDur: s.dur }, s, { start: acc });
+    acc += s.dur;
+    return o;
+  });
+  const END = acc;
+  const OLD_END = scenes.reduce((a, s) => a + s.oldDur, 0);
+  // Authored time to played time.
+  function warp(x) {
+    for (let i = scenes.length - 1; i >= 0; i--) {
+      const s = scenes[i];
+      if (x >= s.oldStart) return s.start + (x - s.oldStart) * s.k;
+    }
+    return x;
+  }
+  // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
+  const lines = (F.voice && F.voice.lines) || [];
+  // Voice language for lessons recorded in English and Malayalam (F.voice.srcMl): English unless the viewer chose Malayalam.
+  let voiceLang = "en";
+  try { if (localStorage.getItem("fe-voice-lang") === "ml") voiceLang = "ml"; } catch (e) { /* English */ }
+  // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
+  const duckSpans = [];
+  if (F.voice && F.voice.src) for (const l of lines) {
+    const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
+    if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
+  }
+
+  function makeKit(box, start, dur) {
+    return {
+      stage: box, start, dur, W, H,
+      seg, lerp, eo, ei, eio, eob, clamp, clamp01, rng, breathe, TextFx, h, el, esc,
+      assets,
+      module: (n) => (n in modules ? modules[n] : null),
+      json: (n) => (jsonCache[n] ??= JSON.parse(modules[n])),
+      modules: () => Object.keys(modules),
+      scene: (id, def) => { defs[id] = def; },
+      score: (fn) => { scoreFn = fn; },
+    };
+  }
+  const run = (name, kit) => new Function("kit", modules[name] + "\n//# sourceURL=" + F.id + "/" + name)(kit);
+
+  // ── Stage ──────────────────────────────────────────────────────────────────
+  const stage = document.getElementById("stage");
+  const css = document.createElement("style");
+  css.textContent = modules["base.css"] || "";
+  document.head.append(css);
+
+  function fit() {
+    const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+  }
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 200));
+  fit();
+
+  // ── Audio: score.js recorded as events, then synthesised with WebAudio ─────
+  function midiOf(p) {
+    if (typeof p === "number") return p;
+    const m = /^([A-Ga-g])([#b]?)(-?\d)$/.exec(String(p).trim());
+    if (!m) return 72;
+    const base = { c: 0, d: 2, e: 4, f: 5, g: 7, a: 9, b: 11 }[m[1].toLowerCase()];
+    return 12 * (Number(m[3]) + 1) + base + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
+  }
+
+  // score.js runs twice: the music against the played timeline, the sound effects against the
+  // authored one and then moved onto the played one, so each cue stays with its animation.
+  function recordScore() {
+    const T = { END };
+    for (const s of scenes) T[s.id] = s.start;
+    const music = recordPass(T);
+    const Told = { END: OLD_END };
+    for (const s of scenes) Told[s.id] = s.oldStart;
+    const cues = recordPass(Told);
+    const ev = music.ev.filter((e) => e.k !== "f");
+    for (const e of cues.ev) {
+      if (e.k !== "f") continue;
+      e.t = warp(e.t);
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      ev.push(e);
+    }
+    ev.sort((a, b) => a.s - b.s);
+    return { ev, tracks: music.tracks, master: music.master };
+  }
+
+  function recordPass(T) {
+    const ev = [];
+    const tracks = {};
+    const master = { gain: -6, music: 0, fadeOut: 1 };
+    let B = 0.5, t0 = 0;
+    const at = (o) => (o.t != null ? o.t : t0 + (o.beat || 0) * B);
+    const len = (o, d) => (o.dur != null ? o.dur : o.beats != null ? o.beats * B : d);
+    const push = (e) => {
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      if (e.s < -0.1) return;
+      if (e.s < 0) { e.t += -e.s; e.s = 0; }
+      ev.push(e);
+    };
+    const hits = (str, rep, step, from, vel, fn) => {
+      for (let r = 0; r < rep; r++) {
+        for (let i = 0; i < str.length; i++) {
+          const c = str[i];
+          if (c !== "x" && c !== "X" && c !== "o") continue;
+          fn(t0 + (from + (r * str.length + i) * step) * B, vel * (c === "X" ? 1.25 : c === "o" ? 0.5 : 1));
+        }
+      }
+    };
+    const S = {
+      tempo(bpm, o = {}) { B = 60 / bpm; t0 = o.t0 || 0; },
+      beat: (n) => t0 + n * B,
+      toBeat: (t) => (t - t0) / B,
+      seed() {},
+      program(track, patch, o = {}) {
+        tracks[track] = { patch, gain: o.gain || 0, pan: o.pan || 0, rev: o.rev || 0, bright: o.bright ?? 1 };
+      },
+      note(track, p, o = {}) { push({ k: "n", track, m: midiOf(p), t: at(o), d: len(o, B), v: o.vel ?? 90 }); },
+      chord(track, ps, o = {}) { ps.forEach((p) => S.note(track, p, o)); },
+      pattern(track, str, o = {}) {
+        const pitches = o.pitch || ["C5"];
+        let k = 0;
+        const step = o.step ?? 0.5;
+        hits(str, o.repeat ?? 1, step, o.from || 0, o.vel ?? 80, (t, v) =>
+          push({ k: "n", track, m: midiOf(pitches[k++ % pitches.length]), t, d: o.dur ?? step * B * 0.9, v }));
+      },
+      drum(name, o = {}) { push({ k: "d", name, t: at(o), d: 0.3, v: o.vel ?? 90 }); },
+      drums(map, o = {}) {
+        for (const name of Object.keys(map)) {
+          hits(map[name], o.repeat ?? 1, o.step ?? 0.5, o.from || 0, o.vel ?? 80, (t, v) => push({ k: "d", name, t, d: 0.3, v }));
+        }
+      },
+      ticks(times, o = {}) { times.forEach((t) => push({ k: "f", name: "tick", t, d: 0.03, v: o.vel ?? 40, pitch: 0 })); },
+      fx(name, t, o = {}) { push({ k: "f", name, t, d: o.dur ?? 0.5, v: o.vel ?? 70, pitch: o.pitch || 0 }); },
+      run(track, ps, o = {}) {
+        const step = o.step ?? 0.1;
+        ps.forEach((p, i) => push({ k: "n", track, m: midiOf(p), t: o.t + i * step, d: step * 2.5, v: (o.vel ?? 70) + i * (o.cresc || 0) }));
+      },
+      master(o = {}) {
+        if (o.gain != null) master.gain = o.gain;
+        if (o.music != null) master.music = o.music;
+        if (o.fadeOut != null) master.fadeOut = o.fadeOut;
+      },
+    };
+    if (scoreFn) scoreFn(S, T);
+    return { ev, tracks, master };
+  }
+
+  const db = (x) => Math.pow(10, x / 20);
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+  const audio = {
+    ctx: null, enabled: false, muted: false, score: null,
+    out: null, verb: null, noise: null, session: null, timer: 0,
+    voiceEl: null, voiceNode: null, voiceOut: null,
+  };
+  const DUCK = 0.4;
+
+  function setupAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    const ctx = (audio.ctx = new AC());
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -14;
+    comp.ratio.value = 4;
+    comp.connect(ctx.destination);
+    audio.out = ctx.createGain();
+    audio.out.gain.value = db(audio.score.master.gain);
+    audio.out.connect(comp);
+    // A small generated room for the reverb send.
+    const len = Math.floor(ctx.sampleRate * 2.4);
+    const ir = ctx.createBuffer(2, len, ctx.sampleRate);
+    const r = rng(9);
+    for (let c = 0; c < 2; c++) {
+      const d = ir.getChannelData(c);
+      for (let i = 0; i < len; i++) d[i] = (r() * 2 - 1) * Math.pow(1 - i / len, 3);
+    }
+    audio.verb = ctx.createConvolver();
+    audio.verb.buffer = ir;
+    const verbGain = ctx.createGain();
+    verbGain.gain.value = 0.5;
+    audio.verb.connect(verbGain);
+    verbGain.connect(audio.out);
+    const nb = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+    const nd = nb.getChannelData(0);
+    const r2 = rng(3);
+    for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
+    audio.noise = nb;
+    // The voice skips the music's compressor and goes straight out.
+    audio.voiceOut = ctx.createGain();
+    audio.voiceOut.gain.value = 1;
+    audio.voiceOut.connect(ctx.destination);
+    if (audio.voiceEl) {
+      try { audio.voiceNode = ctx.createMediaElementSource(audio.voiceEl); audio.voiceNode.connect(audio.voiceOut); }
+      catch (e) { /* the element then plays on its own */ }
+    }
+    return true;
+  }
+
+  // The voice is an <audio> element: it keeps its pitch when the lesson plays faster. Each track is
+  // downloaded whole and played from memory, so jumping to any point works on every server.
+  const voiceBlobs = {};
+  function voiceUrl() { return voiceLang === "ml" && F.voice.srcMl ? F.voice.srcMl : F.voice.src; }
+  function loadVoice() {
+    const url = voiceUrl();
+    voiceBlobs[url] ??= fetch(url).then((r) => (r.ok ? r.blob() : null)).then((b) => (b ? URL.createObjectURL(b) : null)).catch(() => null);
+    voiceBlobs[url].then((blobUrl) => {
+      if (!blobUrl || voiceUrl() !== url) return;
+      audio.voiceEl.src = blobUrl;
+      if (audio.session) startSession(state.t);
+    });
+  }
+  function makeVoice() {
+    if (!F.voice || !F.voice.src) return;
+    const v = new Audio();
+    v.preload = "auto";
+    v.preservesPitch = v.mozPreservesPitch = v.webkitPreservesPitch = true;
+    audio.voiceEl = v;
+    loadVoice();
+  }
+
+  // The voice of one session, from the session's start point; the music dips under each line.
+  function startVoice(s) {
+    const v = audio.voiceEl;
+    if (!v || !v.src || s.voice) return;
+    if (v.duration && s.film0 >= v.duration) return;
+    v.playbackRate = s.rate;
+    v.currentTime = s.film0;
+    v.play().catch(() => { /* blocked or not loaded: the lesson plays on without it */ });
+    s.voice = true;
+    const at = s.ctx0, off = s.film0, r = s.rate;
+    for (const g of [s.duck.gain, s.send.gain]) {
+      for (const [a, b] of duckSpans) {
+        if (b <= off) continue;
+        const ca = at + (a - off) / r, cb = at + (b - off) / r;
+        if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
+        g.setValueAtTime(DUCK, cb);
+        g.linearRampToValueAtTime(1, cb + 0.5);
+      }
+    }
+  }
+
+  // One playback session: a bus that can be dropped as a whole on pause or seek.
+  function startSession(filmT) {
+    stopSession();
+    if (!audio.enabled || audio.muted) return;
+    const ctx = audio.ctx;
+    const bus = ctx.createGain();
+    const duck = ctx.createGain();
+    bus.connect(duck);
+    duck.connect(audio.out);
+    const send = ctx.createGain();
+    send.connect(audio.verb);
+    // The instruments (not the drums or sound effects) go through their own level, master({ music }).
+    const music = ctx.createGain();
+    music.gain.value = db(audio.score.master.music);
+    music.connect(bus);
+    const musicSend = ctx.createGain();
+    musicSend.gain.value = music.gain.value;
+    musicSend.connect(send);
+    const tracks = {};
+    for (const [name, tr] of Object.entries(audio.score.tracks)) {
+      const g = ctx.createGain();
+      g.gain.value = db(tr.gain);
+      const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(music); } else g.connect(music);
+      const rs = ctx.createGain();
+      rs.gain.value = tr.rev;
+      g.connect(rs);
+      rs.connect(musicSend);
+      tracks[name] = { node: g, def: tr };
+    }
+    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, rate: state.rate, idx: 0, voice: false };
+    audio.session = s;
+    startVoice(s);
+    // Notes already sounding at the seek point start now with what is left of them.
+    for (const e of audio.score.ev) {
+      if (e.s >= filmT) break;
+      if (e.k === "n" && e.s + e.d > filmT + 0.15) sound(e, s, filmT, e.s + e.d - filmT);
+    }
+    s.idx = audio.score.ev.findIndex((e) => e.s >= filmT);
+    if (s.idx < 0) s.idx = audio.score.ev.length;
+    // Fade the master out over the last seconds of the lesson.
+    const fo = audio.score.master.fadeOut;
+    if (fo > 0) {
+      const a = Math.max(filmT, END - fo);
+      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT) / s.rate);
+      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT) / s.rate);
+    }
+    audio.timer = setInterval(() => pump(), 50);
+    pump();
+  }
+
+  function stopSession() {
+    clearInterval(audio.timer);
+    const s = audio.session;
+    audio.session = null;
+    if (!s) return;
+    const now = audio.ctx.currentTime;
+    s.bus.gain.cancelScheduledValues(now);
+    s.bus.gain.setTargetAtTime(0, now, 0.03);
+    s.send.gain.cancelScheduledValues(now);
+    s.send.gain.setTargetAtTime(0, now, 0.03);
+    if (s.voice && audio.voiceEl) audio.voiceEl.pause();
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); s.music.disconnect(); s.musicSend.disconnect(); }, 400);
+  }
+
+  function pump() {
+    const s = audio.session;
+    if (!s) return;
+    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0) * s.rate;
+    const horizon = filmNow + 0.6 * s.rate;
+    // Keep the voice in step with the picture.
+    const v = audio.voiceEl;
+    if (s.voice && v && !v.paused && !v.seeking && filmNow > s.film0 + 0.5 && Math.abs(v.currentTime - filmNow) > 0.25) v.currentTime = filmNow;
+    const ev = audio.score.ev;
+    while (s.idx < ev.length && ev[s.idx].s <= horizon) {
+      const e = ev[s.idx++];
+      if (e.s >= s.film0) sound(e, s, e.s, e.d);
+    }
+  }
+
+  function sound(e, s, filmStart, dur) {
+    const ctx = audio.ctx;
+    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0) / s.rate);
+    dur /= s.rate;
+    const v = Math.pow(clamp01(e.v / 127), 1.5);
+    if (e.k === "n") {
+      const tr = s.tracks[e.track];
+      if (!tr) return;
+      voice(tr.def.patch, tr.node, hz(e.m), when, Math.max(0.05, dur), v, tr.def.bright);
+    } else if (e.k === "d") {
+      drum(e.name, s.bus, when, v);
+    } else {
+      fx(e.name, s.bus, s.send, when, e.d / s.rate, v, e.pitch || 0);
+    }
+  }
+
+  function env(g, when, peak, attack, hold, release) {
+    peak = Math.max(peak, 0.0002);
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.linearRampToValueAtTime(peak, when + attack);
+    g.gain.setValueAtTime(peak, when + attack + hold);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + attack + hold + release);
+    return when + attack + hold + release + 0.05;
+  }
+  function osc(type, f, dest, when, stop, detune) {
+    const o = audio.ctx.createOscillator();
+    o.type = type;
+    o.frequency.value = f;
+    if (detune) o.detune.value = detune;
+    o.connect(dest);
+    o.start(when);
+    o.stop(stop);
+    return o;
+  }
+  function noiseSrc(dest, when, stop) {
+    const n = audio.ctx.createBufferSource();
+    n.buffer = audio.noise;
+    n.loop = true;
+    n.connect(dest);
+    n.start(when);
+    n.stop(stop);
+    return n;
+  }
+
+  function voice(patch, dest, f, when, dur, v, bright) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    let stop;
+    switch (patch) {
+      case "pad": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 700 + 900 * bright;
+        lp.connect(g);
+        stop = env(g, when, 0.22 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
+        osc("sawtooth", f, lp, when, stop, -8);
+        osc("sawtooth", f, lp, when, stop, 8);
+        break;
+      }
+      case "ep":
+      case "keys": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.22 * v + 0.0002, when + 0.008);
+        g.gain.exponentialRampToValueAtTime(0.08 * v + 0.0001, when + Math.min(dur, 0.9));
+        g.gain.exponentialRampToValueAtTime(0.0001, when + dur + 0.4);
+        stop = when + dur + 0.45;
+        osc("sine", f, g, when, stop);
+        const h2 = ctx.createGain();
+        h2.gain.value = 0.25;
+        h2.connect(g);
+        osc("sine", f * 2, h2, when, stop);
+        break;
+      }
+      case "bass": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 500;
+        lp.connect(g);
+        stop = env(g, when, 0.34 * v, 0.01, Math.max(0, dur - 0.1), 0.18);
+        osc("sine", f, lp, when, stop);
+        osc("triangle", f * 2, lp, when, stop);
+        break;
+      }
+      case "pluck": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.24 * v + 0.0002, when + 0.004);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + Math.min(1.1, dur + 0.45));
+        stop = when + Math.min(1.1, dur + 0.45) + 0.05;
+        osc("triangle", f, g, when, stop);
+        break;
+      }
+      default: {
+        // marimba, vibes, glock and anything unknown: a struck bar.
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.26 * v + 0.0002, when + 0.003);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + 0.7);
+        stop = when + 0.75;
+        osc("sine", f, g, when, stop);
+        const h4 = ctx.createGain();
+        h4.gain.value = 0.12;
+        h4.connect(g);
+        osc("sine", f * 4, h4, when, stop);
+      }
+    }
+  }
+
+  function drum(name, dest, when, v) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    if (name === "kick" || name === "tom") {
+      const o = osc("sine", 140, g, when, when + 0.4);
+      o.frequency.setValueAtTime(140, when);
+      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
+      env(g, when, 0.8 * v, 0.002, 0.02, 0.3);
+    } else {
+      const f = ctx.createBiquadFilter();
+      f.type = name === "sidestick" || name === "woodblock" ? "bandpass" : "highpass";
+      f.frequency.value = name === "sidestick" || name === "woodblock" ? 1900 : 7000;
+      f.connect(g);
+      noiseSrc(f, when, when + 0.2);
+      env(g, when, 0.22 * v, 0.001, 0.005, name === "openhat" ? 0.25 : 0.045);
+    }
+  }
+
+  function fx(name, dest, send, when, dur, v, pitch) {
+    const ctx = audio.ctx;
+    const tr = Math.pow(2, pitch / 12);
+    const g = ctx.createGain();
+    g.connect(dest);
+    const wet = ctx.createGain();
+    wet.gain.value = 0.35;
+    g.connect(wet);
+    wet.connect(send);
+    const r = rng(Math.floor(when * 1000));
+    switch (name) {
+      case "tick": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.frequency.value = 3000 + r() * 1500;
+        f.Q.value = 3;
+        f.connect(g);
+        noiseSrc(f, when, when + 0.06);
+        env(g, when, 0.5 * v, 0.001, 0.004, 0.025);
+        break;
+      }
+      case "click": {
+        osc("square", 1400, g, when, when + 0.06);
+        env(g, when, 0.12 * v, 0.001, 0.005, 0.03);
+        break;
+      }
+      case "ding": {
+        osc("sine", 1046.5 * tr, g, when, when + 1.6);
+        osc("sine", 1568 * tr, g, when, when + 1.6);
+        env(g, when, 0.16 * v, 0.004, 0.02, 1.4);
+        break;
+      }
+      case "chime": {
+        [0, 4, 7].forEach((st, i) => {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + i * 0.07;
+          osc("sine", 1046.5 * tr * Math.pow(2, st / 12), gi, t, t + 1);
+          env(gi, t, 0.14 * v, 0.003, 0.01, 0.9);
+        });
+        g.gain.value = 1;
+        break;
+      }
+      case "sparkle": {
+        for (let i = 0; i < 6; i++) {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + r() * 0.5;
+          osc("sine", 2000 + r() * 2200, gi, t, t + 0.2);
+          env(gi, t, 0.07 * v, 0.002, 0.01, 0.12);
+        }
+        break;
+      }
+      case "whoosh":
+      case "revswell": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.Q.value = 0.8;
+        f.frequency.setValueAtTime(300, when);
+        f.frequency.exponentialRampToValueAtTime(name === "whoosh" ? 2400 : 3200, when + dur);
+        f.connect(g);
+        noiseSrc(f, when, when + dur + 0.1);
+        g.gain.setValueAtTime(0.0001, when);
+        if (name === "whoosh") {
+          g.gain.linearRampToValueAtTime(0.3 * v, when + dur * 0.5);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur);
+        } else {
+          g.gain.exponentialRampToValueAtTime(0.28 * v + 0.0002, when + dur);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur + 0.06);
+        }
+        break;
+      }
+      case "thud": {
+        const o = osc("sine", 110, g, when, when + 0.4);
+        o.frequency.setValueAtTime(110, when);
+        o.frequency.exponentialRampToValueAtTime(45, when + 0.18);
+        env(g, when, 0.5 * v, 0.002, 0.02, 0.3);
+        break;
+      }
+      case "boing": {
+        const o = osc("sine", 220 * tr, g, when, when + 0.5);
+        o.frequency.setValueAtTime(220 * tr, when);
+        o.frequency.linearRampToValueAtTime(520 * tr, when + 0.12);
+        o.frequency.linearRampToValueAtTime(300 * tr, when + 0.4);
+        env(g, when, 0.2 * v, 0.005, 0.05, 0.35);
+        break;
+      }
+      default: {
+        // pop, and any name this synth does not know.
+        const o = osc("sine", 600 * tr, g, when, when + 0.2);
+        o.frequency.setValueAtTime(600 * tr, when);
+        o.frequency.exponentialRampToValueAtTime(1200 * tr, when + 0.06);
+        env(g, when, 0.3 * v, 0.002, 0.01, 0.12);
+      }
+    }
+  }
+
+  // ── Playback ───────────────────────────────────────────────────────────────
+  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1, rate: 1 };
+  const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+  try { const r = Number(localStorage.getItem("fe-speed")); if (SPEEDS.includes(r)) state.rate = r; } catch (e) { /* 1x */ }
+  function setRate(r) {
+    state.t0 = state.t;
+    state.wall0 = now();
+    state.rate = r;
+    try { localStorage.setItem("fe-speed", String(r)); } catch (e) { /* not remembered */ }
+    if (state.playing) startSession(state.t);
+  }
+  let instances = [];
+
+  function sceneAt(t) {
+    for (let i = scenes.length - 1; i >= 0; i--) if (t >= scenes[i].start) return i;
+    return 0;
+  }
+
+  function renderAt(t) {
+    const i = sceneAt(t);
+    if (i !== state.current) {
+      instances.forEach((inst, k) => { inst.box.style.display = k === i ? "block" : "none"; });
+      state.current = i;
+    }
+    const inst = instances[i];
+    inst.def.render.call(inst.def, (Math.min(t, END - 1e-4) - inst.sc.start) / inst.sc.k, inst.kit);
+    ui.update(t);
+  }
+
+  function now() { return performance.now() / 1000; }
+
+  function play() {
+    if (state.t >= END - 0.01) state.t = 0;
+    state.playing = true;
+    state.wall0 = now();
+    state.t0 = state.t;
+    startSession(state.t);
+    ui.update(state.t);
+  }
+  function pause() {
+    state.playing = false;
+    stopSession();
+    ui.update(state.t);
+  }
+  function seek(t) {
+    state.t = clamp(t, 0, END);
+    state.wall0 = now();
+    state.t0 = state.t;
+    if (state.playing) startSession(state.t);
+    renderAt(state.t);
+  }
+  // Tells the page around the lesson (the course, when signed in) how far the video has been watched:
+  // started, 25 %, 50 %, 75 % and finished, each once per visit.
+  const reported = new Set();
+  function reportProgress() {
+    if (window.parent === window) return;
+    const pct = state.t >= END - 0.5 ? 100 : [75, 50, 25].find((p) => state.t >= (END * p) / 100) || 0;
+    for (const p of [0, 25, 50, 75, 100]) {
+      if (p > pct || reported.has(p)) continue;
+      reported.add(p);
+      try { window.parent.postMessage({ type: "futures-edge:progress", lesson: F.id, pct: p }, location.origin); } catch (e) { /* no parent page */ }
+    }
+  }
+  function tick() {
+    if (state.playing) {
+      state.t = state.t0 + (now() - state.wall0) * state.rate;
+      if (state.t >= END) {
+        state.t = END;
+        pause();
+      }
+      renderAt(state.t);
+      reportProgress();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  async function enableAudio() {
+    if (audio.enabled) return;
+    if (!audio.ctx && !setupAudio()) return;
+    try { await audio.ctx.resume(); } catch (e) { /* stays suspended */ }
+    if (audio.ctx.state !== "running") return;
+    audio.enabled = true;
+    ui.sound();
+    if (state.playing) startSession(state.t);
+  }
+
+  // ── Controls ───────────────────────────────────────────────────────────────
+  const fmt = (t) => {
+    const s = Math.max(0, Math.floor(t));
+    return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  };
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" fill="currentColor"/></svg>',
+    replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6.5l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z" fill="currentColor"/></svg>',
+    on: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    off: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    full: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+
+  const CC_LANGS = [
+    { id: "ml", label: "മലയാളം", short: "മ", name: "Malayalam" },
+    { id: "en", label: "English", short: "EN", name: "English" },
+    { id: "off", label: "Off", short: "CC", name: "Off" },
+  ];
+
+  // ── Full screen ────────────────────────────────────────────────────────────
+  // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
+  // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
+  // course page the player asks the parent to grow the lesson to fill the whole screen instead.
+  const embedded = window.parent !== window;
+  const root = document.documentElement;
+  const fs = {
+    native: !!(document.fullscreenEnabled || document.webkitFullscreenEnabled),
+    pseudo: false,
+    available() { return this.native || embedded; },
+    active() { return !!(document.fullscreenElement || document.webkitFullscreenElement) || this.pseudo; },
+    async toggle() {
+      if (this.native) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* not locked */ }
+          await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        try {
+          await (root.requestFullscreen || root.webkitRequestFullscreen).call(root, { navigationUI: "hide" });
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock("landscape").catch(() => {});
+          return;
+        } catch (e) {
+          if (!embedded) return; // refused: fall through to the parent page below
+        }
+      }
+      this.pseudo = !this.pseudo;
+      window.parent.postMessage({ type: "futures-edge:fullscreen", on: this.pseudo }, location.origin);
+      ui.full();
+    },
+  };
+  document.addEventListener("fullscreenchange", () => ui.full());
+  document.addEventListener("webkitfullscreenchange", () => ui.full());
+  const ui = (() => {
+    const bar = h(
+      '<div class="fe-ui" role="group" aria-label="Lesson controls">' +
+        '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
+        '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
+        '<span class="fe-time"></span>' +
+        '<div class="fe-ccw fe-spw"><button type="button" class="fe-btn fe-sp" aria-haspopup="true" aria-expanded="false"></button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Playback speed" hidden>' +
+          SPEEDS.map((r) => '<button type="button" role="menuitemradio" data-rate="' + r + '">' + r + '×</button>').join("") +
+          '</div></div>' +
+        (F.voice && F.voice.srcMl ? '<button type="button" class="fe-btn fe-lang"></button>' : "") +
+        (lines.length ? '<div class="fe-ccw"><button type="button" class="fe-btn fe-cc" aria-haspopup="true" aria-expanded="false">CC</button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Subtitles" hidden>' +
+          CC_LANGS.map((l) => '<button type="button" role="menuitemradio" data-lang="' + l.id + '"' + (l.id === "ml" ? ' lang="ml"' : "") + '>' + l.label + '</button>').join("") +
+          '</div></div>' : "") +
+        '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
+        (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
+      "</div>"
+    );
+    const hint = h('<button type="button" class="fe-hint">Click anywhere for sound</button>');
+    const cap = h('<p class="fe-cap" aria-live="off"></p>');
+    document.body.append(cap, bar, hint);
+    const cc = bar.querySelector(".fe-cc");
+    const ccMenu = cc && cc.nextElementSibling;
+    const fsb = bar.querySelector(".fe-fs");
+    if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
+    // Subtitle language: Malayalam by default when the lesson has it, then English, or off.
+    // The viewer's choice is remembered on this device.
+    const hasMl = lines.some((l) => l.ml);
+    let ccLang = hasMl ? "ml" : "en", capText = null;
+    try {
+      const saved = localStorage.getItem("fe-subtitles");
+      if (saved === "en" || saved === "off" || (saved === "ml" && hasMl)) ccLang = saved;
+    } catch (e) { /* storage blocked: keep the default */ }
+    const setLang = (lang) => {
+      ccLang = lang;
+      try { localStorage.setItem("fe-subtitles", lang); } catch (e) { /* not remembered */ }
+      capText = null;
+      api.update(state.t);
+      api.cc();
+    };
+    // Voice language (only lessons recorded in both): switches the voice in place, at the same moment.
+    const langBtn = bar.querySelector(".fe-lang");
+    const showLang = () => {
+      langBtn.textContent = voiceLang === "ml" ? "മ" : "EN";
+      langBtn.setAttribute("aria-label", "Voice: " + (voiceLang === "ml" ? "Malayalam. Switch to English" : "English. Switch to Malayalam"));
+    };
+    if (langBtn) {
+      showLang();
+      langBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        voiceLang = voiceLang === "ml" ? "en" : "ml";
+        try { localStorage.setItem("fe-voice-lang", voiceLang); } catch (e) { /* not remembered */ }
+        showLang();
+        if (audio.voiceEl) {
+          audio.voiceEl.pause();
+          loadVoice();
+        }
+        wake();
+      });
+    }
+    // Playback speed menu.
+    const sp = bar.querySelector(".fe-sp"), spMenu = sp.nextElementSibling;
+    const showRate = () => {
+      sp.textContent = state.rate + "×";
+      sp.setAttribute("aria-label", "Playback speed " + state.rate + "×");
+      for (const b of spMenu.children) b.setAttribute("aria-checked", String(Number(b.dataset.rate) === state.rate));
+    };
+    const openSp = (open) => {
+      spMenu.hidden = !open;
+      sp.setAttribute("aria-expanded", String(open));
+      if (open) (spMenu.querySelector('[aria-checked="true"]') || spMenu.firstElementChild).focus();
+    };
+    sp.addEventListener("click", (e) => { e.stopPropagation(); openSp(spMenu.hidden); wake(); });
+    spMenu.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-rate]");
+      if (!b) return;
+      e.stopPropagation();
+      setRate(Number(b.dataset.rate));
+      showRate();
+      openSp(false);
+      sp.focus();
+    });
+    spMenu.addEventListener("keydown", (e) => {
+      const items = Array.from(spMenu.children), i = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+      }
+      if (e.key === "Escape") { e.stopPropagation(); openSp(false); sp.focus(); }
+    });
+    document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-spw")) openSp(false); }, true);
+    const stepRate = (d) => {
+      const i = SPEEDS.indexOf(state.rate), j = clamp(i + d, 0, SPEEDS.length - 1);
+      if (j !== i) { setRate(SPEEDS[j]); showRate(); }
+    };
+    showRate();
+    const openMenu = (open) => {
+      if (!ccMenu) return;
+      ccMenu.hidden = !open;
+      cc.setAttribute("aria-expanded", String(open));
+      if (open) (ccMenu.querySelector('[aria-checked="true"]') || ccMenu.firstElementChild).focus();
+    };
+    if (cc) {
+      cc.addEventListener("click", (e) => { e.stopPropagation(); openMenu(ccMenu.hidden); wake(); });
+      ccMenu.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-lang]");
+        if (!b) return;
+        e.stopPropagation();
+        setLang(b.dataset.lang);
+        openMenu(false);
+        cc.focus();
+      });
+      ccMenu.addEventListener("keydown", (e) => {
+        const items = Array.from(ccMenu.children), i = items.indexOf(document.activeElement);
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+        }
+        if (e.key === "Escape") { e.stopPropagation(); openMenu(false); cc.focus(); }
+      });
+      document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-ccw")) openMenu(false); }, true);
+      if (!hasMl) ccMenu.querySelector('[data-lang="ml"]').remove();
+    }
+    const pp = bar.querySelector(".fe-pp");
+    const trk = bar.querySelector(".fe-track");
+    const fill = trk.querySelector("i");
+    const time = bar.querySelector(".fe-time");
+    const snd = bar.querySelector(".fe-snd");
+    trk.setAttribute("aria-valuemax", String(Math.round(END)));
+    let idle = 0;
+    const wake = () => {
+      document.body.classList.remove("fe-idle");
+      clearTimeout(idle);
+      idle = setTimeout(() => { if (state.playing) document.body.classList.add("fe-idle"); }, 2600);
+    };
+    document.addEventListener("pointermove", wake);
+    pp.addEventListener("click", (e) => { e.stopPropagation(); enableAudio(); state.playing ? pause() : play(); wake(); });
+    snd.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (!audio.enabled) { await enableAudio(); return; }
+      audio.muted = !audio.muted;
+      if (audio.muted) stopSession(); else if (state.playing) startSession(state.t);
+      api.sound();
+    });
+    const seekTo = (clientX) => {
+      const r = trk.getBoundingClientRect();
+      seek(clamp01((clientX - r.left) / r.width) * END);
+    };
+    let drag = false;
+    trk.addEventListener("pointerdown", (e) => { e.stopPropagation(); enableAudio(); drag = true; trk.setPointerCapture(e.pointerId); seekTo(e.clientX); });
+    trk.addEventListener("pointermove", (e) => { if (drag) seekTo(e.clientX); });
+    trk.addEventListener("pointerup", () => { drag = false; });
+    trk.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { seek(state.t + 5); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { seek(state.t - 5); e.preventDefault(); }
+    });
+    // The first click anywhere turns the sound on; later clicks on the lesson pause and resume.
+    document.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".fe-ui")) return;
+      if (!audio.enabled) { enableAudio(); return; }
+      state.playing ? pause() : play();
+      wake();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.target.closest && e.target.closest(".fe-ccw")) return; // the subtitle menu handles its own keys
+      if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
+      if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === ">" || e.key === ".") { stepRate(1); wake(); }
+      if (e.key === "<" || e.key === ",") { stepRate(-1); wake(); }
+      if (e.key === "Escape" && fs.pseudo) fs.toggle();
+    });
+    const api = {
+      update(t) {
+        const done = !state.playing && t >= END - 0.01;
+        pp.innerHTML = state.playing ? ICON.pause : done ? ICON.replay : ICON.play;
+        pp.setAttribute("aria-label", state.playing ? "Pause" : done ? "Replay" : "Play");
+        fill.style.width = ((t / END) * 100).toFixed(3) + "%";
+        trk.setAttribute("aria-valuenow", String(Math.round(t)));
+        time.textContent = fmt(t) + " / " + fmt(END);
+        let text = "";
+        if (ccLang !== "off") for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = (ccLang === "ml" && l.ml) || l.text;
+        if (text !== capText) {
+          capText = text;
+          cap.textContent = text;
+          cap.hidden = !text;
+          cap.lang = ccLang === "ml" ? "ml" : "en";
+        }
+        if (!state.playing) wake();
+      },
+      sound() {
+        const on = audio.enabled && !audio.muted;
+        snd.innerHTML = on ? ICON.on : ICON.off;
+        snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
+        hint.hidden = audio.enabled;
+      },
+      cc() {
+        if (!cc) return;
+        const cur = CC_LANGS.find((l) => l.id === ccLang);
+        cc.textContent = ccLang === "off" ? "CC" : cur.short;
+        cc.classList.toggle("is-off", ccLang === "off");
+        cc.setAttribute("aria-label", "Subtitles: " + cur.name);
+        for (const b of ccMenu.children) b.setAttribute("aria-checked", String(b.dataset.lang === ccLang));
+      },
+      full() {
+        if (!fsb) return;
+        const on = fs.active();
+        fsb.innerHTML = on ? ICON.exit : ICON.full;
+        fsb.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+      },
+    };
+    api.sound();
+    api.full();
+    api.cc();
+    wake();
+    return api;
+  })();
+
+  // For tests and frame-by-frame capture: window.lessonPlayer.ready.then(() => { pause(); seek(12.5); }).
+  let markReady;
+  window.lessonPlayer = {
+    duration: END,
+    ready: new Promise((r) => { markReady = r; }),
+    play, pause, seek,
+    time: () => state.t,
+    score: () => audio.score,
+    // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
+    audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
+    voice: () => ({ lines, lang: voiceLang, loaded: !!(audio.voiceEl && audio.voiceEl.readyState >= 1), playing: !!(audio.voiceEl && !audio.voiceEl.paused), at: audio.voiceEl ? audio.voiceEl.currentTime : null }),
+    rate: () => state.rate,
+    setRate,
+  };
+
+  // ── Boot ───────────────────────────────────────────────────────────────────
+  async function boot() {
+    makeVoice();
+    try {
+      await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
+    } catch (e) { /* system fonts stand in */ }
+    run("shared.js", makeKit(stage, 0, OLD_END));
+    for (const sc of scenes) {
+      const box = el("div", { class: "fe-scene" });
+      stage.append(box);
+      const kit = makeKit(box, sc.oldStart, sc.oldDur);
+      run("scene-" + sc.id + ".js", kit);
+      const def = defs[sc.id];
+      if (def && def.init) await def.init.call(def, kit);
+      instances.push({ sc, def, box, kit });
+    }
+    if (modules["score.js"]) run("score.js", makeKit(stage, 0, OLD_END));
+    audio.score = recordScore();
+    // Wait (briefly) for the images so the first frames do not pop in.
+    const imgs = Array.from(stage.querySelectorAll("img"));
+    await Promise.race([
+      Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })))),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+    instances.forEach((inst) => { inst.box.style.display = "none"; });
+    renderAt(0);
+    document.body.classList.add("fe-ready");
+    // A parent page that allows autoplay (iframe allow="autoplay" after a click) gets sound
+    // straight away; otherwise the first click turns it on.
+    if (setupAudio() && audio.ctx.state === "running") { audio.enabled = true; ui.sound(); }
+    play();
+    requestAnimationFrame(tick);
+    markReady();
+  }
+  boot().catch((e) => {
+    document.querySelector(".fe-loading").textContent = "This lesson could not start. Please reload the page.";
+    throw e;
+  });
+})();
+
+</script>
+</body>
+</html>

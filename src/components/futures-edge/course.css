@@ -381,3 +381,64 @@
     transition: none;
   }
 }
+
+/* Phase 6 lesson pages (XORA Intelligence). */
+.fe-intel {
+  min-height: 100vh;
+  padding-block: clamp(96px, 12vw, 132px) clamp(48px, 8vw, 96px);
+}
+
+.fe-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-bottom: 12px;
+  color: var(--fe-muted);
+  font-size: 15px;
+}
+
+.fe-intel .fe-intro {
+  margin-bottom: 24px;
+}
+
+.fe-intel-stage {
+  border: 1px solid var(--fe-glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000;
+}
+
+.fe-intel-stage.is-full {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  border: 0;
+  border-radius: 0;
+}
+
+.fe-intel-stage.is-full .fe-stage {
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+}
+
+.fe-intel-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.fe-intel-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--fe-glass-border);
+  border-radius: 12px;
+  color: var(--fe-fg);
+  background: var(--fe-glass);
+}

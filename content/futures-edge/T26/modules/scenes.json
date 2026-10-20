@@ -1,0 +1,123 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as T01: deep void ground, frosted glass panels, clean generic phone mock-ups of the XORA app (fictional numbers), the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson twenty-six",
+      "dur": 8,
+      "desc": "Title card: Phase 6 XORA Intelligence, lesson T26 Understanding AI decisions; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Three answers",
+      "dur": 16,
+      "desc": "A phone mock cycles the verdict BUY, SELL, NO TRADE: results of rule-based checks, not predictions."
+    },
+    {
+      "id": "outcomes",
+      "name": "BUY, SHORT or wait",
+      "dur": 25,
+      "desc": "Three cards: BUY (long) gains if price rises, SHORT if it falls, NO TRADE stands aside; a plan lasts one candle."
+    },
+    {
+      "id": "checks",
+      "name": "Rules, not guesses",
+      "dur": 20,
+      "desc": "Coin data flows through yes/no checks that tick or cross; techniques the filters draw on."
+    },
+    {
+      "id": "confidence",
+      "name": "What confidence means",
+      "dur": 22,
+      "desc": "Confirmations that agree fill a score bar; disagreeing or missing checks add nothing."
+    },
+    {
+      "id": "checklist",
+      "name": "The entry checklist",
+      "dur": 22,
+      "desc": "ENTRY CHECKLIST mock: BUY 72% / 60% READY, SELL 55% / 60% not ready."
+    },
+    {
+      "id": "mistake",
+      "name": "Not a chance of winning",
+      "dur": 19,
+      "desc": "Misconception 72% = chance to win is crossed out; evidence strength, not a chance of winning."
+    },
+    {
+      "id": "gates",
+      "name": "Safety checks",
+      "dur": 23,
+      "desc": "A READY setup meets safety gates; spread too wide closes a gate: No trade."
+    },
+    {
+      "id": "notrade",
+      "name": "Uncertainty and NO TRADE",
+      "dur": 19,
+      "desc": "A choppy range, checks disagree, No trade with reasons; waiting is a good outcome."
+    },
+    {
+      "id": "setting",
+      "name": "Your confidence setting",
+      "dur": 30,
+      "desc": "Trade Settings mock: Enter only at or above 50%; higher needs more confirmation; 45% is the chart-pattern route; Basic / Secure / Advanced."
+    },
+    {
+      "id": "approval",
+      "name": "Approve, auto or manual",
+      "dur": 26,
+      "desc": "Approve buy countdown, auto approval toggle, and the manual BUY sheet saying whether the engine agrees."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 22,
+      "desc": "Pause: BUY 68% / 70%, what happens? Answer: no READY, no trade."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 22,
+      "desc": "No guaranteed profits, rules can be wrong, slippage, fees, leverage; demo first; not financial advice."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 22,
+      "desc": "Three points and a check question."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T27 Reading XORA trading insights; risk line; lockup."
+    }
+  ]
+}

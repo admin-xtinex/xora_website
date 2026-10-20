@@ -1,0 +1,430 @@
+{
+  "id": "T27",
+  "title": "T27 Reading XORA Trading Insights",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson twenty-seven: reading XORA trading insights. The last lesson of Phase 6.",
+      "say": "Lesson twenty-seven: reading Zora trading insights. The last lesson of Phase six.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 5.6,
+      "scene": "hook",
+      "text": "In T26 you learned how XORA decides. Now let's read what it shows you.",
+      "say": "In T twenty-six you learned how Zora decides. Now let's read what it shows you.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14,
+      "slot": 8,
+      "scene": "hook",
+      "text": "The Signals screen packs a lot onto one coin. We'll read it card by card, top to bottom.",
+      "say": "The Signals screen packs a lot onto one coin. We'll read it card by card, top to bottom.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 22.4,
+      "slot": 7.6,
+      "scene": "opportunity",
+      "text": "First, the TRADE OPPORTUNITY card. It shows the direction and the setup: here, BUY, support reclaim.",
+      "say": "First, the TRADE OPPORTUNITY card. It shows the direction and the setup: here, buy, support reclaim.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 30,
+      "slot": 6.8,
+      "scene": "opportunity",
+      "text": "ENTRY is where the trade would start. STOP is where it closes if price goes against you.",
+      "say": "ENTRY is where the trade would start. STOP is where it closes if price goes against you.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 36.8,
+      "slot": 6.2,
+      "scene": "opportunity",
+      "text": "RISK is the stop distance in percent. NEXT RES. is the next resistance above.",
+      "say": "RISK is the stop distance in percent. NEXT RES. Is the next resistance above.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 43.4,
+      "slot": 5.4,
+      "scene": "rmath",
+      "text": "Under the numbers, a bar reads: 2.0 R to the next level. What is R?",
+      "say": "Under the numbers, a bar reads: two R to the next level. What is R?",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 48.8,
+      "slot": 6.6,
+      "scene": "rmath",
+      "text": "One R is your risk: the distance from entry to stop. Here, 60,000 minus 59,700 is 300.",
+      "say": "One R is your risk: the distance from entry to stop. Here, sixty thousand minus fifty-nine thousand seven hundred is three hundred.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 55.4,
+      "slot": 6,
+      "scene": "rmath",
+      "text": "The next resistance is 600 away. 600 divided by 300 is 2. So, 2.0 R of room.",
+      "say": "The next resistance is six hundred away. Six hundred divided by three hundred is two. So, two R of room.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 61.4,
+      "slot": 3.6,
+      "scene": "rmath",
+      "text": "It's room on the chart, not a promise.",
+      "say": "It's room on the chart, not a promise.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 65.4,
+      "slot": 6,
+      "scene": "insights",
+      "text": "Tap Full AI insights for the detailed page. It refreshes every 20 seconds.",
+      "say": "Tap Full AI insights for the detailed page. It refreshes every twenty seconds.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 71.4,
+      "slot": 6.2,
+      "scene": "insights",
+      "text": "At the top, the verdict: BUY if price trades above 60,000. For this candle only.",
+      "say": "At the top, the verdict: buy if price trades above sixty thousand. For this candle only.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 77.6,
+      "slot": 7,
+      "scene": "insights",
+      "text": "The PRICE MAP lines up resistance, support, your stop and entry, with distances in percent.",
+      "say": "The PRICE MAP lines up resistance, support, your stop and entry, with distances in percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 84.6,
+      "slot": 8.4,
+      "scene": "insights",
+      "text": "Further down: the ENTRY CHECKLIST, TRADE MANAGEMENT for open trades, and ENGINE STATUS.",
+      "say": "Further down: the ENTRY CHECKLIST, TRADE MANAGEMENT for open trades, and ENGINE STATUS.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 93.4,
+      "slot": 6,
+      "scene": "plan",
+      "text": "The TRADE PLAN does the maths. First, size: your margin times your leverage.",
+      "say": "The TRADE PLAN does the maths. First, size: your margin times your leverage.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 99.4,
+      "slot": 5.4,
+      "scene": "plan",
+      "text": "With 3 USDT margin at 10x, the position size is 3 times 10: 30 USDT.",
+      "say": "With three U-S-D-T margin at ten ex, the position size is three times ten: thirty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 104.8,
+      "slot": 4.5,
+      "scene": "plan",
+      "text": "The stop is 0.50% away. 0.50% of 30 USDT is 0.15 USDT.",
+      "say": "The stop is zero point five percent away. Zero point five percent of thirty U-S-D-T is zero point one five U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 109.3,
+      "slot": 6.7,
+      "scene": "plan",
+      "text": "So if the stop is hit, you lose about 0.15 USDT, plus fees. Slippage can make it more.",
+      "say": "So if the stop is hit, you lose about zero point one five U-S-D-T, plus fees. Slippage can make it more.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 116.4,
+      "slot": 6.8,
+      "scene": "market",
+      "text": "MARKET shows volatility as ATR, the average true range: how far a candle usually travels.",
+      "say": "MARKET shows volatility as ATR, the average true range: how far a candle usually travels.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 123.2,
+      "slot": 5.9,
+      "scene": "market",
+      "text": "Here, ATR on 5 minutes is 90 USDT. Bigger ATR means wilder moves.",
+      "say": "Here, ATR on five minutes is ninety U-S-D-T. Bigger ATR means wilder moves.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 129.1,
+      "slot": 6.9,
+      "scene": "market",
+      "text": "Recent swing highs and lows are the turning points price left behind.",
+      "say": "Recent swing highs and lows are the turning points price left behind.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 136.4,
+      "slot": 6.2,
+      "scene": "carousel1",
+      "text": "Next, swipe the market-read carousel. Card one: the Xora read, a plain summary.",
+      "say": "Next, swipe the market-read carousel. Card one: the Xora read, a plain summary.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 142.6,
+      "slot": 7.5,
+      "scene": "carousel1",
+      "text": "Its note says: computed on this phone, explanatory only. The engine's stop and exits do not use it.",
+      "say": "Its note says: computed on this phone, explanatory only. The engine's stop and exits do not use it.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 150.1,
+      "slot": 6.9,
+      "scene": "carousel1",
+      "text": "Card two: VOLUME COMPARISON. Buy volume against sell volume in this price range.",
+      "say": "Card two: VOLUME COMPARISON. Buy volume against sell volume in this price range.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 157.4,
+      "slot": 7.4,
+      "scene": "carousel2",
+      "text": "Card three: ORDER BOOK DIFFERENCE. Big resting orders, called walls, on each side, and the spread.",
+      "say": "Card three: ORDER BOOK DIFFERENCE. Big resting orders, called walls, on each side, and the spread.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 164.8,
+      "slot": 4.8,
+      "scene": "carousel2",
+      "text": "Spoof risk: walls that appear and vanish may be fake.",
+      "say": "Spoof risk: walls that appear and vanish may be fake.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 169.6,
+      "slot": 5,
+      "scene": "carousel2",
+      "text": "Absorption: big orders soak up trades, and price barely moves.",
+      "say": "Absorption: big orders soak up trades, and price barely moves.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 174.6,
+      "slot": 6,
+      "scene": "carousel2",
+      "text": "Card four: PRICE-RANGE REPLAY. When price was here before, compared with now.",
+      "say": "Card four: PRICE-RANGE REPLAY. When price was here before, compared with now.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 180.6,
+      "slot": 6.4,
+      "scene": "carousel2",
+      "text": "Card five: TRIGGER LEVELS. For example, the stop: where the trade closes.",
+      "say": "Card five: TRIGGER LEVELS. For example, the stop: where the trade closes.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 187.4,
+      "slot": 5.5,
+      "scene": "horizon",
+      "text": "How far ahead does XORA look? Decisions are made per 1-minute candle.",
+      "say": "How far ahead does Zora look? Decisions are made per one-minute candle.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 192.9,
+      "slot": 6.2,
+      "scene": "horizon",
+      "text": "Each plan lasts one candle. When it closes, the checks run again on fresh data.",
+      "say": "Each plan lasts one candle. When it closes, the checks run again on fresh data.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 199.1,
+      "slot": 7.9,
+      "scene": "horizon",
+      "text": "The 5m, 15m and 1h charts add context. XORA does not predict price 10 or 15 minutes ahead.",
+      "say": "The five-minute, fifteen-minute and one-hour charts add context. Zora does not predict price ten or fifteen minutes ahead.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 207.4,
+      "slot": 6.2,
+      "scene": "mistake",
+      "text": "A common mistake: treating insights as a forecast. 2.0 R is room, not a promise.",
+      "say": "A common mistake: treating insights as a forecast. Two R is room, not a promise.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 213.6,
+      "slot": 5.6,
+      "scene": "mistake",
+      "text": "And the Xora read only explains the market now. It does not predict it.",
+      "say": "And the Xora read only explains the market now. It does not predict it.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 219.2,
+      "slot": 4.8,
+      "scene": "mistake",
+      "text": "Use insights to understand a setup, then decide calmly.",
+      "say": "Use insights to understand a setup, then decide calmly.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 224.4,
+      "slot": 11.6,
+      "scene": "try",
+      "text": "Your turn. Margin 3 USDT at 10x. Entry 60,000, stop 59,400. How much is at risk?",
+      "say": "Your turn. Margin three U-S-D-T at ten ex. Entry sixty thousand, stop fifty-nine thousand four hundred. How much is at risk?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 236,
+      "slot": 6.6,
+      "scene": "try",
+      "text": "Size is 3 times 10: 30 USDT. The stop is 600 away: 1.00%. 1.00% of 30 is 0.30 USDT.",
+      "say": "Size is three times ten: thirty U-S-D-T. The stop is six hundred away: one percent. One percent of thirty is zero point three U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 242.6,
+      "slot": 5.4,
+      "scene": "try",
+      "text": "That's 0.30 USDT before fees and slippage. Well done if you got it!",
+      "say": "That's zero point three U-S-D-T before fees and slippage. Well done if you got it!",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 248.4,
+      "slot": 4.5,
+      "scene": "risks",
+      "text": "Insights help, but they don't remove risk.",
+      "say": "Insights help, but they don't remove risk.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 252.9,
+      "slot": 5.6,
+      "scene": "risks",
+      "text": "XORA does not guarantee profits. Setups fail, and losing trades happen.",
+      "say": "Zora does not guarantee profits. Setups fail, and losing trades happen.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 258.5,
+      "slot": 5.6,
+      "scene": "risks",
+      "text": "Fees, slippage and leverage can make a loss bigger than the plan shows.",
+      "say": "Fees, slippage and leverage can make a loss bigger than the plan shows.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 264.1,
+      "slot": 5.9,
+      "scene": "risks",
+      "text": "Practise in DEMO first. This is education, not financial advice.",
+      "say": "Practise in demo first. This is education, not financial advice.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 270.4,
+      "slot": 5.8,
+      "scene": "recap",
+      "text": "Recap. The TRADE OPPORTUNITY card: entry, stop, risk, next level, and R.",
+      "say": "Recap. The TRADE OPPORTUNITY card: entry, stop, risk, next level, and R.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 276.2,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "Size is margin times leverage. Risk is size times the stop distance.",
+      "say": "Size is margin times leverage. Risk is size times the stop distance.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 281.6,
+      "slot": 8.4,
+      "scene": "recap",
+      "text": "Insights explain the market now. They are not predictions.",
+      "say": "Insights explain the market now. They are not predictions.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 290.6,
+      "slot": 6,
+      "scene": "finish",
+      "text": "Congratulations! You've finished Phase 6, and the whole Futures Edge course.",
+      "say": "Congratulations! You've finished Phase six, and the whole Futures Edge course.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 296.6,
+      "slot": 6.4,
+      "scene": "finish",
+      "text": "Now practise in DEMO. XORA does not guarantee profits. Not financial advice.",
+      "say": "Now practise in demo. Zora does not guarantee profits. Not financial advice.",
+      "note": ""
+    }
+  ]
+}

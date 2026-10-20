@@ -1,0 +1,123 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as T01: deep void ground, frosted glass panels, clean generic phone mock-ups of the XORA app (fictional numbers), the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson twenty-seven",
+      "dur": 8,
+      "desc": "Title card: Phase 6 XORA Intelligence, lesson T27 Reading XORA trading insights."
+    },
+    {
+      "id": "hook",
+      "name": "One coin, many cards",
+      "dur": 14,
+      "desc": "A phone mock of the Signals screen scrolls through its cards."
+    },
+    {
+      "id": "opportunity",
+      "name": "Trade opportunity",
+      "dur": 21,
+      "desc": "TRADE OPPORTUNITY card: BUY, support reclaim, ENTRY, STOP, RISK %, NEXT RES., approve countdown."
+    },
+    {
+      "id": "rmath",
+      "name": "What R means",
+      "dur": 22,
+      "desc": "Stop, entry, target bar: risk 300, room 600, 2.0 R to the next level."
+    },
+    {
+      "id": "insights",
+      "name": "AI insights page",
+      "dur": 28,
+      "desc": "AI Insights mock: verdict, PRICE MAP with distances, then checklist, trade management, engine status."
+    },
+    {
+      "id": "plan",
+      "name": "The trade plan maths",
+      "dur": 23,
+      "desc": "Worked example: 3 USDT x 10x = 30 USDT size; 0.50% stop = 0.15 USDT risk before fees; exit rule."
+    },
+    {
+      "id": "market",
+      "name": "Market: ATR and swings",
+      "dur": 20,
+      "desc": "Candles with ranges averaging into ATR 90 USDT; swing highs and lows marked."
+    },
+    {
+      "id": "carousel1",
+      "name": "Xora read and volume",
+      "dur": 21,
+      "desc": "Carousel: Xora read (explanatory only) and Volume comparison bars."
+    },
+    {
+      "id": "carousel2",
+      "name": "Order book, replay, levels",
+      "dur": 30,
+      "desc": "Carousel: Order book difference (walls, spread, spoof risk, absorption), Price-range replay, Trigger levels."
+    },
+    {
+      "id": "horizon",
+      "name": "A 1-minute horizon",
+      "dur": 20,
+      "desc": "A 1-minute candle forms, its plan expires at close, a new plan; 1m/5m/15m/1h tabs; no 10-15 minute prediction."
+    },
+    {
+      "id": "mistake",
+      "name": "Not a forecast",
+      "dur": 17,
+      "desc": "Misconception: insights as forecast; correction: room, not a promise; explanatory only."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 24,
+      "desc": "Pause: 3 USDT x 10x, stop 1.00% away: risk 0.30 USDT before fees."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 22,
+      "desc": "No guaranteed profits, setups fail, fees, slippage, leverage; demo first; not financial advice."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 20,
+      "desc": "Three points to remember."
+    },
+    {
+      "id": "finish",
+      "name": "Course complete",
+      "dur": 13,
+      "desc": "Congratulations on finishing Phase 6 and the course; practise in DEMO; risk line; lockup."
+    }
+  ]
+}

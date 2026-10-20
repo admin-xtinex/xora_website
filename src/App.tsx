@@ -5,6 +5,7 @@ import { FinalCTASection } from "./components/FinalCTASection";
 import { Footer } from "./components/Footer";
 import { FuturesEdgeSection } from "./components/FuturesEdgeSection";
 import { CourseCatalog } from "./components/futures-edge/CourseCatalog";
+import { IntelligenceLesson, intelligenceFromPath } from "./components/futures-edge/IntelligenceLesson";
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
 import { IntelligenceShowcaseSection } from "./components/IntelligenceShowcaseSection";
@@ -83,6 +84,8 @@ function CourseRoutes({ path }: { path: string }) {
     if (FuturesEdgeApp && path === "/course") navigate("/learn/futures-edge", true);
   }, [path]);
   if (FuturesEdgeApp && path === "/course") return null;
+  const intelligence = intelligenceFromPath(path);
+  if (intelligence) return <IntelligenceLesson id={intelligence.id} />;
   if (FuturesEdgeApp && isFuturesEdgePath(path)) {
     return (
       <Suspense fallback={<p role="status" style={{ minHeight: "100vh", margin: 0, display: "grid", placeItems: "center", color: "#b4bccb" }}>Loading the course…</p>}>

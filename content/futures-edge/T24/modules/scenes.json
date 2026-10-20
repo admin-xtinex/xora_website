@@ -1,0 +1,129 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Meet XORA",
+      "dur": 8,
+      "desc": "Title card: Phase 6 XORA Intelligence, lesson T24, Meet XORA; the tutor walks in beside a phone mock."
+    },
+    {
+      "id": "what",
+      "name": "One engine, three modes",
+      "dur": 28,
+      "desc": "What XORA is: one engine that runs in Demo (default, simulated fills), Live (real Binance futures orders, opt-in) or Live Support (alerts only)."
+    },
+    {
+      "id": "tabs",
+      "name": "Five tabs",
+      "dur": 18,
+      "desc": "The five tabs light up in turn: Home, Signals, XORA (centre), Trades, Settings, each with what it shows."
+    },
+    {
+      "id": "home",
+      "name": "The Home tab",
+      "dur": 22,
+      "desc": "Home mock: next engine check countdown, setups waiting, DEMO pill, BTC card with sparkline, account row and your coins with statuses."
+    },
+    {
+      "id": "signals",
+      "name": "The Signals tab",
+      "dur": 24,
+      "desc": "Signals mock: coin picker or Xora AI coin selection, price chart forming, trade opportunity card, entry checklist ticks, BUY / LONG and SHORT / SELL buttons."
+    },
+    {
+      "id": "xoratab",
+      "name": "The XORA tab",
+      "dur": 22,
+      "desc": "XORA tab mock: entry, leverage, margin, risk zone; unrealised P&L counting with price; trailing stop moving up; close position."
+    },
+    {
+      "id": "trades",
+      "name": "Trades and Settings",
+      "dur": 15,
+      "desc": "Trades mock (My Trades: Overview, Trades, Insights, wins and losses listed) then the Settings list."
+    },
+    {
+      "id": "flow",
+      "name": "The workflow",
+      "dur": 24,
+      "desc": "Six-step workflow: pick coins, read a coin on Signals, a setup triggers, approve or place your own (or skip), manage on XORA, review in Trades."
+    },
+    {
+      "id": "approve",
+      "name": "You approve",
+      "dur": 21,
+      "desc": "Auto trade approval off: a setup waits for Approve and expires with no trade; the manual order sheet says if the engine agrees or it is your call."
+    },
+    {
+      "id": "settings",
+      "name": "Trade Settings",
+      "dur": 24,
+      "desc": "Trade Settings mock and a worked example: 3 USDT margin at 10x is a 30 USDT position; 2 concurrent trades is up to 60 USDT; a 1% move is 0.30 USDT."
+    },
+    {
+      "id": "safety",
+      "name": "Safety settings",
+      "dur": 26,
+      "desc": "Four safety pieces animate: a stop on every trade (safety close), daily stop loss pausing entries until 00:00 IST, concurrent trades and one per coin, API key with withdrawals disabled."
+    },
+    {
+      "id": "mistake",
+      "name": "A common mistake",
+      "dur": 18,
+      "desc": "Mistake: Live on day one with high leverage; correction: Demo first, low leverage, every setup is a maybe."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 18,
+      "desc": "Pause and answer: auto approval is off and a setup triggers; the answer: it waits for your Approve or expires with no trade."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 21,
+      "desc": "Risk cards: a tool not a guarantee, real losses in Live, leverage and fees, account security."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 20,
+      "desc": "Three points: one engine and three modes, five tabs and one workflow, safety settings."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T25, how XORA analyses a coin; risk line."
+    }
+  ]
+}

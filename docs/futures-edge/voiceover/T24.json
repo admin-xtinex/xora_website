@@ -1,0 +1,394 @@
+{
+  "id": "T24",
+  "title": "T24 Meet XORA",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Phase six, lesson T24: meet XORA. Time to see the app that does the checking with you.",
+      "say": "Phase six, lesson T twenty-four: meet Zora. Time to see the app that does the checking with you.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.8,
+      "scene": "what",
+      "text": "XORA is an app that watches crypto coins, finds trade setups and helps you manage trades.",
+      "say": "Zora is an app that watches crypto coins, finds trade setups and helps you manage trades.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 15.2,
+      "slot": 6.8,
+      "scene": "what",
+      "text": "Behind it is one engine. It runs in three account modes: Demo, Live and Live Support.",
+      "say": "Behind it is one engine. It runs in three account modes: Demo, Live and Live Support.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 22,
+      "slot": 8.4,
+      "scene": "what",
+      "text": "Demo uses simulated fills: no real money. Live sends real Binance futures orders. Live Support only alerts you.",
+      "say": "Demo uses simulated fills: no real money. Live sends real Binance futures orders. Live Support only alerts you.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 30.4,
+      "slot": 5.6,
+      "scene": "what",
+      "text": "Demo is the default. Start there, like a pilot in a flight simulator.",
+      "say": "Demo is the default. Start there, like a pilot in a flight simulator.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 36.3,
+      "slot": 6.7,
+      "scene": "tabs",
+      "text": "Five tabs sit along the bottom: Home, Signals, XORA in the centre, Trades and Settings.",
+      "say": "Five tabs sit along the bottom: Home, Signals, Zora in the centre, Trades and Settings.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 43,
+      "slot": 6.4,
+      "scene": "tabs",
+      "text": "Home is your overview. Signals is for studying a coin. XORA manages an open trade.",
+      "say": "Home is your overview. Signals is for studying a coin. Zora manages an open trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 49.4,
+      "slot": 4.6,
+      "scene": "tabs",
+      "text": "Trades is your history. Settings holds your rules.",
+      "say": "Trades is your history. Settings holds your rules.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 54.4,
+      "slot": 6.8,
+      "scene": "home",
+      "text": "Home first. At the top: a countdown to the next engine check, and setups waiting.",
+      "say": "Home first. At the top: a countdown to the next engine check, and setups waiting.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 61.2,
+      "slot": 7.2,
+      "scene": "home",
+      "text": "A pill shows DEMO or LIVE. Then the Bitcoin card, today's result, open P&L and trades in use.",
+      "say": "A pill shows demo or LIVE. Then the Bitcoin card, today's result, open P&L and trades in use.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 68.4,
+      "slot": 7.6,
+      "scene": "home",
+      "text": "Your coins show a status: in trade, buy, sell, cooldown or watching. All numbers are fictional.",
+      "say": "Your coins show a status: in trade, buy, sell, cooldown or watching. All numbers are fictional.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 76.4,
+      "slot": 7.6,
+      "scene": "signals",
+      "text": "Signals is where you read one coin. Pick up to 20 coins yourself, or use Xora AI coin selection.",
+      "say": "Signals is where you read one coin. Pick up to twenty coins yourself, or use Xora AI coin selection.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 84,
+      "slot": 8,
+      "scene": "signals",
+      "text": "Each coin has a price chart, a trade opportunity card, and an entry checklist: a tick or cross per check.",
+      "say": "Each coin has a price chart, a trade opportunity card, and an entry checklist: a tick or cross per check.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 92,
+      "slot": 8,
+      "scene": "signals",
+      "text": "Two buttons stay at the bottom: BUY / LONG and SHORT / SELL, for your own manual orders.",
+      "say": "Two buttons stay at the bottom: buy / LONG and SHORT / sell, for your own manual orders.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 100.4,
+      "slot": 8.2,
+      "scene": "xoratab",
+      "text": "The XORA tab is the control room for an open trade: entry, leverage, margin, and the risk zone, the stop.",
+      "say": "The Zora tab is the control room for an open trade: entry, leverage, margin, and the risk zone, the stop.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 108.6,
+      "slot": 7.2,
+      "scene": "xoratab",
+      "text": "Unrealised P&L moves with price. The trailing stop can follow price and lock in some profit.",
+      "say": "Unrealised P&L moves with price. The trailing stop can follow price and lock in some profit.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 115.8,
+      "slot": 6.2,
+      "scene": "xoratab",
+      "text": "If you want out, CLOSE POSITION ends the trade yourself, at any time.",
+      "say": "If you want out, CLOSE POSITION ends the trade yourself, at any time.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 122.4,
+      "slot": 7.2,
+      "scene": "trades",
+      "text": "Trades shows My Trades: an overview, the full list, and insights. Losing trades are listed too.",
+      "say": "Trades shows My Trades: an overview, the full list, and insights. Losing trades are listed too.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 129.6,
+      "slot": 7.4,
+      "scene": "trades",
+      "text": "Settings holds Binance Connect, Trade Settings, Notifications and About.",
+      "say": "Settings holds Binance Connect, Trade Settings, Notifications and About.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 137.4,
+      "slot": 3.8,
+      "scene": "flow",
+      "text": "Here is the workflow XORA supports.",
+      "say": "Here is the workflow Zora supports.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 141.2,
+      "slot": 6.2,
+      "scene": "flow",
+      "text": "One: choose coins, or use Xora AI coin selection. Two: read a coin on Signals.",
+      "say": "One: choose coins, or use Xora AI coin selection. Two: read a coin on Signals.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 147.4,
+      "slot": 7,
+      "scene": "flow",
+      "text": "Three: a setup triggers. Four: approve it, place your own BUY or SHORT, or simply skip it.",
+      "say": "Three: a setup triggers. Four: approve it, place your own buy or SHORT, or simply skip it.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 154.4,
+      "slot": 6.6,
+      "scene": "flow",
+      "text": "Five: manage the open trade on the XORA tab. Six: review it later in Trades.",
+      "say": "Five: manage the open trade on the Zora tab. Six: review it later in Trades.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 161.4,
+      "slot": 7,
+      "scene": "approve",
+      "text": "Auto trade approval is off by default. A triggered setup then waits for you to tap Approve.",
+      "say": "Auto trade approval is off by default. A triggered setup then waits for you to tap Approve.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 168.4,
+      "slot": 6.6,
+      "scene": "approve",
+      "text": "The approval has a short timer. If you do nothing, it expires and no trade is opened.",
+      "say": "The approval has a short timer. If you do nothing, it expires and no trade is opened.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 175,
+      "slot": 7,
+      "scene": "approve",
+      "text": "On a manual order, the sheet tells you if the engine agrees, or if this one is your call.",
+      "say": "On a manual order, the sheet tells you if the engine agrees, or if this one is your call.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 182.4,
+      "slot": 7.8,
+      "scene": "settings",
+      "text": "Trade Settings are your rules: capital per trade, leverage, concurrent trades, coin selection and more.",
+      "say": "Trade Settings are your rules: capital per trade, leverage, concurrent trades, coin selection and more.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 190.2,
+      "slot": 7.6,
+      "scene": "settings",
+      "text": "Example: 3 USDT margin at 10x leverage controls a 30 USDT position. Leverage magnifies losses too.",
+      "say": "Example: three U-S-D-T margin at ten ex leverage controls a thirty U-S-D-T position. Leverage magnifies losses too.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 197.8,
+      "slot": 8.2,
+      "scene": "settings",
+      "text": "With 2 concurrent trades, up to 60 USDT of positions can be open at once. Fictional example.",
+      "say": "With two concurrent trades, up to sixty U-S-D-T of positions can be open at once. Fictional example.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 206.4,
+      "slot": 7.4,
+      "scene": "safety",
+      "text": "Now the safety settings. Every trade gets a stop. If a stop cannot be placed, the trade is closed.",
+      "say": "Now the safety settings. Every trade gets a stop. If a stop cannot be placed, the trade is closed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 213.8,
+      "slot": 8.2,
+      "scene": "safety",
+      "text": "Concurrent trades caps open trades, one per coin. A daily stop loss pauses new entries until 00:00 IST.",
+      "say": "Concurrent trades caps open trades, one per coin. A daily stop loss pauses new entries until zero o'clock IST.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 222,
+      "slot": 10,
+      "scene": "safety",
+      "text": "For Live, use an API key with futures trading on and withdrawals disabled. The secret is stored encrypted.",
+      "say": "For Live, use an A-P-I key with futures trading on and withdrawals disabled. The secret is stored encrypted.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 232.4,
+      "slot": 7.4,
+      "scene": "mistake",
+      "text": "A common mistake: switching to Live on day one with high leverage, because the app looks smart.",
+      "say": "A common mistake: switching to Live on day one with high leverage, because the app looks smart.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 239.8,
+      "slot": 10.2,
+      "scene": "mistake",
+      "text": "Better: practise in Demo first, keep leverage low, and treat every setup as a maybe, not a promise.",
+      "say": "Better: practise in Demo first, keep leverage low, and treat every setup as a maybe, not a promise.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 250.4,
+      "slot": 9.6,
+      "scene": "try",
+      "text": "Your turn. Auto trade approval is off, and a setup triggers. What happens next?",
+      "say": "Your turn. Auto trade approval is off, and a setup triggers. What happens next?",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 260,
+      "slot": 8,
+      "scene": "try",
+      "text": "It waits for your Approve. If you don't approve before it expires, no trade is opened.",
+      "say": "It waits for your Approve. If you don't approve before it expires, no trade is opened.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 268.3,
+      "slot": 7.7,
+      "scene": "risks",
+      "text": "Know the limits. XORA is a tool, not a guarantee. Setups can fail, and stops can slip in fast markets.",
+      "say": "Know the limits. Zora is a tool, not a guarantee. Setups can fail, and stops can slip in fast markets.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 276,
+      "slot": 7.1,
+      "scene": "risks",
+      "text": "In Live, losses are real money, and leverage makes them bigger. Fees come out of every trade.",
+      "say": "In Live, losses are real money, and leverage makes them bigger. Fees come out of every trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 283.1,
+      "slot": 5.9,
+      "scene": "risks",
+      "text": "XORA does not guarantee profits. Demo first. This is not financial advice.",
+      "say": "Zora does not guarantee profits. Demo first. This is not financial advice.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 289.4,
+      "slot": 4.9,
+      "scene": "recap",
+      "text": "Recap. One engine, three modes, and Demo is where you start.",
+      "say": "Recap. One engine, three modes, and Demo is where you start.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 294.3,
+      "slot": 7,
+      "scene": "recap",
+      "text": "Five tabs, one workflow: coins, Signals, a setup, your approval, the XORA tab, then Trades.",
+      "say": "Five tabs, one workflow: coins, Signals, a setup, your approval, the Zora tab, then Trades.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 301.3,
+      "slot": 7.7,
+      "scene": "recap",
+      "text": "And safety first: a stop on every trade, a daily stop loss, and withdrawals off on your API key.",
+      "say": "And safety first: a stop on every trade, a daily stop loss, and withdrawals off on your A-P-I key.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 309.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Next, T25: how XORA analyses a coin. XORA does not guarantee profits. Demo first. Not financial advice.",
+      "say": "Next, T twenty-five: how Zora analyses a coin. Zora does not guarantee profits. Demo first. Not financial advice.",
+      "note": ""
+    }
+  ]
+}

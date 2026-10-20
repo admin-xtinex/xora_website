@@ -4,8 +4,13 @@ import { LESSON_IDS, LESSON_WORKING_TITLES, PHASES, type LessonId } from '@futur
 import { LESSON_META } from '../content';
 import { CHECKPOINT_TITLES } from '../assessment/checkpoints';
 import { useProgress } from './progress-context';
-import { Link } from './router';
+import { LESSONS, PHASES as VIDEO_PHASES } from '@/components/futures-edge/courseData';
+import { Link, navigate } from './router';
 import { VideoLesson, videoFor } from './VideoLesson';
+
+/** Phase 6 · XORA Intelligence: video-only lessons served by the host at /learn/futures-edge/t24 … t27. */
+const INTEL_PHASE = VIDEO_PHASES.find((p) => p.id === 6);
+const INTEL = LESSONS.filter((l) => l.phase === 6);
 
 const DIAGNOSTIC = [
   { id: 'd1', q: 'Do you know what BTC/USDT means?', start: 'T03' as LessonId },
@@ -98,6 +103,31 @@ export function CourseHome() {
               ) : null}
             </li>
           ))}
+          {INTEL_PHASE && INTEL.length ? (
+            <li className="fel-phase">
+              <div className="fel-phase-head">
+                <p className="fel-kicker">Phase 6 · video lessons</p>
+                <h3>{INTEL_PHASE.name}</h3>
+                <p className="fel-small">{INTEL_PHASE.goal} Short narrated videos about the XORA app itself (slides and quizzes come later).</p>
+              </div>
+              <ul className="fel-cards">
+                {INTEL.map((l) => {
+                  const href = `/learn/futures-edge/${l.id.toLowerCase()}`;
+                  const ready = l.status === 'available';
+                  return (
+                    <li key={l.id}>
+                      <a href={href} className="fel-card" onClick={(e) => { if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); navigate(href); }}>
+                        <span className="fel-card-id">{l.id}</span>
+                        <span className="fel-card-title">{l.title}</span>
+                        <span className="fel-card-sum">{l.line}</span>
+                        <span className="fel-card-video">{ready ? `▶ ${l.minutes}-min video` : 'Coming soon'}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          ) : null}
         </ol>
       </section>
 

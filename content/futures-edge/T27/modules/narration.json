@@ -1,0 +1,193 @@
+{
+  "about": "T27 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson twenty-seven: reading XORA trading insights. The last lesson of Phase 6."
+    },
+    {
+      "t": 8.4,
+      "text": "In T26 you learned how XORA decides. Now let's read what it shows you."
+    },
+    {
+      "t": 14.0,
+      "text": "The Signals screen packs a lot onto one coin. We'll read it card by card, top to bottom."
+    },
+    {
+      "t": 22.4,
+      "text": "First, the TRADE OPPORTUNITY card. It shows the direction and the setup: here, BUY, support reclaim."
+    },
+    {
+      "t": 30.0,
+      "text": "ENTRY is where the trade would start. STOP is where it closes if price goes against you."
+    },
+    {
+      "t": 36.8,
+      "text": "RISK is the stop distance in percent. NEXT RES. is the next resistance above."
+    },
+    {
+      "t": 43.4,
+      "text": "Under the numbers, a bar reads: 2.0 R to the next level. What is R?"
+    },
+    {
+      "t": 48.8,
+      "text": "One R is your risk: the distance from entry to stop. Here, 60,000 minus 59,700 is 300."
+    },
+    {
+      "t": 55.4,
+      "text": "The next resistance is 600 away. 600 divided by 300 is 2. So, 2.0 R of room."
+    },
+    {
+      "t": 61.4,
+      "text": "It's room on the chart, not a promise."
+    },
+    {
+      "t": 65.4,
+      "text": "Tap Full AI insights for the detailed page. It refreshes every 20 seconds."
+    },
+    {
+      "t": 71.4,
+      "text": "At the top, the verdict: BUY if price trades above 60,000. For this candle only."
+    },
+    {
+      "t": 77.6,
+      "text": "The PRICE MAP lines up resistance, support, your stop and entry, with distances in percent."
+    },
+    {
+      "t": 84.6,
+      "text": "Further down: the ENTRY CHECKLIST, TRADE MANAGEMENT for open trades, and ENGINE STATUS."
+    },
+    {
+      "t": 93.4,
+      "text": "The TRADE PLAN does the maths. First, size: your margin times your leverage."
+    },
+    {
+      "t": 99.4,
+      "text": "With 3 USDT margin at 10x, the position size is 3 times 10: 30 USDT."
+    },
+    {
+      "t": 104.8,
+      "text": "The stop is 0.50% away. 0.50% of 30 USDT is 0.15 USDT."
+    },
+    {
+      "t": 109.3,
+      "text": "So if the stop is hit, you lose about 0.15 USDT, plus fees. Slippage can make it more."
+    },
+    {
+      "t": 116.4,
+      "text": "MARKET shows volatility as ATR, the average true range: how far a candle usually travels."
+    },
+    {
+      "t": 123.2,
+      "text": "Here, ATR on 5 minutes is 90 USDT. Bigger ATR means wilder moves."
+    },
+    {
+      "t": 129.1,
+      "text": "Recent swing highs and lows are the turning points price left behind."
+    },
+    {
+      "t": 136.4,
+      "text": "Next, swipe the market-read carousel. Card one: the Xora read, a plain summary."
+    },
+    {
+      "t": 142.6,
+      "text": "Its note says: computed on this phone, explanatory only. The engine's stop and exits do not use it."
+    },
+    {
+      "t": 150.1,
+      "text": "Card two: VOLUME COMPARISON. Buy volume against sell volume in this price range."
+    },
+    {
+      "t": 157.4,
+      "text": "Card three: ORDER BOOK DIFFERENCE. Big resting orders, called walls, on each side, and the spread."
+    },
+    {
+      "t": 164.8,
+      "text": "Spoof risk: walls that appear and vanish may be fake."
+    },
+    {
+      "t": 169.6,
+      "text": "Absorption: big orders soak up trades, and price barely moves."
+    },
+    {
+      "t": 174.6,
+      "text": "Card four: PRICE-RANGE REPLAY. When price was here before, compared with now."
+    },
+    {
+      "t": 180.6,
+      "text": "Card five: TRIGGER LEVELS. For example, the stop: where the trade closes."
+    },
+    {
+      "t": 187.4,
+      "text": "How far ahead does XORA look? Decisions are made per 1-minute candle."
+    },
+    {
+      "t": 192.9,
+      "text": "Each plan lasts one candle. When it closes, the checks run again on fresh data."
+    },
+    {
+      "t": 199.1,
+      "text": "The 5m, 15m and 1h charts add context. XORA does not predict price 10 or 15 minutes ahead."
+    },
+    {
+      "t": 207.4,
+      "text": "A common mistake: treating insights as a forecast. 2.0 R is room, not a promise."
+    },
+    {
+      "t": 213.6,
+      "text": "And the Xora read only explains the market now. It does not predict it."
+    },
+    {
+      "t": 219.2,
+      "text": "Use insights to understand a setup, then decide calmly."
+    },
+    {
+      "t": 224.4,
+      "text": "Your turn. Margin 3 USDT at 10x. Entry 60,000, stop 59,400. How much is at risk?"
+    },
+    {
+      "t": 236.0,
+      "text": "Size is 3 times 10: 30 USDT. The stop is 600 away: 1.00%. 1.00% of 30 is 0.30 USDT."
+    },
+    {
+      "t": 242.6,
+      "text": "That's 0.30 USDT before fees and slippage. Well done if you got it!"
+    },
+    {
+      "t": 248.4,
+      "text": "Insights help, but they don't remove risk."
+    },
+    {
+      "t": 252.9,
+      "text": "XORA does not guarantee profits. Setups fail, and losing trades happen."
+    },
+    {
+      "t": 258.5,
+      "text": "Fees, slippage and leverage can make a loss bigger than the plan shows."
+    },
+    {
+      "t": 264.1,
+      "text": "Practise in DEMO first. This is education, not financial advice."
+    },
+    {
+      "t": 270.4,
+      "text": "Recap. The TRADE OPPORTUNITY card: entry, stop, risk, next level, and R."
+    },
+    {
+      "t": 276.2,
+      "text": "Size is margin times leverage. Risk is size times the stop distance."
+    },
+    {
+      "t": 281.6,
+      "text": "Insights explain the market now. They are not predictions."
+    },
+    {
+      "t": 290.6,
+      "text": "Congratulations! You've finished Phase 6, and the whole Futures Edge course."
+    },
+    {
+      "t": 296.6,
+      "text": "Now practise in DEMO. XORA does not guarantee profits. Not financial advice."
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "about": "T25 captions (no voiceover yet): How XORA analyses a coin. Each line starts at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson T25: how XORA analyses a coin. Let's look inside the routine."
+    },
+    {
+      "t": 8.4,
+      "text": "What does XORA do with a coin? Every minute, it runs the same careful routine."
+    },
+    {
+      "t": 14.5,
+      "text": "Candles in. Then volatility, swings, trend, zones, movement and possible setups."
+    },
+    {
+      "t": 20.7,
+      "text": "Out comes a plan for one candle, or no plan. Let's follow one fictional coin."
+    },
+    {
+      "t": 27.4,
+      "text": "It starts with history: the coin's recent 1-minute candles. Each shows open, high, low and close."
+    },
+    {
+      "t": 34.8,
+      "text": "XORA also checks bigger timeframes, like 5 and 15 minutes, and the order book."
+    },
+    {
+      "t": 40.9,
+      "text": "These are common techniques. XORA's filters draw on them; the exact rules are its own."
+    },
+    {
+      "t": 48.4,
+      "text": "One rule matters a lot: XORA uses closed candles only. A forming candle can still change."
+    },
+    {
+      "t": 55.4,
+      "text": "Its high, low and colour can flip before the minute ends, so a signal from it could vanish."
+    },
+    {
+      "t": 62.4,
+      "text": "So at every candle close, the engine makes a fresh plan for each coin."
+    },
+    {
+      "t": 69.4,
+      "text": "Next: volatility, how much price usually moves. A common measure is ATR, average true range."
+    },
+    {
+      "t": 76.6,
+      "text": "Simple version: average recent candle sizes. 60, 50, 40, 50 and 100 USDT average 60 USDT."
+    },
+    {
+      "t": 83.8,
+      "text": "Stops need room beyond that normal noise, or they get hit for no real reason."
+    },
+    {
+      "t": 90.4,
+      "text": "Swing points are turning points: a high with lower highs on both sides, or a low with higher lows."
+    },
+    {
+      "t": 97.8,
+      "text": "Highs go 60,100 then 60,250. Lows go 59,900 then 60,040. Higher highs and higher lows: UP."
+    },
+    {
+      "t": 105.4,
+      "text": "Lower highs and lower lows mean DOWN. Anything else is RANGE. Each timeframe gets its own trend."
+    },
+    {
+      "t": 114.4,
+      "text": "Swing lows and highs show where buyers or sellers stepped in before."
+    },
+    {
+      "t": 119.8,
+      "text": "XORA draws zones around them: support below price, resistance above. A zone is a band, not a line."
+    },
+    {
+      "t": 127.2,
+      "text": "Fictional zones here: support 60,000 to 60,060, resistance 60,480 to 60,530."
+    },
+    {
+      "t": 134.4,
+      "text": "Then movement. Momentum asks how strongly price is moving. RSI is one well-known gauge."
+    },
+    {
+      "t": 141.2,
+      "text": "Pressure compares buyers and sellers trading at market. Volume shows activity versus usual."
+    },
+    {
+      "t": 148.2,
+      "text": "Strong, agreeing movement adds evidence. Weak or mixed movement is a reason to wait."
+    },
+    {
+      "t": 155.4,
+      "text": "Now XORA looks for candidate setups, the shapes it trades."
+    },
+    {
+      "t": 160.2,
+      "text": "A reaction at support: price dips into the zone and bounces. Or a rejection at resistance."
+    },
+    {
+      "t": 167.1,
+      "text": "A breakout: a close beyond a level. Or a retest: price comes back to a broken level and holds."
+    },
+    {
+      "t": 177.4,
+      "text": "Our coin dipped into support and closed back up. That candle is the setup candle."
+    },
+    {
+      "t": 183.7,
+      "text": "The plan: BUY if price trades above the setup candle's high, 60,120. That price is the trigger."
+    },
+    {
+      "t": 190.9,
+      "text": "The stop sits beyond the support zone, at 59,940. Risk: 180 USDT per BTC, about 0.30%."
+    },
+    {
+      "t": 197.6,
+      "text": "The next resistance is 360 USDT above the trigger: 2 R, twice the risk."
+    },
+    {
+      "t": 205.4,
+      "text": "The next candle opens. Price climbs above 60,120, so the plan triggers."
+    },
+    {
+      "t": 211.4,
+      "text": "At the trigger, every check runs again. If something has changed, there is no trade."
+    },
+    {
+      "t": 217.9,
+      "text": "And if price never reaches 60,120 before the candle closes, the plan expires. A fresh plan follows."
+    },
+    {
+      "t": 227.4,
+      "text": "A common mistake: reading a plan as a prediction that price will go up."
+    },
+    {
+      "t": 233.0,
+      "text": "It is only an if. Most plans expire, no trade is normal, and triggered trades can still lose."
+    },
+    {
+      "t": 243.4,
+      "text": "Your turn. The setup candle's high is 60,120. The next candle reaches 60,100, then closes. What happens?"
+    },
+    {
+      "t": 253.0,
+      "text": "The trigger was never reached, so no trade. The plan expires, and a fresh plan comes at the close."
+    },
+    {
+      "t": 261.3,
+      "text": "Remember the limits. These checks read the past. They cannot know what price does next."
+    },
+    {
+      "t": 268.0,
+      "text": "Fast markets can jump past a stop, and fees apply to every trade."
+    },
+    {
+      "t": 273.2,
+      "text": "XORA does not guarantee profits. Use Demo first. This is not financial advice."
+    },
+    {
+      "t": 280.4,
+      "text": "Recap. XORA reads closed candles and makes a fresh plan every minute."
+    },
+    {
+      "t": 285.9,
+      "text": "It checks volatility, swings, trend, zones and movement, then looks for a setup."
+    },
+    {
+      "t": 292.1,
+      "text": "A plan is an if for one candle: a trigger, a stop beyond the level, and checks again."
+    },
+    {
+      "t": 299.6,
+      "text": "Next, T26: understanding AI decisions. XORA does not guarantee profits. Demo first. Not financial advice."
+    }
+  ]
+}

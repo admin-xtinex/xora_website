@@ -32,6 +32,7 @@ export const PHASES: Phase[] = [
   { id: 3, name: "Binance & Futures Essentials", goal: "Futures, margin and leverage, and their risks." },
   { id: 4, name: "Charts & Market Analysis", goal: "Read price movement without pretending to predict it." },
   { id: 5, name: "Scalping & Risk Management", goal: "A disciplined way to judge a trade, including no trade." },
+  { id: 6, name: "XORA Intelligence", goal: "How the XORA app reads a coin and shows its decisions, in plain words." },
 ];
 
 export const LESSONS: Lesson[] = [
@@ -67,6 +68,11 @@ export const LESSONS: Lesson[] = [
   { id: "T22", kind: "lesson", phase: 5, title: "Position Sizing and Risk Budget", line: "Size a position from the risk you accept.", minutes: 8, status: "available", pose: "point" },
   { id: "T23", kind: "lesson", phase: 5, title: "Full Scalping Decision Lifecycle", line: "A complete demo walkthrough, from chart to journal.", minutes: 8, status: "available", pose: "present" },
   { id: "CPB", kind: "checkpoint", phase: 5, title: "Checkpoint B", line: "A video recap of T14 to T23: chart and risk questions to pause and answer.", minutes: 4, status: "available", pose: "hi", flip: true },
+  // Phase 6 · XORA Intelligence: video lessons only (no interactive slides or quizzes yet), at /learn/futures-edge/t24…t27.
+  { id: "T24", kind: "lesson", phase: 6, title: "Meet XORA", line: "The app tour: tabs, demo and live accounts, and your settings.", minutes: 5, status: "available", pose: "wave" },
+  { id: "T25", kind: "lesson", phase: 6, title: "How XORA Analyses a Coin", line: "The common techniques its filters draw on: trend, levels, volume and more.", minutes: 5, status: "available", pose: "think" },
+  { id: "T26", kind: "lesson", phase: 6, title: "Understanding AI Decisions", line: "Buy, sell or no trade, confidence, and why waiting is normal.", minutes: 5, status: "available", pose: "explain" },
+  { id: "T27", kind: "lesson", phase: 6, title: "Reading XORA Trading Insights", line: "Trade opportunity, price map, entry checklist and trade plan.", minutes: 5, status: "available", pose: "point" },
 ];
 
 export const cardSrc = (id: string) => `/futures-edge/cards/${id}.webp`;

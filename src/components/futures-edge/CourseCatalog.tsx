@@ -16,7 +16,7 @@ export function CourseCatalog() {
         <header className="fe-head">
           <p className="fe-kicker">XORA Futures Edge · The course</p>
           <h1 id="fe-course-title" className="fe-title">
-            {LESSONS.length} short lessons, five phases
+            {LESSONS.length} short lessons, {PHASES.filter((p) => p.id > 0).length} phases
           </h1>
           <p className="fe-intro">
             From “what is Bitcoin?” to a full demo trading decision. New lessons unlock as they are released.

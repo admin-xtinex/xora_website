@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T27 · Reading XORA Trading Insights · XORA Futures Edge</title>
+<meta name="description" content="XORA Futures Edge lesson T27, an animated lesson (5 min). Education only, not financial advice.">
+<style>
+@font-face { font-family:"Outfit";font-weight:400 700; src: url("T27/fonts/outfit.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Manrope";font-weight:400 800; src: url("T27/fonts/manrope.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:400; src: url("T27/fonts/dm-mono-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:500; src: url("T27/fonts/dm-mono-500.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:400; src: url("T27/fonts/noto-sans-malayalam-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:600; src: url("T27/fonts/noto-sans-malayalam-600.woff2") format("woff2"); font-display: block; }
+
+html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; color: #eef1f7;
+  font-family: "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden;
+  background: #02030a; transform-origin: 50% 50%;
+  --display: "Outfit", "Manrope", system-ui, sans-serif;
+  --sans: "Manrope", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace; }
+#stage .fe-scene { position: absolute; inset: 0; overflow: hidden; }
+body:not(.fe-ready) #stage { visibility: hidden; }
+.fe-loading { position: fixed; inset: 0; display: grid; place-items: center; margin: 0; font-size: 15px; color: #6b7489; }
+body.fe-ready .fe-loading { display: none; }
+.fe-ui { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 10; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 14px; background: rgba(7, 8, 20, 0.8); border: 1px solid rgba(130, 160, 255, 0.18);
+  backdrop-filter: blur(8px); transition: opacity 0.4s; }
+body.fe-idle .fe-ui { opacity: 0; }
+body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
+.fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
+  background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
+.fe-btn svg { width: 20px; height: 20px; }
+.fe-ccw { position: relative; flex: none; }
+.fe-sp, .fe-lang { width: auto; min-width: 40px; padding: 0 8px; font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums; color: #eef1f7; }
+.fe-spw .fe-ccm { min-width: 96px; }
+.fe-cc { font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; letter-spacing: 0.04em; color: #eef1f7;
+  box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-cc.is-off { color: #6b7489; box-shadow: none; }
+.fe-ccm { position: absolute; right: 0; bottom: calc(100% + 10px); display: grid; min-width: 150px; padding: 6px; border-radius: 12px;
+  background: rgba(7, 8, 20, 0.96); border: 1px solid rgba(130, 160, 255, 0.25); }
+.fe-ccm[hidden] { display: none; }
+.fe-ccm button { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: none; color: #eef1f7; font: 600 15px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; text-align: left; cursor: pointer; }
+.fe-ccm button:hover, .fe-ccm button:focus-visible { background: rgba(238, 241, 247, 0.08); outline: none; }
+.fe-ccm button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+.fe-ccm button[aria-checked="true"]::before { background: #3ecbff; }
+.fe-cap:lang(ml) { font-family: "Noto Sans Malayalam", "Manrope", system-ui, sans-serif; line-height: 1.55; }
+/* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
+.fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+  color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
+  transition: bottom 0.4s; pointer-events: none; }
+body.fe-idle .fe-cap { bottom: 20px; }
+.fe-cap[hidden], body:not(.fe-ready) .fe-cap { display: none; }
+.fe-track { position: relative; flex: 1; height: 6px; border-radius: 6px; background: rgba(238, 241, 247, 0.14);
+  cursor: pointer; touch-action: none; }
+.fe-track::before { content: ""; position: absolute; inset: -12px 0; }
+.fe-track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, #3ecbff, #a855f7); }
+.fe-time { flex: none; font: 500 13px/1 "DM Mono", ui-monospace, monospace; color: #b4bccb; font-variant-numeric: tabular-nums; }
+.fe-hint { position: fixed; top: 12px; right: 12px; z-index: 10; padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(62, 203, 255, 0.45); background: rgba(7, 8, 20, 0.82); color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif; }
+.fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
+@media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-width: 400px) { .fe-ui { gap: 4px; padding: 6px; } .fe-sp, .fe-lang { min-width: 34px; padding: 0 4px; } }
+@media (max-height: 420px) {
+  .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
+  .fe-btn { width: 34px; height: 34px; }
+  .fe-sp, .fe-lang { width: auto; min-width: 34px; }
+  .fe-btn svg { width: 18px; height: 18px; }
+  .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
+  body.fe-idle .fe-cap { bottom: 8px; }
+  .fe-hint { top: 6px; right: 6px; padding: 7px 12px; font-size: 12px; }
+}
+
+</style>
+</head>
+<body>
+<p class="fe-loading">Loading lesson…</p>
+<div id="stage" aria-label="T27 Reading XORA Trading Insights" role="img"></div>
+<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/futures-edge/T27/. Edit the source, not this file. -->
+<script>window.FILM = {"id":"T27","width":1920,"height":1080,"scenes":[{"id":"title","name":"Lesson twenty-seven","dur":8,"k":1,"oldStart":0,"oldDur":8},{"id":"hook","name":"One coin, many cards","dur":14,"k":1,"oldStart":8,"oldDur":14},{"id":"opportunity","name":"Trade opportunity","dur":21,"k":1,"oldStart":22,"oldDur":21},{"id":"rmath","name":"What R means","dur":22,"k":1,"oldStart":43,"oldDur":22},{"id":"insights","name":"AI insights page","dur":28,"k":1,"oldStart":65,"oldDur":28},{"id":"plan","name":"The trade plan maths","dur":23,"k":1,"oldStart":93,"oldDur":23},{"id":"market","name":"Market: ATR and swings","dur":20,"k":1,"oldStart":116,"oldDur":20},{"id":"carousel1","name":"Xora read and volume","dur":21,"k":1,"oldStart":136,"oldDur":21},{"id":"carousel2","name":"Order book, replay, levels","dur":30,"k":1,"oldStart":157,"oldDur":30},{"id":"horizon","name":"A 1-minute horizon","dur":20,"k":1,"oldStart":187,"oldDur":20},{"id":"mistake","name":"Not a forecast","dur":17,"k":1,"oldStart":207,"oldDur":17},{"id":"try","name":"Try it","dur":24,"k":1,"oldStart":224,"oldDur":24},{"id":"risks","name":"Know the limits","dur":22,"k":1,"oldStart":248,"oldDur":22},{"id":"recap","name":"Recap","dur":20,"k":1,"oldStart":270,"oldDur":20},{"id":"finish","name":"Course complete","dur":13,"k":1,"oldStart":290,"oldDur":13}],"voice":{"src":null,"lines":[{"t":0.6,"d":7.15,"text":"Lesson twenty-seven: reading XORA trading insights. The last lesson of Phase 6.","ml":"പാഠം ഇരുപത്തിയേഴ്: XORA trading insights വായിക്കാം. Phase 6-ലെ അവസാന പാഠം."},{"t":8.4,"d":5.35,"text":"In T26 you learned how XORA decides. Now let's read what it shows you.","ml":"T26-ൽ XORA എങ്ങനെ തീരുമാനിക്കുന്നു എന്ന് പഠിച്ചു. ഇനി അത് കാണിക്കുന്നത് വായിക്കാം."},{"t":14,"d":7.75,"text":"The Signals screen packs a lot onto one coin. We'll read it card by card, top to bottom.","ml":"Signals സ്ക്രീനിൽ ഒരു കോയിനെക്കുറിച്ച് ഒരുപാടുണ്ട്. മുകളിൽ നിന്ന് ഓരോ card ആയി വായിക്കാം."},{"t":22.4,"d":7.35,"text":"First, the TRADE OPPORTUNITY card. It shows the direction and the setup: here, BUY, support reclaim.","ml":"ആദ്യം TRADE OPPORTUNITY card. ദിശയും setup-ഉം കാണിക്കും: ഇവിടെ BUY, support reclaim."},{"t":30,"d":6.55,"text":"ENTRY is where the trade would start. STOP is where it closes if price goes against you.","ml":"ENTRY: ട്രേഡ് തുടങ്ങുന്ന വില. STOP: വില എതിരായി പോയാൽ ട്രേഡ് അടയുന്ന വില."},{"t":36.8,"d":5.95,"text":"RISK is the stop distance in percent. NEXT RES. is the next resistance above.","ml":"RISK: stop-ലേക്കുള്ള ദൂരം ശതമാനത്തിൽ. NEXT RES.: മുകളിലെ അടുത്ത resistance."},{"t":43.4,"d":5.15,"text":"Under the numbers, a bar reads: 2.0 R to the next level. What is R?","ml":"അക്കങ്ങൾക്ക് താഴെ ഒരു bar: 2.0 R to the next level. R എന്താണ്?"},{"t":48.8,"d":6.35,"text":"One R is your risk: the distance from entry to stop. Here, 60,000 minus 59,700 is 300.","ml":"ഒരു R = നിങ്ങളുടെ റിസ്ക്: entry മുതൽ stop വരെയുള്ള ദൂരം. ഇവിടെ 60,000 − 59,700 = 300."},{"t":55.4,"d":5.75,"text":"The next resistance is 600 away. 600 divided by 300 is 2. So, 2.0 R of room.","ml":"അടുത്ത resistance 600 അകലെ. 600 ÷ 300 = 2. അതായത് 2.0 R ഇടം."},{"t":61.4,"d":3.35,"text":"It's room on the chart, not a promise.","ml":"അത് ചാർട്ടിലെ ഇടമാണ്, ഉറപ്പല്ല."},{"t":65.4,"d":5.75,"text":"Tap Full AI insights for the detailed page. It refreshes every 20 seconds.","ml":"വിശദമായ പേജിന് Full AI insights തൊടൂ. അത് ഓരോ 20 സെക്കൻഡിലും പുതുക്കും."},{"t":71.4,"d":5.95,"text":"At the top, the verdict: BUY if price trades above 60,000. For this candle only.","ml":"മുകളിൽ verdict: വില 60,000-ന് മുകളിൽ പോയാൽ BUY. ഈ candle-ന് മാത്രം."},{"t":77.6,"d":6.75,"text":"The PRICE MAP lines up resistance, support, your stop and entry, with distances in percent.","ml":"PRICE MAP-ൽ resistance, support, stop, entry എന്നിവ ശതമാന ദൂരത്തോടെ നിരത്തുന്നു."},{"t":84.6,"d":8.15,"text":"Further down: the ENTRY CHECKLIST, TRADE MANAGEMENT for open trades, and ENGINE STATUS.","ml":"താഴെ: ENTRY CHECKLIST, തുറന്ന ട്രേഡുകൾക്ക് TRADE MANAGEMENT, പിന്നെ ENGINE STATUS."},{"t":93.4,"d":5.75,"text":"The TRADE PLAN does the maths. First, size: your margin times your leverage.","ml":"TRADE PLAN കണക്ക് ചെയ്യും. ആദ്യം size: നിങ്ങളുടെ margin × leverage."},{"t":99.4,"d":5.15,"text":"With 3 USDT margin at 10x, the position size is 3 times 10: 30 USDT.","ml":"3 USDT margin-ഉം 10x leverage-ഉം ആണെങ്കിൽ position size 3 × 10 = 30 USDT."},{"t":104.8,"d":4.25,"text":"The stop is 0.50% away. 0.50% of 30 USDT is 0.15 USDT.","ml":"Stop 0.50% അകലെ. 30 USDT-ന്റെ 0.50% = 0.15 USDT."},{"t":109.3,"d":6.45,"text":"So if the stop is hit, you lose about 0.15 USDT, plus fees. Slippage can make it more.","ml":"Stop hit ആയാൽ ഏകദേശം 0.15 USDT നഷ്ടം, ഫീസ് വേറെ. Slippage അത് കൂട്ടാം."},{"t":116.4,"d":6.55,"text":"MARKET shows volatility as ATR, the average true range: how far a candle usually travels.","ml":"MARKET volatility ATR ആയി കാണിക്കും: ഒരു candle സാധാരണ എത്ര ദൂരം നീങ്ങും എന്ന്."},{"t":123.2,"d":5.65,"text":"Here, ATR on 5 minutes is 90 USDT. Bigger ATR means wilder moves.","ml":"ഇവിടെ 5 മിനിറ്റ് ATR 90 USDT. ATR കൂടിയാൽ നീക്കങ്ങൾ കൂടുതൽ ശക്തം."},{"t":129.1,"d":6.65,"text":"Recent swing highs and lows are the turning points price left behind.","ml":"അടുത്തിടെയുള്ള swing high-ഉം low-ഉം വില തിരിഞ്ഞ സ്ഥലങ്ങളാണ്."},{"t":136.4,"d":5.95,"text":"Next, swipe the market-read carousel. Card one: the Xora read, a plain summary.","ml":"ഇനി market-read carousel swipe ചെയ്യൂ. ഒന്നാം card: Xora read, ലളിതമായ ചുരുക്കം."},{"t":142.6,"d":7.25,"text":"Its note says: computed on this phone, explanatory only. The engine's stop and exits do not use it.","ml":"കുറിപ്പ്: ഫോണിൽ കണക്കാക്കിയത്, വിശദീകരണം മാത്രം. Engine-ന്റെ stop-ഉം exit-ഉം ഇത് ഉപയോഗിക്കില്ല."},{"t":150.1,"d":6.65,"text":"Card two: VOLUME COMPARISON. Buy volume against sell volume in this price range.","ml":"രണ്ടാം card: VOLUME COMPARISON. ഈ വില പരിധിയിൽ buy volume-ഉം sell volume-ഉം."},{"t":157.4,"d":7.15,"text":"Card three: ORDER BOOK DIFFERENCE. Big resting orders, called walls, on each side, and the spread.","ml":"മൂന്നാം card: ORDER BOOK DIFFERENCE. ഇരുവശത്തും വലിയ ഓർഡറുകൾ, walls, പിന്നെ spread."},{"t":164.8,"d":4.55,"text":"Spoof risk: walls that appear and vanish may be fake.","ml":"Spoof risk: വന്നുപോകുന്ന walls വ്യാജമാകാം."},{"t":169.6,"d":4.75,"text":"Absorption: big orders soak up trades, and price barely moves.","ml":"Absorption: വലിയ ഓർഡറുകൾ ട്രേഡുകൾ ഏറ്റെടുക്കുന്നു, വില കാര്യമായി നീങ്ങുന്നില്ല."},{"t":174.6,"d":5.75,"text":"Card four: PRICE-RANGE REPLAY. When price was here before, compared with now.","ml":"നാലാം card: PRICE-RANGE REPLAY. മുമ്പ് വില ഇവിടെ വന്നപ്പോൾ എന്ത് സംഭവിച്ചു, ഇപ്പോൾ എങ്ങനെ."},{"t":180.6,"d":6.15,"text":"Card five: TRIGGER LEVELS. For example, the stop: where the trade closes.","ml":"അഞ്ചാം card: TRIGGER LEVELS. ഉദാഹരണം: stop, ട്രേഡ് അടയുന്ന സ്ഥലം."},{"t":187.4,"d":5.25,"text":"How far ahead does XORA look? Decisions are made per 1-minute candle.","ml":"XORA എത്ര മുന്നോട്ട് നോക്കും? തീരുമാനങ്ങൾ ഓരോ 1 മിനിറ്റ് candle-നും."},{"t":192.9,"d":5.95,"text":"Each plan lasts one candle. When it closes, the checks run again on fresh data.","ml":"ഓരോ plan-ഉം ഒരു candle മാത്രം. അത് അടയുമ്പോൾ പുതിയ ഡാറ്റയിൽ പരിശോധനകൾ വീണ്ടും."},{"t":199.1,"d":7.65,"text":"The 5m, 15m and 1h charts add context. XORA does not predict price 10 or 15 minutes ahead.","ml":"5m, 15m, 1h ചാർട്ടുകൾ സന്ദർഭം നൽകും. 10 അല്ലെങ്കിൽ 15 മിനിറ്റ് മുന്നിലെ വില XORA പ്രവചിക്കില്ല."},{"t":207.4,"d":5.95,"text":"A common mistake: treating insights as a forecast. 2.0 R is room, not a promise.","ml":"സാധാരണ തെറ്റ്: insights പ്രവചനമായി കാണുന്നത്. 2.0 R ഇടമാണ്, ഉറപ്പല്ല."},{"t":213.6,"d":5.35,"text":"And the Xora read only explains the market now. It does not predict it.","ml":"Xora read ഇപ്പോഴത്തെ മാർക്കറ്റ് വിശദീകരിക്കുന്നു. അത് പ്രവചിക്കുന്നില്ല."},{"t":219.2,"d":4.55,"text":"Use insights to understand a setup, then decide calmly.","ml":"Insights കൊണ്ട് setup മനസ്സിലാക്കൂ, എന്നിട്ട് ശാന്തമായി തീരുമാനിക്കൂ."},{"t":224.4,"d":11.35,"text":"Your turn. Margin 3 USDT at 10x. Entry 60,000, stop 59,400. How much is at risk?","ml":"നിങ്ങളുടെ ഊഴം. Margin 3 USDT, 10x. Entry 60,000, stop 59,400. എത്ര റിസ്ക്?"},{"t":236,"d":6.35,"text":"Size is 3 times 10: 30 USDT. The stop is 600 away: 1.00%. 1.00% of 30 is 0.30 USDT.","ml":"Size 3 × 10 = 30 USDT. Stop 600 അകലെ: 1.00%. 30-ന്റെ 1.00% = 0.30 USDT."},{"t":242.6,"d":5.15,"text":"That's 0.30 USDT before fees and slippage. Well done if you got it!","ml":"ഫീസും slippage-ഉം കൂടാതെ 0.30 USDT. കിട്ടിയെങ്കിൽ കൊള്ളാം!"},{"t":248.4,"d":4.25,"text":"Insights help, but they don't remove risk.","ml":"Insights സഹായിക്കും, പക്ഷേ റിസ്ക് ഇല്ലാതാക്കില്ല."},{"t":252.9,"d":5.35,"text":"XORA does not guarantee profits. Setups fail, and losing trades happen.","ml":"XORA ലാഭം ഉറപ്പ് നൽകുന്നില്ല. Setup-കൾ പരാജയപ്പെടാം, നഷ്ട ട്രേഡുകൾ സംഭവിക്കും."},{"t":258.5,"d":5.35,"text":"Fees, slippage and leverage can make a loss bigger than the plan shows.","ml":"ഫീസ്, slippage, leverage എന്നിവ plan കാണിക്കുന്നതിലും വലിയ നഷ്ടം ഉണ്ടാക്കാം."},{"t":264.1,"d":5.65,"text":"Practise in DEMO first. This is education, not financial advice.","ml":"ആദ്യം DEMO-യിൽ പരിശീലിക്കൂ. ഇത് പഠനമാണ്, സാമ്പത്തിക ഉപദേശമല്ല."},{"t":270.4,"d":5.55,"text":"Recap. The TRADE OPPORTUNITY card: entry, stop, risk, next level, and R.","ml":"ചുരുക്കം: TRADE OPPORTUNITY card: entry, stop, risk, next level, R."},{"t":276.2,"d":5.15,"text":"Size is margin times leverage. Risk is size times the stop distance.","ml":"Size = margin × leverage. Risk = size × stop ദൂരം."},{"t":281.6,"d":8.15,"text":"Insights explain the market now. They are not predictions.","ml":"Insights ഇപ്പോഴത്തെ മാർക്കറ്റ് വിശദീകരിക്കുന്നു. അവ പ്രവചനങ്ങളല്ല."},{"t":290.6,"d":5.75,"text":"Congratulations! You've finished Phase 6, and the whole Futures Edge course.","ml":"അഭിനന്ദനങ്ങൾ! Phase 6-ഉം മുഴുവൻ Futures Edge കോഴ്സും നിങ്ങൾ പൂർത്തിയാക്കി."},{"t":296.6,"d":6.15,"text":"Now practise in DEMO. XORA does not guarantee profits. Not financial advice.","ml":"ഇനി DEMO-യിൽ പരിശീലിക്കൂ. XORA ലാഭം ഉറപ്പ് നൽകുന്നില്ല. സാമ്പത്തിക ഉപദേശമല്ല."}]},"assetBase":"T27/assets/","assets":{"tutor-checklist.webp":{"mime":"image/webp","w":185,"h":161},"tutor-cheer.webp":{"mime":"image/webp","w":207,"h":182},"tutor-confused.webp":{"mime":"image/webp","w":185,"h":169},"tutor-explain.webp":{"mime":"image/webp","w":502,"h":602},"tutor-idea.webp":{"mime":"image/webp","w":169,"h":178},"tutor-magnify.webp":{"mime":"image/webp","w":187,"h":170},"tutor-present.webp":{"mime":"image/webp","w":546,"h":612},"tutor-read.webp":{"mime":"image/webp","w":190,"h":181},"tutor-think.webp":{"mime":"image/webp","w":465,"h":656},"tutor-thumbs.webp":{"mime":"image/webp","w":181,"h":179},"tutor-wk0.webp":{"mime":"image/webp","w":353,"h":460},"tutor-wk1.webp":{"mime":"image/webp","w":361,"h":460},"tutor-wk2.webp":{"mime":"image/webp","w":345,"h":460},"tutor-wk3.webp":{"mime":"image/webp","w":365,"h":460},"tutor-wk4.webp":{"mime":"image/webp","w":375,"h":457},"tutor-wk5.webp":{"mime":"image/webp","w":364,"h":457},"tutor-wk6.webp":{"mime":"image/webp","w":354,"h":457},"tutor-wk7.webp":{"mime":"image/webp","w":365,"h":457},"tutor-wv1.webp":{"mime":"image/webp","w":381,"h":448},"tutor-wv2.webp":{"mime":"image/webp","w":374,"h":448},"tutor-wv3.webp":{"mime":"image/webp","w":363,"h":448},"tutor-wv4.webp":{"mime":"image/webp","w":375,"h":446},"xtinex-x.png":{"mime":"image/png","w":320,"h":205},"tutor-calm.webp":{"mime":"image/webp","w":234,"h":174},"tutor-celebrate.webp":{"mime":"image/webp","w":209,"h":171},"tutor-laptop.webp":{"mime":"image/webp","w":185,"h":170},"tutor-pointer.webp":{"mime":"image/webp","w":248,"h":171},"tutor-writing.webp":{"mime":"image/webp","w":191,"h":169}},"fontChecks":["600 40px \"Noto Sans Malayalam\"","400 40px \"Manrope\"","700 40px \"Outfit\"","600 40px \"Outfit\"","400 40px \"DM Mono\"","500 40px \"DM Mono\""],"modules":{"base.css":"#stage { --ground:#02030a; --main:#3ecbff; --second:#eef1f7; --accent:#a855f7; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }\n.ground { position:absolute; inset:0; background:radial-gradient(60% 55% at 88% 6%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), radial-gradient(55% 50% at 6% 98%, color-mix(in srgb, var(--main) 11%, transparent), transparent 70%), var(--ground) }\n.words { position:absolute; margin:0; display:flex; flex-direction:column; gap:24px } .words > * { margin:0 }\n.line { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:84px; line-height:1.05; font-weight:700; letter-spacing:-0.02em; text-wrap:balance }\n.sub { font-size:36px; line-height:1.45; color:color-mix(in srgb, var(--second) 72%, var(--ground)) }\n.kick { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.24em; text-transform:uppercase; color:var(--main) }\n.hl { color:var(--main) } .hv { color:var(--accent) }\n.art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }\n.glass { position:absolute; box-sizing:border-box; border-radius:28px; background:linear-gradient(180deg, color-mix(in srgb, var(--ground) 82%, var(--main)), color-mix(in srgb, var(--ground) 94%, var(--second))); border:1.5px solid color-mix(in srgb, var(--main) 22%, transparent); box-shadow:0 30px 80px rgba(0,0,0,.45) }\n.chip { display:inline-flex; align-items:center; gap:16px; padding:18px 30px; border-radius:999px; font-size:32px; font-weight:600; background:color-mix(in srgb, var(--ground) 88%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent); white-space:nowrap }\n.dot { width:14px; height:14px; border-radius:50%; background:var(--main); flex:none }\n.rule { height:4px; border-radius:4px; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.mono { font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums }\n.fict { font-family:var(--mono, ui-monospace, monospace); font-size:18px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 45%, var(--ground)) }\n.def { font-size:34px; line-height:1.45; font-weight:600 } .def b { color:var(--main); font-weight:700 }\n.lock { display:flex; align-items:center; gap:22px } .lock img { width:92px; height:59px; display:block }\n.lock-xt { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:600; font-size:40px; letter-spacing:.2em }\n.lock-bar { width:2px; height:46px; background:color-mix(in srgb, var(--second) 30%, transparent) }\n.lock-xo { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:700; font-size:40px; letter-spacing:.2em; color:var(--main) }\n.chrome { position:absolute; left:140px; right:140px; top:56px; display:flex; align-items:center; gap:28px; z-index:4 }\n.chrome span { font-family:var(--mono, ui-monospace, monospace); font-size:19px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 55%, var(--ground)); white-space:nowrap }\n.chrome div { flex:1; height:4px; border-radius:4px; background:color-mix(in srgb, var(--second) 10%, transparent); overflow:hidden } .chrome i { display:block; height:100%; width:0; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.tutor { position:absolute; inset:0; pointer-events:none; z-index:5 }\n.tutor-img { position:absolute; display:block; max-width:none; opacity:0 }\n.tutor-shadow { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--main) 38%, transparent), transparent) }\n.bubble { position:absolute; left:0; top:0; width:max-content; max-width:540px; box-sizing:border-box; padding:20px 28px; border-radius:26px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); box-shadow:0 18px 50px rgba(0,0,0,.45); opacity:0 }\n.bubble p { margin:0; font-size:30px; line-height:1.35; font-weight:600; color:var(--second) }\n.bubble::after { content:''; position:absolute; right:44px; bottom:-12px; width:22px; height:22px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border-right:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); border-bottom:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); transform:rotate(45deg) }\n.bubble.is-top::after { right:auto; left:calc(50% - 11px) }\n.box { position:absolute; margin:0; border:2px solid var(--second); box-sizing:border-box; font-size:30px; letter-spacing:.12em } .box::after { content:attr(data-label); position:absolute; left:14px; bottom:10px }\n/* Phase 6: app colours (green buy, red sell), phone mock-ups of the XORA app */\n#stage { --up:#2fd897; --down:#ff5c7c; --warn:#ffb547 }\n.up { color:var(--up) } .dn { color:var(--down) }\n.phone { position:absolute; box-sizing:border-box; border-radius:54px; padding:30px 26px 22px; background:linear-gradient(180deg, color-mix(in srgb, var(--ground) 86%, var(--main)), color-mix(in srgb, var(--ground) 95%, var(--second))); border:2px solid color-mix(in srgb, var(--main) 28%, transparent); box-shadow:0 30px 80px rgba(0,0,0,.5); overflow:hidden }\n.phone-notch { width:110px; height:8px; border-radius:8px; margin:0 auto 18px; background:color-mix(in srgb, var(--second) 18%, transparent) }\n.phone-top { display:flex; align-items:center; justify-content:space-between; margin:0 6px 14px }\n.phone-top b { font-family:var(--display, var(--sans)); font-size:30px; letter-spacing:.06em }\n.pill { display:inline-flex; align-items:center; gap:8px; padding:6px 16px; border-radius:999px; font-family:var(--mono, ui-monospace, monospace); font-size:22px; font-weight:600; border:1.5px solid currentColor; white-space:nowrap }\n.card { box-sizing:border-box; border-radius:22px; padding:16px 20px; background:color-mix(in srgb, var(--ground) 80%, var(--second)); border:1.5px solid color-mix(in srgb, var(--second) 12%, transparent) }\n.card-h { margin:0 0 10px; font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.14em; color:color-mix(in srgb, var(--second) 62%, var(--ground)) }\n.lbl { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.06em; color:color-mix(in srgb, var(--second) 58%, var(--ground)) }\n.mock { position:absolute; margin:0; font-family:var(--mono, ui-monospace, monospace); font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 50%, var(--ground)); white-space:nowrap }\n.risk-line { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.08em; color:var(--warn) }\n","narration.json":"{\n  \"about\": \"T27 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.\",\n  \"lines\": [\n    {\n      \"t\": 0.6,\n      \"text\": \"Lesson twenty-seven: reading XORA trading insights. The last lesson of Phase 6.\"\n    },\n    {\n      \"t\": 8.4,\n      \"text\": \"In T26 you learned how XORA decides. Now let's read what it shows you.\"\n    },\n    {\n      \"t\": 14.0,\n      \"text\": \"The Signals screen packs a lot onto one coin. We'll read it card by card, top to bottom.\"\n    },\n    {\n      \"t\": 22.4,\n      \"text\": \"First, the TRADE OPPORTUNITY card. It shows the direction and the setup: here, BUY, support reclaim.\"\n    },\n    {\n      \"t\": 30.0,\n      \"text\": \"ENTRY is where the trade would start. STOP is where it closes if price goes against you.\"\n    },\n    {\n      \"t\": 36.8,\n      \"text\": \"RISK is the stop distance in percent. NEXT RES. is the next resistance above.\"\n    },\n    {\n      \"t\": 43.4,\n      \"text\": \"Under the numbers, a bar reads: 2.0 R to the next level. What is R?\"\n    },\n    {\n      \"t\": 48.8,\n      \"text\": \"One R is your risk: the distance from entry to stop. Here, 60,000 minus 59,700 is 300.\"\n    },\n    {\n      \"t\": 55.4,\n      \"text\": \"The next resistance is 600 away. 600 divided by 300 is 2. So, 2.0 R of room.\"\n    },\n    {\n      \"t\": 61.4,\n      \"text\": \"It's room on the chart, not a promise.\"\n    },\n    {\n      \"t\": 65.4,\n      \"text\": \"Tap Full AI insights for the detailed page. It refreshes every 20 seconds.\"\n    },\n    {\n      \"t\": 71.4,\n      \"text\": \"At the top, the verdict: BUY if price trades above 60,000. For this candle only.\"\n    },\n    {\n      \"t\": 77.6,\n      \"text\": \"The PRICE MAP lines up resistance, support, your stop and entry, with distances in percent.\"\n    },\n    {\n      \"t\": 84.6,\n      \"text\": \"Further down: the ENTRY CHECKLIST, TRADE MANAGEMENT for open trades, and ENGINE STATUS.\"\n    },\n    {\n      \"t\": 93.4,\n      \"text\": \"The TRADE PLAN does the maths. First, size: your margin times your leverage.\"\n    },\n    {\n      \"t\": 99.4,\n      \"text\": \"With 3 USDT margin at 10x, the position size is 3 times 10: 30 USDT.\"\n    },\n    {\n      \"t\": 104.8,\n      \"text\": \"The stop is 0.50% away. 0.50% of 30 USDT is 0.15 USDT.\"\n    },\n    {\n      \"t\": 109.3,\n      \"text\": \"So if the stop is hit, you lose about 0.15 USDT, plus fees. Slippage can make it more.\"\n    },\n    {\n      \"t\": 116.4,\n      \"text\": \"MARKET shows volatility as ATR, the average true range: how far a candle usually travels.\"\n    },\n    {\n      \"t\": 123.2,\n      \"text\": \"Here, ATR on 5 minutes is 90 USDT. Bigger ATR means wilder moves.\"\n    },\n    {\n      \"t\": 129.1,\n      \"text\": \"Recent swing highs and lows are the turning points price left behind.\"\n    },\n    {\n      \"t\": 136.4,\n      \"text\": \"Next, swipe the market-read carousel. Card one: the Xora read, a plain summary.\"\n    },\n    {\n      \"t\": 142.6,\n      \"text\": \"Its note says: computed on this phone, explanatory only. The engine's stop and exits do not use it.\"\n    },\n    {\n      \"t\": 150.1,\n      \"text\": \"Card two: VOLUME COMPARISON. Buy volume against sell volume in this price range.\"\n    },\n    {\n      \"t\": 157.4,\n      \"text\": \"Card three: ORDER BOOK DIFFERENCE. Big resting orders, called walls, on each side, and the spread.\"\n    },\n    {\n      \"t\": 164.8,\n      \"text\": \"Spoof risk: walls that appear and vanish may be fake.\"\n    },\n    {\n      \"t\": 169.6,\n      \"text\": \"Absorption: big orders soak up trades, and price barely moves.\"\n    },\n    {\n      \"t\": 174.6,\n      \"text\": \"Card four: PRICE-RANGE REPLAY. When price was here before, compared with now.\"\n    },\n    {\n      \"t\": 180.6,\n      \"text\": \"Card five: TRIGGER LEVELS. For example, the stop: where the trade closes.\"\n    },\n    {\n      \"t\": 187.4,\n      \"text\": \"How far ahead does XORA look? Decisions are made per 1-minute candle.\"\n    },\n    {\n      \"t\": 192.9,\n      \"text\": \"Each plan lasts one candle. When it closes, the checks run again on fresh data.\"\n    },\n    {\n      \"t\": 199.1,\n      \"text\": \"The 5m, 15m and 1h charts add context. XORA does not predict price 10 or 15 minutes ahead.\"\n    },\n    {\n      \"t\": 207.4,\n      \"text\": \"A common mistake: treating insights as a forecast. 2.0 R is room, not a promise.\"\n    },\n    {\n      \"t\": 213.6,\n      \"text\": \"And the Xora read only explains the market now. It does not predict it.\"\n    },\n    {\n      \"t\": 219.2,\n      \"text\": \"Use insights to understand a setup, then decide calmly.\"\n    },\n    {\n      \"t\": 224.4,\n      \"text\": \"Your turn. Margin 3 USDT at 10x. Entry 60,000, stop 59,400. How much is at risk?\"\n    },\n    {\n      \"t\": 236.0,\n      \"text\": \"Size is 3 times 10: 30 USDT. The stop is 600 away: 1.00%. 1.00% of 30 is 0.30 USDT.\"\n    },\n    {\n      \"t\": 242.6,\n      \"text\": \"That's 0.30 USDT before fees and slippage. Well done if you got it!\"\n    },\n    {\n      \"t\": 248.4,\n      \"text\": \"Insights help, but they don't remove risk.\"\n    },\n    {\n      \"t\": 252.9,\n      \"text\": \"XORA does not guarantee profits. Setups fail, and losing trades happen.\"\n    },\n    {\n      \"t\": 258.5,\n      \"text\": \"Fees, slippage and leverage can make a loss bigger than the plan shows.\"\n    },\n    {\n      \"t\": 264.1,\n      \"text\": \"Practise in DEMO first. This is education, not financial advice.\"\n    },\n    {\n      \"t\": 270.4,\n      \"text\": \"Recap. The TRADE OPPORTUNITY card: entry, stop, risk, next level, and R.\"\n    },\n    {\n      \"t\": 276.2,\n      \"text\": \"Size is margin times leverage. Risk is size times the stop distance.\"\n    },\n    {\n      \"t\": 281.6,\n      \"text\": \"Insights explain the market now. They are not predictions.\"\n    },\n    {\n      \"t\": 290.6,\n      \"text\": \"Congratulations! You've finished Phase 6, and the whole Futures Edge course.\"\n    },\n    {\n      \"t\": 296.6,\n      \"text\": \"Now practise in DEMO. XORA does not guarantee profits. Not financial advice.\"\n    }\n  ]\n}","scene-carousel1.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Carousel cards one and two: the Xora read (explanatory only) and the volume comparison.\nconst C1_NAMES = ['Xora read', 'Volume', 'Order book', 'Replay', 'Levels'];\nkit.scene('carousel1', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    kit.stage.append(kit.h('<div class=\"ground\"></div>'));\n    this.car = UI.carousel(kit, 'c1');\n    let names = '';\n    C1_NAMES.forEach((n, i) => { names += '<div class=\"c1-n\" style=\"display:flex;align-items:center;gap:18px\"><span class=\"mono\" style=\"width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:24px;border:2px solid currentColor;flex:none\">' + (i + 1) + '</span><span style=\"font-size:32px;font-weight:700\">' + n + '</span></div>'; });\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:900px\"><p class=\"kick c1-k\">Market-read carousel</p><h2 class=\"line c1-t\" style=\"font-size:72px\">Swipe to read the market</h2></div>' +\n      '<div style=\"position:absolute;left:140px;top:380px;display:flex;flex-direction:column;gap:16px\">' + names + '</div>' +\n      '<div class=\"glass c1-note\" style=\"left:520px;top:420px;width:540px;padding:20px 26px;border-color:var(--warn)\"><p class=\"kick\" style=\"margin:0 0 8px;color:var(--warn)\">Explanatory only</p><p style=\"margin:0;font-size:28px;line-height:1.4;font-weight:600\">The engine\\'s stop and exits do not use it.</p></div></div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.c1-k').style; this.t = q('.c1-t'); this.ns = all('.c1-n').map((e) => e.style); this.note = q('.c1-note').style;\n    this.disc = q('.c1-disc').style; this.vb = q('.c1-vb').style; this.vs = q('.c1-vs').style; this.vbv = q('.c1-vb-v'); this.vsv = q('.c1-vs-v');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'read' }, { t: 6.6, pose: 'magnify' }, { t: 14.1, pose: 'pointer', flip: true }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const p = seg(t, 0.4, 1.3);\n    this.car.ph.opacity = eo(p); this.car.ph.transform = 'translateY(' + lerp(50, 0, eo(p)).toFixed(1) + 'px)';\n    this.car.ml.opacity = 0.9 * eo(seg(t, 1.0, 1.6));\n    const idx = eio(seg(t, 13.6, 14.4));\n    this.car.go(idx);\n    const cur = Math.round(idx);\n    this.ns.forEach((s, i) => { s.opacity = (eo(seg(t, 1.0 + i * 0.2, 1.4 + i * 0.2)) * (i === cur ? 1 : 0.4)).toFixed(3); s.color = i === cur ? 'var(--main)' : ''; });\n    const d = Math.max(0, Math.sin(Math.PI * seg(t, 6.6, 13.2)));\n    this.disc.boxShadow = '0 0 0 ' + (4 * d).toFixed(1) + 'px color-mix(in srgb, var(--warn) 35%, transparent)';\n    UI.rise(kit, this.note, t, 7.4, 0.6, 16, 13.2, 13.6);\n    const vb = 62 * eio(seg(t, 15.0, 16.6)), vs = 38 * eio(seg(t, 15.4, 17.0));\n    this.vb.width = vb.toFixed(1) + '%'; this.vs.width = vs.toFixed(1) + '%';\n    UI.set(this.vbv, Math.round(vb) + '%'); UI.set(this.vsv, Math.round(vs) + '%');\n    this.tutor.render(t);\n  },\n});\n","scene-carousel2.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Carousel cards three to five: order book difference (walls, spread, spoof risk, absorption), price-range replay, trigger levels.\nconst C2_NAMES = ['Xora read', 'Volume', 'Order book', 'Replay', 'Levels'];\nconst C2_DEF = [\n  [0.6, 'Wall', 'A very large resting order at one price.'],\n  [7.8, 'Spoof risk', 'Walls that appear and vanish may be fake.'],\n  [12.6, 'Absorption', 'Big orders soak up trades; price barely moves.'],\n];\nkit.scene('carousel2', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    kit.stage.append(kit.h('<div class=\"ground\"></div>'));\n    this.car = UI.carousel(kit, 'c2');\n    let names = '';\n    C2_NAMES.forEach((n, i) => { names += '<div class=\"c2-n\" style=\"display:flex;align-items:center;gap:14px\"><span class=\"mono\" style=\"width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:22px;border:2px solid currentColor;flex:none\">' + (i + 1) + '</span><span style=\"font-size:28px;font-weight:700\">' + n + '</span></div>'; });\n    let defs = '';\n    C2_DEF.forEach((d) => { defs += '<div class=\"c2-d\" style=\"margin-bottom:16px\"><p style=\"margin:0;font-size:30px;font-weight:700;color:var(--main)\">' + d[1] + '</p><p style=\"margin:2px 0 0;font-size:28px;line-height:1.35\">' + d[2] + '</p></div>'; });\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:940px\"><p class=\"kick c2-k\">Market-read carousel</p><h2 class=\"line c2-t\" style=\"font-size:72px\">Order book, replay, levels</h2></div>' +\n      '<div style=\"position:absolute;left:140px;top:390px;display:flex;flex-direction:column;gap:12px\">' + names + '</div>' +\n      '<div class=\"glass c2-g\" style=\"left:430px;top:380px;width:640px;padding:22px 28px\">' + defs + '</div></div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.c2-k').style; this.t = q('.c2-t'); this.ns = all('.c2-n').map((e) => e.style); this.g = q('.c2-g').style; this.ds = all('.c2-d').map((e) => e.style);\n    this.bids = all('.c2-bid').map((e) => e.style); this.asks = all('.c2-ask').map((e) => e.style);\n    this.sp = q('.c2-sp'); this.ab = q('.c2-ab').style; this.r1 = q('.c2-r1'); this.r2 = q('.c2-r2'); this.stop = q('.c2-stop').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'pointer', flip: true }, { t: 7.8, pose: 'magnify' }, { t: 17.6, pose: 'read' }, { t: 23.6, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    this.car.ph.opacity = 1; this.car.ml.opacity = 0.9;\n    // card 3 shown from the start (index 2), then replay (3) and levels (4)\n    const idx = 2 + eio(seg(t, 17.4, 18.2)) + eio(seg(t, 23.4, 24.2));\n    this.car.go(idx);\n    const cur = Math.round(idx);\n    this.ns.forEach((s, i) => { s.opacity = (i === cur ? 1 : 0.4).toFixed(3); s.color = i === cur ? 'var(--main)' : ''; });\n    UI.rise(kit, this.g, t, 0.6, 0.6, 16, 17.2, 17.6);\n    this.ds.forEach((s, i) => { s.opacity = (+eo(seg(t, C2_DEF[i][0], C2_DEF[i][0] + 0.5))).toFixed(3); });\n    // the big bid wall pulses when walls are named; an ask wall flickers in and out for spoof risk\n    const wall = Math.max(0, Math.sin(Math.PI * seg(t, 1.0, 7.0)));\n    this.bids[2].boxShadow = '0 0 0 ' + (4 * wall).toFixed(1) + 'px color-mix(in srgb, var(--up) 50%, transparent)';\n    const fl = t > 8.2 && t < 11.4 ? (Math.floor((t - 8.2) * 2.5) % 2 ? 1 : 0) : 0;\n    this.asks[1].width = (34 + fl * 52) + '%';\n    UI.set(this.sp, t > 8.2 && t < 17.2 ? 'Medium' : 'Low');\n    this.sp.style.color = t > 8.2 && t < 17.2 ? 'var(--warn)' : 'var(--up)';\n    // absorption: the bid wall shrinks a little as sells hit it, then holds\n    const abs = seg(t, 12.8, 15.8);\n    this.bids[2].width = (92 - 18 * eo(abs)).toFixed(1) + '%';\n    this.ab.textDecoration = abs > 0 && abs < 1 ? 'underline' : 'none';\n    this.r1.setAttribute('stroke-dasharray', eio(seg(t, 18.4, 19.6)) + ' 1');\n    this.r2.setAttribute('stroke-dasharray', eio(seg(t, 20.0, 21.2)) + ' 1');\n    const sp = Math.max(0, Math.sin(Math.PI * seg(t, 24.2, 29.2)));\n    this.stop.background = 'color-mix(in srgb, var(--down) ' + (sp * 20).toFixed(1) + '%, transparent)';\n    this.tutor.render(t);\n  },\n});\n","scene-finish.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\n// Course complete: congratulations, practise in DEMO, the risk line and the XTINEX | XORA lockup.\nkit.scene('finish', {\n  init(kit) {\n    const pts = UI.walk(kit, 27, 96, 140, 1780, 930, 840, 18);\n    const r = kit.rng(270); let conf = '';\n    this.cf = [];\n    for (let i = 0; i < 46; i++) {\n      const c = { x: 160 + r() * 1600, v: 60 + r() * 90, d: r() * 1.4, w: 10 + r() * 10, rot: r() * 360, col: ['var(--main)', 'var(--accent)', 'var(--up)', 'var(--warn)'][i % 4] };\n      this.cf.push(c);\n      conf += '<rect class=\"fn-cf\" width=\"' + c.w.toFixed(1) + '\" height=\"' + (c.w * 0.5).toFixed(1) + '\" rx=\"2\" style=\"fill:' + c.col + '\"/>';\n    }\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"t27fin-g\" x1=\"0\" x2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient></defs>' +\n      '<path class=\"fn-path\" d=\"' + UI.d(pts) + '\" pathLength=\"1\" fill=\"none\" stroke=\"url(#t27fin-g)\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"opacity:.5\"/>' + conf + '</svg>' +\n      '<div class=\"fn-lock\" style=\"position:absolute;left:0;right:0;top:140px;display:flex;justify-content:center\"></div>' +\n      '<div class=\"words\" style=\"left:210px;top:290px;width:1500px;align-items:center;text-align:center;gap:26px\">' +\n      '<p class=\"kick fn-k\">Lesson T27 complete · Phase 6 complete · Course complete</p>' +\n      '<h2 class=\"line fn-t\" style=\"font-size:104px\">Congratulations!</h2>' +\n      '<p class=\"sub fn-s\">You finished XORA Futures Edge.</p>' +\n      '<div class=\"rule fn-r\" style=\"width:240px\"></div>' +\n      '<div class=\"chip fn-c\" style=\"font-size:32px;padding:20px 38px;background:var(--main);color:var(--ground);border-color:var(--main)\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 28 28\"><path d=\"M7 4 L24 14 L7 24 Z\" style=\"fill:var(--ground)\"/></svg><span>Next: practise in DEMO</span></div></div>' +\n      '<p class=\"risk-line fn-f\" style=\"position:absolute;left:0;right:120px;top:700px;margin:0;text-align:center\">XORA does not guarantee profits · Practise in DEMO first · Not financial advice</p>' +\n      '</div>'));\n    kit.stage.querySelector('.fn-lock').append(UI.lockup(kit));\n    const q = (s) => kit.stage.querySelector(s);\n    this.path = q('.fn-path'); this.lock = q('.fn-lock').style; this.k = q('.fn-k').style; this.s = q('.fn-s');\n    this.t = q('.fn-t'); this.r = q('.fn-r').style; this.c = q('.fn-c').style; this.f = q('.fn-f').style;\n    this.cfs = [...kit.stage.querySelectorAll('.fn-cf')];\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }, { t: 1.1, x: 1620, y: 965, s: 230, d: 1.0 }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.1, pose: 'walk', flip: true }, { t: 1.1, pose: 'celebrate' }, { t: 5.0, pose: 'wave' }, { t: 8.0, pose: 'cheer' }, { t: 10.4, pose: 'wave' }],\n      says: [{ t0: 1.3, t1: 5.4, text: 'You did it! Well done.', side: 'top' }],\n    });\n  },\n  render(t) {\n    this.path.setAttribute('stroke-dasharray', eio(seg(t, 0, 2.6)) + ' 1');\n    const l = seg(t, 0.1, 0.8);\n    this.lock.opacity = eo(l);\n    this.lock.transform = 'scale(' + lerp(0.85, 1, eob(l, 1.6)) + ')';\n    this.k.opacity = eo(seg(t, 0.5, 1.0));\n    TextFx.fadeFromRight(this.t, t, 0.7);\n    TextFx.fadeFromRight(this.s, t, 1.4, { stagger: 0.08 });\n    this.r.transform = 'scaleX(' + eo(seg(t, 1.8, 2.4)) + ')';\n    const c = seg(t, 6.4, 7.0);\n    this.c.opacity = eo(seg(t, 6.4, 6.7));\n    this.c.transform = 'scale(' + (lerp(0.8, 1, eob(c, 1.7)) * kit.breathe(Math.max(0, t - 7.0), 0.015, 2.4)) + ')';\n    this.f.opacity = eo(seg(t, 6.8, 7.4));\n    // confetti falls once, from t = 0.8\n    this.cfs.forEach((e, i) => {\n      const cf = this.cf[i], tt = t - 0.8 - cf.d;\n      if (tt < 0) { e.style.opacity = 0; return; }\n      const y = -20 + tt * cf.v * 2.2, x = cf.x + Math.sin(tt * 2 + i) * 30;\n      e.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') rotate(' + (cf.rot + tt * 120).toFixed(1) + ')');\n      e.style.opacity = Math.max(0, Math.min(1, 1 - (y - 700) / 200)).toFixed(3);\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-hook.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// The Signals screen (mock) scrolls past its cards; the card names light up on the left as they pass.\nconst HK_CARDS = ['PRICE ACTION', 'TRADE OPPORTUNITY', 'Market-read carousel', 'ENTRY CHECKLIST', 'ENGINE STATUS', 'Full AI insights'];\nkit.scene('hook', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const r = kit.rng(27); let pts = '', v = 0;\n    for (let i = 0; i < 40; i++) { v += (r() - 0.5) * 16; v *= 0.85; pts += (i ? 'L' : 'M') + (i * 11.5).toFixed(1) + ' ' + (70 - i * 0.8 + v + Math.sin(i / 5) * 14).toFixed(1); }\n    const cd = (h, inner, extra) => '<div class=\"card\" style=\"margin-bottom:14px;' + (extra || '') + '\"><p class=\"card-h\">' + h + '</p>' + inner + '</div>';\n    const bar = (w, c) => '<div style=\"height:12px;width:' + w + '%;border-radius:6px;margin:8px 0;background:' + (c || 'color-mix(in srgb, var(--second) 18%, transparent)') + '\"></div>';\n    const col = '<div class=\"hk-col\">' +\n      cd('PRICE ACTION · 1M', '<svg width=\"448\" height=\"140\" viewBox=\"0 0 448 140\"><path d=\"' + pts + '\" fill=\"none\" stroke-width=\"4\" style=\"stroke:var(--main)\"/></svg>') +\n      cd('TRADE OPPORTUNITY', '<span class=\"pill\" style=\"color:var(--up)\">BUY</span><span style=\"font-size:24px;font-weight:600;margin-left:12px\">Support reclaim</span>' + bar(90) + bar(70)) +\n      '<div style=\"display:flex;gap:10px;margin-bottom:14px\">' + ['Xora read', 'Volume', 'Order book'].map((x) => '<div class=\"card\" style=\"flex:none;width:200px;padding:14px\"><p class=\"lbl\" style=\"margin:0\">' + x + '</p>' + bar(80) + bar(55) + '</div>').join('') + '</div>' +\n      cd('ENTRY CHECKLIST', '<span class=\"mono\" style=\"font-size:24px\">✓ ✓ ✓ ✗</span>' + bar(72, 'var(--up)')) +\n      cd('ENGINE STATUS', bar(85) + bar(60)) +\n      '<div class=\"mono\" style=\"height:64px;border-radius:16px;display:grid;place-items:center;font-size:24px;border:2px solid var(--accent);color:var(--accent)\">Full AI insights</div></div>';\n    this.ph = UI.phone(kit, { left: 1120, top: 140, w: 540, h: 630, title: 'Signals', body: '<div style=\"position:relative;height:520px;overflow:hidden\">' + col + '</div>' }).style;\n    this.ml = UI.mockLabel(kit, 1120, 100).style;\n    let names = '';\n    HK_CARDS.forEach((n) => { names += '<span class=\"chip hk-n\" style=\"font-size:28px;padding:12px 24px\">' + n + '</span>'; });\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"words\" style=\"left:140px;top:200px;width:900px\"><p class=\"kick hk-k\">The last lesson of the course</p>' +\n      '<h2 class=\"line hk-t\">Read the screen, card by card</h2></div>' +\n      '<div style=\"position:absolute;left:140px;top:470px;width:900px;display:flex;flex-wrap:wrap;gap:14px\">' + names + '</div></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.hk-k').style; this.t = q('.hk-t'); this.col = q('.hk-col').style; this.kids = [...q('.hk-col').children];\n    this.ns = [...kit.stage.querySelectorAll('.hk-n')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 0.8, pose: 'explain' }, { t: 6.0, pose: 'pointer', flip: true }, { t: 12.0, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    const p = seg(t, 0.4, 1.3);\n    this.ph.opacity = eo(p); this.ph.transform = 'translateY(' + lerp(50, 0, eo(p)).toFixed(1) + 'px)';\n    this.ml.opacity = 0.9 * eo(seg(t, 1.0, 1.6));\n    // scroll through the column in steps, one card at a time\n    const stops = [0, 0, 200, 340, 420, 500, 520];\n    let y = 0;\n    for (let i = 1; i < stops.length; i++) y = lerp(y, stops[i], eio(seg(t, 5.6 + (i - 1) * 1.2, 6.4 + (i - 1) * 1.2)));\n    this.col.transform = 'translateY(' + (-y).toFixed(1) + 'px)';\n    // cards wholly outside the phone window are hidden\n    for (const e of this.kids) { const top = e.offsetTop - y, bot = top + e.offsetHeight; e.style.opacity = bot < 8 || top > 512 ? 0 : 1; }\n    this.ns.forEach((s, i) => {\n      const a = 5.6 + i * 1.2, on = seg(t, a, a + 0.4);\n      s.opacity = (eo(seg(t, 1.6 + i * 0.25, 2.0 + i * 0.25)) * (0.45 + 0.55 * eo(on))).toFixed(3);\n      s.borderColor = on > 0 ? 'var(--main)' : '';\n      s.color = on > 0 ? 'var(--main)' : '';\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-horizon.js":"const { seg, eo, ei, eob, eio, lerp, clamp01, TextFx } = kit;\n// One plan per 1-minute candle: a candle forms, its plan expires at the close, a new plan follows. Chart tabs add context.\nconst HZ_Y = (p) => 560 - (p - 60000) * 1.2, HZ_X = (i) => 230 + i * 70;\nconst HZ_OLD = [[59880, 59930, 59860, 59920], [59920, 59990, 59900, 59970], [59970, 60010, 59940, 59950], [59950, 60000, 59930, 59990], [59990, 60040, 59970, 60020], [60020, 60050, 59990, 60010]];\nconst HZ_LIVE = [[60010, 60070, 59995, 60060], [60060, 60090, 60030, 60040]]; // the two candles that form in this scene\nconst HZ_TABS = ['1m', '5m', '15m', '1h'];\nkit.scene('horizon', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const cdl = (c, i, cls) => { const col = c[3] >= c[0] ? 'var(--up)' : 'var(--down)', x = HZ_X(i); return '<g class=\"' + cls + '\"><line class=\"hz-w\" x1=\"' + x + '\" x2=\"' + x + '\" stroke-width=\"3\" style=\"stroke:' + col + '\" y1=\"' + HZ_Y(c[1]).toFixed(1) + '\" y2=\"' + HZ_Y(c[2]).toFixed(1) + '\"/><rect class=\"hz-b\" x=\"' + (x - 20) + '\" width=\"40\" rx=\"3\" style=\"fill:' + col + '\" y=\"' + HZ_Y(Math.max(c[0], c[3])).toFixed(1) + '\" height=\"' + Math.max(4, HZ_Y(Math.min(c[0], c[3])) - HZ_Y(Math.max(c[0], c[3]))).toFixed(1) + '\"/></g>'; };\n    let old = '';\n    HZ_OLD.forEach((c, i) => { old += cdl(c, i, 'hz-o'); });\n    let live = '';\n    HZ_LIVE.forEach((c, i) => { live += '<g class=\"hz-l\"><line class=\"hz-lw\" x1=\"' + HZ_X(6 + i) + '\" x2=\"' + HZ_X(6 + i) + '\" stroke-width=\"3\"/><rect class=\"hz-lb\" x=\"' + (HZ_X(6 + i) - 20) + '\" width=\"40\" rx=\"3\"/></g>'; });\n    let tabs = '';\n    HZ_TABS.forEach((x) => { tabs += '<span class=\"hz-tab mono\" style=\"padding:8px 20px;border-radius:12px;font-size:24px\">' + x + '</span>'; });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1500px\"><p class=\"kick hz-k\">Time horizon</p><h2 class=\"line hz-t\">One plan per 1-minute candle</h2></div>' +\n      '<div class=\"glass hz-g\" style=\"left:140px;top:330px;width:900px;height:430px\"></div>' +\n      '<div class=\"hz-tabs\" style=\"position:absolute;left:170px;top:350px;display:flex;gap:8px\">' + tabs + '</div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"hz-ch\">' + old + live +\n      '<line class=\"hz-tr\" x1=\"200\" x2=\"1000\" y1=\"' + HZ_Y(60050) + '\" y2=\"' + HZ_Y(60050) + '\" stroke-dasharray=\"10 8\" stroke-width=\"2.5\" style=\"stroke:var(--up)\"/>' +\n      '<text class=\"hz-trl mono\" x=\"1000\" y=\"' + (HZ_Y(60050) - 12) + '\" text-anchor=\"end\" style=\"fill:var(--up);font-size:22px\">trigger 60,050</text></g>' +\n      '<text x=\"170\" y=\"740\" class=\"fict\" style=\"fill:color-mix(in srgb, var(--second) 45%, var(--ground))\">Fictional candles · time compressed</text></svg>' +\n      '<div class=\"glass hz-p\" style=\"left:1100px;top:330px;width:680px;padding:22px 28px\"><p class=\"kick\" style=\"margin:0 0 10px\">Current plan</p>' +\n      '<p class=\"hz-pt\" style=\"margin:0;font-size:30px;font-weight:700\"></p><p class=\"hz-pc mono\" style=\"margin:10px 0 0;font-size:26px;color:color-mix(in srgb, var(--second) 70%, var(--ground))\"></p></div>' +\n      '<div class=\"glass hz-n\" style=\"left:1100px;top:560px;width:680px;padding:20px 28px;border-color:var(--down)\"><p style=\"margin:0;font-size:30px;font-weight:700;color:var(--down)\">✗ No 10–15-minute price prediction</p>' +\n      '<p style=\"margin:6px 0 0;font-size:26px\">5m, 15m and 1h charts add context only.</p></div></div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.hz-k').style; this.t = q('.hz-t'); this.g = q('.hz-g').style; this.ch = q('.hz-ch').style;\n    this.os = all('.hz-o').map((e) => e.style); this.lw = all('.hz-lw'); this.lb = all('.hz-lb');\n    this.tr = q('.hz-tr').style; this.trl = q('.hz-trl').style; this.tabs = all('.hz-tab').map((e) => e.style);\n    this.p = q('.hz-p').style; this.pt = q('.hz-pt'); this.pc = q('.hz-pc'); this.n = q('.hz-n').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'think' }, { t: 5.9, pose: 'pointer', flip: true }, { t: 12.1, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    UI.rise(kit, this.g, t, 0.2, 0.6, 20);\n    this.ch.opacity = eo(seg(t, 0.4, 1.0));\n    // candle A forms 0.6–5.6, candle B 6.0–11.0 (each stands for one minute)\n    const spans = [[0.6, 5.6], [6.0, 11.0]];\n    HZ_LIVE.forEach((c, i) => {\n      const p = clamp01((t - spans[i][0]) / (spans[i][1] - spans[i][0]));\n      const show = t >= spans[i][0];\n      const wig = p < 1 ? Math.sin(t * 9) * 12 * (1 - p) : 0;\n      const cl = lerp(c[0], c[3], eio(p)) + wig, hi = Math.max(c[0], cl, lerp(c[0], c[1], eo(Math.min(1, p * 1.4)))), lo = Math.min(c[0], cl, lerp(c[0], c[2], eo(Math.min(1, p * 1.6))));\n      const col = cl >= c[0] ? 'var(--up)' : 'var(--down)';\n      const x = HZ_X(6 + i);\n      this.lw[i].setAttribute('y1', HZ_Y(hi).toFixed(1)); this.lw[i].setAttribute('y2', HZ_Y(lo).toFixed(1)); this.lw[i].style.stroke = col;\n      const top = HZ_Y(Math.max(c[0], cl)), bot = HZ_Y(Math.min(c[0], cl));\n      this.lb[i].setAttribute('y', top.toFixed(1)); this.lb[i].setAttribute('height', Math.max(4, bot - top).toFixed(1));\n      this.lb[i].style.fill = p < 1 ? 'color-mix(in srgb, ' + col + ' 40%, var(--ground))' : col; this.lb[i].style.stroke = col;\n      this.lw[i].style.opacity = show ? 1 : 0; this.lb[i].style.opacity = show ? 1 : 0;\n      void x;\n    });\n    UI.rise(kit, this.p, t, 0.8, 0.6, 20);\n    let pt, pc;\n    if (t < 5.6) { pt = 'BUY if price trades above 60,050'; pc = 'Valid for this candle · closes in 0:' + String(Math.max(0, Math.ceil(60 * (1 - (t - 0.6) / 5)))).padStart(2, '0'); }\n    else if (t < 6.4) { pt = 'Plan expired'; pc = 'Candle closed · checks run again'; }\n    else { pt = 'New plan: No setup right now'; pc = 'Fresh data · next candle'; }\n    UI.set(this.pt, pt); UI.set(this.pc, pc);\n    this.pt.style.color = t < 5.6 ? 'var(--up)' : t < 6.4 ? 'var(--warn)' : 'var(--main)';\n    const tro = t < 5.6 ? 1 : 1 - eo(seg(t, 5.6, 6.0));\n    this.tr.opacity = tro * eo(seg(t, 0.8, 1.2)); this.trl.opacity = this.tr.opacity;\n    // tabs: 1m active, then cycle 5m, 15m, 1h while the context line is read out\n    const act = t < 12.6 ? 0 : 1 + Math.min(2, Math.floor((t - 12.6) / 1.4));\n    this.tabs.forEach((s, i) => { s.background = i === act ? 'var(--main)' : 'color-mix(in srgb, var(--second) 8%, transparent)'; s.color = i === act ? 'var(--ground)' : ''; });\n    this.os.forEach((s) => { s.opacity = act === 0 ? 1 : 0.5; });\n    UI.rise(kit, this.n, t, 14.4, 0.6, 20);\n    this.tutor.render(t);\n  },\n});\n","scene-insights.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// The AI Insights page (mock): verdict, PRICE MAP, then the sections further down.\nconst IN_MAP = [['Resistance', '60,600', '+1.00%', 'var(--down)', 40], ['Price · entry', '60,000', '', 'var(--second)', 240], ['Support', '59,760', '−0.40%', 'var(--up)', 320], ['Stop', '59,700', '−0.50%', 'var(--down)', 340]];\nconst IN_SEC = [[0.4, 'Verdict'], [12.6, 'PRICE MAP'], [19.6, 'ENTRY CHECKLIST · TRADE MANAGEMENT · ENGINE STATUS']];\nkit.scene('insights', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let map = '';\n    IN_MAP.forEach((m, i) => {\n      map += '<div class=\"in-r\" style=\"display:flex;align-items:baseline;gap:12px;padding:7px 0\"><span style=\"width:14px;height:14px;border-radius:50%;flex:none;background:' + m[3] + '\"></span>' +\n        '<span style=\"font-size:24px;flex:1\">' + m[0] + '</span><span class=\"mono\" style=\"font-size:26px\">' + m[1] + '</span><span class=\"mono\" style=\"width:96px;text-align:right;font-size:22px;color:' + m[3] + '\">' + m[2] + '</span></div>';\n    });\n    const chip = (a, b) => '<div style=\"min-width:0;padding:6px 10px;border-radius:12px;border:1.5px solid color-mix(in srgb, var(--second) 14%, transparent)\"><p class=\"lbl\" style=\"margin:0;font-size:20px\">' + a + '</p><p class=\"mono in-cv\" style=\"margin:2px 0 0;font-size:24px\">' + b + '</p></div>';\n    const col = '<div class=\"in-col\">' +\n      '<div class=\"card in-v\" style=\"margin-bottom:14px\"><p class=\"card-h\">VERDICT</p>' +\n      '<p style=\"margin:4px 0 6px;font-size:26px;font-weight:700\">BUY if price trades above 60,000</p><p class=\"lbl\" style=\"margin:0;line-height:1.4\">Plan for this candle only; every check runs again when it triggers.</p></div>' +\n      '<div class=\"card in-m\" style=\"margin-bottom:14px\"><p class=\"card-h\">PRICE MAP</p>' + map + '</div>' +\n      '<div class=\"card in-ck\" style=\"margin-bottom:14px\"><p class=\"card-h\">ENTRY CHECKLIST</p><span class=\"mono\" style=\"font-size:24px;color:var(--up)\">BUY 72% / 60% · READY</span></div>' +\n      '<div class=\"card\" style=\"margin-bottom:14px\"><p class=\"card-h\">TRADE MANAGEMENT</p><p style=\"margin:0;font-size:22px;line-height:1.4\">Unrealised · trailing stop · max loss if stopped</p></div>' +\n      '<div class=\"card\"><p class=\"card-h\">ENGINE STATUS</p><div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:8px\">' +\n      chip('Mode', 'Basic') + chip('Auto approval', 'Off') + chip('Open trades', '1 / 2') + chip('Cooldown', '—') + chip('Today\\'s P&L', '−0.12 USDT') + chip('Next check', '0:34') + '</div></div></div>';\n    this.ph = UI.phone(kit, { left: 1120, top: 140, w: 580, h: 630, title: 'AI Insights', pill: '<span class=\"lbl in-rf\">↻ 20 s</span>', body: '<div style=\"position:relative;height:520px;overflow:hidden\">' + col + '</div>' }).style;\n    this.ml = UI.mockLabel(kit, 1120, 100).style;\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"words\" style=\"left:140px;top:180px;width:880px\"><p class=\"kick in-k\">Full AI insights</p><h2 class=\"line in-t\">The detailed page</h2>' +\n      '<p class=\"sub in-s\" style=\"font-size:32px\">Refreshes every 20 seconds.</p></div>' +\n      '<div style=\"position:absolute;left:140px;top:470px;width:900px;display:flex;flex-direction:column;gap:18px\">' +\n      IN_SEC.map((s) => '<div class=\"in-i\" style=\"display:flex;align-items:center;gap:18px\"><span class=\"dot\" style=\"width:16px;height:16px\"></span><span style=\"font-size:32px;font-weight:700\">' + s[1] + '</span></div>').join('') + '</div></div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.in-k').style; this.t = q('.in-t'); this.s = q('.in-s'); this.col = q('.in-col').style;\n    this.is = all('.in-i').map((e) => e.style); this.rs = all('.in-r').map((e) => e.style); this.v = q('.in-v').style; this.m = q('.in-m').style; this.rf = q('.in-rf');\n    this.next = all('.in-cv')[5]; this.ck = q('.in-ck'); this.low = [...q('.in-col').children].slice(2).map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'laptop' }, { t: 6.4, pose: 'read' }, { t: 12.6, pose: 'pointer', flip: true }, { t: 19.6, pose: 'present' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.s, t, 1.0, { stagger: 0.07 });\n    const p = seg(t, 0.4, 1.3);\n    this.ph.opacity = eo(p); this.ph.transform = 'translateY(' + lerp(50, 0, eo(p)).toFixed(1) + 'px)';\n    this.ml.opacity = 0.9 * eo(seg(t, 1.0, 1.6));\n    this.is.forEach((s, i) => {\n      const a = IN_SEC[i][0], end = i + 1 < IN_SEC.length ? IN_SEC[i + 1][0] : 99;\n      UI.rise(kit, s, t, a + 0.3, 0.5, 16);\n      s.opacity = (+s.opacity * (t >= a && t < end ? 1 : 0.45)).toFixed(3);\n      s.color = t >= a && t < end ? 'var(--main)' : '';\n    });\n    const gv = Math.max(0, Math.sin(Math.PI * seg(t, 6.4, 12.4)));\n    this.v.borderColor = 'color-mix(in srgb, var(--main) ' + (gv * 80).toFixed(0) + '%, transparent)';\n    const gm = Math.max(0, Math.sin(Math.PI * seg(t, 12.6, 19.4)));\n    this.m.borderColor = 'color-mix(in srgb, var(--main) ' + (gm * 80).toFixed(0) + '%, transparent)';\n    this.rs.forEach((s, i) => { s.opacity = (0.35 + 0.65 * eo(seg(t, 13.4 + i * 0.9, 13.9 + i * 0.9))).toFixed(3); });\n    // scroll down to the lower sections\n    this.col.transform = 'translateY(' + (-(this.off || (this.off = this.ck.offsetTop)) * eio(seg(t, 19.8, 21.4))).toFixed(1) + 'px)';\n    const off = (1 - eo(seg(t, 19.9, 20.9))).toFixed(3); this.v.opacity = off; this.m.opacity = off; this.low.forEach((e) => { e.opacity = eo(seg(t, 19.6, 20.4)).toFixed(3); });\n    // refresh counter and next check countdown\n    UI.set(this.rf, '↻ ' + (20 - Math.floor(t % 20)) + ' s');\n    const nc = Math.max(0, 34 - Math.floor(Math.max(0, t - 19.6)));\n    UI.set(this.next, '0:' + String(nc).padStart(2, '0'));\n    this.tutor.render(t);\n  },\n});\n","scene-market.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// MARKET: candle ranges average into ATR; swing high and low marked; the MARKET card (mock).\nconst MK_C = [[59900, 59980, 59870, 59960], [59960, 60080, 59940, 60060], [60060, 60200, 60040, 60180], [60180, 60330, 60150, 60300], [60300, 60450, 60260, 60360], [60360, 60390, 60220, 60230],\n  [60230, 60250, 60170, 60190], [60190, 60200, 60100, 60110], [60110, 60120, 60030, 60050], [60050, 60060, 59950, 60010], [60010, 60060, 59990, 60040], [60040, 60090, 60000, 60070]];\nconst MK_Y = (p) => 720 - (p - 59850) * (380 / 650), MK_X = (i) => 210 + i * 66;\nkit.scene('market', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let cs = '', br = '';\n    MK_C.forEach((c, i) => {\n      const col = c[3] >= c[0] ? 'var(--up)' : 'var(--down)', x = MK_X(i);\n      cs += '<g class=\"mk-c\"><line x1=\"' + x + '\" x2=\"' + x + '\" y1=\"' + MK_Y(c[1]).toFixed(1) + '\" y2=\"' + MK_Y(c[2]).toFixed(1) + '\" stroke-width=\"3\" style=\"stroke:' + col + '\"/>' +\n        '<rect x=\"' + (x - 18) + '\" y=\"' + MK_Y(Math.max(c[0], c[3])).toFixed(1) + '\" width=\"36\" height=\"' + Math.max(4, MK_Y(Math.min(c[0], c[3])) - MK_Y(Math.max(c[0], c[3]))).toFixed(1) + '\" rx=\"3\" style=\"fill:' + col + '\"/></g>';\n      if (i >= 6) br += '<g class=\"mk-b\"><path d=\"M' + (x + 26) + ' ' + MK_Y(c[1]).toFixed(1) + ' h8 V' + MK_Y(c[2]).toFixed(1) + ' h-8\" fill=\"none\" stroke-width=\"2.5\" style=\"stroke:var(--warn)\"/>' +\n        '<text x=\"' + x + '\" y=\"' + (MK_Y(c[2]) + 34).toFixed(1) + '\" text-anchor=\"middle\" class=\"mono\" style=\"fill:var(--warn);font-size:22px\">' + (c[1] - c[2]) + '</text></g>';\n    });\n    const row = (a, b, col) => '<div style=\"display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\"><span style=\"font-size:24px;color:color-mix(in srgb, var(--second) 70%, var(--ground))\">' + a + '</span><span class=\"mono\" style=\"font-size:26px;' + (col ? 'color:' + col : '') + '\">' + b + '</span></div>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:960px\"><p class=\"kick mk-k\">Market</p><h2 class=\"line mk-t\">Volatility and swings</h2></div>' +\n      '<div class=\"glass mk-g\" style=\"left:140px;top:330px;width:960px;height:440px\"></div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"mk-ch\">' + cs + br +\n      '<g class=\"mk-sh\"><path d=\"M' + MK_X(4) + ' ' + (MK_Y(60450) - 14) + ' l-12 -18 h24 z\" style=\"fill:var(--down)\"/><text x=\"' + (MK_X(4) + 22) + '\" y=\"' + (MK_Y(60450) - 14) + '\" class=\"mono\" style=\"fill:var(--down);font-size:22px\">swing high 60,450</text></g>' +\n      '<g class=\"mk-sl\"><path d=\"M' + MK_X(9) + ' ' + (MK_Y(59950) + 50) + ' l-12 18 h24 z\" style=\"fill:var(--up)\"/><text x=\"' + (MK_X(9) - 22) + '\" y=\"' + (MK_Y(59950) + 88) + '\" text-anchor=\"end\" class=\"mono\" style=\"fill:var(--up);font-size:22px\">swing low 59,950</text></g></g>' +\n      '<text x=\"170\" y=\"752\" class=\"fict\" style=\"fill:color-mix(in srgb, var(--second) 45%, var(--ground))\">5m candles · fictional</text></svg>' +\n      '<div class=\"glass mk-a\" style=\"left:1160px;top:650px;width:620px;padding:14px 24px\"><p class=\"mono\" style=\"margin:0;font-size:26px;color:var(--warn)\">(80+100+90+110+70+90) ÷ 6 = 90</p><p class=\"lbl\" style=\"margin:4px 0 0\">average range ≈ ATR (simplified)</p></div>' +\n      '<div class=\"glass mk-card\" style=\"left:1160px;top:330px;width:620px;padding:22px 28px\"><p class=\"card-h\">MARKET</p>' +\n      row('Volatility · ATR 5m', '90 USDT', 'var(--warn)') + row('Last candle', '▲ +0.05%', 'var(--up)') + row('Recent swing highs', '60,450', 'var(--down)') + row('Recent swing lows', '59,950', 'var(--up)') + '</div>' +\n      '</div>'));\n    UI.mockLabel(kit, 1160, 292);\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.mk-k').style; this.t = q('.mk-t'); this.g = q('.mk-g').style; this.cs = all('.mk-c').map((e) => e.style); this.bs = all('.mk-b').map((e) => e.style);\n    this.sh = q('.mk-sh').style; this.sl = q('.mk-sl').style; this.a = q('.mk-a').style; this.card = q('.mk-card').style; this.ml = q('.mock').style;\n    this.rows = [...q('.mk-card').querySelectorAll('div')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'magnify' }, { t: 7.2, pose: 'idea' }, { t: 13.1, pose: 'pointer', flip: true }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    UI.rise(kit, this.g, t, 0.3, 0.6, 20);\n    this.cs.forEach((s, i) => { s.opacity = eo(seg(t, 0.6 + i * 0.18, 0.9 + i * 0.18)); });\n    this.bs.forEach((s, i) => { s.opacity = eo(seg(t, 3.2 + i * 0.4, 3.6 + i * 0.4)); });\n    UI.rise(kit, this.a, t, 6.0, 0.6, 16);\n    UI.rise(kit, this.card, t, 7.2, 0.6, 24);\n    this.ml.opacity = 0.9 * eo(seg(t, 7.6, 8.2));\n    this.rows.forEach((s, i) => {\n      const a = [7.6, 9.6, 13.6, 14.6][i];\n      s.opacity = eo(seg(t, a, a + 0.4));\n    });\n    this.sh.opacity = eo(seg(t, 13.4, 13.9)); this.sl.opacity = eo(seg(t, 14.4, 14.9));\n    this.tutor.render(t);\n  },\n});\n","scene-mistake.js":"const { seg, eo, ei, eob, eio, lerp, clamp01, TextFx } = kit;\n// The misconception (insights = forecast) is struck out; price turns before the next level.\nconst MS_X0 = 1060, MS_X1 = 1720, MS_Y = (p) => 620 - (p - 60000) * 0.45; // 60,000 at y 520; 1 USDT = 0.5 px\nconst MS_K = [[0, 60000], [2, 60180], [3.4, 60120], [5, 60380], [6.2, 60440], [7.4, 60250], [8.6, 60080], [9.6, 60020]];\nconst msPrice = (s) => { let v = MS_K[0][1]; for (let i = 1; i < MS_K.length; i++) { const a = MS_K[i - 1], b = MS_K[i]; if (s >= a[0]) v = lerp(a[1], b[1], eio(clamp01((s - a[0]) / (b[0] - a[0])))); } return v + Math.sin(s * 7.1) * 12; };\nkit.scene('mistake', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const hl = (p, col, lab) => '<line x1=\"' + MS_X0 + '\" x2=\"' + MS_X1 + '\" y1=\"' + MS_Y(p) + '\" y2=\"' + MS_Y(p) + '\" stroke-dasharray=\"12 8\" stroke-width=\"2.5\" style=\"stroke:' + col + '\"/>' +\n      '<text x=\"' + MS_X1 + '\" y=\"' + (MS_Y(p) - 12) + '\" text-anchor=\"end\" class=\"mono\" style=\"fill:' + col + ';font-size:22px\">' + lab + '</text>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:190px;width:860px\"><p class=\"kick ms-k\" style=\"color:var(--accent)\">Common mistake</p>' +\n      '<h2 class=\"line ms-t\">Insights are not a forecast</h2></div>' +\n      '<div class=\"glass ms-w\" style=\"left:140px;top:420px;width:820px;padding:26px 34px;border-color:color-mix(in srgb, var(--down) 50%, transparent)\"><p class=\"kick\" style=\"margin:0 0 8px;color:var(--down)\">Wrong</p>' +\n      '<p style=\"margin:0;font-size:34px;font-weight:700;position:relative;display:inline-block\">“2.0 R means price will get there.”<span class=\"ms-s\" style=\"position:absolute;left:-6px;right:-6px;top:52%;height:5px;border-radius:3px;background:var(--down)\"></span></p></div>' +\n      '<div class=\"glass ms-r\" style=\"left:140px;top:600px;width:820px;padding:26px 34px;border-color:var(--main);background:color-mix(in srgb, var(--ground) 78%, var(--main))\"><p class=\"kick\" style=\"margin:0 0 8px\">Right</p>' +\n      '<p style=\"margin:0;font-size:34px;font-weight:700;line-height:1.35\">2.0 R is room, not a promise. The Xora read only explains the market now.</p></div>' +\n      '<div class=\"glass ms-c\" style=\"left:1020px;top:270px;width:760px;height:470px\"></div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"ms-g\">' +\n      '<text x=\"' + MS_X0 + '\" y=\"320\" class=\"mono\" style=\"fill:var(--up);font-size:24px;font-weight:600\">BUY · 2.0 R to the next level</text>' +\n      hl(60600, 'var(--up)', 'next res. 60,600') + hl(60000, 'color-mix(in srgb, var(--second) 70%, transparent)', 'entry 60,000') +\n      '<path class=\"ms-l\" fill=\"none\" stroke-width=\"5\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/><circle class=\"ms-d\" r=\"10\" style=\"fill:var(--second)\"/>' +\n      '<text class=\"ms-x mono\" x=\"' + MS_X0 + '\" y=\"710\" style=\"fill:var(--down);font-size:26px;font-weight:600\">Price turned before the next level</text></g></svg>' +\n      '<p class=\"fict ms-f\" style=\"position:absolute;left:1020px;top:752px;margin:0\">Fictional prices · Illustrative, not real market data</p></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.ms-k').style; this.t = q('.ms-t'); this.w = q('.ms-w').style; this.s = q('.ms-s').style; this.r = q('.ms-r').style;\n    this.c = q('.ms-c').style; this.g = q('.ms-g').style; this.l = q('.ms-l'); this.d = q('.ms-d'); this.x = q('.ms-x').style; this.f = q('.ms-f').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'confused' }, { t: 6.6, pose: 'idea' }, { t: 12.2, pose: 'explain' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    UI.rise(kit, this.w, t, 1.0, 0.6, 24);\n    const sp = seg(t, 3.6, 4.2);\n    this.s.transformOrigin = '0 50%'; this.s.transform = 'scaleX(' + eio(sp) + ')';\n    this.w.opacity = (+this.w.opacity * lerp(1, 0.55, eo(seg(t, 4.2, 4.8)))).toFixed(3);\n    UI.rise(kit, this.r, t, 6.6, 0.6, 24);\n    UI.rise(kit, this.c, t, 1.6, 0.6, 20);\n    this.g.opacity = eo(seg(t, 1.8, 2.4));\n    this.f.opacity = 0.9 * eo(seg(t, 2.0, 2.6));\n    const end = Math.max(0, Math.min(9.6, (t - 2.4) * 1.0));\n    let d = '';\n    for (let s = 0; s <= end + 1e-6; s += 0.1) d += (d ? 'L' : 'M') + lerp(MS_X0, MS_X1 - 120, s / 9.6).toFixed(1) + ' ' + MS_Y(msPrice(s)).toFixed(1);\n    this.l.setAttribute('d', d || 'M0 0');\n    this.d.setAttribute('cx', lerp(MS_X0, MS_X1 - 120, end / 9.6).toFixed(1)); this.d.setAttribute('cy', MS_Y(msPrice(end)).toFixed(1));\n    this.d.style.fill = 'var(--second)';\n    this.x.opacity = eo(seg(t, 12.0, 12.4));\n    this.tutor.render(t);\n  },\n});\n","scene-opportunity.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// The TRADE OPPORTUNITY card, enlarged (mock), read part by part.\nconst OP_STEPS = [\n  [0.6, 'Direction and setup', 'BUY · Support reclaim'],\n  [8.0, 'ENTRY and STOP', 'Where it starts · where it closes'],\n  [14.8, 'RISK and NEXT RES.', 'Stop distance in % · next resistance'],\n];\nkit.scene('opportunity', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const met = (cls, a, b, col) => '<div class=\"op-m ' + cls + '\" style=\"flex:1;padding:12px 14px;border-radius:16px;border:2px solid transparent\"><p class=\"lbl\" style=\"margin:0\">' + a + '</p><p class=\"mono\" style=\"margin:6px 0 0;font-size:36px;' + (col ? 'color:' + col : '') + '\">' + b + '</p></div>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"glass op-c\" style=\"left:940px;top:170px;width:840px;padding:26px 32px\">' +\n      '<div style=\"display:flex;justify-content:space-between;align-items:center\"><p class=\"card-h\" style=\"margin:0;font-size:24px\">⚡ TRADE OPPORTUNITY</p><span class=\"lbl\" style=\"color:var(--accent)\">AI insights</span></div>' +\n      '<div class=\"op-s\" style=\"display:flex;align-items:center;gap:18px;margin:18px 0 10px;padding:10px 12px;border-radius:16px;border:2px solid transparent\"><span class=\"pill\" style=\"color:var(--up);font-size:28px;padding:8px 22px\">BUY</span>' +\n      '<div><p style=\"margin:0;font-size:32px;font-weight:700\">Support reclaim</p><p class=\"lbl\" style=\"margin:4px 0 0\">Waiting for your approval</p></div></div>' +\n      '<div style=\"display:flex;gap:8px\">' + met('op-e', 'ENTRY', '60,000') + met('op-st', 'STOP', '59,700', 'var(--down)') + met('op-r', 'RISK', '0.50%') + met('op-n', 'NEXT RES.', '60,600', 'var(--up)') + '</div>' +\n      '<div style=\"display:flex;height:16px;border-radius:8px;overflow:hidden;margin:22px 0 8px\"><div style=\"flex:1;background:var(--down)\"></div><div style=\"width:4px;background:var(--second)\"></div><div style=\"flex:2;background:var(--up)\"></div></div>' +\n      '<div style=\"display:flex;justify-content:space-between;font-size:24px\"><span style=\"color:var(--down)\">Stop</span><span class=\"mono\">2.0 R to the next level</span><span style=\"color:var(--up)\">Target</span></div>' +\n      '<div class=\"op-b mono\" style=\"margin-top:20px;height:64px;border-radius:16px;display:grid;place-items:center;font-size:26px;font-weight:600;border:2px solid var(--up);color:var(--up);background:color-mix(in srgb, var(--up) 14%, transparent)\"></div></div>' +\n      '<div class=\"words\" style=\"left:140px;top:180px;width:740px\"><p class=\"kick op-k\">Card one</p><h2 class=\"line op-t\">Trade opportunity</h2></div>' +\n      '<div class=\"op-list\" style=\"position:absolute;left:140px;top:420px;width:740px;display:flex;flex-direction:column;gap:22px\">' +\n      OP_STEPS.map((s, i) => '<div class=\"op-i\" style=\"display:flex;gap:20px;align-items:flex-start\"><span class=\"mono\" style=\"flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:28px;border:2px solid var(--main);color:var(--main)\">' + (i + 1) + '</span>' +\n        '<div><p style=\"margin:0;font-size:32px;font-weight:700\">' + s[1] + '</p><p style=\"margin:4px 0 0;font-size:28px;color:color-mix(in srgb, var(--second) 70%, var(--ground))\">' + s[2] + '</p></div></div>').join('') + '</div>' +\n      '</div>'));\n    UI.mockLabel(kit, 940, 132);\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.op-k').style; this.t = q('.op-t'); this.c = q('.op-c').style; this.b = q('.op-b');\n    this.items = all('.op-i').map((e) => e.style);\n    this.hl = [[q('.op-s').style], [q('.op-e').style, q('.op-st').style], [q('.op-r').style, q('.op-n').style]];\n    this.ml = kit.stage.querySelector('.mock').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.6, pose: 'pointer', flip: true }, { t: 8.0, pose: 'explain' }, { t: 14.8, pose: 'magnify' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    UI.rise(kit, this.c, t, 0.3, 0.7, 40);\n    this.ml.opacity = 0.9 * eo(seg(t, 0.8, 1.4));\n    OP_STEPS.forEach((s, i) => {\n      UI.rise(kit, this.items[i], t, s[0], 0.6, 20);\n      const end = i + 1 < OP_STEPS.length ? OP_STEPS[i + 1][0] : 99;\n      const on = t >= s[0] && t < end;\n      this.items[i].opacity = (+this.items[i].opacity * (on ? 1 : 0.5)).toFixed(3);\n      const g = on ? eo(seg(t, s[0] + 0.3, s[0] + 0.8)) : 0;\n      this.hl[i].forEach((h) => { h.borderColor = 'color-mix(in srgb, var(--main) ' + (g * 80).toFixed(0) + '%, transparent)'; h.background = 'color-mix(in srgb, var(--main) ' + (g * 10).toFixed(1) + '%, transparent)'; });\n    });\n    const left = Math.max(0, 48 - Math.floor(t));\n    UI.set(this.b, 'Approve buy · expires 0:' + String(left).padStart(2, '0'));\n    this.tutor.render(t);\n  },\n});\n","scene-plan.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// The TRADE PLAN maths: size = margin × leverage, risk = size × stop distance.\nconst PL_ROWS = [['Direction', 'BUY', 'var(--up)'], ['Entry', '60,000'], ['Stop', '59,700', 'var(--down)'], ['Size', '30 USDT', null, 'pl-sz'], ['Risk', '0.50% · 0.15 USDT', null, 'pl-rk'], ['Next level', '2.0 R', 'var(--up)'], ['Exit', 'Fixed take profit · 2× risk']];\nkit.scene('plan', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let rows = '';\n    PL_ROWS.forEach((r) => {\n      rows += '<div class=\"pl-row ' + (r[3] || '') + '\" style=\"display:flex;justify-content:space-between;align-items:baseline;padding:11px 12px;border-radius:12px;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\">' +\n        '<span style=\"font-size:26px;color:color-mix(in srgb, var(--second) 70%, var(--ground))\">' + r[0] + '</span><span class=\"mono\" style=\"font-size:28px;' + (r[2] ? 'color:' + r[2] : '') + '\">' + r[1] + '</span></div>';\n    });\n    const step = (cls, a, b) => '<div class=\"glass ' + cls + '\" style=\"position:relative;width:820px;padding:20px 30px\"><p class=\"kick\" style=\"margin:0 0 8px\">' + a + '</p><p class=\"mono\" style=\"margin:0;font-size:40px\">' + b + '</p></div>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:860px\"><p class=\"kick pl-k\">Worked example</p><h2 class=\"line pl-t\">The trade plan maths</h2></div>' +\n      '<div style=\"position:absolute;left:140px;top:360px;display:flex;flex-direction:column;gap:18px\">' +\n      step('pl-s1', 'Size = margin × leverage', '3 USDT × 10 = <span class=\"pl-n1\" style=\"color:var(--main)\">30</span> USDT') +\n      step('pl-s2', 'Risk = size × stop distance', '30 × 0.50% = <span class=\"pl-n2\" style=\"color:var(--down)\">0.15</span> USDT') +\n      '<p class=\"pl-w\" style=\"margin:0;font-size:28px;font-weight:600;color:var(--warn)\">+ fees. Slippage can make the loss bigger.</p></div>' +\n      '<div class=\"glass pl-c\" style=\"left:1060px;top:170px;width:720px;padding:22px 26px\"><p class=\"card-h\" style=\"margin:0 0 8px\">TRADE PLAN</p>' + rows + '</div>' +\n      '</div>'));\n    UI.mockLabel(kit, 1060, 132);\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.pl-k').style; this.t = q('.pl-t'); this.c = q('.pl-c').style; this.ml = q('.mock').style;\n    this.s1 = q('.pl-s1').style; this.s2 = q('.pl-s2').style; this.n1 = q('.pl-n1'); this.n2 = q('.pl-n2'); this.w = q('.pl-w').style;\n    this.sz = q('.pl-sz').style; this.rk = q('.pl-rk').style;\n    this.rows = [...kit.stage.querySelectorAll('.pl-row')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'read' }, { t: 6.4, pose: 'checklist' }, { t: 11.8, pose: 'think' }, { t: 16.3, pose: 'magnify' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    UI.rise(kit, this.c, t, 0.4, 0.7, 30);\n    this.ml.opacity = 0.9 * eo(seg(t, 0.9, 1.5));\n    this.rows.forEach((s, i) => { s.opacity = eo(seg(t, 0.8 + i * 0.25, 1.2 + i * 0.25)); });\n    UI.rise(kit, this.s1, t, 1.4, 0.6, 20);\n    UI.set(this.n1, t < 6.6 ? '?' : String(Math.round(lerp(0, 30, eo(seg(t, 6.6, 7.6))))));\n    UI.rise(kit, this.s2, t, 11.8, 0.6, 20);\n    UI.set(this.n2, t < 12.6 ? '?' : lerp(0, 0.15, eo(seg(t, 12.6, 13.6))).toFixed(2));\n    UI.rise(kit, this.w, t, 16.4, 0.6, 14);\n    const h1 = Math.max(0, Math.sin(Math.PI * seg(t, 6.6, 11.6))), h2 = Math.max(0, Math.sin(Math.PI * seg(t, 12.6, 22.6)));\n    this.sz.background = 'color-mix(in srgb, var(--main) ' + (h1 * 18).toFixed(1) + '%, transparent)';\n    this.rk.background = 'color-mix(in srgb, var(--down) ' + (h2 * 18).toFixed(1) + '%, transparent)';\n    this.tutor.render(t);\n  },\n});\n","scene-recap.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst RECAP = [['TRADE OPPORTUNITY: entry, stop, risk %, next level, and R.', 0.6], ['Size = margin × leverage. Risk = size × stop distance.', 6.4], ['Insights explain the market now. They are not predictions.', 11.8]];\nkit.scene('recap', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let items = '';\n    RECAP.forEach((s) => {\n      items += '<div class=\"rc-i\" style=\"display:flex;align-items:center;gap:26px\"><svg width=\"50\" height=\"50\" viewBox=\"0 0 52 52\" style=\"flex:none\"><circle cx=\"26\" cy=\"26\" r=\"23\" fill=\"none\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 45%, transparent)\"/>' +\n        '<path class=\"rc-tick\" d=\"M15 27 L23 35 L38 18\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/></svg><span style=\"font-size:34px;font-weight:600\">' + s[0] + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1400px\"><p class=\"kick rc-k\">Recap</p><h2 class=\"line rc-t\">Three things to remember</h2>' +\n      '<div style=\"display:flex;flex-direction:column;gap:22px;margin-top:10px\">' + items + '</div></div>' +\n      '<div class=\"glass rc-q\" style=\"left:140px;top:610px;width:1200px;padding:24px 36px\"><p class=\"kick\" style=\"margin:0 0 10px;color:var(--accent)\">Check yourself</p>' +\n      '<p style=\"margin:0;font-size:32px;font-weight:600;line-height:1.4\">Margin 3 USDT at 5x, stop 0.50% away. Risk before fees?</p>' +\n      '<p class=\"rc-a\" style=\"margin:12px 0 0;font-size:30px;line-height:1.4;color:var(--main);font-weight:700\">15 USDT × 0.50% = 0.075 USDT.</p></div>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.rc-k').style; this.t = q('.rc-t'); this.qc = q('.rc-q').style; this.a = q('.rc-a').style;\n    this.items = [...kit.stage.querySelectorAll('.rc-i')].map((e) => e.style);\n    this.ticks = [...kit.stage.querySelectorAll('.rc-tick')];\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'checklist' }, { t: 13.0, pose: 'think' }, { t: 16.6, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    this.items.forEach((s, i) => {\n      const a = RECAP[i][1];\n      s.opacity = eo(seg(t, a, a + 0.4));\n      s.transform = 'translateX(' + lerp(26, 0, eo(seg(t, a, a + 0.5))) + 'px)';\n      this.ticks[i].setAttribute('stroke-dasharray', eo(seg(t, a + 0.5, a + 0.9)) + ' 1');\n    });\n    const qp = seg(t, 13.0, 13.7);\n    this.qc.opacity = eo(qp); this.qc.transform = 'translateY(' + lerp(30, 0, eo(qp)) + 'px)';\n    const ap = seg(t, 16.5, 17.0);\n    this.a.opacity = eo(ap); this.a.transform = 'translateX(' + lerp(20, 0, eo(ap)) + 'px)';\n    this.tutor.render(t);\n  },\n});\n","scene-risks.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nconst RISKS = [\n  ['No guaranteed profit', 'XORA does not guarantee profits. Setups fail, and losing trades happen.', 4.9],\n  ['Bigger than planned', 'Fees and slippage add to a loss. Price can jump past a stop.', 10.5],\n  ['Leverage', 'Leverage makes gains and losses bigger. A small move can cost a lot.', 12.4],\n  ['Demo first', 'Practise in DEMO. Go live only with money you can afford to lose.', 16.1],\n];\nkit.scene('risks', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let cards = '';\n    RISKS.forEach((r, i) => {\n      cards += '<div class=\"glass rk-c\" style=\"left:' + (140 + (i % 2) * 780) + 'px;top:' + (340 + Math.floor(i / 2) * 212) + 'px;width:750px;min-height:196px;padding:24px 34px\">' +\n        '<p class=\"kick\" style=\"margin:0 0 10px;color:var(--accent)\">' + r[0] + '</p><p style=\"margin:0;font-size:28px;line-height:1.4;font-weight:600\">' + r[1] + '</p></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1400px\"><p class=\"kick rk-k\" style=\"color:var(--accent)\">Insights explain; they do not remove risk</p>' +\n      '<h2 class=\"line rk-t\">Know the limits</h2></div>' + cards +\n      '<p class=\"risk-line rk-l\" style=\"position:absolute;left:140px;top:762px;margin:0\">XORA does not guarantee profits · Demo first · Not financial advice</p>' +\n      '</div>'));\n    this.k = kit.stage.querySelector('.rk-k').style; this.t = kit.stage.querySelector('.rk-t'); this.l = kit.stage.querySelector('.rk-l').style;\n    this.cards = [...kit.stage.querySelectorAll('.rk-c')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'think' }, { t: 10.5, pose: 'magnify' }, { t: 16.1, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    this.cards.forEach((c, i) => {\n      const a = RISKS[i][2], p = seg(t, a, a + 0.7);\n      c.opacity = eo(seg(t, a, a + 0.35));\n      c.transform = 'translateY(' + (lerp(40, 0, eo(p)) - Math.max(0, t - a) * 0.6).toFixed(2) + 'px) scale(' + lerp(0.95, 1, eob(p, 1.5)) + ')';\n    });\n    this.l.opacity = eo(seg(t, 17.4, 18.0));\n    this.tutor.render(t);\n  },\n});\n","scene-rmath.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// R: the risk distance becomes a ruler; the room to the next level measures 2 of them.\nconst RM_X = (p) => 700 + (p - 60000) * (4 / 3); // 59,700 → 300, 60,000 → 700, 60,600 → 1500\nconst RM_Y = 540;\nkit.scene('rmath', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const tick = (p, lab, col) => '<line x1=\"' + RM_X(p) + '\" x2=\"' + RM_X(p) + '\" y1=\"' + (RM_Y - 40) + '\" y2=\"' + (RM_Y + 40) + '\" stroke-width=\"4\" style=\"stroke:' + col + '\"/>' +\n      '<text x=\"' + RM_X(p) + '\" y=\"' + (RM_Y + 82) + '\" text-anchor=\"middle\" class=\"mono\" style=\"fill:' + col + ';font-size:26px\">' + lab + '</text>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1500px\"><p class=\"kick rm-k\">Reading the bar</p><h2 class=\"line rm-t\">What is R?</h2>' +\n      '<p class=\"def rm-d\"><b>1 R</b> = your risk: the distance from entry to stop.</p></div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' +\n      '<rect class=\"rm-red\" x=\"' + RM_X(59700) + '\" y=\"' + (RM_Y - 16) + '\" width=\"' + (RM_X(60000) - RM_X(59700)) + '\" height=\"32\" rx=\"6\" style=\"fill:var(--down)\"/>' +\n      '<rect class=\"rm-g1\" x=\"' + RM_X(60000) + '\" y=\"' + (RM_Y - 16) + '\" width=\"400\" height=\"32\" style=\"fill:var(--up)\"/>' +\n      '<rect class=\"rm-g2\" x=\"' + (RM_X(60000) + 400) + '\" y=\"' + (RM_Y - 16) + '\" width=\"400\" height=\"32\" rx=\"6\" style=\"fill:color-mix(in srgb, var(--up) 70%, var(--ground))\"/>' +\n      tick(59700, 'stop 59,700', 'var(--down)') + tick(60000, 'entry 60,000', 'var(--second)') + tick(60600, 'next res. 60,600', 'var(--up)') +\n      '<g class=\"rm-b0\"><path d=\"M' + RM_X(59700) + ' ' + (RM_Y - 56) + ' v-14 H' + RM_X(60000) + ' v14\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--down)\"/>' +\n      '<text x=\"' + ((RM_X(59700) + RM_X(60000)) / 2) + '\" y=\"' + (RM_Y - 86) + '\" text-anchor=\"middle\" class=\"mono\" style=\"fill:var(--down);font-size:26px\">300 = 1 R</text></g>' +\n      '<g class=\"rm-b1\"><path d=\"M' + RM_X(60000) + ' ' + (RM_Y - 56) + ' v-14 h400 v14\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--up)\"/>' +\n      '<text x=\"' + (RM_X(60000) + 200) + '\" y=\"' + (RM_Y - 86) + '\" text-anchor=\"middle\" class=\"mono\" style=\"fill:var(--up);font-size:26px\">1 R</text></g>' +\n      '<g class=\"rm-b2\"><path d=\"M' + (RM_X(60000) + 400) + ' ' + (RM_Y - 56) + ' v-14 h400 v14\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--up)\"/>' +\n      '<text x=\"' + (RM_X(60000) + 600) + '\" y=\"' + (RM_Y - 86) + '\" text-anchor=\"middle\" class=\"mono\" style=\"fill:var(--up);font-size:26px\">2 R</text></g>' +\n      '<rect class=\"rm-ruler\" y=\"' + (RM_Y - 22) + '\" width=\"400\" height=\"44\" rx=\"8\" fill=\"none\" stroke-width=\"3\" stroke-dasharray=\"8 6\" style=\"stroke:var(--second)\"/></svg>' +\n      '<div class=\"glass rm-eq\" style=\"left:140px;top:660px;width:1100px;padding:20px 32px\"><p class=\"mono\" style=\"margin:0;font-size:40px\">room 600 ÷ risk 300 = <span style=\"color:var(--up)\">2.0 R</span> <span style=\"font-size:26px;color:color-mix(in srgb, var(--second) 60%, var(--ground))\">· room, not a promise</span></p></div>' +\n      '<p class=\"fict\" style=\"position:absolute;right:140px;top:250px;margin:0\">Fictional prices in USDT</p></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.rm-k').style; this.t = q('.rm-t'); this.d = q('.rm-d');\n    this.red = q('.rm-red'); this.g1 = q('.rm-g1'); this.g2 = q('.rm-g2'); this.b0 = q('.rm-b0').style; this.b1 = q('.rm-b1').style; this.b2 = q('.rm-b2').style;\n    this.ruler = q('.rm-ruler'); this.eq = q('.rm-eq').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'think' }, { t: 5.8, pose: 'pointer', flip: true }, { t: 12.4, pose: 'idea' }, { t: 18.4, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    TextFx.fadeFromRight(this.d, t, 5.8, { stagger: 0.06 });\n    const grow = (el, a, w0) => { const p = eio(seg(t, a, a + 0.9)); el.setAttribute('width', (w0 * p).toFixed(1)); };\n    grow(this.red, 1.0, 400); grow(this.g1, 1.6, 400); grow(this.g2, 2.2, 400);\n    this.b0.opacity = eo(seg(t, 7.0, 7.5));\n    // the ruler (1 R) lifts off the red part and steps along the room: 1 R, 2 R\n    const rx = t < 12.6 ? RM_X(59700) : lerp(RM_X(59700), RM_X(60000), eio(seg(t, 12.6, 13.6))) + 400 * eio(seg(t, 14.4, 15.4));\n    this.ruler.setAttribute('x', rx.toFixed(1));\n    this.ruler.style.opacity = eo(seg(t, 8.0, 8.5));\n    this.b1.opacity = eo(seg(t, 13.6, 14.1)); this.b2.opacity = eo(seg(t, 15.4, 15.9));\n    UI.rise(kit, this.eq, t, 16.0, 0.6, 20);\n    this.tutor.render(t);\n  },\n});\n","scene-title.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\n// Title card: a trade-plan readout inside the ring.\nkit.scene('title', {\n  init(kit) {\n    let ticks = '';\n    for (let i = 0; i < 48; i++) {\n      const a = i / 48 * Math.PI * 2, r1 = 236, r2 = i % 4 ? 250 : 262;\n      ticks += '<line x1=\"' + (Math.cos(a) * r1).toFixed(1) + '\" y1=\"' + (Math.sin(a) * r1).toFixed(1) + '\" x2=\"' + (Math.cos(a) * r2).toFixed(1) + '\" y2=\"' + (Math.sin(a) * r2).toFixed(1) + '\"/>';\n    }\n    const pill = (y, txt, col) => '<g class=\"ti-p\" transform=\"translate(0 ' + y + ')\"><rect x=\"-150\" y=\"-34\" width=\"300\" height=\"68\" rx=\"34\" style=\"fill:color-mix(in srgb, ' + col + ' 16%, var(--ground));stroke:' + col + ';stroke-width:2.5\"/>' +\n      '<text y=\"11\" text-anchor=\"middle\" class=\"mono\" style=\"fill:' + col + ';font-size:28px;font-weight:600;letter-spacing:.04em\">' + txt + '</text></g>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"t27ti-g\" x1=\"0\" x2=\"1\" y1=\"0\" y2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient>' +\n      '<radialGradient id=\"t27ti-f\"><stop offset=\"0\" style=\"stop-color:color-mix(in srgb, var(--main) 26%, var(--ground))\"/><stop offset=\"1\" style=\"stop-color:var(--ground)\"/></radialGradient></defs>' +\n      '<g class=\"ti-coin\" transform=\"translate(1340 470)\">' +\n      '<circle r=\"300\" style=\"fill:url(#t27ti-f);opacity:.8\"/>' +\n      '<g class=\"ti-ticks\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 55%, transparent)\">' + ticks + '</g>' +\n      '<circle r=\"200\" fill=\"none\" stroke=\"url(#t27ti-g)\" stroke-width=\"10\"/>' +\n      pill(-92, 'ENTRY 60,000', 'var(--second)') + pill(0, 'STOP 59,700', 'var(--down)') + pill(92, '2.0 R ROOM', 'var(--up)') + '</g></svg>' +\n      '<div class=\"words\" style=\"left:140px;top:250px;width:900px\"><p class=\"kick ti-k\">Phase 6 · XORA Intelligence</p>' +\n      '<h1 class=\"line ti-t\" style=\"font-size:104px\">Reading XORA trading insights</h1>' +\n      '<div class=\"rule ti-r\" style=\"width:260px\"></div>' +\n      '<p class=\"sub ti-s\">Lesson T27 · about 5 minutes · fictional numbers</p></div>' +\n      '<p class=\"fict\" style=\"position:absolute;left:140px;bottom:80px;margin:0\">Education only · Not financial advice</p>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.k = q('.ti-k').style; this.t = q('.ti-t'); this.r = q('.ti-r').style; this.s = q('.ti-s').style;\n    this.coin = q('.ti-coin'); this.ticks = q('.ti-ticks');\n    this.pills = [...kit.stage.querySelectorAll('.ti-p')];\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: 2080, y: C.y, s: C.s }, { t: 2.6, x: C.x, y: C.y, s: C.s, d: 1.9, ease: (p) => kit.lerp(p, kit.eo(p), 0.5) }],\n      poses: [{ t: 0, pose: 'walk', flip: true }, { t: 2.6, pose: 'present' }],\n      says: [{ t0: 2.9, t1: 7.4, text: 'Let us read the screen.' }],\n    });\n  },\n  render(t) {\n    this.k.opacity = eo(seg(t, -0.6, -0.1));\n    TextFx.fadeFromRight(this.t, t, -0.9);\n    this.r.transformOrigin = '0 50%';\n    this.r.transform = 'scaleX(' + eo(seg(t, 0.2, 0.9)) + ')';\n    this.s.opacity = eo(seg(t, 0.6, 1.1));\n    const c = seg(t, -0.6, 0.6);\n    this.coin.setAttribute('transform', 'translate(1340 ' + (470 - t * 2).toFixed(1) + ') scale(' + (lerp(0.9, 1, eob(c, 1.6)) * (1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.2))).toFixed(4) + ')');\n    this.coin.style.opacity = eo(c);\n    this.ticks.setAttribute('transform', 'rotate(' + (t * 6).toFixed(2) + ')');\n    // the three answers light up in turn\n    this.pills.forEach((p, i) => {\n      const a = 0.8 + i * 0.5, e = seg(t, a, a + 0.5);\n      const hl = 0.55 + 0.45 * Math.max(0, Math.sin((t - 2.2 - i * 1.3) * Math.PI / 3.9));\n      p.style.opacity = (eo(e) * (t < 2.2 ? 1 : hl)).toFixed(3);\n      p.setAttribute('transform', 'translate(' + lerp(60, 0, eo(e)).toFixed(1) + ' ' + ((i - 1) * 92) + ')');\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-try.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Pause and calculate: 3 USDT margin at 10x, entry 60,000, stop 59,400. Risk before fees?\nconst TY_STEPS = [[12.2, 'Size', '3 USDT × 10 = 30 USDT'], [14.2, 'Stop distance', '600 ÷ 60,000 = 1.00%'], [16.2, 'Risk', '30 USDT × 1.00% = 0.30 USDT']];\nkit.scene('try', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    const tile = (a, b) => '<div style=\"flex:1;padding:14px 18px;border-radius:16px;border:1.5px solid color-mix(in srgb, var(--second) 14%, transparent)\"><p class=\"lbl\" style=\"margin:0\">' + a + '</p><p class=\"mono\" style=\"margin:6px 0 0;font-size:34px\">' + b + '</p></div>';\n    let steps = '';\n    TY_STEPS.forEach((s) => { steps += '<div class=\"ty-s\" style=\"display:flex;align-items:baseline;gap:22px;padding:4px 0\"><span class=\"kick\" style=\"width:220px;flex:none\">' + s[1] + '</span><span class=\"mono\" style=\"font-size:32px\">' + s[2] + '</span></div>'; });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:150px;width:1100px\"><p class=\"kick ty-k\">Your turn</p><h2 class=\"line ty-t\">How much is at risk?</h2></div>' +\n      '<div class=\"glass ty-q\" style=\"left:140px;top:300px;width:1060px;padding:20px 28px\"><p class=\"fict\" style=\"margin:0 0 12px\">Trade plan · fictional numbers</p>' +\n      '<div style=\"display:flex;gap:12px\">' + tile('Margin', '3 USDT') + tile('Leverage', '10x') + tile('Entry', '60,000') + tile('Stop', '59,400') + '</div>' +\n      '<p style=\"margin:14px 0 0;font-size:30px;font-weight:600\">If the stop is hit, how many USDT do you lose, before fees?</p></div>' +\n      '<div class=\"glass ty-a\" style=\"left:140px;top:545px;width:1060px;padding:8px 28px;border-color:var(--main)\">' + steps +\n      '<p class=\"ty-f\" style=\"margin:6px 0 0;font-size:26px;color:var(--warn)\">Before fees and slippage.</p></div></div>'));\n    this.ring = UI.ring(kit, 1500, 520, 110, 5.6, 6.4, 5, 11.8, 'Pause and calculate');\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.ty-k').style; this.t = q('.ty-t'); this.qc = q('.ty-q').style; this.a = q('.ty-a').style; this.f = q('.ty-f').style;\n    this.ss = all('.ty-s').map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.5, pose: 'present' }, { t: 6.4, pose: 'think' }, { t: 12.0, pose: 'writing' }, { t: 18.6, pose: 'cheer' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    UI.rise(kit, this.qc, t, 0.8, 0.6, 24);\n    UI.rise(kit, this.a, t, 12.0, 0.5, 20);\n    this.ss.forEach((s, i) => { const a = TY_STEPS[i][0]; s.opacity = eo(seg(t, a, a + 0.5)); s.transform = 'translateX(' + lerp(20, 0, eo(seg(t, a, a + 0.6))).toFixed(1) + 'px)'; });\n    this.f.opacity = eo(seg(t, 18.6, 19.1));\n    this.ring(t);\n    this.tutor.render(t);\n  },\n});\n","scenes.json":"{\n  \"v\": 1,\n  \"stage\": \"final\",\n  \"look\": \"XORA site look, same as T01: deep void ground, frosted glass panels, clean generic phone mock-ups of the XORA app (fictional numbers), the brain tutor guiding from the bottom-right corner\",\n  \"palettes\": [\n    [\n      \"#02030a\",\n      \"#3ecbff\",\n      \"#eef1f7\",\n      \"#a855f7\"\n    ]\n  ],\n  \"theirs\": 1,\n  \"width\": 1920,\n  \"height\": 1080,\n  \"fps\": 60,\n  \"background\": \"#02030a\",\n  \"fonts\": {\n    \"display\": {\n      \"family\": \"Outfit\",\n      \"or\": \"plus-jakarta-sans\",\n      \"weights\": [\n        400,\n        600,\n        700\n      ]\n    },\n    \"sans\": \"manrope\",\n    \"mono\": \"dm-mono\"\n  },\n  \"scenes\": [\n    {\n      \"id\": \"title\",\n      \"name\": \"Lesson twenty-seven\",\n      \"dur\": 8,\n      \"desc\": \"Title card: Phase 6 XORA Intelligence, lesson T27 Reading XORA trading insights.\"\n    },\n    {\n      \"id\": \"hook\",\n      \"name\": \"One coin, many cards\",\n      \"dur\": 14,\n      \"desc\": \"A phone mock of the Signals screen scrolls through its cards.\"\n    },\n    {\n      \"id\": \"opportunity\",\n      \"name\": \"Trade opportunity\",\n      \"dur\": 21,\n      \"desc\": \"TRADE OPPORTUNITY card: BUY, support reclaim, ENTRY, STOP, RISK %, NEXT RES., approve countdown.\"\n    },\n    {\n      \"id\": \"rmath\",\n      \"name\": \"What R means\",\n      \"dur\": 22,\n      \"desc\": \"Stop, entry, target bar: risk 300, room 600, 2.0 R to the next level.\"\n    },\n    {\n      \"id\": \"insights\",\n      \"name\": \"AI insights page\",\n      \"dur\": 28,\n      \"desc\": \"AI Insights mock: verdict, PRICE MAP with distances, then checklist, trade management, engine status.\"\n    },\n    {\n      \"id\": \"plan\",\n      \"name\": \"The trade plan maths\",\n      \"dur\": 23,\n      \"desc\": \"Worked example: 3 USDT x 10x = 30 USDT size; 0.50% stop = 0.15 USDT risk before fees; exit rule.\"\n    },\n    {\n      \"id\": \"market\",\n      \"name\": \"Market: ATR and swings\",\n      \"dur\": 20,\n      \"desc\": \"Candles with ranges averaging into ATR 90 USDT; swing highs and lows marked.\"\n    },\n    {\n      \"id\": \"carousel1\",\n      \"name\": \"Xora read and volume\",\n      \"dur\": 21,\n      \"desc\": \"Carousel: Xora read (explanatory only) and Volume comparison bars.\"\n    },\n    {\n      \"id\": \"carousel2\",\n      \"name\": \"Order book, replay, levels\",\n      \"dur\": 30,\n      \"desc\": \"Carousel: Order book difference (walls, spread, spoof risk, absorption), Price-range replay, Trigger levels.\"\n    },\n    {\n      \"id\": \"horizon\",\n      \"name\": \"A 1-minute horizon\",\n      \"dur\": 20,\n      \"desc\": \"A 1-minute candle forms, its plan expires at close, a new plan; 1m/5m/15m/1h tabs; no 10-15 minute prediction.\"\n    },\n    {\n      \"id\": \"mistake\",\n      \"name\": \"Not a forecast\",\n      \"dur\": 17,\n      \"desc\": \"Misconception: insights as forecast; correction: room, not a promise; explanatory only.\"\n    },\n    {\n      \"id\": \"try\",\n      \"name\": \"Try it\",\n      \"dur\": 24,\n      \"desc\": \"Pause: 3 USDT x 10x, stop 1.00% away: risk 0.30 USDT before fees.\"\n    },\n    {\n      \"id\": \"risks\",\n      \"name\": \"Know the limits\",\n      \"dur\": 22,\n      \"desc\": \"No guaranteed profits, setups fail, fees, slippage, leverage; demo first; not financial advice.\"\n    },\n    {\n      \"id\": \"recap\",\n      \"name\": \"Recap\",\n      \"dur\": 20,\n      \"desc\": \"Three points to remember.\"\n    },\n    {\n      \"id\": \"finish\",\n      \"name\": \"Course complete\",\n      \"dur\": 13,\n      \"desc\": \"Congratulations on finishing Phase 6 and the course; practise in DEMO; risk line; lockup.\"\n    }\n  ]\n}","score.js":"kit.score(function (S, T) {\n  // Soft pad and keys bed (no voice), a light pulse in the hands-on parts, quieter in the risk scenes, a closing chord.\n  const BPM = 84, B = 60 / BPM, BAR = 4 * B;\n  S.tempo(BPM, { t0: 0 });\n  S.program('pad', 'pad', { rev: 0.7, gain: -6 });\n  S.program('keys', 'ep', { rev: 0.45, gain: -10 });\n  S.program('mal', 'pluck', { rev: 0.5, gain: -12, pan: 0.2 });\n  S.program('bass', 'bass', { gain: -10 });\n  const prog = [['D3', 'A3', 'E4', 'F#4'], ['B2', 'F#3', 'A3', 'D4'], ['G2', 'D3', 'F#3', 'B3'], ['A2', 'E3', 'A3', 'C#4']];\n  const roots = ['D2', 'B1', 'G1', 'A1'];\n  const tops = [['F#5', 'A5', 'E5'], ['D5', 'F#5', 'A5'], ['B4', 'D5', 'F#5'], ['C#5', 'E5', 'A5']];\n  const inR = (s, a, b) => s >= a - 0.1 && s < b - 0.1;\n  const pulse = (s) => inR(s, T.hook, T.opportunity) || inR(s, T.plan, T.market) || inR(s, T.carousel1, T.horizon) || inR(s, T.try, T.risks);\n  const quiet = (s) => inR(s, T.mistake, T.try) || inR(s, T.risks, T.recap);\n  const bars = Math.floor(T.END / BAR);\n  for (let b = 0; b < bars; b++) {\n    const beat = b * 4, s = beat * B, c = prog[b % 4];\n    if (s >= T.finish - 0.1) break;\n    S.chord('pad', c, { beat, beats: 4, vel: quiet(s) ? 26 : 32 });\n    if (!quiet(s)) S.chord('keys', c.slice(1), { beat, beats: 3, vel: 34 });\n    if (pulse(s)) { S.pattern('mal', 'x.x..x.x', { from: beat, repeat: 1, pitch: tops[b % 4], vel: 32 }); S.note('bass', roots[b % 4], { beat, beats: 3, vel: 46 }); }\n  }\n  const steps = (a, b) => { const ts = []; for (let s = a + 0.18; s < b; s += 0.364) ts.push(s); S.ticks(ts, { vel: 24 }); };\n  steps(T.title, T.title + 2.6); steps(T.finish + 0.1, T.finish + 1.1);\n  [[T.title, 0.8], [T.title, 1.3], [T.title, 1.8], [T.hook, 0.5], [T.opportunity, 0.4], [T.opportunity, 0.6], [T.opportunity, 8.0], [T.opportunity, 14.8],\n    [T.rmath, 1.0], [T.rmath, 1.6], [T.rmath, 2.2], [T.insights, 0.5], [T.insights, 12.9], [T.plan, 0.4], [T.plan, 1.4], [T.plan, 11.8],\n    [T.market, 7.2], [T.carousel1, 0.5], [T.carousel1, 7.4], [T.carousel2, 0.6], [T.carousel2, 7.8], [T.carousel2, 12.6], [T.horizon, 0.8], [T.horizon, 14.4],\n    [T.mistake, 1.0], [T.mistake, 6.6], [T.try, 0.8]].forEach((b) => S.fx('pop', b[0] + b[1], { vel: 26, pitch: 7 }));\n  for (let i = 0; i < 6; i++) S.fx('whoosh', T.hook + 5.6 + i * 1.2, { dur: 0.6, vel: 16 });\n  S.fx('whoosh', T.rmath + 12.6, { dur: 1.0, vel: 22 }); S.fx('tick', T.rmath + 13.6, { vel: 32 }); S.fx('tick', T.rmath + 15.4, { vel: 32 }); S.fx('ding', T.rmath + 16.0, { vel: 36 });\n  for (let i = 0; i < 4; i++) S.fx('tick', T.insights + 13.4 + i * 0.9, { vel: 24 });\n  S.fx('whoosh', T.insights + 19.8, { dur: 1.4, vel: 22 });\n  S.fx('ding', T.plan + 7.6, { vel: 36 }); S.fx('ding', T.plan + 13.6, { vel: 36 }); S.fx('thud', T.plan + 16.4, { vel: 24 });\n  for (let i = 0; i < 6; i++) S.fx('tick', T.market + 3.2 + i * 0.4, { vel: 24 });\n  S.fx('chime', T.market + 6.0, { vel: 30 }); S.fx('pop', T.market + 13.4, { vel: 30 }); S.fx('pop', T.market + 14.4, { vel: 30 });\n  S.fx('whoosh', T.carousel1 + 13.6, { dur: 0.8, vel: 24 });\n  S.fx('whoosh', T.carousel2 + 17.4, { dur: 0.8, vel: 24 }); S.fx('whoosh', T.carousel2 + 23.4, { dur: 0.8, vel: 24 });\n  S.fx('thud', T.horizon + 5.6, { vel: 28 }); S.fx('chime', T.horizon + 6.4, { vel: 30 });\n  S.fx('whoosh', T.mistake + 3.6, { dur: 0.6, vel: 24 }); S.fx('thud', T.mistake + 3.9, { vel: 28 });\n  for (let i = 0; i < 5; i++) S.fx('tick', T.try + 6.4 + i, { vel: 30 });\n  S.fx('chime', T.try + 12.0, { vel: 40 }); S.fx('ding', T.try + 16.2, { vel: 36 });\n  for (let i = 0; i < 4; i++) S.fx('pop', T.risks + [4.9, 10.5, 12.4, 16.1][i], { vel: 28 });\n  for (let i = 0; i < 3; i++) S.fx('pop', T.recap + [0.6, 6.4, 11.8][i] + 0.5, { vel: 34 });\n  S.fx('ding', T.recap + 16.5, { vel: 38 });\n  S.fx('revswell', T.finish, { dur: 1.6, vel: 44 });\n  S.chord('pad', ['D3', 'A3', 'D4', 'F#4'], { t: T.finish, dur: 12, vel: 42 });\n  S.chord('keys', ['D3', 'A3', 'D4', 'F#4', 'A4'], { t: T.finish + 0.7, dur: 11, vel: 52 });\n  S.run('mal', ['D5', 'E5', 'F#5', 'A5', 'B5', 'D6'], { t: T.finish + 1.0, step: 0.12, vel: 42, cresc: 6 });\n  S.run('mal', ['A5', 'B5', 'D6', 'F#6'], { t: T.finish + 6.4, step: 0.14, vel: 36, cresc: 4 });\n  S.chord('keys', ['D4', 'F#4', 'A4', 'D5'], { t: T.finish + 8.0, dur: 4.5, vel: 46 });\n  S.master({ gain: -10, music: 22, fadeOut: 2.5 });\n});\n","shared.js":"window.UI = {\n  LESSON: 'T27 · Reading XORA trading insights',\n  TOTAL: 303,\n  lockup(kit) {\n    return kit.h('<div class=\"lock\"><img alt=\"\" src=\"' + kit.assets.url('xtinex-x.png') + '\"><span class=\"lock-xt\">XTINEX</span><span class=\"lock-bar\"></span><span class=\"lock-xo\">XORA</span></div>');\n  },\n  // Lesson header: lesson name and a progress bar across the whole film.\n  chrome(kit) {\n    const el = kit.h('<div class=\"chrome\"><span>' + kit.esc(UI.LESSON) + '</span><div><i></i></div></div>');\n    kit.stage.append(el);\n    const bar = el.querySelector('i').style, start = kit.start;\n    return (t) => { bar.width = (Math.min(1, (start + t) / UI.TOTAL) * 100).toFixed(2) + '%'; };\n  },\n  // Set text only when it changes.\n  set(el, v) { v = String(v); if (el.textContent !== v) el.textContent = v; },\n  // Signed amount: +10.00 / −10.00 (true minus sign).\n  sgn(n, dp) { const v = Math.abs(n) < 1e-9 ? 0 : n; return (v > 0 ? '+' : v < 0 ? '−' : '') + UI.fmt(Math.abs(v), dp); },\n  // Entrance: fade in and rise from dy px, starting at a, over d seconds. Optional fade-out window [o0, o1].\n  rise(kit, st, t, a, d, dy, o0, o1) {\n    const p = kit.seg(t, a, a + (d || 0.6));\n    const out = o0 == null ? 0 : kit.ei(kit.seg(t, o0, o1));\n    st.opacity = (kit.eo(kit.seg(t, a, a + (d || 0.6) * 0.6)) * (1 - out)).toFixed(3);\n    st.transform = 'translateY(' + kit.lerp(dy == null ? 30 : dy, 0, kit.eo(p)).toFixed(1) + 'px)';\n    return p;\n  },\n  // Countdown ring centred at cx, cy: shown from tIn, a pause sign, then n seconds counting down from t0, gone by tOut.\n  ring(kit, cx, cy, r, tIn, t0, n, tOut, label) {\n    const C = 2 * Math.PI * r;\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"ui-ring\" transform=\"translate(' + cx + ' ' + cy + ')\">' +\n      '<circle r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" style=\"stroke:color-mix(in srgb, var(--second) 10%, transparent)\"/>' +\n      '<circle class=\"ui-arc\" r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" stroke-linecap=\"round\" transform=\"rotate(-90)\" stroke-dasharray=\"' + C.toFixed(1) + '\" style=\"stroke:var(--main)\"/>' +\n      '<g class=\"ui-pause\"><rect x=\"-24\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/><rect x=\"8\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/></g>' +\n      '<text class=\"ui-n mono\" y=\"26\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:72px\"></text>' +\n      (label ? '<text y=\"' + (-r - 30) + '\" text-anchor=\"middle\" style=\"fill:color-mix(in srgb, var(--second) 62%, var(--ground));font-size:26px\">' + kit.esc(label) + '</text>' : '') + '</g></svg>');\n    kit.stage.append(svg);\n    const g = svg.querySelector('.ui-ring'), arc = svg.querySelector('.ui-arc'), pause = svg.querySelector('.ui-pause').style, num = svg.querySelector('.ui-n');\n    return (t) => {\n      const p = kit.seg(t, tIn, tIn + 0.5);\n      g.style.opacity = kit.eo(p) * (1 - kit.ei(kit.seg(t, tOut - 0.4, tOut)));\n      g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ') scale(' + kit.lerp(0.8, 1, kit.eob(p, 1.6)).toFixed(4) + ')');\n      arc.setAttribute('stroke-dashoffset', (C * kit.seg(t, t0, t0 + n)).toFixed(1));\n      const txt = t < t0 ? '' : String(Math.max(0, Math.min(n, Math.ceil(n - (t - t0)))));\n      if (num.textContent !== txt) num.textContent = txt;\n      pause.opacity = t < t0 ? 1 : 0;\n    };\n  },\n  // Phone mock-up of the XORA app: returns the element (already appended). opts: left, top, w, h, cls, title, pill, body (html).\n  phone(kit, o) {\n    const el = kit.h('<div class=\"phone ' + (o.cls || '') + '\" style=\"left:' + o.left + 'px;top:' + o.top + 'px;width:' + o.w + 'px;height:' + o.h + 'px\">' +\n      '<div class=\"phone-notch\"></div><div class=\"phone-top\"><b>' + (o.title || 'XORA') + '</b>' + (o.pill || '<span class=\"pill\" style=\"color:var(--main)\">DEMO</span>') + '</div>' +\n      (o.body || '') + '</div>');\n    kit.stage.append(el);\n    return el;\n  },\n  // The on-screen label every app mock carries.\n  mockLabel(kit, left, top, align) {\n    const el = kit.h('<p class=\"mock\" style=\"left:' + left + 'px;top:' + top + 'px' + (align === 'c' ? ';transform:translateX(-50%)' : '') + '\">Illustrative mock of the XORA app · numbers are fictional</p>');\n    kit.stage.append(el);\n    return el;\n  },\n  // T27: the market-read carousel inside a phone mock. Returns { go(t, idx) } where idx (may be fractional) is the card shown.\n  carousel(kit, pfx) {\n    const W = 500;\n    const c = (title, sub, inner) => '<div class=\"card\" style=\"flex:none;width:' + W + 'px;height:470px;box-sizing:border-box;padding:18px 22px\"><p class=\"card-h\" style=\"margin:0\">' + title + '</p>' +\n      '<p class=\"lbl\" style=\"margin:4px 0 14px\">' + sub + '</p>' + inner + '</div>';\n    const bar = (lab, w, col, cls) => '<div style=\"margin:10px 0\"><div style=\"display:flex;justify-content:space-between;font-size:22px\"><span>' + lab + '</span><span class=\"mono ' + cls + '-v\"></span></div>' +\n      '<div style=\"height:16px;border-radius:8px;margin-top:6px;background:color-mix(in srgb, var(--second) 10%, transparent)\"><div class=\"' + cls + '\" style=\"height:100%;width:0;border-radius:8px;background:' + col + '\"></div></div></div>';\n    let book = '';\n    const bids = [30, 46, 92, 38, 28], asks = [26, 34, 40, 30, 24];\n    for (let i = 0; i < 5; i++) {\n      book += '<div style=\"display:flex;gap:6px;align-items:center;margin:5px 0\"><div style=\"flex:1;display:flex;justify-content:flex-end\"><div class=\"' + pfx + '-bid\" style=\"height:22px;width:' + bids[i] + '%;border-radius:4px;background:color-mix(in srgb, var(--up) 55%, transparent)\"></div></div>' +\n        '<div style=\"flex:1\"><div class=\"' + pfx + '-ask\" style=\"height:22px;width:' + asks[i] + '%;border-radius:4px;background:color-mix(in srgb, var(--down) 55%, transparent)\"></div></div></div>';\n    }\n    const kv = (a, b, col) => '<div style=\"display:flex;justify-content:space-between;padding:8px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\"><span style=\"font-size:22px\">' + a + '</span><span class=\"mono\" style=\"font-size:22px;' + (col ? 'color:' + col : '') + '\">' + b + '</span></div>';\n    const cards = [\n      c('XORA SUGGESTION', 'Xora read', '<p style=\"margin:0;font-size:24px;line-height:1.45;font-weight:600\">Price is holding above support. Buyers are a little stronger in this range.</p>' +\n        '<p class=\"' + pfx + '-disc\" style=\"margin:18px 0 0;padding:12px 14px;border-radius:12px;font-size:21px;line-height:1.4;border:1.5px dashed color-mix(in srgb, var(--warn) 70%, transparent);color:var(--warn)\">Computed on this phone from candles and the order book. Explanatory only — the engine\\'s stop and exits do not use it.</p>'),\n      c('VOLUME COMPARISON', 'Buy vs sell volume in this range', bar('Buy volume', 0, 'var(--up)', pfx + '-vb') + bar('Sell volume', 0, 'var(--down)', pfx + '-vs') +\n        '<p style=\"margin:14px 0 0;font-size:22px;color:color-mix(in srgb, var(--second) 70%, var(--ground))\">Fictional numbers</p>'),\n      c('ORDER BOOK DIFFERENCE', 'Bid walls vs ask walls', '<div style=\"display:flex;justify-content:space-between\" class=\"lbl\"><span style=\"color:var(--up)\">BIDS · buy orders</span><span style=\"color:var(--down)\">ASKS · sell orders</span></div>' + book +\n        kv('Spread', '0.02%') + kv('Spoof risk', '<span class=\"' + pfx + '-sp\">Low</span>') + '<div style=\"padding:8px 0;font-size:22px\">Absorption: <span class=\"' + pfx + '-ab\" style=\"color:var(--up)\">bids absorbing sells</span></div>'),\n      c('PRICE-RANGE REPLAY', 'When price was here before vs now', '<div style=\"display:flex;gap:10px\">' +\n        '<div style=\"flex:1;padding:12px;border-radius:14px;border:1.5px solid color-mix(in srgb, var(--second) 14%, transparent)\"><p class=\"lbl\" style=\"margin:0\">BEFORE</p><svg width=\"190\" height=\"120\" viewBox=\"0 0 190 120\"><path class=\"' + pfx + '-r1\" d=\"M0 40 L40 70 L80 95 L110 90 L140 60 L190 30\" pathLength=\"1\" fill=\"none\" stroke-width=\"4\" style=\"stroke:var(--main)\"/><line x1=\"0\" x2=\"190\" y1=\"95\" y2=\"95\" stroke-dasharray=\"6 5\" stroke-width=\"2\" style=\"stroke:var(--up)\"/></svg><p style=\"margin:0;font-size:22px\">Bounced here</p></div>' +\n        '<div style=\"flex:1;padding:12px;border-radius:14px;border:1.5px solid color-mix(in srgb, var(--main) 45%, transparent)\"><p class=\"lbl\" style=\"margin:0\">NOW</p><svg width=\"190\" height=\"120\" viewBox=\"0 0 190 120\"><path class=\"' + pfx + '-r2\" d=\"M0 35 L45 65 L85 92 L120 88 L150 80\" pathLength=\"1\" fill=\"none\" stroke-width=\"4\" style=\"stroke:var(--accent)\"/><line x1=\"0\" x2=\"190\" y1=\"95\" y2=\"95\" stroke-dasharray=\"6 5\" stroke-width=\"2\" style=\"stroke:var(--up)\"/></svg><p style=\"margin:0;font-size:22px\">Testing it again</p></div></div>' +\n        '<p style=\"margin:14px 0 0;font-size:22px;color:color-mix(in srgb, var(--second) 70%, var(--ground))\">Past behaviour is context, not a forecast.</p>'),\n      c('TRIGGER LEVELS', 'Levels that matter for this plan', kv('Next res.', '60,600', 'var(--up)') + kv('Entry', '60,000') + kv('Stop', '59,700', 'var(--down)') +\n        '<p class=\"' + pfx + '-stop\" style=\"margin:16px 0 0;padding:12px 14px;border-radius:12px;font-size:23px;font-weight:600;border:1.5px solid var(--down)\">The stop: where the trade closes.</p>'),\n    ];\n    let dots = '';\n    for (let i = 0; i < 5; i++) dots += '<span class=\"' + pfx + '-dot\" style=\"width:12px;height:12px;border-radius:6px;background:var(--second)\"></span>';\n    const body = '<div style=\"position:relative;height:470px;overflow:hidden;border-radius:22px\"><div class=\"' + pfx + '-track\" style=\"display:flex;gap:20px\">' + cards.join('') + '</div></div>' +\n      '<div style=\"display:flex;justify-content:center;gap:10px;margin-top:16px\">' + dots + '</div>';\n    const ph = UI.phone(kit, { left: 1120, top: 140, w: 560, h: 630, title: 'BTC/USDT', body });\n    const ml = UI.mockLabel(kit, 1120, 100);\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    const track = q('.' + pfx + '-track').style, ds = all('.' + pfx + '-dot').map((e) => e.style);\n    const cs = [...q('.' + pfx + '-track').children].map((e) => e.style);\n    return {\n      ph: ph.style, ml: ml.style, q, all,\n      go(idx) {\n        track.transform = 'translateX(' + (-(W + 20) * idx).toFixed(1) + 'px)';\n        cs.forEach((e, i) => { e.opacity = Math.max(0, 1 - Math.abs(idx - i) * 1.2).toFixed(3); });\n        ds.forEach((d, i) => { const on = Math.max(0, 1 - Math.abs(idx - i)); d.width = (12 + 22 * on).toFixed(1) + 'px'; d.opacity = (0.35 + 0.65 * on).toFixed(3); d.background = on > 0.5 ? 'var(--main)' : 'var(--second)'; });\n      },\n    };\n  },\n  fmt(n, dp) { return n.toLocaleString('en-US', { minimumFractionDigits: dp || 0, maximumFractionDigits: dp || 0 }); },\n  // Deterministic fictional price walk: returns [[x,y],...] across x0..x1.\n  walk(kit, seed, n, x0, x1, y0, y1, amp) {\n    const r = kit.rng(seed); const pts = []; let v = 0;\n    for (let i = 0; i < n; i++) {\n      v += (r() - 0.5) * amp; v *= 0.86;\n      const p = i / (n - 1);\n      pts.push([x0 + (x1 - x0) * p, y0 + (y1 - y0) * p + v]);\n    }\n    return pts;\n  },\n  d(pts) { return pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' '); },\n  // The tutor sits in this corner between scenes: feet x, feet y, brain width (px).\n  CORNER: { x: 1735, y: 1042, s: 160 },\n  // Side speech bubbles sit this far higher than in T01, so they clear the caption band.\n  LIFT: 96,\n  // The brain tutor. cfg.keys: [{t, x, y, s, d?, ease?}] feet position and brain width, each key reached at t after a d-second move.\n  // cfg.poses: [{t, pose, flip?}] ('wave' and 'walk' play their frame loops). cfg.says: [{t0, t1, text, side?: 'left'|'top'}].\n  tutor(kit, cfg) {\n    const M = kit.json('tutor.json');\n    const root = kit.h('<div class=\"tutor\"></div>');\n    const shadow = kit.h('<div class=\"tutor-shadow\"></div>');\n    root.append(shadow);\n    const imgs = {};\n    for (const n of Object.keys(M)) {\n      const im = kit.h('<img class=\"tutor-img\" alt=\"\" src=\"' + kit.assets.url('tutor-' + n + '.webp') + '\">');\n      imgs[n] = im.style; root.append(im);\n    }\n    const says = (cfg.says || []).map((s) => {\n      const b = kit.h('<div class=\"bubble' + (s.side === 'top' ? ' is-top' : '') + '\"><p>' + kit.esc(s.text) + '</p></div>');\n      root.append(b);\n      return Object.assign({}, s, { st: b.style });\n    });\n    kit.stage.append(root);\n    const keys = cfg.keys, poses = cfg.poses;\n    const LOOPS = {\n      wave: { f: ['wv1', 'wv2', 'wv3', 'wv4', 'wv3', 'wv2'], fps: 7 },\n      walk: { f: ['wk0', 'wk1', 'wk2', 'wk3', 'wk4', 'wk5', 'wk6', 'wk7'], fps: 11 },\n    };\n    const name = (p, dt) => { const L = LOOPS[p.pose]; return L ? L.f[Math.floor(Math.max(0, dt) * L.fps) % L.f.length] : p.pose; };\n    let shown = [];\n    const place = (n, flip, x, y, s, op, sc, lift) => {\n      const m = M[n], st = imgs[n], k = s / m.bw;\n      st.width = (m.w * k).toFixed(1) + 'px'; st.height = (m.h * k).toFixed(1) + 'px';\n      st.left = (x - m.ax * k).toFixed(1) + 'px'; st.top = (y - m.feet * k).toFixed(1) + 'px';\n      st.transformOrigin = (m.ax * k).toFixed(1) + 'px ' + (m.feet * k).toFixed(1) + 'px';\n      st.transform = 'translateY(' + lift.toFixed(2) + 'px) scale(' + (flip ? -sc : sc).toFixed(4) + ',' + sc.toFixed(4) + ')';\n      st.opacity = op;\n      shown.push(n);\n    };\n    const api = {\n      at(t) {\n        let x = keys[0].x, y = keys[0].y, s = keys[0].s;\n        for (let i = 1; i < keys.length; i++) {\n          const a = keys[i - 1], b = keys[i], d = b.d == null ? 0.8 : b.d;\n          const p = kit.seg(t, b.t - d, b.t);\n          if (p <= 0) break;\n          const e = (b.ease || kit.eio)(p);\n          x = kit.lerp(a.x, b.x, e); y = kit.lerp(a.y, b.y, e); s = kit.lerp(a.s, b.s, e);\n        }\n        return { x, y, s };\n      },\n      render(t) {\n        for (const n of shown) imgs[n].opacity = 0;\n        shown = [];\n        const { x, y, s } = api.at(t);\n        let i = 0;\n        for (let j = 0; j < poses.length; j++) if (poses[j].t <= t) i = j;\n        const cur = poses[i], dt = t - cur.t;\n        const sw = i > 0 ? kit.clamp01(dt / 0.18) : 1;\n        const pop = i > 0 ? kit.clamp01(dt / 0.32) : 1;\n        const bob = Math.sin(t * 2 * Math.PI / 2.6) * s * 0.025;\n        const hop = cur.pose === 'walk' ? 0 : Math.sin(Math.PI * pop) * s * 0.07;\n        const step = cur.pose === 'walk' ? Math.abs(Math.sin(dt * Math.PI * 2.75)) * s * 0.03 : 0;\n        const breathe = 1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.1);\n        const sc = breathe * (cur.pose === 'walk' ? 1 : kit.lerp(0.93, 1, kit.eob(pop, 1.8)));\n        if (sw < 1) { const pv = poses[i - 1]; place(name(pv, t - pv.t), !!pv.flip, x, y, s, 1 - sw, breathe, bob); }\n        place(name(cur, dt), !!cur.flip, x, y, s, sw, sc, bob - hop - step);\n        const sh = shadow.style;\n        sh.left = (x - s * 0.6).toFixed(1) + 'px'; sh.top = (y - s * 0.07).toFixed(1) + 'px';\n        sh.width = (s * 1.2).toFixed(1) + 'px'; sh.height = (s * 0.16).toFixed(1) + 'px';\n        sh.opacity = 0.75 - (hop + step) / s;\n        for (const b of says) {\n          const p = kit.seg(t, b.t0, b.t0 + 0.32), o = kit.seg(t, b.t1 - 0.25, b.t1);\n          b.st.opacity = kit.eo(p) * (1 - kit.ei(o));\n          if (b.st.opacity === '0') continue;\n          const g = kit.lerp(0.88, 1, kit.eob(p, 1.6)) * kit.lerp(1, 0.96, kit.ei(o));\n          if (b.side === 'top') {\n            b.st.transformOrigin = '50% 100%';\n            b.st.transform = 'translate(' + x.toFixed(1) + 'px,' + (y - s * 1.42).toFixed(1) + 'px) translate(-50%,-100%) scale(' + g.toFixed(4) + ')';\n          } else {\n            b.st.transformOrigin = '100% 100%';\n            b.st.transform = 'translate(' + (x - s * 0.18).toFixed(1) + 'px,' + (y - s * 1.12 - UI.LIFT).toFixed(1) + 'px) translate(-100%,-100%) scale(' + g.toFixed(4) + ')';\n          }\n        }\n      },\n    };\n    return api;\n  },\n};\n","tutor.json":"{\n  \"wv1\": {\n    \"w\": 381,\n    \"h\": 448,\n    \"ax\": 163.5,\n    \"feet\": 434,\n    \"bw\": 305\n  },\n  \"wv2\": {\n    \"w\": 374,\n    \"h\": 448,\n    \"ax\": 165.0,\n    \"feet\": 436,\n    \"bw\": 305\n  },\n  \"wv3\": {\n    \"w\": 363,\n    \"h\": 448,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wv4\": {\n    \"w\": 375,\n    \"h\": 446,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wk0\": {\n    \"w\": 353,\n    \"h\": 460,\n    \"ax\": 162.5,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk1\": {\n    \"w\": 361,\n    \"h\": 460,\n    \"ax\": 164.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk2\": {\n    \"w\": 345,\n    \"h\": 460,\n    \"ax\": 170.5,\n    \"feet\": 448,\n    \"bw\": 310\n  },\n  \"wk3\": {\n    \"w\": 365,\n    \"h\": 460,\n    \"ax\": 164.0,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk4\": {\n    \"w\": 375,\n    \"h\": 457,\n    \"ax\": 167.5,\n    \"feet\": 444,\n    \"bw\": 310\n  },\n  \"wk5\": {\n    \"w\": 364,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk6\": {\n    \"w\": 354,\n    \"h\": 457,\n    \"ax\": 166.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk7\": {\n    \"w\": 365,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"present\": {\n    \"w\": 546,\n    \"h\": 612,\n    \"ax\": 218,\n    \"feet\": 605,\n    \"bw\": 421\n  },\n  \"explain\": {\n    \"w\": 502,\n    \"h\": 602,\n    \"ax\": 275,\n    \"feet\": 594,\n    \"bw\": 394\n  },\n  \"think\": {\n    \"w\": 465,\n    \"h\": 656,\n    \"ax\": 229,\n    \"feet\": 648,\n    \"bw\": 452\n  },\n  \"confused\": {\n    \"w\": 185,\n    \"h\": 169,\n    \"ax\": 85.0,\n    \"feet\": 162,\n    \"bw\": 138\n  },\n  \"thumbs\": {\n    \"w\": 181,\n    \"h\": 179,\n    \"ax\": 102.0,\n    \"feet\": 172,\n    \"bw\": 138\n  },\n  \"cheer\": {\n    \"w\": 207,\n    \"h\": 182,\n    \"ax\": 105.0,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"idea\": {\n    \"w\": 169,\n    \"h\": 178,\n    \"ax\": 69.5,\n    \"feet\": 171,\n    \"bw\": 138\n  },\n  \"magnify\": {\n    \"w\": 187,\n    \"h\": 170,\n    \"ax\": 85.5,\n    \"feet\": 163,\n    \"bw\": 138\n  },\n  \"read\": {\n    \"w\": 190,\n    \"h\": 181,\n    \"ax\": 82.5,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"checklist\": {\n    \"w\": 185,\n    \"h\": 161,\n    \"ax\": 97.5,\n    \"feet\": 153,\n    \"bw\": 138\n  },\n  \"calm\": {\n    \"w\": 234,\n    \"h\": 174,\n    \"ax\": 111.0,\n    \"feet\": 167,\n    \"bw\": 138\n  },\n  \"celebrate\": {\n    \"w\": 209,\n    \"h\": 171,\n    \"ax\": 100.5,\n    \"feet\": 165,\n    \"bw\": 138\n  },\n  \"laptop\": {\n    \"w\": 185,\n    \"h\": 170,\n    \"ax\": 82.0,\n    \"feet\": 164,\n    \"bw\": 138\n  },\n  \"pointer\": {\n    \"w\": 248,\n    \"h\": 171,\n    \"ax\": 74.5,\n    \"feet\": 164,\n    \"bw\": 138\n  },\n  \"writing\": {\n    \"w\": 191,\n    \"h\": 169,\n    \"ax\": 111.5,\n    \"feet\": 161,\n    \"bw\": 138\n  }\n}"}};</script>
+<script>
+/* XORA Futures Edge lesson player.
+ *
+ * Plays a lesson written as scene modules (content/futures-edge/<id>/modules) as a plain web
+ * page. Everything on screen is a pure function of the lesson time t, so the page can pause,
+ * seek and replay at any point. It provides the small "kit" the scenes are written against
+ * (stage, easing, TextFx, assets, json) and a WebAudio synth for score.js.
+ *
+ * With a voiceover, build-lesson.mjs lengthens some scenes so the narration fits: a scene with
+ * stretch factor k plays its animation and sound effects k times slower. Scene code still sees the
+ * authored timeline (kit.start, kit.dur and t), so nothing in the modules changes. The voice is
+ * one mixed track; the music dips under each line, and the CC button shows the line as text.
+ *
+ * build-lesson.mjs inlines this file into public/futures-edge/lessons/<id>.html, after a
+ * `window.FILM = {...}` block that carries the scene list, module texts and asset paths.
+ */
+(function () {
+  "use strict";
+
+  const F = window.FILM;
+  const W = F.width;
+  const H = F.height;
+
+  // ── Maths and easing ───────────────────────────────────────────────────────
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const clamp01 = (x) => clamp(x, 0, 1);
+  const seg = (t, a, b) => (b <= a ? (t >= b ? 1 : 0) : clamp01((t - a) / (b - a)));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const eo = (x) => 1 - Math.pow(1 - clamp01(x), 3);
+  const ei = (x) => Math.pow(clamp01(x), 3);
+  const eio = (x) => {
+    x = clamp01(x);
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  };
+  const eob = (x, s = 1.4) => {
+    x = clamp01(x);
+    return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2);
+  };
+  const rng = (seed) => {
+    let a = seed >>> 0 || 1;
+    return () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+  const breathe = (t, amt = 0.012, period = 3.2) => 1 + amt * Math.sin((2 * Math.PI * t) / period);
+
+  // ── DOM helpers ────────────────────────────────────────────────────────────
+  const h = (html) => {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = String(html).trim();
+    return tpl.content.firstElementChild;
+  };
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const el = (tag, o = {}, children = []) => {
+    const e = document.createElement(tag);
+    if (o.class) e.className = o.class;
+    if (o.style) e.setAttribute("style", o.style);
+    if (o.text != null) e.textContent = o.text;
+    if (o.html != null) e.innerHTML = o.html;
+    for (const [k, v] of Object.entries(o.attrs || {})) e.setAttribute(k, v);
+    for (const c of children) e.append(c);
+    return e;
+  };
+
+  // Words of an element as inline-block spans (inline markup such as <b> is kept).
+  const wordCache = new WeakMap();
+  function words(root) {
+    let list = wordCache.get(root);
+    if (list) return list;
+    list = [];
+    const walk = (node) => {
+      for (const child of Array.from(node.childNodes)) {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const part of child.textContent.split(/(\s+)/)) {
+            if (!part) continue;
+            if (/^\s+$/.test(part)) {
+              frag.append(document.createTextNode(part));
+            } else {
+              const s = document.createElement("span");
+              s.textContent = part;
+              s.style.display = "inline-block";
+              frag.append(s);
+              list.push(s);
+            }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      }
+    };
+    walk(root);
+    wordCache.set(root, list);
+    return list;
+  }
+  const TextFx = {
+    fadeFromRight(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.11, d = o.dur ?? 0.5, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = eo(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = p;
+        s.style.transform = "translateX(" + ((1 - p) * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+    fadeOutLeft(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.04, d = o.dur ?? 0.35, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = ei(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = 1 - p;
+        s.style.transform = "translateX(" + (-p * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+  };
+
+  // ── The kit the scene modules use ──────────────────────────────────────────
+  const modules = F.modules;
+  const jsonCache = {};
+  const assets = {
+    url: (name) => F.assetBase + name,
+    has: (name) => Object.prototype.hasOwnProperty.call(F.assets, name),
+    list: () => Object.keys(F.assets),
+  };
+  const defs = {};
+  let scoreFn = null;
+
+  // start/dur: the scene in the played timeline; oldStart/oldDur: as authored (k = dur / oldDur).
+  let acc = 0;
+  const scenes = F.scenes.map((s) => {
+    const o = Object.assign({ k: 1, oldStart: acc, oldDur: s.dur }, s, { start: acc });
+    acc += s.dur;
+    return o;
+  });
+  const END = acc;
+  const OLD_END = scenes.reduce((a, s) => a + s.oldDur, 0);
+  // Authored time to played time.
+  function warp(x) {
+    for (let i = scenes.length - 1; i >= 0; i--) {
+      const s = scenes[i];
+      if (x >= s.oldStart) return s.start + (x - s.oldStart) * s.k;
+    }
+    return x;
+  }
+  // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
+  const lines = (F.voice && F.voice.lines) || [];
+  // Voice language for lessons recorded in English and Malayalam (F.voice.srcMl): English unless the viewer chose Malayalam.
+  let voiceLang = "en";
+  try { if (localStorage.getItem("fe-voice-lang") === "ml") voiceLang = "ml"; } catch (e) { /* English */ }
+  // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
+  const duckSpans = [];
+  if (F.voice && F.voice.src) for (const l of lines) {
+    const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
+    if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
+  }
+
+  function makeKit(box, start, dur) {
+    return {
+      stage: box, start, dur, W, H,
+      seg, lerp, eo, ei, eio, eob, clamp, clamp01, rng, breathe, TextFx, h, el, esc,
+      assets,
+      module: (n) => (n in modules ? modules[n] : null),
+      json: (n) => (jsonCache[n] ??= JSON.parse(modules[n])),
+      modules: () => Object.keys(modules),
+      scene: (id, def) => { defs[id] = def; },
+      score: (fn) => { scoreFn = fn; },
+    };
+  }
+  const run = (name, kit) => new Function("kit", modules[name] + "\n//# sourceURL=" + F.id + "/" + name)(kit);
+
+  // ── Stage ──────────────────────────────────────────────────────────────────
+  const stage = document.getElementById("stage");
+  const css = document.createElement("style");
+  css.textContent = modules["base.css"] || "";
+  document.head.append(css);
+
+  function fit() {
+    const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+  }
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 200));
+  fit();
+
+  // ── Audio: score.js recorded as events, then synthesised with WebAudio ─────
+  function midiOf(p) {
+    if (typeof p === "number") return p;
+    const m = /^([A-Ga-g])([#b]?)(-?\d)$/.exec(String(p).trim());
+    if (!m) return 72;
+    const base = { c: 0, d: 2, e: 4, f: 5, g: 7, a: 9, b: 11 }[m[1].toLowerCase()];
+    return 12 * (Number(m[3]) + 1) + base + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
+  }
+
+  // score.js runs twice: the music against the played timeline, the sound effects against the
+  // authored one and then moved onto the played one, so each cue stays with its animation.
+  function recordScore() {
+    const T = { END };
+    for (const s of scenes) T[s.id] = s.start;
+    const music = recordPass(T);
+    const Told = { END: OLD_END };
+    for (const s of scenes) Told[s.id] = s.oldStart;
+    const cues = recordPass(Told);
+    const ev = music.ev.filter((e) => e.k !== "f");
+    for (const e of cues.ev) {
+      if (e.k !== "f") continue;
+      e.t = warp(e.t);
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      ev.push(e);
+    }
+    ev.sort((a, b) => a.s - b.s);
+    return { ev, tracks: music.tracks, master: music.master };
+  }
+
+  function recordPass(T) {
+    const ev = [];
+    const tracks = {};
+    const master = { gain: -6, music: 0, fadeOut: 1 };
+    let B = 0.5, t0 = 0;
+    const at = (o) => (o.t != null ? o.t : t0 + (o.beat || 0) * B);
+    const len = (o, d) => (o.dur != null ? o.dur : o.beats != null ? o.beats * B : d);
+    const push = (e) => {
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      if (e.s < -0.1) return;
+      if (e.s < 0) { e.t += -e.s; e.s = 0; }
+      ev.push(e);
+    };
+    const hits = (str, rep, step, from, vel, fn) => {
+      for (let r = 0; r < rep; r++) {
+        for (let i = 0; i < str.length; i++) {
+          const c = str[i];
+          if (c !== "x" && c !== "X" && c !== "o") continue;
+          fn(t0 + (from + (r * str.length + i) * step) * B, vel * (c === "X" ? 1.25 : c === "o" ? 0.5 : 1));
+        }
+      }
+    };
+    const S = {
+      tempo(bpm, o = {}) { B = 60 / bpm; t0 = o.t0 || 0; },
+      beat: (n) => t0 + n * B,
+      toBeat: (t) => (t - t0) / B,
+      seed() {},
+      program(track, patch, o = {}) {
+        tracks[track] = { patch, gain: o.gain || 0, pan: o.pan || 0, rev: o.rev || 0, bright: o.bright ?? 1 };
+      },
+      note(track, p, o = {}) { push({ k: "n", track, m: midiOf(p), t: at(o), d: len(o, B), v: o.vel ?? 90 }); },
+      chord(track, ps, o = {}) { ps.forEach((p) => S.note(track, p, o)); },
+      pattern(track, str, o = {}) {
+        const pitches = o.pitch || ["C5"];
+        let k = 0;
+        const step = o.step ?? 0.5;
+        hits(str, o.repeat ?? 1, step, o.from || 0, o.vel ?? 80, (t, v) =>
+          push({ k: "n", track, m: midiOf(pitches[k++ % pitches.length]), t, d: o.dur ?? step * B * 0.9, v }));
+      },
+      drum(name, o = {}) { push({ k: "d", name, t: at(o), d: 0.3, v: o.vel ?? 90 }); },
+      drums(map, o = {}) {
+        for (const name of Object.keys(map)) {
+          hits(map[name], o.repeat ?? 1, o.step ?? 0.5, o.from || 0, o.vel ?? 80, (t, v) => push({ k: "d", name, t, d: 0.3, v }));
+        }
+      },
+      ticks(times, o = {}) { times.forEach((t) => push({ k: "f", name: "tick", t, d: 0.03, v: o.vel ?? 40, pitch: 0 })); },
+      fx(name, t, o = {}) { push({ k: "f", name, t, d: o.dur ?? 0.5, v: o.vel ?? 70, pitch: o.pitch || 0 }); },
+      run(track, ps, o = {}) {
+        const step = o.step ?? 0.1;
+        ps.forEach((p, i) => push({ k: "n", track, m: midiOf(p), t: o.t + i * step, d: step * 2.5, v: (o.vel ?? 70) + i * (o.cresc || 0) }));
+      },
+      master(o = {}) {
+        if (o.gain != null) master.gain = o.gain;
+        if (o.music != null) master.music = o.music;
+        if (o.fadeOut != null) master.fadeOut = o.fadeOut;
+      },
+    };
+    if (scoreFn) scoreFn(S, T);
+    return { ev, tracks, master };
+  }
+
+  const db = (x) => Math.pow(10, x / 20);
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+  const audio = {
+    ctx: null, enabled: false, muted: false, score: null,
+    out: null, verb: null, noise: null, session: null, timer: 0,
+    voiceEl: null, voiceNode: null, voiceOut: null,
+  };
+  const DUCK = 0.4;
+
+  function setupAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    const ctx = (audio.ctx = new AC());
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -14;
+    comp.ratio.value = 4;
+    comp.connect(ctx.destination);
+    audio.out = ctx.createGain();
+    audio.out.gain.value = db(audio.score.master.gain);
+    audio.out.connect(comp);
+    // A small generated room for the reverb send.
+    const len = Math.floor(ctx.sampleRate * 2.4);
+    const ir = ctx.createBuffer(2, len, ctx.sampleRate);
+    const r = rng(9);
+    for (let c = 0; c < 2; c++) {
+      const d = ir.getChannelData(c);
+      for (let i = 0; i < len; i++) d[i] = (r() * 2 - 1) * Math.pow(1 - i / len, 3);
+    }
+    audio.verb = ctx.createConvolver();
+    audio.verb.buffer = ir;
+    const verbGain = ctx.createGain();
+    verbGain.gain.value = 0.5;
+    audio.verb.connect(verbGain);
+    verbGain.connect(audio.out);
+    const nb = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+    const nd = nb.getChannelData(0);
+    const r2 = rng(3);
+    for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
+    audio.noise = nb;
+    // The voice skips the music's compressor and goes straight out.
+    audio.voiceOut = ctx.createGain();
+    audio.voiceOut.gain.value = 1;
+    audio.voiceOut.connect(ctx.destination);
+    if (audio.voiceEl) {
+      try { audio.voiceNode = ctx.createMediaElementSource(audio.voiceEl); audio.voiceNode.connect(audio.voiceOut); }
+      catch (e) { /* the element then plays on its own */ }
+    }
+    return true;
+  }
+
+  // The voice is an <audio> element: it keeps its pitch when the lesson plays faster. Each track is
+  // downloaded whole and played from memory, so jumping to any point works on every server.
+  const voiceBlobs = {};
+  function voiceUrl() { return voiceLang === "ml" && F.voice.srcMl ? F.voice.srcMl : F.voice.src; }
+  function loadVoice() {
+    const url = voiceUrl();
+    voiceBlobs[url] ??= fetch(url).then((r) => (r.ok ? r.blob() : null)).then((b) => (b ? URL.createObjectURL(b) : null)).catch(() => null);
+    voiceBlobs[url].then((blobUrl) => {
+      if (!blobUrl || voiceUrl() !== url) return;
+      audio.voiceEl.src = blobUrl;
+      if (audio.session) startSession(state.t);
+    });
+  }
+  function makeVoice() {
+    if (!F.voice || !F.voice.src) return;
+    const v = new Audio();
+    v.preload = "auto";
+    v.preservesPitch = v.mozPreservesPitch = v.webkitPreservesPitch = true;
+    audio.voiceEl = v;
+    loadVoice();
+  }
+
+  // The voice of one session, from the session's start point; the music dips under each line.
+  function startVoice(s) {
+    const v = audio.voiceEl;
+    if (!v || !v.src || s.voice) return;
+    if (v.duration && s.film0 >= v.duration) return;
+    v.playbackRate = s.rate;
+    v.currentTime = s.film0;
+    v.play().catch(() => { /* blocked or not loaded: the lesson plays on without it */ });
+    s.voice = true;
+    const at = s.ctx0, off = s.film0, r = s.rate;
+    for (const g of [s.duck.gain, s.send.gain]) {
+      for (const [a, b] of duckSpans) {
+        if (b <= off) continue;
+        const ca = at + (a - off) / r, cb = at + (b - off) / r;
+        if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
+        g.setValueAtTime(DUCK, cb);
+        g.linearRampToValueAtTime(1, cb + 0.5);
+      }
+    }
+  }
+
+  // One playback session: a bus that can be dropped as a whole on pause or seek.
+  function startSession(filmT) {
+    stopSession();
+    if (!audio.enabled || audio.muted) return;
+    const ctx = audio.ctx;
+    const bus = ctx.createGain();
+    const duck = ctx.createGain();
+    bus.connect(duck);
+    duck.connect(audio.out);
+    const send = ctx.createGain();
+    send.connect(audio.verb);
+    // The instruments (not the drums or sound effects) go through their own level, master({ music }).
+    const music = ctx.createGain();
+    music.gain.value = db(audio.score.master.music);
+    music.connect(bus);
+    const musicSend = ctx.createGain();
+    musicSend.gain.value = music.gain.value;
+    musicSend.connect(send);
+    const tracks = {};
+    for (const [name, tr] of Object.entries(audio.score.tracks)) {
+      const g = ctx.createGain();
+      g.gain.value = db(tr.gain);
+      const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(music); } else g.connect(music);
+      const rs = ctx.createGain();
+      rs.gain.value = tr.rev;
+      g.connect(rs);
+      rs.connect(musicSend);
+      tracks[name] = { node: g, def: tr };
+    }
+    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, rate: state.rate, idx: 0, voice: false };
+    audio.session = s;
+    startVoice(s);
+    // Notes already sounding at the seek point start now with what is left of them.
+    for (const e of audio.score.ev) {
+      if (e.s >= filmT) break;
+      if (e.k === "n" && e.s + e.d > filmT + 0.15) sound(e, s, filmT, e.s + e.d - filmT);
+    }
+    s.idx = audio.score.ev.findIndex((e) => e.s >= filmT);
+    if (s.idx < 0) s.idx = audio.score.ev.length;
+    // Fade the master out over the last seconds of the lesson.
+    const fo = audio.score.master.fadeOut;
+    if (fo > 0) {
+      const a = Math.max(filmT, END - fo);
+      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT) / s.rate);
+      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT) / s.rate);
+    }
+    audio.timer = setInterval(() => pump(), 50);
+    pump();
+  }
+
+  function stopSession() {
+    clearInterval(audio.timer);
+    const s = audio.session;
+    audio.session = null;
+    if (!s) return;
+    const now = audio.ctx.currentTime;
+    s.bus.gain.cancelScheduledValues(now);
+    s.bus.gain.setTargetAtTime(0, now, 0.03);
+    s.send.gain.cancelScheduledValues(now);
+    s.send.gain.setTargetAtTime(0, now, 0.03);
+    if (s.voice && audio.voiceEl) audio.voiceEl.pause();
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); s.music.disconnect(); s.musicSend.disconnect(); }, 400);
+  }
+
+  function pump() {
+    const s = audio.session;
+    if (!s) return;
+    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0) * s.rate;
+    const horizon = filmNow + 0.6 * s.rate;
+    // Keep the voice in step with the picture.
+    const v = audio.voiceEl;
+    if (s.voice && v && !v.paused && !v.seeking && filmNow > s.film0 + 0.5 && Math.abs(v.currentTime - filmNow) > 0.25) v.currentTime = filmNow;
+    const ev = audio.score.ev;
+    while (s.idx < ev.length && ev[s.idx].s <= horizon) {
+      const e = ev[s.idx++];
+      if (e.s >= s.film0) sound(e, s, e.s, e.d);
+    }
+  }
+
+  function sound(e, s, filmStart, dur) {
+    const ctx = audio.ctx;
+    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0) / s.rate);
+    dur /= s.rate;
+    const v = Math.pow(clamp01(e.v / 127), 1.5);
+    if (e.k === "n") {
+      const tr = s.tracks[e.track];
+      if (!tr) return;
+      voice(tr.def.patch, tr.node, hz(e.m), when, Math.max(0.05, dur), v, tr.def.bright);
+    } else if (e.k === "d") {
+      drum(e.name, s.bus, when, v);
+    } else {
+      fx(e.name, s.bus, s.send, when, e.d / s.rate, v, e.pitch || 0);
+    }
+  }
+
+  function env(g, when, peak, attack, hold, release) {
+    peak = Math.max(peak, 0.0002);
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.linearRampToValueAtTime(peak, when + attack);
+    g.gain.setValueAtTime(peak, when + attack + hold);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + attack + hold + release);
+    return when + attack + hold + release + 0.05;
+  }
+  function osc(type, f, dest, when, stop, detune) {
+    const o = audio.ctx.createOscillator();
+    o.type = type;
+    o.frequency.value = f;
+    if (detune) o.detune.value = detune;
+    o.connect(dest);
+    o.start(when);
+    o.stop(stop);
+    return o;
+  }
+  function noiseSrc(dest, when, stop) {
+    const n = audio.ctx.createBufferSource();
+    n.buffer = audio.noise;
+    n.loop = true;
+    n.connect(dest);
+    n.start(when);
+    n.stop(stop);
+    return n;
+  }
+
+  function voice(patch, dest, f, when, dur, v, bright) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    let stop;
+    switch (patch) {
+      case "pad": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 700 + 900 * bright;
+        lp.connect(g);
+        stop = env(g, when, 0.22 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
+        osc("sawtooth", f, lp, when, stop, -8);
+        osc("sawtooth", f, lp, when, stop, 8);
+        break;
+      }
+      case "ep":
+      case "keys": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.22 * v + 0.0002, when + 0.008);
+        g.gain.exponentialRampToValueAtTime(0.08 * v + 0.0001, when + Math.min(dur, 0.9));
+        g.gain.exponentialRampToValueAtTime(0.0001, when + dur + 0.4);
+        stop = when + dur + 0.45;
+        osc("sine", f, g, when, stop);
+        const h2 = ctx.createGain();
+        h2.gain.value = 0.25;
+        h2.connect(g);
+        osc("sine", f * 2, h2, when, stop);
+        break;
+      }
+      case "bass": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 500;
+        lp.connect(g);
+        stop = env(g, when, 0.34 * v, 0.01, Math.max(0, dur - 0.1), 0.18);
+        osc("sine", f, lp, when, stop);
+        osc("triangle", f * 2, lp, when, stop);
+        break;
+      }
+      case "pluck": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.24 * v + 0.0002, when + 0.004);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + Math.min(1.1, dur + 0.45));
+        stop = when + Math.min(1.1, dur + 0.45) + 0.05;
+        osc("triangle", f, g, when, stop);
+        break;
+      }
+      default: {
+        // marimba, vibes, glock and anything unknown: a struck bar.
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.26 * v + 0.0002, when + 0.003);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + 0.7);
+        stop = when + 0.75;
+        osc("sine", f, g, when, stop);
+        const h4 = ctx.createGain();
+        h4.gain.value = 0.12;
+        h4.connect(g);
+        osc("sine", f * 4, h4, when, stop);
+      }
+    }
+  }
+
+  function drum(name, dest, when, v) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    if (name === "kick" || name === "tom") {
+      const o = osc("sine", 140, g, when, when + 0.4);
+      o.frequency.setValueAtTime(140, when);
+      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
+      env(g, when, 0.8 * v, 0.002, 0.02, 0.3);
+    } else {
+      const f = ctx.createBiquadFilter();
+      f.type = name === "sidestick" || name === "woodblock" ? "bandpass" : "highpass";
+      f.frequency.value = name === "sidestick" || name === "woodblock" ? 1900 : 7000;
+      f.connect(g);
+      noiseSrc(f, when, when + 0.2);
+      env(g, when, 0.22 * v, 0.001, 0.005, name === "openhat" ? 0.25 : 0.045);
+    }
+  }
+
+  function fx(name, dest, send, when, dur, v, pitch) {
+    const ctx = audio.ctx;
+    const tr = Math.pow(2, pitch / 12);
+    const g = ctx.createGain();
+    g.connect(dest);
+    const wet = ctx.createGain();
+    wet.gain.value = 0.35;
+    g.connect(wet);
+    wet.connect(send);
+    const r = rng(Math.floor(when * 1000));
+    switch (name) {
+      case "tick": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.frequency.value = 3000 + r() * 1500;
+        f.Q.value = 3;
+        f.connect(g);
+        noiseSrc(f, when, when + 0.06);
+        env(g, when, 0.5 * v, 0.001, 0.004, 0.025);
+        break;
+      }
+      case "click": {
+        osc("square", 1400, g, when, when + 0.06);
+        env(g, when, 0.12 * v, 0.001, 0.005, 0.03);
+        break;
+      }
+      case "ding": {
+        osc("sine", 1046.5 * tr, g, when, when + 1.6);
+        osc("sine", 1568 * tr, g, when, when + 1.6);
+        env(g, when, 0.16 * v, 0.004, 0.02, 1.4);
+        break;
+      }
+      case "chime": {
+        [0, 4, 7].forEach((st, i) => {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + i * 0.07;
+          osc("sine", 1046.5 * tr * Math.pow(2, st / 12), gi, t, t + 1);
+          env(gi, t, 0.14 * v, 0.003, 0.01, 0.9);
+        });
+        g.gain.value = 1;
+        break;
+      }
+      case "sparkle": {
+        for (let i = 0; i < 6; i++) {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + r() * 0.5;
+          osc("sine", 2000 + r() * 2200, gi, t, t + 0.2);
+          env(gi, t, 0.07 * v, 0.002, 0.01, 0.12);
+        }
+        break;
+      }
+      case "whoosh":
+      case "revswell": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.Q.value = 0.8;
+        f.frequency.setValueAtTime(300, when);
+        f.frequency.exponentialRampToValueAtTime(name === "whoosh" ? 2400 : 3200, when + dur);
+        f.connect(g);
+        noiseSrc(f, when, when + dur + 0.1);
+        g.gain.setValueAtTime(0.0001, when);
+        if (name === "whoosh") {
+          g.gain.linearRampToValueAtTime(0.3 * v, when + dur * 0.5);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur);
+        } else {
+          g.gain.exponentialRampToValueAtTime(0.28 * v + 0.0002, when + dur);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur + 0.06);
+        }
+        break;
+      }
+      case "thud": {
+        const o = osc("sine", 110, g, when, when + 0.4);
+        o.frequency.setValueAtTime(110, when);
+        o.frequency.exponentialRampToValueAtTime(45, when + 0.18);
+        env(g, when, 0.5 * v, 0.002, 0.02, 0.3);
+        break;
+      }
+      case "boing": {
+        const o = osc("sine", 220 * tr, g, when, when + 0.5);
+        o.frequency.setValueAtTime(220 * tr, when);
+        o.frequency.linearRampToValueAtTime(520 * tr, when + 0.12);
+        o.frequency.linearRampToValueAtTime(300 * tr, when + 0.4);
+        env(g, when, 0.2 * v, 0.005, 0.05, 0.35);
+        break;
+      }
+      default: {
+        // pop, and any name this synth does not know.
+        const o = osc("sine", 600 * tr, g, when, when + 0.2);
+        o.frequency.setValueAtTime(600 * tr, when);
+        o.frequency.exponentialRampToValueAtTime(1200 * tr, when + 0.06);
+        env(g, when, 0.3 * v, 0.002, 0.01, 0.12);
+      }
+    }
+  }
+
+  // ── Playback ───────────────────────────────────────────────────────────────
+  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1, rate: 1 };
+  const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+  try { const r = Number(localStorage.getItem("fe-speed")); if (SPEEDS.includes(r)) state.rate = r; } catch (e) { /* 1x */ }
+  function setRate(r) {
+    state.t0 = state.t;
+    state.wall0 = now();
+    state.rate = r;
+    try { localStorage.setItem("fe-speed", String(r)); } catch (e) { /* not remembered */ }
+    if (state.playing) startSession(state.t);
+  }
+  let instances = [];
+
+  function sceneAt(t) {
+    for (let i = scenes.length - 1; i >= 0; i--) if (t >= scenes[i].start) return i;
+    return 0;
+  }
+
+  function renderAt(t) {
+    const i = sceneAt(t);
+    if (i !== state.current) {
+      instances.forEach((inst, k) => { inst.box.style.display = k === i ? "block" : "none"; });
+      state.current = i;
+    }
+    const inst = instances[i];
+    inst.def.render.call(inst.def, (Math.min(t, END - 1e-4) - inst.sc.start) / inst.sc.k, inst.kit);
+    ui.update(t);
+  }
+
+  function now() { return performance.now() / 1000; }
+
+  function play() {
+    if (state.t >= END - 0.01) state.t = 0;
+    state.playing = true;
+    state.wall0 = now();
+    state.t0 = state.t;
+    startSession(state.t);
+    ui.update(state.t);
+  }
+  function pause() {
+    state.playing = false;
+    stopSession();
+    ui.update(state.t);
+  }
+  function seek(t) {
+    state.t = clamp(t, 0, END);
+    state.wall0 = now();
+    state.t0 = state.t;
+    if (state.playing) startSession(state.t);
+    renderAt(state.t);
+  }
+  // Tells the page around the lesson (the course, when signed in) how far the video has been watched:
+  // started, 25 %, 50 %, 75 % and finished, each once per visit.
+  const reported = new Set();
+  function reportProgress() {
+    if (window.parent === window) return;
+    const pct = state.t >= END - 0.5 ? 100 : [75, 50, 25].find((p) => state.t >= (END * p) / 100) || 0;
+    for (const p of [0, 25, 50, 75, 100]) {
+      if (p > pct || reported.has(p)) continue;
+      reported.add(p);
+      try { window.parent.postMessage({ type: "futures-edge:progress", lesson: F.id, pct: p }, location.origin); } catch (e) { /* no parent page */ }
+    }
+  }
+  function tick() {
+    if (state.playing) {
+      state.t = state.t0 + (now() - state.wall0) * state.rate;
+      if (state.t >= END) {
+        state.t = END;
+        pause();
+      }
+      renderAt(state.t);
+      reportProgress();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  async function enableAudio() {
+    if (audio.enabled) return;
+    if (!audio.ctx && !setupAudio()) return;
+    try { await audio.ctx.resume(); } catch (e) { /* stays suspended */ }
+    if (audio.ctx.state !== "running") return;
+    audio.enabled = true;
+    ui.sound();
+    if (state.playing) startSession(state.t);
+  }
+
+  // ── Controls ───────────────────────────────────────────────────────────────
+  const fmt = (t) => {
+    const s = Math.max(0, Math.floor(t));
+    return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  };
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" fill="currentColor"/></svg>',
+    replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6.5l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z" fill="currentColor"/></svg>',
+    on: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    off: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    full: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+
+  const CC_LANGS = [
+    { id: "ml", label: "മലയാളം", short: "മ", name: "Malayalam" },
+    { id: "en", label: "English", short: "EN", name: "English" },
+    { id: "off", label: "Off", short: "CC", name: "Off" },
+  ];
+
+  // ── Full screen ────────────────────────────────────────────────────────────
+  // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
+  // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
+  // course page the player asks the parent to grow the lesson to fill the whole screen instead.
+  const embedded = window.parent !== window;
+  const root = document.documentElement;
+  const fs = {
+    native: !!(document.fullscreenEnabled || document.webkitFullscreenEnabled),
+    pseudo: false,
+    available() { return this.native || embedded; },
+    active() { return !!(document.fullscreenElement || document.webkitFullscreenElement) || this.pseudo; },
+    async toggle() {
+      if (this.native) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* not locked */ }
+          await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        try {
+          await (root.requestFullscreen || root.webkitRequestFullscreen).call(root, { navigationUI: "hide" });
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock("landscape").catch(() => {});
+          return;
+        } catch (e) {
+          if (!embedded) return; // refused: fall through to the parent page below
+        }
+      }
+      this.pseudo = !this.pseudo;
+      window.parent.postMessage({ type: "futures-edge:fullscreen", on: this.pseudo }, location.origin);
+      ui.full();
+    },
+  };
+  document.addEventListener("fullscreenchange", () => ui.full());
+  document.addEventListener("webkitfullscreenchange", () => ui.full());
+  const ui = (() => {
+    const bar = h(
+      '<div class="fe-ui" role="group" aria-label="Lesson controls">' +
+        '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
+        '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
+        '<span class="fe-time"></span>' +
+        '<div class="fe-ccw fe-spw"><button type="button" class="fe-btn fe-sp" aria-haspopup="true" aria-expanded="false"></button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Playback speed" hidden>' +
+          SPEEDS.map((r) => '<button type="button" role="menuitemradio" data-rate="' + r + '">' + r + '×</button>').join("") +
+          '</div></div>' +
+        (F.voice && F.voice.srcMl ? '<button type="button" class="fe-btn fe-lang"></button>' : "") +
+        (lines.length ? '<div class="fe-ccw"><button type="button" class="fe-btn fe-cc" aria-haspopup="true" aria-expanded="false">CC</button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Subtitles" hidden>' +
+          CC_LANGS.map((l) => '<button type="button" role="menuitemradio" data-lang="' + l.id + '"' + (l.id === "ml" ? ' lang="ml"' : "") + '>' + l.label + '</button>').join("") +
+          '</div></div>' : "") +
+        '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
+        (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
+      "</div>"
+    );
+    const hint = h('<button type="button" class="fe-hint">Click anywhere for sound</button>');
+    const cap = h('<p class="fe-cap" aria-live="off"></p>');
+    document.body.append(cap, bar, hint);
+    const cc = bar.querySelector(".fe-cc");
+    const ccMenu = cc && cc.nextElementSibling;
+    const fsb = bar.querySelector(".fe-fs");
+    if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
+    // Subtitle language: Malayalam by default when the lesson has it, then English, or off.
+    // The viewer's choice is remembered on this device.
+    const hasMl = lines.some((l) => l.ml);
+    let ccLang = hasMl ? "ml" : "en", capText = null;
+    try {
+      const saved = localStorage.getItem("fe-subtitles");
+      if (saved === "en" || saved === "off" || (saved === "ml" && hasMl)) ccLang = saved;
+    } catch (e) { /* storage blocked: keep the default */ }
+    const setLang = (lang) => {
+      ccLang = lang;
+      try { localStorage.setItem("fe-subtitles", lang); } catch (e) { /* not remembered */ }
+      capText = null;
+      api.update(state.t);
+      api.cc();
+    };
+    // Voice language (only lessons recorded in both): switches the voice in place, at the same moment.
+    const langBtn = bar.querySelector(".fe-lang");
+    const showLang = () => {
+      langBtn.textContent = voiceLang === "ml" ? "മ" : "EN";
+      langBtn.setAttribute("aria-label", "Voice: " + (voiceLang === "ml" ? "Malayalam. Switch to English" : "English. Switch to Malayalam"));
+    };
+    if (langBtn) {
+      showLang();
+      langBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        voiceLang = voiceLang === "ml" ? "en" : "ml";
+        try { localStorage.setItem("fe-voice-lang", voiceLang); } catch (e) { /* not remembered */ }
+        showLang();
+        if (audio.voiceEl) {
+          audio.voiceEl.pause();
+          loadVoice();
+        }
+        wake();
+      });
+    }
+    // Playback speed menu.
+    const sp = bar.querySelector(".fe-sp"), spMenu = sp.nextElementSibling;
+    const showRate = () => {
+      sp.textContent = state.rate + "×";
+      sp.setAttribute("aria-label", "Playback speed " + state.rate + "×");
+      for (const b of spMenu.children) b.setAttribute("aria-checked", String(Number(b.dataset.rate) === state.rate));
+    };
+    const openSp = (open) => {
+      spMenu.hidden = !open;
+      sp.setAttribute("aria-expanded", String(open));
+      if (open) (spMenu.querySelector('[aria-checked="true"]') || spMenu.firstElementChild).focus();
+    };
+    sp.addEventListener("click", (e) => { e.stopPropagation(); openSp(spMenu.hidden); wake(); });
+    spMenu.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-rate]");
+      if (!b) return;
+      e.stopPropagation();
+      setRate(Number(b.dataset.rate));
+      showRate();
+      openSp(false);
+      sp.focus();
+    });
+    spMenu.addEventListener("keydown", (e) => {
+      const items = Array.from(spMenu.children), i = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+      }
+      if (e.key === "Escape") { e.stopPropagation(); openSp(false); sp.focus(); }
+    });
+    document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-spw")) openSp(false); }, true);
+    const stepRate = (d) => {
+      const i = SPEEDS.indexOf(state.rate), j = clamp(i + d, 0, SPEEDS.length - 1);
+      if (j !== i) { setRate(SPEEDS[j]); showRate(); }
+    };
+    showRate();
+    const openMenu = (open) => {
+      if (!ccMenu) return;
+      ccMenu.hidden = !open;
+      cc.setAttribute("aria-expanded", String(open));
+      if (open) (ccMenu.querySelector('[aria-checked="true"]') || ccMenu.firstElementChild).focus();
+    };
+    if (cc) {
+      cc.addEventListener("click", (e) => { e.stopPropagation(); openMenu(ccMenu.hidden); wake(); });
+      ccMenu.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-lang]");
+        if (!b) return;
+        e.stopPropagation();
+        setLang(b.dataset.lang);
+        openMenu(false);
+        cc.focus();
+      });
+      ccMenu.addEventListener("keydown", (e) => {
+        const items = Array.from(ccMenu.children), i = items.indexOf(document.activeElement);
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+        }
+        if (e.key === "Escape") { e.stopPropagation(); openMenu(false); cc.focus(); }
+      });
+      document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-ccw")) openMenu(false); }, true);
+      if (!hasMl) ccMenu.querySelector('[data-lang="ml"]').remove();
+    }
+    const pp = bar.querySelector(".fe-pp");
+    const trk = bar.querySelector(".fe-track");
+    const fill = trk.querySelector("i");
+    const time = bar.querySelector(".fe-time");
+    const snd = bar.querySelector(".fe-snd");
+    trk.setAttribute("aria-valuemax", String(Math.round(END)));
+    let idle = 0;
+    const wake = () => {
+      document.body.classList.remove("fe-idle");
+      clearTimeout(idle);
+      idle = setTimeout(() => { if (state.playing) document.body.classList.add("fe-idle"); }, 2600);
+    };
+    document.addEventListener("pointermove", wake);
+    pp.addEventListener("click", (e) => { e.stopPropagation(); enableAudio(); state.playing ? pause() : play(); wake(); });
+    snd.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (!audio.enabled) { await enableAudio(); return; }
+      audio.muted = !audio.muted;
+      if (audio.muted) stopSession(); else if (state.playing) startSession(state.t);
+      api.sound();
+    });
+    const seekTo = (clientX) => {
+      const r = trk.getBoundingClientRect();
+      seek(clamp01((clientX - r.left) / r.width) * END);
+    };
+    let drag = false;
+    trk.addEventListener("pointerdown", (e) => { e.stopPropagation(); enableAudio(); drag = true; trk.setPointerCapture(e.pointerId); seekTo(e.clientX); });
+    trk.addEventListener("pointermove", (e) => { if (drag) seekTo(e.clientX); });
+    trk.addEventListener("pointerup", () => { drag = false; });
+    trk.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { seek(state.t + 5); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { seek(state.t - 5); e.preventDefault(); }
+    });
+    // The first click anywhere turns the sound on; later clicks on the lesson pause and resume.
+    document.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".fe-ui")) return;
+      if (!audio.enabled) { enableAudio(); return; }
+      state.playing ? pause() : play();
+      wake();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.target.closest && e.target.closest(".fe-ccw")) return; // the subtitle menu handles its own keys
+      if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
+      if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === ">" || e.key === ".") { stepRate(1); wake(); }
+      if (e.key === "<" || e.key === ",") { stepRate(-1); wake(); }
+      if (e.key === "Escape" && fs.pseudo) fs.toggle();
+    });
+    const api = {
+      update(t) {
+        const done = !state.playing && t >= END - 0.01;
+        pp.innerHTML = state.playing ? ICON.pause : done ? ICON.replay : ICON.play;
+        pp.setAttribute("aria-label", state.playing ? "Pause" : done ? "Replay" : "Play");
+        fill.style.width = ((t / END) * 100).toFixed(3) + "%";
+        trk.setAttribute("aria-valuenow", String(Math.round(t)));
+        time.textContent = fmt(t) + " / " + fmt(END);
+        let text = "";
+        if (ccLang !== "off") for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = (ccLang === "ml" && l.ml) || l.text;
+        if (text !== capText) {
+          capText = text;
+          cap.textContent = text;
+          cap.hidden = !text;
+          cap.lang = ccLang === "ml" ? "ml" : "en";
+        }
+        if (!state.playing) wake();
+      },
+      sound() {
+        const on = audio.enabled && !audio.muted;
+        snd.innerHTML = on ? ICON.on : ICON.off;
+        snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
+        hint.hidden = audio.enabled;
+      },
+      cc() {
+        if (!cc) return;
+        const cur = CC_LANGS.find((l) => l.id === ccLang);
+        cc.textContent = ccLang === "off" ? "CC" : cur.short;
+        cc.classList.toggle("is-off", ccLang === "off");
+        cc.setAttribute("aria-label", "Subtitles: " + cur.name);
+        for (const b of ccMenu.children) b.setAttribute("aria-checked", String(b.dataset.lang === ccLang));
+      },
+      full() {
+        if (!fsb) return;
+        const on = fs.active();
+        fsb.innerHTML = on ? ICON.exit : ICON.full;
+        fsb.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+      },
+    };
+    api.sound();
+    api.full();
+    api.cc();
+    wake();
+    return api;
+  })();
+
+  // For tests and frame-by-frame capture: window.lessonPlayer.ready.then(() => { pause(); seek(12.5); }).
+  let markReady;
+  window.lessonPlayer = {
+    duration: END,
+    ready: new Promise((r) => { markReady = r; }),
+    play, pause, seek,
+    time: () => state.t,
+    score: () => audio.score,
+    // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
+    audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
+    voice: () => ({ lines, lang: voiceLang, loaded: !!(audio.voiceEl && audio.voiceEl.readyState >= 1), playing: !!(audio.voiceEl && !audio.voiceEl.paused), at: audio.voiceEl ? audio.voiceEl.currentTime : null }),
+    rate: () => state.rate,
+    setRate,
+  };
+
+  // ── Boot ───────────────────────────────────────────────────────────────────
+  async function boot() {
+    makeVoice();
+    try {
+      await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
+    } catch (e) { /* system fonts stand in */ }
+    run("shared.js", makeKit(stage, 0, OLD_END));
+    for (const sc of scenes) {
+      const box = el("div", { class: "fe-scene" });
+      stage.append(box);
+      const kit = makeKit(box, sc.oldStart, sc.oldDur);
+      run("scene-" + sc.id + ".js", kit);
+      const def = defs[sc.id];
+      if (def && def.init) await def.init.call(def, kit);
+      instances.push({ sc, def, box, kit });
+    }
+    if (modules["score.js"]) run("score.js", makeKit(stage, 0, OLD_END));
+    audio.score = recordScore();
+    // Wait (briefly) for the images so the first frames do not pop in.
+    const imgs = Array.from(stage.querySelectorAll("img"));
+    await Promise.race([
+      Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })))),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+    instances.forEach((inst) => { inst.box.style.display = "none"; });
+    renderAt(0);
+    document.body.classList.add("fe-ready");
+    // A parent page that allows autoplay (iframe allow="autoplay" after a click) gets sound
+    // straight away; otherwise the first click turns it on.
+    if (setupAudio() && audio.ctx.state === "running") { audio.enabled = true; ui.sound(); }
+    play();
+    requestAnimationFrame(tick);
+    markReady();
+  }
+  boot().catch((e) => {
+    document.querySelector(".fe-loading").textContent = "This lesson could not start. Please reload the page.";
+    throw e;
+  });
+})();
+
+</script>
+</body>
+</html>

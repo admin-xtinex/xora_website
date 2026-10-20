@@ -1,0 +1,146 @@
+{
+  "about": "Malayalam subtitles for T27, one per line of narration.json, same order. Simple spoken Malayalam; trading terms, symbols and numbers stay in English as they appear on screen. Draft for review by native speakers.",
+  "lines": [
+    {
+      "text": "പാഠം ഇരുപത്തിയേഴ്: XORA trading insights വായിക്കാം. Phase 6-ലെ അവസാന പാഠം."
+    },
+    {
+      "text": "T26-ൽ XORA എങ്ങനെ തീരുമാനിക്കുന്നു എന്ന് പഠിച്ചു. ഇനി അത് കാണിക്കുന്നത് വായിക്കാം."
+    },
+    {
+      "text": "Signals സ്ക്രീനിൽ ഒരു കോയിനെക്കുറിച്ച് ഒരുപാടുണ്ട്. മുകളിൽ നിന്ന് ഓരോ card ആയി വായിക്കാം."
+    },
+    {
+      "text": "ആദ്യം TRADE OPPORTUNITY card. ദിശയും setup-ഉം കാണിക്കും: ഇവിടെ BUY, support reclaim."
+    },
+    {
+      "text": "ENTRY: ട്രേഡ് തുടങ്ങുന്ന വില. STOP: വില എതിരായി പോയാൽ ട്രേഡ് അടയുന്ന വില."
+    },
+    {
+      "text": "RISK: stop-ലേക്കുള്ള ദൂരം ശതമാനത്തിൽ. NEXT RES.: മുകളിലെ അടുത്ത resistance."
+    },
+    {
+      "text": "അക്കങ്ങൾക്ക് താഴെ ഒരു bar: 2.0 R to the next level. R എന്താണ്?"
+    },
+    {
+      "text": "ഒരു R = നിങ്ങളുടെ റിസ്ക്: entry മുതൽ stop വരെയുള്ള ദൂരം. ഇവിടെ 60,000 − 59,700 = 300."
+    },
+    {
+      "text": "അടുത്ത resistance 600 അകലെ. 600 ÷ 300 = 2. അതായത് 2.0 R ഇടം."
+    },
+    {
+      "text": "അത് ചാർട്ടിലെ ഇടമാണ്, ഉറപ്പല്ല."
+    },
+    {
+      "text": "വിശദമായ പേജിന് Full AI insights തൊടൂ. അത് ഓരോ 20 സെക്കൻഡിലും പുതുക്കും."
+    },
+    {
+      "text": "മുകളിൽ verdict: വില 60,000-ന് മുകളിൽ പോയാൽ BUY. ഈ candle-ന് മാത്രം."
+    },
+    {
+      "text": "PRICE MAP-ൽ resistance, support, stop, entry എന്നിവ ശതമാന ദൂരത്തോടെ നിരത്തുന്നു."
+    },
+    {
+      "text": "താഴെ: ENTRY CHECKLIST, തുറന്ന ട്രേഡുകൾക്ക് TRADE MANAGEMENT, പിന്നെ ENGINE STATUS."
+    },
+    {
+      "text": "TRADE PLAN കണക്ക് ചെയ്യും. ആദ്യം size: നിങ്ങളുടെ margin × leverage."
+    },
+    {
+      "text": "3 USDT margin-ഉം 10x leverage-ഉം ആണെങ്കിൽ position size 3 × 10 = 30 USDT."
+    },
+    {
+      "text": "Stop 0.50% അകലെ. 30 USDT-ന്റെ 0.50% = 0.15 USDT."
+    },
+    {
+      "text": "Stop hit ആയാൽ ഏകദേശം 0.15 USDT നഷ്ടം, ഫീസ് വേറെ. Slippage അത് കൂട്ടാം."
+    },
+    {
+      "text": "MARKET volatility ATR ആയി കാണിക്കും: ഒരു candle സാധാരണ എത്ര ദൂരം നീങ്ങും എന്ന്."
+    },
+    {
+      "text": "ഇവിടെ 5 മിനിറ്റ് ATR 90 USDT. ATR കൂടിയാൽ നീക്കങ്ങൾ കൂടുതൽ ശക്തം."
+    },
+    {
+      "text": "അടുത്തിടെയുള്ള swing high-ഉം low-ഉം വില തിരിഞ്ഞ സ്ഥലങ്ങളാണ്."
+    },
+    {
+      "text": "ഇനി market-read carousel swipe ചെയ്യൂ. ഒന്നാം card: Xora read, ലളിതമായ ചുരുക്കം."
+    },
+    {
+      "text": "കുറിപ്പ്: ഫോണിൽ കണക്കാക്കിയത്, വിശദീകരണം മാത്രം. Engine-ന്റെ stop-ഉം exit-ഉം ഇത് ഉപയോഗിക്കില്ല."
+    },
+    {
+      "text": "രണ്ടാം card: VOLUME COMPARISON. ഈ വില പരിധിയിൽ buy volume-ഉം sell volume-ഉം."
+    },
+    {
+      "text": "മൂന്നാം card: ORDER BOOK DIFFERENCE. ഇരുവശത്തും വലിയ ഓർഡറുകൾ, walls, പിന്നെ spread."
+    },
+    {
+      "text": "Spoof risk: വന്നുപോകുന്ന walls വ്യാജമാകാം."
+    },
+    {
+      "text": "Absorption: വലിയ ഓർഡറുകൾ ട്രേഡുകൾ ഏറ്റെടുക്കുന്നു, വില കാര്യമായി നീങ്ങുന്നില്ല."
+    },
+    {
+      "text": "നാലാം card: PRICE-RANGE REPLAY. മുമ്പ് വില ഇവിടെ വന്നപ്പോൾ എന്ത് സംഭവിച്ചു, ഇപ്പോൾ എങ്ങനെ."
+    },
+    {
+      "text": "അഞ്ചാം card: TRIGGER LEVELS. ഉദാഹരണം: stop, ട്രേഡ് അടയുന്ന സ്ഥലം."
+    },
+    {
+      "text": "XORA എത്ര മുന്നോട്ട് നോക്കും? തീരുമാനങ്ങൾ ഓരോ 1 മിനിറ്റ് candle-നും."
+    },
+    {
+      "text": "ഓരോ plan-ഉം ഒരു candle മാത്രം. അത് അടയുമ്പോൾ പുതിയ ഡാറ്റയിൽ പരിശോധനകൾ വീണ്ടും."
+    },
+    {
+      "text": "5m, 15m, 1h ചാർട്ടുകൾ സന്ദർഭം നൽകും. 10 അല്ലെങ്കിൽ 15 മിനിറ്റ് മുന്നിലെ വില XORA പ്രവചിക്കില്ല."
+    },
+    {
+      "text": "സാധാരണ തെറ്റ്: insights പ്രവചനമായി കാണുന്നത്. 2.0 R ഇടമാണ്, ഉറപ്പല്ല."
+    },
+    {
+      "text": "Xora read ഇപ്പോഴത്തെ മാർക്കറ്റ് വിശദീകരിക്കുന്നു. അത് പ്രവചിക്കുന്നില്ല."
+    },
+    {
+      "text": "Insights കൊണ്ട് setup മനസ്സിലാക്കൂ, എന്നിട്ട് ശാന്തമായി തീരുമാനിക്കൂ."
+    },
+    {
+      "text": "നിങ്ങളുടെ ഊഴം. Margin 3 USDT, 10x. Entry 60,000, stop 59,400. എത്ര റിസ്ക്?"
+    },
+    {
+      "text": "Size 3 × 10 = 30 USDT. Stop 600 അകലെ: 1.00%. 30-ന്റെ 1.00% = 0.30 USDT."
+    },
+    {
+      "text": "ഫീസും slippage-ഉം കൂടാതെ 0.30 USDT. കിട്ടിയെങ്കിൽ കൊള്ളാം!"
+    },
+    {
+      "text": "Insights സഹായിക്കും, പക്ഷേ റിസ്ക് ഇല്ലാതാക്കില്ല."
+    },
+    {
+      "text": "XORA ലാഭം ഉറപ്പ് നൽകുന്നില്ല. Setup-കൾ പരാജയപ്പെടാം, നഷ്ട ട്രേഡുകൾ സംഭവിക്കും."
+    },
+    {
+      "text": "ഫീസ്, slippage, leverage എന്നിവ plan കാണിക്കുന്നതിലും വലിയ നഷ്ടം ഉണ്ടാക്കാം."
+    },
+    {
+      "text": "ആദ്യം DEMO-യിൽ പരിശീലിക്കൂ. ഇത് പഠനമാണ്, സാമ്പത്തിക ഉപദേശമല്ല."
+    },
+    {
+      "text": "ചുരുക്കം: TRADE OPPORTUNITY card: entry, stop, risk, next level, R."
+    },
+    {
+      "text": "Size = margin × leverage. Risk = size × stop ദൂരം."
+    },
+    {
+      "text": "Insights ഇപ്പോഴത്തെ മാർക്കറ്റ് വിശദീകരിക്കുന്നു. അവ പ്രവചനങ്ങളല്ല."
+    },
+    {
+      "text": "അഭിനന്ദനങ്ങൾ! Phase 6-ഉം മുഴുവൻ Futures Edge കോഴ്സും നിങ്ങൾ പൂർത്തിയാക്കി."
+    },
+    {
+      "text": "ഇനി DEMO-യിൽ പരിശീലിക്കൂ. XORA ലാഭം ഉറപ്പ് നൽകുന്നില്ല. സാമ്പത്തിക ഉപദേശമല്ല."
+    }
+  ]
+}

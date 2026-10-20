@@ -1,6 +1,6 @@
 # CP1 Foundations Checkpoint: voiceover script
 
-Lesson `CP1` · 38 lines · about 600 words · film 4:12.0 as written
+Lesson `CP1` · 38 lines · about 600 words · film 4:12.0 as written · **already recorded** (voice/ exists; re-record only to change the voice)
 
 **Tone:** Encouraging quiz host. After each question, a natural pause; read the answer with a little satisfaction, never as a test.
 

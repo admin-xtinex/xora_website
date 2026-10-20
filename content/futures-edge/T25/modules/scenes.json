@@ -1,0 +1,129 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "How XORA analyses a coin",
+      "dur": 8,
+      "desc": "Title card: Phase 6 XORA Intelligence, lesson T25; the tutor walks in beside a turning candle ring."
+    },
+    {
+      "id": "hook",
+      "name": "The routine",
+      "dur": 19,
+      "desc": "Seven steps light up in order: candles, volatility and swings, trend, zones, movement, setups, a plan for one candle."
+    },
+    {
+      "id": "candles",
+      "name": "Candles in",
+      "dur": 21,
+      "desc": "A fictional BTC/USDT 1-minute chart draws in; side panel lists the data: 1-minute history, bigger timeframes, order book."
+    },
+    {
+      "id": "closed",
+      "name": "Closed candles only",
+      "dur": 21,
+      "desc": "The last candle flickers while forming and is ignored; when it closes it is locked in and a fresh plan is made."
+    },
+    {
+      "id": "volatility",
+      "name": "Volatility",
+      "dur": 21,
+      "desc": "Volatility: the five latest candle ranges 60, 50, 40, 50, 100 USDT average 60 USDT (a simple ATR)."
+    },
+    {
+      "id": "trend",
+      "name": "Swings and trend",
+      "dur": 24,
+      "desc": "Swing highs and lows are marked; highs 60,100 to 60,250 and lows 59,900 to 60,040 make an UP trend; trend per timeframe panel."
+    },
+    {
+      "id": "zones",
+      "name": "Support and resistance zones",
+      "dur": 20,
+      "desc": "Zones are drawn around swing points: support 60,000 to 60,060, resistance 60,480 to 60,530."
+    },
+    {
+      "id": "movement",
+      "name": "Movement",
+      "dur": 21,
+      "desc": "Three meters: momentum rising, buyer pressure growing, volume above its recent average."
+    },
+    {
+      "id": "setups",
+      "name": "Candidate setups",
+      "dur": 22,
+      "desc": "Four mini charts: reaction at support, rejection at resistance, breakout, retest."
+    },
+    {
+      "id": "plan",
+      "name": "A plan for one candle",
+      "dur": 28,
+      "desc": "Setup candle at support; trigger 60,120, stop 59,940, risk 180 USDT per BTC (0.30%), next resistance 60,480 (2 R)."
+    },
+    {
+      "id": "trigger",
+      "name": "At the trigger",
+      "dur": 22,
+      "desc": "The next candle trades above 60,120; every check runs again and passes; otherwise the plan expires at the close."
+    },
+    {
+      "id": "mistake",
+      "name": "A common mistake",
+      "dur": 16,
+      "desc": "Mistake: reading the plan as a prediction; correction: it is an if, most plans expire, triggered trades can lose."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 18,
+      "desc": "Pause and answer: the next candle only reaches 60,100; answer: no trigger, no trade, a fresh plan at the close."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 19,
+      "desc": "Risk cards: checks read the past, gaps and slippage, fees, demo first."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 19,
+      "desc": "Three points: closed candles and a fresh plan every minute; the analysis steps; a plan is an if for one candle."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T26, understanding AI decisions; risk line."
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "id": "T26",
+  "title": "T26 Understanding AI Decisions",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson twenty-six: understanding AI decisions. Phase 6, XORA Intelligence.",
+      "say": "Lesson twenty-six: understanding AI decisions. Phase six, Zora Intelligence.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6,
+      "scene": "hook",
+      "text": "In T25 you saw how XORA analyses a coin. Now: what does it decide, and why?",
+      "say": "In T twenty-five you saw how Zora analyses a coin. Now: what does it decide, and why?",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14.4,
+      "slot": 6.2,
+      "scene": "hook",
+      "text": "For each coin, XORA's engine gives one of three answers. It's not a prediction.",
+      "say": "For each coin, Zora's engine gives one of three answers. It's not a prediction.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 20.6,
+      "slot": 3.4,
+      "scene": "hook",
+      "text": "It is the result of rule-based checks.",
+      "say": "It is the result of rule-based checks.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 24.4,
+      "slot": 6.2,
+      "scene": "outcomes",
+      "text": "Answer one: BUY, also called long. You gain if the price rises after you enter.",
+      "say": "Answer one: buy, also called long. You gain if the price rises after you enter.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 30.6,
+      "slot": 6.3,
+      "scene": "outcomes",
+      "text": "Answer two: SELL, also called SHORT. You gain if the price falls after you enter.",
+      "say": "Answer two: sell, also called SHORT. You gain if the price falls after you enter.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 36.9,
+      "slot": 5.5,
+      "scene": "outcomes",
+      "text": "Answer three: NO TRADE. You stand aside and wait. No setup right now.",
+      "say": "Answer three: NO TRADE. You stand aside and wait. No setup right now.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 42.4,
+      "slot": 6.6,
+      "scene": "outcomes",
+      "text": "A plan is for one candle only: BUY if price trades above 60,120, for example.",
+      "say": "A plan is for one candle only: buy if price trades above sixty thousand one hundred twenty, for example.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 49.4,
+      "slot": 6,
+      "scene": "checks",
+      "text": "How does XORA choose? With checks: yes-or-no tests written as rules in code.",
+      "say": "How does Zora choose? With checks: yes-or-no tests written as rules in code.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 55.4,
+      "slot": 5.9,
+      "scene": "checks",
+      "text": "Like a pilot's checklist before take-off. Each item is ticked, or it isn't.",
+      "say": "Like a pilot's checklist before take-off. Each item is ticked, or it isn't.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 61.3,
+      "slot": 7.7,
+      "scene": "checks",
+      "text": "The filters use common techniques: trend, support and resistance, volume, momentum and more.",
+      "say": "The filters use common techniques: trend, support and resistance, volume, momentum and more.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 69.4,
+      "slot": 5.2,
+      "scene": "confidence",
+      "text": "Confidence is a score for how much evidence agrees with a setup.",
+      "say": "Confidence is a score for how much evidence agrees with a setup.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 74.6,
+      "slot": 6.8,
+      "scene": "confidence",
+      "text": "Think of witnesses. One witness is weak. Several who agree, independently, are stronger.",
+      "say": "Think of witnesses. One witness is weak. Several who agree, independently, are stronger.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 81.4,
+      "slot": 9.6,
+      "scene": "confidence",
+      "text": "Each confirmation that agrees raises the score. A check that disagrees, or has no data, adds nothing.",
+      "say": "Each confirmation that agrees raises the score. A check that disagrees, or has no data, adds nothing.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 91.4,
+      "slot": 6,
+      "scene": "checklist",
+      "text": "In the app, this is the ENTRY CHECKLIST. Each check shows a tick or a cross.",
+      "say": "In the app, this is the ENTRY CHECKLIST. Each check shows a tick or a cross.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 97.4,
+      "slot": 7,
+      "scene": "checklist",
+      "text": "BUY shows 72% / 60%: a score of 72, against your minimum of 60. It meets it, so it's READY.",
+      "say": "Buy shows seventy-two percent out of sixty percent: a score of seventy-two, against your minimum of sixty. It meets it, so it's READY.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 104.4,
+      "slot": 5.8,
+      "scene": "checklist",
+      "text": "SELL shows 55% / 60%. Below your minimum, so no READY badge, and no sell.",
+      "say": "Sell shows fifty-five percent out of sixty percent. Below your minimum, so no READY badge, and no sell.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 110.2,
+      "slot": 2.8,
+      "scene": "checklist",
+      "text": "Fictional numbers, of course.",
+      "say": "Fictional numbers, of course.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 113.4,
+      "slot": 4.7,
+      "scene": "mistake",
+      "text": "A common mistake: reading 72% as a 72% chance of winning.",
+      "say": "A common mistake: reading seventy-two percent as a seventy-two percent chance of winning.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 118.1,
+      "slot": 7,
+      "scene": "mistake",
+      "text": "That's wrong. The app itself says: confidence is evidence strength, not a chance of winning.",
+      "say": "That's wrong. The app itself says: confidence is evidence strength, not a chance of winning.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 125.1,
+      "slot": 6.9,
+      "scene": "mistake",
+      "text": "A READY trade can still lose. Every trade needs a stop and a size you can afford.",
+      "say": "A READY trade can still lose. Every trade needs a stop and a size you can afford.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 132.4,
+      "slot": 6.2,
+      "scene": "gates",
+      "text": "Even a READY setup must pass safety checks. Any one of them can block the trade.",
+      "say": "Even a READY setup must pass safety checks. Any one of them can block the trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 138.6,
+      "slot": 6.7,
+      "scene": "gates",
+      "text": "Is the spread too wide? Is the market too thin? Is the data stale, or the plan expired?",
+      "say": "Is the spread too wide? Is the market too thin? Is the data stale, or the plan expired?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 145.3,
+      "slot": 6.1,
+      "scene": "gates",
+      "text": "Is the stop too tight or too wide? Is there too little room to the next level?",
+      "say": "Is the stop too tight or too wide? Is there too little room to the next level?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 151.4,
+      "slot": 3.6,
+      "scene": "gates",
+      "text": "If any check fails: no trade.",
+      "say": "If any check fails: no trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 155.4,
+      "slot": 5.8,
+      "scene": "notrade",
+      "text": "Markets are often unclear. Price chops sideways, and the checks disagree.",
+      "say": "Markets are often unclear. Price chops sideways, and the checks disagree.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 161.2,
+      "slot": 6.6,
+      "scene": "notrade",
+      "text": "Then XORA shows No trade, with its reasons, and keeps watching. That's a good outcome.",
+      "say": "Then Zora shows No trade, with its reasons, and keeps watching. That's a good outcome.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 167.8,
+      "slot": 6.2,
+      "scene": "notrade",
+      "text": "No trade means no loss. Waiting is a decision, and often the wise one.",
+      "say": "No trade means no loss. Waiting is a decision, and often the wise one.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 174.4,
+      "slot": 6.9,
+      "scene": "setting",
+      "text": "In Trade Settings you choose a confidence threshold: Enter only at or above. Default: 50%.",
+      "say": "In Trade Settings you choose a confidence threshold: Enter only at or above. Default: fifty percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 181.3,
+      "slot": 6.8,
+      "scene": "setting",
+      "text": "From 50% up, XORA uses several indicators for confirmation. Higher means more must agree.",
+      "say": "From fifty percent up, Zora uses several indicators for confirmation. Higher means more must agree.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 188.1,
+      "slot": 6.9,
+      "scene": "setting",
+      "text": "45% is special. It's not 45% confidence: XORA then looks for chart-pattern setups instead.",
+      "say": "Forty-five percent is special. It's not forty-five percent confidence: Zora then looks for chart-pattern setups instead.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 195,
+      "slot": 9,
+      "scene": "setting",
+      "text": "Entry modes change the filters: Basic looks for chances, Secure wants more confirmation, Advanced adds more.",
+      "say": "Entry modes change the filters: Basic looks for chances, Secure wants more confirmation, Advanced adds more.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 204.4,
+      "slot": 6.6,
+      "scene": "approval",
+      "text": "Auto trade approval is off by default. A triggered setup waits for you to tap Approve.",
+      "say": "Auto trade approval is off by default. A triggered setup waits for you to tap Approve.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 211,
+      "slot": 4.7,
+      "scene": "approval",
+      "text": "Approve before its one-minute candle ends, or it expires.",
+      "say": "Approve before its one-minute candle ends, or it expires.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 215.7,
+      "slot": 5.8,
+      "scene": "approval",
+      "text": "With auto approval on, the engine enters by itself, within your settings.",
+      "say": "With auto approval on, the engine enters by itself, within your settings.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 221.5,
+      "slot": 8.5,
+      "scene": "approval",
+      "text": "Your own BUY or SHORT tap is always your call. The sheet says if the engine agrees.",
+      "say": "Your own buy or SHORT tap is always your call. The sheet says if the engine agrees.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 230.4,
+      "slot": 11.6,
+      "scene": "try",
+      "text": "Your turn. Read the checklist and choose an answer. Pause if you need more time.",
+      "say": "Your turn. Read the checklist and choose an answer. Pause if you need more time.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 242,
+      "slot": 5.4,
+      "scene": "try",
+      "text": "Answer B. 68 is below your minimum of 70, so no READY, and no trade.",
+      "say": "Answer B. Sixty-eight is below your minimum of seventy, so no READY, and no trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 247.4,
+      "slot": 4.6,
+      "scene": "try",
+      "text": "And C is wrong: confidence is not a chance of winning.",
+      "say": "And C is wrong: confidence is not a chance of winning.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 252.4,
+      "slot": 4,
+      "scene": "risks",
+      "text": "Before you trust any decision, know its limits.",
+      "say": "Before you trust any decision, know its limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 256.4,
+      "slot": 6.1,
+      "scene": "risks",
+      "text": "XORA does not guarantee profits. Rules can be wrong, and losing trades happen.",
+      "say": "Zora does not guarantee profits. Rules can be wrong, and losing trades happen.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 262.5,
+      "slot": 5.9,
+      "scene": "risks",
+      "text": "Prices can jump past a stop, fees add up, and leverage makes losses bigger.",
+      "say": "Prices can jump past a stop, fees add up, and leverage makes losses bigger.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 268.4,
+      "slot": 5.6,
+      "scene": "risks",
+      "text": "So practise in DEMO first. This is education, not financial advice.",
+      "say": "So practise in demo first. This is education, not financial advice.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 274.4,
+      "slot": 6.8,
+      "scene": "recap",
+      "text": "Recap. XORA gives three answers: BUY, SELL or SHORT, or NO TRADE, from rule-based checks.",
+      "say": "Recap. Zora gives three answers: buy, sell or SHORT, or NO TRADE, from rule-based checks.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 281.2,
+      "slot": 7.2,
+      "scene": "recap",
+      "text": "Confidence is evidence strength, checked against your minimum. Safety checks can still say no.",
+      "say": "Confidence is evidence strength, checked against your minimum. Safety checks can still say no.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 288.4,
+      "slot": 7.6,
+      "scene": "recap",
+      "text": "Check yourself: 80% / 60%, but the spread is too wide. Trade? No, the safety check blocks it.",
+      "say": "Check yourself: eighty percent out of sixty percent, but the spread is too wide. Trade? No, the safety check blocks it.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 296.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Next: T27, reading XORA trading insights. XORA does not guarantee profits. Demo first. Not financial advice.",
+      "say": "Next: T twenty-seven, reading Zora trading insights. Zora does not guarantee profits. Demo first. Not financial advice.",
+      "note": ""
+    }
+  ]
+}

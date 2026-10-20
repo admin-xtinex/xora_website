@@ -1,0 +1,421 @@
+{
+  "id": "T05",
+  "title": "T05 Buy, Sell, Long and Short",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson five: buy, sell, long and short. Welcome to Phase 2.",
+      "say": "Lesson five: buy, sell, long and short. Welcome to Phase two.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.4,
+      "scene": "hook",
+      "text": "BTC's price goes up, and it goes down. Most people only think about one direction.",
+      "say": "B-T-C's price goes up, and it goes down. Most people only think about one direction.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14.8,
+      "slot": 7.2,
+      "scene": "hook",
+      "text": "Can someone gain when the price falls? With a short position, yes. Let's see how.",
+      "say": "Can someone gain when the price falls? With a short position, yes. Let's see how.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 22.4,
+      "slot": 6,
+      "scene": "buysell",
+      "text": "First, spot trading. Buying spot means you pay USDT now and receive real BTC.",
+      "say": "First, spot trading. Buying spot means you pay U-S-D-T now and receive real B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 28.4,
+      "slot": 5.4,
+      "scene": "buysell",
+      "text": "Like buying gold at a shop: you pay, and the gold is yours to keep.",
+      "say": "Like buying gold at a shop: you pay, and the gold is yours to keep.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 33.8,
+      "slot": 6.2,
+      "scene": "buysell",
+      "text": "You pay 600 USDT for 0.01 BTC at 60,000. Your USDT goes down, your BTC goes up.",
+      "say": "You pay six hundred U-S-D-T for zero point zero one B-T-C at sixty thousand. Your U-S-D-T goes down, your B-T-C goes up.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 40,
+      "slot": 7,
+      "scene": "buysell",
+      "text": "Selling spot is the reverse. Sell the 0.01 BTC at 62,000, and you get 620 USDT back.",
+      "say": "Selling spot is the reverse. Sell the zero point zero one B-T-C at sixty-two thousand, and you get six hundred twenty U-S-D-T back.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 47.4,
+      "slot": 6.4,
+      "scene": "own",
+      "text": "Spot is ownership. The BTC is yours, and its value rises and falls with the price.",
+      "say": "Spot is ownership. The B-T-C is yours, and its value rises and falls with the price.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 53.8,
+      "slot": 6.3,
+      "scene": "own",
+      "text": "Futures are different. A futures contract is an agreement about an asset's price.",
+      "say": "Futures are different. A futures contract is an agreement about an asset's price.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 60.1,
+      "slot": 7.9,
+      "scene": "own",
+      "text": "Opening one gives you a position: you gain or lose as the price moves, but you own no BTC.",
+      "say": "Opening one gives you a position: you gain or lose as the price moves, but you own no B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 68.4,
+      "slot": 5.3,
+      "scene": "long",
+      "text": "Going long means opening a position that gains if the price rises.",
+      "say": "Going long means opening a position that gains if the price rises.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 73.7,
+      "slot": 7.7,
+      "scene": "long",
+      "text": "Like agreeing today to buy a crate of mangoes at today's price. If prices rise, your deal is worth more.",
+      "say": "Like agreeing today to buy a crate of mangoes at today's price. If prices rise, your deal is worth more.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 81.4,
+      "slot": 6.6,
+      "scene": "long",
+      "text": "Long 0.01 BTC at 60,000. If the price rises to 61,000, you gain 1,000 × 0.01 = 10 USDT.",
+      "say": "Long zero point zero one B-T-C at sixty thousand. If the price rises to sixty-one thousand, you gain one thousand times zero point zero one equals ten U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 88,
+      "slot": 7,
+      "scene": "long",
+      "text": "But if it falls to 59,000, you lose 10 USDT. A long loses when the price falls.",
+      "say": "But if it falls to fifty-nine thousand, you lose ten U-S-D-T. A long loses when the price falls.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 95.4,
+      "slot": 5.3,
+      "scene": "short",
+      "text": "Going short means opening a position that gains if the price falls.",
+      "say": "Going short means opening a position that gains if the price falls.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 100.7,
+      "slot": 7.1,
+      "scene": "short",
+      "text": "Like a shopkeeper who agrees today to sell rice next week at today's price, before she buys it.",
+      "say": "Like a shopkeeper who agrees today to sell rice next week at today's price, before she buys it.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 107.8,
+      "slot": 7.3,
+      "scene": "short",
+      "text": "If rice gets cheaper, she buys it for less and keeps the difference. If it gets dearer, she loses.",
+      "say": "If rice gets cheaper, she buys it for less and keeps the difference. If it gets dearer, she loses.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 115.1,
+      "slot": 8.9,
+      "scene": "short",
+      "text": "Short 0.01 BTC at 60,000. A fall to 59,000 gains 10 USDT. A rise to 61,000 loses 10 USDT.",
+      "say": "Short zero point zero one B-T-C at sixty thousand. A fall to fifty-nine thousand gains ten U-S-D-T. A rise to sixty-one thousand loses ten U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 124.4,
+      "slot": 5.6,
+      "scene": "meters",
+      "text": "Now watch one price, with a long and a short opened at the same 60,000.",
+      "say": "Now watch one price, with a long and a short opened at the same sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 130,
+      "slot": 5.7,
+      "scene": "meters",
+      "text": "The price climbs to 61,500. The long shows +15 USDT, the short −15 USDT.",
+      "say": "The price climbs to sixty-one thousand five hundred. The long shows plus fifteen U-S-D-T, the short minus fifteen U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 135.7,
+      "slot": 5.1,
+      "scene": "meters",
+      "text": "Then the market reverses and falls to 58,500. The results flip.",
+      "say": "Then the market reverses and falls to fifty-eight thousand five hundred. The results flip.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 140.8,
+      "slot": 7.2,
+      "scene": "meters",
+      "text": "Now the long is down 15 USDT and the short is up 15. Same move, opposite results.",
+      "say": "Now the long is down fifteen U-S-D-T and the short is up fifteen. Same move, opposite results.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 148.4,
+      "slot": 6,
+      "scene": "mistake",
+      "text": "A common mistake: thinking buying spot is the same as going long with margin.",
+      "say": "A common mistake: thinking buying spot is the same as going long with margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 154.4,
+      "slot": 7.2,
+      "scene": "mistake",
+      "text": "Spot: you pay the full 600 USDT and own 0.01 BTC. If the price drops, you still hold the coins.",
+      "say": "Spot: you pay the full six hundred U-S-D-T and own zero point zero one B-T-C. If the price drops, you still hold the coins.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 161.6,
+      "slot": 6.7,
+      "scene": "mistake",
+      "text": "Margin is a deposit that lets you hold a bigger futures position. Losses come out of it.",
+      "say": "Margin is a deposit that lets you hold a bigger futures position. Losses come out of it.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 168.3,
+      "slot": 6.5,
+      "scene": "mistake",
+      "text": "If losses eat that deposit, the exchange can close your position. That's liquidation.",
+      "say": "If losses eat that deposit, the exchange can close your position. That's liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 174.8,
+      "slot": 7.2,
+      "scene": "mistake",
+      "text": "And selling coins you own is not shorting. A short is a new position that gains if price falls.",
+      "say": "And selling coins you own is not shorting. A short is a new position that gains if price falls.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 182.4,
+      "slot": 6.2,
+      "scene": "choose",
+      "text": "Your call. Long, short, or wait? Pick one in your head before the price moves.",
+      "say": "Your call. Long, short, or wait? Pick one in your head before the price moves.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 188.6,
+      "slot": 5,
+      "scene": "choose",
+      "text": "Here's the move: up first, then down, ending at 59,800.",
+      "say": "Here's the move: up first, then down, ending at fifty-nine thousand eight hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 193.6,
+      "slot": 5.9,
+      "scene": "choose",
+      "text": "Long: minus 2 USDT. Short: plus 2 USDT. Wait: nothing gained, nothing lost.",
+      "say": "Long: minus two U-S-D-T. Short: plus two U-S-D-T. Wait: nothing gained, nothing lost.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 199.5,
+      "slot": 6.5,
+      "scene": "choose",
+      "text": "Nobody knows the next move for sure. Choosing to wait is always allowed.",
+      "say": "Nobody knows the next move for sure. Choosing to wait is always allowed.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 206.4,
+      "slot": 8,
+      "scene": "try",
+      "text": "Your turn. A short of 0.02 BTC at 60,000. The price rises to 60,500. Profit or loss? Pause if needed.",
+      "say": "Your turn. A short of zero point zero two B-T-C at sixty thousand. The price rises to sixty thousand five hundred. Profit or loss? Pause if needed.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 214.4,
+      "slot": 5.6,
+      "scene": "try",
+      "text": "A loss of 10 USDT. A short loses when the price rises: 500 × 0.02 = 10.",
+      "say": "A loss of ten U-S-D-T. A short loses when the price rises: five hundred times zero point zero two equals ten.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 220,
+      "slot": 6,
+      "scene": "try",
+      "text": "That's before fees. Well done if you said loss: that's the key idea.",
+      "say": "That's before fees. Well done if you said loss: that's the key idea.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 226.3,
+      "slot": 2.7,
+      "scene": "risks",
+      "text": "Before we go on, the risks.",
+      "say": "Before we go on, the risks.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 229,
+      "slot": 5.5,
+      "scene": "risks",
+      "text": "A price can keep rising, so a short's possible loss has no fixed limit.",
+      "say": "A price can keep rising, so a short's possible loss has no fixed limit.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 234.5,
+      "slot": 5.6,
+      "scene": "risks",
+      "text": "Margin and leverage make losses bigger too, and can lead to liquidation.",
+      "say": "Margin and leverage make losses bigger too, and can lead to liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 240.1,
+      "slot": 7.5,
+      "scene": "risks",
+      "text": "Fees come out of every result. Futures also have funding: regular payments between longs and shorts.",
+      "say": "Fees come out of every result. Futures also have funding: regular payments between longs and shorts.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 247.6,
+      "slot": 6.4,
+      "scene": "risks",
+      "text": "And no one can promise the next move. Waiting is always a valid choice.",
+      "say": "And no one can promise the next move. Waiting is always a valid choice.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 254.2,
+      "slot": 1.7,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 255.9,
+      "slot": 5.1,
+      "scene": "recap",
+      "text": "Spot buying means owning the coin. Selling spot means exiting it.",
+      "say": "Spot buying means owning the coin. Selling spot means exiting it.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 261,
+      "slot": 5,
+      "scene": "recap",
+      "text": "A long gains when the price rises. A short gains when it falls.",
+      "say": "A long gains when the price rises. A short gains when it falls.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 266,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Futures use margin and can be liquidated. And waiting is always allowed.",
+      "say": "Futures use margin and can be liquidated. And waiting is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 271.6,
+      "slot": 5.8,
+      "scene": "recap",
+      "text": "Check yourself: BTC falls 1,000 USDT. Which position gains, long or short?",
+      "say": "Check yourself: B-T-C falls one thousand U-S-D-T. Which position gains, long or short?",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 277.4,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "The short gains. The long loses. Same move, opposite sides.",
+      "say": "The short gains. The long loses. Same move, opposite sides.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 283.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Next up, T06: entry, exit, and how to work out profit and loss. See you there!",
+      "say": "Next up, T six: entry, exit, and how to work out profit and loss. See you there!",
+      "note": ""
+    }
+  ]
+}

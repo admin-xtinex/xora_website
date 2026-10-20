@@ -1,0 +1,466 @@
+{
+  "id": "T08",
+  "title": "T08 Stop-Loss and Take-Profit",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 3.6,
+      "scene": "title",
+      "text": "Lesson eight: stop-loss and take-profit.",
+      "say": "Lesson eight: stop-loss and take-profit.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 4.2,
+      "slot": 4.8,
+      "scene": "title",
+      "text": "Plan your exit before you enter.",
+      "say": "Plan your exit before you enter.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 9.4,
+      "slot": 6.2,
+      "scene": "hook",
+      "text": "Imagine you buy BTC, and the price starts to fall. When do you get out?",
+      "say": "Imagine you buy B-T-C, and the price starts to fall. When do you get out?",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 15.6,
+      "slot": 6.8,
+      "scene": "hook",
+      "text": "Deciding in the moment, under stress, is hard. Many beginners freeze, and the loss grows.",
+      "say": "Deciding in the moment, under stress, is hard. Many beginners freeze, and the loss grows.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 22.4,
+      "slot": 3.6,
+      "scene": "hook",
+      "text": "So plan both exits before you enter.",
+      "say": "So plan both exits before you enter.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 26.4,
+      "slot": 7.8,
+      "scene": "plan",
+      "text": "A trade plan has three prices: where you enter, where you get out if wrong, and where you take profit.",
+      "say": "A trade plan has three prices: where you enter, where you get out if wrong, and where you take profit.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 34.2,
+      "slot": 5.3,
+      "scene": "plan",
+      "text": "Entry 60,000. Stop-loss 59,400, below. Take-profit 61,200, above.",
+      "say": "Entry sixty thousand. Stop-loss fifty-nine thousand four hundred, below. Take-profit sixty-one thousand two hundred, above.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 39.5,
+      "slot": 6.5,
+      "scene": "plan",
+      "text": "For a short, it flips: the stop-loss goes above, the take-profit below.",
+      "say": "For a short, it flips: the stop-loss goes above, the take-profit below.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 46.4,
+      "slot": 7.5,
+      "scene": "sl",
+      "text": "A stop-loss is an order that closes your position if price moves against you, to limit the loss.",
+      "say": "A stop-loss is an order that closes your position if price moves against you, to limit the loss.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 53.9,
+      "slot": 5.6,
+      "scene": "sl",
+      "text": "Like a seat belt: it reduces the harm, but it can't prevent the crash.",
+      "say": "Like a seat belt: it reduces the harm, but it can't prevent the crash.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 59.5,
+      "slot": 7.5,
+      "scene": "sl",
+      "text": "Long 0.01 BTC at 60,000, stop at 59,400: loss about 600 × 0.01 = 6 USDT, before fees.",
+      "say": "Long zero point zero one B-T-C at sixty thousand, stop at fifty-nine thousand four hundred: loss about six hundred times zero point zero one equals six U-S-D-T, before fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 67.4,
+      "slot": 6.7,
+      "scene": "tp",
+      "text": "A take-profit closes your position when price reaches your target, to lock in a gain.",
+      "say": "A take-profit closes your position when price reaches your target, to lock in a gain.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 74.1,
+      "slot": 6,
+      "scene": "tp",
+      "text": "Like getting off the bus at the stop you planned, not riding on and hoping.",
+      "say": "Like getting off the bus at the stop you planned, not riding on and hoping.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 80.1,
+      "slot": 6.9,
+      "scene": "tp",
+      "text": "Take-profit at 61,200: gain about 1,200 × 0.01 = 12 USDT, before fees.",
+      "say": "Take-profit at sixty-one thousand two hundred: gain about one thousand two hundred times zero point zero one equals twelve U-S-D-T, before fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 87.4,
+      "slot": 7.8,
+      "scene": "trigger",
+      "text": "Two prices matter. The trigger price starts the exit. The execution price is where it actually fills.",
+      "say": "Two prices matter. The trigger price starts the exit. The execution price is where it actually fills.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 95.2,
+      "slot": 4.8,
+      "scene": "trigger",
+      "text": "Stop trigger 59,400. In a quick move, it fills at 59,380.",
+      "say": "Stop trigger fifty-nine thousand four hundred. In a quick move, it fills at fifty-nine thousand three hundred eighty.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 100,
+      "slot": 7,
+      "scene": "trigger",
+      "text": "Loss: (59,380 − 60,000) × 0.01 = −6.20 USDT. A little worse than planned.",
+      "say": "Loss: (fifty-nine thousand three hundred eighty minus sixty thousand) times zero point zero one equals minus six point two U-S-D-T. A little worse than planned.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 107.4,
+      "slot": 6,
+      "scene": "rr",
+      "text": "The risk/reward ratio compares what you could lose with what you could gain.",
+      "say": "The risk-to-reward ratio compares what you could lose with what you could gain.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 113.4,
+      "slot": 5.3,
+      "scene": "rr",
+      "text": "Risk: 600 per BTC, or 6 USDT. Reward: 1,200 per BTC, or 12 USDT.",
+      "say": "Risk: six hundred per B-T-C, or six U-S-D-T. Reward: one thousand two hundred per B-T-C, or twelve U-S-D-T.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 118.7,
+      "slot": 5.8,
+      "scene": "rr",
+      "text": "12 divided by 6 is 2. So this plan is 1 to 2: you risk 1 to aim for 2.",
+      "say": "Twelve divided by six is two. So this plan is one to two: you risk one to aim for two.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 124.5,
+      "slot": 5.5,
+      "scene": "rr",
+      "text": "All before fees. And it says nothing about how likely a win is.",
+      "say": "All before fees. And it says nothing about how likely a win is.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 130.4,
+      "slot": 6,
+      "scene": "bull",
+      "text": "Scenario one: price rises to 61,200. The take-profit triggers and fills.",
+      "say": "Scenario one: price rises to sixty-one thousand two hundred. The take-profit triggers and fills.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 136.4,
+      "slot": 5.8,
+      "scene": "bull",
+      "text": "Result: about plus 12 USDT before fees. The trade is closed.",
+      "say": "Result: about plus twelve U-S-D-T before fees. The trade is closed.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 142.2,
+      "slot": 6.8,
+      "scene": "bull",
+      "text": "On many platforms, when one exit fills, the other is cancelled. Check yours.",
+      "say": "On many platforms, when one exit fills, the other is cancelled. Check yours.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 149.4,
+      "slot": 6.6,
+      "scene": "bear",
+      "text": "Scenario two: price falls. The stop-loss triggers at 59,400 and fills at 59,390.",
+      "say": "Scenario two: price falls. The stop-loss triggers at fifty-nine thousand four hundred and fills at fifty-nine thousand three hundred ninety.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 156,
+      "slot": 5.6,
+      "scene": "bear",
+      "text": "Result: about minus 6.10 USDT before fees. A small, planned loss.",
+      "say": "Result: about minus six point one U-S-D-T before fees. A small, planned loss.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 161.6,
+      "slot": 5.4,
+      "scene": "bear",
+      "text": "Losing trades are normal. The stop kept this one small.",
+      "say": "Losing trades are normal. The stop kept this one small.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 167.4,
+      "slot": 6,
+      "scene": "gap",
+      "text": "Scenario three: bad news, and price gaps from 59,700 straight to 59,100.",
+      "say": "Scenario three: bad news, and price gaps from fifty-nine thousand seven hundred straight to fifty-nine thousand one hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 173.4,
+      "slot": 5.2,
+      "scene": "gap",
+      "text": "The stop triggers, but the first available price is 59,100.",
+      "say": "The stop triggers, but the first available price is fifty-nine thousand one hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 178.6,
+      "slot": 8.4,
+      "scene": "gap",
+      "text": "Loss: about 9 USDT, not the 6 you planned. Triggered is not the same as filled at your price.",
+      "say": "Loss: about nine U-S-D-T, not the six you planned. Triggered is not the same as filled at your price.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 187.4,
+      "slot": 7,
+      "scene": "miss",
+      "text": "A take-profit can also stay unfilled. Price reaches 61,150, just short of your 61,200.",
+      "say": "A take-profit can also stay unfilled. Price reaches sixty-one thousand one hundred fifty, just short of your sixty-one thousand two hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 194.4,
+      "slot": 6,
+      "scene": "miss",
+      "text": "Then it turns down. No profit was taken, and the gain on screen shrinks.",
+      "say": "Then it turns down. No profit was taken, and the gain on screen shrinks.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 200.4,
+      "slot": 6.6,
+      "scene": "miss",
+      "text": "Unrealized profit is not money in hand until the position is closed.",
+      "say": "Unrealized profit is not money in hand until the position is closed.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 207.4,
+      "slot": 5.8,
+      "scene": "mistake",
+      "text": "A common mistake: thinking a 1 to 2 plan means you will probably win.",
+      "say": "A common mistake: thinking a one to two plan means you will probably win.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 213.2,
+      "slot": 7.4,
+      "scene": "mistake",
+      "text": "Risk/reward is about size, not chance. A plan can be 1 to 3 and still lose most of the time.",
+      "say": "Risk-to-reward is about size, not chance. A plan can be one to three and still lose most of the time.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 220.6,
+      "slot": 5.4,
+      "scene": "mistake",
+      "text": "Judge the setup separately, and keep WAIT as an option.",
+      "say": "Judge the setup separately, and keep wait as an option.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 226.4,
+      "slot": 6.2,
+      "scene": "try",
+      "text": "Your turn. Long 0.01 BTC at 60,000. Stop-loss 59,500. Take-profit 61,000.",
+      "say": "Your turn. Long zero point zero one B-T-C at sixty thousand. Stop-loss fifty-nine thousand five hundred. Take-profit sixty-one thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 232.6,
+      "slot": 6.5,
+      "scene": "try",
+      "text": "Work out the risk, the reward, and the ratio, before fees. Pause if you need to.",
+      "say": "Work out the risk, the reward, and the ratio, before fees. Pause if you need to.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 239.1,
+      "slot": 5.1,
+      "scene": "try",
+      "text": "Risk: 500 × 0.01 = 5 USDT. Reward: 1,000 × 0.01 = 10 USDT.",
+      "say": "Risk: five hundred times zero point zero one equals five U-S-D-T. Reward: one thousand times zero point zero one equals ten U-S-D-T.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 244.2,
+      "slot": 4.8,
+      "scene": "try",
+      "text": "So it is 1 to 2, before fees. Did you get it?",
+      "say": "So it is one to two, before fees. Did you get it?",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 249.4,
+      "slot": 4.7,
+      "scene": "risks",
+      "text": "Stop-loss and take-profit help, but they have limits.",
+      "say": "Stop-loss and take-profit help, but they have limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 254.1,
+      "slot": 5.2,
+      "scene": "risks",
+      "text": "Stops can slip in fast moves, and take-profits may not fill.",
+      "say": "Stops can slip in fast moves, and take-profits may not fill.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 259.3,
+      "slot": 8,
+      "scene": "risks",
+      "text": "In futures with leverage (T12), the exchange can force-close a losing position. That is liquidation.",
+      "say": "In futures with leverage (T twelve), the exchange can force-close a losing position. That is liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 267.3,
+      "slot": 5.7,
+      "scene": "risks",
+      "text": "If you can't decide where your stop goes, that's a sign to wait.",
+      "say": "If you can't decide where your stop goes, that's a sign to wait.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 273.4,
+      "slot": 1.8,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 275.2,
+      "slot": 4.8,
+      "scene": "recap",
+      "text": "Plan entry, stop-loss and take-profit before you enter.",
+      "say": "Plan entry, stop-loss and take-profit before you enter.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 280,
+      "slot": 5.7,
+      "scene": "recap",
+      "text": "Trigger is not execution: stops can slip, and targets can be missed.",
+      "say": "Trigger is not execution: stops can slip, and targets can be missed.",
+      "note": ""
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 285.7,
+      "slot": 3.8,
+      "scene": "recap",
+      "text": "Risk/reward compares sizes, not chances.",
+      "say": "Risk-to-reward compares sizes, not chances.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 289.5,
+      "slot": 5.2,
+      "scene": "recap",
+      "text": "Check yourself: risk 8 USDT, reward 12 USDT. What's the ratio?",
+      "say": "Check yourself: risk eight U-S-D-T, reward twelve U-S-D-T. What's the ratio?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 294.7,
+      "slot": 3.3,
+      "scene": "recap",
+      "text": "1 to 1.5: 12 divided by 8.",
+      "say": "One to one point five: twelve divided by eight.",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 298.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Well done! Next up, T09: fees, spread and slippage, the costs that eat small wins.",
+      "say": "Well done! Next up, T nine: fees, spread and slippage, the costs that eat small wins.",
+      "note": ""
+    }
+  ]
+}

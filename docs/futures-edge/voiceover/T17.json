@@ -1,0 +1,484 @@
+{
+  "id": "T17",
+  "title": "T17 Support, Resistance, Breakout, Fakeout",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 4.8,
+      "scene": "title",
+      "text": "Lesson seventeen: support, resistance, breakout and fakeout.",
+      "say": "Lesson seventeen: support, resistance, breakout and fakeout.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 5.4,
+      "slot": 5.1,
+      "scene": "title",
+      "text": "The price areas traders watch, and how to read them calmly.",
+      "say": "The price areas traders watch, and how to read them calmly.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 11.1,
+      "slot": 5.4,
+      "scene": "hook",
+      "text": "In lesson sixteen, you marked swing highs and swing lows on a chart.",
+      "say": "In lesson sixteen, you marked swing highs and swing lows on a chart.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 16.5,
+      "slot": 5,
+      "scene": "hook",
+      "text": "Look closely. Price keeps turning back near the same two areas.",
+      "say": "Look closely. Price keeps turning back near the same two areas.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 21.5,
+      "slot": 5.5,
+      "scene": "hook",
+      "text": "Why does that happen? And what if price finally pushes through?",
+      "say": "Why does that happen? And what if price finally pushes through?",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 27.6,
+      "slot": 6,
+      "scene": "support",
+      "text": "Support is a price area where falling price has stopped and turned up before.",
+      "say": "Support is a price area where falling price has stopped and turned up before.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 33.6,
+      "slot": 4.6,
+      "scene": "support",
+      "text": "Think of a floor. Price drops, lands on it, and bounces.",
+      "say": "Think of a floor. Price drops, lands on it, and bounces.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 38.2,
+      "slot": 5.7,
+      "scene": "support",
+      "text": "Here, price fell to about 59,850 three times. Each touch is called a test.",
+      "say": "Here, price fell to about fifty-nine thousand eight hundred fifty three times. Each touch is called a test.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 43.9,
+      "slot": 6.6,
+      "scene": "support",
+      "text": "Buyers stepped in there before. That is all support tells you: what happened before.",
+      "say": "Buyers stepped in there before. That is all support tells you: what happened before.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 51.1,
+      "slot": 6.6,
+      "scene": "resist",
+      "text": "Resistance is the opposite: an area where rising price has stopped and turned down.",
+      "say": "Resistance is the opposite: an area where rising price has stopped and turned down.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 57.7,
+      "slot": 5.2,
+      "scene": "resist",
+      "text": "Like a ceiling. Price climbs, bumps into it, and falls back.",
+      "say": "Like a ceiling. Price climbs, bumps into it, and falls back.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 62.9,
+      "slot": 6.1,
+      "scene": "resist",
+      "text": "Here, rallies stalled near 60,350 twice. Sellers were waiting there before.",
+      "say": "Here, rallies stalled near sixty thousand three hundred fifty twice. Sellers were waiting there before.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 69.6,
+      "slot": 5.8,
+      "scene": "zone",
+      "text": "An important detail: support and resistance are zones, not exact lines.",
+      "say": "An important detail: support and resistance are zones, not exact lines.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 75.4,
+      "slot": 5.6,
+      "scene": "zone",
+      "text": "The three lows were 59,830, 59,860 and 59,880. Not one exact price.",
+      "say": "The three lows were fifty-nine thousand eight hundred thirty, fifty-nine thousand eight hundred sixty and fifty-nine thousand eight hundred eighty. Not one exact price.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 81,
+      "slot": 5.6,
+      "scene": "zone",
+      "text": "So we draw a band from 59,800 to 59,900. That zone is 100 USDT tall.",
+      "say": "So we draw a band from fifty-nine thousand eight hundred to fifty-nine thousand nine hundred. That zone is one hundred U-S-D-T tall.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 86.6,
+      "slot": 6.4,
+      "scene": "zone",
+      "text": "Price can poke into a zone, or a little through it, without anything changing.",
+      "say": "Price can poke into a zone, or a little through it, without anything changing.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 93.6,
+      "slot": 5,
+      "scene": "breakout",
+      "text": "A breakout is when price closes beyond a zone and keeps going.",
+      "say": "A breakout is when price closes beyond a zone and keeps going.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 98.6,
+      "slot": 5.2,
+      "scene": "breakout",
+      "text": "Our resistance zone runs from 60,300 to 60,400. Watch this candle.",
+      "say": "Our resistance zone runs from sixty thousand three hundred to sixty thousand four hundred. Watch this candle.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 103.8,
+      "slot": 5,
+      "scene": "breakout",
+      "text": "It closes at 60,480: a full 80 USDT above the top of the zone.",
+      "say": "It closes at sixty thousand four hundred eighty: a full eighty U-S-D-T above the top of the zone.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 108.8,
+      "slot": 6,
+      "scene": "breakout",
+      "text": "Then price comes back to the zone from above. That's a retest. Here, it holds.",
+      "say": "Then price comes back to the zone from above. That's a retest. Here, it holds.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 114.8,
+      "slot": 4.2,
+      "scene": "breakout",
+      "text": "The old ceiling acted like a floor. This time.",
+      "say": "The old ceiling acted like a floor. This time.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 119.6,
+      "slot": 3.8,
+      "scene": "fakeout",
+      "text": "Now the same chart, with a different ending.",
+      "say": "Now the same chart, with a different ending.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 123.4,
+      "slot": 7.2,
+      "scene": "fakeout",
+      "text": "A fakeout, or false breakout, is when price pokes beyond a zone, then falls back inside.",
+      "say": "A fakeout, or false breakout, is when price pokes beyond a zone, then falls back inside.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 130.6,
+      "slot": 7,
+      "scene": "fakeout",
+      "text": "The wick reaches 60,460, but the candle closes at 60,350, back inside the zone.",
+      "say": "The wick reaches sixty thousand four hundred sixty, but the candle closes at sixty thousand three hundred fifty, back inside the zone.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 137.6,
+      "slot": 6.4,
+      "scene": "fakeout",
+      "text": "Then price drops toward 60,150. Same past chart, two different futures.",
+      "say": "Then price drops toward sixty thousand one hundred fifty. Same past chart, two different futures.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 144.6,
+      "slot": 5.4,
+      "scene": "confirm",
+      "text": "So what counts as confirmation? Evidence that a breakout is holding.",
+      "say": "So what counts as confirmation? Evidence that a breakout is holding.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 150,
+      "slot": 5.2,
+      "scene": "confirm",
+      "text": "One: a candle closes beyond the zone. A wick alone is not enough.",
+      "say": "One: a candle closes beyond the zone. A wick alone is not enough.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 155.2,
+      "slot": 3.6,
+      "scene": "confirm",
+      "text": "Two: the next candles stay beyond it, too.",
+      "say": "Two: the next candles stay beyond it, too.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 158.8,
+      "slot": 4.6,
+      "scene": "confirm",
+      "text": "Three: if price comes back for a retest, the zone holds.",
+      "say": "Three: if price comes back for a retest, the zone holds.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 163.4,
+      "slot": 6.1,
+      "scene": "confirm",
+      "text": "Confirmation makes a breakout more believable. It never makes it certain.",
+      "say": "Confirmation makes a breakout more believable. It never makes it certain.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 170.1,
+      "slot": 5.8,
+      "scene": "mistake",
+      "text": "A common mistake: drawing one exact line and expecting price to obey it.",
+      "say": "A common mistake: drawing one exact line and expecting price to obey it.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 175.9,
+      "slot": 4.2,
+      "scene": "mistake",
+      "text": "Or jumping in the moment a wick crosses that line.",
+      "say": "Or jumping in the moment a wick crosses that line.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 180.1,
+      "slot": 6.2,
+      "scene": "mistake",
+      "text": "The fix: draw zones, wait for candles to close, and treat every level as a maybe.",
+      "say": "The fix: draw zones, wait for candles to close, and treat every level as a maybe.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 186.3,
+      "slot": 5.2,
+      "scene": "mistake",
+      "text": "And WAIT is always allowed. You never have to act on a level.",
+      "say": "And wait is always allowed. You never have to act on a level.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 192.1,
+      "slot": 4.2,
+      "scene": "try",
+      "text": "Your turn. The resistance zone is 60,300 to 60,400.",
+      "say": "Your turn. The resistance zone is sixty thousand three hundred to sixty thousand four hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 196.3,
+      "slot": 6.2,
+      "scene": "try",
+      "text": "The last candle wicked to 60,450 but closed at 60,380. Is the breakout confirmed?",
+      "say": "The last candle wicked to sixty thousand four hundred fifty but closed at sixty thousand three hundred eighty. Is the breakout confirmed?",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 202.5,
+      "slot": 5.6,
+      "scene": "try",
+      "text": "Not yet. The close, 60,380, is still 20 USDT inside the zone.",
+      "say": "Not yet. The close, sixty thousand three hundred eighty, is still twenty U-S-D-T inside the zone.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 208.1,
+      "slot": 6.4,
+      "scene": "try",
+      "text": "A sensible choice here is WAIT, and watch where the next candle closes.",
+      "say": "A sensible choice here is wait, and watch where the next candle closes.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 215.1,
+      "slot": 6.2,
+      "scene": "thin",
+      "text": "One more warning. Liquidity means how many orders are waiting near the price.",
+      "say": "One more warning. Liquidity means how many orders are waiting near the price.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 221.3,
+      "slot": 4.8,
+      "scene": "thin",
+      "text": "When liquidity is thin, only a few small orders are waiting.",
+      "say": "When liquidity is thin, only a few small orders are waiting.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 226.1,
+      "slot": 6.6,
+      "scene": "thin",
+      "text": "Then one larger order can jump price through a zone, and it snaps back moments later.",
+      "say": "Then one larger order can jump price through a zone, and it snaps back moments later.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 232.7,
+      "slot": 4.8,
+      "scene": "thin",
+      "text": "It looked like a breakout. It was just a thin market.",
+      "say": "It looked like a breakout. It was just a thin market.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 238.1,
+      "slot": 3.8,
+      "scene": "risks",
+      "text": "Before you use any of this, know the limits.",
+      "say": "Before you use any of this, know the limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 241.9,
+      "slot": 5.4,
+      "scene": "risks",
+      "text": "Lines come from past prices. They promise nothing about the future.",
+      "say": "Lines come from past prices. They promise nothing about the future.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 247.3,
+      "slot": 6,
+      "scene": "risks",
+      "text": "Fakeouts are common, thin markets can fake a breakout, and stops can slip.",
+      "say": "Fakeouts are common, thin markets can fake a breakout, and stops can slip.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 253.3,
+      "slot": 6.2,
+      "scene": "risks",
+      "text": "Losses are always possible. WAIT is a decision, not a failure.",
+      "say": "Losses are always possible. Wait is a decision, not a failure.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 260.1,
+      "slot": 1.8,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 261.9,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Support and resistance are zones where price turned before. Not walls.",
+      "say": "Support and resistance are zones where price turned before. Not walls.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 267.5,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "A breakout closes beyond a zone and holds. A fakeout falls back inside.",
+      "say": "A breakout closes beyond a zone and holds. A fakeout falls back inside.",
+      "note": ""
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 273.1,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Confirmation is evidence, not certainty. WAIT is always allowed.",
+      "say": "Confirmation is evidence, not certainty. Wait is always allowed.",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 278.7,
+      "slot": 6.3,
+      "scene": "recap",
+      "text": "Check yourself: a wick crosses resistance, but the candle closes inside. Breakout?",
+      "say": "Check yourself: a wick crosses resistance, but the candle closes inside. Breakout?",
+      "note": ""
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 285,
+      "slot": 6,
+      "scene": "recap",
+      "text": "Not confirmed. It could be a fakeout. Wait for a close beyond the zone.",
+      "say": "Not confirmed. It could be a fakeout. Wait for a close beyond the zone.",
+      "note": ""
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 291.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Well done! Next up: volume, volatility and range. See you in lesson eighteen.",
+      "say": "Well done! Next up: volume, volatility and range. See you in lesson eighteen.",
+      "note": ""
+    }
+  ]
+}

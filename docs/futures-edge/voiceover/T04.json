@@ -1,0 +1,421 @@
+{
+  "id": "T04",
+  "title": "T04 What Does an Exchange Do?",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson four: what does an exchange do? Let's look inside the marketplace.",
+      "say": "Lesson four: what does an exchange do? Let's look inside the marketplace.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.4,
+      "scene": "meeting",
+      "text": "An exchange is a business that runs a marketplace where people buy and sell assets.",
+      "say": "An exchange is a business that runs a marketplace where people buy and sell assets.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14.8,
+      "slot": 6.6,
+      "scene": "meeting",
+      "text": "Like a big market hall: it brings buyers and sellers together, and keeps the record.",
+      "say": "Like a big market hall: it brings buyers and sellers together, and keeps the record.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 21.4,
+      "slot": 5.6,
+      "scene": "meeting",
+      "text": "A trading platform is the app or website you use to reach it.",
+      "say": "A trading platform is the app or website you use to reach it.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 27.4,
+      "slot": 5.6,
+      "scene": "order",
+      "text": "An order is an instruction: buy or sell, how much, and at what price.",
+      "say": "An order is an instruction: buy or sell, how much, and at what price.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 33,
+      "slot": 5.6,
+      "scene": "order",
+      "text": "This one says: buy 0.01 BTC at 60,000 USDT. That's 600 USDT in total.",
+      "say": "This one says: buy zero point zero one B-T-C at sixty thousand U-S-D-T. That's six hundred U-S-D-T in total.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 38.6,
+      "slot": 5.4,
+      "scene": "order",
+      "text": "If nobody sells at that price yet, the order waits in a list.",
+      "say": "If nobody sells at that price yet, the order waits in a list.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 44.4,
+      "slot": 5.2,
+      "scene": "book",
+      "text": "The order book is a live list of waiting orders, sorted by price.",
+      "say": "The order book is a live list of waiting orders, sorted by price.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 49.6,
+      "slot": 5.2,
+      "scene": "book",
+      "text": "Sell orders sit on top. The cheapest one is closest to the middle.",
+      "say": "Sell orders sit on top. The cheapest one is closest to the middle.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 54.8,
+      "slot": 5,
+      "scene": "book",
+      "text": "Buy orders sit below. The highest one is closest to the middle.",
+      "say": "Buy orders sit below. The highest one is closest to the middle.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 59.8,
+      "slot": 6.2,
+      "scene": "book",
+      "text": "New orders keep arriving and leaving, so the book changes all the time.",
+      "say": "New orders keep arriving and leaving, so the book changes all the time.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 66.4,
+      "slot": 6.2,
+      "scene": "bidask",
+      "text": "Two prices matter most. The bid is the highest price a buyer is waiting to pay.",
+      "say": "Two prices matter most. The bid is the highest price a buyer is waiting to pay.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 72.6,
+      "slot": 4.8,
+      "scene": "bidask",
+      "text": "The ask is the lowest price a seller is waiting to accept.",
+      "say": "The ask is the lowest price a seller is waiting to accept.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 77.4,
+      "slot": 5.6,
+      "scene": "bidask",
+      "text": "Here the bid is 59,990 USDT, and the ask is 60,010 USDT.",
+      "say": "Here the bid is fifty-nine thousand nine hundred ninety U-S-D-T, and the ask is sixty thousand ten U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 83.4,
+      "slot": 4.8,
+      "scene": "spread",
+      "text": "The spread is the gap between them: the ask minus the bid.",
+      "say": "The spread is the gap between them: the ask minus the bid.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 88.2,
+      "slot": 3.8,
+      "scene": "spread",
+      "text": "60,010 minus 59,990 is a spread of 20 USDT.",
+      "say": "Sixty thousand ten minus fifty-nine thousand nine hundred ninety is a spread of twenty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 92,
+      "slot": 6.4,
+      "scene": "spread",
+      "text": "Now a new buyer offers 60,000. The best bid moves up, and the spread shrinks to 10.",
+      "say": "Now a new buyer offers sixty thousand. The best bid moves up, and the spread shrinks to ten.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 98.4,
+      "slot": 5.6,
+      "scene": "spread",
+      "text": "In a quiet market with few orders, the spread is often wider.",
+      "say": "In a quiet market with few orders, the spread is often wider.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 104.4,
+      "slot": 4.6,
+      "scene": "match",
+      "text": "Matching: the exchange pairs orders whose prices meet.",
+      "say": "Matching: the exchange pairs orders whose prices meet.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 109,
+      "slot": 4.6,
+      "scene": "match",
+      "text": "A buyer wants 0.30 BTC and will pay up to 60,020 USDT.",
+      "say": "A buyer wants zero point three B-T-C and will pay up to sixty thousand twenty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 113.6,
+      "slot": 4,
+      "scene": "match",
+      "text": "First, 0.20 BTC fills at the best ask, 60,010.",
+      "say": "First, zero point two B-T-C fills at the best ask, sixty thousand ten.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 117.6,
+      "slot": 4.2,
+      "scene": "match",
+      "text": "The other 0.10 BTC fills at the next ask, 60,020.",
+      "say": "The other zero point one B-T-C fills at the next ask, sixty thousand twenty.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 121.8,
+      "slot": 6.2,
+      "scene": "match",
+      "text": "Total: 0.30 BTC for 18,004 USDT. The last trade price is now 60,020.",
+      "say": "Total: zero point three B-T-C for eighteen thousand four U-S-D-T. The last trade price is now sixty thousand twenty.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 128.4,
+      "slot": 8.6,
+      "scene": "try",
+      "text": "Your turn. A buyer wants 0.10 BTC, paying up to 60,015 USDT. Which sell orders fill it?",
+      "say": "Your turn. A buyer wants zero point one B-T-C, paying up to sixty thousand fifteen U-S-D-T. Which sell orders fill it?",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 137,
+      "slot": 6.2,
+      "scene": "try",
+      "text": "0.05 BTC at 60,010, then 0.05 BTC at 60,015. The 60,030 order is above the limit.",
+      "say": "Zero point zero five B-T-C at sixty thousand ten, then zero point zero five B-T-C at sixty thousand fifteen. The sixty thousand thirty order is above the limit.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 143.2,
+      "slot": 4.8,
+      "scene": "try",
+      "text": "Total cost: 3,000.50 plus 3,000.75, which is 6,001.25 USDT.",
+      "say": "Total cost: three thousand point five plus three thousand point seven five, which is six thousand one point two five U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 148.4,
+      "slot": 5,
+      "scene": "example",
+      "text": "Binance is one large crypto exchange. There are many others.",
+      "say": "Binance is one large crypto exchange. There are many others.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 153.4,
+      "slot": 5.6,
+      "scene": "example",
+      "text": "The screens in this course are generic mocks, not real exchange screens.",
+      "say": "The screens in this course are generic mocks, not real exchange screens.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 159,
+      "slot": 6,
+      "scene": "example",
+      "text": "Real apps change their labels over time, so check the app's own help pages.",
+      "say": "Real apps change their labels over time, so check the app's own help pages.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 165.4,
+      "slot": 3.4,
+      "scene": "notbank",
+      "text": "Important: an exchange is not a bank.",
+      "say": "Important: an exchange is not a bank.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 168.8,
+      "slot": 5.8,
+      "scene": "notbank",
+      "text": "Money you keep there is usually not protected the way a bank deposit is.",
+      "say": "Money you keep there is usually not protected the way a bank deposit is.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 174.6,
+      "slot": 5,
+      "scene": "notbank",
+      "text": "Exchanges can pause withdrawals, get hacked, or even shut down.",
+      "say": "Exchanges can pause withdrawals, get hacked, or even shut down.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 179.6,
+      "slot": 4.4,
+      "scene": "notbank",
+      "text": "And the rules differ from country to country.",
+      "say": "And the rules differ from country to country.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 184.4,
+      "slot": 5.6,
+      "scene": "phishing",
+      "text": "Phishing is a fake message or website that tries to steal your login.",
+      "say": "Phishing is a fake message or website that tries to steal your login.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 190,
+      "slot": 6.2,
+      "scene": "phishing",
+      "text": "Spot the red flags. Pressure: urgent, act now, or your account will be locked.",
+      "say": "Spot the red flags. Pressure: urgent, act now, or your account will be locked.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 196.2,
+      "slot": 6.2,
+      "scene": "phishing",
+      "text": "A look-alike address with a small spelling change. And a request for your OTP.",
+      "say": "A look-alike address with a small spelling change. And a request for your O-T-P.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 202.4,
+      "slot": 6.6,
+      "scene": "phishing",
+      "text": "Safer habits: type the address yourself or use a bookmark, and never share codes.",
+      "say": "Safer habits: type the address yourself or use a bookmark, and never share codes.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 209.4,
+      "slot": 5.2,
+      "scene": "security",
+      "text": "Account security means keeping other people out of your account.",
+      "say": "Account security means keeping other people out of your account.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 214.6,
+      "slot": 6.2,
+      "scene": "security",
+      "text": "Never share your password, your OTP codes, or API secret keys. Not with anyone.",
+      "say": "Never share your password, your O-T-P codes, or A-P-I secret keys. Not with anyone.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 220.8,
+      "slot": 6.2,
+      "scene": "security",
+      "text": "Real support staff will never ask for them. Turn on two-step verification too.",
+      "say": "Real support staff will never ask for them. Turn on two-step verification too.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 227.4,
+      "slot": 7,
+      "scene": "recap",
+      "text": "Let's recap. An exchange runs a marketplace. Orders wait in the order book until prices meet.",
+      "say": "Let's recap. An exchange runs a marketplace. Orders wait in the order book until prices meet.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 234.4,
+      "slot": 6.2,
+      "scene": "recap",
+      "text": "Bid is the best buy price, ask the best sell price. The spread is ask minus bid.",
+      "say": "Bid is the best buy price, ask the best sell price. The spread is ask minus bid.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 240.6,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "An exchange is not a bank. Never share passwords, OTPs or API keys.",
+      "say": "An exchange is not a bank. Never share passwords, OTPs or A-P-I keys.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 246,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "Check yourself: best bid 59,990, best ask 60,010. What's the spread?",
+      "say": "Check yourself: best bid fifty-nine thousand nine hundred ninety, best ask sixty thousand ten. What's the spread?",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 251.4,
+      "slot": 3.6,
+      "scene": "recap",
+      "text": "60,010 minus 59,990 is 20 USDT.",
+      "say": "Sixty thousand ten minus fifty-nine thousand nine hundred ninety is twenty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 255.6,
+      "slot": 11.4,
+      "scene": "next",
+      "text": "That's Phase 1! Next up: the Foundations Checkpoint, a short review of lessons one to four.",
+      "say": "That's Phase one! Next up: the Foundations Checkpoint, a short review of lessons one to four.",
+      "note": ""
+    }
+  ]
+}

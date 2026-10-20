@@ -1,0 +1,520 @@
+{
+  "id": "T16",
+  "title": "T16 Trend and Market Structure",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 4,
+      "scene": "title",
+      "text": "Lesson sixteen: trend and market structure.",
+      "say": "Lesson sixteen: trend and market structure.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 4.6,
+      "slot": 5.4,
+      "scene": "title",
+      "text": "We'll read the shape of price, one peak and dip at a time.",
+      "say": "We'll read the shape of price, one peak and dip at a time.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 10.3,
+      "slot": 5.3,
+      "scene": "hook",
+      "text": "Here is a fictional BTC chart. Is price going up, down, or nowhere?",
+      "say": "Here is a fictional B-T-C chart. Is price going up, down, or nowhere?",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 15.6,
+      "slot": 5.3,
+      "scene": "hook",
+      "text": "One candle cannot tell you. Look at the peaks and the dips instead.",
+      "say": "One candle cannot tell you. Look at the peaks and the dips instead.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 20.9,
+      "slot": 4.1,
+      "scene": "hook",
+      "text": "The pattern they make is called market structure.",
+      "say": "The pattern they make is called market structure.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 25,
+      "slot": 5,
+      "scene": "hook",
+      "text": "It describes the past. It does not promise the future.",
+      "say": "It describes the past. It does not promise the future.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 30.4,
+      "slot": 4.4,
+      "scene": "swings",
+      "text": "A swing high is a peak: price rose, then turned down.",
+      "say": "A swing high is a peak: price rose, then turned down.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 34.8,
+      "slot": 4.1,
+      "scene": "swings",
+      "text": "A swing low is a dip: price fell, then turned up.",
+      "say": "A swing low is a dip: price fell, then turned up.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 38.9,
+      "slot": 5.9,
+      "scene": "swings",
+      "text": "Think of a hilly road. The hilltops are swing highs, the valleys swing lows.",
+      "say": "Think of a hilly road. The hilltops are swing highs, the valleys swing lows.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 44.8,
+      "slot": 5.2,
+      "scene": "swings",
+      "text": "A peak is only clear after price turns away from it.",
+      "say": "A peak is only clear after price turns away from it.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 50.4,
+      "slot": 3.8,
+      "scene": "uptrend",
+      "text": "An uptrend has higher highs and higher lows.",
+      "say": "An uptrend has higher highs and higher lows.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 54.2,
+      "slot": 5,
+      "scene": "uptrend",
+      "text": "Each peak tops the last one: 60,100, then 60,200, then 60,300.",
+      "say": "Each peak tops the last one: sixty thousand one hundred, then sixty thousand two hundred, then sixty thousand three hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 59.2,
+      "slot": 5.4,
+      "scene": "uptrend",
+      "text": "Each dip stays above the last one: 59,980, then 60,080, then 60,180.",
+      "say": "Each dip stays above the last one: fifty-nine thousand nine hundred eighty, then sixty thousand eighty, then sixty thousand one hundred eighty.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 64.6,
+      "slot": 5.2,
+      "scene": "uptrend",
+      "text": "Like climbing stairs: a step up, a small step back, then up again.",
+      "say": "Like climbing stairs: a step up, a small step back, then up again.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 69.8,
+      "slot": 4.2,
+      "scene": "uptrend",
+      "text": "HH means higher high. HL means higher low.",
+      "say": "Higher high means higher high. Higher low means higher low.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 74.4,
+      "slot": 4.5,
+      "scene": "downtrend",
+      "text": "A downtrend is the mirror: lower highs and lower lows.",
+      "say": "A downtrend is the mirror: lower highs and lower lows.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 78.9,
+      "slot": 4.7,
+      "scene": "downtrend",
+      "text": "Peaks: 60,320, then 60,220, then 60,120. Each one is lower.",
+      "say": "Peaks: sixty thousand three hundred twenty, then sixty thousand two hundred twenty, then sixty thousand one hundred twenty. Each one is lower.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 83.6,
+      "slot": 4.9,
+      "scene": "downtrend",
+      "text": "Dips: 60,200, then 60,100, then 60,000. LH and LL for short.",
+      "say": "Dips: sixty thousand two hundred, then sixty thousand one hundred, then sixty thousand. Lower high and lower low for short.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 88.5,
+      "slot": 5.5,
+      "scene": "downtrend",
+      "text": "Lower highs, lower lows: a downtrend, so far.",
+      "say": "Lower highs, lower lows: a downtrend, so far.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 94.4,
+      "slot": 5.5,
+      "scene": "sideways",
+      "text": "Sideways means neither: highs and lows stay at about the same levels.",
+      "say": "Sideways means neither: highs and lows stay at about the same levels.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 99.9,
+      "slot": 5.3,
+      "scene": "sideways",
+      "text": "Peaks near 60,200, dips near 60,000. Price moves, but goes nowhere.",
+      "say": "Peaks near sixty thousand two hundred, dips near sixty thousand. Price moves, but goes nowhere.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 105.2,
+      "slot": 6.8,
+      "scene": "sideways",
+      "text": "This is also called a range. No clear direction is an answer too.",
+      "say": "This is also called a range. No clear direction is an answer too.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 112.4,
+      "slot": 4.4,
+      "scene": "structure",
+      "text": "Now watch structure change as price writes the chart.",
+      "say": "Now watch structure change as price writes the chart.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 116.8,
+      "slot": 4.2,
+      "scene": "structure",
+      "text": "Higher highs, higher lows: an uptrend.",
+      "say": "Higher highs, higher lows: an uptrend.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 121,
+      "slot": 6,
+      "scene": "structure",
+      "text": "Each new label appears only after price turns. That is how swings work.",
+      "say": "Each new label appears only after price turns. That is how swings work.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 127,
+      "slot": 4.8,
+      "scene": "structure",
+      "text": "Then a peak that is not higher: the climb stalls, sideways.",
+      "say": "Then a peak that is not higher: the climb stalls, sideways.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 131.8,
+      "slot": 5,
+      "scene": "structure",
+      "text": "A lower high, then a lower low. The structure has turned down.",
+      "say": "A lower high, then a lower low. The structure has turned down.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 136.8,
+      "slot": 6.2,
+      "scene": "structure",
+      "text": "Structure tells you what changed. It cannot tell you what comes next.",
+      "say": "Structure tells you what changed. It cannot tell you what comes next.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 143.4,
+      "slot": 5,
+      "scene": "numbers",
+      "text": "Let's check with numbers. Compare each peak with the last peak.",
+      "say": "Let's check with numbers. Compare each peak with the last peak.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 148.4,
+      "slot": 4,
+      "scene": "numbers",
+      "text": "60,240 minus 60,290 is minus 50. A lower high.",
+      "say": "Sixty thousand two hundred forty minus sixty thousand two hundred ninety is minus fifty. A lower high.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 152.4,
+      "slot": 3.9,
+      "scene": "numbers",
+      "text": "60,060 minus 60,150 is minus 90. A lower low.",
+      "say": "Sixty thousand sixty minus sixty thousand one hundred fifty is minus ninety. A lower low.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 156.3,
+      "slot": 6.7,
+      "scene": "numbers",
+      "text": "Both changed: the uptrend's pattern of higher highs and lows is broken.",
+      "say": "Both changed: the uptrend's pattern of higher highs and lows is broken.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 163.4,
+      "slot": 5.1,
+      "scene": "mistake",
+      "text": "A common mistake: one big green candle does not make an uptrend.",
+      "say": "A common mistake: one big green candle does not make an uptrend.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 168.5,
+      "slot": 4.7,
+      "scene": "mistake",
+      "text": "Here, a big jump, but the highs and lows are still falling.",
+      "say": "Here, a big jump, but the highs and lows are still falling.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 173.2,
+      "slot": 4.9,
+      "scene": "mistake",
+      "text": "Trend comes from the pattern of swings, not from one candle.",
+      "say": "Trend comes from the pattern of swings, not from one candle.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 178.1,
+      "slot": 3.9,
+      "scene": "mistake",
+      "text": "And always say which timeframe you mean.",
+      "say": "And always say which timeframe you mean.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 182.4,
+      "slot": 3.9,
+      "scene": "try",
+      "text": "Your turn. Three fictional charts: A, B and C.",
+      "say": "Your turn. Three fictional charts: A, B and C.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 186.3,
+      "slot": 6.1,
+      "scene": "try",
+      "text": "Which is an uptrend, which a downtrend, which sideways? Pause if you need time.",
+      "say": "Which is an uptrend, which a downtrend, which sideways? Pause if you need time.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 192.4,
+      "slot": 3.7,
+      "scene": "try",
+      "text": "A: lower highs and lower lows. A downtrend.",
+      "say": "A: lower highs and lower lows. A downtrend.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 196.1,
+      "slot": 4,
+      "scene": "try",
+      "text": "B: highs and lows at the same levels. Sideways.",
+      "say": "B: highs and lows at the same levels. Sideways.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 200.1,
+      "slot": 3.8,
+      "scene": "try",
+      "text": "C: higher highs and higher lows. An uptrend.",
+      "say": "C: higher highs and higher lows. An uptrend.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 203.9,
+      "slot": 4.1,
+      "scene": "try",
+      "text": "Well done if you got all three.",
+      "say": "Well done if you got all three.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 208.4,
+      "slot": 5.6,
+      "scene": "subjective",
+      "text": "Be honest about the limits. Spotting swings is partly a judgement call.",
+      "say": "Be honest about the limits. Spotting swings is partly a judgement call.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 214,
+      "slot": 5.4,
+      "scene": "subjective",
+      "text": "Two people can mark the same chart differently, and both can be fair.",
+      "say": "Two people can mark the same chart differently, and both can be fair.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 219.4,
+      "slot": 6.6,
+      "scene": "subjective",
+      "text": "Tiny wiggles are usually ignored. A different timeframe can show a different trend.",
+      "say": "Tiny wiggles are usually ignored. A different timeframe can show a different trend.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 226.4,
+      "slot": 3.4,
+      "scene": "risks",
+      "text": "Before we move on, a few honest limits.",
+      "say": "Before we move on, a few honest limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 229.8,
+      "slot": 4.2,
+      "scene": "risks",
+      "text": "A trend can end at any time, often without warning.",
+      "say": "A trend can end at any time, often without warning.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 234,
+      "slot": 4.8,
+      "scene": "risks",
+      "text": "Buying late into a long trend can mean buying near the top.",
+      "say": "Buying late into a long trend can mean buying near the top.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 238.8,
+      "slot": 7.2,
+      "scene": "risks",
+      "text": "Structure is not a signal to trade. WAIT and NO_TRADE are always allowed.",
+      "say": "Structure is not a signal to trade. Wait and no trade are always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 246.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 248,
+      "slot": 5.9,
+      "scene": "recap",
+      "text": "Uptrend: higher highs and higher lows. Downtrend: lower highs and lower lows.",
+      "say": "Uptrend: higher highs and higher lows. Downtrend: lower highs and lower lows.",
+      "note": ""
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 253.9,
+      "slot": 4.5,
+      "scene": "recap",
+      "text": "Sideways: highs and lows stay at about the same levels.",
+      "say": "Sideways: highs and lows stay at about the same levels.",
+      "note": ""
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 258.4,
+      "slot": 5.5,
+      "scene": "recap",
+      "text": "Swings are only clear after price turns, and they are a judgement call.",
+      "say": "Swings are only clear after price turns, and they are a judgement call.",
+      "note": ""
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 263.9,
+      "slot": 6.1,
+      "scene": "recap",
+      "text": "Check yourself: peaks 60,300 then 60,240; dips 60,150 then 60,060. What is it?",
+      "say": "Check yourself: peaks sixty thousand three hundred then sixty thousand two hundred forty; dips sixty thousand one hundred fifty then sixty thousand sixty. What is it?",
+      "note": ""
+    },
+    {
+      "file": "voice/54.mp3",
+      "t": 270,
+      "slot": 4,
+      "scene": "recap",
+      "text": "Lower highs and lower lows: a downtrend, so far.",
+      "say": "Lower highs and lower lows: a downtrend, so far.",
+      "note": ""
+    },
+    {
+      "file": "voice/55.mp3",
+      "t": 274.6,
+      "slot": 5.4,
+      "scene": "next",
+      "text": "Great work! Next up: support, resistance, breakout and fakeout.",
+      "say": "Great work! Next up: support, resistance, breakout and fakeout.",
+      "note": ""
+    },
+    {
+      "file": "voice/56.mp3",
+      "t": 280,
+      "slot": 4,
+      "scene": "next",
+      "text": "See you in lesson seventeen.",
+      "say": "See you in lesson seventeen.",
+      "note": ""
+    }
+  ]
+}

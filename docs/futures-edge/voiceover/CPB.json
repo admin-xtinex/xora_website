@@ -1,0 +1,358 @@
+{
+  "id": "CPB",
+  "title": "CPB Checkpoint B",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Checkpoint B, the last stop. Let's review Phases 4 and 5: charts, scalping and risk.",
+      "say": "Checkpoint B, the last stop. Let's review Phases four and five: charts, scalping and risk.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 5.9,
+      "scene": "how",
+      "text": "Eight questions on T14 to T23: chart reading, risk maths and demo decisions.",
+      "say": "Eight questions on T fourteen to T twenty-three: chart reading, risk maths and demo decisions.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14.3,
+      "slot": 6.4,
+      "scene": "how",
+      "text": "Read each question, pick an answer, and pause the video whenever you need more time.",
+      "say": "Read each question, pick an answer, and pause the video whenever you need more time.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 20.7,
+      "slot": 6.3,
+      "scene": "how",
+      "text": "Not graded here. The graded Checkpoint B quiz is in the interactive course.",
+      "say": "Not graded here. The graded Checkpoint B quiz is in the interactive course.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 27.3,
+      "slot": 7.3,
+      "scene": "q-candle",
+      "text": "Question one, from T14. Open 60,000, high 60,300, low 59,800, close 60,200. Which is true?",
+      "say": "Question one, from T fourteen. Open sixty thousand, high sixty thousand three hundred, low fifty-nine thousand eight hundred, close sixty thousand two hundred. Which is true?",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 34.6,
+      "slot": 6.6,
+      "scene": "q-candle",
+      "text": "A. It's a green, up candle, and the top of its body is the close: 60,200.",
+      "say": "A. It's a green, up candle, and the top of its body is the close: sixty thousand two hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 41.2,
+      "slot": 6.8,
+      "scene": "q-candle",
+      "text": "B mixes up high and close. 60,300 is the top of the wick, the highest price traded.",
+      "say": "B mixes up high and close. Sixty thousand three hundred is the top of the wick, the highest price traded.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 48.3,
+      "slot": 7.3,
+      "scene": "q-agg",
+      "text": "Question two, from T15. Five 1-minute candles become one 5-minute candle. What are its prices?",
+      "say": "Question two, from T fifteen. Five one-minute candles become one five-minute candle. What are its prices?",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 55.6,
+      "slot": 6.6,
+      "scene": "q-agg",
+      "text": "A. The first open, the highest high, the lowest low, and the last close.",
+      "say": "A. The first open, the highest high, the lowest low, and the last close.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 62.2,
+      "slot": 6.8,
+      "scene": "q-agg",
+      "text": "B is tempting, but candles don't average. They keep the real open, high, low and close.",
+      "say": "B is tempting, but candles don't average. They keep the real open, high, low and close.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 69.3,
+      "slot": 7.3,
+      "scene": "q-fake",
+      "text": "Question three, from T17. Price breaks above resistance, then falls back below within two candles.",
+      "say": "Question three, from T seventeen. Price breaks above resistance, then falls back below within two candles.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 76.6,
+      "slot": 6.6,
+      "scene": "q-fake",
+      "text": "B. It may be a fakeout. Wait for more evidence. No pattern is certain.",
+      "say": "B. It may be a fakeout. Wait for more evidence. No pattern is certain.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 83.2,
+      "slot": 6.8,
+      "scene": "q-fake",
+      "text": "A is the trap. A break alone is not confirmation, and buying on hope is not a plan.",
+      "say": "A is the trap. A break alone is not confirmation, and buying on hope is not a plan.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 90.3,
+      "slot": 7.3,
+      "scene": "q-vol",
+      "text": "Question four, from T18. A big green candle has very high volume. What can you conclude?",
+      "say": "Question four, from T eighteen. A big green candle has very high volume. What can you conclude?",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 97.6,
+      "slot": 6.6,
+      "scene": "q-vol",
+      "text": "B. A lot was traded. That's one clue, not proof of where price goes next.",
+      "say": "B. A lot was traded. That's one clue, not proof of where price goes next.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 104.2,
+      "slot": 6.8,
+      "scene": "q-vol",
+      "text": "A is tempting, but volume alone never tells you the direction.",
+      "say": "A is tempting, but volume alone never tells you the direction.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 111.3,
+      "slot": 7.3,
+      "scene": "q-fees",
+      "text": "Question five, from T19. Each scalp makes +0.80 USDT gross, and fees cost 1.00. After 10 trades?",
+      "say": "Question five, from T nineteen. Each scalp makes plus zero point eight U-S-D-T gross, and fees cost one. After ten trades?",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 118.6,
+      "slot": 6.6,
+      "scene": "q-fees",
+      "text": "B, minus 2.00 USDT. Each trade nets minus 0.20, and 10 times minus 0.20 is minus 2.00.",
+      "say": "B, minus two U-S-D-T. Each trade nets minus zero point two, and ten times minus zero point two is minus two.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 125.2,
+      "slot": 6.8,
+      "scene": "q-fees",
+      "text": "A forgets the fees. Many small trades mean many fees.",
+      "say": "A forgets the fees. Many small trades mean many fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 132.3,
+      "slot": 7.3,
+      "scene": "q-wait",
+      "text": "Question six, from T20 and T21. Mid-range, flat trend, low volume, no level near. Your decision?",
+      "say": "Question six, from T twenty and T twenty-one. Mid-range, flat trend, low volume, no level near. Your decision?",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 139.6,
+      "slot": 6.6,
+      "scene": "q-wait",
+      "text": "C, NO_TRADE. Nothing lines up, so waiting is the sensible decision.",
+      "say": "C, no trade. Nothing lines up, so waiting is the sensible decision.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 146.2,
+      "slot": 6.8,
+      "scene": "q-wait",
+      "text": "A is the trap: one green candle is not a reason to take a risk.",
+      "say": "A is the trap: one green candle is not a reason to take a risk.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 153.3,
+      "slot": 7.3,
+      "scene": "q-size",
+      "text": "Question seven, from T22. Risk budget 10 USDT. Stop 2% from entry. About what notional?",
+      "say": "Question seven, from T twenty-two. Risk budget ten U-S-D-T. Stop two percent from entry. About what notional?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 160.6,
+      "slot": 6.6,
+      "scene": "q-size",
+      "text": "A, about 500 USDT. 10 divided by 2% is 500.",
+      "say": "A, about five hundred U-S-D-T. Ten divided by two percent is five hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 167.2,
+      "slot": 6.8,
+      "scene": "q-size",
+      "text": "B uses the whole account. 1,000 times 2% risks 20 USDT, double the budget.",
+      "say": "B uses the whole account. One thousand times two percent risks twenty U-S-D-T, double the budget.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 174.3,
+      "slot": 7.3,
+      "scene": "q-after",
+      "text": "Question eight, from T23. Your demo stop slipped: minus 6.30 instead of minus 6. What next?",
+      "say": "Question eight, from T twenty-three. Your demo stop slipped: minus six point three instead of minus six. What next?",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 181.6,
+      "slot": 6.6,
+      "scene": "q-after",
+      "text": "B. Journal it, check the process, and take a break. A small slip is normal.",
+      "say": "B. Journal it, check the process, and take a break. A small slip is normal.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 188.2,
+      "slot": 6.8,
+      "scene": "q-after",
+      "text": "A is revenge trading. Doubling the size doubles the risk.",
+      "say": "A is revenge trading. Doubling the size doubles the risk.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 195.4,
+      "slot": 3.7,
+      "scene": "safety",
+      "text": "Before you finish: critical safety.",
+      "say": "Before you finish: critical safety.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 199.1,
+      "slot": 6.5,
+      "scene": "safety",
+      "text": "Leverage magnifies losses. No leverage is safe, and liquidation can take your margin.",
+      "say": "Leverage magnifies losses. No leverage is safe, and liquidation can take your margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 205.6,
+      "slot": 5.3,
+      "scene": "safety",
+      "text": "A stop-loss is a trigger, not a promise. Gaps and slippage happen.",
+      "say": "A stop-loss is a trigger, not a promise. Gaps and slippage happen.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 210.9,
+      "slot": 6.5,
+      "scene": "safety",
+      "text": "Never share passwords, OTP or 2FA codes, or API secret keys. Not even with 'support'.",
+      "say": "Never share passwords, O-T-P or two-factor codes, or A-P-I secret keys. Not even with 'support'.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 217.4,
+      "slot": 7.6,
+      "scene": "safety",
+      "text": "Size from your risk budget first. When signals are unclear, NO_TRADE is a real decision.",
+      "say": "Size from your risk budget first. When signals are unclear, no trade is a real decision.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 225.4,
+      "slot": 3.4,
+      "scene": "revisit",
+      "text": "Here's where to look if you missed one.",
+      "say": "Here's where to look if you missed one.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 228.8,
+      "slot": 4.4,
+      "scene": "revisit",
+      "text": "One: T14. Two: T15. Three: T16 and T17. Four: T18.",
+      "say": "One: T fourteen. Two: T fifteen. Three: T sixteen and T seventeen. Four: T eighteen.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 233.2,
+      "slot": 4.4,
+      "scene": "revisit",
+      "text": "Five: T19. Six: T20 and T21. Seven: T22. Eight: T23.",
+      "say": "Five: T nineteen. Six: T twenty and T twenty-one. Seven: T twenty-two. Eight: T twenty-three.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 237.6,
+      "slot": 7.4,
+      "scene": "revisit",
+      "text": "Rewatch any lesson, no penalty. Risk sizing and NO_TRADE deserve a second look.",
+      "say": "Rewatch any lesson, no penalty. Risk sizing and no trade deserve a second look.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 245.6,
+      "slot": 5.4,
+      "scene": "next",
+      "text": "That's the whole course. Congratulations on finishing every lesson!",
+      "say": "That's the whole course. Congratulations on finishing every lesson!",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 251,
+      "slot": 8,
+      "scene": "next",
+      "text": "Finishing is not certification or permission to trade. Keep practising in demo mode.",
+      "say": "Finishing is not certification or permission to trade. Keep practising in demo mode.",
+      "note": ""
+    }
+  ]
+}

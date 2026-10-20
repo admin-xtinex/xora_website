@@ -1,0 +1,493 @@
+{
+  "id": "T07",
+  "title": "T07 Market, Limit and Stop Orders",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 3.8,
+      "scene": "title",
+      "text": "Lesson seven: market, limit and stop orders.",
+      "say": "Lesson seven: market, limit and stop orders.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 4.4,
+      "slot": 4.6,
+      "scene": "title",
+      "text": "Three ways to tell an exchange what you want.",
+      "say": "Three ways to tell an exchange what you want.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 9.4,
+      "slot": 6.3,
+      "scene": "intent",
+      "text": "In T06 you worked out profit and loss. Now: how do you actually get into a trade?",
+      "say": "In T six you worked out profit and loss. Now: how do you actually get into a trade?",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 15.7,
+      "slot": 7.2,
+      "scene": "intent",
+      "text": "You place an order: an instruction to the exchange to buy or sell, how much, and on what terms.",
+      "say": "You place an order: an instruction to the exchange to buy or sell, how much, and on what terms.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 22.9,
+      "slot": 5.1,
+      "scene": "intent",
+      "text": "There are three main types. Let's meet them one by one.",
+      "say": "There are three main types. Let's meet them one by one.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 28.4,
+      "slot": 6.2,
+      "scene": "book",
+      "text": "Remember the order book from T04? Sellers' asks sit on top, buyers' bids below.",
+      "say": "Remember the order book from T four? Sellers' asks sit on top, buyers' bids below.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 34.6,
+      "slot": 4.9,
+      "scene": "book",
+      "text": "The gap between the best ask and the best bid is the spread.",
+      "say": "The gap between the best ask and the best bid is the spread.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 39.5,
+      "slot": 7.5,
+      "scene": "book",
+      "text": "When your order meets an order on the other side, a trade happens. That is called a fill.",
+      "say": "When your order meets an order on the other side, a trade happens. That is called a fill.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 47.4,
+      "slot": 5.7,
+      "scene": "market",
+      "text": "A market order says: buy or sell right now, at the best price available.",
+      "say": "A market order says: buy or sell right now, at the best price available.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 53.1,
+      "slot": 7.1,
+      "scene": "market",
+      "text": "Like buying at a stall at whatever price is asked today: quick, but you don't pick the price.",
+      "say": "Like buying at a stall at whatever price is asked today: quick, but you don't pick the price.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 60.2,
+      "slot": 5.5,
+      "scene": "market",
+      "text": "Here we buy 0.01 BTC. It takes 0.004 at 60,010, then 0.006 at 60,020.",
+      "say": "Here we buy zero point zero one B-T-C. It takes zero point zero zero four at sixty thousand ten, then zero point zero zero six at sixty thousand twenty.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 65.7,
+      "slot": 5.3,
+      "scene": "market",
+      "text": "Average price: 60,016 USDT. Fast, but the price was not fixed.",
+      "say": "Average price: sixty thousand sixteen U-S-D-T. Fast, but the price was not fixed.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 71.4,
+      "slot": 6.8,
+      "scene": "slippage",
+      "text": "Slippage is the difference between the price you expected and the price you actually got.",
+      "say": "Slippage is the difference between the price you expected and the price you actually got.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 78.2,
+      "slot": 6.2,
+      "scene": "slippage",
+      "text": "You saw a best ask of 60,010. But news hits, and the sellers move up in a flash.",
+      "say": "You saw a best ask of sixty thousand ten. But news hits, and the sellers move up in a flash.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 84.4,
+      "slot": 6.2,
+      "scene": "slippage",
+      "text": "Your market order fills at 60,100. That is 90 USDT per BTC worse than expected.",
+      "say": "Your market order fills at sixty thousand one hundred. That is ninety U-S-D-T per B-T-C worse than expected.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 90.6,
+      "slot": 3.4,
+      "scene": "slippage",
+      "text": "On 0.01 BTC, you paid 0.90 USDT more.",
+      "say": "On zero point zero one B-T-C, you paid zero point nine U-S-D-T more.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 94.4,
+      "slot": 5.3,
+      "scene": "limit",
+      "text": "A limit order says: buy or sell only at my price, or a better one.",
+      "say": "A limit order says: buy or sell only at my price, or a better one.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 99.7,
+      "slot": 5.4,
+      "scene": "limit",
+      "text": "Like telling a shopkeeper: call me if the price drops to my number.",
+      "say": "Like telling a shopkeeper: call me if the price drops to my number.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 105.1,
+      "slot": 5.3,
+      "scene": "limit",
+      "text": "We place a limit buy for 0.01 BTC at 59,950. It waits in the book.",
+      "say": "We place a limit buy for zero point zero one B-T-C at fifty-nine thousand nine hundred fifty. It waits in the book.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 110.4,
+      "slot": 6.6,
+      "scene": "limit",
+      "text": "Price comes down, a seller meets our price, and it fills: 599.50 USDT, no more.",
+      "say": "Price comes down, a seller meets our price, and it fills: five hundred ninety-nine point five U-S-D-T, no more.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 117.4,
+      "slot": 3.8,
+      "scene": "unfilled",
+      "text": "But a limit order is not guaranteed to fill.",
+      "say": "But a limit order is not guaranteed to fill.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 121.2,
+      "slot": 5.8,
+      "scene": "unfilled",
+      "text": "Here our limit buy at 59,900 waits. Price dips to 59,920, then rises away.",
+      "say": "Here our limit buy at fifty-nine thousand nine hundred waits. Price dips to fifty-nine thousand nine hundred twenty, then rises away.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 127,
+      "slot": 7,
+      "scene": "unfilled",
+      "text": "Our price was never reached, so nothing was bought. The order is still waiting.",
+      "say": "Our price was never reached, so nothing was bought. The order is still waiting.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 134.4,
+      "slot": 5,
+      "scene": "partial",
+      "text": "Sometimes only part of an order fills. That is a partial fill.",
+      "say": "Sometimes only part of an order fills. That is a partial fill.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 139.4,
+      "slot": 5.2,
+      "scene": "partial",
+      "text": "We want 0.01 BTC at 59,950, but only 0.004 is sold at that price.",
+      "say": "We want zero point zero one B-T-C at fifty-nine thousand nine hundred fifty, but only zero point zero zero four is sold at that price.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 144.6,
+      "slot": 5.4,
+      "scene": "partial",
+      "text": "0.004 filled, 0.006 still waiting. You hold less than you planned.",
+      "say": "Zero point zero zero four filled, zero point zero zero six still waiting. You hold less than you planned.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 150.4,
+      "slot": 5.4,
+      "scene": "stop",
+      "text": "A stop order waits for a trigger price. Until then, nothing happens.",
+      "say": "A stop order waits for a trigger price. Until then, nothing happens.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 155.8,
+      "slot": 6.4,
+      "scene": "stop",
+      "text": "When the market reaches the trigger, the stop sends an order, often a market order.",
+      "say": "When the market reaches the trigger, the stop sends an order, often a market order.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 162.2,
+      "slot": 6.6,
+      "scene": "stop",
+      "text": "Think of a tripwire: nothing happens until price touches it, then the order goes out.",
+      "say": "Think of a tripwire: nothing happens until price touches it, then the order goes out.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 168.8,
+      "slot": 7.2,
+      "scene": "stop",
+      "text": "We hold 0.01 BTC with a stop at 59,500. Price falls, touches it, and it sells at 59,480.",
+      "say": "We hold zero point zero one B-T-C with a stop at fifty-nine thousand five hundred. Price falls, touches it, and it sells at fifty-nine thousand four hundred eighty.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 176.4,
+      "slot": 4.8,
+      "scene": "gap",
+      "text": "In a fast fall, price can jump straight past your trigger.",
+      "say": "In a fast fall, price can jump straight past your trigger.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 181.2,
+      "slot": 5.8,
+      "scene": "gap",
+      "text": "Trigger 59,500. The next trade is at 59,200. Your stop fills near 59,200.",
+      "say": "Trigger fifty-nine thousand five hundred. The next trade is at fifty-nine thousand two hundred. Your stop fills near fifty-nine thousand two hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 187,
+      "slot": 4.9,
+      "scene": "gap",
+      "text": "That is 300 USDT per BTC of slippage, or 3 USDT on 0.01 BTC.",
+      "say": "That is three hundred U-S-D-T per B-T-C of slippage, or three U-S-D-T on zero point zero one B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 191.9,
+      "slot": 4.1,
+      "scene": "gap",
+      "text": "A stop is a trigger, not a promise of price.",
+      "say": "A stop is a trigger, not a promise of price.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 196.4,
+      "slot": 5.3,
+      "scene": "compare",
+      "text": "Let's compare. A market order is fast, but the price is not fixed.",
+      "say": "Let's compare. A market order is fast, but the price is not fixed.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 201.7,
+      "slot": 5.8,
+      "scene": "compare",
+      "text": "A limit order controls the price, but it may fill late, in part, or never.",
+      "say": "A limit order controls the price, but it may fill late, in part, or never.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 207.5,
+      "slot": 6.5,
+      "scene": "compare",
+      "text": "A stop waits for its trigger. Once triggered, the price can still slip.",
+      "say": "A stop waits for its trigger. Once triggered, the price can still slip.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 214.4,
+      "slot": 5.4,
+      "scene": "mistake",
+      "text": "A common mistake: thinking a stop order guarantees your exit price.",
+      "say": "A common mistake: thinking a stop order guarantees your exit price.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 219.8,
+      "slot": 6.6,
+      "scene": "mistake",
+      "text": "It doesn't. It guarantees a trigger, and in a fast market the fill can be much worse.",
+      "say": "It doesn't. It guarantees a trigger, and in a fast market the fill can be much worse.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 226.4,
+      "slot": 5.6,
+      "scene": "mistake",
+      "text": "Plan for slippage, and never treat a stop as perfect protection.",
+      "say": "Plan for slippage, and never treat a stop as perfect protection.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 232.4,
+      "slot": 6.9,
+      "scene": "try",
+      "text": "Your turn. BTC is at 60,000. You want to buy only if it drops to 59,500, and you can wait.",
+      "say": "Your turn. B-T-C is at sixty thousand. You want to buy only if it drops to fifty-nine thousand five hundred, and you can wait.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 239.3,
+      "slot": 5,
+      "scene": "try",
+      "text": "Which order type fits? Market, limit, or stop? Think it over.",
+      "say": "Which order type fits? Market, limit, or stop? Think it over.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 244.3,
+      "slot": 6.3,
+      "scene": "try",
+      "text": "A limit buy at 59,500. The trade-off: price may never get there, and that's okay.",
+      "say": "A limit buy at fifty-nine thousand five hundred. The trade-off: price may never get there, and that's okay.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 250.6,
+      "slot": 5.4,
+      "scene": "try",
+      "text": "Waiting, with no order at all, is always a choice too.",
+      "say": "Waiting, with no order at all, is always a choice too.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 256.4,
+      "slot": 4.3,
+      "scene": "risks",
+      "text": "Before you place any order, know what can go wrong.",
+      "say": "Before you place any order, know what can go wrong.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 260.7,
+      "slot": 6.1,
+      "scene": "risks",
+      "text": "Market orders can slip, most of all when prices move fast or the book is thin.",
+      "say": "Market orders can slip, most of all when prices move fast or the book is thin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 266.8,
+      "slot": 4.2,
+      "scene": "risks",
+      "text": "Limit orders may fill only in part, or not at all.",
+      "say": "Limit orders may fill only in part, or not at all.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 271,
+      "slot": 7,
+      "scene": "risks",
+      "text": "Stops can fill well past the trigger. And choosing not to trade is always allowed.",
+      "say": "Stops can fill well past the trigger. And choosing not to trade is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 278.4,
+      "slot": 1.8,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 280.2,
+      "slot": 6.2,
+      "scene": "recap",
+      "text": "Market: fast, price not fixed. Limit: your price or better, fill not guaranteed.",
+      "say": "Market: fast, price not fixed. Limit: your price or better, fill not guaranteed.",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 286.4,
+      "slot": 4.2,
+      "scene": "recap",
+      "text": "Stop: waits for a trigger, then the fill can slip.",
+      "say": "Stop: waits for a trigger, then the fill can slip.",
+      "note": ""
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 290.6,
+      "slot": 4.8,
+      "scene": "recap",
+      "text": "Check yourself: which order type can stay unfilled forever?",
+      "say": "Check yourself: which order type can stay unfilled forever?",
+      "note": ""
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 295.4,
+      "slot": 4.6,
+      "scene": "recap",
+      "text": "A limit order, if its price is never reached.",
+      "say": "A limit order, if its price is never reached.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 300.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Well done! Next up, T08: stop-loss and take-profit. Plan your exit before you enter.",
+      "say": "Well done! Next up, T eight: stop-loss and take-profit. Plan your exit before you enter.",
+      "note": ""
+    }
+  ]
+}

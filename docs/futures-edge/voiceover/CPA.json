@@ -1,0 +1,349 @@
+{
+  "id": "CPA",
+  "title": "CPA Checkpoint A",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Checkpoint A. Let's review Phases 1 to 3, with extra care on leverage and safety.",
+      "say": "Checkpoint A. Let's review Phases one to three, with extra care on leverage and safety.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.5,
+      "scene": "how",
+      "text": "Eight questions on lessons T01 to T13. Most are about risk, because that matters most.",
+      "say": "Eight questions on lessons T one to T thirteen. Most are about risk, because that matters most.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14.9,
+      "slot": 6.4,
+      "scene": "how",
+      "text": "Read each question, pick an answer, and pause the video whenever you need more time.",
+      "say": "Read each question, pick an answer, and pause the video whenever you need more time.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 21.3,
+      "slot": 5.7,
+      "scene": "how",
+      "text": "It's not graded. Missing one just shows you what to revisit.",
+      "say": "It's not graded. Missing one just shows you what to revisit.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 27.3,
+      "slot": 7.3,
+      "scene": "q-phish",
+      "text": "Question one, from T04. 'Support' asks for your 2FA code and API secret key. What do you do?",
+      "say": "Question one, from T four. 'Support' asks for your two-factor code and A-P-I secret key. What do you do?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 34.6,
+      "slot": 6.6,
+      "scene": "q-phish",
+      "text": "C. Never share them. Open the official app yourself and contact support from there.",
+      "say": "C. Never share them. Open the official app yourself and contact support from there.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 41.2,
+      "slot": 6.8,
+      "scene": "q-phish",
+      "text": "B is tempting, but an API secret key can control your account too. Share neither.",
+      "say": "B is tempting, but an A-P-I secret key can control your account too. Share neither.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 48.3,
+      "slot": 7.3,
+      "scene": "q-spot",
+      "text": "Question two, from T05 and T11. What is the key difference between spot and futures?",
+      "say": "Question two, from T five and T eleven. What is the key difference between spot and futures?",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 55.6,
+      "slot": 6.6,
+      "scene": "q-spot",
+      "text": "A. On spot you own the coin. Futures are contracts about its price.",
+      "say": "A. On spot you own the coin. Futures are contracts about its price.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 62.2,
+      "slot": 6.8,
+      "scene": "q-spot",
+      "text": "Not B: futures aren't cheap coins. They use margin, pay funding and can be liquidated.",
+      "say": "Not B: futures aren't cheap coins. They use margin, pay funding and can be liquidated.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 69.3,
+      "slot": 7.3,
+      "scene": "q-net",
+      "text": "Question three, from T06 and T09. Gross +4 USDT. Fees: 3 to enter, 3 to exit. What's the net?",
+      "say": "Question three, from T six and T nine. Gross plus four U-S-D-T. Fees: three to enter, three to exit. What's the net?",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 76.6,
+      "slot": 6.6,
+      "scene": "q-net",
+      "text": "C, minus 2 USDT. Net is gross minus all fees: 4 minus 3 minus 3.",
+      "say": "C, minus two U-S-D-T. Net is gross minus all fees: four minus three minus three.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 83.2,
+      "slot": 6.8,
+      "scene": "q-net",
+      "text": "B is only the gross result. Fees are paid whether the trade wins or loses.",
+      "say": "B is only the gross result. Fees are paid whether the trade wins or loses.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 90.3,
+      "slot": 7.3,
+      "scene": "q-gap",
+      "text": "Question four, from T07 and T08. Your stop is at 59,000. Price gaps from 59,300 to 58,600.",
+      "say": "Question four, from T seven and T eight. Your stop is at fifty-nine thousand. Price gaps from fifty-nine thousand three hundred to fifty-eight thousand six hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 97.6,
+      "slot": 6.6,
+      "scene": "q-gap",
+      "text": "B. Near 58,600, or even worse. A stop is a trigger, not a price guarantee.",
+      "say": "B. Near fifty-eight thousand six hundred, or even worse. A stop is a trigger, not a price guarantee.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 104.2,
+      "slot": 6.8,
+      "scene": "q-gap",
+      "text": "A is the trap. In fast markets, no stop can promise its exact price.",
+      "say": "A is the trap. In fast markets, no stop can promise its exact price.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 111.3,
+      "slot": 7.3,
+      "scene": "q-lev",
+      "text": "Question five, from T12. 100 USDT of margin at 10x, long. BTC falls 2%. What's the gross PnL?",
+      "say": "Question five, from T twelve. One hundred U-S-D-T of margin at ten ex, long. B-T-C falls two percent. What's the gross P and L?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 118.6,
+      "slot": 6.6,
+      "scene": "q-lev",
+      "text": "B, minus 20 USDT. Notional is 1,000, and 1,000 times minus 2% is minus 20.",
+      "say": "B, minus twenty U-S-D-T. Notional is one thousand, and one thousand times minus two percent is minus twenty.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 125.2,
+      "slot": 6.8,
+      "scene": "q-lev",
+      "text": "A forgets the leverage. The move acts on the whole 1,000: that's 20% of your margin.",
+      "say": "A forgets the leverage. The move acts on the whole one thousand: that's twenty percent of your margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 132.3,
+      "slot": 7.3,
+      "scene": "q-safe",
+      "text": "Question six, from T12. Which statement about leverage is true?",
+      "say": "Question six, from T twelve. Which statement about leverage is true?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 139.6,
+      "slot": 6.6,
+      "scene": "q-safe",
+      "text": "B. Leverage magnifies gains and losses alike, compared with your margin.",
+      "say": "B. Leverage magnifies gains and losses alike, compared with your margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 146.2,
+      "slot": 6.8,
+      "scene": "q-safe",
+      "text": "A is a myth. No leverage number is safe. Lower leverage only means smaller swings.",
+      "say": "A is a myth. No leverage number is safe. Lower leverage only means smaller swings.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 153.3,
+      "slot": 7.3,
+      "scene": "q-stop",
+      "text": "Question seven, from T13. Can a stop-loss guarantee you won't be liquidated?",
+      "say": "Question seven, from T thirteen. Can a stop-loss guarantee you won't be liquidated?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 160.6,
+      "slot": 6.6,
+      "scene": "q-stop",
+      "text": "B. No. Stops can slip, and with high leverage, liquidation can come first.",
+      "say": "B. No. Stops can slip, and with high leverage, liquidation can come first.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 167.2,
+      "slot": 6.8,
+      "scene": "q-stop",
+      "text": "A is the dangerous one. A stop-loss is not liquidation insurance.",
+      "say": "A is the dangerous one. A stop-loss is not liquidation insurance.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 174.3,
+      "slot": 7.3,
+      "scene": "q-fund",
+      "text": "Question eight, from T13. A long with 2,000 USDT notional. Funding rate +0.01%. What happens?",
+      "say": "Question eight, from T thirteen. A long with two thousand U-S-D-T notional. Funding rate plus zero point zero one percent. What happens?",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 181.6,
+      "slot": 6.6,
+      "scene": "q-fund",
+      "text": "A. You pay 0.20 USDT: 2,000 times 0.01%. A positive rate means longs pay shorts.",
+      "say": "A. You pay zero point two U-S-D-T: two thousand times zero point zero one percent. A positive rate means longs pay shorts.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 188.2,
+      "slot": 6.8,
+      "scene": "q-fund",
+      "text": "B has it backwards. Shorts pay longs only when the rate is negative.",
+      "say": "B has it backwards. Shorts pay longs only when the rate is negative.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 195.4,
+      "slot": 3.7,
+      "scene": "safety",
+      "text": "Before Phase 4, the critical safety points.",
+      "say": "Before Phase four, the critical safety points.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 199.1,
+      "slot": 6.5,
+      "scene": "safety",
+      "text": "Leverage magnifies losses. No leverage is safe, and liquidation can take your margin.",
+      "say": "Leverage magnifies losses. No leverage is safe, and liquidation can take your margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 205.6,
+      "slot": 5.3,
+      "scene": "safety",
+      "text": "A stop-loss is not liquidation insurance. Gaps and slippage happen.",
+      "say": "A stop-loss is not liquidation insurance. Gaps and slippage happen.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 210.9,
+      "slot": 6.5,
+      "scene": "safety",
+      "text": "Never share passwords, OTP or 2FA codes, or API secret keys. Not even with 'support'.",
+      "say": "Never share passwords, O-T-P or two-factor codes, or A-P-I secret keys. Not even with 'support'.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 217.4,
+      "slot": 7.6,
+      "scene": "safety",
+      "text": "You can always choose WAIT, or no trade. And in this course, everything is demo only.",
+      "say": "You can always choose wait, or no trade. And in this course, everything is demo only.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 225.4,
+      "slot": 3.4,
+      "scene": "revisit",
+      "text": "Here's where to look if you missed one.",
+      "say": "Here's where to look if you missed one.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 228.8,
+      "slot": 5.8,
+      "scene": "revisit",
+      "text": "Question one: T04. Two: T05 and T11. Three: T06 and T09. Four: T07 and T08.",
+      "say": "Question one: T four. Two: T five and T eleven. Three: T six and T nine. Four: T seven and T eight.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 234.6,
+      "slot": 3.6,
+      "scene": "revisit",
+      "text": "Five and six: T12. Seven and eight: T13.",
+      "say": "Five and six: T twelve. Seven and eight: T thirteen.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 238.2,
+      "slot": 6.8,
+      "scene": "revisit",
+      "text": "Rewatch any lesson, no penalty. Leverage and liquidation deserve a second look.",
+      "say": "Rewatch any lesson, no penalty. Leverage and liquidation deserve a second look.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 245.8,
+      "slot": 9.2,
+      "scene": "next",
+      "text": "Phase 4 starts next, with T14: candlesticks. Open, high, low and close. See you there!",
+      "say": "Phase four starts next, with T fourteen: candlesticks. Open, high, low and close. See you there!",
+      "note": ""
+    }
+  ]
+}

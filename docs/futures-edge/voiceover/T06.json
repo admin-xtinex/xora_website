@@ -1,0 +1,430 @@
+{
+  "id": "T06",
+  "title": "T06 Entry, Exit and Profit/Loss",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson six: entry, exit, and profit or loss. Let's do the maths, step by step.",
+      "say": "Lesson six: entry, exit, and profit or loss. Let's do the maths, step by step.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.9,
+      "scene": "hook",
+      "text": "Every trade has a start and an end. The question is always: how much did it make, or lose?",
+      "say": "Every trade has a start and an end. The question is always: how much did it make, or lose?",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 15.3,
+      "slot": 6.7,
+      "scene": "hook",
+      "text": "To answer, you need four things: entry, exit, size and fees. Let's meet them one by one.",
+      "say": "To answer, you need four things: entry, exit, size and fees. Let's meet them one by one.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 22.4,
+      "slot": 6.8,
+      "scene": "entryexit",
+      "text": "The entry price is the price where you open a trade. The exit price is where you close it.",
+      "say": "The entry price is the price where you open a trade. The exit price is where you close it.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 29.2,
+      "slot": 7.2,
+      "scene": "entryexit",
+      "text": "Think of a bus ride: where you get on, and where you get off. The distance between them matters.",
+      "say": "Think of a bus ride: where you get on, and where you get off. The distance between them matters.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 36.4,
+      "slot": 7.6,
+      "scene": "entryexit",
+      "text": "Here, you enter at 60,000. The price moves, and you exit at 61,200. A move of 1,200 USDT.",
+      "say": "Here, you enter at sixty thousand. The price moves, and you exit at sixty-one thousand two hundred. A move of one thousand two hundred U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 44.4,
+      "slot": 6.1,
+      "scene": "size",
+      "text": "Size is how much you trade. Quantity is the amount of the asset, like 0.05 BTC.",
+      "say": "Size is how much you trade. Quantity is the amount of the asset, like zero point zero five B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 50.5,
+      "slot": 5.7,
+      "scene": "size",
+      "text": "Notional value is quantity times price. It's the full value of the trade.",
+      "say": "Notional value is quantity times price. It's the full value of the trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 56.2,
+      "slot": 6.4,
+      "scene": "size",
+      "text": "Like 3 kg of onions at 40 per kg: the bill is 120. Here, 0.05 × 60,000 = 3,000 USDT.",
+      "say": "Like three kg of onions at forty per kg: the bill is one hundred twenty. Here, zero point zero five times sixty thousand equals three thousand U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 62.6,
+      "slot": 5.4,
+      "scene": "size",
+      "text": "Bigger size means every price move counts for more, up or down.",
+      "say": "Bigger size means every price move counts for more, up or down.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 68.4,
+      "slot": 5.8,
+      "scene": "spot",
+      "text": "Now the profit or loss formula for spot: exit minus entry, times quantity.",
+      "say": "Now the profit or loss formula for spot: exit minus entry, times quantity.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 74.2,
+      "slot": 7,
+      "scene": "spot",
+      "text": "Buy 0.05 BTC at 60,000 and sell at 61,200: 1,200 × 0.05 = +60 USDT. That's the gross result.",
+      "say": "Buy zero point zero five B-T-C at sixty thousand and sell at sixty-one thousand two hundred: one thousand two hundred times zero point zero five equals plus sixty U-S-D-T. That's the gross result.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 81.2,
+      "slot": 7.8,
+      "scene": "spot",
+      "text": "Gross means before any fees. Sell at 59,400 instead, and it's −600 × 0.05 = −30 USDT.",
+      "say": "Gross means before any fees. Sell at fifty-nine thousand four hundred instead, and it's minus six hundred times zero point zero five equals minus thirty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 89.4,
+      "slot": 6.4,
+      "scene": "unreal",
+      "text": "While a trade is open, its profit or loss is unrealized. It changes with every tick.",
+      "say": "While a trade is open, its profit or loss is unrealized. It changes with every tick.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 95.8,
+      "slot": 6.4,
+      "scene": "unreal",
+      "text": "A green number now can turn red a minute later. It isn't locked in until you close.",
+      "say": "A green number now can turn red a minute later. It isn't locked in until you close.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 102.2,
+      "slot": 7.8,
+      "scene": "unreal",
+      "text": "When you exit, it becomes realized: the result is fixed. Here, +60 USDT, before fees.",
+      "say": "When you exit, it becomes realized: the result is fixed. Here, plus sixty U-S-D-T, before fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 110.4,
+      "slot": 7.6,
+      "scene": "flong",
+      "text": "Futures next. On a USDT-margined contract, a long works the same way: exit minus entry, times size.",
+      "say": "Futures next. On a U-S-D-T-margined contract, a long works the same way: exit minus entry, times size.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 118,
+      "slot": 5.7,
+      "scene": "flong",
+      "text": "Long 0.1 BTC at 60,000, exit at 59,400: −600 × 0.1 = −60 USDT. A loss.",
+      "say": "Long zero point one B-T-C at sixty thousand, exit at fifty-nine thousand four hundred: minus six hundred times zero point one equals minus sixty U-S-D-T. A loss.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 123.7,
+      "slot": 4.7,
+      "scene": "flong",
+      "text": "This is simplified: fees and funding are left out for now.",
+      "say": "This is simplified: fees and funding are left out for now.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 128.4,
+      "slot": 7.6,
+      "scene": "flong",
+      "text": "Leverage doesn't change this USDT result, but it makes it larger compared with your margin.",
+      "say": "Leverage doesn't change this U-S-D-T result, but it makes it larger compared with your margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 136.4,
+      "slot": 4.2,
+      "scene": "fshort",
+      "text": "For a short, flip it: entry minus exit, times size.",
+      "say": "For a short, flip it: entry minus exit, times size.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 140.6,
+      "slot": 6.7,
+      "scene": "fshort",
+      "text": "Short 0.1 BTC at 60,000, exit at 59,400: 600 × 0.1 = +60 USDT. The fall was your gain.",
+      "say": "Short zero point one B-T-C at sixty thousand, exit at fifty-nine thousand four hundred: six hundred times zero point one equals plus sixty U-S-D-T. The fall was your gain.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 147.3,
+      "slot": 7.7,
+      "scene": "fshort",
+      "text": "But exit at 60,800, and it's −800 × 0.1 = −80 USDT. A short loses when the price rises.",
+      "say": "But exit at sixty thousand eight hundred, and it's minus eight hundred times zero point one equals minus eighty U-S-D-T. A short loses when the price rises.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 155.4,
+      "slot": 5.8,
+      "scene": "fees",
+      "text": "Now fees. Say you go long 0.1 BTC from 60,000 to 60,600. Gross: +60 USDT.",
+      "say": "Now fees. Say you go long zero point one B-T-C from sixty thousand to sixty thousand six hundred. Gross: plus sixty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 161.2,
+      "slot": 6.6,
+      "scene": "fees",
+      "text": "Exchanges charge a fee on entry and again on exit: notional value times the fee rate.",
+      "say": "Exchanges charge a fee on entry and again on exit: notional value times the fee rate.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 167.8,
+      "slot": 5.6,
+      "scene": "fees",
+      "text": "We'll use 0.05%, a made-up rate. Entry fee: 6,000 × 0.05% = 3.00 USDT.",
+      "say": "We'll use zero point zero five percent, a made-up rate. Entry fee: six thousand times zero point zero five percent equals three U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 173.4,
+      "slot": 5.8,
+      "scene": "fees",
+      "text": "Exit fee: 6,060 × 0.05% = 3.03 USDT. Net: 60 − 3.00 − 3.03 = +53.97 USDT.",
+      "say": "Exit fee: six thousand sixty times zero point zero five percent equals three point zero three U-S-D-T. Net: sixty minus three minus three point zero three equals plus fifty-three point nine seven U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 179.2,
+      "slot": 5.8,
+      "scene": "fees",
+      "text": "Net is what you actually keep. Always check real fee rates before trading.",
+      "say": "Net is what you actually keep. Always check real fee rates before trading.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 185.4,
+      "slot": 5.1,
+      "scene": "mistake",
+      "text": "A common mistake: counting the gross result and forgetting fees.",
+      "say": "A common mistake: counting the gross result and forgetting fees.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 190.5,
+      "slot": 5.5,
+      "scene": "mistake",
+      "text": "Long 0.1 BTC from 60,000 to 60,040. Gross: +4 USDT. Looks like a win.",
+      "say": "Long zero point one B-T-C from sixty thousand to sixty thousand forty. Gross: plus four U-S-D-T. Looks like a win.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 196,
+      "slot": 7.2,
+      "scene": "mistake",
+      "text": "But fees are 3.00 on entry and about 3.00 on exit. Net: about −2 USDT. A gross win, a net loss.",
+      "say": "But fees are three on entry and about three on exit. Net: about minus two U-S-D-T. A gross win, a net loss.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 203.2,
+      "slot": 5.8,
+      "scene": "mistake",
+      "text": "And remember: an open, unrealized profit isn't yours until you close.",
+      "say": "And remember: an open, unrealized profit isn't yours until you close.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 209.4,
+      "slot": 7.8,
+      "scene": "try",
+      "text": "Your turn. Short 0.02 BTC at 60,000, closed at 61,000. What's the gross result? Pause if needed.",
+      "say": "Your turn. Short zero point zero two B-T-C at sixty thousand, closed at sixty-one thousand. What's the gross result? Pause if needed.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 217.2,
+      "slot": 4.6,
+      "scene": "try",
+      "text": "Gross: −20 USDT. Entry minus exit is −1,000, times 0.02.",
+      "say": "Gross: minus twenty U-S-D-T. Entry minus exit is minus one thousand, times zero point zero two.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 221.8,
+      "slot": 6.2,
+      "scene": "try",
+      "text": "With 0.05% fees, 0.60 on entry and 0.61 on exit, the net is −21.21 USDT.",
+      "say": "With zero point zero five percent fees, zero point six on entry and zero point six one on exit, the net is minus twenty-one point two one U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 228.3,
+      "slot": 2.7,
+      "scene": "risks",
+      "text": "Before you go on, the risks.",
+      "say": "Before you go on, the risks.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 231,
+      "slot": 5.8,
+      "scene": "risks",
+      "text": "Prices can jump past the exit you planned, so your real exit can be worse.",
+      "say": "Prices can jump past the exit you planned, so your real exit can be worse.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 236.8,
+      "slot": 6.4,
+      "scene": "risks",
+      "text": "Fees hit every entry and exit, and futures add funding. Small trades feel it most.",
+      "say": "Fees hit every entry and exit, and futures add funding. Small trades feel it most.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 243.2,
+      "slot": 6.7,
+      "scene": "risks",
+      "text": "Leverage makes the same loss a bigger share of your margin, and can lead to liquidation.",
+      "say": "Leverage makes the same loss a bigger share of your margin, and can lead to liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 249.9,
+      "slot": 6.1,
+      "scene": "risks",
+      "text": "These are simple models, not predictions. Choosing no trade is always allowed.",
+      "say": "These are simple models, not predictions. Choosing no trade is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 256.2,
+      "slot": 1.7,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 257.9,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Long or spot: exit minus entry, times quantity. Short: entry minus exit.",
+      "say": "Long or spot: exit minus entry, times quantity. Short: entry minus exit.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 263.5,
+      "slot": 6.3,
+      "scene": "recap",
+      "text": "Unrealized results move with the price. Realized results are fixed when you close.",
+      "say": "Unrealized results move with the price. Realized results are fixed when you close.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 269.8,
+      "slot": 4.4,
+      "scene": "recap",
+      "text": "Net is gross minus fees, and on futures, funding too.",
+      "say": "Net is gross minus fees, and on futures, funding too.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 274.2,
+      "slot": 7.2,
+      "scene": "recap",
+      "text": "Check yourself: long 0.1 BTC from 60,000 to 60,300, with 6 USDT in total fees. What's the net?",
+      "say": "Check yourself: long zero point one B-T-C from sixty thousand to sixty thousand three hundred, with six U-S-D-T in total fees. What's the net?",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 281.4,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Gross is 300 × 0.1 = 30 USDT. Minus 6 in fees: net +24 USDT.",
+      "say": "Gross is three hundred times zero point one equals thirty U-S-D-T. Minus six in fees: net plus twenty-four U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 287.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Next up, T07: market, limit and stop orders. See you there!",
+      "say": "Next up, T seven: market, limit and stop orders. See you there!",
+      "note": ""
+    }
+  ]
+}

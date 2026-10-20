@@ -1,0 +1,457 @@
+{
+  "id": "T22",
+  "title": "T22 Position Sizing and Risk Budget",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson twenty-two: position sizing and risk budget. Size a position from the risk you accept.",
+      "say": "Lesson twenty-two: position sizing and risk budget. Size a position from the risk you accept.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.6,
+      "scene": "hook",
+      "text": "Two traders, one fictional chart. Both buy BTC at 60,000, with a stop-loss at 59,400.",
+      "say": "Two traders, one fictional chart. Both buy B-T-C at sixty thousand, with a stop-loss at fifty-nine thousand four hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 15,
+      "slot": 5.6,
+      "scene": "hook",
+      "text": "Trader A's position is worth 500 USDT. Trader B's is worth 10,000 USDT.",
+      "say": "Trader A's position is worth five hundred U-S-D-T. Trader B's is worth ten thousand U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 20.6,
+      "slot": 7.4,
+      "scene": "hook",
+      "text": "Price falls to the stop. A loses 5 USDT. B loses 100 USDT. Same stop, very different damage.",
+      "say": "Price falls to the stop. A loses five U-S-D-T. B loses one hundred U-S-D-T. Same stop, very different damage.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 28.4,
+      "slot": 7.2,
+      "scene": "account",
+      "text": "Your account balance is the money in your trading account. Here, a 1,000 USDT practice account.",
+      "say": "Your account balance is the money in your trading account. Here, a one thousand U-S-D-T practice account.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 35.6,
+      "slot": 6.8,
+      "scene": "account",
+      "text": "Your risk budget is the most you accept to lose on one trade, decided before you enter.",
+      "say": "Your risk budget is the most you accept to lose on one trade, decided before you enter.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 42.4,
+      "slot": 6.4,
+      "scene": "account",
+      "text": "Like deciding how much you'll spend at a fair before you go, not halfway through.",
+      "say": "Like deciding how much you'll spend at a fair before you go, not halfway through.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 48.8,
+      "slot": 6.2,
+      "scene": "account",
+      "text": "In this example the budget is 10 USDT. An example only, not a recommendation.",
+      "say": "In this example the budget is ten U-S-D-T. An example only, not a recommendation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 55.4,
+      "slot": 6,
+      "scene": "stop",
+      "text": "Stop distance is the gap between your entry price and your stop-loss price.",
+      "say": "Stop distance is the gap between your entry price and your stop-loss price.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 61.4,
+      "slot": 7.2,
+      "scene": "stop",
+      "text": "Entry 60,000, stop 59,400: the distance is 600 USDT. As a share of entry, 600 ÷ 60,000 = 1%.",
+      "say": "Entry sixty thousand, stop fifty-nine thousand four hundred: the distance is six hundred U-S-D-T. As a share of entry, six hundred divided by sixty thousand equals one percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 68.6,
+      "slot": 7.4,
+      "scene": "stop",
+      "text": "For a short, the stop sits above entry. Entry 60,000, stop 60,300: 300 USDT, or 0.5%.",
+      "say": "For a short, the stop sits above entry. Entry sixty thousand, stop sixty thousand three hundred: three hundred U-S-D-T, or zero point five percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 76.4,
+      "slot": 7,
+      "scene": "notional",
+      "text": "Position size is how much of the coin you hold. Notional is what it's worth: size × price.",
+      "say": "Position size is how much of the coin you hold. Notional is what it's worth: size times price.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 83.4,
+      "slot": 4.4,
+      "scene": "notional",
+      "text": "0.01 BTC at 60,000 USDT is a notional of 600 USDT.",
+      "say": "Zero point zero one B-T-C at sixty thousand U-S-D-T is a notional of six hundred U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 87.8,
+      "slot": 6.4,
+      "scene": "notional",
+      "text": "If price falls 1% to the stop, you lose 1% of the notional: 600 × 1% = 6 USDT.",
+      "say": "If price falls one percent to the stop, you lose one percent of the notional: six hundred times one percent equals six U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 94.2,
+      "slot": 6.8,
+      "scene": "notional",
+      "text": "Like buying rice: if the price per kilo drops, ten kilos lose ten times more than one.",
+      "say": "Like buying rice: if the price per kilo drops, ten kilos lose ten times more than one.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 101.4,
+      "slot": 4,
+      "scene": "formula",
+      "text": "Turn it around to find the allowed notional.",
+      "say": "Turn it around to find the allowed notional.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 105.4,
+      "slot": 5.6,
+      "scene": "formula",
+      "text": "Allowed notional ≈ risk amount ÷ stop distance as a share of entry.",
+      "say": "Allowed notional about risk amount divided by stop distance as a share of entry.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 111,
+      "slot": 6.6,
+      "scene": "formula",
+      "text": "10 ÷ (600 ÷ 60,000) = 10 ÷ 0.01 = 1,000 USDT. That's about 0.0167 BTC at 60,000.",
+      "say": "Ten divided by (six hundred divided by sixty thousand) equals ten divided by zero point zero one equals one thousand U-S-D-T. That's about zero point zero one six seven B-T-C at sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 117.6,
+      "slot": 4.6,
+      "scene": "formula",
+      "text": "For the short, with a 0.5% stop: 10 ÷ 0.005 = 2,000 USDT.",
+      "say": "For the short, with a zero point five percent stop: ten divided by zero point zero zero five equals two thousand U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 122.2,
+      "slot": 5.8,
+      "scene": "formula",
+      "text": "This simple model ignores fees, slippage, contract rules and liquidation.",
+      "say": "This simple model ignores fees, slippage, contract rules and liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 128.4,
+      "slot": 6.6,
+      "scene": "leverage",
+      "text": "Leverage lets a small margin control a bigger notional. Leverage = notional ÷ margin.",
+      "say": "Leverage lets a small margin control a bigger notional. Leverage equals notional divided by margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 135,
+      "slot": 5.8,
+      "scene": "leverage",
+      "text": "A 1,000 USDT notional needs 500 margin at 2x, 200 at 5x, 100 at 10x.",
+      "say": "A one thousand U-S-D-T notional needs five hundred margin at two ex, two hundred at five ex, one hundred at ten ex.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 140.8,
+      "slot": 6.8,
+      "scene": "leverage",
+      "text": "But the loss at the stop is still about 10 USDT. It depends on notional and stop distance.",
+      "say": "But the loss at the stop is still about ten U-S-D-T. It depends on notional and stop distance.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 147.6,
+      "slot": 7.4,
+      "scene": "leverage",
+      "text": "High leverage makes huge positions easy to open, and brings liquidation closer.",
+      "say": "High leverage makes huge positions easy to open, and brings liquidation closer.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 155.4,
+      "slot": 6,
+      "scene": "drawdown",
+      "text": "Drawdown is how far your account falls from its highest point, shown in %.",
+      "say": "Drawdown is how far your account falls from its highest point, shown in percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 161.4,
+      "slot": 5,
+      "scene": "drawdown",
+      "text": "Five 10 USDT losses take 1,000 down to 950. A 5% drawdown.",
+      "say": "Five ten U-S-D-T losses take one thousand down to nine hundred fifty. A five percent drawdown.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 166.4,
+      "slot": 4.6,
+      "scene": "drawdown",
+      "text": "Five 100 USDT losses take it to 500. A 50% drawdown.",
+      "say": "Five one hundred U-S-D-T losses take it to five hundred. A fifty percent drawdown.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 171,
+      "slot": 7,
+      "scene": "drawdown",
+      "text": "From 500, you'd need +100% just to get back to 1,000. Small risks keep drawdowns small.",
+      "say": "From five hundred, you'd need plus one hundred percent just to get back to one thousand. Small risks keep drawdowns small.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 178.4,
+      "slot": 6.6,
+      "scene": "mistake",
+      "text": "A common mistake: choosing leverage or size first, like 'I'll use 20x', then hoping.",
+      "say": "A common mistake: choosing leverage or size first, like 'I'll use twenty ex', then hoping.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 185,
+      "slot": 6.8,
+      "scene": "mistake",
+      "text": "The fix is a fixed order: risk budget, then stop, then notional, then check the margin.",
+      "say": "The fix is a fixed order: risk budget, then stop, then notional, then check the margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 191.8,
+      "slot": 7.2,
+      "scene": "mistake",
+      "text": "And if the allowed size is too small to make sense, NO_TRADE is a fine answer.",
+      "say": "And if the allowed size is too small to make sense, no trade is a fine answer.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 199.4,
+      "slot": 6.8,
+      "scene": "try",
+      "text": "Your turn. Account 2,000 USDT, example budget 20 USDT. Long at 50,000, stop at 49,500.",
+      "say": "Your turn. Account two thousand U-S-D-T, example budget twenty U-S-D-T. Long at fifty thousand, stop at forty-nine thousand five hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 206.2,
+      "slot": 12.8,
+      "scene": "try",
+      "text": "What's the allowed notional? A: 200, B: 2,000, or C: 20,000 USDT? Pause and work it out.",
+      "say": "What's the allowed notional? A: two hundred, B: two thousand, or C: twenty thousand U-S-D-T? Pause and work it out.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 219,
+      "slot": 5.2,
+      "scene": "try",
+      "text": "B. The stop is 500 away, which is 1%. So 20 ÷ 0.01 = 2,000 USDT.",
+      "say": "B. The stop is five hundred away, which is one percent. So twenty divided by zero point zero one equals two thousand U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 224.2,
+      "slot": 5.8,
+      "scene": "try",
+      "text": "C is tempting, but at the stop it loses 200 USDT, ten times the budget.",
+      "say": "C is tempting, but at the stop it loses two hundred U-S-D-T, ten times the budget.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 230.4,
+      "slot": 4.6,
+      "scene": "validate",
+      "text": "A calculator should warn you when inputs make no sense.",
+      "say": "A calculator should warn you when inputs make no sense.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 235,
+      "slot": 5.6,
+      "scene": "validate",
+      "text": "Stop equal to entry? The distance is zero, so there is no sensible size.",
+      "say": "Stop equal to entry? The distance is zero, so there is no sensible size.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 240.6,
+      "slot": 5.2,
+      "scene": "validate",
+      "text": "A long with the stop above entry? That stop is on the wrong side.",
+      "say": "A long with the stop above entry? That stop is on the wrong side.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 245.8,
+      "slot": 5.2,
+      "scene": "validate",
+      "text": "A risk budget bigger than the whole account? That's impossible.",
+      "say": "A risk budget bigger than the whole account? That's impossible.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 251.4,
+      "slot": 3.2,
+      "scene": "risks",
+      "text": "Know the limits of this maths.",
+      "say": "Know the limits of this maths.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 254.6,
+      "slot": 6.4,
+      "scene": "risks",
+      "text": "Stops can slip, and fees add to the loss. The real loss can be bigger than planned.",
+      "say": "Stops can slip, and fees add to the loss. The real loss can be bigger than planned.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 261,
+      "slot": 7,
+      "scene": "risks",
+      "text": "With high leverage, liquidation can come before your stop. Exchanges also set minimum sizes.",
+      "say": "With high leverage, liquidation can come before your stop. Exchanges also set minimum sizes.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 268,
+      "slot": 8,
+      "scene": "risks",
+      "text": "Fictional examples, not advice or recommended percentages. NO_TRADE is always allowed.",
+      "say": "Fictional examples, not advice or recommended percentages. No trade is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 276.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 278,
+      "slot": 6.6,
+      "scene": "recap",
+      "text": "One: decide your risk budget before you enter. Examples here are not recommendations.",
+      "say": "One: decide your risk budget before you enter. Examples here are not recommendations.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 284.6,
+      "slot": 6.2,
+      "scene": "recap",
+      "text": "Two: allowed notional ≈ risk ÷ stop distance as a share of entry. A simple model.",
+      "say": "Two: allowed notional about risk divided by stop distance as a share of entry. A simple model.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 290.8,
+      "slot": 6,
+      "scene": "recap",
+      "text": "Three: leverage changes the margin, not the loss at the stop. Watch drawdown.",
+      "say": "Three: leverage changes the margin, not the loss at the stop. Watch drawdown.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 296.8,
+      "slot": 5.2,
+      "scene": "recap",
+      "text": "Check yourself: risk 10 USDT, stop 2% away. Allowed notional?",
+      "say": "Check yourself: risk ten U-S-D-T, stop two percent away. Allowed notional?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 302,
+      "slot": 3,
+      "scene": "recap",
+      "text": "About 500 USDT: 10 ÷ 0.02 = 500.",
+      "say": "About five hundred U-S-D-T: ten divided by zero point zero two equals five hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 305.4,
+      "slot": 9.6,
+      "scene": "next",
+      "text": "Next up: T23, the full scalping decision lifecycle. From chart to journal, in a demo.",
+      "say": "Next up: T twenty-three, the full scalping decision lifecycle. From chart to journal, in a demo.",
+      "note": ""
+    }
+  ]
+}

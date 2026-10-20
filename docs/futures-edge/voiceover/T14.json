@@ -1,0 +1,547 @@
+{
+  "id": "T14",
+  "title": "T14 Candlesticks: Open, High, Low, Close",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 4.8,
+      "scene": "title",
+      "text": "Lesson fourteen: candlesticks. Open, high, low and close.",
+      "say": "Lesson fourteen: candlesticks. Open, high, low and close.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 5.4,
+      "slot": 4.6,
+      "scene": "title",
+      "text": "Almost every price chart you will see is drawn this way.",
+      "say": "Almost every price chart you will see is drawn this way.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 10.4,
+      "slot": 5,
+      "scene": "hook",
+      "text": "Here is one minute of a fictional BTC price, drawn as a line.",
+      "say": "Here is one minute of a fictional B-T-C price, drawn as a line.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 15.4,
+      "slot": 5,
+      "scene": "hook",
+      "text": "A line shows every wiggle. Now watch it squeeze into one shape.",
+      "say": "A line shows every wiggle. Now watch it squeeze into one shape.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 20.4,
+      "slot": 5.2,
+      "scene": "hook",
+      "text": "That shape is a candle. It keeps just four prices from the minute.",
+      "say": "That shape is a candle. It keeps just four prices from the minute.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 25.6,
+      "slot": 3.4,
+      "scene": "hook",
+      "text": "Candles side by side make a chart.",
+      "say": "Candles side by side make a chart.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 29.4,
+      "slot": 5.6,
+      "scene": "window",
+      "text": "A candle sums up one time window, such as one minute, with four prices.",
+      "say": "A candle sums up one time window, such as one minute, with four prices.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 35,
+      "slot": 5.8,
+      "scene": "window",
+      "text": "Open is the first price. Close is the last. High and low are the extremes.",
+      "say": "Open is the first price. Close is the last. High and low are the extremes.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 40.8,
+      "slot": 5.6,
+      "scene": "window",
+      "text": "Think of one day's temperature: first reading, hottest, coldest, last.",
+      "say": "Think of one day's temperature: first reading, hottest, coldest, last.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 46.4,
+      "slot": 5.6,
+      "scene": "window",
+      "text": "Same idea. A candle is a price summary, not a prediction.",
+      "say": "Same idea. A candle is a price summary, not a prediction.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 52.4,
+      "slot": 3.2,
+      "scene": "live",
+      "text": "Let's watch a 1-minute candle form.",
+      "say": "Let's watch a one-minute candle form.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 55.6,
+      "slot": 4.6,
+      "scene": "live",
+      "text": "It starts at 60,000 USDT. That first price is the open.",
+      "say": "It starts at sixty thousand U-S-D-T. That first price is the open.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 60.2,
+      "slot": 6.4,
+      "scene": "live",
+      "text": "Price dips below the open, so the forming body is red. The lowest point is the low.",
+      "say": "Price dips below the open, so the forming body is red. The lowest point is the low.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 66.6,
+      "slot": 6.2,
+      "scene": "live",
+      "text": "Now price climbs above the open: the body turns green. Each new top is the high.",
+      "say": "Now price climbs above the open: the body turns green. Each new top is the high.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 72.8,
+      "slot": 6.2,
+      "scene": "live",
+      "text": "Until the minute ends, the last price keeps changing. The candle is not finished.",
+      "say": "Until the minute ends, the last price keeps changing. The candle is not finished.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 79,
+      "slot": 5.8,
+      "scene": "live",
+      "text": "Time is up. The last price, 60,080, becomes the close. The candle is done.",
+      "say": "Time is up. The last price, sixty thousand eighty, becomes the close. The candle is done.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 84.8,
+      "slot": 6.2,
+      "scene": "live",
+      "text": "Open, high, low, close: four numbers that tell this minute's story.",
+      "say": "Open, high, low, close: four numbers that tell this minute's story.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 91.4,
+      "slot": 5.8,
+      "scene": "anatomy",
+      "text": "Let's name the parts. The thick part is the body, between open and close.",
+      "say": "Let's name the parts. The thick part is the body, between open and close.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 97.2,
+      "slot": 6.2,
+      "scene": "anatomy",
+      "text": "The thin lines are wicks, also called shadows. They reach the high and the low.",
+      "say": "The thin lines are wicks, also called shadows. They reach the high and the low.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 103.4,
+      "slot": 5.5,
+      "scene": "anatomy",
+      "text": "Body: 60,080 minus 60,000 is 80 USDT. Upper wick: 40. Lower wick: 60.",
+      "say": "Body: sixty thousand eighty minus sixty thousand is eighty U-S-D-T. Upper wick: forty. Lower wick: sixty.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 108.9,
+      "slot": 6.1,
+      "scene": "anatomy",
+      "text": "The range, high minus low, is 180 USDT. More than half of it is wick.",
+      "say": "The range, high minus low, is one hundred eighty U-S-D-T. More than half of it is wick.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 115.4,
+      "slot": 3.8,
+      "scene": "updown",
+      "text": "Up or down? Compare the close with the open.",
+      "say": "Up or down? Compare the close with the open.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 119.2,
+      "slot": 5.7,
+      "scene": "updown",
+      "text": "Close above open: an up candle, also called bullish. Usually drawn green.",
+      "say": "Close above open: an up candle, also called bullish. Usually drawn green.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 124.9,
+      "slot": 5.3,
+      "scene": "updown",
+      "text": "Close below open: a down candle, called bearish. Usually drawn red.",
+      "say": "Close below open: a down candle, called bearish. Usually drawn red.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 130.2,
+      "slot": 5.2,
+      "scene": "updown",
+      "text": "Same high and low, same 80 USDT body. Only the direction differs.",
+      "say": "Same high and low, same eighty U-S-D-T body. Only the direction differs.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 135.4,
+      "slot": 5.6,
+      "scene": "updown",
+      "text": "Colours are just an app setting. Open versus close is what counts.",
+      "say": "Colours are just an app setting. Open versus close is what counts.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 141.4,
+      "slot": 4.4,
+      "scene": "doji",
+      "text": "Sometimes the close lands almost exactly on the open.",
+      "say": "Sometimes the close lands almost exactly on the open.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 145.8,
+      "slot": 5,
+      "scene": "doji",
+      "text": "Here: open 60,000, close 60,005. The body is just 5 USDT thin.",
+      "say": "Here: open sixty thousand, close sixty thousand five. The body is just five U-S-D-T thin.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 150.8,
+      "slot": 5.1,
+      "scene": "doji",
+      "text": "That is a doji. Buyers and sellers ended the minute about even.",
+      "say": "That is a doji. Buyers and sellers ended the minute about even.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 155.9,
+      "slot": 4.1,
+      "scene": "doji",
+      "text": "A doji does not tell you what comes next.",
+      "say": "A doji does not tell you what comes next.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 160.3,
+      "slot": 4.7,
+      "scene": "rules",
+      "text": "Four prices, but they are not free. Two rules always hold.",
+      "say": "Four prices, but they are not free. Two rules always hold.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 165,
+      "slot": 5.2,
+      "scene": "rules",
+      "text": "The high can never be below the open or the close. It is the top.",
+      "say": "The high can never be below the open or the close. It is the top.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 170.2,
+      "slot": 4.7,
+      "scene": "rules",
+      "text": "The low can never be above them either. It is the bottom.",
+      "say": "The low can never be above them either. It is the bottom.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 174.9,
+      "slot": 4.6,
+      "scene": "rules",
+      "text": "Drop the close below the open, and the candle turns red.",
+      "say": "Drop the close below the open, and the candle turns red.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 179.5,
+      "slot": 6.5,
+      "scene": "rules",
+      "text": "Rule check: high is at or above both, low at or below both. Always.",
+      "say": "Rule check: high is at or above both, low at or below both. Always.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 186.4,
+      "slot": 5.9,
+      "scene": "chart",
+      "text": "One candle covers one minute. Put candles side by side, and you get a chart.",
+      "say": "One candle covers one minute. Put candles side by side, and you get a chart.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 192.3,
+      "slot": 4.2,
+      "scene": "chart",
+      "text": "Time runs left to right. Price runs bottom to top.",
+      "say": "Time runs left to right. Price runs bottom to top.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 196.5,
+      "slot": 4.3,
+      "scene": "chart",
+      "text": "Each new candle opens near where the last one closed.",
+      "say": "Each new candle opens near where the last one closed.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 200.8,
+      "slot": 7.2,
+      "scene": "chart",
+      "text": "The candle on the far right is still forming. It can change until its minute ends.",
+      "say": "The candle on the far right is still forming. It can change until its minute ends.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 208.4,
+      "slot": 4.8,
+      "scene": "mistake",
+      "text": "A common mistake: reading the top of the wick as the close.",
+      "say": "A common mistake: reading the top of the wick as the close.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 213.2,
+      "slot": 5.2,
+      "scene": "mistake",
+      "text": "Price did touch 60,200 in that minute, but it did not stay there.",
+      "say": "Price did touch sixty thousand two hundred in that minute, but it did not stay there.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 218.4,
+      "slot": 6,
+      "scene": "mistake",
+      "text": "The close is the edge of the body. On this green candle, the top edge: 60,040.",
+      "say": "The close is the edge of the body. On this green candle, the top edge: sixty thousand forty.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 224.4,
+      "slot": 5.6,
+      "scene": "mistake",
+      "text": "Wick tips are the high and low. Body edges are the open and close.",
+      "say": "Wick tips are the high and low. Body edges are the open and close.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 230.4,
+      "slot": 4.5,
+      "scene": "try",
+      "text": "Your turn. Read this candle's open, high, low and close.",
+      "say": "Your turn. Read this candle's open, high, low and close.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 234.9,
+      "slot": 5.5,
+      "scene": "try",
+      "text": "Is it an up or a down candle? Pause if you need more time.",
+      "say": "Is it an up or a down candle? Pause if you need more time.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 240.4,
+      "slot": 5.4,
+      "scene": "try",
+      "text": "Open 60,150 at the top of the red body. Close 60,000 at the bottom.",
+      "say": "Open sixty thousand one hundred fifty at the top of the red body. Close sixty thousand at the bottom.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 245.8,
+      "slot": 5.2,
+      "scene": "try",
+      "text": "High 60,200, low 59,950. Close is 150 below open: a down candle.",
+      "say": "High sixty thousand two hundred, low fifty-nine thousand nine hundred fifty. Close is one hundred fifty below open: a down candle.",
+      "note": ""
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 251,
+      "slot": 3,
+      "scene": "try",
+      "text": "Well done if you got it.",
+      "say": "Well done if you got it.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 254.4,
+      "slot": 3.8,
+      "scene": "risks",
+      "text": "Before we move on, keep these limits in mind.",
+      "say": "Before we move on, keep these limits in mind.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 258.2,
+      "slot": 5.6,
+      "scene": "risks",
+      "text": "A candle shows what already happened. It does not predict the next one.",
+      "say": "A candle shows what already happened. It does not predict the next one.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 263.8,
+      "slot": 6.1,
+      "scene": "risks",
+      "text": "The last candle can still change. Big wicks mean fast moves and more slippage.",
+      "say": "The last candle can still change. Big wicks mean fast moves and more slippage.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 269.9,
+      "slot": 6.1,
+      "scene": "risks",
+      "text": "Nothing here is a signal. Waiting, or no trade at all, is always allowed.",
+      "say": "Nothing here is a signal. Waiting, or no trade at all, is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 276.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 278,
+      "slot": 4.8,
+      "scene": "recap",
+      "text": "A candle sums up one time window: open, high, low and close.",
+      "say": "A candle sums up one time window: open, high, low and close.",
+      "note": ""
+    },
+    {
+      "file": "voice/54.mp3",
+      "t": 282.8,
+      "slot": 4.7,
+      "scene": "recap",
+      "text": "Body edges are open and close. Wick tips are high and low.",
+      "say": "Body edges are open and close. Wick tips are high and low.",
+      "note": ""
+    },
+    {
+      "file": "voice/55.mp3",
+      "t": 287.5,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "Up candles close above the open; down candles close below.",
+      "say": "Up candles close above the open; down candles close below.",
+      "note": ""
+    },
+    {
+      "file": "voice/56.mp3",
+      "t": 292.9,
+      "slot": 6.1,
+      "scene": "recap",
+      "text": "Check yourself: a red body runs from 60,100 down to 60,020. Where did it open?",
+      "say": "Check yourself: a red body runs from sixty thousand one hundred down to sixty thousand twenty. Where did it open?",
+      "note": ""
+    },
+    {
+      "file": "voice/57.mp3",
+      "t": 299,
+      "slot": 6,
+      "scene": "recap",
+      "text": "At 60,100, the top of the red body. It closed lower, at 60,020.",
+      "say": "At sixty thousand one hundred, the top of the red body. It closed lower, at sixty thousand twenty.",
+      "note": ""
+    },
+    {
+      "file": "voice/58.mp3",
+      "t": 305.6,
+      "slot": 5.2,
+      "scene": "next",
+      "text": "Great work! Next up: 1-minute, 5-minute and 15-minute timeframes.",
+      "say": "Great work! Next up: one-minute, five-minute and fifteen-minute timeframes.",
+      "note": ""
+    },
+    {
+      "file": "voice/59.mp3",
+      "t": 310.8,
+      "slot": 4.2,
+      "scene": "next",
+      "text": "See you in lesson fifteen.",
+      "say": "See you in lesson fifteen.",
+      "note": ""
+    }
+  ]
+}

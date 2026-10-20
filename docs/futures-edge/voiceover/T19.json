@@ -1,0 +1,493 @@
+{
+  "id": "T19",
+  "title": "T19 What Is Scalping?",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 5.7,
+      "scene": "title",
+      "text": "Lesson nineteen, and the start of Phase 5: scalping and risk management.",
+      "say": "Lesson nineteen, and the start of Phase five: scalping and risk management.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 6.3,
+      "slot": 3.7,
+      "scene": "title",
+      "text": "First question: what is scalping?",
+      "say": "First question: what is scalping?",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 10.6,
+      "slot": 5.9,
+      "scene": "hook",
+      "text": "So far you've learned to read candles, timeframes, trends, zones and volume.",
+      "say": "So far you've learned to read candles, timeframes, trends, zones and volume.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 16.5,
+      "slot": 5.6,
+      "scene": "hook",
+      "text": "Now: how do short-term traders use them? And what does it really cost?",
+      "say": "Now: how do short-term traders use them? And what does it really cost?",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 22.1,
+      "slot": 3.9,
+      "scene": "hook",
+      "text": "Let's look honestly, costs and all.",
+      "say": "Let's look honestly, costs and all.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 26.6,
+      "slot": 6.4,
+      "scene": "define",
+      "text": "Scalping means trying to profit from small price moves, in trades that last minutes.",
+      "say": "Scalping means trying to profit from small price moves, in trades that last minutes.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 33,
+      "slot": 5.8,
+      "scene": "define",
+      "text": "Sometimes only seconds. Then the trader exits and waits for the next one.",
+      "say": "Sometimes only seconds. Then the trader exits and waits for the next one.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 38.8,
+      "slot": 5.5,
+      "scene": "define",
+      "text": "Think of a stall that makes many small sales, each with a thin margin.",
+      "say": "Think of a stall that makes many small sales, each with a thin margin.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 44.3,
+      "slot": 3.7,
+      "scene": "define",
+      "text": "Thin margins mean costs matter a lot.",
+      "say": "Thin margins mean costs matter a lot.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 48.6,
+      "slot": 4.6,
+      "scene": "chart",
+      "text": "Here's a fictional 15-minute chart of 1-minute candles.",
+      "say": "Here's a fictional fifteen-minute chart of one-minute candles.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 53.2,
+      "slot": 5.7,
+      "scene": "chart",
+      "text": "A scalper might notice two things. These are observations, not signals.",
+      "say": "A scalper might notice two things. These are observations, not signals.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 58.9,
+      "slot": 6.1,
+      "scene": "chart",
+      "text": "One: price dips to a support zone and holds. Two: a sudden spike on thin volume.",
+      "say": "One: price dips to a support zone and holds. Two: a sudden spike on thin volume.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 65,
+      "slot": 5.6,
+      "scene": "chart",
+      "text": "Say a demo long opens at 60,000 and closes 4 minutes later at 60,120.",
+      "say": "Say a demo long opens at sixty thousand and closes four minutes later at sixty thousand one hundred twenty.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 70.6,
+      "slot": 5.4,
+      "scene": "chart",
+      "text": "Held for 4 minutes. Price move: +120 USDT. It could have failed.",
+      "say": "Held for four minutes. Price move: plus one hundred twenty U-S-D-T. It could have failed.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 76.6,
+      "slot": 5.1,
+      "scene": "fees",
+      "text": "Now the costs. The position is 0.1 BTC: 6,000 USDT at 60,000.",
+      "say": "Now the costs. The position is zero point one B-T-C: six thousand U-S-D-T at sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 81.7,
+      "slot": 3.4,
+      "scene": "fees",
+      "text": "Gross profit: 0.1 × 120 = 12.00 USDT.",
+      "say": "Gross profit: zero point one times one hundred twenty equals twelve U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 85.1,
+      "slot": 5.2,
+      "scene": "fees",
+      "text": "Fees at an example 0.05% each side: 3.00 to enter, 3.01 to exit.",
+      "say": "Fees at an example zero point zero five percent each side: three to enter, three point zero one to exit.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 90.3,
+      "slot": 5.3,
+      "scene": "fees",
+      "text": "Net: 12.00 − 3.00 − 3.01 = 5.99 USDT. Half the move went to fees.",
+      "say": "Net: twelve minus three minus three point zero one equals five point nine nine U-S-D-T. Half the move went to fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 95.6,
+      "slot": 4.4,
+      "scene": "fees",
+      "text": "A losing scalp pays fees too, so the loss gets bigger.",
+      "say": "A losing scalp pays fees too, so the loss gets bigger.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 100.6,
+      "slot": 4.7,
+      "scene": "frequency",
+      "text": "Trade frequency is how many trades you make in a period.",
+      "say": "Trade frequency is how many trades you make in a period.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 105.3,
+      "slot": 4.1,
+      "scene": "frequency",
+      "text": "Each round trip here costs about 6 USDT in fees.",
+      "say": "Each round trip here costs about six U-S-D-T in fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 109.4,
+      "slot": 4.9,
+      "scene": "frequency",
+      "text": "Twenty trades in a day: about 120 USDT in fees, win or lose.",
+      "say": "Twenty trades in a day: about one hundred twenty U-S-D-T in fees, win or lose.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 114.3,
+      "slot": 4,
+      "scene": "frequency",
+      "text": "And every trade is one more chance to be wrong.",
+      "say": "And every trade is one more chance to be wrong.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 118.3,
+      "slot": 3.7,
+      "scene": "frequency",
+      "text": "More trades is not more profit.",
+      "say": "More trades is not more profit.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 122.6,
+      "slot": 5.6,
+      "scene": "execution",
+      "text": "Execution quality is how close your fill is to the price you expected.",
+      "say": "Execution quality is how close your fill is to the price you expected.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 128.2,
+      "slot": 4.3,
+      "scene": "execution",
+      "text": "Say you slip 10 USDT getting in and 10 getting out.",
+      "say": "Say you slip ten U-S-D-T getting in and ten getting out.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 132.5,
+      "slot": 3.6,
+      "scene": "execution",
+      "text": "Our 120 move shrinks to 100, before fees.",
+      "say": "Our one hundred twenty move shrinks to one hundred, before fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 136.1,
+      "slot": 5.9,
+      "scene": "execution",
+      "text": "When moves are small, spread and slippage take a big share.",
+      "say": "When moves are small, spread and slippage take a big share.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 142.6,
+      "slot": 4.7,
+      "scene": "compare",
+      "text": "How does scalping compare with holding for days or weeks?",
+      "say": "How does scalping compare with holding for days or weeks?",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 147.3,
+      "slot": 5.8,
+      "scene": "compare",
+      "text": "Scalping: minutes, many trades, costs are a big share of each small move.",
+      "say": "Scalping: minutes, many trades, costs are a big share of each small move.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 153.1,
+      "slot": 5.9,
+      "scene": "compare",
+      "text": "Longer holding: fewer trades, bigger moves, but more time exposed to news.",
+      "say": "Longer holding: fewer trades, bigger moves, but more time exposed to news.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 159,
+      "slot": 5,
+      "scene": "compare",
+      "text": "Neither is safe. Both can lose money.",
+      "say": "Neither is safe. Both can lose money.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 164.6,
+      "slot": 6.3,
+      "scene": "horizon",
+      "text": "A note on XORA. It looks at about 10 to 15 minutes of recent price for context.",
+      "say": "A note on Zora. It looks at about ten to fifteen minutes of recent price for context.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 170.9,
+      "slot": 5.5,
+      "scene": "horizon",
+      "text": "That is an analysis horizon. It is not a time you must hold a trade.",
+      "say": "That is an analysis horizon. It is not a time you must hold a trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 176.4,
+      "slot": 7.6,
+      "scene": "horizon",
+      "text": "And it is not a promise of where price will be in 15 minutes.",
+      "say": "And it is not a promise of where price will be in fifteen minutes.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 184.6,
+      "slot": 3.9,
+      "scene": "whennot",
+      "text": "Some moments are simply not good for trading.",
+      "say": "Some moments are simply not good for trading.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 188.5,
+      "slot": 5.7,
+      "scene": "whennot",
+      "text": "Very thin markets. Wild news spikes. Fees bigger than the expected move.",
+      "say": "Very thin markets. Wild news spikes. Fees bigger than the expected move.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 194.2,
+      "slot": 5.4,
+      "scene": "whennot",
+      "text": "No clear reason, no stop, or you're tired, upset or chasing a loss.",
+      "say": "No clear reason, no stop, or you're tired, upset or chasing a loss.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 199.6,
+      "slot": 6.4,
+      "scene": "whennot",
+      "text": "In all of these, NO_TRADE is the right call. Waiting is a skill.",
+      "say": "In all of these, no trade is the right call. Waiting is a skill.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 206.6,
+      "slot": 6,
+      "scene": "try",
+      "text": "Your turn. A scalp's expected move is 60 USDT per BTC, at a price of 60,000.",
+      "say": "Your turn. A scalp's expected move is sixty U-S-D-T per B-T-C, at a price of sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 212.6,
+      "slot": 5,
+      "scene": "try",
+      "text": "Round-trip fees are 0.10%. Is it worth taking? Pause and think.",
+      "say": "Round-trip fees are zero point one percent. Is it worth taking? Pause and think.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 217.6,
+      "slot": 5.6,
+      "scene": "try",
+      "text": "Fees: 60,000 × 0.10% = 60 USDT per BTC. The move only covers the fees.",
+      "say": "Fees: sixty thousand times zero point one percent equals sixty U-S-D-T per B-T-C. The move only covers the fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 223.2,
+      "slot": 4.8,
+      "scene": "try",
+      "text": "Even before slippage, it's zero. NO_TRADE makes sense.",
+      "say": "Even before slippage, it's zero. No trade makes sense.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 228.6,
+      "slot": 4.6,
+      "scene": "risks",
+      "text": "Before you try scalping, even in demo, know the limits.",
+      "say": "Before you try scalping, even in demo, know the limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 233.2,
+      "slot": 5,
+      "scene": "risks",
+      "text": "It is not easy money. Many small losses and fees add up fast.",
+      "say": "It is not easy money. Many small losses and fees add up fast.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 238.2,
+      "slot": 5.5,
+      "scene": "risks",
+      "text": "Fast decisions bring mistakes, and leverage makes every loss bigger.",
+      "say": "Fast decisions bring mistakes, and leverage makes every loss bigger.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 243.7,
+      "slot": 6.3,
+      "scene": "risks",
+      "text": "Practise in demo first. NO_TRADE is always allowed.",
+      "say": "Practise in demo first. No trade is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 250.6,
+      "slot": 1.8,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 252.4,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Scalping aims for small moves in short trades: seconds to minutes.",
+      "say": "Scalping aims for small moves in short trades: seconds to minutes.",
+      "note": ""
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 258,
+      "slot": 5,
+      "scene": "recap",
+      "text": "Fees, spread and slippage take a big share of small moves.",
+      "say": "Fees, spread and slippage take a big share of small moves.",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 263,
+      "slot": 6.2,
+      "scene": "recap",
+      "text": "XORA's 10 to 15 minutes is context, not a holding rule. NO_TRADE is allowed.",
+      "say": "Zora's ten to fifteen minutes is context, not a holding rule. No trade is allowed.",
+      "note": ""
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 269.2,
+      "slot": 5.3,
+      "scene": "recap",
+      "text": "Check yourself: a move of 60 USDT per BTC, fees of 60. Worth it?",
+      "say": "Check yourself: a move of sixty U-S-D-T per B-T-C, fees of sixty. Worth it?",
+      "note": ""
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 274.5,
+      "slot": 5.5,
+      "scene": "recap",
+      "text": "No. It only covers fees, before slippage. Waiting is the better call.",
+      "say": "No. It only covers fees, before slippage. Waiting is the better call.",
+      "note": ""
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 280.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Well done! Next up: evaluating an entry opportunity. See you in lesson twenty.",
+      "say": "Well done! Next up: evaluating an entry opportunity. See you in lesson twenty.",
+      "note": ""
+    }
+  ]
+}

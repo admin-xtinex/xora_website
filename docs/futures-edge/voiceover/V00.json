@@ -1,0 +1,340 @@
+{
+  "id": "V00",
+  "title": "Welcome to XORA Futures Edge",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.5,
+      "slot": 7.5,
+      "scene": "signal",
+      "text": "At first, markets look like noise. This course teaches you to read them, step by step.",
+      "say": "At first, markets look like noise. This course teaches you to read them, step by step.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 9.5,
+      "slot": 2.7,
+      "scene": "welcome",
+      "text": "Hi, I'm your XORA tutor! Welcome to Futures Edge.",
+      "say": "Hi, I'm your Zora tutor! Welcome to Futures Edge.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 12.2,
+      "slot": 5.8,
+      "scene": "welcome",
+      "text": "Twenty-three short lessons, five phases, and no experience needed. Pause and replay any time.",
+      "say": "Twenty-three short lessons, five phases, and no experience needed. Pause and replay any time.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 18.4,
+      "slot": 6,
+      "scene": "for-you",
+      "text": "Never traded before? Not sure what BTC or USDT means? That's completely fine.",
+      "say": "Never traded before? Not sure what B T C, or U S D T means? That's completely fine.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 24.4,
+      "slot": 3.6,
+      "scene": "for-you",
+      "text": "Every new word is explained before we use it.",
+      "say": "Every new word is explained before we use it.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 28.3,
+      "slot": 2.6,
+      "scene": "lesson",
+      "text": "Each lesson works in five ways.",
+      "say": "Each lesson works in five ways.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 30.9,
+      "slot": 3,
+      "scene": "lesson",
+      "text": "Watch a short animation.",
+      "say": "Watch a short animation.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 33.9,
+      "slot": 3,
+      "scene": "lesson",
+      "text": "Read simple notes.",
+      "say": "Read simple notes.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 36.9,
+      "slot": 3,
+      "scene": "lesson",
+      "text": "Flip through short slides.",
+      "say": "Flip through short slides.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 39.9,
+      "slot": 3,
+      "scene": "lesson",
+      "text": "Try it yourself, with fictional prices.",
+      "say": "Try it yourself, with fictional prices.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 42.9,
+      "slot": 3.1,
+      "scene": "lesson",
+      "text": "Then take a quick quiz. Every answer is explained.",
+      "say": "Then take a quick quiz. Every answer is explained.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 46.4,
+      "slot": 3.3,
+      "scene": "phases",
+      "text": "Here's the path we'll walk together.",
+      "say": "Here's the path we'll walk together.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 49.7,
+      "slot": 3.5,
+      "scene": "phases",
+      "text": "First, crypto foundations: what crypto is, and why prices move.",
+      "say": "First, crypto foundations: what crypto is, and why prices move.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 53.2,
+      "slot": 3.5,
+      "scene": "phases",
+      "text": "Then trading basics: long and short, orders, profit, loss and fees.",
+      "say": "Then trading basics: long and short, orders, profit, loss and fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 56.7,
+      "slot": 3.5,
+      "scene": "phases",
+      "text": "Next, how futures work, with margin, leverage and liquidation.",
+      "say": "Next, how futures work, with margin, leverage and liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 60.2,
+      "slot": 3.5,
+      "scene": "phases",
+      "text": "Then reading charts: candlesticks, trends and key levels.",
+      "say": "Then reading charts: candlesticks, trends and key levels.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 63.7,
+      "slot": 3.5,
+      "scene": "phases",
+      "text": "And finally, scalping and risk management.",
+      "say": "And finally, scalping and risk management.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 67.2,
+      "slot": 2.8,
+      "scene": "phases",
+      "text": "Three short checkpoints show you what to review.",
+      "say": "Three short checkpoints show you what to review.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 70.4,
+      "slot": 5.1,
+      "scene": "demo-only",
+      "text": "Before we start: this course is for learning and demo practice only.",
+      "say": "Before we start: this course is for learning and demo practice only.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 75.5,
+      "slot": 2.2,
+      "scene": "demo-only",
+      "text": "There's no live trading, and no real money.",
+      "say": "There's no live trading, and no real money.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 77.7,
+      "slot": 2.3,
+      "scene": "demo-only",
+      "text": "We will never ask for your passwords, OTP codes or API keys.",
+      "say": "We will never ask for your passwords, O T P codes, or A P I keys.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 80,
+      "slot": 2.4,
+      "scene": "demo-only",
+      "text": "And every price you see is fictional.",
+      "say": "And every price you see is fictional.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 82.4,
+      "slot": 3.6,
+      "scene": "demo-only",
+      "text": "Practise first. Real money is never needed here.",
+      "say": "Practise first. Real money is never needed here.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 86.4,
+      "slot": 1.2,
+      "scene": "risk",
+      "text": "Futures can lose money quickly.",
+      "say": "Futures can lose money quickly.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 87.6,
+      "slot": 1.6,
+      "scene": "risk",
+      "text": "Leverage makes losses bigger, not just gains.",
+      "say": "Leverage makes losses bigger, not just gains.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 89.2,
+      "slot": 1.7,
+      "scene": "risk",
+      "text": "Fees can turn a small win into a loss.",
+      "say": "Fees can turn a small win into a loss.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 90.9,
+      "slot": 2,
+      "scene": "risk",
+      "text": "And signals can be wrong.",
+      "say": "And signals can be wrong.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 92.9,
+      "slot": 2.7,
+      "scene": "risk",
+      "text": "So you always have three choices: buy, sell, or wait.",
+      "say": "So you always have three choices: buy, sell, or wait.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 95.6,
+      "slot": 4.4,
+      "scene": "risk",
+      "text": "If you're not sure, waiting is a decision too.",
+      "say": "If you're not sure, waiting is a decision too.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 100.3,
+      "slot": 1.5,
+      "scene": "outcomes",
+      "text": "By the end, you should be able to:",
+      "say": "By the end, you should be able to:",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 101.8,
+      "slot": 1.3,
+      "scene": "outcomes",
+      "text": "read the BTC USDT pair,",
+      "say": "read the B T C, U S D T pair,",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 103.05,
+      "slot": 1.3,
+      "scene": "outcomes",
+      "text": "read a candlestick chart,",
+      "say": "Read a candlestick chart,",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 104.3,
+      "slot": 1.3,
+      "scene": "outcomes",
+      "text": "tell spot from futures,",
+      "say": "Tell spot from futures,",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 105.55,
+      "slot": 1.3,
+      "scene": "outcomes",
+      "text": "explain why leverage is risky,",
+      "say": "Explain why leverage is risky,",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 106.8,
+      "slot": 1.4,
+      "scene": "outcomes",
+      "text": "and know when not to trade.",
+      "say": "And know when not to trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 108.2,
+      "slot": 1.8,
+      "scene": "outcomes",
+      "text": "One lesson at a time.",
+      "say": "One lesson at a time.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 111.3,
+      "slot": 8.7,
+      "scene": "start",
+      "text": "Up next: lesson one. What is cryptocurrency? See you there!",
+      "say": "Up next: lesson one. What is cryptocurrency? See you there!",
+      "note": ""
+    }
+  ]
+}

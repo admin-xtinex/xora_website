@@ -1,0 +1,403 @@
+{
+  "id": "T20",
+  "title": "T20 Evaluating an Entry Opportunity",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson twenty: evaluating an entry opportunity. A careful checklist that can end in no trade.",
+      "say": "Lesson twenty: evaluating an entry opportunity. A careful checklist that can end in no trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.6,
+      "scene": "hook",
+      "text": "Here's a fictional BTC chart. The last few candles are green, and price is near 60,000.",
+      "say": "Here's a fictional B-T-C chart. The last few candles are green, and price is near sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 15,
+      "slot": 5.4,
+      "scene": "hook",
+      "text": "It's tempting to press BUY right now. But what do we actually know?",
+      "say": "It's tempting to press buy right now. But what do we actually know?",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 20.4,
+      "slot": 5.6,
+      "scene": "hook",
+      "text": "Instead of guessing, let's check the chart step by step.",
+      "say": "Instead of guessing, let's check the chart step by step.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 26.4,
+      "slot": 8,
+      "scene": "steps",
+      "text": "An entry opportunity is a moment when you consider opening a trade. Considering is not entering.",
+      "say": "An entry opportunity is a moment when you consider opening a trade. Considering is not entering.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 34.4,
+      "slot": 6.6,
+      "scene": "steps",
+      "text": "Like a pilot before take-off: the same checks, in the same order, every time.",
+      "say": "Like a pilot before take-off: the same checks, in the same order, every time.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 41,
+      "slot": 7,
+      "scene": "steps",
+      "text": "Trend, range, zones, volume, risk. Only then a tentative decision: buy, sell or wait.",
+      "say": "Trend, range, zones, volume, risk. Only then a tentative decision: buy, sell or wait.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 48.4,
+      "slot": 6,
+      "scene": "trend",
+      "text": "Step one: the trend. A trend is the general direction price has been moving.",
+      "say": "Step one: the trend. A trend is the general direction price has been moving.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 54.4,
+      "slot": 5,
+      "scene": "trend",
+      "text": "Over this hour, the lows kept getting higher. That leans up.",
+      "say": "Over this hour, the lows kept getting higher. That leans up.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 59.4,
+      "slot": 8.6,
+      "scene": "trend",
+      "text": "But the last high was lower than the one before. So: up, but choppy. Not a clear signal.",
+      "say": "But the last high was lower than the one before. So: up, but choppy. Not a clear signal.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 68.4,
+      "slot": 6.6,
+      "scene": "range",
+      "text": "Step two: the recent range. The space between the recent high and the recent low.",
+      "say": "Step two: the recent range. The space between the recent high and the recent low.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 75,
+      "slot": 5.8,
+      "scene": "range",
+      "text": "Over the last eight candles: high 60,100, low 59,500. That's 600 USDT.",
+      "say": "Over the last eight candles: high sixty thousand one hundred, low fifty-nine thousand five hundred. That's six hundred U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 80.8,
+      "slot": 7.2,
+      "scene": "range",
+      "text": "600 out of 60,000 is about 1%. And price now sits near the top of this box.",
+      "say": "Six hundred out of sixty thousand is about one percent. And price now sits near the top of this box.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 88.4,
+      "slot": 7.8,
+      "scene": "zone",
+      "text": "Step three: zones. Support is like a floor where falls often paused. Resistance is like a ceiling.",
+      "say": "Step three: zones. Support is like a floor where falls often paused. Resistance is like a ceiling.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 96.2,
+      "slot": 6,
+      "scene": "zone",
+      "text": "Here, resistance sits at 60,050 to 60,150. Support sits at 59,500 to 59,600.",
+      "say": "Here, resistance sits at sixty thousand fifty to sixty thousand one hundred fifty. Support sits at fifty-nine thousand five hundred to fifty-nine thousand six hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 102.2,
+      "slot": 6.8,
+      "scene": "zone",
+      "text": "Price is at 60,000, just under resistance. Only about 50 USDT of room before the ceiling.",
+      "say": "Price is at sixty thousand, just under resistance. Only about fifty U-S-D-T of room before the ceiling.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 109.4,
+      "slot": 7.8,
+      "scene": "volume",
+      "text": "Step four: volume is how much was traded in each candle. Liquidity is how easily you can trade.",
+      "say": "Step four: volume is how much was traded in each candle. Liquidity is how easily you can trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 117.2,
+      "slot": 6.6,
+      "scene": "volume",
+      "text": "The big drop and first push up had high volume. This last push up has less and less.",
+      "say": "The big drop and first push up had high volume. This last push up has less and less.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 123.8,
+      "slot": 7.2,
+      "scene": "volume",
+      "text": "Fading volume is a weak sign, not proof. Volume alone never tells you the direction.",
+      "say": "Fading volume is a weak sign, not proof. Volume alone never tells you the direction.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 131.4,
+      "slot": 8.2,
+      "scene": "risk",
+      "text": "Step five: your risk budget. The most you accept to lose on this one trade, decided before entering.",
+      "say": "Step five: your risk budget. The most you accept to lose on this one trade, decided before entering.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 139.6,
+      "slot": 5.8,
+      "scene": "risk",
+      "text": "Example only: a 1,000 USDT practice account, and a risk budget of 10 USDT.",
+      "say": "Example only: a one thousand U-S-D-T practice account, and a risk budget of ten U-S-D-T.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 145.4,
+      "slot": 7,
+      "scene": "risk",
+      "text": "A stop below support at 59,400 is 600 USDT away: 1%. Sized for that, a loss is about 10 USDT.",
+      "say": "A stop below support at fifty-nine thousand four hundred is six hundred U-S-D-T away: one percent. Sized for that, a loss is about ten U-S-D-T.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 152.4,
+      "slot": 6.6,
+      "scene": "risk",
+      "text": "If price reaches 60,100, the gain is only about 1.7 USDT, and fees take about 1 of it.",
+      "say": "If price reaches sixty thousand one hundred, the gain is only about one point seven U-S-D-T, and fees take about one of it.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 159.4,
+      "slot": 6.6,
+      "scene": "decide",
+      "text": "Step six: a tentative decision. Buy, sell or wait, and you write down why.",
+      "say": "Step six: a tentative decision. Buy, sell or wait, and you write down why.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 166,
+      "slot": 8,
+      "scene": "decide",
+      "text": "Mild uptrend, but price is under resistance, volume is fading, and the reward is tiny next to the risk.",
+      "say": "Mild uptrend, but price is under resistance, volume is fading, and the reward is tiny next to the risk.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 174,
+      "slot": 9,
+      "scene": "decide",
+      "text": "So the decision is WAIT. No trade is a real, sensible result of the checklist.",
+      "say": "So the decision is wait. No trade is a real, sensible result of the checklist.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 183.4,
+      "slot": 6.6,
+      "scene": "mistake",
+      "text": "A common mistake: deciding the direction first, then looking for reasons to agree.",
+      "say": "A common mistake: deciding the direction first, then looking for reasons to agree.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 190,
+      "slot": 7.2,
+      "scene": "mistake",
+      "text": "Green candles alone are not a reason. Work through the checklist in order, and write your why.",
+      "say": "Green candles alone are not a reason. Work through the checklist in order, and write your why.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 197.2,
+      "slot": 6.8,
+      "scene": "mistake",
+      "text": "And WAIT is not a failure. It's often the best answer when the signals don't line up.",
+      "say": "And wait is not a failure. It's often the best answer when the signals don't line up.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 204.4,
+      "slot": 8,
+      "scene": "try",
+      "text": "Your turn. A different fictional coin, checklist filled in. What's the sensible tentative decision?",
+      "say": "Your turn. A different fictional coin, checklist filled in. What's the sensible tentative decision?",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 212.4,
+      "slot": 6,
+      "scene": "try",
+      "text": "Pause if you need more time. Is it A, B or C?",
+      "say": "Pause if you need more time. Is it A, B or C?",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 218.4,
+      "slot": 5.8,
+      "scene": "try",
+      "text": "C, wait. Every signal is neutral, so there's no reason to take the risk.",
+      "say": "C, wait. Every signal is neutral, so there's no reason to take the risk.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 224.2,
+      "slot": 7.8,
+      "scene": "try",
+      "text": "A is tempting, but one green candle is not a reason. Neutral signals mean no trade.",
+      "say": "A is tempting, but one green candle is not a reason. Neutral signals mean no trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 232.3,
+      "slot": 3.7,
+      "scene": "risks",
+      "text": "Before using any checklist, know its limits.",
+      "say": "Before using any checklist, know its limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 236,
+      "slot": 5.7,
+      "scene": "risks",
+      "text": "A checklist cannot predict the future. Price can still move against you.",
+      "say": "A checklist cannot predict the future. Price can still move against you.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 241.7,
+      "slot": 5.7,
+      "scene": "risks",
+      "text": "Stops can slip, and fees eat small gains. Leverage makes losses bigger.",
+      "say": "Stops can slip, and fees eat small gains. Leverage makes losses bigger.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 247.4,
+      "slot": 8.6,
+      "scene": "risks",
+      "text": "These are fictional examples, not advice. When signals are unclear, WAIT is always allowed.",
+      "say": "These are fictional examples, not advice. When signals are unclear, wait is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 256.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 258,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "One: check in order. Trend, range, zones, volume, then your risk budget.",
+      "say": "One: check in order. Trend, range, zones, volume, then your risk budget.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 263.6,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Two: a decision needs reasons. Write down why, not only the direction.",
+      "say": "Two: a decision needs reasons. Write down why, not only the direction.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 269.2,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "Three: when signals are neutral or mixed, WAIT is a real decision.",
+      "say": "Three: when signals are neutral or mixed, wait is a real decision.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 274.6,
+      "slot": 6.6,
+      "scene": "recap",
+      "text": "Check yourself: price is just under resistance and volume is fading. A strong buy?",
+      "say": "Check yourself: price is just under resistance and volume is fading. A strong buy?",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 281.2,
+      "slot": 2.8,
+      "scene": "recap",
+      "text": "No. Those are reasons to wait.",
+      "say": "No. Those are reasons to wait.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 284.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Next up: T21, confirmation, false signals and NO_TRADE. Why waiting is a decision too.",
+      "say": "Next up: T twenty-one, confirmation, false signals and no trade. Why waiting is a decision too.",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,439 @@
+{
+  "id": "T11",
+  "title": "T11 Spot vs Futures",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 8.4,
+      "scene": "title",
+      "text": "Lesson eleven: spot versus futures. What do you really own when you trade?",
+      "say": "Lesson eleven: spot versus futures. What do you really own when you trade?",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 9.6,
+      "slot": 6,
+      "scene": "hook",
+      "text": "Asha and Rahul both think BTC might rise. Both trade 0.010 BTC at 60,000.",
+      "say": "Asha and Rahul both think B-T-C might rise. Both trade zero point zero one B-T-C at sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 15.6,
+      "slot": 4.6,
+      "scene": "hook",
+      "text": "Asha buys on spot. Rahul opens a long futures position.",
+      "say": "Asha buys on spot. Rahul opens a long futures position.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 20.2,
+      "slot": 4.8,
+      "scene": "hook",
+      "text": "If BTC rises, both gain. So what's the difference?",
+      "say": "If B-T-C rises, both gain. So what's the difference?",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 25.6,
+      "slot": 5.9,
+      "scene": "spot",
+      "text": "Spot means buying the actual asset, paid in full, and it's yours right away.",
+      "say": "Spot means buying the actual asset, paid in full, and it's yours right away.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 31.5,
+      "slot": 5.5,
+      "scene": "spot",
+      "text": "Like buying a gold coin at a shop. You pay, and you take the coin home.",
+      "say": "Like buying a gold coin at a shop. You pay, and you take the coin home.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 37,
+      "slot": 5.5,
+      "scene": "spot",
+      "text": "Asha pays 600 USDT, and 0.010 BTC lands in her wallet. She owns it.",
+      "say": "Asha pays six hundred U-S-D-T, and zero point zero one B-T-C lands in her wallet. She owns it.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 43.1,
+      "slot": 7,
+      "scene": "futures",
+      "text": "A futures contract is an agreement about the price of an asset. It is not the asset itself.",
+      "say": "A futures contract is an agreement about the price of an asset. It is not the asset itself.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 50.1,
+      "slot": 5.8,
+      "scene": "futures",
+      "text": "The asset it follows is called the underlying. Here, the underlying is BTC.",
+      "say": "The asset it follows is called the underlying. Here, the underlying is B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 55.9,
+      "slot": 6.6,
+      "scene": "futures",
+      "text": "Rahul opens a long contract for 0.010 BTC. No BTC arrives. He holds a contract.",
+      "say": "Rahul opens a long contract for zero point zero one B-T-C. No B-T-C arrives. He holds a contract.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 63.1,
+      "slot": 5.6,
+      "scene": "perp",
+      "text": "Most crypto futures are perpetual. A perpetual contract has no end date.",
+      "say": "Most crypto futures are perpetual. A perpetual contract has no end date.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 68.7,
+      "slot": 6.3,
+      "scene": "perp",
+      "text": "Older-style futures expire on a set date. A perpetual stays open until it's closed.",
+      "say": "Older-style futures expire on a set date. A perpetual stays open until it's closed.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 75,
+      "slot": 6,
+      "scene": "perp",
+      "text": "When it closes, profit or loss is settled in USDT. No coins are delivered.",
+      "say": "When it closes, profit or loss is settled in U-S-D-T. No coins are delivered.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 81.6,
+      "slot": 4.5,
+      "scene": "exposure",
+      "text": "Exposure is how much of your money moves with the price.",
+      "say": "Exposure is how much of your money moves with the price.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 86.1,
+      "slot": 4.8,
+      "scene": "exposure",
+      "text": "Notional value is the full size of a position: size × price.",
+      "say": "Notional value is the full size of a position: size times price.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 90.9,
+      "slot": 6.6,
+      "scene": "exposure",
+      "text": "0.010 BTC × 60,000 = 600 USDT. Asha and Rahul both have 600 USDT of exposure.",
+      "say": "Zero point zero one B-T-C times sixty thousand equals six hundred U-S-D-T. Asha and Rahul both have six hundred U-S-D-T of exposure.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 98.1,
+      "slot": 4.5,
+      "scene": "side",
+      "text": "Now let's follow the same price for both, side by side.",
+      "say": "Now let's follow the same price for both, side by side.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 102.6,
+      "slot": 6,
+      "scene": "side",
+      "text": "BTC rises to 63,000. Asha's coins are worth 630 USDT. Rahul's PnL is +30 USDT.",
+      "say": "B-T-C rises to sixty-three thousand. Asha's coins are worth six hundred thirty U-S-D-T. Rahul's P and L is plus thirty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 108.6,
+      "slot": 5.3,
+      "scene": "side",
+      "text": "BTC falls to 57,000. Asha's coins: 570 USDT. Rahul's PnL: −30 USDT.",
+      "say": "B-T-C falls to fifty-seven thousand. Asha's coins: five hundred seventy U-S-D-T. Rahul's P and L: minus thirty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 113.9,
+      "slot": 4.6,
+      "scene": "side",
+      "text": "Same moves, same money. But only Asha owns any BTC.",
+      "say": "Same moves, same money. But only Asha owns any B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 119.1,
+      "slot": 6,
+      "scene": "short",
+      "text": "Futures can also go short: you gain if the price falls, and lose if it rises.",
+      "say": "Futures can also go short: you gain if the price falls, and lose if it rises.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 125.1,
+      "slot": 5.5,
+      "scene": "short",
+      "text": "Short 0.010 BTC from 60,000. At 57,000: +30 USDT. At 63,000: −30 USDT.",
+      "say": "Short zero point zero one B-T-C from sixty thousand. At fifty-seven thousand: plus thirty U-S-D-T. At sixty-three thousand: minus thirty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 130.6,
+      "slot": 4.9,
+      "scene": "short",
+      "text": "On plain spot, you can only sell coins you already hold.",
+      "say": "On plain spot, you can only sell coins you already hold.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 136.1,
+      "slot": 5.4,
+      "scene": "mistake",
+      "text": "A common mistake: thinking a futures position means you own the coin.",
+      "say": "A common mistake: thinking a futures position means you own the coin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 141.5,
+      "slot": 5.7,
+      "scene": "mistake",
+      "text": "You can't withdraw BTC from a futures position. There is no coin to send.",
+      "say": "You can't withdraw B-T-C from a futures position. There is no coin to send.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 147.2,
+      "slot": 5.3,
+      "scene": "mistake",
+      "text": "Correction: futures give price exposure. Spot gives ownership.",
+      "say": "Correction: futures give price exposure. Spot gives ownership.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 153.1,
+      "slot": 3.9,
+      "scene": "extra",
+      "text": "Futures add risks that plain spot doesn't have.",
+      "say": "Futures add risks that plain spot doesn't have.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 157,
+      "slot": 6.3,
+      "scene": "extra",
+      "text": "Margin and leverage: a small deposit controls a bigger position. That's lesson T12.",
+      "say": "Margin and leverage: a small deposit controls a bigger position. That's lesson T twelve.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 163.3,
+      "slot": 6.4,
+      "scene": "extra",
+      "text": "Liquidation: if losses eat your margin, the exchange can close the position for you.",
+      "say": "Liquidation: if losses eat your margin, the exchange can close the position for you.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 169.7,
+      "slot": 6.3,
+      "scene": "extra",
+      "text": "Funding: perpetual traders pay or receive small amounts at set times. More in T13.",
+      "say": "Funding: perpetual traders pay or receive small amounts at set times. More in T thirteen.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 176.6,
+      "slot": 8.6,
+      "scene": "try",
+      "text": "Your turn. Spot or futures? Sort these five. Pause if you need more time.",
+      "say": "Your turn. Spot or futures? Sort these five. Pause if you need more time.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 185.2,
+      "slot": 4.6,
+      "scene": "try",
+      "text": "Holding coins in your wallet, and withdrawing them: spot.",
+      "say": "Holding coins in your wallet, and withdrawing them: spot.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 189.8,
+      "slot": 5.1,
+      "scene": "try",
+      "text": "A perpetual long, funding payments and liquidation: all futures.",
+      "say": "A perpetual long, funding payments and liquidation: all futures.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 194.9,
+      "slot": 3.1,
+      "scene": "try",
+      "text": "Well done if you sorted them all!",
+      "say": "Well done if you sorted them all!",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 198.6,
+      "slot": 3.3,
+      "scene": "compare",
+      "text": "Here's the whole picture in one table.",
+      "say": "Here's the whole picture in one table.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 201.9,
+      "slot": 6.9,
+      "scene": "compare",
+      "text": "With spot, you hold the coin and pay the full price. No expiry, no funding, no liquidation.",
+      "say": "With spot, you hold the coin and pay the full price. No expiry, no funding, no liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 208.8,
+      "slot": 5.5,
+      "scene": "compare",
+      "text": "With perpetual futures, you hold a contract. You can go long or short.",
+      "say": "With perpetual futures, you hold a contract. You can go long or short.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 214.3,
+      "slot": 3.7,
+      "scene": "compare",
+      "text": "And you face funding and liquidation.",
+      "say": "And you face funding and liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 218.6,
+      "slot": 5.7,
+      "scene": "risks",
+      "text": "Neither one is safe. Spot prices can fall a lot, and you can lose money.",
+      "say": "Neither one is safe. Spot prices can fall a lot, and you can lose money.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 224.3,
+      "slot": 4.9,
+      "scene": "risks",
+      "text": "Futures can lose faster, and a position can be closed for you.",
+      "say": "Futures can lose faster, and a position can be closed for you.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 229.2,
+      "slot": 5.3,
+      "scene": "risks",
+      "text": "Fees and funding keep adding up while a futures position stays open.",
+      "say": "Fees and funding keep adding up while a futures position stays open.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 234.5,
+      "slot": 4,
+      "scene": "risks",
+      "text": "When unsure, WAIT. NO_TRADE is always allowed.",
+      "say": "When unsure, wait. No trade is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 239.1,
+      "slot": 3.7,
+      "scene": "recap",
+      "text": "Spot means you buy and own the actual coin.",
+      "say": "Spot means you buy and own the actual coin.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 242.8,
+      "slot": 6.3,
+      "scene": "recap",
+      "text": "Futures are contracts about a price. You can go long or short, but you own no coin.",
+      "say": "Futures are contracts about a price. You can go long or short, but you own no coin.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 249.1,
+      "slot": 4.2,
+      "scene": "recap",
+      "text": "Futures add funding, leverage and liquidation risk.",
+      "say": "Futures add funding, leverage and liquidation risk.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 253.3,
+      "slot": 5.2,
+      "scene": "recap",
+      "text": "Check yourself: you hold a BTC perpetual long. Do you own any BTC?",
+      "say": "Check yourself: you hold a B-T-C perpetual long. Do you own any B-T-C?",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 258.5,
+      "slot": 4.5,
+      "scene": "recap",
+      "text": "No. You hold a contract that follows the BTC price.",
+      "say": "No. You hold a contract that follows the B-T-C price.",
+      "note": ""
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 263.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Great work! Next up, T12: margin and leverage, and why they magnify losses as well as gains.",
+      "say": "Great work! Next up, T twelve: margin and leverage, and why they magnify losses as well as gains.",
+      "note": "firmer, slower"
+    }
+  ]
+}

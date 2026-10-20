@@ -1,0 +1,475 @@
+{
+  "id": "T02",
+  "title": "T02 Why Do Crypto Prices Move?",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson two: why do crypto prices move? Let's find out who really sets the price.",
+      "say": "Lesson two: why do crypto prices move? Let's find out who really sets the price.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 4.6,
+      "scene": "hook",
+      "text": "Here's a puzzle. At ten o'clock, BTC costs 60,000 USDT.",
+      "say": "Here's a puzzle. At ten o'clock, B-T-C costs sixty thousand U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 13,
+      "slot": 5.6,
+      "scene": "hook",
+      "text": "A minute later it's higher. Then lower. Nobody pressed a button.",
+      "say": "A minute later it's higher. Then lower. Nobody pressed a button.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 18.6,
+      "slot": 3.4,
+      "scene": "hook",
+      "text": "So who decides? Buyers and sellers.",
+      "say": "So who decides? Buyers and sellers.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 22.4,
+      "slot": 6.6,
+      "scene": "market",
+      "text": "Every price comes from a market: people who want to buy, and people who want to sell.",
+      "say": "Every price comes from a market: people who want to buy, and people who want to sell.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 29,
+      "slot": 4.8,
+      "scene": "market",
+      "text": "A buyer pays to get BTC. A seller gives up BTC to get paid.",
+      "say": "A buyer pays to get B-T-C. A seller gives up B-T-C to get paid.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 33.8,
+      "slot": 5,
+      "scene": "market",
+      "text": "When a buyer and a seller agree on a price, a trade happens.",
+      "say": "When a buyer and a seller agree on a price, a trade happens.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 38.8,
+      "slot": 5.2,
+      "scene": "market",
+      "text": "The price of the latest trade is what we call the market price.",
+      "say": "The price of the latest trade is what we call the market price.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 44.4,
+      "slot": 5,
+      "scene": "demand",
+      "text": "Demand means how much people want to buy, and at what price.",
+      "say": "Demand means how much people want to buy, and at what price.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 49.4,
+      "slot": 7,
+      "scene": "demand",
+      "text": "Think of the last mangoes at a busy stall. When many want them, the seller can ask more.",
+      "say": "Think of the last mangoes at a busy stall. When many want them, the seller can ask more.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 56.4,
+      "slot": 6,
+      "scene": "demand",
+      "text": "Here, more buyers arrive than sellers. To get BTC, buyers offer a little more.",
+      "say": "Here, more buyers arrive than sellers. To get B-T-C, buyers offer a little more.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 62.4,
+      "slot": 4.6,
+      "scene": "demand",
+      "text": "Each new trade is a bit higher, so the price ticks up.",
+      "say": "Each new trade is a bit higher, so the price ticks up.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 67.4,
+      "slot": 5,
+      "scene": "supply",
+      "text": "Supply means how much people want to sell, and at what price.",
+      "say": "Supply means how much people want to sell, and at what price.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 72.4,
+      "slot": 7,
+      "scene": "supply",
+      "text": "Think of a fish seller near closing time with lots left. To sell it all, she cuts her price.",
+      "say": "Think of a fish seller near closing time with lots left. To sell it all, she cuts her price.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 79.4,
+      "slot": 6.2,
+      "scene": "supply",
+      "text": "Now more sellers arrive than buyers. To find a buyer, sellers accept less.",
+      "say": "Now more sellers arrive than buyers. To find a buyer, sellers accept less.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 85.6,
+      "slot": 4.4,
+      "scene": "supply",
+      "text": "We call this selling pressure. The price ticks down.",
+      "say": "We call this selling pressure. The price ticks down.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 90.4,
+      "slot": 5.4,
+      "scene": "change",
+      "text": "Let's measure a move. Change is the new price minus the old price.",
+      "say": "Let's measure a move. Change is the new price minus the old price.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 95.8,
+      "slot": 4.8,
+      "scene": "change",
+      "text": "From 60,000 to 61,200 USDT, the change is plus 1,200 USDT.",
+      "say": "From sixty thousand to sixty-one thousand two hundred U-S-D-T, the change is plus one thousand two hundred U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 100.6,
+      "slot": 5.2,
+      "scene": "change",
+      "text": "As a percent: 1,200 divided by 60,000, times 100, is 2 percent.",
+      "say": "As a percent: one thousand two hundred divided by sixty thousand, times one hundred, is two percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 105.8,
+      "slot": 5.2,
+      "scene": "change",
+      "text": "From 60,000 down to 57,000: minus 3,000 USDT, or minus 5 percent.",
+      "say": "From sixty thousand down to fifty-seven thousand: minus three thousand U-S-D-T, or minus five percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 111.4,
+      "slot": 6.8,
+      "scene": "sliders",
+      "text": "Now a simple model to watch. It's illustrative only, not a prediction of real markets.",
+      "say": "Now a simple model to watch. It's illustrative only, not a prediction of real markets.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 118.2,
+      "slot": 4.8,
+      "scene": "sliders",
+      "text": "Buyers stronger than sellers? The model price drifts up.",
+      "say": "Buyers stronger than sellers? The model price drifts up.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 123,
+      "slot": 3.6,
+      "scene": "sliders",
+      "text": "Sellers stronger? It drifts down.",
+      "say": "Sellers stronger? It drifts down.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 126.6,
+      "slot": 7.4,
+      "scene": "sliders",
+      "text": "When both sides are about equal, the price wobbles sideways, with no clear direction.",
+      "say": "When both sides are about equal, the price wobbles sideways, with no clear direction.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 134.4,
+      "slot": 5.8,
+      "scene": "size",
+      "text": "Careful: price doesn't simply follow how many people are buying or selling.",
+      "say": "Careful: price doesn't simply follow how many people are buying or selling.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 140.2,
+      "slot": 4.6,
+      "scene": "size",
+      "text": "Here, 3 buyers each want 4 BTC. That's 12 BTC in total.",
+      "say": "Here, three buyers each want four B-T-C. That's twelve B-T-C in total.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 144.8,
+      "slot": 4.7,
+      "scene": "size",
+      "text": "And 10 sellers offer only 0.2 BTC each. That's just 2 BTC.",
+      "say": "And ten sellers offer only zero point two B-T-C each. That's just two B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 149.5,
+      "slot": 5.5,
+      "scene": "size",
+      "text": "Fewer people, but far more BTC wanted. Size matters, not headcount.",
+      "say": "Fewer people, but far more B-T-C wanted. Size matters, not headcount.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 155.4,
+      "slot": 6,
+      "scene": "liquidity",
+      "text": "Liquidity means how easily you can buy or sell without moving the price much.",
+      "say": "Liquidity means how easily you can buy or sell without moving the price much.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 161.4,
+      "slot": 6.2,
+      "scene": "liquidity",
+      "text": "Left: a busy market with lots of BTC for sale at each price. Right: a quiet one.",
+      "say": "Left: a busy market with lots of B-T-C for sale at each price. Right: a quiet one.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 167.6,
+      "slot": 3.8,
+      "scene": "liquidity",
+      "text": "Now someone buys 1 BTC, in both markets.",
+      "say": "Now someone buys one B-T-C, in both markets.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 171.4,
+      "slot": 5.6,
+      "scene": "liquidity",
+      "text": "Busy market: the price stays put. Quiet market: it jumps 400 USDT.",
+      "say": "Busy market: the price stays put. Quiet market: it jumps four hundred U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 177.4,
+      "slot": 4.6,
+      "scene": "volatility",
+      "text": "Volatility is how much and how fast a price swings.",
+      "say": "Volatility is how much and how fast a price swings.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 182,
+      "slot": 5.8,
+      "scene": "volatility",
+      "text": "A calm market moves a little. A volatile one swings hard, up and down.",
+      "say": "A calm market moves a little. A volatile one swings hard, up and down.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 187.8,
+      "slot": 5.8,
+      "scene": "volatility",
+      "text": "Surprise news, or a quiet market with few orders, can cause sudden jumps.",
+      "say": "Surprise news, or a quiet market with few orders, can cause sudden jumps.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 193.6,
+      "slot": 3.4,
+      "scene": "volatility",
+      "text": "Crypto is known for high volatility.",
+      "say": "Crypto is known for high volatility.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 197.4,
+      "slot": 5.8,
+      "scene": "mistake",
+      "text": "A common mistake: picturing price as a smooth line you can simply follow.",
+      "say": "A common mistake: picturing price as a smooth line you can simply follow.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 203.2,
+      "slot": 5.8,
+      "scene": "mistake",
+      "text": "Zoom in, and real price paths are jagged, full of small ups and downs.",
+      "say": "Zoom in, and real price paths are jagged, full of small ups and downs.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 209,
+      "slot": 6,
+      "scene": "mistake",
+      "text": "Nobody knows the next tick. A neat trend can turn around at any moment.",
+      "say": "Nobody knows the next tick. A neat trend can turn around at any moment.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 215.4,
+      "slot": 8.6,
+      "scene": "try",
+      "text": "Your turn. BTC moves from 60,000 to 63,000 USDT. What's the change, in USDT and in percent?",
+      "say": "Your turn. B-T-C moves from sixty thousand to sixty-three thousand U-S-D-T. What's the change, in U-S-D-T and in percent?",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 224,
+      "slot": 8,
+      "scene": "try",
+      "text": "Answer: plus 3,000 USDT. And 3,000 divided by 60,000, times 100, is 5 percent.",
+      "say": "Answer: plus three thousand U-S-D-T. And three thousand divided by sixty thousand, times one hundred, is five percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 232.4,
+      "slot": 3.4,
+      "scene": "risks",
+      "text": "Before you go further, know the risks.",
+      "say": "Before you go further, know the risks.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 235.8,
+      "slot": 5.1,
+      "scene": "risks",
+      "text": "News or a quiet market can move prices fast, in either direction.",
+      "say": "News or a quiet market can move prices fast, in either direction.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 240.9,
+      "slot": 4.7,
+      "scene": "risks",
+      "text": "Nobody knows the next move. Not experts, not apps, not AI.",
+      "say": "Nobody knows the next move. Not experts, not apps, not AI.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 245.6,
+      "slot": 6,
+      "scene": "risks",
+      "text": "When things look unclear, you can always wait. Not trading is a valid choice.",
+      "say": "When things look unclear, you can always wait. Not trading is a valid choice.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 251.6,
+      "slot": 5.4,
+      "scene": "risks",
+      "text": "And remember: today's model was illustrative, not real market data.",
+      "say": "And remember: today's model was illustrative, not real market data.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 257.4,
+      "slot": 7,
+      "scene": "recap",
+      "text": "Let's recap. Prices move as buyers and sellers trade. The latest trade is the market price.",
+      "say": "Let's recap. Prices move as buyers and sellers trade. The latest trade is the market price.",
+      "note": ""
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 264.4,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "More demand tends to push price up. More supply tends to push it down.",
+      "say": "More demand tends to push price up. More supply tends to push it down.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 270,
+      "slot": 4.6,
+      "scene": "recap",
+      "text": "Liquidity and news shape how fast and how far it moves.",
+      "say": "Liquidity and news shape how fast and how far it moves.",
+      "note": ""
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 274.6,
+      "slot": 6,
+      "scene": "recap",
+      "text": "Check yourself: many sellers, few buyers. Which way does price tend to move?",
+      "say": "Check yourself: many sellers, few buyers. Which way does price tend to move?",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 280.6,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "Down, as sellers accept less. But nothing is guaranteed.",
+      "say": "Down, as sellers accept less. But nothing is guaranteed.",
+      "note": ""
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 286.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Great work! Next up: trading pairs, and what BTC/USDT really means.",
+      "say": "Great work! Next up: trading pairs, and what B-T-C U-S-D-T really means.",
+      "note": ""
+    }
+  ]
+}

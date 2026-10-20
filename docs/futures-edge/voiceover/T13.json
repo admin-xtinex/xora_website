@@ -1,0 +1,475 @@
+{
+  "id": "T13",
+  "title": "T13 Liquidation, Funding and Futures Risks",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson thirteen: liquidation, funding and futures risks. What can close a position for you.",
+      "say": "Lesson thirteen: liquidation, funding and futures risks. What can close a position for you.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 5,
+      "scene": "hook",
+      "text": "Imagine you open a 10x long. Then BTC falls, and you see this.",
+      "say": "Imagine you open a ten ex long. Then B-T-C falls, and you see this.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 13.4,
+      "slot": 5.3,
+      "scene": "hook",
+      "text": "Your position was closed by the exchange. You didn't press anything.",
+      "say": "Your position was closed by the exchange. You didn't press anything.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 18.7,
+      "slot": 7.3,
+      "scene": "hook",
+      "text": "That's called liquidation. Let's see how it happens, step by step.",
+      "say": "That's called liquidation. Let's see how it happens, step by step.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 26.4,
+      "slot": 5.7,
+      "scene": "buffer",
+      "text": "Start with your margin balance: your margin plus the open profit or loss.",
+      "say": "Start with your margin balance: your margin plus the open profit or loss.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 32.1,
+      "slot": 5.2,
+      "scene": "buffer",
+      "text": "A 10x long: 100 USDT of margin, 1,000 USDT notional, entry 60,000.",
+      "say": "A ten ex long: one hundred U-S-D-T of margin, one thousand U-S-D-T notional, entry sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 37.3,
+      "slot": 5.1,
+      "scene": "buffer",
+      "text": "BTC falls 1%: 90 left. Falls 3%: 70 left. Falls 5%: only 50 left.",
+      "say": "B-T-C falls one percent: ninety left. Falls three percent: seventy left. Falls five percent: only fifty left.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 42.4,
+      "slot": 5.6,
+      "scene": "buffer",
+      "text": "Each fall eats into the room left above the maintenance level.",
+      "say": "Each fall eats into the room left above the maintenance level.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 48.4,
+      "slot": 5.8,
+      "scene": "liquidation",
+      "text": "Liquidation is a forced closure. The exchange closes your position for you.",
+      "say": "Liquidation is a forced closure. The exchange closes your position for you.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 54.2,
+      "slot": 5.3,
+      "scene": "liquidation",
+      "text": "It happens when your margin balance falls to the maintenance level.",
+      "say": "It happens when your margin balance falls to the maintenance level.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 59.5,
+      "slot": 6.1,
+      "scene": "liquidation",
+      "text": "You don't choose the price or the moment. Most or all of the margin can be gone.",
+      "say": "You don't choose the price or the moment. Most or all of the margin can be gone.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 65.6,
+      "slot": 6.4,
+      "scene": "liquidation",
+      "text": "Like a rental firm taking the car back early. Each exchange has its own rules.",
+      "say": "Like a rental firm taking the car back early. Each exchange has its own rules.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 72.4,
+      "slot": 3.5,
+      "scene": "room",
+      "text": "Leverage changes how much room you have.",
+      "say": "Leverage changes how much room you have.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 75.9,
+      "slot": 4.8,
+      "scene": "room",
+      "text": "Same 1,000 USDT position. At 10x you put in 100. At 4x, 250.",
+      "say": "Same one thousand U-S-D-T position. At ten ex you put in one hundred. At four ex, two hundred fifty.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 80.7,
+      "slot": 6.5,
+      "scene": "room",
+      "text": "A 5% fall costs 50 USDT either way. At 10x, half your margin is gone. At 4x, a fifth.",
+      "say": "A five percent fall costs fifty U-S-D-T either way. At ten ex, half your margin is gone. At four ex, a fifth.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 87.2,
+      "slot": 5.8,
+      "scene": "room",
+      "text": "More room is not safety. A big enough move can reach any level.",
+      "say": "More room is not safety. A big enough move can reach any level.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 93.4,
+      "slot": 6.4,
+      "scene": "mark",
+      "text": "Exchanges usually check liquidation against the mark price, not only the last trade.",
+      "say": "Exchanges usually check liquidation against the mark price, not only the last trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 99.8,
+      "slot": 6.6,
+      "scene": "mark",
+      "text": "The mark price is a reference price the exchange works out, often from several markets.",
+      "say": "The mark price is a reference price the exchange works out, often from several markets.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 106.4,
+      "slot": 6.5,
+      "scene": "mark",
+      "text": "Here one odd trade spikes down. The last price jumps. The mark price moves much less.",
+      "say": "Here one odd trade spikes down. The last price jumps. The mark price moves much less.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 112.9,
+      "slot": 4.1,
+      "scene": "mark",
+      "text": "But in a real crash, it falls too.",
+      "say": "But in a real crash, it falls too.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 117.4,
+      "slot": 6.9,
+      "scene": "funding",
+      "text": "Now funding. Perpetual futures never expire, so they need a way to stay near the spot price.",
+      "say": "Now funding. Perpetual futures never expire, so they need a way to stay near the spot price.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 124.3,
+      "slot": 6.9,
+      "scene": "funding",
+      "text": "The funding rate sets a payment between longs and shorts, at set times, often every 8 hours.",
+      "say": "The funding rate sets a payment between longs and shorts, at set times, often every eight hours.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 131.2,
+      "slot": 5.1,
+      "scene": "funding",
+      "text": "Positive rate: longs pay shorts. Negative rate: shorts pay longs.",
+      "say": "Positive rate: longs pay shorts. Negative rate: shorts pay longs.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 136.3,
+      "slot": 4.7,
+      "scene": "funding",
+      "text": "Example: 1,000 USDT times 0.01% is 0.10 USDT each time.",
+      "say": "Example: one thousand U-S-D-T times zero point zero one percent is zero point one U-S-D-T each time.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 141.4,
+      "slot": 4.6,
+      "scene": "fundadd",
+      "text": "Funding adds up when you hold a position for a long time.",
+      "say": "Funding adds up when you hold a position for a long time.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 146,
+      "slot": 6.1,
+      "scene": "fundadd",
+      "text": "Three times a day for three days is nine payments: 0.90 USDT at 1,000 notional.",
+      "say": "Three times a day for three days is nine payments: zero point nine U-S-D-T at one thousand notional.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 152.1,
+      "slot": 5.5,
+      "scene": "fundadd",
+      "text": "At 10,000 notional, 9 USDT. Real rates change, and can be much higher.",
+      "say": "At ten thousand notional, nine U-S-D-T. Real rates change, and can be much higher.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 157.6,
+      "slot": 4.4,
+      "scene": "fundadd",
+      "text": "Funding comes out of your margin balance too.",
+      "say": "Funding comes out of your margin balance too.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 162.4,
+      "slot": 6.5,
+      "scene": "gap",
+      "text": "Gap risk. Sometimes price jumps from one level to another, with no trades in between.",
+      "say": "Gap risk. Sometimes price jumps from one level to another, with no trades in between.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 168.9,
+      "slot": 6.3,
+      "scene": "gap",
+      "text": "Your stop-loss is at 59,000. News hits. Price jumps from 59,600 straight to 58,300.",
+      "say": "Your stop-loss is at fifty-nine thousand. News hits. Price jumps from fifty-nine thousand six hundred straight to fifty-eight thousand three hundred.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 175.2,
+      "slot": 5.6,
+      "scene": "gap",
+      "text": "The stop triggers, but it fills near 58,300. A bigger loss than planned.",
+      "say": "The stop triggers, but it fills near fifty-eight thousand three hundred. A bigger loss than planned.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 180.8,
+      "slot": 4.2,
+      "scene": "gap",
+      "text": "A gap can bring liquidation just as suddenly.",
+      "say": "A gap can bring liquidation just as suddenly.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 185.4,
+      "slot": 5.4,
+      "scene": "stop",
+      "text": "A common mistake: thinking a stop-loss protects you from liquidation.",
+      "say": "A common mistake: thinking a stop-loss protects you from liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 190.8,
+      "slot": 5.5,
+      "scene": "stop",
+      "text": "With high leverage, the liquidation zone can sit closer than your stop.",
+      "say": "With high leverage, the liquidation zone can sit closer than your stop.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 196.3,
+      "slot": 5.1,
+      "scene": "stop",
+      "text": "Then the position is liquidated before the stop is ever reached.",
+      "say": "Then the position is liquidated before the stop is ever reached.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 201.4,
+      "slot": 6.6,
+      "scene": "stop",
+      "text": "And in a gap, a stop can fill late. A stop-loss is not liquidation insurance.",
+      "say": "And in a gap, a stop can fill late. A stop-loss is not liquidation insurance.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 208.4,
+      "slot": 6.5,
+      "scene": "try",
+      "text": "Your turn. BTC is swinging hard before big news. Your buffer is small. You're unsure.",
+      "say": "Your turn. B-T-C is swinging hard before big news. Your buffer is small. You're unsure.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 214.9,
+      "slot": 5.3,
+      "scene": "try",
+      "text": "What's the sensible choice: A, B or C? Pause if you need more time.",
+      "say": "What's the sensible choice: A, B or C? Pause if you need more time.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 220.2,
+      "slot": 5.7,
+      "scene": "try",
+      "text": "C. Reduce your exposure or close, then wait. No trade is a real decision.",
+      "say": "C. Reduce your exposure or close, then wait. No trade is a real decision.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 225.9,
+      "slot": 6.1,
+      "scene": "try",
+      "text": "Adding leverage to win it back makes the next move hit harder.",
+      "say": "Adding leverage to win it back makes the next move hit harder.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 232.4,
+      "slot": 4.1,
+      "scene": "risks",
+      "text": "Before you go further, know the risks of futures.",
+      "say": "Before you go further, know the risks of futures.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 236.5,
+      "slot": 6,
+      "scene": "risks",
+      "text": "Liquidation can take most or all of your margin, at a price you didn't choose.",
+      "say": "Liquidation can take most or all of your margin, at a price you didn't choose.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 242.5,
+      "slot": 5.4,
+      "scene": "risks",
+      "text": "Funding is paid or charged every period, and the rate keeps changing.",
+      "say": "Funding is paid or charged every period, and the rate keeps changing.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 247.9,
+      "slot": 4.3,
+      "scene": "risks",
+      "text": "Gaps and slippage can make exits worse than planned.",
+      "say": "Gaps and slippage can make exits worse than planned.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 252.2,
+      "slot": 6.8,
+      "scene": "risks",
+      "text": "No strategy is guaranteed safe. When unsure, reduce exposure or choose no trade.",
+      "say": "No strategy is guaranteed safe. When unsure, reduce exposure or choose no trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 259.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 261,
+      "slot": 6.4,
+      "scene": "recap",
+      "text": "Liquidation is a forced closure when your margin balance hits the maintenance level.",
+      "say": "Liquidation is a forced closure when your margin balance hits the maintenance level.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 267.4,
+      "slot": 5.8,
+      "scene": "recap",
+      "text": "Funding is a regular payment between longs and shorts on perpetual futures.",
+      "say": "Funding is a regular payment between longs and shorts on perpetual futures.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 273.2,
+      "slot": 5.3,
+      "scene": "recap",
+      "text": "A stop-loss is not liquidation insurance. Waiting is always allowed.",
+      "say": "A stop-loss is not liquidation insurance. Waiting is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 278.5,
+      "slot": 5.2,
+      "scene": "recap",
+      "text": "Check yourself: can a stop-loss guarantee you won't be liquidated?",
+      "say": "Check yourself: can a stop-loss guarantee you won't be liquidated?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 283.7,
+      "slot": 4.3,
+      "scene": "recap",
+      "text": "No. Stops can slip, and liquidation can come first.",
+      "say": "No. Stops can slip, and liquidation can come first.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 288.8,
+      "slot": 9.2,
+      "scene": "next",
+      "text": "Phase 3 complete! Next up: Checkpoint A, a review of lessons T01 to T13.",
+      "say": "Phase three complete! Next up: Checkpoint A, a review of lessons T one to T thirteen.",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "id": "T21",
+  "title": "T21 Confirmation, False Signals and NO_TRADE",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson twenty-one: confirmation, false signals and NO_TRADE. Why waiting is a decision too.",
+      "say": "Lesson twenty-one: confirmation, false signals and no trade. Why waiting is a decision too.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.8,
+      "scene": "hook",
+      "text": "Here's a fictional BTC chart. Twice, price climbed to about 60,000 and turned back down.",
+      "say": "Here's a fictional B-T-C chart. Twice, price climbed to about sixty thousand and turned back down.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 15.2,
+      "slot": 6.6,
+      "scene": "hook",
+      "text": "Now it's back near that zone, at 59,970. Tempting to think: this time it breaks out!",
+      "say": "Now it's back near that zone, at fifty-nine thousand nine hundred seventy. Tempting to think: this time it breaks out!",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 21.8,
+      "slot": 7,
+      "scene": "hook",
+      "text": "But from this same past, price could break out to 60,350, drift sideways, or fall to 59,650.",
+      "say": "But from this same past, price could break out to sixty thousand three hundred fifty, drift sideways, or fall to fifty-nine thousand six hundred fifty.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 28.8,
+      "slot": 4.2,
+      "scene": "hook",
+      "text": "Nobody knows in advance which one will happen.",
+      "say": "Nobody knows in advance which one will happen.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 33.4,
+      "slot": 7,
+      "scene": "confirm",
+      "text": "Confirmation is extra evidence, after a signal, that supports an idea. You met it in T17.",
+      "say": "Confirmation is extra evidence, after a signal, that supports an idea. You met it in T seventeen.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 40.4,
+      "slot": 6.2,
+      "scene": "confirm",
+      "text": "For a breakout: a candle closes beyond the zone, and the next candles hold there.",
+      "say": "For a breakout: a candle closes beyond the zone, and the next candles hold there.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 46.6,
+      "slot": 5.6,
+      "scene": "confirm",
+      "text": "Think of dark clouds. They make rain more likely, but don't promise it.",
+      "say": "Think of dark clouds. They make rain more likely, but don't promise it.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 52.2,
+      "slot": 6.8,
+      "scene": "confirm",
+      "text": "Confirmation can raise or lower the odds. It cannot tell you what the next candle will do.",
+      "say": "Confirmation can raise or lower the odds. It cannot tell you what the next candle will do.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 59.4,
+      "slot": 7.2,
+      "scene": "weak",
+      "text": "Not all evidence is equal. Weak evidence is small or easy to fake, like one wick above a level.",
+      "say": "Not all evidence is equal. Weak evidence is small or easy to fake, like one wick above a level.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 66.6,
+      "slot": 5.6,
+      "scene": "weak",
+      "text": "Conflicting evidence points in different directions at the same time.",
+      "say": "Conflicting evidence points in different directions at the same time.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 72.2,
+      "slot": 6,
+      "scene": "weak",
+      "text": "Here, the trend leans up, but price is under resistance and volume is fading.",
+      "say": "Here, the trend leans up, but price is under resistance and volume is fading.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 78.2,
+      "slot": 6.8,
+      "scene": "weak",
+      "text": "When evidence is weak or mixed, the scale doesn't tip. That's a reason for NO_TRADE.",
+      "say": "When evidence is weak or mixed, the scale doesn't tip. That's a reason for no trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 85.4,
+      "slot": 7,
+      "scene": "fakeout",
+      "text": "A false signal looks real but doesn't follow through. A false breakout is the classic one.",
+      "say": "A false signal looks real but doesn't follow through. A false breakout is the classic one.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 92.4,
+      "slot": 7.2,
+      "scene": "fakeout",
+      "text": "Watch this candle. It pokes up to 60,090, above the zone, then closes at 59,960, back below.",
+      "say": "Watch this candle. It pokes up to sixty thousand ninety, above the zone, then closes at fifty-nine thousand nine hundred sixty, back below.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 99.6,
+      "slot": 7.2,
+      "scene": "fakeout",
+      "text": "Say someone bought 0.01 BTC at 60,060 on that poke. At the close: −1.00 USDT, before fees.",
+      "say": "Say someone bought zero point zero one B-T-C at sixty thousand sixty on that poke. At the close: minus one U-S-D-T, before fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 106.8,
+      "slot": 4.2,
+      "scene": "fakeout",
+      "text": "A wick above a level is not a close above it.",
+      "say": "A wick above a level is not a close above it.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 111.4,
+      "slot": 6.2,
+      "scene": "fade",
+      "text": "Momentum is how strongly price is moving. A fade is when each push gets smaller.",
+      "say": "Momentum is how strongly price is moving. A fade is when each push gets smaller.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 117.6,
+      "slot": 6,
+      "scene": "fade",
+      "text": "Like a ball rolled uphill: it keeps going for a while, but slower and slower.",
+      "say": "Like a ball rolled uphill: it keeps going for a while, but slower and slower.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 123.6,
+      "slot": 5.6,
+      "scene": "fade",
+      "text": "Here, four green candles gain 80, then 50, then 25, then only 10 USDT.",
+      "say": "Here, four green candles gain eighty, then fifty, then twenty-five, then only ten U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 129.2,
+      "slot": 5.8,
+      "scene": "fade",
+      "text": "A fade is a warning sign, not proof. Price can fade, then push on again.",
+      "say": "A fade is a warning sign, not proof. Price can fade, then push on again.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 135.4,
+      "slot": 6.6,
+      "scene": "hindsight",
+      "text": "Hindsight bias: after you see what happened, it feels like it was obvious all along.",
+      "say": "Hindsight bias: after you see what happened, it feels like it was obvious all along.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 142,
+      "slot": 6.2,
+      "scene": "hindsight",
+      "text": "Looking back at this chart, the breakout seems certain. Of course it went up!",
+      "say": "Looking back at this chart, the breakout seems certain. Of course it went up!",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 148.2,
+      "slot": 5.6,
+      "scene": "hindsight",
+      "text": "But at decision time, the right side was hidden. You only had this.",
+      "say": "But at decision time, the right side was hidden. You only had this.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 153.8,
+      "slot": 7.2,
+      "scene": "hindsight",
+      "text": "Old charts look clearer than live ones. Judge a decision by what was known at the time.",
+      "say": "Old charts look clearer than live ones. Judge a decision by what was known at the time.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 161.4,
+      "slot": 6.6,
+      "scene": "notrade",
+      "text": "NO_TRADE means you looked, and decided not to open a position. It's an active choice.",
+      "say": "No trade means you looked, and decided not to open a position. It's an active choice.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 168,
+      "slot": 6.6,
+      "scene": "notrade",
+      "text": "Like a batter leaving a ball outside off stump. You don't have to play every ball.",
+      "say": "Like a batter leaving a ball outside off stump. You don't have to play every ball.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 174.6,
+      "slot": 7,
+      "scene": "notrade",
+      "text": "Write down what you'd need to see. For example: a 5-minute close above 60,050, then a hold.",
+      "say": "Write down what you'd need to see. For example: a five-minute close above sixty thousand fifty, then a hold.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 181.6,
+      "slot": 7.4,
+      "scene": "notrade",
+      "text": "Until then: NO_TRADE. No fees, no new risk. At most, you miss a move.",
+      "say": "Until then: no trade. No fees, no new risk. At most, you miss a move.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 189.4,
+      "slot": 5.4,
+      "scene": "mistake",
+      "text": "A common mistake: judging a decision only by what happened next.",
+      "say": "A common mistake: judging a decision only by what happened next.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 194.8,
+      "slot": 6.4,
+      "scene": "mistake",
+      "text": "You waited, then price went up. Was waiting wrong? Not if the evidence was weak.",
+      "say": "You waited, then price went up. Was waiting wrong? Not if the evidence was weak.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 201.2,
+      "slot": 5.4,
+      "scene": "mistake",
+      "text": "A good decision can have a bad outcome, and a bad one can get lucky.",
+      "say": "A good decision can have a bad outcome, and a bad one can get lucky.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 206.6,
+      "slot": 7.4,
+      "scene": "mistake",
+      "text": "So review your reasons, not just the result. Was the evidence clear, or were you guessing?",
+      "say": "So review your reasons, not just the result. Was the evidence clear, or were you guessing?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 214.4,
+      "slot": 6.2,
+      "scene": "try",
+      "text": "Your turn. Same zone, 60,000 to 60,050. Let's reveal new candles one at a time.",
+      "say": "Your turn. Same zone, sixty thousand to sixty thousand fifty. Let's reveal new candles one at a time.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 220.6,
+      "slot": 7.2,
+      "scene": "try",
+      "text": "Candle one wicks to 60,070 but closes at 60,030, inside the zone. Two small candles follow.",
+      "say": "Candle one wicks to sixty thousand seventy but closes at sixty thousand thirty, inside the zone. Two small candles follow.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 227.8,
+      "slot": 7.2,
+      "scene": "try",
+      "text": "Volume is falling. What's sensible: A, buy, B, sell, or C, wait? Pause if you need more time.",
+      "say": "Volume is falling. What's sensible: A, buy, B, sell, or C, wait? Pause if you need more time.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 235,
+      "slot": 6.6,
+      "scene": "try",
+      "text": "C, wait. No candle closed above the zone, and the pushes are fading. Weak evidence.",
+      "say": "C, wait. No candle closed above the zone, and the pushes are fading. Weak evidence.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 241.6,
+      "slot": 6.4,
+      "scene": "try",
+      "text": "A is tempting, but a wick is not a breakout. And B? Nothing confirms a drop either.",
+      "say": "A is tempting, but a wick is not a breakout. And B? Nothing confirms a drop either.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 248.4,
+      "slot": 4.2,
+      "scene": "risks",
+      "text": "Before you rely on confirmation, know its limits.",
+      "say": "Before you rely on confirmation, know its limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 252.6,
+      "slot": 6.8,
+      "scene": "risks",
+      "text": "Confirmed signals still fail. And waiting for confirmation often means a worse entry.",
+      "say": "Confirmed signals still fail. And waiting for confirmation often means a worse entry.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 259.4,
+      "slot": 6.6,
+      "scene": "risks",
+      "text": "False breakouts can trigger stops, and stops can slip. Leverage makes each loss bigger.",
+      "say": "False breakouts can trigger stops, and stops can slip. Leverage makes each loss bigger.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 266,
+      "slot": 6,
+      "scene": "risks",
+      "text": "These are fictional examples, not advice. NO_TRADE is always allowed.",
+      "say": "These are fictional examples, not advice. No trade is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 272.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 274,
+      "slot": 6.8,
+      "scene": "recap",
+      "text": "One: confirmation is evidence, not certainty. The same past can lead to different futures.",
+      "say": "One: confirmation is evidence, not certainty. The same past can lead to different futures.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 280.8,
+      "slot": 7,
+      "scene": "recap",
+      "text": "Two: weak or conflicting evidence, a false breakout or a fading push are reasons for care.",
+      "say": "Two: weak or conflicting evidence, a false breakout or a fading push are reasons for care.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 287.8,
+      "slot": 6.4,
+      "scene": "recap",
+      "text": "Three: NO_TRADE is a real decision. Judge it by your reasons, not the result.",
+      "say": "Three: no trade is a real decision. Judge it by your reasons, not the result.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 294.2,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "Check yourself: you waited, then price rose. Was waiting a mistake?",
+      "say": "Check yourself: you waited, then price rose. Was waiting a mistake?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 299.6,
+      "slot": 4.4,
+      "scene": "recap",
+      "text": "Not if the evidence was weak. Judge the reasons.",
+      "say": "Not if the evidence was weak. Judge the reasons.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 304.4,
+      "slot": 9.6,
+      "scene": "next",
+      "text": "Next up: T22, position sizing and risk budget. Size a position from the risk you accept.",
+      "say": "Next up: T twenty-two, position sizing and risk budget. Size a position from the risk you accept.",
+      "note": "firmer, slower"
+    }
+  ]
+}

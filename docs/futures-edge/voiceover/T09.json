@@ -1,0 +1,448 @@
+{
+  "id": "T09",
+  "title": "T09 Fees, Spread and Slippage",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 3.6,
+      "scene": "title",
+      "text": "Lesson nine: fees, spread and slippage.",
+      "say": "Lesson nine: fees, spread and slippage.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 4.2,
+      "slot": 4.8,
+      "scene": "title",
+      "text": "The small costs that can turn a win into a loss.",
+      "say": "The small costs that can turn a win into a loss.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 9.4,
+      "slot": 6.3,
+      "scene": "hook",
+      "text": "Here's a tiny trade: 0.01 BTC. The price on the chart goes from 60,000 to 60,080.",
+      "say": "Here's a tiny trade: zero point zero one B-T-C. The price on the chart goes from sixty thousand to sixty thousand eighty.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 15.7,
+      "slot": 5,
+      "scene": "hook",
+      "text": "On the chart, that looks like a gain of 0.80 USDT. Easy money?",
+      "say": "On the chart, that looks like a gain of zero point eight U-S-D-T. Easy money?",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 20.7,
+      "slot": 5.3,
+      "scene": "hook",
+      "text": "Not so fast. Three costs are waiting: fees, spread and slippage.",
+      "say": "Not so fast. Three costs are waiting: fees, spread and slippage.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 26.4,
+      "slot": 7,
+      "scene": "fee",
+      "text": "A trading fee is charged each time an order fills, as a percentage of the position value.",
+      "say": "A trading fee is charged each time an order fills, as a percentage of the position value.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 33.4,
+      "slot": 6.7,
+      "scene": "fee",
+      "text": "Like a booking fee on a ticket: you pay it every time, whether things go well or not.",
+      "say": "Like a booking fee on a ticket: you pay it every time, whether things go well or not.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 40.1,
+      "slot": 7.9,
+      "scene": "fee",
+      "text": "0.01 BTC at 60,000 is 600 USDT. At 0.05%, the fee is 0.30 USDT, on entry and again on exit.",
+      "say": "Zero point zero one B-T-C at sixty thousand is six hundred U-S-D-T. At zero point zero five percent, the fee is zero point three U-S-D-T, on entry and again on exit.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 48.4,
+      "slot": 7.6,
+      "scene": "maker",
+      "text": "Many exchanges charge two rates. A taker order fills at once against the book, like a market order.",
+      "say": "Many exchanges charge two rates. A taker order fills at once against the book, like a market order.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 56,
+      "slot": 7.1,
+      "scene": "maker",
+      "text": "A maker order waits in the book, like a limit order, and adds to it. Makers often pay less.",
+      "say": "A maker order waits in the book, like a limit order, and adds to it. Makers often pay less.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 63.1,
+      "slot": 6.9,
+      "scene": "maker",
+      "text": "In this example: maker 0.02%, taker 0.05%. Real rates vary by exchange and account.",
+      "say": "In this example: maker zero point zero two percent, taker zero point zero five percent. Real rates vary by exchange and account.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 70.4,
+      "slot": 4.9,
+      "scene": "spread",
+      "text": "The spread is the gap between the best ask and the best bid.",
+      "say": "The spread is the gap between the best ask and the best bid.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 75.3,
+      "slot": 6.5,
+      "scene": "spread",
+      "text": "Like a money changer: one price to buy from them, a lower price to sell back.",
+      "say": "Like a money changer: one price to buy from them, a lower price to sell back.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 81.8,
+      "slot": 8.2,
+      "scene": "spread",
+      "text": "Ask 60,005, bid 59,995: spread 10. Buy and sell at once, and you lose 0.10 USDT on 0.01 BTC.",
+      "say": "Ask sixty thousand five, bid fifty-nine thousand nine hundred ninety-five: spread ten. Buy and sell at once, and you lose zero point one U-S-D-T on zero point zero one B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 90.4,
+      "slot": 5.4,
+      "scene": "slip",
+      "text": "Slippage, from T07: the fill is worse than the price you expected.",
+      "say": "Slippage, from T seven: the fill is worse than the price you expected.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 95.8,
+      "slot": 6.3,
+      "scene": "slip",
+      "text": "Say each market order slips 10 USDT per BTC, on the way in and on the way out.",
+      "say": "Say each market order slips ten U-S-D-T per B-T-C, on the way in and on the way out.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 102.1,
+      "slot": 4.9,
+      "scene": "slip",
+      "text": "That is 20 per BTC, or 0.20 USDT on 0.01 BTC.",
+      "say": "That is twenty per B-T-C, or zero point two U-S-D-T on zero point zero one B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 107.4,
+      "slot": 7.1,
+      "scene": "funding",
+      "text": "Futures have one more cost: funding. It's a regular payment between long and short traders.",
+      "say": "Futures have one more cost: funding. It's a regular payment between long and short traders.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 114.5,
+      "slot": 6.8,
+      "scene": "funding",
+      "text": "It's separate from trading fees. You may pay it, or receive it, depending on the rate.",
+      "say": "It's separate from trading fees. You may pay it, or receive it, depending on the rate.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 121.3,
+      "slot": 6.7,
+      "scene": "funding",
+      "text": "Example: a 0.01% rate on 600 USDT is 0.06 USDT, each funding time. T13 covers it.",
+      "say": "Example: a zero point zero one percent rate on six hundred U-S-D-T is zero point zero six U-S-D-T, each funding time. T thirteen covers it.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 128.4,
+      "slot": 3.8,
+      "scene": "add",
+      "text": "Now let's add it all up for our tiny trade.",
+      "say": "Now let's add it all up for our tiny trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 132.2,
+      "slot": 5.2,
+      "scene": "add",
+      "text": "Chart gain: plus 0.80. Spread: minus 0.10. Slippage: minus 0.20.",
+      "say": "Chart gain: plus zero point eight. Spread: minus zero point one. Slippage: minus zero point two.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 137.4,
+      "slot": 3.7,
+      "scene": "add",
+      "text": "Fees on entry and exit: minus 0.60 USDT.",
+      "say": "Fees on entry and exit: minus zero point six U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 141.1,
+      "slot": 5.2,
+      "scene": "add",
+      "text": "Net result: minus 0.10 USDT. A gross winner became a net loser.",
+      "say": "Net result: minus zero point one U-S-D-T. A gross winner became a net loser.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 146.3,
+      "slot": 6.7,
+      "scene": "add",
+      "text": "Funding is left out here, because this trade was closed within minutes.",
+      "say": "Funding is left out here, because this trade was closed within minutes.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 153.4,
+      "slot": 5.8,
+      "scene": "breakeven",
+      "text": "The break-even move is how far price must move just to cover your costs.",
+      "say": "The break-even move is how far price must move just to cover your costs.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 159.2,
+      "slot": 5.4,
+      "scene": "breakeven",
+      "text": "Fees alone: 2 × 0.05% = 0.10%. On 60,000, that's 60 USDT per BTC.",
+      "say": "Fees alone: two times zero point zero five percent equals zero point one percent. On sixty thousand, that's sixty U-S-D-T per B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 164.6,
+      "slot": 8.4,
+      "scene": "breakeven",
+      "text": "Add spread and slippage, and it's about 90 USDT per BTC, or 0.15%, before you make anything.",
+      "say": "Add spread and slippage, and it's about ninety U-S-D-T per B-T-C, or zero point one five percent, before you make anything.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 173.4,
+      "slot": 4.8,
+      "scene": "mistake",
+      "text": "A common mistake: fees look tiny, so people ignore them.",
+      "say": "A common mistake: fees look tiny, so people ignore them.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 178.2,
+      "slot": 6,
+      "scene": "mistake",
+      "text": "But 20 small trades at 0.60 USDT of fees each cost 12 USDT, win or lose.",
+      "say": "But twenty small trades at zero point six U-S-D-T of fees each cost twelve U-S-D-T, win or lose.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 184.2,
+      "slot": 6.8,
+      "scene": "mistake",
+      "text": "Small, frequent trades feel the costs most. Count them before you trade.",
+      "say": "Small, frequent trades feel the costs most. Count them before you trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 191.4,
+      "slot": 6.6,
+      "scene": "try",
+      "text": "Your turn. Buy 0.01 BTC at 60,000, sell at 60,040. Fees: 0.30 USDT on each side.",
+      "say": "Your turn. Buy zero point zero one B-T-C at sixty thousand, sell at sixty thousand forty. Fees: zero point three U-S-D-T on each side.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 198,
+      "slot": 7.1,
+      "scene": "try",
+      "text": "Ignore spread and slippage. What is the gross result, and the net? Pause if you need to.",
+      "say": "Ignore spread and slippage. What is the gross result, and the net? Pause if you need to.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 205.1,
+      "slot": 5.7,
+      "scene": "try",
+      "text": "Gross: 40 × 0.01 = plus 0.40 USDT. Fees: 0.60. Net: minus 0.20 USDT.",
+      "say": "Gross: forty times zero point zero one equals plus zero point four U-S-D-T. Fees: zero point six. Net: minus zero point two U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 210.8,
+      "slot": 4.2,
+      "scene": "try",
+      "text": "A winner on the chart, a loser in your account.",
+      "say": "A winner on the chart, a loser in your account.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 215.4,
+      "slot": 3.7,
+      "scene": "check",
+      "text": "Before any trade, check your real costs.",
+      "say": "Before any trade, check your real costs.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 219.1,
+      "slot": 6.7,
+      "scene": "check",
+      "text": "Your actual fee rate and account tier. The spread right now. How deep the book is.",
+      "say": "Your actual fee rate and account tier. The spread right now. How deep the book is.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 225.8,
+      "slot": 6.7,
+      "scene": "check",
+      "text": "The funding rate and time. And does the move you expect beat the break-even move?",
+      "say": "The funding rate and time. And does the move you expect beat the break-even move?",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 232.5,
+      "slot": 4.5,
+      "scene": "check",
+      "text": "If not, NO_TRADE is the sensible choice.",
+      "say": "If not, no trade is the sensible choice.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 237.4,
+      "slot": 4.7,
+      "scene": "risks",
+      "text": "This lesson used a simple model, with example numbers.",
+      "say": "This lesson used a simple model, with example numbers.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 242.1,
+      "slot": 6.4,
+      "scene": "risks",
+      "text": "Real fees depend on your exchange and account tier. Check them before you act.",
+      "say": "Real fees depend on your exchange and account tier. Check them before you act.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 248.5,
+      "slot": 6.2,
+      "scene": "risks",
+      "text": "Fees are charged on the full position value, not just the money you put in.",
+      "say": "Fees are charged on the full position value, not just the money you put in.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 254.7,
+      "slot": 4.3,
+      "scene": "risks",
+      "text": "And slippage grows in fast markets.",
+      "say": "And slippage grows in fast markets.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 259.4,
+      "slot": 1.8,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 261.2,
+      "slot": 5.7,
+      "scene": "recap",
+      "text": "Fees are charged on entry and exit, as a percentage of position value.",
+      "say": "Fees are charged on entry and exit, as a percentage of position value.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 266.9,
+      "slot": 6.7,
+      "scene": "recap",
+      "text": "Spread and slippage quietly worsen your prices. Funding is a separate futures cost.",
+      "say": "Spread and slippage quietly worsen your prices. Funding is a separate futures cost.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 273.6,
+      "slot": 6.9,
+      "scene": "recap",
+      "text": "Check yourself: the move you expect is smaller than the break-even move. What do you do?",
+      "say": "Check yourself: the move you expect is smaller than the break-even move. What do you do?",
+      "note": ""
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 280.5,
+      "slot": 4.5,
+      "scene": "recap",
+      "text": "Don't trade. Choose WAIT, or NO_TRADE.",
+      "say": "Don't trade. Choose wait, or no trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 285.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Well done! That completes Phase 2. Next up, T10: a tour of an exchange platform.",
+      "say": "Well done! That completes Phase two. Next up, T ten: a tour of an exchange platform.",
+      "note": ""
+    }
+  ]
+}

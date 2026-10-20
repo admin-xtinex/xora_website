@@ -1,0 +1,520 @@
+{
+  "id": "T18",
+  "title": "T18 Volume, Volatility and Range",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 4.4,
+      "scene": "title",
+      "text": "Lesson eighteen: volume, volatility and range.",
+      "say": "Lesson eighteen: volume, volatility and range.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 5,
+      "slot": 5,
+      "scene": "title",
+      "text": "Three ways to describe how busy and how jumpy a market is.",
+      "say": "Three ways to describe how busy and how jumpy a market is.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 10.6,
+      "slot": 4.8,
+      "scene": "hook",
+      "text": "In lesson seventeen, you met zones, breakouts and fakeouts.",
+      "say": "In lesson seventeen, you met zones, breakouts and fakeouts.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 15.4,
+      "slot": 5.6,
+      "scene": "hook",
+      "text": "Here are two fictional charts. Both start at 60,000 and end at 60,100.",
+      "say": "Here are two fictional charts. Both start at sixty thousand and end at sixty thousand one hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 21,
+      "slot": 5,
+      "scene": "hook",
+      "text": "Same change in price. A very different ride. Let's measure it.",
+      "say": "Same change in price. A very different ride. Let's measure it.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 26.6,
+      "slot": 4.2,
+      "scene": "volume",
+      "text": "Volume is how much was traded in a period of time.",
+      "say": "Volume is how much was traded in a period of time.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 30.8,
+      "slot": 4.8,
+      "scene": "volume",
+      "text": "Think of a shop counting how many items it sold each minute.",
+      "say": "Think of a shop counting how many items it sold each minute.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 35.6,
+      "slot": 5.2,
+      "scene": "volume",
+      "text": "In this fictional minute, trades of 2, 5, 3 and 2 BTC go through.",
+      "say": "In this fictional minute, trades of two, five, three and two B-T-C go through.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 40.8,
+      "slot": 4.4,
+      "scene": "volume",
+      "text": "Add them up: 12 BTC. That is this candle's volume.",
+      "say": "Add them up: twelve B-T-C. That is this candle's volume.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 45.2,
+      "slot": 4.8,
+      "scene": "volume",
+      "text": "At 60,000 USDT each, that's about 720,000 USDT traded.",
+      "say": "At sixty thousand U-S-D-T each, that's about seven hundred twenty thousand U-S-D-T traded.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 50.6,
+      "slot": 4.5,
+      "scene": "bars",
+      "text": "On most charts, volume shows as bars under the candles.",
+      "say": "On most charts, volume shows as bars under the candles.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 55.1,
+      "slot": 5.1,
+      "scene": "bars",
+      "text": "Each bar sits under its own candle, and covers the same minute.",
+      "say": "Each bar sits under its own candle, and covers the same minute.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 60.2,
+      "slot": 5,
+      "scene": "bars",
+      "text": "A short bar means a quiet minute. A tall bar means a busy one.",
+      "say": "A short bar means a quiet minute. A tall bar means a busy one.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 65.2,
+      "slot": 6.8,
+      "scene": "bars",
+      "text": "Here, the busiest minutes came with big moves. Often, not always.",
+      "say": "Here, the busiest minutes came with big moves. Often, not always.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 72.6,
+      "slot": 4.2,
+      "scene": "range",
+      "text": "Range is the distance between the high and the low.",
+      "say": "Range is the distance between the high and the low.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 76.8,
+      "slot": 4.7,
+      "scene": "range",
+      "text": "Like the gap between the warmest and coldest hour of a day.",
+      "say": "Like the gap between the warmest and coldest hour of a day.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 81.5,
+      "slot": 5.3,
+      "scene": "range",
+      "text": "This candle's high is 60,300 and its low is 60,000. Range: 300 USDT.",
+      "say": "This candle's high is sixty thousand three hundred and its low is sixty thousand. Range: three hundred U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 86.8,
+      "slot": 7.2,
+      "scene": "range",
+      "text": "As a percent: 300 ÷ 60,000 × 100 = 0.5%. We divide by the low.",
+      "say": "As a percent: three hundred divided by sixty thousand times one hundred equals zero point five percent. We divide by the low.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 94.6,
+      "slot": 4.6,
+      "scene": "volatility",
+      "text": "Volatility is how much, and how fast, price moves around.",
+      "say": "Volatility is how much, and how fast, price moves around.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 99.2,
+      "slot": 4.8,
+      "scene": "volatility",
+      "text": "Like a calm lake versus a choppy sea.",
+      "say": "Like a calm lake versus a choppy sea.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 104,
+      "slot": 4.9,
+      "scene": "volatility",
+      "text": "On the left, four quiet candles. Their ranges average 40 USDT.",
+      "say": "On the left, four quiet candles. Their ranges average forty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 108.9,
+      "slot": 5.2,
+      "scene": "volatility",
+      "text": "On the right, four volatile candles. Ranges average 250 USDT.",
+      "say": "On the right, four volatile candles. Ranges average two hundred fifty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 114.1,
+      "slot": 3.9,
+      "scene": "volatility",
+      "text": "More volatility means bigger swings, both ways.",
+      "say": "More volatility means bigger swings, both ways.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 118.6,
+      "slot": 5.5,
+      "scene": "lookback",
+      "text": "Traders often check the previous high and low of the last few minutes.",
+      "say": "Traders often check the previous high and low of the last few minutes.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 124.1,
+      "slot": 4.9,
+      "scene": "lookback",
+      "text": "This box is a lookback window: the last 10 one-minute candles.",
+      "say": "This box is a lookback window: the last ten one-minute candles.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 129,
+      "slot": 5.1,
+      "scene": "lookback",
+      "text": "Highest high 60,300. Lowest low 60,000. Range 300 USDT, or 0.5%.",
+      "say": "Highest high sixty thousand three hundred. Lowest low sixty thousand. Range three hundred U-S-D-T, or zero point five percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 134.1,
+      "slot": 4.9,
+      "scene": "lookback",
+      "text": "Now stretch it to 15 minutes. An older high, 60,600, joins in.",
+      "say": "Now stretch it to fifteen minutes. An older high, sixty thousand six hundred, joins in.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 139,
+      "slot": 5,
+      "scene": "lookback",
+      "text": "Range doubles: 600 USDT, 1%. Your window changes the answer.",
+      "say": "Range doubles: six hundred U-S-D-T, one percent. Your window changes the answer.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 144.6,
+      "slot": 4,
+      "scene": "compare",
+      "text": "Let's compare two fictional 15-minute windows.",
+      "say": "Let's compare two fictional fifteen-minute windows.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 148.6,
+      "slot": 4.2,
+      "scene": "compare",
+      "text": "Window A: range 150 USDT, 0.25%, and low volume.",
+      "say": "Window A: range one hundred fifty U-S-D-T, zero point two five percent, and low volume.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 152.8,
+      "slot": 4.1,
+      "scene": "compare",
+      "text": "Window B: range 900 USDT, 1.5%, and high volume.",
+      "say": "Window B: range nine hundred U-S-D-T, one point five percent, and high volume.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 156.9,
+      "slot": 6.1,
+      "scene": "compare",
+      "text": "In A, round-trip fees of 0.10%, 60 USDT per BTC, eat a big part of the range.",
+      "say": "In A, round-trip fees of zero point one percent, sixty U-S-D-T per B-T-C, eat a big part of the range.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 163,
+      "slot": 5,
+      "scene": "compare",
+      "text": "In B, moves are bigger, but so are the swings against you.",
+      "say": "In B, moves are bigger, but so are the swings against you.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 168.6,
+      "slot": 5.4,
+      "scene": "liquidity",
+      "text": "Volume also hints at liquidity: how many orders wait near the price.",
+      "say": "Volume also hints at liquidity: how many orders wait near the price.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 174,
+      "slot": 4,
+      "scene": "liquidity",
+      "text": "Busy book: a 2 BTC market buy fills at 60,000.",
+      "say": "Busy book: a two B-T-C market buy fills at sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 178,
+      "slot": 4.4,
+      "scene": "liquidity",
+      "text": "Thin book: 1 BTC fills at 60,000, the other at 60,100.",
+      "say": "Thin book: one B-T-C fills at sixty thousand, the other at sixty thousand one hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 182.4,
+      "slot": 4.5,
+      "scene": "liquidity",
+      "text": "Average 60,050. That's 50 USDT per BTC worse: slippage.",
+      "say": "Average sixty thousand fifty. That's fifty U-S-D-T per B-T-C worse: slippage.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 186.9,
+      "slot": 3.1,
+      "scene": "liquidity",
+      "text": "Quiet times often mean thin books.",
+      "say": "Quiet times often mean thin books.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 190.6,
+      "slot": 5.2,
+      "scene": "mistake",
+      "text": "A common mistake: a huge volume bar means strong buyers. Go long!",
+      "say": "A common mistake: a huge volume bar means strong buyers. Go long!",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 195.8,
+      "slot": 5.7,
+      "scene": "mistake",
+      "text": "But every trade has a buyer and a seller. 40 BTC bought means 40 BTC sold.",
+      "say": "But every trade has a buyer and a seller. Forty B-T-C bought means forty B-T-C sold.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 201.5,
+      "slot": 4.1,
+      "scene": "mistake",
+      "text": "Volume shows how busy it was, not who wins next.",
+      "say": "Volume shows how busy it was, not who wins next.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 205.6,
+      "slot": 4.4,
+      "scene": "mistake",
+      "text": "Read it with candles and zones. WAIT is still allowed.",
+      "say": "Read it with candles and zones. Wait is still allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 210.6,
+      "slot": 5.8,
+      "scene": "try",
+      "text": "Your turn. In the last 10 minutes, the high was 60,240 and the low 60,000.",
+      "say": "Your turn. In the last ten minutes, the high was sixty thousand two hundred forty and the low sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 216.4,
+      "slot": 5.2,
+      "scene": "try",
+      "text": "What is the range in USDT, and as a percent? Pause if you need to.",
+      "say": "What is the range in U-S-D-T, and as a percent? Pause if you need to.",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 221.6,
+      "slot": 5.3,
+      "scene": "try",
+      "text": "Range: 60,240 − 60,000 = 240 USDT. Then 240 ÷ 60,000 × 100 = 0.4%.",
+      "say": "Range: sixty thousand two hundred forty minus sixty thousand equals two hundred forty U-S-D-T. Then two hundred forty divided by sixty thousand times one hundred equals zero point four percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 226.9,
+      "slot": 5.1,
+      "scene": "try",
+      "text": "That tells you how far price travelled. Not where it goes next.",
+      "say": "That tells you how far price travelled. Not where it goes next.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 232.6,
+      "slot": 4.2,
+      "scene": "risks",
+      "text": "Before you lean on these numbers, know the limits.",
+      "say": "Before you lean on these numbers, know the limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 236.8,
+      "slot": 5.6,
+      "scene": "risks",
+      "text": "A past range is history. The next minutes can be calmer, or much wilder.",
+      "say": "A past range is history. The next minutes can be calmer, or much wilder.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 242.4,
+      "slot": 6.1,
+      "scene": "risks",
+      "text": "Volatility can jump fast. With leverage, big swings reach liquidation sooner.",
+      "say": "Volatility can jump fast. With leverage, big swings reach liquidation sooner.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 248.5,
+      "slot": 5.5,
+      "scene": "risks",
+      "text": "Thin volume can mean slippage. And WAIT is always a valid choice.",
+      "say": "Thin volume can mean slippage. And wait is always a valid choice.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 254.6,
+      "slot": 1.8,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 256.4,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Volume is how much traded. It shows activity, not direction.",
+      "say": "Volume is how much traded. It shows activity, not direction.",
+      "note": ""
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 262,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Range is high minus low. Volatility is how big and fast the swings are.",
+      "say": "Range is high minus low. Volatility is how big and fast the swings are.",
+      "note": ""
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 267.6,
+      "slot": 6.2,
+      "scene": "recap",
+      "text": "The lookback window you choose changes the range. Past ranges promise nothing.",
+      "say": "The lookback window you choose changes the range. Past ranges promise nothing.",
+      "note": ""
+    },
+    {
+      "file": "voice/54.mp3",
+      "t": 273.8,
+      "slot": 6,
+      "scene": "recap",
+      "text": "Check yourself: a huge green volume bar. Does it prove price will rise?",
+      "say": "Check yourself: a huge green volume bar. Does it prove price will rise?",
+      "note": ""
+    },
+    {
+      "file": "voice/55.mp3",
+      "t": 279.8,
+      "slot": 5.2,
+      "scene": "recap",
+      "text": "No. Volume shows activity, not direction. Every buy had a seller.",
+      "say": "No. Volume shows activity, not direction. Every buy had a seller.",
+      "note": ""
+    },
+    {
+      "file": "voice/56.mp3",
+      "t": 285.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Well done! Phase 5 starts next: what is scalping? See you in lesson nineteen.",
+      "say": "Well done! Phase five starts next: what is scalping? See you in lesson nineteen.",
+      "note": ""
+    }
+  ]
+}

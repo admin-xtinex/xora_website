@@ -1,0 +1,529 @@
+{
+  "id": "T15",
+  "title": "T15 1m / 5m / 15m Timeframes",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 4.8,
+      "scene": "title",
+      "text": "Lesson fifteen: 1-minute, 5-minute and 15-minute timeframes.",
+      "say": "Lesson fifteen: one-minute, five-minute and fifteen-minute timeframes.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 5.4,
+      "slot": 4.6,
+      "scene": "title",
+      "text": "Same market, grouped in different time windows.",
+      "say": "Same market, grouped in different time windows.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 10.4,
+      "slot": 5.7,
+      "scene": "hook",
+      "text": "Here are fifteen minutes of a fictional BTC chart, one candle per minute.",
+      "say": "Here are fifteen minutes of a fictional B-T-C chart, one candle per minute.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 16.1,
+      "slot": 4.5,
+      "scene": "hook",
+      "text": "Tap 5m: now there are three candles. Tap 15m: just one.",
+      "say": "Tap five-minute: now there are three candles. Tap fifteen-minute: just one.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 20.6,
+      "slot": 4.4,
+      "scene": "hook",
+      "text": "Did the market change? No. Only the way it is grouped.",
+      "say": "Did the market change? No. Only the way it is grouped.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 25,
+      "slot": 4,
+      "scene": "hook",
+      "text": "That grouping is called a timeframe.",
+      "say": "That grouping is called a timeframe.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 29.4,
+      "slot": 4,
+      "scene": "timeframe",
+      "text": "A timeframe is how much time each candle covers.",
+      "say": "A timeframe is how much time each candle covers.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 33.4,
+      "slot": 5.8,
+      "scene": "timeframe",
+      "text": "On a 1-minute chart, each candle is one minute. On a 5-minute chart, five.",
+      "say": "On a one-minute chart, each candle is one minute. On a five-minute chart, five.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 39.2,
+      "slot": 5.7,
+      "scene": "timeframe",
+      "text": "Like a diary: notes for each day, a summary each week, one for the month.",
+      "say": "Like a diary: notes for each day, a summary each week, one for the month.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 44.9,
+      "slot": 5.1,
+      "scene": "timeframe",
+      "text": "Same life, different summaries. Same trades, different candles.",
+      "say": "Same life, different summaries. Same trades, different candles.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 50.4,
+      "slot": 4.8,
+      "scene": "build5",
+      "text": "Let's build one 5-minute candle from five 1-minute candles.",
+      "say": "Let's build one five-minute candle from five one-minute candles.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 55.2,
+      "slot": 3.4,
+      "scene": "build5",
+      "text": "Open: the first minute's open. 60,000.",
+      "say": "Open: the first minute's open. Sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 58.6,
+      "slot": 5.3,
+      "scene": "build5",
+      "text": "High: the highest high of all five. That is 60,110, in minute four.",
+      "say": "High: the highest high of all five. That is sixty thousand one hundred ten, in minute four.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 63.9,
+      "slot": 4.9,
+      "scene": "build5",
+      "text": "Low: the lowest low of all five. 59,980, in the first minute.",
+      "say": "Low: the lowest low of all five. Fifty-nine thousand nine hundred eighty, in the first minute.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 68.8,
+      "slot": 3.4,
+      "scene": "build5",
+      "text": "Close: the last minute's close. 60,090.",
+      "say": "Close: the last minute's close. Sixty thousand ninety.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 72.2,
+      "slot": 6.4,
+      "scene": "build5",
+      "text": "Watch them merge: open 60,000, high 60,110, low 59,980, close 60,090.",
+      "say": "Watch them merge: open sixty thousand, high sixty thousand one hundred ten, low fifty-nine thousand nine hundred eighty, close sixty thousand ninety.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 78.6,
+      "slot": 5.4,
+      "scene": "build5",
+      "text": "It is green, because 60,090 closed above 60,000.",
+      "say": "It is green, because sixty thousand ninety closed above sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 84.4,
+      "slot": 5.5,
+      "scene": "build15",
+      "text": "Fifteen minutes works the same way. Take all fifteen 1-minute candles.",
+      "say": "Fifteen minutes works the same way. Take all fifteen one-minute candles.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 89.9,
+      "slot": 4.9,
+      "scene": "build15",
+      "text": "First open, 60,000. Highest high, 60,170. Lowest low, 59,920.",
+      "say": "First open, sixty thousand. Highest high, sixty thousand one hundred seventy. Lowest low, fifty-nine thousand nine hundred twenty.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 94.8,
+      "slot": 4,
+      "scene": "build15",
+      "text": "Last close, 60,150. One green 15-minute candle.",
+      "say": "Last close, sixty thousand one hundred fifty. One green fifteen-minute candle.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 98.8,
+      "slot": 6.2,
+      "scene": "build15",
+      "text": "The three 5-minute candles give the same answer. The maths always agrees.",
+      "say": "The three five-minute candles give the same answer. The maths always agrees.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 105.4,
+      "slot": 5.1,
+      "scene": "switch",
+      "text": "Now one chart, one time axis. Under it all, the same price path.",
+      "say": "Now one chart, one time axis. Under it all, the same price path.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 110.5,
+      "slot": 4.8,
+      "scene": "switch",
+      "text": "Switch to 1-minute: fifteen narrow candles sit on the path.",
+      "say": "Switch to one-minute: fifteen narrow candles sit on the path.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 115.3,
+      "slot": 4.4,
+      "scene": "switch",
+      "text": "Switch to 5-minute: they merge into three wider ones.",
+      "say": "Switch to five-minute: they merge into three wider ones.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 119.7,
+      "slot": 4.4,
+      "scene": "switch",
+      "text": "Switch to 15-minute: one candle for the whole stretch.",
+      "say": "Switch to fifteen-minute: one candle for the whole stretch.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 124.1,
+      "slot": 4.9,
+      "scene": "switch",
+      "text": "The path never moved. Only the grouping changed.",
+      "say": "The path never moved. Only the grouping changed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 129.4,
+      "slot": 5.5,
+      "scene": "noise",
+      "text": "Short timeframes show every small back-and-forth. That is called noise.",
+      "say": "Short timeframes show every small back-and-forth. That is called noise.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 134.9,
+      "slot": 4.8,
+      "scene": "noise",
+      "text": "On the 1-minute chart, 10:05 to 10:07 looks like a big drop.",
+      "say": "On the one-minute chart, ten oh five to ten oh seven looks like a big drop.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 139.7,
+      "slot": 5.5,
+      "scene": "noise",
+      "text": "On the 15-minute view, that drop is just a dip inside one green candle.",
+      "say": "On the fifteen-minute view, that drop is just a dip inside one green candle.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 145.2,
+      "slot": 6.8,
+      "scene": "noise",
+      "text": "A signal is a change big enough to stand out from the noise. It is still no promise.",
+      "say": "A signal is a change big enough to stand out from the noise. It is still no promise.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 152.4,
+      "slot": 4.8,
+      "scene": "context",
+      "text": "Higher-timeframe context: check the bigger view first.",
+      "say": "Higher-timeframe context: check the bigger view first.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 157.2,
+      "slot": 5.5,
+      "scene": "context",
+      "text": "Like a map: zoom out to see the city, then zoom in to find the street.",
+      "say": "Like a map: zoom out to see the city, then zoom in to find the street.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 162.7,
+      "slot": 4.7,
+      "scene": "context",
+      "text": "Look at 15m for the big picture, then 5m and 1m for detail.",
+      "say": "Look at fifteen-minute for the big picture, then five-minute and one-minute for detail.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 167.4,
+      "slot": 5.6,
+      "scene": "context",
+      "text": "If the views disagree, that is a reason to be careful, or to wait.",
+      "say": "If the views disagree, that is a reason to be careful, or to wait.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 173.4,
+      "slot": 5.6,
+      "scene": "mistake",
+      "text": "A common mistake: averaging the 1-minute highs to get the 5-minute high.",
+      "say": "A common mistake: averaging the one-minute highs to get the five-minute high.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 179,
+      "slot": 4.6,
+      "scene": "mistake",
+      "text": "The average of these five highs is 60,060. That is wrong.",
+      "say": "The average of these five highs is sixty thousand sixty. That is wrong.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 183.6,
+      "slot": 5.7,
+      "scene": "mistake",
+      "text": "The 5-minute high is the highest of them: 60,120. Price really reached it.",
+      "say": "The five-minute high is the highest of them: sixty thousand one hundred twenty. Price really reached it.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 189.3,
+      "slot": 5.7,
+      "scene": "mistake",
+      "text": "Open is first, close is last, high is highest, low is lowest. No averages.",
+      "say": "Open is first, close is last, high is highest, low is lowest. No averages.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 195.4,
+      "slot": 5,
+      "scene": "try",
+      "text": "Your turn. Here are five 1-minute candles, from 10:10 to 10:14.",
+      "say": "Your turn. Here are five one-minute candles, from ten ten to ten fourteen.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 200.4,
+      "slot": 5.6,
+      "scene": "try",
+      "text": "What are the 5-minute open, high, low and close? Pause if you need time.",
+      "say": "What are the five-minute open, high, low and close? Pause if you need time.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 206,
+      "slot": 4.7,
+      "scene": "try",
+      "text": "Open 60,010, the first open. Close 60,150, the last close.",
+      "say": "Open sixty thousand ten, the first open. Close sixty thousand one hundred fifty, the last close.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 210.7,
+      "slot": 4.7,
+      "scene": "try",
+      "text": "High 60,170, the highest high. Low 59,990, the lowest low.",
+      "say": "High sixty thousand one hundred seventy, the highest high. Low fifty-nine thousand nine hundred ninety, the lowest low.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 215.4,
+      "slot": 4.6,
+      "scene": "try",
+      "text": "A green 5-minute candle. Well done if you got all four.",
+      "say": "A green five-minute candle. Well done if you got all four.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 220.4,
+      "slot": 5.5,
+      "scene": "sort",
+      "text": "Quick check: is each one a change in the view, or a real market event?",
+      "say": "Quick check: is each one a change in the view, or a real market event?",
+      "note": ""
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 225.9,
+      "slot": 6.1,
+      "scene": "sort",
+      "text": "Switching timeframes and wider candles: just the view.",
+      "say": "Switching timeframes and wider candles: just the view.",
+      "note": ""
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 232,
+      "slot": 6,
+      "scene": "sort",
+      "text": "Trades and price moves are the market. The view only groups them.",
+      "say": "Trades and price moves are the market. The view only groups them.",
+      "note": ""
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 238.4,
+      "slot": 3.4,
+      "scene": "risks",
+      "text": "Before we move on, a few honest limits.",
+      "say": "Before we move on, a few honest limits.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 241.8,
+      "slot": 5.8,
+      "scene": "risks",
+      "text": "Shorter timeframes are noisier. More candles do not mean more good chances.",
+      "say": "Shorter timeframes are noisier. More candles do not mean more good chances.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 247.6,
+      "slot": 4.3,
+      "scene": "risks",
+      "text": "Trading every small move piles up fees and mistakes.",
+      "say": "Trading every small move piles up fees and mistakes.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 251.9,
+      "slot": 6.1,
+      "scene": "risks",
+      "text": "No timeframe predicts the future. WAIT and NO_TRADE are always allowed.",
+      "say": "No timeframe predicts the future. Wait and no trade are always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 258.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 260,
+      "slot": 4,
+      "scene": "recap",
+      "text": "A timeframe is how much time each candle covers.",
+      "say": "A timeframe is how much time each candle covers.",
+      "note": ""
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 264,
+      "slot": 5.4,
+      "scene": "recap",
+      "text": "To combine candles: first open, highest high, lowest low, last close.",
+      "say": "To combine candles: first open, highest high, lowest low, last close.",
+      "note": ""
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 269.4,
+      "slot": 4.9,
+      "scene": "recap",
+      "text": "Check the bigger view for context. Short timeframes are noisy.",
+      "say": "Check the bigger view for context. Short timeframes are noisy.",
+      "note": ""
+    },
+    {
+      "file": "voice/54.mp3",
+      "t": 274.3,
+      "slot": 6.7,
+      "scene": "recap",
+      "text": "Check yourself: five 1-minute candles, the last closes at 60,090. The 5-minute close?",
+      "say": "Check yourself: five one-minute candles, the last closes at sixty thousand ninety. The five-minute close?",
+      "note": ""
+    },
+    {
+      "file": "voice/55.mp3",
+      "t": 281,
+      "slot": 5,
+      "scene": "recap",
+      "text": "60,090. The 5-minute close is always the last 1-minute close.",
+      "say": "Sixty thousand ninety. The five-minute close is always the last one-minute close.",
+      "note": ""
+    },
+    {
+      "file": "voice/56.mp3",
+      "t": 286.6,
+      "slot": 4.4,
+      "scene": "next",
+      "text": "Great work! Next up: trend and market structure.",
+      "say": "Great work! Next up: trend and market structure.",
+      "note": ""
+    },
+    {
+      "file": "voice/57.mp3",
+      "t": 291,
+      "slot": 5,
+      "scene": "next",
+      "text": "See you in lesson sixteen.",
+      "say": "See you in lesson sixteen.",
+      "note": ""
+    }
+  ]
+}

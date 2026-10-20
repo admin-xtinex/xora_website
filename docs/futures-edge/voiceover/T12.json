@@ -1,0 +1,493 @@
+{
+  "id": "T12",
+  "title": "T12 Margin and Leverage",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson twelve: margin and leverage. Why small price moves can feel very big.",
+      "say": "Lesson twelve: margin and leverage. Why small price moves can feel very big.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 4.9,
+      "scene": "hook",
+      "text": "Two traders each put 100 USDT into the same BTC futures trade.",
+      "say": "Two traders each put one hundred U-S-D-T into the same B-T-C futures trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 13.3,
+      "slot": 4.9,
+      "scene": "hook",
+      "text": "BTC rises 2%. Trader A gains 2 USDT. Trader B gains 20 USDT.",
+      "say": "B-T-C rises two percent. Trader A gains two U-S-D-T. Trader B gains twenty U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 18.2,
+      "slot": 4.8,
+      "scene": "hook",
+      "text": "Then BTC falls to 2% below the start. A loses 2. B loses 20.",
+      "say": "Then B-T-C falls to two percent below the start. A loses two. B loses twenty.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 23,
+      "slot": 5,
+      "scene": "hook",
+      "text": "Same coin, same move. What made the difference? Leverage.",
+      "say": "Same coin, same move. What made the difference? Leverage.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 28.4,
+      "slot": 6.7,
+      "scene": "margin",
+      "text": "First word: margin. Initial margin is the money you set aside to open a futures position.",
+      "say": "First word: margin. Initial margin is the money you set aside to open a futures position.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 35.1,
+      "slot": 6.1,
+      "scene": "margin",
+      "text": "Your futures wallet holds 500 USDT. You lock 100 USDT as margin. 400 stays free.",
+      "say": "Your futures wallet holds five hundred U-S-D-T. You lock one hundred U-S-D-T as margin. Four hundred stays free.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 41.2,
+      "slot": 6.8,
+      "scene": "margin",
+      "text": "Think of a deposit on a rented car. Any damage comes out of that deposit.",
+      "say": "Think of a deposit on a rented car. Any damage comes out of that deposit.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 48.4,
+      "slot": 5.6,
+      "scene": "notional",
+      "text": "Next: notional exposure. That's the full value of the position, in USDT.",
+      "say": "Next: notional exposure. That's the full value of the position, in U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 54,
+      "slot": 5.3,
+      "scene": "notional",
+      "text": "With 100 USDT of margin, you could hold a position worth 1,000 USDT.",
+      "say": "With one hundred U-S-D-T of margin, you could hold a position worth one thousand U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 59.3,
+      "slot": 6.7,
+      "scene": "notional",
+      "text": "Price moves act on the full 1,000 USDT, not just on your 100.",
+      "say": "Price moves act on the full one thousand U-S-D-T, not just on your one hundred.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 66.4,
+      "slot": 5.3,
+      "scene": "leverage",
+      "text": "Leverage is how many times bigger the position is than your margin.",
+      "say": "Leverage is how many times bigger the position is than your margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 71.7,
+      "slot": 5.8,
+      "scene": "leverage",
+      "text": "At 1x, 100 USDT of margin holds 100 of notional. At 3x, 300. At 10x, 1,000.",
+      "say": "At one ex, one hundred U-S-D-T of margin holds one hundred of notional. At three ex, three hundred. At ten ex, one thousand.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 77.5,
+      "slot": 5.9,
+      "scene": "leverage",
+      "text": "So notional is roughly margin times leverage. Your 100 USDT does not change.",
+      "say": "So notional is roughly margin times leverage. Your one hundred U-S-D-T does not change.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 83.4,
+      "slot": 6.6,
+      "scene": "leverage",
+      "text": "Leverage is like a magnifying glass. It enlarges every move, good and bad.",
+      "say": "Leverage is like a magnifying glass. It enlarges every move, good and bad.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 90.4,
+      "slot": 5.9,
+      "scene": "path",
+      "text": "Now one price path, three ways. Each trader is long with 100 USDT of margin.",
+      "say": "Now one price path, three ways. Each trader is long with one hundred U-S-D-T of margin.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 96.3,
+      "slot": 5.9,
+      "scene": "path",
+      "text": "BTC rises 2%, to 61,200. 1x makes 2 USDT. 3x makes 6. 10x makes 20.",
+      "say": "B-T-C rises two percent, to sixty-one thousand two hundred. One ex makes two U-S-D-T. Three ex makes six. Ten ex makes twenty.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 102.2,
+      "slot": 7.2,
+      "scene": "path",
+      "text": "Then it falls to 58,800, 2% below the start. Now 1x loses 2, 3x loses 6, 10x loses 20.",
+      "say": "Then it falls to fifty-eight thousand eight hundred, two percent below the start. Now one ex loses two, three ex loses six, ten ex loses twenty.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 109.4,
+      "slot": 7.6,
+      "scene": "path",
+      "text": "The market moved the same for all three. Leverage only changed the size of the result.",
+      "say": "The market moved the same for all three. Leverage only changed the size of the result.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 117.4,
+      "slot": 6.2,
+      "scene": "example",
+      "text": "A worked example. Gross PnL is about notional times the signed percentage move.",
+      "say": "A worked example. Gross P and L is about notional times the signed percentage move.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 123.6,
+      "slot": 5.3,
+      "scene": "example",
+      "text": "1,000 USDT times minus 2% is minus 20 USDT, before fees and funding.",
+      "say": "One thousand U-S-D-T times minus two percent is minus twenty U-S-D-T, before fees and funding.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 128.9,
+      "slot": 4.4,
+      "scene": "example",
+      "text": "Divide by your margin: minus 20 over 100 is minus 20%.",
+      "say": "Divide by your margin: minus twenty over one hundred is minus twenty percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 133.3,
+      "slot": 4.7,
+      "scene": "example",
+      "text": "A 2% price move became 20% of your money.",
+      "say": "A two percent price move became twenty percent of your money.",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 138.4,
+      "slot": 4.1,
+      "scene": "both",
+      "text": "This works in both directions. Say BTC falls 10%.",
+      "say": "This works in both directions. Say B-T-C falls ten percent.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 142.5,
+      "slot": 7.1,
+      "scene": "both",
+      "text": "At 1x, you lose 10 USDT, 10% of your margin. At 10x, you lose 100 USDT: all of it, on paper.",
+      "say": "At one ex, you lose ten U-S-D-T, ten percent of your margin. At ten ex, you lose one hundred U-S-D-T: all of it, on paper.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 149.6,
+      "slot": 6.3,
+      "scene": "both",
+      "text": "In reality, the exchange closes the position before that point. That's liquidation.",
+      "say": "In reality, the exchange closes the position before that point. That's liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 155.9,
+      "slot": 4.1,
+      "scene": "both",
+      "text": "Where exactly depends on its rules and costs.",
+      "say": "Where exactly depends on its rules and costs.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 160.4,
+      "slot": 6.1,
+      "scene": "maint",
+      "text": "Maintenance margin is the minimum the exchange needs to keep your position open.",
+      "say": "Maintenance margin is the minimum the exchange needs to keep your position open.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 166.5,
+      "slot": 6.5,
+      "scene": "maint",
+      "text": "Your margin balance is your margin plus any open profit or loss. Losses push it down.",
+      "say": "Your margin balance is your margin plus any open profit or loss. Losses push it down.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 173,
+      "slot": 8,
+      "scene": "maint",
+      "text": "Fall to the maintenance level, and the exchange can close the position. Its rules set the level.",
+      "say": "Fall to the maintenance level, and the exchange can close the position. Its rules set the level.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 181.4,
+      "slot": 4.1,
+      "scene": "modes",
+      "text": "You also choose a margin mode: isolated or cross.",
+      "say": "You also choose a margin mode: isolated or cross.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 185.5,
+      "slot": 6.1,
+      "scene": "modes",
+      "text": "Isolated: losses on that position generally stay within the margin you gave it.",
+      "say": "Isolated: losses on that position generally stay within the margin you gave it.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 191.6,
+      "slot": 5.7,
+      "scene": "modes",
+      "text": "Like a separate envelope of cash. The other 400 USDT is not touched by it.",
+      "say": "Like a separate envelope of cash. The other four hundred U-S-D-T is not touched by it.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 197.3,
+      "slot": 6.4,
+      "scene": "modes",
+      "text": "Cross: your whole futures balance backs your positions. One loss can reach far more.",
+      "say": "Cross: your whole futures balance backs your positions. One loss can reach far more.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 203.7,
+      "slot": 5.3,
+      "scene": "modes",
+      "text": "Neither mode is safe. They decide how far a loss can reach.",
+      "say": "Neither mode is safe. They decide how far a loss can reach.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 209.4,
+      "slot": 4.5,
+      "scene": "mistake",
+      "text": "A common mistake: thinking leverage is free extra money.",
+      "say": "A common mistake: thinking leverage is free extra money.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 213.9,
+      "slot": 5.9,
+      "scene": "mistake",
+      "text": "It isn't. It's extra exposure. Losses on the full 1,000 come out of your 100.",
+      "say": "It isn't. It's extra exposure. Losses on the full one thousand come out of your one hundred.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 219.8,
+      "slot": 7.2,
+      "scene": "mistake",
+      "text": "And no leverage number is safe. Lower leverage only means smaller swings.",
+      "say": "And no leverage number is safe. Lower leverage only means smaller swings.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 227.4,
+      "slot": 8.6,
+      "scene": "try",
+      "text": "Your turn. Margin 50 USDT, 5x, long. BTC rises 4%. Find the notional, the PnL and the % of margin.",
+      "say": "Your turn. Margin fifty U-S-D-T, five ex, long. B-T-C rises four percent. Find the notional, the P and L and the percent of margin.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 236,
+      "slot": 5.6,
+      "scene": "try",
+      "text": "Notional: 50 times 5 is 250 USDT. PnL: 250 times 4% is plus 10 USDT.",
+      "say": "Notional: fifty times five is two hundred fifty U-S-D-T. P and L: two hundred fifty times four percent is plus ten U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 241.6,
+      "slot": 5.6,
+      "scene": "try",
+      "text": "That's 20% of your margin. Had BTC fallen 4%, it would be minus 10 USDT.",
+      "say": "That's twenty percent of your margin. Had B-T-C fallen four percent, it would be minus ten U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 247.2,
+      "slot": 2.8,
+      "scene": "try",
+      "text": "Did you get it? Well done.",
+      "say": "Did you get it? Well done.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 250.4,
+      "slot": 3.3,
+      "scene": "risks",
+      "text": "Before you go further, know the risks.",
+      "say": "Before you go further, know the risks.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 253.7,
+      "slot": 4,
+      "scene": "risks",
+      "text": "Leverage magnifies losses just as much as gains.",
+      "say": "Leverage magnifies losses just as much as gains.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 257.7,
+      "slot": 6.8,
+      "scene": "risks",
+      "text": "If losses eat your margin, the exchange can close your position. More on that next lesson.",
+      "say": "If losses eat your margin, the exchange can close your position. More on that next lesson.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 264.5,
+      "slot": 5.7,
+      "scene": "risks",
+      "text": "Fees and funding are charged on the notional, so they grow with leverage.",
+      "say": "Fees and funding are charged on the notional, so they grow with leverage.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 270.2,
+      "slot": 5.8,
+      "scene": "risks",
+      "text": "There is no safe leverage. And you can always choose WAIT, or no trade.",
+      "say": "There is no safe leverage. And you can always choose wait, or no trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 276.4,
+      "slot": 1.6,
+      "scene": "recap",
+      "text": "Let's recap.",
+      "say": "Let's recap.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 278,
+      "slot": 3.5,
+      "scene": "recap",
+      "text": "Notional is about margin times leverage.",
+      "say": "Notional is about margin times leverage.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 281.5,
+      "slot": 5,
+      "scene": "recap",
+      "text": "Gross PnL is about notional times the signed move, before fees.",
+      "say": "Gross P and L is about notional times the signed move, before fees.",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 286.5,
+      "slot": 5,
+      "scene": "recap",
+      "text": "Leverage magnifies gains and losses alike. No leverage is safe.",
+      "say": "Leverage magnifies gains and losses alike. No leverage is safe.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 291.5,
+      "slot": 5.6,
+      "scene": "recap",
+      "text": "Check yourself: 100 USDT of margin at 10x. BTC falls 3%. What's the PnL?",
+      "say": "Check yourself: one hundred U-S-D-T of margin at ten ex. B-T-C falls three percent. What's the P and L?",
+      "note": ""
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 297.1,
+      "slot": 3.9,
+      "scene": "recap",
+      "text": "Minus 30 USDT, which is 30% of your margin.",
+      "say": "Minus thirty U-S-D-T, which is thirty percent of your margin.",
+      "note": ""
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 301.8,
+      "slot": 9.2,
+      "scene": "next",
+      "text": "Next up, T13: liquidation, funding and futures risks. See you there!",
+      "say": "Next up, T thirteen: liquidation, funding and futures risks. See you there!",
+      "note": "firmer, slower"
+    }
+  ]
+}

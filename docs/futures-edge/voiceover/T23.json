@@ -1,0 +1,556 @@
+{
+  "id": "T23",
+  "title": "T23 Full Scalping Decision Lifecycle",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Lesson twenty-three: the full scalping decision lifecycle, from chart to journal.",
+      "say": "Lesson twenty-three: the full scalping decision lifecycle, from chart to journal.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.6,
+      "slot": 5.5,
+      "scene": "hook",
+      "text": "This is the capstone: T14 to T22, used together on one fictional chart.",
+      "say": "This is the capstone: T fourteen to T twenty-two, used together on one fictional chart.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14.1,
+      "slot": 6.5,
+      "scene": "hook",
+      "text": "Eight steps, in the same order every time, from choosing a coin to writing a journal.",
+      "say": "Eight steps, in the same order every time, from choosing a coin to writing a journal.",
+      "note": ""
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 20.6,
+      "slot": 5.9,
+      "scene": "hook",
+      "text": "It's an educational simulation, in demo mode. No real money, no real orders.",
+      "say": "It's an educational simulation, in demo mode. No real money, no real orders.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 26.5,
+      "slot": 3.5,
+      "scene": "hook",
+      "text": "And we score the process, not the profit.",
+      "say": "And we score the process, not the profit.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 30.6,
+      "slot": 6.3,
+      "scene": "coin",
+      "text": "Step one: choose a coin. In this simulation, the coins and all prices are made up.",
+      "say": "Step one: choose a coin. In this simulation, the coins and all prices are made up.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 36.9,
+      "slot": 5.9,
+      "scene": "coin",
+      "text": "Liquidity means how easily you can buy or sell without moving the price much.",
+      "say": "Liquidity means how easily you can buy or sell without moving the price much.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 42.8,
+      "slot": 6.2,
+      "scene": "coin",
+      "text": "BTC/USDT has many traders and a tiny spread. XYZ/USDT is thin: a 1% spread.",
+      "say": "B-T-C U-S-D-T has many traders and a tiny spread. X-Y-Z U-S-D-T is thin: a one percent spread.",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 49,
+      "slot": 6,
+      "scene": "coin",
+      "text": "Thin coins slip more. So we pick BTC/USDT, on a 1,000 USDT demo account.",
+      "say": "Thin coins slip more. So we pick B-T-C U-S-D-T, on a one thousand U-S-D-T demo account.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 55.6,
+      "slot": 6.5,
+      "scene": "context",
+      "text": "Step two: context. First the 5-minute chart, for the bigger picture of the last hour.",
+      "say": "Step two: context. First the five-minute chart, for the bigger picture of the last hour.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 62.1,
+      "slot": 6.7,
+      "scene": "context",
+      "text": "Higher highs and higher lows. So on 5 minutes, the trend leans up. Trends can still end.",
+      "say": "Higher highs and higher lows. So on five minutes, the trend leans up. Trends can still end.",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 68.8,
+      "slot": 6.3,
+      "scene": "context",
+      "text": "Now zoom into the last 15 minutes on the 1-minute chart. Same prices, more detail.",
+      "say": "Now zoom into the last fifteen minutes on the one-minute chart. Same prices, more detail.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 75.1,
+      "slot": 7.9,
+      "scene": "context",
+      "text": "The 1-minute chart is noisier: a run up, then a pull-back. Use it for detail, not direction.",
+      "say": "The one-minute chart is noisier: a run up, then a pull-back. Use it for detail, not direction.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 83.6,
+      "slot": 6.6,
+      "scene": "levels",
+      "text": "Step three: range and levels. Over 15 minutes, the high was 60,650 and the low 59,850.",
+      "say": "Step three: range and levels. Over fifteen minutes, the high was sixty thousand six hundred fifty and the low fifty-nine thousand eight hundred fifty.",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 90.2,
+      "slot": 4.4,
+      "scene": "levels",
+      "text": "That's a range of 800 USDT, about 1.3% of the price.",
+      "say": "That's a range of eight hundred U-S-D-T, about one point three percent of the price.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 94.6,
+      "slot": 6.2,
+      "scene": "levels",
+      "text": "Twice, price dipped into 59,850 to 59,950 and bounced. That's our support zone.",
+      "say": "Twice, price dipped into fifty-nine thousand eight hundred fifty to fifty-nine thousand nine hundred fifty and bounced. That's our support zone.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 100.8,
+      "slot": 8.2,
+      "scene": "levels",
+      "text": "Resistance sits near the top, 60,550 to 60,650. Price is now 60,000, just above support.",
+      "say": "Resistance sits near the top, sixty thousand five hundred fifty to sixty thousand six hundred fifty. Price is now sixty thousand, just above support.",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 109.6,
+      "slot": 6.2,
+      "scene": "doubt",
+      "text": "Step four: write down what you're unsure about. Beginners often skip this step.",
+      "say": "Step four: write down what you're unsure about. Beginners often skip this step.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 115.8,
+      "slot": 6.2,
+      "scene": "doubt",
+      "text": "What I lean towards: a bounce up from support, because the 5-minute trend is up.",
+      "say": "What I lean towards: a bounce up from support, because the five-minute trend is up.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 122,
+      "slot": 6,
+      "scene": "doubt",
+      "text": "What argues against it: support was already tested twice, and it could break.",
+      "say": "What argues against it: support was already tested twice, and it could break.",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 128,
+      "slot": 7,
+      "scene": "doubt",
+      "text": "What would prove me wrong: a fall below 59,700. Confidence: medium, not certain.",
+      "say": "What would prove me wrong: a fall below fifty-nine thousand seven hundred. Confidence: medium, not certain.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 135.6,
+      "slot": 6.8,
+      "scene": "costs",
+      "text": "Step five: costs and risk, before any button. Example numbers only, not a recommendation.",
+      "say": "Step five: costs and risk, before any button. Example numbers only, not a recommendation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 142.4,
+      "slot": 6.4,
+      "scene": "costs",
+      "text": "Entry near 60,000. Stop at 59,700, just under support. That's 300 USDT away: 0.5%.",
+      "say": "Entry near sixty thousand. Stop at fifty-nine thousand seven hundred, just under support. That's three hundred U-S-D-T away: zero point five percent.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 148.8,
+      "slot": 6.8,
+      "scene": "costs",
+      "text": "Example budget: 6 USDT. Fees at 0.05% each way take about 1, leaving 5 for the price move.",
+      "say": "Example budget: six U-S-D-T. Fees at zero point zero five percent each way take about one, leaving five for the price move.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 155.6,
+      "slot": 5.8,
+      "scene": "costs",
+      "text": "5 divided by 0.5% gives a notional of about 1,000 USDT. No leverage needed.",
+      "say": "Five divided by zero point five percent gives a notional of about one thousand U-S-D-T. No leverage needed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 161.4,
+      "slot": 6.6,
+      "scene": "costs",
+      "text": "Stop hit: about −6 USDT with fees. Target 60,600 hit: +10 minus fees, about +9 USDT.",
+      "say": "Stop hit: about minus six U-S-D-T with fees. Target sixty thousand six hundred hit: plus ten minus fees, about plus nine U-S-D-T.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 168.6,
+      "slot": 5.8,
+      "scene": "decide",
+      "text": "Step six: decide. DEMO BUY, DEMO SELL or NO_TRADE. All three are allowed.",
+      "say": "Step six: decide. Demo buy, demo sell or no trade. All three are allowed.",
+      "note": ""
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 174.4,
+      "slot": 6.6,
+      "scene": "decide",
+      "text": "Whatever you choose, write one or two lines of why. A direction alone is not a reason.",
+      "say": "Whatever you choose, write one or two lines of why. A direction alone is not a reason.",
+      "note": ""
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 181,
+      "slot": 6.9,
+      "scene": "decide",
+      "text": "Here: trend up, a bounce at support, and a planned loss of about 6 USDT, inside the budget.",
+      "say": "Here: trend up, a bounce at support, and a planned loss of about six U-S-D-T, inside the budget.",
+      "note": ""
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 187.9,
+      "slot": 7.1,
+      "scene": "decide",
+      "text": "So this learner picks DEMO BUY, with the stop and target set at the same time.",
+      "say": "So this learner picks demo buy, with the stop and target set at the same time.",
+      "note": ""
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 195.6,
+      "slot": 6,
+      "scene": "monitor",
+      "text": "Step seven: monitor and exit. From here, price could go up, sideways or down.",
+      "say": "Step seven: monitor and exit. From here, price could go up, sideways or down.",
+      "note": ""
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 201.6,
+      "slot": 6.2,
+      "scene": "monitor",
+      "text": "Nobody knows which path will come. That's why the stop and target were set first.",
+      "say": "Nobody knows which path will come. That's why the stop and target were set first.",
+      "note": ""
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 207.8,
+      "slot": 6.6,
+      "scene": "monitor",
+      "text": "Now the replay. Price rises to 60,400. Tempting to dream, but the plan stays the same.",
+      "say": "Now the replay. Price rises to sixty thousand four hundred. Tempting to dream, but the plan stays the same.",
+      "note": ""
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 214.4,
+      "slot": 7,
+      "scene": "monitor",
+      "text": "Then it turns, breaks support, and hits the stop. The fill is 59,680: 20 USDT of slippage.",
+      "say": "Then it turns, breaks support, and hits the stop. The fill is fifty-nine thousand six hundred eighty: twenty U-S-D-T of slippage.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 221.4,
+      "slot": 7.6,
+      "scene": "monitor",
+      "text": "The exit happens as planned, about eight minutes in. No moving the stop, no adding more.",
+      "say": "The exit happens as planned, about eight minutes in. No moving the stop, no adding more.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 229.6,
+      "slot": 6.6,
+      "scene": "journal",
+      "text": "Step eight: the journal. Write what you planned, what happened, and what you learned.",
+      "say": "Step eight: the journal. Write what you planned, what happened, and what you learned.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 236.2,
+      "slot": 5.8,
+      "scene": "journal",
+      "text": "Price result: −5.33 USDT. Fees: −1.00. Net: −6.33 USDT, close to the plan.",
+      "say": "Price result: minus five point three three U-S-D-T. Fees: minus one. Net: minus six point three three U-S-D-T, close to the plan.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 242,
+      "slot": 6.8,
+      "scene": "journal",
+      "text": "Did we follow the plan? Yes: size, stop and exit all as written. Process score: 8 of 8.",
+      "say": "Did we follow the plan? Yes: size, stop and exit all as written. Process score: eight of eight.",
+      "note": ""
+    },
+    {
+      "file": "voice/38.mp3",
+      "t": 248.8,
+      "slot": 7.2,
+      "scene": "journal",
+      "text": "A good process can still lose. Judge decisions by the process, not by one outcome.",
+      "say": "A good process can still lose. Judge decisions by the process, not by one outcome.",
+      "note": ""
+    },
+    {
+      "file": "voice/39.mp3",
+      "t": 256.6,
+      "slot": 6.2,
+      "scene": "notrade",
+      "text": "Now the other route. Another learner saw the same chart and the same numbers.",
+      "say": "Now the other route. Another learner saw the same chart and the same numbers.",
+      "note": ""
+    },
+    {
+      "file": "voice/40.mp3",
+      "t": 262.8,
+      "slot": 7,
+      "scene": "notrade",
+      "text": "Their notes: support tested twice, weak volume on the bounce, not confident. So: NO_TRADE.",
+      "say": "Their notes: support tested twice, weak volume on the bounce, not confident. So: no trade.",
+      "note": ""
+    },
+    {
+      "file": "voice/41.mp3",
+      "t": 269.8,
+      "slot": 6.5,
+      "scene": "notrade",
+      "text": "Result: 0 USDT, no fees, and a journal entry. Process: complete. That's a success too.",
+      "say": "Result: zero U-S-D-T, no fees, and a journal entry. Process: complete. That's a success too.",
+      "note": ""
+    },
+    {
+      "file": "voice/42.mp3",
+      "t": 276.3,
+      "slot": 6.7,
+      "scene": "notrade",
+      "text": "Not because of how the replay ended. They decided before knowing, with a clear reason.",
+      "say": "Not because of how the replay ended. They decided before knowing, with a clear reason.",
+      "note": ""
+    },
+    {
+      "file": "voice/43.mp3",
+      "t": 283.6,
+      "slot": 6.2,
+      "scene": "mistake",
+      "text": "Three common mistakes. First: moving the stop further away as price gets close.",
+      "say": "Three common mistakes. First: moving the stop further away as price gets close.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/44.mp3",
+      "t": 289.8,
+      "slot": 6.6,
+      "scene": "mistake",
+      "text": "That turns a planned 6 USDT loss into about 11. Keep the stop where the plan put it.",
+      "say": "That turns a planned six U-S-D-T loss into about eleven. Keep the stop where the plan put it.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/45.mp3",
+      "t": 296.4,
+      "slot": 6.9,
+      "scene": "mistake",
+      "text": "Second: doubling the size to win a loss back. That doubles the risk too. Take a break first.",
+      "say": "Second: doubling the size to win a loss back. That doubles the risk too. Take a break first.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/46.mp3",
+      "t": 303.3,
+      "slot": 6.7,
+      "scene": "mistake",
+      "text": "Third: judging only by profit. Judge the process, because good process can still lose.",
+      "say": "Third: judging only by profit. Judge the process, because good process can still lose.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/47.mp3",
+      "t": 310.6,
+      "slot": 7,
+      "scene": "try",
+      "text": "Your turn. The stop must go at 59,400: 1% away. The budget for the move is still 5 USDT.",
+      "say": "Your turn. The stop must go at fifty-nine thousand four hundred: one percent away. The budget for the move is still five U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/48.mp3",
+      "t": 317.6,
+      "slot": 5.8,
+      "scene": "try",
+      "text": "About what notional fits? Pause if you need more time.",
+      "say": "About what notional fits? Pause if you need more time.",
+      "note": ""
+    },
+    {
+      "file": "voice/49.mp3",
+      "t": 323.4,
+      "slot": 6.2,
+      "scene": "try",
+      "text": "B, about 500 USDT. 5 divided by 1% is 500. A wider stop means a smaller position.",
+      "say": "B, about five hundred U-S-D-T. Five divided by one percent is five hundred. A wider stop means a smaller position.",
+      "note": ""
+    },
+    {
+      "file": "voice/50.mp3",
+      "t": 329.6,
+      "slot": 6.4,
+      "scene": "try",
+      "text": "A is tempting, but 1,000 USDT with a 1% stop risks 10 USDT, double the budget.",
+      "say": "A is tempting, but one thousand U-S-D-T with a one percent stop risks ten U-S-D-T, double the budget.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/51.mp3",
+      "t": 336.6,
+      "slot": 7.8,
+      "scene": "risks",
+      "text": "Honest limits. A simulation is not the market: real fills can slip more, and real money feels different.",
+      "say": "Honest limits. A simulation is not the market: real fills can slip more, and real money feels different.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/52.mp3",
+      "t": 344.4,
+      "slot": 6,
+      "scene": "risks",
+      "text": "Even a careful plan loses often. Never trade money you can't afford to lose.",
+      "say": "Even a careful plan loses often. Never trade money you can't afford to lose.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/53.mp3",
+      "t": 350.4,
+      "slot": 6.8,
+      "scene": "risks",
+      "text": "This plan used no leverage. More leverage makes losses bigger and can lead to liquidation.",
+      "say": "This plan used no leverage. More leverage makes losses bigger and can lead to liquidation.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/54.mp3",
+      "t": 357.2,
+      "slot": 6.8,
+      "scene": "risks",
+      "text": "Everything here is fictional and educational, not advice. NO_TRADE is always allowed.",
+      "say": "Everything here is fictional and educational, not advice. No trade is always allowed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/55.mp3",
+      "t": 364.6,
+      "slot": 6.1,
+      "scene": "recap",
+      "text": "Recap. One: eight steps, in order, from choosing a coin to writing the journal.",
+      "say": "Recap. One: eight steps, in order, from choosing a coin to writing the journal.",
+      "note": ""
+    },
+    {
+      "file": "voice/56.mp3",
+      "t": 370.7,
+      "slot": 6.2,
+      "scene": "recap",
+      "text": "Two: your size comes from the risk budget and the stop distance, before deciding.",
+      "say": "Two: your size comes from the risk budget and the stop distance, before deciding.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/57.mp3",
+      "t": 376.9,
+      "slot": 5.8,
+      "scene": "recap",
+      "text": "Three: judge the process, not one outcome. NO_TRADE can be a full success.",
+      "say": "Three: judge the process, not one outcome. No trade can be a full success.",
+      "note": ""
+    },
+    {
+      "file": "voice/58.mp3",
+      "t": 382.7,
+      "slot": 5.3,
+      "scene": "recap",
+      "text": "Check yourself: you followed the plan and still lost. Bad decision?",
+      "say": "Check yourself: you followed the plan and still lost. Bad decision?",
+      "note": ""
+    },
+    {
+      "file": "voice/59.mp3",
+      "t": 388,
+      "slot": 4,
+      "scene": "recap",
+      "text": "Not necessarily. Check the process first.",
+      "say": "Not necessarily. Check the process first.",
+      "note": ""
+    },
+    {
+      "file": "voice/60.mp3",
+      "t": 392.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Next up: Checkpoint B, a review of T14 to T23. Well done for reaching the end of the lessons!",
+      "say": "Next up: Checkpoint B, a review of T fourteen to T twenty-three. Well done for reaching the end of the lessons!",
+      "note": ""
+    }
+  ]
+}

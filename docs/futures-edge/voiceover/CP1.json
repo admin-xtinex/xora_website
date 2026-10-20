@@ -1,0 +1,349 @@
+{
+  "id": "CP1",
+  "title": "CP1 Foundations Checkpoint",
+  "voice": "see README.md",
+  "lines": [
+    {
+      "file": "voice/00.mp3",
+      "t": 0.6,
+      "slot": 7.4,
+      "scene": "title",
+      "text": "Checkpoint one. Let's see how much of Phase 1 you remember.",
+      "say": "Checkpoint one. Let's see how much of Phase one you remember.",
+      "note": ""
+    },
+    {
+      "file": "voice/01.mp3",
+      "t": 8.4,
+      "slot": 6.2,
+      "scene": "how",
+      "text": "Welcome to your first checkpoint: eight quick questions on lessons T01 to T04.",
+      "say": "Welcome to your first checkpoint: eight quick questions on lessons T one to T four.",
+      "note": ""
+    },
+    {
+      "file": "voice/02.mp3",
+      "t": 14.6,
+      "slot": 6.6,
+      "scene": "how",
+      "text": "Read each question, pick an answer, and pause the video whenever you need more time.",
+      "say": "Read each question, pick an answer, and pause the video whenever you need more time.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/03.mp3",
+      "t": 21.2,
+      "slot": 4.8,
+      "scene": "how",
+      "text": "It's not graded. Missing one just shows you what to revisit.",
+      "say": "It's not graded. Missing one just shows you what to revisit.",
+      "note": ""
+    },
+    {
+      "file": "voice/04.mp3",
+      "t": 26.3,
+      "slot": 7.3,
+      "scene": "q-crypto",
+      "text": "Question one, from T01. What is a cryptocurrency? Choose A, B, C or D.",
+      "say": "Question one, from T one. What is a cryptocurrency? Choose A, B, C or D.",
+      "note": ""
+    },
+    {
+      "file": "voice/05.mp3",
+      "t": 33.6,
+      "slot": 6.6,
+      "scene": "q-crypto",
+      "text": "It's A. Crypto is a digital asset recorded on a shared public ledger: the blockchain.",
+      "say": "It's A. Crypto is a digital asset recorded on a shared public ledger: the blockchain.",
+      "note": ""
+    },
+    {
+      "file": "voice/06.mp3",
+      "t": 40.2,
+      "slot": 6.8,
+      "scene": "q-crypto",
+      "text": "B is tempting, but your phone holds keys, not coins. The coins are entries on the ledger.",
+      "say": "B is tempting, but your phone holds keys, not coins. The coins are entries on the ledger.",
+      "note": ""
+    },
+    {
+      "file": "voice/07.mp3",
+      "t": 47.3,
+      "slot": 7.3,
+      "scene": "q-value",
+      "text": "Question two, from T01. You hold 0.005 BTC, and one BTC costs 60,000 USDT. What is it worth?",
+      "say": "Question two, from T one. You hold zero point zero zero five B-T-C, and one B-T-C costs sixty thousand U-S-D-T. What is it worth?",
+      "note": ""
+    },
+    {
+      "file": "voice/08.mp3",
+      "t": 54.6,
+      "slot": 6.6,
+      "scene": "q-value",
+      "text": "It's B, 300 USDT. Value is amount times price: 0.005 times 60,000.",
+      "say": "It's B, three hundred U-S-D-T. Value is amount times price: zero point zero zero five times sixty thousand.",
+      "note": ""
+    },
+    {
+      "file": "voice/09.mp3",
+      "t": 61.2,
+      "slot": 6.8,
+      "scene": "q-value",
+      "text": "C is a decimal slip. 3,000 USDT is what 0.05 BTC would be worth, ten times more.",
+      "say": "C is a decimal slip. Three thousand U-S-D-T is what zero point zero five B-T-C would be worth, ten times more.",
+      "note": ""
+    },
+    {
+      "file": "voice/10.mp3",
+      "t": 68.3,
+      "slot": 7.3,
+      "scene": "q-demand",
+      "text": "Question three, from T02. Suddenly far more people want to buy than to sell. What tends to happen?",
+      "say": "Question three, from T two. Suddenly far more people want to buy than to sell. What tends to happen?",
+      "note": ""
+    },
+    {
+      "file": "voice/11.mp3",
+      "t": 75.6,
+      "slot": 6.6,
+      "scene": "q-demand",
+      "text": "A. Buyers compete for the few sellers and offer more, so the price tends to rise.",
+      "say": "A. Buyers compete for the few sellers and offer more, so the price tends to rise.",
+      "note": ""
+    },
+    {
+      "file": "voice/12.mp3",
+      "t": 82.2,
+      "slot": 6.8,
+      "scene": "q-demand",
+      "text": "But B is wrong: nothing is guaranteed. News or thin trading can turn the price quickly.",
+      "say": "But B is wrong: nothing is guaranteed. News or thin trading can turn the price quickly.",
+      "note": ""
+    },
+    {
+      "file": "voice/13.mp3",
+      "t": 89.3,
+      "slot": 7.3,
+      "scene": "q-volatility",
+      "text": "Question four, from T02. What does high volatility mean?",
+      "say": "Question four, from T two. What does high volatility mean?",
+      "note": ""
+    },
+    {
+      "file": "voice/14.mp3",
+      "t": 96.6,
+      "slot": 6.6,
+      "scene": "q-volatility",
+      "text": "It's B. Volatility is how far and how fast the price swings, up and down.",
+      "say": "It's B. Volatility is how far and how fast the price swings, up and down.",
+      "note": ""
+    },
+    {
+      "file": "voice/15.mp3",
+      "t": 103.2,
+      "slot": 6.8,
+      "scene": "q-volatility",
+      "text": "A is a trap. A volatile price can fall just as sharply as it rises.",
+      "say": "A is a trap. A volatile price can fall just as sharply as it rises.",
+      "note": ""
+    },
+    {
+      "file": "voice/16.mp3",
+      "t": 110.3,
+      "slot": 7.3,
+      "scene": "q-pair",
+      "text": "Question five, from T03. In the pair BTC/USDT, which one is the base asset?",
+      "say": "Question five, from T three. In the pair B-T-C U-S-D-T, which one is the base asset?",
+      "note": ""
+    },
+    {
+      "file": "voice/17.mp3",
+      "t": 117.6,
+      "slot": 6.6,
+      "scene": "q-pair",
+      "text": "A, BTC. The base is the asset being priced: one BTC costs this many USDT.",
+      "say": "A, B-T-C. The base is the asset being priced: one B-T-C costs this many U-S-D-T.",
+      "note": ""
+    },
+    {
+      "file": "voice/18.mp3",
+      "t": 124.2,
+      "slot": 6.8,
+      "scene": "q-pair",
+      "text": "USDT is the quote, the unit of the price. It aims to track the dollar, with no guarantee.",
+      "say": "U-S-D-T is the quote, the unit of the price. It aims to track the dollar, with no guarantee.",
+      "note": ""
+    },
+    {
+      "file": "voice/19.mp3",
+      "t": 131.3,
+      "slot": 7.3,
+      "scene": "q-notional",
+      "text": "Question six, from T03. You buy 0.001 BTC when the price is 65,000 USDT. How many USDT is that?",
+      "say": "Question six, from T three. You buy zero point zero zero one B-T-C when the price is sixty-five thousand U-S-D-T. How many U-S-D-T is that?",
+      "note": ""
+    },
+    {
+      "file": "voice/20.mp3",
+      "t": 138.6,
+      "slot": 6.6,
+      "scene": "q-notional",
+      "text": "B, 65 USDT. Quantity times price: 0.001 times 65,000. That's the notional value.",
+      "say": "B, sixty-five U-S-D-T. Quantity times price: zero point zero zero one times sixty-five thousand. That's the notional value.",
+      "note": ""
+    },
+    {
+      "file": "voice/21.mp3",
+      "t": 145.2,
+      "slot": 6.8,
+      "scene": "q-notional",
+      "text": "D is the price of one whole BTC. You're buying one thousandth of a BTC.",
+      "say": "D is the price of one whole B-T-C. You're buying one thousandth of a B-T-C.",
+      "note": ""
+    },
+    {
+      "file": "voice/22.mp3",
+      "t": 152.3,
+      "slot": 7.3,
+      "scene": "q-spread",
+      "text": "Question seven, from T04. The best bid is 59,990 and the best ask is 60,010 USDT. The spread?",
+      "say": "Question seven, from T four. The best bid is fifty-nine thousand nine hundred ninety and the best ask is sixty thousand ten U-S-D-T. The spread?",
+      "note": ""
+    },
+    {
+      "file": "voice/23.mp3",
+      "t": 159.6,
+      "slot": 6.6,
+      "scene": "q-spread",
+      "text": "B, 20 USDT. The spread is the best ask minus the best bid: 60,010 minus 59,990.",
+      "say": "B, twenty U-S-D-T. The spread is the best ask minus the best bid: sixty thousand ten minus fifty-nine thousand nine hundred ninety.",
+      "note": ""
+    },
+    {
+      "file": "voice/24.mp3",
+      "t": 166.2,
+      "slot": 6.8,
+      "scene": "q-spread",
+      "text": "C is the bid itself: the highest price a buyer is offering right now. Not the gap.",
+      "say": "C is the bid itself: the highest price a buyer is offering right now. Not the gap.",
+      "note": ""
+    },
+    {
+      "file": "voice/25.mp3",
+      "t": 173.3,
+      "slot": 7.3,
+      "scene": "q-phish",
+      "text": "Question eight, from T04. A message asks for your OTP, the one-time code. What do you do?",
+      "say": "Question eight, from T four. A message asks for your O-T-P, the one-time code. What do you do?",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/26.mp3",
+      "t": 180.6,
+      "slot": 6.6,
+      "scene": "q-phish",
+      "text": "C. Never share it. Open the exchange app yourself, or use its official support page.",
+      "say": "C. Never share it. Open the exchange app yourself, or use its official support page.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/27.mp3",
+      "t": 187.2,
+      "slot": 6.8,
+      "scene": "q-phish",
+      "text": "A is exactly what scammers want. Rushing you is a trick, and an OTP opens your account.",
+      "say": "A is exactly what scammers want. Rushing you is a trick, and an O-T-P opens your account.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/28.mp3",
+      "t": 194.3,
+      "slot": 4.3,
+      "scene": "safety",
+      "text": "Before Phase 2, four safety points that matter most.",
+      "say": "Before Phase two, four safety points that matter most.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/29.mp3",
+      "t": 198.6,
+      "slot": 5.8,
+      "scene": "safety",
+      "text": "An exchange is not a bank. Your balance there has no bank-style guarantee.",
+      "say": "An exchange is not a bank. Your balance there has no bank-style guarantee.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/30.mp3",
+      "t": 204.4,
+      "slot": 7.2,
+      "scene": "safety",
+      "text": "Never share your password, OTP or API secret keys. Not even with someone claiming to be support.",
+      "say": "Never share your password, O-T-P or A-P-I secret keys. Not even with someone claiming to be support.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/31.mp3",
+      "t": 211.6,
+      "slot": 5.1,
+      "scene": "safety",
+      "text": "USDT aims to track one US dollar, but that peg is not guaranteed.",
+      "say": "U-S-D-T aims to track one US dollar, but that peg is not guaranteed.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/32.mp3",
+      "t": 216.7,
+      "slot": 6.3,
+      "scene": "safety",
+      "text": "And prices can swing fast. You can always choose to wait, and make no trade.",
+      "say": "And prices can swing fast. You can always choose to wait, and make no trade.",
+      "note": "firmer, slower"
+    },
+    {
+      "file": "voice/33.mp3",
+      "t": 223.3,
+      "slot": 3.3,
+      "scene": "revisit",
+      "text": "Here's where each question came from.",
+      "say": "Here's where each question came from.",
+      "note": ""
+    },
+    {
+      "file": "voice/34.mp3",
+      "t": 226.6,
+      "slot": 4,
+      "scene": "revisit",
+      "text": "Questions one and two: T01. Three and four: T02.",
+      "say": "Questions one and two: T one. Three and four: T two.",
+      "note": ""
+    },
+    {
+      "file": "voice/35.mp3",
+      "t": 230.6,
+      "slot": 3.6,
+      "scene": "revisit",
+      "text": "Five and six: T03. Seven and eight: T04.",
+      "say": "Five and six: T three. Seven and eight: T four.",
+      "note": ""
+    },
+    {
+      "file": "voice/36.mp3",
+      "t": 234.2,
+      "slot": 7.8,
+      "scene": "revisit",
+      "text": "Missed one? Rewatch that lesson before Phase 2. There's no penalty, and you can retry anytime.",
+      "say": "Missed one? Rewatch that lesson before Phase two. There's no penalty, and you can retry anytime.",
+      "note": ""
+    },
+    {
+      "file": "voice/37.mp3",
+      "t": 242.6,
+      "slot": 9.4,
+      "scene": "next",
+      "text": "Next up, Phase 2 begins with T05: buy, sell, long and short. See you there!",
+      "say": "Next up, Phase two begins with T five: buy, sell, long and short. See you there!",
+      "note": ""
+    }
+  ]
+}

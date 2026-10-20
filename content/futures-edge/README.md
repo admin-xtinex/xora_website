@@ -14,6 +14,7 @@ into the runnable page `public/futures-edge/lessons/<id>.html` (see `docs/future
     tutor.json         tutor pose table: size, brain centre (ax), feet line and brain width of each image
     score.js           the music and sound effects, written as notes and cues against scene start times
     narration.json     the voiceover script: each line with the time it was written to start
+    narration.ml.json  Malayalam subtitles: one translation per narration line, same order (optional)
   assets/
     assets.json        every image the lesson uses, with its size
     tutor-*.webp       tutor poses (wv* is the waving loop, wk* the walk cycle)

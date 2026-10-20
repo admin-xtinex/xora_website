@@ -84,6 +84,10 @@ the public site.
   lesson asks the course page to grow its dialog to fill the screen (`futures-edge:fullscreen`
   message); turning the phone sideways then gives the full-width picture. Escape or the same button
   goes back.
+- Subtitles: Malayalam by default when the lesson has `modules/narration.ml.json` (one translation per narration
+  line, same order), otherwise English. The CC button opens a menu: മലയാളം / English / Off; the choice is
+  remembered on the device. The Malayalam font (Noto Sans Malayalam, OFL) ships with each lesson. The Malayalam
+  is a draft for native-speaker review.
 - It needs no network beyond its own files: no CDN, no fonts from Google, no claude.ai.
 
 | Lesson | Where it was authored (the source of record is now `content/futures-edge/<id>/`) |

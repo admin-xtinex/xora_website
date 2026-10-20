@@ -12,6 +12,7 @@
 // near the moments they were written for, and the player slows that scene's animation and
 // sound effects by the same factor. Needs ffmpeg and ffprobe on the PATH when voice/ exists.
 // Without voice/, the narration lines are still shown as captions at their written times.
+// modules/narration.ml.json (optional) adds Malayalam subtitles, shown by default.
 import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -27,8 +28,10 @@ const FONTS = [
   { file: "manrope.woff2", from: join(root, "public/fonts/manrope.woff2"), face: 'font-family:"Manrope";font-weight:400 800' },
   { file: "dm-mono-400.woff2", from: join(here, "fonts/dm-mono-400.woff2"), face: 'font-family:"DM Mono";font-weight:400' },
   { file: "dm-mono-500.woff2", from: join(here, "fonts/dm-mono-500.woff2"), face: 'font-family:"DM Mono";font-weight:500' },
+  { file: "noto-sans-malayalam-400.woff2", from: join(here, "fonts/noto-sans-malayalam-400.woff2"), face: 'font-family:"Noto Sans Malayalam";font-weight:400' },
+  { file: "noto-sans-malayalam-600.woff2", from: join(here, "fonts/noto-sans-malayalam-600.woff2"), face: 'font-family:"Noto Sans Malayalam";font-weight:600' },
 ];
-const FONT_CHECKS = ['400 40px "Manrope"', '700 40px "Outfit"', '600 40px "Outfit"', '400 40px "DM Mono"', '500 40px "DM Mono"'];
+const FONT_CHECKS = ['600 40px "Noto Sans Malayalam"', '400 40px "Manrope"', '700 40px "Outfit"', '600 40px "Outfit"', '400 40px "DM Mono"', '500 40px "DM Mono"'];
 
 const PLAYER_CSS = `
 html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; color: #eef1f7;
@@ -50,8 +53,19 @@ body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
 .fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
   background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
 .fe-btn svg { width: 20px; height: 20px; }
-.fe-cc { font: 700 12px/1 "Manrope", system-ui, sans-serif; letter-spacing: 0.04em; color: #6b7489; }
-.fe-cc[aria-pressed="true"] { color: #eef1f7; box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-ccw { position: relative; flex: none; }
+.fe-cc { font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; letter-spacing: 0.04em; color: #eef1f7;
+  box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-cc.is-off { color: #6b7489; box-shadow: none; }
+.fe-ccm { position: absolute; right: 0; bottom: calc(100% + 10px); display: grid; min-width: 150px; padding: 6px; border-radius: 12px;
+  background: rgba(7, 8, 20, 0.96); border: 1px solid rgba(130, 160, 255, 0.25); }
+.fe-ccm[hidden] { display: none; }
+.fe-ccm button { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: none; color: #eef1f7; font: 600 15px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; text-align: left; cursor: pointer; }
+.fe-ccm button:hover, .fe-ccm button:focus-visible { background: rgba(238, 241, 247, 0.08); outline: none; }
+.fe-ccm button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+.fe-ccm button[aria-checked="true"]::before { background: #3ecbff; }
+.fe-cap:lang(ml) { font-family: "Noto Sans Malayalam", "Manrope", system-ui, sans-serif; line-height: 1.55; }
 /* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
 .fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
   max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
@@ -162,7 +176,7 @@ function build(id) {
     scenes = plan.scenes;
     const total = scenes.reduce((a, x) => a + x.dur, 0);
     mixVoice(src, plan, total, join(dest, "voice.mp3"));
-    voice = { src: `${id}/voice.mp3`, lines: plan.lines.map(({ t, d, text }) => ({ t, d: Math.round(d * 1000) / 1000, text })) };
+    voice = { src: `${id}/voice.mp3`, lines: plan.lines.map(({ i, t, d, text }) => ({ i, t, d: Math.round(d * 1000) / 1000, text })) };
   } else if (modules["narration.json"]) {
     // Captions only: each line stays up until shortly before the next one (or its scene's end).
     const lines = JSON.parse(modules["narration.json"]).lines;
@@ -172,9 +186,19 @@ function build(id) {
       lines: lines.map((l, i) => {
         const sceneEnd = ends.find((e) => e > l.t) ?? ends[ends.length - 1];
         const next = i + 1 < lines.length ? lines[i + 1].t : Infinity;
-        return { t: l.t, d: Math.round((Math.min(next, sceneEnd) - 0.25 - l.t) * 1000) / 1000, text: l.text };
+        return { i, t: l.t, d: Math.round((Math.min(next, sceneEnd) - 0.25 - l.t) * 1000) / 1000, text: l.text };
       }),
     };
+  }
+  // Malayalam subtitles: modules/narration.ml.json holds one translation per narration line, in the same order.
+  const ml = modules["narration.ml.json"];
+  delete modules["narration.ml.json"];
+  if (voice) {
+    const mlLines = ml ? JSON.parse(ml).lines : null;
+    if (mlLines && mlLines.length !== JSON.parse(modules["narration.json"]).lines.length) {
+      throw new Error(`${id}: narration.ml.json has ${mlLines.length} lines, narration.json ${JSON.parse(modules["narration.json"]).lines.length}`);
+    }
+    voice.lines = voice.lines.map(({ i, ...l }) => (mlLines && mlLines[i].text ? { ...l, ml: mlLines[i].text } : l));
   }
 
   const FILM = {

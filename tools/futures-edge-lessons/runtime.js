@@ -740,6 +740,12 @@
     exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   };
 
+  const CC_LANGS = [
+    { id: "ml", label: "മലയാളം", short: "മ", name: "Malayalam" },
+    { id: "en", label: "English", short: "EN", name: "English" },
+    { id: "off", label: "Off", short: "CC", name: "Off" },
+  ];
+
   // ── Full screen ────────────────────────────────────────────────────────────
   // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
   // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
@@ -779,7 +785,10 @@
         '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
         '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
         '<span class="fe-time"></span>' +
-        (lines.length ? '<button type="button" class="fe-btn fe-cc" aria-pressed="true" aria-label="Captions">CC</button>' : "") +
+        (lines.length ? '<div class="fe-ccw"><button type="button" class="fe-btn fe-cc" aria-haspopup="true" aria-expanded="false">CC</button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Subtitles" hidden>' +
+          CC_LANGS.map((l) => '<button type="button" role="menuitemradio" data-lang="' + l.id + '"' + (l.id === "ml" ? ' lang="ml"' : "") + '>' + l.label + '</button>').join("") +
+          '</div></div>' : "") +
         '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
         (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
       "</div>"
@@ -788,16 +797,51 @@
     const cap = h('<p class="fe-cap" aria-live="off"></p>');
     document.body.append(cap, bar, hint);
     const cc = bar.querySelector(".fe-cc");
+    const ccMenu = bar.querySelector(".fe-ccm");
     const fsb = bar.querySelector(".fe-fs");
     if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
-    let ccOn = true, capText = null;
-    if (cc) cc.addEventListener("click", (e) => {
-      e.stopPropagation();
-      ccOn = !ccOn;
-      cc.setAttribute("aria-pressed", String(ccOn));
+    // Subtitle language: Malayalam by default when the lesson has it, then English, or off.
+    // The viewer's choice is remembered on this device.
+    const hasMl = lines.some((l) => l.ml);
+    let ccLang = hasMl ? "ml" : "en", capText = null;
+    try {
+      const saved = localStorage.getItem("fe-subtitles");
+      if (saved === "en" || saved === "off" || (saved === "ml" && hasMl)) ccLang = saved;
+    } catch (e) { /* storage blocked: keep the default */ }
+    const setLang = (lang) => {
+      ccLang = lang;
+      try { localStorage.setItem("fe-subtitles", lang); } catch (e) { /* not remembered */ }
       capText = null;
       api.update(state.t);
-    });
+      api.cc();
+    };
+    const openMenu = (open) => {
+      if (!ccMenu) return;
+      ccMenu.hidden = !open;
+      cc.setAttribute("aria-expanded", String(open));
+      if (open) (ccMenu.querySelector('[aria-checked="true"]') || ccMenu.firstElementChild).focus();
+    };
+    if (cc) {
+      cc.addEventListener("click", (e) => { e.stopPropagation(); openMenu(ccMenu.hidden); wake(); });
+      ccMenu.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-lang]");
+        if (!b) return;
+        e.stopPropagation();
+        setLang(b.dataset.lang);
+        openMenu(false);
+        cc.focus();
+      });
+      ccMenu.addEventListener("keydown", (e) => {
+        const items = Array.from(ccMenu.children), i = items.indexOf(document.activeElement);
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+        }
+        if (e.key === "Escape") { e.stopPropagation(); openMenu(false); cc.focus(); }
+      });
+      document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-ccw")) openMenu(false); }, true);
+      if (!hasMl) ccMenu.querySelector('[data-lang="ml"]').remove();
+    }
     const pp = bar.querySelector(".fe-pp");
     const trk = bar.querySelector(".fe-track");
     const fill = trk.querySelector("i");
@@ -839,6 +883,7 @@
       wake();
     });
     document.addEventListener("keydown", (e) => {
+      if (e.target.closest && e.target.closest(".fe-ccw")) return; // the subtitle menu handles its own keys
       if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
       if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
       if (e.key === "Escape" && fs.pseudo) fs.toggle();
@@ -852,11 +897,12 @@
         trk.setAttribute("aria-valuenow", String(Math.round(t)));
         time.textContent = fmt(t) + " / " + fmt(END);
         let text = "";
-        if (ccOn) for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = l.text;
+        if (ccLang !== "off") for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = (ccLang === "ml" && l.ml) || l.text;
         if (text !== capText) {
           capText = text;
           cap.textContent = text;
           cap.hidden = !text;
+          cap.lang = ccLang === "ml" ? "ml" : "en";
         }
         if (!state.playing) wake();
       },
@@ -865,6 +911,14 @@
         snd.innerHTML = on ? ICON.on : ICON.off;
         snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
         hint.hidden = audio.enabled;
+      },
+      cc() {
+        if (!cc) return;
+        const cur = CC_LANGS.find((l) => l.id === ccLang);
+        cc.textContent = ccLang === "off" ? "CC" : cur.short;
+        cc.classList.toggle("is-off", ccLang === "off");
+        cc.setAttribute("aria-label", "Subtitles: " + cur.name);
+        for (const b of ccMenu.children) b.setAttribute("aria-checked", String(b.dataset.lang === ccLang));
       },
       full() {
         if (!fsb) return;
@@ -875,6 +929,7 @@
     };
     api.sound();
     api.full();
+    api.cc();
     wake();
     return api;
   })();

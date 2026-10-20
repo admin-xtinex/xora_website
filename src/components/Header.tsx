@@ -4,6 +4,10 @@ import { LINKS, NAV } from "@/lib/content";
 import { linkClick, usePath } from "@/lib/router";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "./ui/MagneticButton";
+import { AccountMenu } from "@/auth/AccountMenu";
+
+// The course app (src/features/futures-edge) may only import from this file; it shows the account menu too.
+export { AccountMenu };
 
 export function BrandLockup() {
   return (
@@ -98,6 +102,7 @@ export function Header() {
         </nav>
 
         <div className="header-end">
+          <AccountMenu />
           {!onCourse ? (
             <MagneticButton href={LINKS.getStarted} variant="ghost" className="header-cta">
               Get Started

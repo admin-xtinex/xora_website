@@ -13,6 +13,12 @@ import { TrustNoticeSection } from "./components/TrustNoticeSection";
 import { ValueSection } from "./components/ValueSection";
 import { navigate, scrollToTarget, usePath } from "./lib/router";
 import { isFuturesEdgePath } from "./features/futures-edge";
+import { ActivityTracker } from "./auth/ActivityTracker";
+import { AuthPage, RequireAuth } from "./auth/AuthPage";
+import { needsAuth } from "./auth/config";
+
+const AdminPage = lazy(() => import("./admin/AdminPage").then((m) => ({ default: m.AdminPage })));
+const loading = <p role="status" style={{ minHeight: "100vh", margin: 0, display: "grid", placeItems: "center", color: "#b4bccb" }}>Loading…</p>;
 
 // Interactive Futures Edge lessons (slides, notes, practice, quizzes) at /learn/futures-edge.
 // Only reachable when the build-time flag VITE_FUTURES_EDGE_ENABLED is exactly "true".
@@ -49,6 +55,23 @@ function CoursePage() {
 
 export function App() {
   const path = usePath();
+  return (
+    <>
+      <ActivityTracker path={path} />
+      <Routes path={path} />
+    </>
+  );
+}
+
+function Routes({ path }: { path: string }) {
+  if (path === "/signin" || path === "/signup") return <AuthPage initial={path === "/signup" ? "signup" : "signin"} />;
+  if (path === "/admin") return <Suspense fallback={loading}><AdminPage /></Suspense>;
+  // The course and everything in it needs an account; the landing page does not.
+  if (needsAuth(path)) return <RequireAuth path={path}><CourseRoutes path={path} /></RequireAuth>;
+  return <SitePages path={path} />;
+}
+
+function CourseRoutes({ path }: { path: string }) {
   // The old video-catalogue address now opens the course, where every lesson carries its video.
   useLayoutEffect(() => {
     if (FuturesEdgeApp && path === "/course") navigate("/learn/futures-edge", true);

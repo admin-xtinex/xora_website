@@ -1,0 +1,44 @@
+rules_version = '2';
+
+// Security rules for the XORA website's Firestore database (Firebase console → Firestore → Rules → paste → Publish).
+// - Learners can create and update only their own profile, and add activity records about themselves.
+// - Nobody can change or delete activity records; only admins can read them and other learners' profiles.
+// - Admins: the emails below, signed in with a confirmed email address. Keep this list the same as
+//   VITE_ADMIN_EMAILS in .env.production (that one only decides whether the Admin link is shown).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() in ['tisan@xtinex.com'];
+    }
+    function own(uid) { return signedIn() && request.auth.uid == uid; }
+
+    match /users/{uid} {
+      allow read: if own(uid) || isAdmin();
+      allow create: if own(uid)
+        && request.resource.data.uid == uid
+        && request.resource.data.keys().hasOnly(['uid', 'email', 'name', 'provider', 'createdAt', 'lastSeenAt', 'signInCount'])
+        && request.resource.data.createdAt == request.time;
+      allow update: if own(uid)
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['uid', 'email', 'createdAt'])
+        && request.resource.data.keys().hasOnly(['uid', 'email', 'name', 'provider', 'createdAt', 'lastSeenAt', 'signInCount',
+             'progress', 'lessonsStarted', 'lessonsCompleted', 'progressAt', 'videos']);
+      allow delete: if false;
+    }
+
+    match /events/{id} {
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid', 'email', 'type', 'lesson', 'detail', 'at'])
+        && request.resource.data.type is string && request.resource.data.type.size() <= 40
+        && request.resource.data.lesson is string && request.resource.data.lesson.size() <= 8
+        && request.resource.data.detail is string && request.resource.data.detail.size() <= 200
+        && request.resource.data.at == request.time;
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+  }
+}

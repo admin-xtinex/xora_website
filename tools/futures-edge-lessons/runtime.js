@@ -726,6 +726,18 @@
     if (state.playing) startSession(state.t);
     renderAt(state.t);
   }
+  // Tells the page around the lesson (the course, when signed in) how far the video has been watched:
+  // started, 25 %, 50 %, 75 % and finished, each once per visit.
+  const reported = new Set();
+  function reportProgress() {
+    if (window.parent === window) return;
+    const pct = state.t >= END - 0.5 ? 100 : [75, 50, 25].find((p) => state.t >= (END * p) / 100) || 0;
+    for (const p of [0, 25, 50, 75, 100]) {
+      if (p > pct || reported.has(p)) continue;
+      reported.add(p);
+      try { window.parent.postMessage({ type: "futures-edge:progress", lesson: F.id, pct: p }, location.origin); } catch (e) { /* no parent page */ }
+    }
+  }
   function tick() {
     if (state.playing) {
       state.t = state.t0 + (now() - state.wall0) * state.rate;
@@ -734,6 +746,7 @@
         pause();
       }
       renderAt(state.t);
+      reportProgress();
     }
     requestAnimationFrame(tick);
   }

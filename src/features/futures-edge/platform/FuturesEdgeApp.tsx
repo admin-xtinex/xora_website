@@ -1,6 +1,6 @@
 /** Course shell: header, safety banner, routes, glossary drawer, progress provider. Scoped under .fel-root. */
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { BrandLockup } from '@/components/Header';
+import { AccountMenu, BrandLockup } from '@/components/Header';
 import { COURSE_GLOSSARY } from '../content';
 import { GlossaryContext } from './hooks';
 import { ProgressProvider } from './progress-context';
@@ -35,6 +35,7 @@ export function FuturesEdgeApp() {
               <Link to={{ kind: 'glossary' }}>Glossary</Link>
               <a href="/">XORA home</a>
             </nav>
+            <AccountMenu compact />
           </header>
           <p className="fel-banner" role="note">Education only · all market data is fictional · no real orders, no API keys</p>
           {route.kind === 'home' ? <CourseHome /> : null}

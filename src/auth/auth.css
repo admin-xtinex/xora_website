@@ -1,0 +1,127 @@
+/* Sign-in pages, the account menu and the admin portal. Same palette as the site (styles.css @theme). */
+
+.auth-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(60% 50% at 80% 0%, rgba(168, 85, 247, 0.16), transparent 70%),
+    radial-gradient(50% 40% at 0% 100%, rgba(62, 203, 255, 0.12), transparent 70%),
+    #02030a;
+  color: #eef1f7;
+}
+.auth-card {
+  width: min(440px, 100%);
+  padding: 28px clamp(20px, 5vw, 36px);
+  border-radius: 22px;
+  border: 1px solid rgba(130, 160, 255, 0.2);
+  background: rgba(7, 8, 20, 0.86);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+.auth-brand { display: inline-flex; margin-bottom: 22px; color: inherit; text-decoration: none; }
+.auth-card h1 { margin: 0 0 6px; font: 700 clamp(24px, 6vw, 30px) / 1.15 "Outfit", "Manrope", system-ui, sans-serif; }
+.auth-sub { margin: 0 0 22px; color: #b4bccb; font-size: 15px; line-height: 1.5; }
+.auth-card form { display: grid; gap: 14px; }
+.auth-card label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: #d6dbe6; }
+.auth-card input {
+  height: 46px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(238, 241, 247, 0.16);
+  background: rgba(238, 241, 247, 0.04);
+  color: #eef1f7;
+  font: 500 16px/1 "Manrope", system-ui, sans-serif;
+}
+.auth-card input:focus { outline: 2px solid #3ecbff; outline-offset: 1px; border-color: transparent; }
+.auth-hint { font-weight: 400; color: #6b7489; font-size: 13px; }
+.auth-primary,
+.auth-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 12px;
+  font: 700 15px/1 "Manrope", system-ui, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+.auth-primary { border: 0; color: #02030a; background: linear-gradient(90deg, #3ecbff, #a855f7); margin-top: 4px; }
+.auth-google { border: 1px solid rgba(238, 241, 247, 0.2); background: #fff; color: #1f2430; }
+.auth-primary:disabled,
+.auth-google:disabled { opacity: 0.6; cursor: progress; }
+.auth-or { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: #6b7489; font-size: 13px; }
+.auth-or::before,
+.auth-or::after { content: ""; flex: 1; height: 1px; background: rgba(238, 241, 247, 0.12); }
+.auth-error { margin: 0; padding: 10px 12px; border-radius: 10px; background: rgba(244, 63, 94, 0.12); color: #fda4af; font-size: 14px; }
+.auth-notice { margin: 0; padding: 10px 12px; border-radius: 10px; background: rgba(62, 203, 255, 0.1); color: #a5e9ff; font-size: 14px; }
+.auth-switch { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 18px; color: #b4bccb; font-size: 14px; }
+.auth-switch button { border: 0; background: none; padding: 4px 0; color: #3ecbff; font: 600 14px/1.2 "Manrope", system-ui, sans-serif; cursor: pointer; }
+.auth-fine { margin: 22px 0 0; color: #6b7489; font-size: 12px; line-height: 1.5; }
+.auth-wait { min-height: 100vh; margin: 0; display: grid; place-items: center; color: #b4bccb; background: #02030a; }
+
+/* Account menu (site header and course header). */
+.acct { position: relative; }
+.acct-signin,
+.acct-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(238, 241, 247, 0.16);
+  background: rgba(238, 241, 247, 0.04);
+  color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.acct-btn { padding: 0 12px 0 4px; }
+.acct-avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3ecbff, #a855f7);
+  color: #02030a;
+  font-weight: 800;
+}
+.acct-name { max-width: 12ch; overflow: hidden; text-overflow: ellipsis; }
+.acct-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 60;
+  display: grid;
+  min-width: 220px;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(130, 160, 255, 0.22);
+  background: rgba(7, 8, 20, 0.97);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.acct-who { display: flex; align-items: center; gap: 6px; margin: 4px 8px 8px; color: #6b7489; font-size: 13px; overflow: hidden; text-overflow: ellipsis; }
+.acct-menu a,
+.acct-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+.acct-menu a:hover,
+.acct-menu button:hover { background: rgba(238, 241, 247, 0.07); }

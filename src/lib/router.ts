@@ -39,13 +39,13 @@ export function navigate(href: string, replace = false) {
   const id = url.hash ? decodeURIComponent(url.hash.slice(1)) : null;
 
   if (path === normalise(location.pathname)) {
-    history.replaceState(null, "", path + (url.hash || ""));
+    history.replaceState(null, "", path + url.search + (url.hash || ""));
     scrollToTarget(id, true);
     return;
   }
 
   // New page: App scrolls to the top (or the #section) as soon as it has rendered.
-  history[replace ? "replaceState" : "pushState"](null, "", path + (url.hash || ""));
+  history[replace ? "replaceState" : "pushState"](null, "", path + url.search + (url.hash || ""));
   listeners.forEach((l) => l());
   // The course app keeps its own router; tell it the address changed.
   window.dispatchEvent(new Event("fe:navigate"));

@@ -29,6 +29,12 @@ Animations respect `prefers-reduced-motion`; the hero video stays paused for red
 `Dockerfile` builds the site and serves `dist/` with nginx on port 80 (`/health` for probes),
 the same contract as the xtinex.com website image.
 
+### Accounts and admin
+
+The landing page is public; the course needs an account (email + password or Google, via Firebase).
+`/admin` shows learner activity to admins. Setup and details: [`firebase/README.md`](firebase/README.md).
+Until the Firebase config is in `.env.production`, sign-in is off and the course stays open.
+
 ### Automatic deploy (GitHub Actions)
 
 Every push to `main` builds, tests and deploys the site (`.github/workflows/deploy.yml`); it can also be

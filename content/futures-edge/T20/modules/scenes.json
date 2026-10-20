@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson twenty",
+      "dur": 8,
+      "desc": "Title card: Phase 5, lesson T20, Evaluating an Entry Opportunity; a six-step checklist ticks down to WAIT; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "A tempting moment",
+      "dur": 18,
+      "desc": "A fictional BTC/USDT 5-minute chart draws in; a tempting BUY NOW mock button is crossed out in favour of checking first."
+    },
+    {
+      "id": "steps",
+      "name": "The method",
+      "dur": 22,
+      "desc": "Entry opportunity defined; pilot checklist analogy; six steps in order: trend, range, zones, volume, risk budget, tentative decision."
+    },
+    {
+      "id": "trend",
+      "name": "Step 1: trend",
+      "dur": 20,
+      "desc": "Layer 1 on the same chart: higher lows then a lower high; trend = up, but choppy."
+    },
+    {
+      "id": "range",
+      "name": "Step 2: range",
+      "dur": 20,
+      "desc": "Layer 2: recent range box 59,500 to 60,100 = 600 USDT, about 1% of 60,000; price near the top."
+    },
+    {
+      "id": "zone",
+      "name": "Step 3: zones",
+      "dur": 21,
+      "desc": "Layer 3: resistance zone 60,050-60,150 and support zone 59,500-59,600 grow in; price at 60,000 has about 50 USDT of room up."
+    },
+    {
+      "id": "volume",
+      "name": "Step 4: volume",
+      "dur": 22,
+      "desc": "Layer 4: volume bars rise under the candles; the last push up fades; volume alone is not proof."
+    },
+    {
+      "id": "risk",
+      "name": "Step 5: risk budget",
+      "dur": 28,
+      "desc": "Layer 5: example 1,000 USDT account, 10 USDT risk budget; stop 59,400 is 600 USDT (1%) away so about 1,000 USDT notional; reward to 60,100 about +1.7 USDT, fees about 1 USDT."
+    },
+    {
+      "id": "decide",
+      "name": "Step 6: decision",
+      "dur": 24,
+      "desc": "Layer 6: BUY / SELL / WAIT with a typed reason; WAIT is selected."
+    },
+    {
+      "id": "mistake",
+      "name": "Direction first",
+      "dur": 21,
+      "desc": "Mistake: deciding direction first and finding reasons after; correction: the checklist in order, a written why, WAIT is a result."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 28,
+      "desc": "A second fictional coin with all-neutral checklist; choices BUY, SELL, WAIT; 5-second countdown; answer C, WAIT; why not A."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 24,
+      "desc": "A checklist does not predict; slippage and fees; leverage; fictional examples, WAIT is allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 28,
+      "desc": "Three key points and a check question about buying under resistance on fading volume."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T21, Confirmation, False Signals and NO_TRADE."
+    }
+  ]
+}

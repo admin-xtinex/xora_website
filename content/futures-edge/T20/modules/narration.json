@@ -1,0 +1,181 @@
+{
+  "about": "T20 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson twenty: evaluating an entry opportunity. A careful checklist that can end in no trade."
+    },
+    {
+      "t": 8.4,
+      "text": "Here's a fictional BTC chart. The last few candles are green, and price is near 60,000."
+    },
+    {
+      "t": 15.0,
+      "text": "It's tempting to press BUY right now. But what do we actually know?"
+    },
+    {
+      "t": 20.4,
+      "text": "Instead of guessing, let's check the chart step by step."
+    },
+    {
+      "t": 26.4,
+      "text": "An entry opportunity is a moment when you consider opening a trade. Considering is not entering."
+    },
+    {
+      "t": 34.4,
+      "text": "Like a pilot before take-off: the same checks, in the same order, every time."
+    },
+    {
+      "t": 41.0,
+      "text": "Trend, range, zones, volume, risk. Only then a tentative decision: buy, sell or wait."
+    },
+    {
+      "t": 48.4,
+      "text": "Step one: the trend. A trend is the general direction price has been moving."
+    },
+    {
+      "t": 54.4,
+      "text": "Over this hour, the lows kept getting higher. That leans up."
+    },
+    {
+      "t": 59.4,
+      "text": "But the last high was lower than the one before. So: up, but choppy. Not a clear signal."
+    },
+    {
+      "t": 68.4,
+      "text": "Step two: the recent range. The space between the recent high and the recent low."
+    },
+    {
+      "t": 75.0,
+      "text": "Over the last eight candles: high 60,100, low 59,500. That's 600 USDT."
+    },
+    {
+      "t": 80.8,
+      "text": "600 out of 60,000 is about 1%. And price now sits near the top of this box."
+    },
+    {
+      "t": 88.4,
+      "text": "Step three: zones. Support is like a floor where falls often paused. Resistance is like a ceiling."
+    },
+    {
+      "t": 96.2,
+      "text": "Here, resistance sits at 60,050 to 60,150. Support sits at 59,500 to 59,600."
+    },
+    {
+      "t": 102.2,
+      "text": "Price is at 60,000, just under resistance. Only about 50 USDT of room before the ceiling."
+    },
+    {
+      "t": 109.4,
+      "text": "Step four: volume is how much was traded in each candle. Liquidity is how easily you can trade."
+    },
+    {
+      "t": 117.2,
+      "text": "The big drop and first push up had high volume. This last push up has less and less."
+    },
+    {
+      "t": 123.8,
+      "text": "Fading volume is a weak sign, not proof. Volume alone never tells you the direction."
+    },
+    {
+      "t": 131.4,
+      "text": "Step five: your risk budget. The most you accept to lose on this one trade, decided before entering."
+    },
+    {
+      "t": 139.6,
+      "text": "Example only: a 1,000 USDT practice account, and a risk budget of 10 USDT."
+    },
+    {
+      "t": 145.4,
+      "text": "A stop below support at 59,400 is 600 USDT away: 1%. Sized for that, a loss is about 10 USDT."
+    },
+    {
+      "t": 152.4,
+      "text": "If price reaches 60,100, the gain is only about 1.7 USDT, and fees take about 1 of it."
+    },
+    {
+      "t": 159.4,
+      "text": "Step six: a tentative decision. Buy, sell or wait, and you write down why."
+    },
+    {
+      "t": 166.0,
+      "text": "Mild uptrend, but price is under resistance, volume is fading, and the reward is tiny next to the risk."
+    },
+    {
+      "t": 174.0,
+      "text": "So the decision is WAIT. No trade is a real, sensible result of the checklist."
+    },
+    {
+      "t": 183.4,
+      "text": "A common mistake: deciding the direction first, then looking for reasons to agree."
+    },
+    {
+      "t": 190.0,
+      "text": "Green candles alone are not a reason. Work through the checklist in order, and write your why."
+    },
+    {
+      "t": 197.2,
+      "text": "And WAIT is not a failure. It's often the best answer when the signals don't line up."
+    },
+    {
+      "t": 204.4,
+      "text": "Your turn. A different fictional coin, checklist filled in. What's the sensible tentative decision?"
+    },
+    {
+      "t": 212.4,
+      "text": "Pause if you need more time. Is it A, B or C?"
+    },
+    {
+      "t": 218.4,
+      "text": "C, wait. Every signal is neutral, so there's no reason to take the risk."
+    },
+    {
+      "t": 224.2,
+      "text": "A is tempting, but one green candle is not a reason. Neutral signals mean no trade."
+    },
+    {
+      "t": 232.3,
+      "text": "Before using any checklist, know its limits."
+    },
+    {
+      "t": 236.0,
+      "text": "A checklist cannot predict the future. Price can still move against you."
+    },
+    {
+      "t": 241.7,
+      "text": "Stops can slip, and fees eat small gains. Leverage makes losses bigger."
+    },
+    {
+      "t": 247.4,
+      "text": "These are fictional examples, not advice. When signals are unclear, WAIT is always allowed."
+    },
+    {
+      "t": 256.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 258.0,
+      "text": "One: check in order. Trend, range, zones, volume, then your risk budget."
+    },
+    {
+      "t": 263.6,
+      "text": "Two: a decision needs reasons. Write down why, not only the direction."
+    },
+    {
+      "t": 269.2,
+      "text": "Three: when signals are neutral or mixed, WAIT is a real decision."
+    },
+    {
+      "t": 274.6,
+      "text": "Check yourself: price is just under resistance and volume is fading. A strong buy?"
+    },
+    {
+      "t": 281.2,
+      "text": "No. Those are reasons to wait."
+    },
+    {
+      "t": 284.6,
+      "text": "Next up: T21, confirmation, false signals and NO_TRADE. Why waiting is a decision too."
+    }
+  ]
+}

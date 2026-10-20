@@ -1,0 +1,201 @@
+{
+  "about": "T21 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson twenty-one: confirmation, false signals and NO_TRADE. Why waiting is a decision too."
+    },
+    {
+      "t": 8.4,
+      "text": "Here's a fictional BTC chart. Twice, price climbed to about 60,000 and turned back down."
+    },
+    {
+      "t": 15.2,
+      "text": "Now it's back near that zone, at 59,970. Tempting to think: this time it breaks out!"
+    },
+    {
+      "t": 21.8,
+      "text": "But from this same past, price could break out to 60,350, drift sideways, or fall to 59,650."
+    },
+    {
+      "t": 28.8,
+      "text": "Nobody knows in advance which one will happen."
+    },
+    {
+      "t": 33.4,
+      "text": "Confirmation is extra evidence, after a signal, that supports an idea. You met it in T17."
+    },
+    {
+      "t": 40.4,
+      "text": "For a breakout: a candle closes beyond the zone, and the next candles hold there."
+    },
+    {
+      "t": 46.6,
+      "text": "Think of dark clouds. They make rain more likely, but don't promise it."
+    },
+    {
+      "t": 52.2,
+      "text": "Confirmation can raise or lower the odds. It cannot tell you what the next candle will do."
+    },
+    {
+      "t": 59.4,
+      "text": "Not all evidence is equal. Weak evidence is small or easy to fake, like one wick above a level."
+    },
+    {
+      "t": 66.6,
+      "text": "Conflicting evidence points in different directions at the same time."
+    },
+    {
+      "t": 72.2,
+      "text": "Here, the trend leans up, but price is under resistance and volume is fading."
+    },
+    {
+      "t": 78.2,
+      "text": "When evidence is weak or mixed, the scale doesn't tip. That's a reason for NO_TRADE."
+    },
+    {
+      "t": 85.4,
+      "text": "A false signal looks real but doesn't follow through. A false breakout is the classic one."
+    },
+    {
+      "t": 92.4,
+      "text": "Watch this candle. It pokes up to 60,090, above the zone, then closes at 59,960, back below."
+    },
+    {
+      "t": 99.6,
+      "text": "Say someone bought 0.01 BTC at 60,060 on that poke. At the close: −1.00 USDT, before fees."
+    },
+    {
+      "t": 106.8,
+      "text": "A wick above a level is not a close above it."
+    },
+    {
+      "t": 111.4,
+      "text": "Momentum is how strongly price is moving. A fade is when each push gets smaller."
+    },
+    {
+      "t": 117.6,
+      "text": "Like a ball rolled uphill: it keeps going for a while, but slower and slower."
+    },
+    {
+      "t": 123.6,
+      "text": "Here, four green candles gain 80, then 50, then 25, then only 10 USDT."
+    },
+    {
+      "t": 129.2,
+      "text": "A fade is a warning sign, not proof. Price can fade, then push on again."
+    },
+    {
+      "t": 135.4,
+      "text": "Hindsight bias: after you see what happened, it feels like it was obvious all along."
+    },
+    {
+      "t": 142.0,
+      "text": "Looking back at this chart, the breakout seems certain. Of course it went up!"
+    },
+    {
+      "t": 148.2,
+      "text": "But at decision time, the right side was hidden. You only had this."
+    },
+    {
+      "t": 153.8,
+      "text": "Old charts look clearer than live ones. Judge a decision by what was known at the time."
+    },
+    {
+      "t": 161.4,
+      "text": "NO_TRADE means you looked, and decided not to open a position. It's an active choice."
+    },
+    {
+      "t": 168.0,
+      "text": "Like a batter leaving a ball outside off stump. You don't have to play every ball."
+    },
+    {
+      "t": 174.6,
+      "text": "Write down what you'd need to see. For example: a 5-minute close above 60,050, then a hold."
+    },
+    {
+      "t": 181.6,
+      "text": "Until then: NO_TRADE. No fees, no new risk. At most, you miss a move."
+    },
+    {
+      "t": 189.4,
+      "text": "A common mistake: judging a decision only by what happened next."
+    },
+    {
+      "t": 194.8,
+      "text": "You waited, then price went up. Was waiting wrong? Not if the evidence was weak."
+    },
+    {
+      "t": 201.2,
+      "text": "A good decision can have a bad outcome, and a bad one can get lucky."
+    },
+    {
+      "t": 206.6,
+      "text": "So review your reasons, not just the result. Was the evidence clear, or were you guessing?"
+    },
+    {
+      "t": 214.4,
+      "text": "Your turn. Same zone, 60,000 to 60,050. Let's reveal new candles one at a time."
+    },
+    {
+      "t": 220.6,
+      "text": "Candle one wicks to 60,070 but closes at 60,030, inside the zone. Two small candles follow."
+    },
+    {
+      "t": 227.8,
+      "text": "Volume is falling. What's sensible: A, buy, B, sell, or C, wait? Pause if you need more time."
+    },
+    {
+      "t": 235.0,
+      "text": "C, wait. No candle closed above the zone, and the pushes are fading. Weak evidence."
+    },
+    {
+      "t": 241.6,
+      "text": "A is tempting, but a wick is not a breakout. And B? Nothing confirms a drop either."
+    },
+    {
+      "t": 248.4,
+      "text": "Before you rely on confirmation, know its limits."
+    },
+    {
+      "t": 252.6,
+      "text": "Confirmed signals still fail. And waiting for confirmation often means a worse entry."
+    },
+    {
+      "t": 259.4,
+      "text": "False breakouts can trigger stops, and stops can slip. Leverage makes each loss bigger."
+    },
+    {
+      "t": 266.0,
+      "text": "These are fictional examples, not advice. NO_TRADE is always allowed."
+    },
+    {
+      "t": 272.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 274.0,
+      "text": "One: confirmation is evidence, not certainty. The same past can lead to different futures."
+    },
+    {
+      "t": 280.8,
+      "text": "Two: weak or conflicting evidence, a false breakout or a fading push are reasons for care."
+    },
+    {
+      "t": 287.8,
+      "text": "Three: NO_TRADE is a real decision. Judge it by your reasons, not the result."
+    },
+    {
+      "t": 294.2,
+      "text": "Check yourself: you waited, then price rose. Was waiting a mistake?"
+    },
+    {
+      "t": 299.6,
+      "text": "Not if the evidence was weak. Judge the reasons."
+    },
+    {
+      "t": 304.4,
+      "text": "Next up: T22, position sizing and risk budget. Size a position from the risk you accept."
+    }
+  ]
+}

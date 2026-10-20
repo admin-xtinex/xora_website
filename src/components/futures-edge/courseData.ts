@@ -62,9 +62,9 @@ export const LESSONS: Lesson[] = [
   { id: "T18", kind: "lesson", phase: 4, title: "Volume, Volatility and Range", line: "How busy and how jumpy a market is.", minutes: 5, status: "available", pose: "present", flip: true },
 
   { id: "T19", kind: "lesson", phase: 5, title: "What Is Scalping?", line: "Short trades, real costs, and when not to trade.", minutes: 5, status: "available", pose: "walk" },
-  { id: "T20", kind: "lesson", phase: 5, title: "Evaluating an Entry Opportunity", line: "A step-by-step checklist that can end in no trade.", minutes: 6, status: "locked", pose: "think" },
-  { id: "T21", kind: "lesson", phase: 5, title: "Confirmation, False Signals and NO_TRADE", line: "Why waiting is a decision too.", minutes: 6, status: "locked", pose: "explain" },
-  { id: "T22", kind: "lesson", phase: 5, title: "Position Sizing and Risk Budget", line: "Size a position from the risk you accept.", minutes: 6, status: "locked", pose: "point" },
+  { id: "T20", kind: "lesson", phase: 5, title: "Evaluating an Entry Opportunity", line: "A step-by-step checklist that can end in no trade.", minutes: 5, status: "available", pose: "think" },
+  { id: "T21", kind: "lesson", phase: 5, title: "Confirmation, False Signals and NO_TRADE", line: "Why waiting is a decision too.", minutes: 5, status: "available", pose: "explain" },
+  { id: "T22", kind: "lesson", phase: 5, title: "Position Sizing and Risk Budget", line: "Size a position from the risk you accept.", minutes: 5, status: "available", pose: "point" },
   { id: "T23", kind: "lesson", phase: 5, title: "Full Scalping Decision Lifecycle", line: "A complete demo walkthrough, from chart to journal.", minutes: 8, status: "locked", pose: "present" },
   { id: "CPB", kind: "checkpoint", phase: 5, title: "Checkpoint B", line: "A video recap of T14 to T23: chart and risk questions to pause and answer.", minutes: 4, status: "locked", pose: "hi", flip: true },
 ];

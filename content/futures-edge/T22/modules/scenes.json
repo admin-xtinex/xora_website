@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson twenty-two",
+      "dur": 8,
+      "desc": "Title card: Phase 5, lesson T22, Position Sizing and Risk Budget; a risk bar fills to a budget line; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Same stop, different damage",
+      "dur": 20,
+      "desc": "Two traders buy fictional BTC at 60,000 with a stop at 59,400; notional 500 vs 10,000 USDT; price falls to the stop: -5 vs -100 USDT, account bars shrink."
+    },
+    {
+      "id": "account",
+      "name": "Balance and risk budget",
+      "dur": 27,
+      "desc": "Account balance and risk-per-trade budget defined; fair-spending analogy; a 1,000 USDT practice account with a 10 USDT example budget slice."
+    },
+    {
+      "id": "stop",
+      "name": "Stop distance",
+      "dur": 21,
+      "desc": "Stop distance defined; long: 60,000 to 59,400 = 600 USDT = 1%; short: 60,000 to 60,300 = 300 USDT = 0.5%."
+    },
+    {
+      "id": "notional",
+      "name": "Size and notional",
+      "dur": 25,
+      "desc": "Position size and notional defined; 0.01 BTC x 60,000 = 600 USDT; a 1% fall loses 6 USDT; rice-bag analogy."
+    },
+    {
+      "id": "formula",
+      "name": "Allowed notional",
+      "dur": 27,
+      "desc": "Allowed notional = risk / (|entry - stop| / entry): 10 / 0.01 = 1,000 USDT (about 0.0167 BTC); short 10 / 0.005 = 2,000 USDT; a simple model."
+    },
+    {
+      "id": "leverage",
+      "name": "Leverage exposure",
+      "dur": 27,
+      "desc": "Leverage = notional / margin; 1,000 USDT notional needs 500 / 200 / 100 margin at 2x / 5x / 10x; loss at the stop stays about 10 USDT; liquidation risk."
+    },
+    {
+      "id": "drawdown",
+      "name": "Drawdown",
+      "dur": 23,
+      "desc": "Drawdown defined; five 10 USDT losses: 1,000 to 950 (5%); five 100 USDT losses: 1,000 to 500 (50%), needing +100% to recover."
+    },
+    {
+      "id": "mistake",
+      "name": "Leverage first",
+      "dur": 21,
+      "desc": "Mistake: choosing leverage or size first; fix: budget, stop, notional, then margin; NO_TRADE when the size makes no sense."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 31,
+      "desc": "Account 2,000, example budget 20 USDT, long 50,000, stop 49,500; options 200 / 2,000 / 20,000 USDT; countdown; answer B with working, why not C."
+    },
+    {
+      "id": "validate",
+      "name": "Inputs that make no sense",
+      "dur": 21,
+      "desc": "An educational mock calculator flags zero stop distance, a stop on the wrong side, and a budget bigger than the account."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 25,
+      "desc": "Slippage and fees; liquidation before the stop at high leverage; minimum sizes; fictional examples, no recommended percentages; NO_TRADE allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 29,
+      "desc": "Three key points and a check question: risk 10 USDT, stop 2% away, allowed notional 500 USDT."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T23, Full Scalping Decision Lifecycle."
+    }
+  ]
+}

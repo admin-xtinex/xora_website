@@ -1,0 +1,205 @@
+{
+  "about": "T22 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson twenty-two: position sizing and risk budget. Size a position from the risk you accept."
+    },
+    {
+      "t": 8.4,
+      "text": "Two traders, one fictional chart. Both buy BTC at 60,000, with a stop-loss at 59,400."
+    },
+    {
+      "t": 15.0,
+      "text": "Trader A's position is worth 500 USDT. Trader B's is worth 10,000 USDT."
+    },
+    {
+      "t": 20.6,
+      "text": "Price falls to the stop. A loses 5 USDT. B loses 100 USDT. Same stop, very different damage."
+    },
+    {
+      "t": 28.4,
+      "text": "Your account balance is the money in your trading account. Here, a 1,000 USDT practice account."
+    },
+    {
+      "t": 35.6,
+      "text": "Your risk budget is the most you accept to lose on one trade, decided before you enter."
+    },
+    {
+      "t": 42.4,
+      "text": "Like deciding how much you'll spend at a fair before you go, not halfway through."
+    },
+    {
+      "t": 48.8,
+      "text": "In this example the budget is 10 USDT. An example only, not a recommendation."
+    },
+    {
+      "t": 55.4,
+      "text": "Stop distance is the gap between your entry price and your stop-loss price."
+    },
+    {
+      "t": 61.4,
+      "text": "Entry 60,000, stop 59,400: the distance is 600 USDT. As a share of entry, 600 ÷ 60,000 = 1%."
+    },
+    {
+      "t": 68.6,
+      "text": "For a short, the stop sits above entry. Entry 60,000, stop 60,300: 300 USDT, or 0.5%."
+    },
+    {
+      "t": 76.4,
+      "text": "Position size is how much of the coin you hold. Notional is what it's worth: size × price."
+    },
+    {
+      "t": 83.4,
+      "text": "0.01 BTC at 60,000 USDT is a notional of 600 USDT."
+    },
+    {
+      "t": 87.8,
+      "text": "If price falls 1% to the stop, you lose 1% of the notional: 600 × 1% = 6 USDT."
+    },
+    {
+      "t": 94.2,
+      "text": "Like buying rice: if the price per kilo drops, ten kilos lose ten times more than one."
+    },
+    {
+      "t": 101.4,
+      "text": "Turn it around to find the allowed notional."
+    },
+    {
+      "t": 105.4,
+      "text": "Allowed notional ≈ risk amount ÷ stop distance as a share of entry."
+    },
+    {
+      "t": 111.0,
+      "text": "10 ÷ (600 ÷ 60,000) = 10 ÷ 0.01 = 1,000 USDT. That's about 0.0167 BTC at 60,000."
+    },
+    {
+      "t": 117.6,
+      "text": "For the short, with a 0.5% stop: 10 ÷ 0.005 = 2,000 USDT."
+    },
+    {
+      "t": 122.2,
+      "text": "This simple model ignores fees, slippage, contract rules and liquidation."
+    },
+    {
+      "t": 128.4,
+      "text": "Leverage lets a small margin control a bigger notional. Leverage = notional ÷ margin."
+    },
+    {
+      "t": 135.0,
+      "text": "A 1,000 USDT notional needs 500 margin at 2x, 200 at 5x, 100 at 10x."
+    },
+    {
+      "t": 140.8,
+      "text": "But the loss at the stop is still about 10 USDT. It depends on notional and stop distance."
+    },
+    {
+      "t": 147.6,
+      "text": "High leverage makes huge positions easy to open, and brings liquidation closer."
+    },
+    {
+      "t": 155.4,
+      "text": "Drawdown is how far your account falls from its highest point, shown in %."
+    },
+    {
+      "t": 161.4,
+      "text": "Five 10 USDT losses take 1,000 down to 950. A 5% drawdown."
+    },
+    {
+      "t": 166.4,
+      "text": "Five 100 USDT losses take it to 500. A 50% drawdown."
+    },
+    {
+      "t": 171.0,
+      "text": "From 500, you'd need +100% just to get back to 1,000. Small risks keep drawdowns small."
+    },
+    {
+      "t": 178.4,
+      "text": "A common mistake: choosing leverage or size first, like 'I'll use 20x', then hoping."
+    },
+    {
+      "t": 185.0,
+      "text": "The fix is a fixed order: risk budget, then stop, then notional, then check the margin."
+    },
+    {
+      "t": 191.8,
+      "text": "And if the allowed size is too small to make sense, NO_TRADE is a fine answer."
+    },
+    {
+      "t": 199.4,
+      "text": "Your turn. Account 2,000 USDT, example budget 20 USDT. Long at 50,000, stop at 49,500."
+    },
+    {
+      "t": 206.2,
+      "text": "What's the allowed notional? A: 200, B: 2,000, or C: 20,000 USDT? Pause and work it out."
+    },
+    {
+      "t": 219.0,
+      "text": "B. The stop is 500 away, which is 1%. So 20 ÷ 0.01 = 2,000 USDT."
+    },
+    {
+      "t": 224.2,
+      "text": "C is tempting, but at the stop it loses 200 USDT, ten times the budget."
+    },
+    {
+      "t": 230.4,
+      "text": "A calculator should warn you when inputs make no sense."
+    },
+    {
+      "t": 235.0,
+      "text": "Stop equal to entry? The distance is zero, so there is no sensible size."
+    },
+    {
+      "t": 240.6,
+      "text": "A long with the stop above entry? That stop is on the wrong side."
+    },
+    {
+      "t": 245.8,
+      "text": "A risk budget bigger than the whole account? That's impossible."
+    },
+    {
+      "t": 251.4,
+      "text": "Know the limits of this maths."
+    },
+    {
+      "t": 254.6,
+      "text": "Stops can slip, and fees add to the loss. The real loss can be bigger than planned."
+    },
+    {
+      "t": 261.0,
+      "text": "With high leverage, liquidation can come before your stop. Exchanges also set minimum sizes."
+    },
+    {
+      "t": 268.0,
+      "text": "Fictional examples, not advice or recommended percentages. NO_TRADE is always allowed."
+    },
+    {
+      "t": 276.4,
+      "text": "Let's recap."
+    },
+    {
+      "t": 278.0,
+      "text": "One: decide your risk budget before you enter. Examples here are not recommendations."
+    },
+    {
+      "t": 284.6,
+      "text": "Two: allowed notional ≈ risk ÷ stop distance as a share of entry. A simple model."
+    },
+    {
+      "t": 290.8,
+      "text": "Three: leverage changes the margin, not the loss at the stop. Watch drawdown."
+    },
+    {
+      "t": 296.8,
+      "text": "Check yourself: risk 10 USDT, stop 2% away. Allowed notional?"
+    },
+    {
+      "t": 302.0,
+      "text": "About 500 USDT: 10 ÷ 0.02 = 500."
+    },
+    {
+      "t": 305.4,
+      "text": "Next up: T23, the full scalping decision lifecycle. From chart to journal, in a demo."
+    }
+  ]
+}

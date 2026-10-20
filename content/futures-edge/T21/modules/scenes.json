@@ -1,0 +1,111 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson twenty-one",
+      "dur": 8,
+      "desc": "Title card: Phase 5, lesson T21, Confirmation, False Signals and NO_TRADE; one past line forks into three futures; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Same past, three futures",
+      "dur": 25,
+      "desc": "Fictional BTC/USDT 5-minute chart: two rejections at the 60,000-60,050 zone, price back at 59,970; three futures branch: 60,350, 59,960, 59,650."
+    },
+    {
+      "id": "confirm",
+      "name": "What confirmation is",
+      "dur": 26,
+      "desc": "Confirmation defined; a close beyond the zone and a hold; dark-clouds analogy with a likelihood meter that never reaches certain; can and cannot."
+    },
+    {
+      "id": "weak",
+      "name": "Weak or conflicting",
+      "dur": 26,
+      "desc": "Weak vs conflicting evidence; a balance scale takes four weights (wick, trend, resistance, fading volume) and ends level: NO_TRADE."
+    },
+    {
+      "id": "fakeout",
+      "name": "A false breakout",
+      "dur": 26,
+      "desc": "False signal defined; a candle forms, wicks to 60,090 and closes at 59,960; a 0.01 BTC buy at 60,060 shows -1.00 USDT before fees."
+    },
+    {
+      "id": "fade",
+      "name": "Momentum fade",
+      "dur": 24,
+      "desc": "Momentum and fade defined; ball-uphill analogy; four green candles gain 80, 50, 25, 10 USDT on falling volume; a warning, not proof."
+    },
+    {
+      "id": "hindsight",
+      "name": "Hindsight bias",
+      "dur": 26,
+      "desc": "The finished breakout looks obvious; a curtain hides the future to show what was known at decision time."
+    },
+    {
+      "id": "notrade",
+      "name": "NO_TRADE is a decision",
+      "dur": 28,
+      "desc": "NO_TRADE defined; cricket analogy (leaving a ball outside off stump); a written condition not met; NO_TRADE stamp, 0 fees and 0 new risk."
+    },
+    {
+      "id": "mistake",
+      "name": "Judging by outcome",
+      "dur": 25,
+      "desc": "Mistake: judging a decision by what happened next; process vs outcome grid; review reasons, not results."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 34,
+      "desc": "New candles revealed one at a time: a wick to 60,070, closes inside the zone, falling volume; BUY / SELL / WAIT with a 5-second countdown; answer C, WAIT, with why not A and B."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 24,
+      "desc": "Confirmed signals still fail; later entries; stops can slip; leverage; fictional, NO_TRADE allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 32,
+      "desc": "Three key points and a check question about waiting when price later rose."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T22, Position Sizing and Risk Budget."
+    }
+  ]
+}

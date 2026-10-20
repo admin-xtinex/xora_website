@@ -1,0 +1,221 @@
+{
+  "about": "T19 captions, written as a warm tutor speaking; each line starts at film time t (seconds). Can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson nineteen, and the start of Phase 5: scalping and risk management."
+    },
+    {
+      "t": 6.3,
+      "text": "First question: what is scalping?"
+    },
+    {
+      "t": 10.6,
+      "text": "So far you've learned to read candles, timeframes, trends, zones and volume."
+    },
+    {
+      "t": 16.5,
+      "text": "Now: how do short-term traders use them? And what does it really cost?"
+    },
+    {
+      "t": 22.1,
+      "text": "Let's look honestly, costs and all."
+    },
+    {
+      "t": 26.6,
+      "text": "Scalping means trying to profit from small price moves, in trades that last minutes."
+    },
+    {
+      "t": 33.0,
+      "text": "Sometimes only seconds. Then the trader exits and waits for the next one."
+    },
+    {
+      "t": 38.8,
+      "text": "Think of a stall that makes many small sales, each with a thin margin."
+    },
+    {
+      "t": 44.3,
+      "text": "Thin margins mean costs matter a lot."
+    },
+    {
+      "t": 48.6,
+      "text": "Here's a fictional 15-minute chart of 1-minute candles."
+    },
+    {
+      "t": 53.2,
+      "text": "A scalper might notice two things. These are observations, not signals."
+    },
+    {
+      "t": 58.9,
+      "text": "One: price dips to a support zone and holds. Two: a sudden spike on thin volume."
+    },
+    {
+      "t": 65.0,
+      "text": "Say a demo long opens at 60,000 and closes 4 minutes later at 60,120."
+    },
+    {
+      "t": 70.6,
+      "text": "Held for 4 minutes. Price move: +120 USDT. It could have failed."
+    },
+    {
+      "t": 76.6,
+      "text": "Now the costs. The position is 0.1 BTC: 6,000 USDT at 60,000."
+    },
+    {
+      "t": 81.7,
+      "text": "Gross profit: 0.1 × 120 = 12.00 USDT."
+    },
+    {
+      "t": 85.1,
+      "text": "Fees at an example 0.05% each side: 3.00 to enter, 3.01 to exit."
+    },
+    {
+      "t": 90.3,
+      "text": "Net: 12.00 − 3.00 − 3.01 = 5.99 USDT. Half the move went to fees."
+    },
+    {
+      "t": 95.6,
+      "text": "A losing scalp pays fees too, so the loss gets bigger."
+    },
+    {
+      "t": 100.6,
+      "text": "Trade frequency is how many trades you make in a period."
+    },
+    {
+      "t": 105.3,
+      "text": "Each round trip here costs about 6 USDT in fees."
+    },
+    {
+      "t": 109.4,
+      "text": "Twenty trades in a day: about 120 USDT in fees, win or lose."
+    },
+    {
+      "t": 114.3,
+      "text": "And every trade is one more chance to be wrong."
+    },
+    {
+      "t": 118.3,
+      "text": "More trades is not more profit."
+    },
+    {
+      "t": 122.6,
+      "text": "Execution quality is how close your fill is to the price you expected."
+    },
+    {
+      "t": 128.2,
+      "text": "Say you slip 10 USDT getting in and 10 getting out."
+    },
+    {
+      "t": 132.5,
+      "text": "Our 120 move shrinks to 100, before fees."
+    },
+    {
+      "t": 136.1,
+      "text": "When moves are small, spread and slippage take a big share."
+    },
+    {
+      "t": 142.6,
+      "text": "How does scalping compare with holding for days or weeks?"
+    },
+    {
+      "t": 147.3,
+      "text": "Scalping: minutes, many trades, costs are a big share of each small move."
+    },
+    {
+      "t": 153.1,
+      "text": "Longer holding: fewer trades, bigger moves, but more time exposed to news."
+    },
+    {
+      "t": 159.0,
+      "text": "Neither is safe. Both can lose money."
+    },
+    {
+      "t": 164.6,
+      "text": "A note on XORA. It looks at about 10 to 15 minutes of recent price for context."
+    },
+    {
+      "t": 170.9,
+      "text": "That is an analysis horizon. It is not a time you must hold a trade."
+    },
+    {
+      "t": 176.4,
+      "text": "And it is not a promise of where price will be in 15 minutes."
+    },
+    {
+      "t": 184.6,
+      "text": "Some moments are simply not good for trading."
+    },
+    {
+      "t": 188.5,
+      "text": "Very thin markets. Wild news spikes. Fees bigger than the expected move."
+    },
+    {
+      "t": 194.2,
+      "text": "No clear reason, no stop, or you're tired, upset or chasing a loss."
+    },
+    {
+      "t": 199.6,
+      "text": "In all of these, NO_TRADE is the right call. Waiting is a skill."
+    },
+    {
+      "t": 206.6,
+      "text": "Your turn. A scalp's expected move is 60 USDT per BTC, at a price of 60,000."
+    },
+    {
+      "t": 212.6,
+      "text": "Round-trip fees are 0.10%. Is it worth taking? Pause and think."
+    },
+    {
+      "t": 217.6,
+      "text": "Fees: 60,000 × 0.10% = 60 USDT per BTC. The move only covers the fees."
+    },
+    {
+      "t": 223.2,
+      "text": "Even before slippage, it's zero. NO_TRADE makes sense."
+    },
+    {
+      "t": 228.6,
+      "text": "Before you try scalping, even in demo, know the limits."
+    },
+    {
+      "t": 233.2,
+      "text": "It is not easy money. Many small losses and fees add up fast."
+    },
+    {
+      "t": 238.2,
+      "text": "Fast decisions bring mistakes, and leverage makes every loss bigger."
+    },
+    {
+      "t": 243.7,
+      "text": "Practise in demo first. NO_TRADE is always allowed."
+    },
+    {
+      "t": 250.6,
+      "text": "Let's recap."
+    },
+    {
+      "t": 252.4,
+      "text": "Scalping aims for small moves in short trades: seconds to minutes."
+    },
+    {
+      "t": 258.0,
+      "text": "Fees, spread and slippage take a big share of small moves."
+    },
+    {
+      "t": 263.0,
+      "text": "XORA's 10 to 15 minutes is context, not a holding rule. NO_TRADE is allowed."
+    },
+    {
+      "t": 269.2,
+      "text": "Check yourself: a move of 60 USDT per BTC, fees of 60. Worth it?"
+    },
+    {
+      "t": 274.5,
+      "text": "No. It only covers fees, before slippage. Waiting is the better call."
+    },
+    {
+      "t": 280.6,
+      "text": "Well done! Next up: evaluating an entry opportunity. See you in lesson twenty."
+    }
+  ]
+}

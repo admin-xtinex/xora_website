@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson seventeen",
+      "dur": 10.5,
+      "desc": "Title card: Phase 4, lesson T17, support, resistance, breakout, fakeout; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "The same two areas",
+      "dur": 16.5,
+      "desc": "A fictional sideways chart keeps turning near the same high and low areas."
+    },
+    {
+      "id": "support",
+      "name": "Support",
+      "dur": 23.5,
+      "desc": "Support defined; a floor analogy; price tests the 59,800–59,900 area three times and bounces."
+    },
+    {
+      "id": "resist",
+      "name": "Resistance",
+      "dur": 18.5,
+      "desc": "Resistance defined; a ceiling analogy; rallies stall near 60,350 twice."
+    },
+    {
+      "id": "zone",
+      "name": "Zones, not lines",
+      "dur": 24,
+      "desc": "Three lows at 59,830, 59,860 and 59,880 miss a single line; a 100 USDT zone fits them."
+    },
+    {
+      "id": "breakout",
+      "name": "Breakout",
+      "dur": 26,
+      "desc": "A candle closes at 60,480, 80 USDT above the 60,300–60,400 zone; a retest holds."
+    },
+    {
+      "id": "fakeout",
+      "name": "Fakeout",
+      "dur": 25,
+      "desc": "Same history, other ending: the wick reaches 60,460 but closes at 60,350, then price falls back."
+    },
+    {
+      "id": "confirm",
+      "name": "What counts as confirmation",
+      "dur": 25.5,
+      "desc": "Three observations: a close beyond the zone, follow-through, a retest that holds; never certainty."
+    },
+    {
+      "id": "mistake",
+      "name": "Common mistake",
+      "dur": 22,
+      "desc": "Exact lines and wick-chasing versus zones, closes and WAIT."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 23,
+      "desc": "Pause: a wick to 60,450, close 60,380, zone top 60,400. Confirmed? Not yet; WAIT."
+    },
+    {
+      "id": "thin",
+      "name": "Thin liquidity",
+      "dur": 23,
+      "desc": "Few waiting orders: one larger buy jumps price through the zone and it snaps back."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 22,
+      "desc": "Lines are history, fakeouts are common, thin markets distort, WAIT is allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 31.5,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T18, volume, volatility and range."
+    }
+  ]
+}

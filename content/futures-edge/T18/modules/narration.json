@@ -1,0 +1,233 @@
+{
+  "about": "T18 captions, written as a warm tutor speaking; each line starts at film time t (seconds). Can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson eighteen: volume, volatility and range."
+    },
+    {
+      "t": 5.0,
+      "text": "Three ways to describe how busy and how jumpy a market is."
+    },
+    {
+      "t": 10.6,
+      "text": "In lesson seventeen, you met zones, breakouts and fakeouts."
+    },
+    {
+      "t": 15.4,
+      "text": "Here are two fictional charts. Both start at 60,000 and end at 60,100."
+    },
+    {
+      "t": 21.0,
+      "text": "Same change in price. A very different ride. Let's measure it."
+    },
+    {
+      "t": 26.6,
+      "text": "Volume is how much was traded in a period of time."
+    },
+    {
+      "t": 30.8,
+      "text": "Think of a shop counting how many items it sold each minute."
+    },
+    {
+      "t": 35.6,
+      "text": "In this fictional minute, trades of 2, 5, 3 and 2 BTC go through."
+    },
+    {
+      "t": 40.8,
+      "text": "Add them up: 12 BTC. That is this candle's volume."
+    },
+    {
+      "t": 45.2,
+      "text": "At 60,000 USDT each, that's about 720,000 USDT traded."
+    },
+    {
+      "t": 50.6,
+      "text": "On most charts, volume shows as bars under the candles."
+    },
+    {
+      "t": 55.1,
+      "text": "Each bar sits under its own candle, and covers the same minute."
+    },
+    {
+      "t": 60.2,
+      "text": "A short bar means a quiet minute. A tall bar means a busy one."
+    },
+    {
+      "t": 65.2,
+      "text": "Here, the busiest minutes came with big moves. Often, not always."
+    },
+    {
+      "t": 72.6,
+      "text": "Range is the distance between the high and the low."
+    },
+    {
+      "t": 76.8,
+      "text": "Like the gap between the warmest and coldest hour of a day."
+    },
+    {
+      "t": 81.5,
+      "text": "This candle's high is 60,300 and its low is 60,000. Range: 300 USDT."
+    },
+    {
+      "t": 86.8,
+      "text": "As a percent: 300 ÷ 60,000 × 100 = 0.5%. We divide by the low."
+    },
+    {
+      "t": 94.6,
+      "text": "Volatility is how much, and how fast, price moves around."
+    },
+    {
+      "t": 99.2,
+      "text": "Like a calm lake versus a choppy sea."
+    },
+    {
+      "t": 104.0,
+      "text": "On the left, four quiet candles. Their ranges average 40 USDT."
+    },
+    {
+      "t": 108.9,
+      "text": "On the right, four volatile candles. Ranges average 250 USDT."
+    },
+    {
+      "t": 114.1,
+      "text": "More volatility means bigger swings, both ways."
+    },
+    {
+      "t": 118.6,
+      "text": "Traders often check the previous high and low of the last few minutes."
+    },
+    {
+      "t": 124.1,
+      "text": "This box is a lookback window: the last 10 one-minute candles."
+    },
+    {
+      "t": 129.0,
+      "text": "Highest high 60,300. Lowest low 60,000. Range 300 USDT, or 0.5%."
+    },
+    {
+      "t": 134.1,
+      "text": "Now stretch it to 15 minutes. An older high, 60,600, joins in."
+    },
+    {
+      "t": 139.0,
+      "text": "Range doubles: 600 USDT, 1%. Your window changes the answer."
+    },
+    {
+      "t": 144.6,
+      "text": "Let's compare two fictional 15-minute windows."
+    },
+    {
+      "t": 148.6,
+      "text": "Window A: range 150 USDT, 0.25%, and low volume."
+    },
+    {
+      "t": 152.8,
+      "text": "Window B: range 900 USDT, 1.5%, and high volume."
+    },
+    {
+      "t": 156.9,
+      "text": "In A, round-trip fees of 0.10%, 60 USDT per BTC, eat a big part of the range."
+    },
+    {
+      "t": 163.0,
+      "text": "In B, moves are bigger, but so are the swings against you."
+    },
+    {
+      "t": 168.6,
+      "text": "Volume also hints at liquidity: how many orders wait near the price."
+    },
+    {
+      "t": 174.0,
+      "text": "Busy book: a 2 BTC market buy fills at 60,000."
+    },
+    {
+      "t": 178.0,
+      "text": "Thin book: 1 BTC fills at 60,000, the other at 60,100."
+    },
+    {
+      "t": 182.4,
+      "text": "Average 60,050. That's 50 USDT per BTC worse: slippage."
+    },
+    {
+      "t": 186.9,
+      "text": "Quiet times often mean thin books."
+    },
+    {
+      "t": 190.6,
+      "text": "A common mistake: a huge volume bar means strong buyers. Go long!"
+    },
+    {
+      "t": 195.8,
+      "text": "But every trade has a buyer and a seller. 40 BTC bought means 40 BTC sold."
+    },
+    {
+      "t": 201.5,
+      "text": "Volume shows how busy it was, not who wins next."
+    },
+    {
+      "t": 205.6,
+      "text": "Read it with candles and zones. WAIT is still allowed."
+    },
+    {
+      "t": 210.6,
+      "text": "Your turn. In the last 10 minutes, the high was 60,240 and the low 60,000."
+    },
+    {
+      "t": 216.4,
+      "text": "What is the range in USDT, and as a percent? Pause if you need to."
+    },
+    {
+      "t": 221.6,
+      "text": "Range: 60,240 − 60,000 = 240 USDT. Then 240 ÷ 60,000 × 100 = 0.4%."
+    },
+    {
+      "t": 226.9,
+      "text": "That tells you how far price travelled. Not where it goes next."
+    },
+    {
+      "t": 232.6,
+      "text": "Before you lean on these numbers, know the limits."
+    },
+    {
+      "t": 236.8,
+      "text": "A past range is history. The next minutes can be calmer, or much wilder."
+    },
+    {
+      "t": 242.4,
+      "text": "Volatility can jump fast. With leverage, big swings reach liquidation sooner."
+    },
+    {
+      "t": 248.5,
+      "text": "Thin volume can mean slippage. And WAIT is always a valid choice."
+    },
+    {
+      "t": 254.6,
+      "text": "Let's recap."
+    },
+    {
+      "t": 256.4,
+      "text": "Volume is how much traded. It shows activity, not direction."
+    },
+    {
+      "t": 262.0,
+      "text": "Range is high minus low. Volatility is how big and fast the swings are."
+    },
+    {
+      "t": 267.6,
+      "text": "The lookback window you choose changes the range. Past ranges promise nothing."
+    },
+    {
+      "t": 273.8,
+      "text": "Check yourself: a huge green volume bar. Does it prove price will rise?"
+    },
+    {
+      "t": 279.8,
+      "text": "No. Volume shows activity, not direction. Every buy had a seller."
+    },
+    {
+      "t": 285.6,
+      "text": "Well done! Phase 5 starts next: what is scalping? See you in lesson nineteen."
+    }
+  ]
+}

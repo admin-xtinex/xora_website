@@ -58,10 +58,10 @@ export const LESSONS: Lesson[] = [
   { id: "T14", kind: "lesson", phase: 4, title: "Candlesticks: Open, High, Low, Close", line: "Read one candle, then a whole chart.", minutes: 5, status: "available", pose: "present" },
   { id: "T15", kind: "lesson", phase: 4, title: "1m / 5m / 15m Timeframes", line: "The same market, grouped in different time windows.", minutes: 5, status: "available", pose: "point" },
   { id: "T16", kind: "lesson", phase: 4, title: "Trend and Market Structure", line: "Higher highs, lower lows, and sideways markets.", minutes: 5, status: "available", pose: "think" },
-  { id: "T17", kind: "lesson", phase: 4, title: "Support, Resistance, Breakout, Fakeout", line: "Price zones, and what counts as confirmation.", minutes: 6, status: "locked", pose: "explain" },
-  { id: "T18", kind: "lesson", phase: 4, title: "Volume, Volatility and Range", line: "How busy and how jumpy a market is.", minutes: 5, status: "locked", pose: "present", flip: true },
+  { id: "T17", kind: "lesson", phase: 4, title: "Support, Resistance, Breakout, Fakeout", line: "Price zones, and what counts as confirmation.", minutes: 5, status: "available", pose: "explain" },
+  { id: "T18", kind: "lesson", phase: 4, title: "Volume, Volatility and Range", line: "How busy and how jumpy a market is.", minutes: 5, status: "available", pose: "present", flip: true },
 
-  { id: "T19", kind: "lesson", phase: 5, title: "What Is Scalping?", line: "Short trades, real costs, and when not to trade.", minutes: 5, status: "locked", pose: "walk" },
+  { id: "T19", kind: "lesson", phase: 5, title: "What Is Scalping?", line: "Short trades, real costs, and when not to trade.", minutes: 5, status: "available", pose: "walk" },
   { id: "T20", kind: "lesson", phase: 5, title: "Evaluating an Entry Opportunity", line: "A step-by-step checklist that can end in no trade.", minutes: 6, status: "locked", pose: "think" },
   { id: "T21", kind: "lesson", phase: 5, title: "Confirmation, False Signals and NO_TRADE", line: "Why waiting is a decision too.", minutes: 6, status: "locked", pose: "explain" },
   { id: "T22", kind: "lesson", phase: 5, title: "Position Sizing and Risk Budget", line: "Size a position from the risk you accept.", minutes: 6, status: "locked", pose: "point" },

@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson eighteen",
+      "dur": 10,
+      "desc": "Title card: Phase 4, lesson T18, volume, volatility and range; volume bars rise under candles; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Same change, different ride",
+      "dur": 16,
+      "desc": "Two fictional charts both go from 60,000 to 60,100: one calm, one jumpy."
+    },
+    {
+      "id": "volume",
+      "name": "Volume",
+      "dur": 24,
+      "desc": "Volume defined; a shop counting sales; trades of 2, 5, 3 and 2 BTC fill a 12 BTC volume bar, about 720,000 USDT."
+    },
+    {
+      "id": "bars",
+      "name": "Volume bars",
+      "dur": 22,
+      "desc": "Fifteen fictional candles with a volume bar under each; quiet and busy minutes."
+    },
+    {
+      "id": "range",
+      "name": "Range",
+      "dur": 22,
+      "desc": "Range is high minus low: 60,300 − 60,000 = 300 USDT, 0.5% of the low."
+    },
+    {
+      "id": "volatility",
+      "name": "Volatility",
+      "dur": 24,
+      "desc": "Calm lake vs choppy sea: quiet candles average a 40 USDT range, volatile ones 250 USDT."
+    },
+    {
+      "id": "lookback",
+      "name": "Previous high and low",
+      "dur": 26,
+      "desc": "A 10-minute lookback window gives 300 USDT (0.5%); stretched to 15 minutes, 600 USDT (1%)."
+    },
+    {
+      "id": "compare",
+      "name": "Two windows compared",
+      "dur": 24,
+      "desc": "Window A: 150 USDT range (0.25%), low volume, fees take a big share. Window B: 900 USDT (1.5%), high volume, bigger swings."
+    },
+    {
+      "id": "liquidity",
+      "name": "Liquidity context",
+      "dur": 22,
+      "desc": "A 2 BTC market buy in a busy book fills at 60,000; in a thin book it averages 60,050: 50 USDT per BTC of slippage."
+    },
+    {
+      "id": "mistake",
+      "name": "Common mistake",
+      "dur": 20,
+      "desc": "A huge volume bar is not proof of buyers: 40 BTC bought means 40 BTC sold."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 22,
+      "desc": "Pause: high 60,240, low 60,000. Range 240 USDT, 0.4%."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 22,
+      "desc": "Past ranges promise nothing, volatility can jump, leverage and slippage, WAIT allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 31,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T19, what is scalping (Phase 5)."
+    }
+  ]
+}

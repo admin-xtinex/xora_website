@@ -1,0 +1,117 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson nineteen",
+      "dur": 10,
+      "desc": "Title card: Phase 5, lesson T19, what is scalping; a short trade is bracketed on a fictional chart; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "From reading to deciding",
+      "dur": 16,
+      "desc": "The tools from T14–T18 line up; the question of how short-term traders use them, and what it costs."
+    },
+    {
+      "id": "define",
+      "name": "Scalping",
+      "dur": 22,
+      "desc": "Scalping defined: small moves, trades of seconds to minutes; a stall making many small sales on thin margins."
+    },
+    {
+      "id": "chart",
+      "name": "A short trade",
+      "dur": 28,
+      "desc": "A fictional 15-minute chart: two observations (a zone that holds, a thin-volume spike); a demo long 60,000 to 60,120 over 4 minutes."
+    },
+    {
+      "id": "fees",
+      "name": "The costs",
+      "dur": 24,
+      "desc": "0.1 BTC (6,000 USDT): gross 12.00, fees 3.00 + 3.01, net 5.99; a losing scalp: about −12.00."
+    },
+    {
+      "id": "frequency",
+      "name": "Trade frequency",
+      "dur": 22,
+      "desc": "Twenty round trips at about 6 USDT in fees each: about 120 USDT, win or lose."
+    },
+    {
+      "id": "execution",
+      "name": "Execution quality",
+      "dur": 20,
+      "desc": "Slipping 10 USDT in and 10 out shrinks a 120 move to 100, before fees."
+    },
+    {
+      "id": "compare",
+      "name": "Scalping vs holding longer",
+      "dur": 22,
+      "desc": "Minutes and many trades vs days and few trades; neither is safe."
+    },
+    {
+      "id": "horizon",
+      "name": "XORA's 10–15 minutes",
+      "dur": 20,
+      "desc": "XORA's 10–15 minute analysis horizon is context: not a holding rule, not a prediction window."
+    },
+    {
+      "id": "whennot",
+      "name": "When not to trade",
+      "dur": 22,
+      "desc": "Six situations stamped NO_TRADE: thin markets, news spikes, fees above the move, no reason, no stop, tired or chasing."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 22,
+      "desc": "Pause: a 60 USDT expected move vs 0.10% round-trip fees at 60,000 (60 USDT). NO_TRADE."
+    },
+    {
+      "id": "risks",
+      "name": "Know the limits",
+      "dur": 22,
+      "desc": "Not easy money, fees and small losses add up, fast mistakes, leverage, demo first, NO_TRADE allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 30,
+      "desc": "Three key points and one question to check yourself."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: next lesson T20, evaluating an entry opportunity."
+    }
+  ]
+}

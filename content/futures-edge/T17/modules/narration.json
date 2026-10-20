@@ -1,0 +1,217 @@
+{
+  "about": "T17 captions, written as a warm tutor speaking; each line starts at film time t (seconds). Can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson seventeen: support, resistance, breakout and fakeout."
+    },
+    {
+      "t": 5.4,
+      "text": "The price areas traders watch, and how to read them calmly."
+    },
+    {
+      "t": 11.1,
+      "text": "In lesson sixteen, you marked swing highs and swing lows on a chart."
+    },
+    {
+      "t": 16.5,
+      "text": "Look closely. Price keeps turning back near the same two areas."
+    },
+    {
+      "t": 21.5,
+      "text": "Why does that happen? And what if price finally pushes through?"
+    },
+    {
+      "t": 27.6,
+      "text": "Support is a price area where falling price has stopped and turned up before."
+    },
+    {
+      "t": 33.6,
+      "text": "Think of a floor. Price drops, lands on it, and bounces."
+    },
+    {
+      "t": 38.2,
+      "text": "Here, price fell to about 59,850 three times. Each touch is called a test."
+    },
+    {
+      "t": 43.9,
+      "text": "Buyers stepped in there before. That is all support tells you: what happened before."
+    },
+    {
+      "t": 51.1,
+      "text": "Resistance is the opposite: an area where rising price has stopped and turned down."
+    },
+    {
+      "t": 57.7,
+      "text": "Like a ceiling. Price climbs, bumps into it, and falls back."
+    },
+    {
+      "t": 62.9,
+      "text": "Here, rallies stalled near 60,350 twice. Sellers were waiting there before."
+    },
+    {
+      "t": 69.6,
+      "text": "An important detail: support and resistance are zones, not exact lines."
+    },
+    {
+      "t": 75.4,
+      "text": "The three lows were 59,830, 59,860 and 59,880. Not one exact price."
+    },
+    {
+      "t": 81,
+      "text": "So we draw a band from 59,800 to 59,900. That zone is 100 USDT tall."
+    },
+    {
+      "t": 86.6,
+      "text": "Price can poke into a zone, or a little through it, without anything changing."
+    },
+    {
+      "t": 93.6,
+      "text": "A breakout is when price closes beyond a zone and keeps going."
+    },
+    {
+      "t": 98.6,
+      "text": "Our resistance zone runs from 60,300 to 60,400. Watch this candle."
+    },
+    {
+      "t": 103.8,
+      "text": "It closes at 60,480: a full 80 USDT above the top of the zone."
+    },
+    {
+      "t": 108.8,
+      "text": "Then price comes back to the zone from above. That's a retest. Here, it holds."
+    },
+    {
+      "t": 114.8,
+      "text": "The old ceiling acted like a floor. This time."
+    },
+    {
+      "t": 119.6,
+      "text": "Now the same chart, with a different ending."
+    },
+    {
+      "t": 123.4,
+      "text": "A fakeout, or false breakout, is when price pokes beyond a zone, then falls back inside."
+    },
+    {
+      "t": 130.6,
+      "text": "The wick reaches 60,460, but the candle closes at 60,350, back inside the zone."
+    },
+    {
+      "t": 137.6,
+      "text": "Then price drops toward 60,150. Same past chart, two different futures."
+    },
+    {
+      "t": 144.6,
+      "text": "So what counts as confirmation? Evidence that a breakout is holding."
+    },
+    {
+      "t": 150,
+      "text": "One: a candle closes beyond the zone. A wick alone is not enough."
+    },
+    {
+      "t": 155.2,
+      "text": "Two: the next candles stay beyond it, too."
+    },
+    {
+      "t": 158.8,
+      "text": "Three: if price comes back for a retest, the zone holds."
+    },
+    {
+      "t": 163.4,
+      "text": "Confirmation makes a breakout more believable. It never makes it certain."
+    },
+    {
+      "t": 170.1,
+      "text": "A common mistake: drawing one exact line and expecting price to obey it."
+    },
+    {
+      "t": 175.9,
+      "text": "Or jumping in the moment a wick crosses that line."
+    },
+    {
+      "t": 180.1,
+      "text": "The fix: draw zones, wait for candles to close, and treat every level as a maybe."
+    },
+    {
+      "t": 186.3,
+      "text": "And WAIT is always allowed. You never have to act on a level."
+    },
+    {
+      "t": 192.1,
+      "text": "Your turn. The resistance zone is 60,300 to 60,400."
+    },
+    {
+      "t": 196.3,
+      "text": "The last candle wicked to 60,450 but closed at 60,380. Is the breakout confirmed?"
+    },
+    {
+      "t": 202.5,
+      "text": "Not yet. The close, 60,380, is still 20 USDT inside the zone."
+    },
+    {
+      "t": 208.1,
+      "text": "A sensible choice here is WAIT, and watch where the next candle closes."
+    },
+    {
+      "t": 215.1,
+      "text": "One more warning. Liquidity means how many orders are waiting near the price."
+    },
+    {
+      "t": 221.3,
+      "text": "When liquidity is thin, only a few small orders are waiting."
+    },
+    {
+      "t": 226.1,
+      "text": "Then one larger order can jump price through a zone, and it snaps back moments later."
+    },
+    {
+      "t": 232.7,
+      "text": "It looked like a breakout. It was just a thin market."
+    },
+    {
+      "t": 238.1,
+      "text": "Before you use any of this, know the limits."
+    },
+    {
+      "t": 241.9,
+      "text": "Lines come from past prices. They promise nothing about the future."
+    },
+    {
+      "t": 247.3,
+      "text": "Fakeouts are common, thin markets can fake a breakout, and stops can slip."
+    },
+    {
+      "t": 253.3,
+      "text": "Losses are always possible. WAIT is a decision, not a failure."
+    },
+    {
+      "t": 260.1,
+      "text": "Let's recap."
+    },
+    {
+      "t": 261.9,
+      "text": "Support and resistance are zones where price turned before. Not walls."
+    },
+    {
+      "t": 267.5,
+      "text": "A breakout closes beyond a zone and holds. A fakeout falls back inside."
+    },
+    {
+      "t": 273.1,
+      "text": "Confirmation is evidence, not certainty. WAIT is always allowed."
+    },
+    {
+      "t": 278.7,
+      "text": "Check yourself: a wick crosses resistance, but the candle closes inside. Breakout?"
+    },
+    {
+      "t": 285,
+      "text": "Not confirmed. It could be a fakeout. Wait for a close beyond the zone."
+    },
+    {
+      "t": 291.6,
+      "text": "Well done! Next up: volume, volatility and range. See you in lesson eighteen."
+    }
+  ]
+}

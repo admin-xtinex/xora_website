@@ -1,0 +1,249 @@
+{
+  "about": "T23 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Lesson twenty-three: the full scalping decision lifecycle, from chart to journal."
+    },
+    {
+      "t": 8.6,
+      "text": "This is the capstone: T14 to T22, used together on one fictional chart."
+    },
+    {
+      "t": 14.1,
+      "text": "Eight steps, in the same order every time, from choosing a coin to writing a journal."
+    },
+    {
+      "t": 20.6,
+      "text": "It's an educational simulation, in demo mode. No real money, no real orders."
+    },
+    {
+      "t": 26.5,
+      "text": "And we score the process, not the profit."
+    },
+    {
+      "t": 30.6,
+      "text": "Step one: choose a coin. In this simulation, the coins and all prices are made up."
+    },
+    {
+      "t": 36.9,
+      "text": "Liquidity means how easily you can buy or sell without moving the price much."
+    },
+    {
+      "t": 42.8,
+      "text": "BTC/USDT has many traders and a tiny spread. XYZ/USDT is thin: a 1% spread."
+    },
+    {
+      "t": 49.0,
+      "text": "Thin coins slip more. So we pick BTC/USDT, on a 1,000 USDT demo account."
+    },
+    {
+      "t": 55.6,
+      "text": "Step two: context. First the 5-minute chart, for the bigger picture of the last hour."
+    },
+    {
+      "t": 62.1,
+      "text": "Higher highs and higher lows. So on 5 minutes, the trend leans up. Trends can still end."
+    },
+    {
+      "t": 68.8,
+      "text": "Now zoom into the last 15 minutes on the 1-minute chart. Same prices, more detail."
+    },
+    {
+      "t": 75.1,
+      "text": "The 1-minute chart is noisier: a run up, then a pull-back. Use it for detail, not direction."
+    },
+    {
+      "t": 83.6,
+      "text": "Step three: range and levels. Over 15 minutes, the high was 60,650 and the low 59,850."
+    },
+    {
+      "t": 90.2,
+      "text": "That's a range of 800 USDT, about 1.3% of the price."
+    },
+    {
+      "t": 94.6,
+      "text": "Twice, price dipped into 59,850 to 59,950 and bounced. That's our support zone."
+    },
+    {
+      "t": 100.8,
+      "text": "Resistance sits near the top, 60,550 to 60,650. Price is now 60,000, just above support."
+    },
+    {
+      "t": 109.6,
+      "text": "Step four: write down what you're unsure about. Beginners often skip this step."
+    },
+    {
+      "t": 115.8,
+      "text": "What I lean towards: a bounce up from support, because the 5-minute trend is up."
+    },
+    {
+      "t": 122.0,
+      "text": "What argues against it: support was already tested twice, and it could break."
+    },
+    {
+      "t": 128.0,
+      "text": "What would prove me wrong: a fall below 59,700. Confidence: medium, not certain."
+    },
+    {
+      "t": 135.6,
+      "text": "Step five: costs and risk, before any button. Example numbers only, not a recommendation."
+    },
+    {
+      "t": 142.4,
+      "text": "Entry near 60,000. Stop at 59,700, just under support. That's 300 USDT away: 0.5%."
+    },
+    {
+      "t": 148.8,
+      "text": "Example budget: 6 USDT. Fees at 0.05% each way take about 1, leaving 5 for the price move."
+    },
+    {
+      "t": 155.6,
+      "text": "5 divided by 0.5% gives a notional of about 1,000 USDT. No leverage needed."
+    },
+    {
+      "t": 161.4,
+      "text": "Stop hit: about −6 USDT with fees. Target 60,600 hit: +10 minus fees, about +9 USDT."
+    },
+    {
+      "t": 168.6,
+      "text": "Step six: decide. DEMO BUY, DEMO SELL or NO_TRADE. All three are allowed."
+    },
+    {
+      "t": 174.4,
+      "text": "Whatever you choose, write one or two lines of why. A direction alone is not a reason."
+    },
+    {
+      "t": 181.0,
+      "text": "Here: trend up, a bounce at support, and a planned loss of about 6 USDT, inside the budget."
+    },
+    {
+      "t": 187.9,
+      "text": "So this learner picks DEMO BUY, with the stop and target set at the same time."
+    },
+    {
+      "t": 195.6,
+      "text": "Step seven: monitor and exit. From here, price could go up, sideways or down."
+    },
+    {
+      "t": 201.6,
+      "text": "Nobody knows which path will come. That's why the stop and target were set first."
+    },
+    {
+      "t": 207.8,
+      "text": "Now the replay. Price rises to 60,400. Tempting to dream, but the plan stays the same."
+    },
+    {
+      "t": 214.4,
+      "text": "Then it turns, breaks support, and hits the stop. The fill is 59,680: 20 USDT of slippage."
+    },
+    {
+      "t": 221.4,
+      "text": "The exit happens as planned, about eight minutes in. No moving the stop, no adding more."
+    },
+    {
+      "t": 229.6,
+      "text": "Step eight: the journal. Write what you planned, what happened, and what you learned."
+    },
+    {
+      "t": 236.2,
+      "text": "Price result: −5.33 USDT. Fees: −1.00. Net: −6.33 USDT, close to the plan."
+    },
+    {
+      "t": 242.0,
+      "text": "Did we follow the plan? Yes: size, stop and exit all as written. Process score: 8 of 8."
+    },
+    {
+      "t": 248.8,
+      "text": "A good process can still lose. Judge decisions by the process, not by one outcome."
+    },
+    {
+      "t": 256.6,
+      "text": "Now the other route. Another learner saw the same chart and the same numbers."
+    },
+    {
+      "t": 262.8,
+      "text": "Their notes: support tested twice, weak volume on the bounce, not confident. So: NO_TRADE."
+    },
+    {
+      "t": 269.8,
+      "text": "Result: 0 USDT, no fees, and a journal entry. Process: complete. That's a success too."
+    },
+    {
+      "t": 276.3,
+      "text": "Not because of how the replay ended. They decided before knowing, with a clear reason."
+    },
+    {
+      "t": 283.6,
+      "text": "Three common mistakes. First: moving the stop further away as price gets close."
+    },
+    {
+      "t": 289.8,
+      "text": "That turns a planned 6 USDT loss into about 11. Keep the stop where the plan put it."
+    },
+    {
+      "t": 296.4,
+      "text": "Second: doubling the size to win a loss back. That doubles the risk too. Take a break first."
+    },
+    {
+      "t": 303.3,
+      "text": "Third: judging only by profit. Judge the process, because good process can still lose."
+    },
+    {
+      "t": 310.6,
+      "text": "Your turn. The stop must go at 59,400: 1% away. The budget for the move is still 5 USDT."
+    },
+    {
+      "t": 317.6,
+      "text": "About what notional fits? Pause if you need more time."
+    },
+    {
+      "t": 323.4,
+      "text": "B, about 500 USDT. 5 divided by 1% is 500. A wider stop means a smaller position."
+    },
+    {
+      "t": 329.6,
+      "text": "A is tempting, but 1,000 USDT with a 1% stop risks 10 USDT, double the budget."
+    },
+    {
+      "t": 336.6,
+      "text": "Honest limits. A simulation is not the market: real fills can slip more, and real money feels different."
+    },
+    {
+      "t": 344.4,
+      "text": "Even a careful plan loses often. Never trade money you can't afford to lose."
+    },
+    {
+      "t": 350.4,
+      "text": "This plan used no leverage. More leverage makes losses bigger and can lead to liquidation."
+    },
+    {
+      "t": 357.2,
+      "text": "Everything here is fictional and educational, not advice. NO_TRADE is always allowed."
+    },
+    {
+      "t": 364.6,
+      "text": "Recap. One: eight steps, in order, from choosing a coin to writing the journal."
+    },
+    {
+      "t": 370.7,
+      "text": "Two: your size comes from the risk budget and the stop distance, before deciding."
+    },
+    {
+      "t": 376.9,
+      "text": "Three: judge the process, not one outcome. NO_TRADE can be a full success."
+    },
+    {
+      "t": 382.7,
+      "text": "Check yourself: you followed the plan and still lost. Bad decision?"
+    },
+    {
+      "t": 388.0,
+      "text": "Not necessarily. Check the process first."
+    },
+    {
+      "t": 392.6,
+      "text": "Next up: Checkpoint B, a review of T14 to T23. Well done for reaching the end of the lessons!"
+    }
+  ]
+}

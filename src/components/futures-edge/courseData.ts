@@ -65,8 +65,8 @@ export const LESSONS: Lesson[] = [
   { id: "T20", kind: "lesson", phase: 5, title: "Evaluating an Entry Opportunity", line: "A step-by-step checklist that can end in no trade.", minutes: 5, status: "available", pose: "think" },
   { id: "T21", kind: "lesson", phase: 5, title: "Confirmation, False Signals and NO_TRADE", line: "Why waiting is a decision too.", minutes: 5, status: "available", pose: "explain" },
   { id: "T22", kind: "lesson", phase: 5, title: "Position Sizing and Risk Budget", line: "Size a position from the risk you accept.", minutes: 5, status: "available", pose: "point" },
-  { id: "T23", kind: "lesson", phase: 5, title: "Full Scalping Decision Lifecycle", line: "A complete demo walkthrough, from chart to journal.", minutes: 8, status: "locked", pose: "present" },
-  { id: "CPB", kind: "checkpoint", phase: 5, title: "Checkpoint B", line: "A video recap of T14 to T23: chart and risk questions to pause and answer.", minutes: 4, status: "locked", pose: "hi", flip: true },
+  { id: "T23", kind: "lesson", phase: 5, title: "Full Scalping Decision Lifecycle", line: "A complete demo walkthrough, from chart to journal.", minutes: 7, status: "available", pose: "present" },
+  { id: "CPB", kind: "checkpoint", phase: 5, title: "Checkpoint B", line: "A video recap of T14 to T23: chart and risk questions to pause and answer.", minutes: 4, status: "available", pose: "hi", flip: true },
 ];
 
 export const cardSrc = (id: string) => `/futures-edge/cards/${id}.webp`;

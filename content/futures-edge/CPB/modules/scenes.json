@@ -1,0 +1,111 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Checkpoint B",
+      "dur": 8,
+      "desc": "Title card: Phase 5 final checkpoint CPB, review of T14 to T23; a ring with a shield draws in; the tutor walks in."
+    },
+    {
+      "id": "how",
+      "name": "How it works",
+      "dur": 19,
+      "desc": "Eight questions from T14 to T23: read, pause, pick, countdown, see why. Not graded here; the graded quiz is in the interactive course."
+    },
+    {
+      "id": "q-candle",
+      "name": "Q1 reading a candle",
+      "dur": 21,
+      "desc": "T14: open 60,000, high 60,300, low 59,800, close 60,200: a green candle whose body top is the close; 60,300 is the wick top."
+    },
+    {
+      "id": "q-agg",
+      "name": "Q2 building a 5-minute candle",
+      "dur": 21,
+      "desc": "T15: five 1-minute candles become one 5-minute candle: first open, highest high, lowest low, last close; never an average."
+    },
+    {
+      "id": "q-fake",
+      "name": "Q3 breakout or fakeout",
+      "dur": 21,
+      "desc": "T16/T17: price breaks above resistance and falls back within two candles: a possible fakeout, wait for evidence."
+    },
+    {
+      "id": "q-vol",
+      "name": "Q4 volume",
+      "dur": 21,
+      "desc": "T18: a big green candle on high volume is one clue, not proof of direction; two possible next paths."
+    },
+    {
+      "id": "q-fees",
+      "name": "Q5 scalping costs",
+      "dur": 21,
+      "desc": "T19: +0.80 gross and 1.00 fees per trade; ten trades net -2.00 USDT."
+    },
+    {
+      "id": "q-wait",
+      "name": "Q6 the NO_TRADE decision",
+      "dur": 21,
+      "desc": "T20/T21: mid-range, flat trend, low volume, no level near: NO_TRADE; one green candle is not a reason."
+    },
+    {
+      "id": "q-size",
+      "name": "Q7 position size",
+      "dur": 21,
+      "desc": "T22: risk budget 10 USDT, stop 2% away: notional 10 / 2% = 500 USDT; 1,000 would risk 20."
+    },
+    {
+      "id": "q-after",
+      "name": "Q8 after a losing demo trade",
+      "dur": 21,
+      "desc": "T23: the stop slipped to -6.30 against -6 planned: journal it, check the process, take a break; no revenge trading."
+    },
+    {
+      "id": "safety",
+      "name": "Critical safety",
+      "dur": 30,
+      "desc": "Leverage and liquidation, stops are triggers not promises, never share codes or keys, NO_TRADE and sizing from a risk budget."
+    },
+    {
+      "id": "revisit",
+      "name": "Where to revisit",
+      "dur": 20,
+      "desc": "Which lesson each question came from; rewatch with no penalty."
+    },
+    {
+      "id": "next",
+      "name": "Course complete",
+      "dur": 14,
+      "desc": "End card: congratulations on finishing; not a certification or permission to trade; keep practising in demo mode; XTINEX | XORA lockup."
+    }
+  ]
+}

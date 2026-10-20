@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T23 · Full Scalping Decision Lifecycle · XORA Futures Edge</title>
+<meta name="description" content="XORA Futures Edge lesson T23, an animated lesson (7 min). Education only, not financial advice.">
+<style>
+@font-face { font-family:"Outfit";font-weight:400 700; src: url("T23/fonts/outfit.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Manrope";font-weight:400 800; src: url("T23/fonts/manrope.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:400; src: url("T23/fonts/dm-mono-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:500; src: url("T23/fonts/dm-mono-500.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:400; src: url("T23/fonts/noto-sans-malayalam-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:600; src: url("T23/fonts/noto-sans-malayalam-600.woff2") format("woff2"); font-display: block; }
+
+html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; color: #eef1f7;
+  font-family: "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden;
+  background: #02030a; transform-origin: 50% 50%;
+  --display: "Outfit", "Manrope", system-ui, sans-serif;
+  --sans: "Manrope", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace; }
+#stage .fe-scene { position: absolute; inset: 0; overflow: hidden; }
+body:not(.fe-ready) #stage { visibility: hidden; }
+.fe-loading { position: fixed; inset: 0; display: grid; place-items: center; margin: 0; font-size: 15px; color: #6b7489; }
+body.fe-ready .fe-loading { display: none; }
+.fe-ui { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 10; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 14px; background: rgba(7, 8, 20, 0.8); border: 1px solid rgba(130, 160, 255, 0.18);
+  backdrop-filter: blur(8px); transition: opacity 0.4s; }
+body.fe-idle .fe-ui { opacity: 0; }
+body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
+.fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
+  background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
+.fe-btn svg { width: 20px; height: 20px; }
+.fe-ccw { position: relative; flex: none; }
+.fe-cc { font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; letter-spacing: 0.04em; color: #eef1f7;
+  box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-cc.is-off { color: #6b7489; box-shadow: none; }
+.fe-ccm { position: absolute; right: 0; bottom: calc(100% + 10px); display: grid; min-width: 150px; padding: 6px; border-radius: 12px;
+  background: rgba(7, 8, 20, 0.96); border: 1px solid rgba(130, 160, 255, 0.25); }
+.fe-ccm[hidden] { display: none; }
+.fe-ccm button { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: none; color: #eef1f7; font: 600 15px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; text-align: left; cursor: pointer; }
+.fe-ccm button:hover, .fe-ccm button:focus-visible { background: rgba(238, 241, 247, 0.08); outline: none; }
+.fe-ccm button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+.fe-ccm button[aria-checked="true"]::before { background: #3ecbff; }
+.fe-cap:lang(ml) { font-family: "Noto Sans Malayalam", "Manrope", system-ui, sans-serif; line-height: 1.55; }
+/* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
+.fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+  color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
+  transition: bottom 0.4s; pointer-events: none; }
+body.fe-idle .fe-cap { bottom: 20px; }
+.fe-cap[hidden], body:not(.fe-ready) .fe-cap { display: none; }
+.fe-track { position: relative; flex: 1; height: 6px; border-radius: 6px; background: rgba(238, 241, 247, 0.14);
+  cursor: pointer; touch-action: none; }
+.fe-track::before { content: ""; position: absolute; inset: -12px 0; }
+.fe-track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, #3ecbff, #a855f7); }
+.fe-time { flex: none; font: 500 13px/1 "DM Mono", ui-monospace, monospace; color: #b4bccb; font-variant-numeric: tabular-nums; }
+.fe-hint { position: fixed; top: 12px; right: 12px; z-index: 10; padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(62, 203, 255, 0.45); background: rgba(7, 8, 20, 0.82); color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif; }
+.fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
+@media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-height: 420px) {
+  .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
+  .fe-btn { width: 34px; height: 34px; }
+  .fe-btn svg { width: 18px; height: 18px; }
+  .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
+  body.fe-idle .fe-cap { bottom: 8px; }
+  .fe-hint { top: 6px; right: 6px; padding: 7px 12px; font-size: 12px; }
+}
+
+</style>
+</head>
+<body>
+<p class="fe-loading">Loading lesson…</p>
+<div id="stage" aria-label="T23 Full Scalping Decision Lifecycle" role="img"></div>
+<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/futures-edge/T23/. Edit the source, not this file. -->
+<script>window.FILM = {"id":"T23","width":1920,"height":1080,"scenes":[{"id":"title","name":"Lesson twenty-three","dur":8,"k":1,"oldStart":0,"oldDur":8},{"id":"hook","name":"Eight steps","dur":22,"k":1,"oldStart":8,"oldDur":22},{"id":"coin","name":"Step 1 · Choose a coin","dur":25,"k":1,"oldStart":30,"oldDur":25},{"id":"context","name":"Step 2 · Context","dur":28,"k":1,"oldStart":55,"oldDur":28},{"id":"levels","name":"Step 3 · Range and levels","dur":26,"k":1,"oldStart":83,"oldDur":26},{"id":"doubt","name":"Step 4 · Write down doubts","dur":26,"k":1,"oldStart":109,"oldDur":26},{"id":"costs","name":"Step 5 · Costs and risk","dur":33,"k":1,"oldStart":135,"oldDur":33},{"id":"decide","name":"Step 6 · Decide","dur":27,"k":1,"oldStart":168,"oldDur":27},{"id":"monitor","name":"Step 7 · Monitor and exit","dur":34,"k":1,"oldStart":195,"oldDur":34},{"id":"journal","name":"Step 8 · Journal","dur":27,"k":1,"oldStart":229,"oldDur":27},{"id":"notrade","name":"The NO_TRADE route","dur":27,"k":1,"oldStart":256,"oldDur":27},{"id":"mistake","name":"Common mistakes","dur":27,"k":1,"oldStart":283,"oldDur":27},{"id":"try","name":"Try it","dur":26,"k":1,"oldStart":310,"oldDur":26},{"id":"risks","name":"Honest limits","dur":28,"k":1,"oldStart":336,"oldDur":28},{"id":"recap","name":"Recap","dur":28,"k":1,"oldStart":364,"oldDur":28},{"id":"next","name":"Up next","dur":10,"k":1,"oldStart":392,"oldDur":10}],"voice":{"src":null,"lines":[{"t":0.6,"d":7.15,"text":"Lesson twenty-three: the full scalping decision lifecycle, from chart to journal.","ml":"പാഠം ഇരുപത്തിമൂന്ന്: scalping തീരുമാനത്തിന്റെ മുഴുവൻ ചക്രം, ചാർട്ട് മുതൽ ജേണൽ വരെ."},{"t":8.6,"d":5.25,"text":"This is the capstone: T14 to T22, used together on one fictional chart.","ml":"ഇതാണ് അവസാന പ്രായോഗിക പാഠം: T14 മുതൽ T22 വരെ പഠിച്ചതെല്ലാം ഒരു സാങ്കൽപ്പിക ചാർട്ടിൽ ഒരുമിച്ച്."},{"t":14.1,"d":6.25,"text":"Eight steps, in the same order every time, from choosing a coin to writing a journal.","ml":"എട്ട് ഘട്ടങ്ങൾ, എപ്പോഴും ഒരേ ക്രമത്തിൽ: കോയിൻ തിരഞ്ഞെടുക്കുന്നത് മുതൽ ജേണൽ എഴുതുന്നത് വരെ."},{"t":20.6,"d":5.65,"text":"It's an educational simulation, in demo mode. No real money, no real orders.","ml":"ഇത് ഡെമോ മോഡിലുള്ള ഒരു പഠന സിമുലേഷനാണ്. യഥാർത്ഥ പണമില്ല, യഥാർത്ഥ ഓർഡറുകളുമില്ല."},{"t":26.5,"d":3.25,"text":"And we score the process, not the profit.","ml":"നമ്മൾ മാർക്ക് നൽകുന്നത് പ്രക്രിയയ്ക്കാണ്, ലാഭത്തിനല്ല."},{"t":30.6,"d":6.05,"text":"Step one: choose a coin. In this simulation, the coins and all prices are made up.","ml":"ഒന്നാം ഘട്ടം: ഒരു കോയിൻ തിരഞ്ഞെടുക്കുക. ഈ സിമുലേഷനിലെ കോയിനുകളും എല്ലാ വിലകളും സാങ്കൽപ്പികമാണ്."},{"t":36.9,"d":5.65,"text":"Liquidity means how easily you can buy or sell without moving the price much.","ml":"Liquidity എന്നാൽ വില അധികം മാറാതെ എത്ര എളുപ്പത്തിൽ buy അല്ലെങ്കിൽ sell ചെയ്യാം എന്നതാണ്."},{"t":42.8,"d":5.95,"text":"BTC/USDT has many traders and a tiny spread. XYZ/USDT is thin: a 1% spread.","ml":"BTC/USDT-ൽ ധാരാളം ട്രേഡർമാരുണ്ട്, spread വളരെ ചെറുതാണ്. XYZ/USDT നേർത്തതാണ്: 1% spread."},{"t":49,"d":5.75,"text":"Thin coins slip more. So we pick BTC/USDT, on a 1,000 USDT demo account.","ml":"നേർത്ത കോയിനുകളിൽ slippage കൂടുതലാണ്. അതുകൊണ്ട് 1,000 USDT ഡെമോ അക്കൗണ്ടിൽ BTC/USDT എടുക്കുന്നു."},{"t":55.6,"d":6.25,"text":"Step two: context. First the 5-minute chart, for the bigger picture of the last hour.","ml":"രണ്ടാം ഘട്ടം: സാഹചര്യം. ആദ്യം 5-minute ചാർട്ട്, കഴിഞ്ഞ ഒരു മണിക്കൂറിന്റെ വലിയ ചിത്രത്തിന്."},{"t":62.1,"d":6.45,"text":"Higher highs and higher lows. So on 5 minutes, the trend leans up. Trends can still end.","ml":"Higher highs-ഉം higher lows-ഉം. അതിനാൽ 5 മിനിറ്റിൽ ട്രെൻഡ് മുകളിലേക്ക് ചായുന്നു. എങ്കിലും ട്രെൻഡുകൾ അവസാനിക്കാം."},{"t":68.8,"d":6.05,"text":"Now zoom into the last 15 minutes on the 1-minute chart. Same prices, more detail.","ml":"ഇനി 1-minute ചാർട്ടിൽ അവസാന 15 മിനിറ്റ് സൂം ചെയ്യാം. അതേ വിലകൾ, കൂടുതൽ വിശദാംശം."},{"t":75.1,"d":7.65,"text":"The 1-minute chart is noisier: a run up, then a pull-back. Use it for detail, not direction.","ml":"1-minute ചാർട്ടിൽ ബഹളം കൂടുതലാണ്: ആദ്യം കയറ്റം, പിന്നെ ഒരു ഇറക്കം. വിശദാംശത്തിന് ഉപയോഗിക്കുക, ദിശയ്ക്കല്ല."},{"t":83.6,"d":6.35,"text":"Step three: range and levels. Over 15 minutes, the high was 60,650 and the low 59,850.","ml":"മൂന്നാം ഘട്ടം: range-ഉം ലെവലുകളും. 15 മിനിറ്റിൽ high 60,650, low 59,850."},{"t":90.2,"d":4.15,"text":"That's a range of 800 USDT, about 1.3% of the price.","ml":"അതായത് 800 USDT-ന്റെ range, വിലയുടെ ഏകദേശം 1.3%."},{"t":94.6,"d":5.95,"text":"Twice, price dipped into 59,850 to 59,950 and bounced. That's our support zone.","ml":"രണ്ടു തവണ വില 59,850 മുതൽ 59,950 വരെ താഴ്ന്ന് തിരിച്ചുകയറി. അതാണ് നമ്മുടെ support സോൺ."},{"t":100.8,"d":7.95,"text":"Resistance sits near the top, 60,550 to 60,650. Price is now 60,000, just above support.","ml":"Resistance മുകളിൽ, 60,550 മുതൽ 60,650 വരെ. ഇപ്പോൾ വില 60,000, support-ന് തൊട്ടു മുകളിൽ."},{"t":109.6,"d":5.95,"text":"Step four: write down what you're unsure about. Beginners often skip this step.","ml":"നാലാം ഘട്ടം: ഉറപ്പില്ലാത്തത് എന്താണെന്ന് എഴുതിവെക്കുക. തുടക്കക്കാർ പലപ്പോഴും ഈ ഘട്ടം ഒഴിവാക്കും."},{"t":115.8,"d":5.95,"text":"What I lean towards: a bounce up from support, because the 5-minute trend is up.","ml":"ഞാൻ ചായുന്നത്: support-ൽ നിന്ന് ഒരു തിരിച്ചുകയറ്റം, കാരണം 5-minute ട്രെൻഡ് മുകളിലേക്കാണ്."},{"t":122,"d":5.75,"text":"What argues against it: support was already tested twice, and it could break.","ml":"അതിനെതിരെയുള്ളത്: support ഇതിനകം രണ്ടു തവണ പരീക്ഷിക്കപ്പെട്ടു, അത് തകരാം."},{"t":128,"d":6.75,"text":"What would prove me wrong: a fall below 59,700. Confidence: medium, not certain.","ml":"ഞാൻ തെറ്റാണെന്ന് കാണിക്കുന്നത്: 59,700-ന് താഴേക്കുള്ള വീഴ്ച. ആത്മവിശ്വാസം: ഇടത്തരം, ഉറപ്പില്ല."},{"t":135.6,"d":6.55,"text":"Step five: costs and risk, before any button. Example numbers only, not a recommendation.","ml":"അഞ്ചാം ഘട്ടം: ഏത് ബട്ടൺ അമർത്തുന്നതിനും മുമ്പ് ചെലവും റിസ്കും. ഉദാഹരണ സംഖ്യകൾ മാത്രം, നിർദ്ദേശമല്ല."},{"t":142.4,"d":6.15,"text":"Entry near 60,000. Stop at 59,700, just under support. That's 300 USDT away: 0.5%.","ml":"Entry ഏകദേശം 60,000. Stop 59,700-ൽ, support-ന് തൊട്ടു താഴെ. അത് 300 USDT അകലെ: 0.5%."},{"t":148.8,"d":6.55,"text":"Example budget: 6 USDT. Fees at 0.05% each way take about 1, leaving 5 for the price move.","ml":"ഉദാഹരണ ബജറ്റ്: 6 USDT. ഓരോ വശത്തും 0.05% ഫീസ് ഏകദേശം 1 എടുക്കും; വില നീക്കത്തിന് 5 ബാക്കി."},{"t":155.6,"d":5.55,"text":"5 divided by 0.5% gives a notional of about 1,000 USDT. No leverage needed.","ml":"5-നെ 0.5% കൊണ്ട് ഹരിച്ചാൽ notional ഏകദേശം 1,000 USDT. Leverage വേണ്ട."},{"t":161.4,"d":6.35,"text":"Stop hit: about −6 USDT with fees. Target 60,600 hit: +10 minus fees, about +9 USDT.","ml":"Stop തട്ടിയാൽ: ഫീസ് ഉൾപ്പെടെ ഏകദേശം −6 USDT. Target 60,600 എത്തിയാൽ: +10-ൽ നിന്ന് ഫീസ് കുറച്ച്, ഏകദേശം +9 USDT."},{"t":168.6,"d":5.55,"text":"Step six: decide. DEMO BUY, DEMO SELL or NO_TRADE. All three are allowed.","ml":"ആറാം ഘട്ടം: തീരുമാനിക്കുക. DEMO BUY, DEMO SELL അല്ലെങ്കിൽ NO_TRADE. മൂന്നും അനുവദനീയമാണ്."},{"t":174.4,"d":6.35,"text":"Whatever you choose, write one or two lines of why. A direction alone is not a reason.","ml":"എന്ത് തിരഞ്ഞെടുത്താലും, എന്തുകൊണ്ട് എന്ന് ഒന്നോ രണ്ടോ വരി എഴുതുക. ദിശ മാത്രം ഒരു കാരണമല്ല."},{"t":181,"d":6.65,"text":"Here: trend up, a bounce at support, and a planned loss of about 6 USDT, inside the budget.","ml":"ഇവിടെ: ട്രെൻഡ് മുകളിലേക്ക്, support-ൽ തിരിച്ചുകയറ്റം, ബജറ്റിനുള്ളിൽ ഏകദേശം 6 USDT ആസൂത്രിത നഷ്ടം."},{"t":187.9,"d":6.85,"text":"So this learner picks DEMO BUY, with the stop and target set at the same time.","ml":"അതിനാൽ ഈ പഠിതാവ് DEMO BUY തിരഞ്ഞെടുക്കുന്നു, stop-ഉം target-ഉം ഒരേ സമയം സെറ്റ് ചെയ്ത്."},{"t":195.6,"d":5.75,"text":"Step seven: monitor and exit. From here, price could go up, sideways or down.","ml":"ഏഴാം ഘട്ടം: നിരീക്ഷിക്കുക, പുറത്തുകടക്കുക. ഇവിടെ നിന്ന് വില മുകളിലേക്കോ, വശത്തേക്കോ, താഴേക്കോ പോകാം."},{"t":201.6,"d":5.95,"text":"Nobody knows which path will come. That's why the stop and target were set first.","ml":"ഏത് വഴി വരുമെന്ന് ആർക്കും അറിയില്ല. അതുകൊണ്ടാണ് stop-ഉം target-ഉം ആദ്യമേ സെറ്റ് ചെയ്തത്."},{"t":207.8,"d":6.35,"text":"Now the replay. Price rises to 60,400. Tempting to dream, but the plan stays the same.","ml":"ഇനി replay. വില 60,400 വരെ കയറുന്നു. സ്വപ്നം കാണാൻ തോന്നും, പക്ഷേ പ്ലാൻ മാറുന്നില്ല."},{"t":214.4,"d":6.75,"text":"Then it turns, breaks support, and hits the stop. The fill is 59,680: 20 USDT of slippage.","ml":"പിന്നെ വില തിരിഞ്ഞ്, support തകർത്ത്, stop തട്ടുന്നു. Fill 59,680-ൽ: 20 USDT slippage."},{"t":221.4,"d":7.35,"text":"The exit happens as planned, about eight minutes in. No moving the stop, no adding more.","ml":"ഏകദേശം എട്ട് മിനിറ്റിൽ, പ്ലാൻ പോലെ തന്നെ exit. Stop മാറ്റുന്നില്ല, കൂടുതൽ ചേർക്കുന്നുമില്ല."},{"t":229.6,"d":6.35,"text":"Step eight: the journal. Write what you planned, what happened, and what you learned.","ml":"എട്ടാം ഘട്ടം: ജേണൽ. എന്ത് പ്ലാൻ ചെയ്തു, എന്ത് സംഭവിച്ചു, എന്ത് പഠിച്ചു എന്ന് എഴുതുക."},{"t":236.2,"d":5.55,"text":"Price result: −5.33 USDT. Fees: −1.00. Net: −6.33 USDT, close to the plan.","ml":"വിലയിലെ ഫലം: −5.33 USDT. ഫീസ്: −1.00. Net: −6.33 USDT, പ്ലാനിനോട് അടുത്ത്."},{"t":242,"d":6.55,"text":"Did we follow the plan? Yes: size, stop and exit all as written. Process score: 8 of 8.","ml":"നമ്മൾ പ്ലാൻ പാലിച്ചോ? അതെ: size, stop, exit എല്ലാം എഴുതിയതുപോലെ. പ്രക്രിയ സ്കോർ: 8-ൽ 8."},{"t":248.8,"d":6.95,"text":"A good process can still lose. Judge decisions by the process, not by one outcome.","ml":"നല്ല പ്രക്രിയയിലും നഷ്ടം വരാം. തീരുമാനങ്ങളെ ഒരു ഫലം കൊണ്ടല്ല, പ്രക്രിയ കൊണ്ട് വിലയിരുത്തുക."},{"t":256.6,"d":5.95,"text":"Now the other route. Another learner saw the same chart and the same numbers.","ml":"ഇനി മറ്റേ വഴി. മറ്റൊരു പഠിതാവ് അതേ ചാർട്ടും അതേ സംഖ്യകളും കണ്ടു."},{"t":262.8,"d":6.75,"text":"Their notes: support tested twice, weak volume on the bounce, not confident. So: NO_TRADE.","ml":"അവരുടെ കുറിപ്പ്: support രണ്ടു തവണ പരീക്ഷിക്കപ്പെട്ടു, തിരിച്ചുകയറ്റത്തിൽ volume കുറവ്, ഉറപ്പില്ല. അതിനാൽ: NO_TRADE."},{"t":269.8,"d":6.25,"text":"Result: 0 USDT, no fees, and a journal entry. Process: complete. That's a success too.","ml":"ഫലം: 0 USDT, ഫീസില്ല, ഒരു ജേണൽ എൻട്രി. പ്രക്രിയ: പൂർണം. അതും ഒരു വിജയമാണ്."},{"t":276.3,"d":6.45,"text":"Not because of how the replay ended. They decided before knowing, with a clear reason.","ml":"Replay എങ്ങനെ അവസാനിച്ചു എന്നതുകൊണ്ടല്ല. ഫലം അറിയുന്നതിന് മുമ്പ്, വ്യക്തമായ കാരണത്തോടെ അവർ തീരുമാനിച്ചു."},{"t":283.6,"d":5.95,"text":"Three common mistakes. First: moving the stop further away as price gets close.","ml":"മൂന്ന് സാധാരണ തെറ്റുകൾ. ഒന്ന്: വില അടുത്തെത്തുമ്പോൾ stop കൂടുതൽ ദൂരേക്ക് മാറ്റുന്നത്."},{"t":289.8,"d":6.35,"text":"That turns a planned 6 USDT loss into about 11. Keep the stop where the plan put it.","ml":"അങ്ങനെ ആസൂത്രണം ചെയ്ത 6 USDT നഷ്ടം ഏകദേശം 11 ആകും. പ്ലാനിൽ വെച്ചിടത്തു തന്നെ stop നിർത്തുക."},{"t":296.4,"d":6.65,"text":"Second: doubling the size to win a loss back. That doubles the risk too. Take a break first.","ml":"രണ്ട്: നഷ്ടം തിരിച്ചുപിടിക്കാൻ size ഇരട്ടിയാക്കുന്നത്. അത് റിസ്കും ഇരട്ടിയാക്കും. ആദ്യം ഒരു ഇടവേള എടുക്കുക."},{"t":303.3,"d":6.45,"text":"Third: judging only by profit. Judge the process, because good process can still lose.","ml":"മൂന്ന്: ലാഭം മാത്രം നോക്കി വിലയിരുത്തുന്നത്. പ്രക്രിയ വിലയിരുത്തുക, കാരണം നല്ല പ്രക്രിയയിലും നഷ്ടം വരാം."},{"t":310.6,"d":6.75,"text":"Your turn. The stop must go at 59,400: 1% away. The budget for the move is still 5 USDT.","ml":"ഇനി നിങ്ങളുടെ ഊഴം. Stop 59,400-ൽ വെക്കണം: 1% അകലെ. നീക്കത്തിനുള്ള ബജറ്റ് ഇപ്പോഴും 5 USDT."},{"t":317.6,"d":5.55,"text":"About what notional fits? Pause if you need more time.","ml":"ഏകദേശം എത്ര notional ചേരും? കൂടുതൽ സമയം വേണമെങ്കിൽ വീഡിയോ നിർത്തുക."},{"t":323.4,"d":5.95,"text":"B, about 500 USDT. 5 divided by 1% is 500. A wider stop means a smaller position.","ml":"B, ഏകദേശം 500 USDT. 5-നെ 1% കൊണ്ട് ഹരിച്ചാൽ 500. Stop ദൂരെയാകുമ്പോൾ position ചെറുതാകണം."},{"t":329.6,"d":6.15,"text":"A is tempting, but 1,000 USDT with a 1% stop risks 10 USDT, double the budget.","ml":"A ആകർഷകമായി തോന്നും, പക്ഷേ 1% stop-ഓടെ 1,000 USDT എന്നാൽ 10 USDT റിസ്ക്, ബജറ്റിന്റെ ഇരട്ടി."},{"t":336.6,"d":7.55,"text":"Honest limits. A simulation is not the market: real fills can slip more, and real money feels different.","ml":"സത്യസന്ധമായ പരിധികൾ. സിമുലേഷൻ യഥാർത്ഥ മാർക്കറ്റല്ല: യഥാർത്ഥ fill കൂടുതൽ slip ചെയ്യാം, യഥാർത്ഥ പണം വേറെ അനുഭവമാണ്."},{"t":344.4,"d":5.75,"text":"Even a careful plan loses often. Never trade money you can't afford to lose.","ml":"ശ്രദ്ധയോടെയുള്ള പ്ലാനും പലപ്പോഴും നഷ്ടത്തിലാകും. നഷ്ടപ്പെടുത്താൻ കഴിയാത്ത പണം കൊണ്ട് ഒരിക്കലും ട്രേഡ് ചെയ്യരുത്."},{"t":350.4,"d":6.55,"text":"This plan used no leverage. More leverage makes losses bigger and can lead to liquidation.","ml":"ഈ പ്ലാനിൽ leverage ഉപയോഗിച്ചില്ല. കൂടുതൽ leverage നഷ്ടം വലുതാക്കും, liquidation-ലേക്ക് നയിക്കാം."},{"t":357.2,"d":6.55,"text":"Everything here is fictional and educational, not advice. NO_TRADE is always allowed.","ml":"ഇവിടെയുള്ളതെല്ലാം സാങ്കൽപ്പികവും പഠനത്തിനുള്ളതുമാണ്, ഉപദേശമല്ല. NO_TRADE എപ്പോഴും അനുവദനീയമാണ്."},{"t":364.6,"d":5.85,"text":"Recap. One: eight steps, in order, from choosing a coin to writing the journal.","ml":"ചുരുക്കത്തിൽ. ഒന്ന്: എട്ട് ഘട്ടങ്ങൾ, ക്രമത്തിൽ, കോയിൻ തിരഞ്ഞെടുക്കൽ മുതൽ ജേണൽ എഴുത്ത് വരെ."},{"t":370.7,"d":5.95,"text":"Two: your size comes from the risk budget and the stop distance, before deciding.","ml":"രണ്ട്: നിങ്ങളുടെ size വരുന്നത് റിസ്ക് ബജറ്റിൽ നിന്നും stop ദൂരത്തിൽ നിന്നുമാണ്, തീരുമാനിക്കുന്നതിന് മുമ്പ്."},{"t":376.9,"d":5.55,"text":"Three: judge the process, not one outcome. NO_TRADE can be a full success.","ml":"മൂന്ന്: ഒരു ഫലമല്ല, പ്രക്രിയ വിലയിരുത്തുക. NO_TRADE-ഉം പൂർണ വിജയമാകാം."},{"t":382.7,"d":5.05,"text":"Check yourself: you followed the plan and still lost. Bad decision?","ml":"സ്വയം പരിശോധിക്കൂ: പ്ലാൻ പാലിച്ചിട്ടും നഷ്ടം വന്നു. മോശം തീരുമാനമാണോ?"},{"t":388,"d":3.75,"text":"Not necessarily. Check the process first.","ml":"നിർബന്ധമില്ല. ആദ്യം പ്രക്രിയ പരിശോധിക്കുക."},{"t":392.6,"d":9.15,"text":"Next up: Checkpoint B, a review of T14 to T23. Well done for reaching the end of the lessons!","ml":"അടുത്തത്: Checkpoint B, T14 മുതൽ T23 വരെയുള്ള ഒരു റിവ്യൂ. പാഠങ്ങളുടെ അവസാനം വരെ എത്തിയതിന് അഭിനന്ദനങ്ങൾ!"}]},"assetBase":"T23/assets/","assets":{"tutor-checklist.webp":{"mime":"image/webp","w":185,"h":161},"tutor-cheer.webp":{"mime":"image/webp","w":207,"h":182},"tutor-confused.webp":{"mime":"image/webp","w":185,"h":169},"tutor-explain.webp":{"mime":"image/webp","w":502,"h":602},"tutor-idea.webp":{"mime":"image/webp","w":169,"h":178},"tutor-magnify.webp":{"mime":"image/webp","w":187,"h":170},"tutor-point.webp":{"mime":"image/webp","w":547,"h":568},"tutor-present.webp":{"mime":"image/webp","w":546,"h":612},"tutor-read.webp":{"mime":"image/webp","w":190,"h":181},"tutor-think.webp":{"mime":"image/webp","w":465,"h":656},"tutor-thumbs.webp":{"mime":"image/webp","w":181,"h":179},"tutor-wk0.webp":{"mime":"image/webp","w":353,"h":460},"tutor-wk1.webp":{"mime":"image/webp","w":361,"h":460},"tutor-wk2.webp":{"mime":"image/webp","w":345,"h":460},"tutor-wk3.webp":{"mime":"image/webp","w":365,"h":460},"tutor-wk4.webp":{"mime":"image/webp","w":375,"h":457},"tutor-wk5.webp":{"mime":"image/webp","w":364,"h":457},"tutor-wk6.webp":{"mime":"image/webp","w":354,"h":457},"tutor-wk7.webp":{"mime":"image/webp","w":365,"h":457},"tutor-wv1.webp":{"mime":"image/webp","w":381,"h":448},"tutor-wv2.webp":{"mime":"image/webp","w":374,"h":448},"tutor-wv3.webp":{"mime":"image/webp","w":363,"h":448},"tutor-wv4.webp":{"mime":"image/webp","w":375,"h":446},"xtinex-x.png":{"mime":"image/png","w":320,"h":205},"tutor-laptop.webp":{"mime":"image/webp","w":185,"h":170},"tutor-typing.webp":{"mime":"image/webp","w":207,"h":175},"tutor-writing.webp":{"mime":"image/webp","w":191,"h":169},"tutor-calm.webp":{"mime":"image/webp","w":234,"h":174},"tutor-celebrate.webp":{"mime":"image/webp","w":209,"h":171},"tutor-hi.webp":{"mime":"image/webp","w":518,"h":594},"tutor-candles.webp":{"mime":"image/webp","w":257,"h":160},"tutor-pointer.webp":{"mime":"image/webp","w":248,"h":171}},"fontChecks":["600 40px \"Noto Sans Malayalam\"","400 40px \"Manrope\"","700 40px \"Outfit\"","600 40px \"Outfit\"","400 40px \"DM Mono\"","500 40px \"DM Mono\""],"modules":{"base.css":"#stage { --ground:#02030a; --main:#3ecbff; --second:#eef1f7; --accent:#a855f7; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }\n.ground { position:absolute; inset:0; background:radial-gradient(60% 55% at 88% 6%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%), radial-gradient(55% 50% at 6% 98%, color-mix(in srgb, var(--main) 11%, transparent), transparent 70%), var(--ground) }\n.words { position:absolute; margin:0; display:flex; flex-direction:column; gap:24px } .words > * { margin:0 }\n.line { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:84px; line-height:1.05; font-weight:700; letter-spacing:-0.02em; text-wrap:balance }\n.sub { font-size:36px; line-height:1.45; color:color-mix(in srgb, var(--second) 72%, var(--ground)) }\n.kick { font-family:var(--mono, ui-monospace, monospace); font-size:22px; letter-spacing:.24em; text-transform:uppercase; color:var(--main) }\n.hl { color:var(--main) } .hv { color:var(--accent) }\n.art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }\n.glass { position:absolute; box-sizing:border-box; border-radius:28px; background:linear-gradient(180deg, color-mix(in srgb, var(--ground) 82%, var(--main)), color-mix(in srgb, var(--ground) 94%, var(--second))); border:1.5px solid color-mix(in srgb, var(--main) 22%, transparent); box-shadow:0 30px 80px rgba(0,0,0,.45) }\n.chip { display:inline-flex; align-items:center; gap:16px; padding:18px 30px; border-radius:999px; font-size:32px; font-weight:600; background:color-mix(in srgb, var(--ground) 88%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 30%, transparent); white-space:nowrap }\n.dot { width:14px; height:14px; border-radius:50%; background:var(--main); flex:none }\n.rule { height:4px; border-radius:4px; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.mono { font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums }\n.fict { font-family:var(--mono, ui-monospace, monospace); font-size:18px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 45%, var(--ground)) }\n.def { font-size:34px; line-height:1.45; font-weight:600 } .def b { color:var(--main); font-weight:700 }\n.lock { display:flex; align-items:center; gap:22px } .lock img { width:92px; height:59px; display:block }\n.lock-xt { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:600; font-size:40px; letter-spacing:.2em }\n.lock-bar { width:2px; height:46px; background:color-mix(in srgb, var(--second) 30%, transparent) }\n.lock-xo { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:700; font-size:40px; letter-spacing:.2em; color:var(--main) }\n.chrome { position:absolute; left:140px; right:140px; top:56px; display:flex; align-items:center; gap:28px; z-index:4 }\n.chrome span { font-family:var(--mono, ui-monospace, monospace); font-size:19px; letter-spacing:.18em; text-transform:uppercase; color:color-mix(in srgb, var(--second) 55%, var(--ground)); white-space:nowrap }\n.chrome div { flex:1; height:4px; border-radius:4px; background:color-mix(in srgb, var(--second) 10%, transparent); overflow:hidden } .chrome i { display:block; height:100%; width:0; background:linear-gradient(90deg, var(--main), var(--accent)) }\n.tutor { position:absolute; inset:0; pointer-events:none; z-index:5 }\n.tutor-img { position:absolute; display:block; max-width:none; opacity:0 }\n.tutor-shadow { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--main) 38%, transparent), transparent) }\n.bubble { position:absolute; left:0; top:0; width:max-content; max-width:540px; box-sizing:border-box; padding:20px 28px; border-radius:26px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); box-shadow:0 18px 50px rgba(0,0,0,.45); opacity:0 }\n.bubble p { margin:0; font-size:30px; line-height:1.35; font-weight:600; color:var(--second) }\n.bubble::after { content:''; position:absolute; right:44px; bottom:-12px; width:22px; height:22px; background:color-mix(in srgb, var(--ground) 76%, var(--main)); border-right:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); border-bottom:1.5px solid color-mix(in srgb, var(--main) 50%, transparent); transform:rotate(45deg) }\n.bubble.is-top::after { right:auto; left:calc(50% - 11px) }\n.box { position:absolute; margin:0; border:2px solid var(--second); box-sizing:border-box; font-size:30px; letter-spacing:.12em } .box::after { content:attr(data-label); position:absolute; left:14px; bottom:10px }\n/* T14: candle colours (most apps: green up, red down) and small chart labels */\n#stage { --up:#2fd897; --down:#ff5c7c }\n.up { color:var(--up) } .dn { color:var(--down) }\n.tag { position:absolute; margin:0; padding:6px 14px; border-radius:10px; font-family:var(--mono, ui-monospace, monospace); font-size:24px; white-space:nowrap; background:color-mix(in srgb, var(--ground) 80%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 35%, transparent) }\n.axis { font-family:var(--mono, ui-monospace, monospace); font-size:22px; fill:color-mix(in srgb, var(--second) 50%, var(--ground)) }\n.row { display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding:14px 0; border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent) }\n.row > span:first-child { font-size:28px; color:color-mix(in srgb, var(--second) 70%, var(--ground)) }\n.row > .mono { font-size:42px }\n","narration.json":"{\n  \"about\": \"T23 on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.\",\n  \"lines\": [\n    {\n      \"t\": 0.6,\n      \"text\": \"Lesson twenty-three: the full scalping decision lifecycle, from chart to journal.\"\n    },\n    {\n      \"t\": 8.6,\n      \"text\": \"This is the capstone: T14 to T22, used together on one fictional chart.\"\n    },\n    {\n      \"t\": 14.1,\n      \"text\": \"Eight steps, in the same order every time, from choosing a coin to writing a journal.\"\n    },\n    {\n      \"t\": 20.6,\n      \"text\": \"It's an educational simulation, in demo mode. No real money, no real orders.\"\n    },\n    {\n      \"t\": 26.5,\n      \"text\": \"And we score the process, not the profit.\"\n    },\n    {\n      \"t\": 30.6,\n      \"text\": \"Step one: choose a coin. In this simulation, the coins and all prices are made up.\"\n    },\n    {\n      \"t\": 36.9,\n      \"text\": \"Liquidity means how easily you can buy or sell without moving the price much.\"\n    },\n    {\n      \"t\": 42.8,\n      \"text\": \"BTC/USDT has many traders and a tiny spread. XYZ/USDT is thin: a 1% spread.\"\n    },\n    {\n      \"t\": 49.0,\n      \"text\": \"Thin coins slip more. So we pick BTC/USDT, on a 1,000 USDT demo account.\"\n    },\n    {\n      \"t\": 55.6,\n      \"text\": \"Step two: context. First the 5-minute chart, for the bigger picture of the last hour.\"\n    },\n    {\n      \"t\": 62.1,\n      \"text\": \"Higher highs and higher lows. So on 5 minutes, the trend leans up. Trends can still end.\"\n    },\n    {\n      \"t\": 68.8,\n      \"text\": \"Now zoom into the last 15 minutes on the 1-minute chart. Same prices, more detail.\"\n    },\n    {\n      \"t\": 75.1,\n      \"text\": \"The 1-minute chart is noisier: a run up, then a pull-back. Use it for detail, not direction.\"\n    },\n    {\n      \"t\": 83.6,\n      \"text\": \"Step three: range and levels. Over 15 minutes, the high was 60,650 and the low 59,850.\"\n    },\n    {\n      \"t\": 90.2,\n      \"text\": \"That's a range of 800 USDT, about 1.3% of the price.\"\n    },\n    {\n      \"t\": 94.6,\n      \"text\": \"Twice, price dipped into 59,850 to 59,950 and bounced. That's our support zone.\"\n    },\n    {\n      \"t\": 100.8,\n      \"text\": \"Resistance sits near the top, 60,550 to 60,650. Price is now 60,000, just above support.\"\n    },\n    {\n      \"t\": 109.6,\n      \"text\": \"Step four: write down what you're unsure about. Beginners often skip this step.\"\n    },\n    {\n      \"t\": 115.8,\n      \"text\": \"What I lean towards: a bounce up from support, because the 5-minute trend is up.\"\n    },\n    {\n      \"t\": 122.0,\n      \"text\": \"What argues against it: support was already tested twice, and it could break.\"\n    },\n    {\n      \"t\": 128.0,\n      \"text\": \"What would prove me wrong: a fall below 59,700. Confidence: medium, not certain.\"\n    },\n    {\n      \"t\": 135.6,\n      \"text\": \"Step five: costs and risk, before any button. Example numbers only, not a recommendation.\"\n    },\n    {\n      \"t\": 142.4,\n      \"text\": \"Entry near 60,000. Stop at 59,700, just under support. That's 300 USDT away: 0.5%.\"\n    },\n    {\n      \"t\": 148.8,\n      \"text\": \"Example budget: 6 USDT. Fees at 0.05% each way take about 1, leaving 5 for the price move.\"\n    },\n    {\n      \"t\": 155.6,\n      \"text\": \"5 divided by 0.5% gives a notional of about 1,000 USDT. No leverage needed.\"\n    },\n    {\n      \"t\": 161.4,\n      \"text\": \"Stop hit: about −6 USDT with fees. Target 60,600 hit: +10 minus fees, about +9 USDT.\"\n    },\n    {\n      \"t\": 168.6,\n      \"text\": \"Step six: decide. DEMO BUY, DEMO SELL or NO_TRADE. All three are allowed.\"\n    },\n    {\n      \"t\": 174.4,\n      \"text\": \"Whatever you choose, write one or two lines of why. A direction alone is not a reason.\"\n    },\n    {\n      \"t\": 181.0,\n      \"text\": \"Here: trend up, a bounce at support, and a planned loss of about 6 USDT, inside the budget.\"\n    },\n    {\n      \"t\": 187.9,\n      \"text\": \"So this learner picks DEMO BUY, with the stop and target set at the same time.\"\n    },\n    {\n      \"t\": 195.6,\n      \"text\": \"Step seven: monitor and exit. From here, price could go up, sideways or down.\"\n    },\n    {\n      \"t\": 201.6,\n      \"text\": \"Nobody knows which path will come. That's why the stop and target were set first.\"\n    },\n    {\n      \"t\": 207.8,\n      \"text\": \"Now the replay. Price rises to 60,400. Tempting to dream, but the plan stays the same.\"\n    },\n    {\n      \"t\": 214.4,\n      \"text\": \"Then it turns, breaks support, and hits the stop. The fill is 59,680: 20 USDT of slippage.\"\n    },\n    {\n      \"t\": 221.4,\n      \"text\": \"The exit happens as planned, about eight minutes in. No moving the stop, no adding more.\"\n    },\n    {\n      \"t\": 229.6,\n      \"text\": \"Step eight: the journal. Write what you planned, what happened, and what you learned.\"\n    },\n    {\n      \"t\": 236.2,\n      \"text\": \"Price result: −5.33 USDT. Fees: −1.00. Net: −6.33 USDT, close to the plan.\"\n    },\n    {\n      \"t\": 242.0,\n      \"text\": \"Did we follow the plan? Yes: size, stop and exit all as written. Process score: 8 of 8.\"\n    },\n    {\n      \"t\": 248.8,\n      \"text\": \"A good process can still lose. Judge decisions by the process, not by one outcome.\"\n    },\n    {\n      \"t\": 256.6,\n      \"text\": \"Now the other route. Another learner saw the same chart and the same numbers.\"\n    },\n    {\n      \"t\": 262.8,\n      \"text\": \"Their notes: support tested twice, weak volume on the bounce, not confident. So: NO_TRADE.\"\n    },\n    {\n      \"t\": 269.8,\n      \"text\": \"Result: 0 USDT, no fees, and a journal entry. Process: complete. That's a success too.\"\n    },\n    {\n      \"t\": 276.3,\n      \"text\": \"Not because of how the replay ended. They decided before knowing, with a clear reason.\"\n    },\n    {\n      \"t\": 283.6,\n      \"text\": \"Three common mistakes. First: moving the stop further away as price gets close.\"\n    },\n    {\n      \"t\": 289.8,\n      \"text\": \"That turns a planned 6 USDT loss into about 11. Keep the stop where the plan put it.\"\n    },\n    {\n      \"t\": 296.4,\n      \"text\": \"Second: doubling the size to win a loss back. That doubles the risk too. Take a break first.\"\n    },\n    {\n      \"t\": 303.3,\n      \"text\": \"Third: judging only by profit. Judge the process, because good process can still lose.\"\n    },\n    {\n      \"t\": 310.6,\n      \"text\": \"Your turn. The stop must go at 59,400: 1% away. The budget for the move is still 5 USDT.\"\n    },\n    {\n      \"t\": 317.6,\n      \"text\": \"About what notional fits? Pause if you need more time.\"\n    },\n    {\n      \"t\": 323.4,\n      \"text\": \"B, about 500 USDT. 5 divided by 1% is 500. A wider stop means a smaller position.\"\n    },\n    {\n      \"t\": 329.6,\n      \"text\": \"A is tempting, but 1,000 USDT with a 1% stop risks 10 USDT, double the budget.\"\n    },\n    {\n      \"t\": 336.6,\n      \"text\": \"Honest limits. A simulation is not the market: real fills can slip more, and real money feels different.\"\n    },\n    {\n      \"t\": 344.4,\n      \"text\": \"Even a careful plan loses often. Never trade money you can't afford to lose.\"\n    },\n    {\n      \"t\": 350.4,\n      \"text\": \"This plan used no leverage. More leverage makes losses bigger and can lead to liquidation.\"\n    },\n    {\n      \"t\": 357.2,\n      \"text\": \"Everything here is fictional and educational, not advice. NO_TRADE is always allowed.\"\n    },\n    {\n      \"t\": 364.6,\n      \"text\": \"Recap. One: eight steps, in order, from choosing a coin to writing the journal.\"\n    },\n    {\n      \"t\": 370.7,\n      \"text\": \"Two: your size comes from the risk budget and the stop distance, before deciding.\"\n    },\n    {\n      \"t\": 376.9,\n      \"text\": \"Three: judge the process, not one outcome. NO_TRADE can be a full success.\"\n    },\n    {\n      \"t\": 382.7,\n      \"text\": \"Check yourself: you followed the plan and still lost. Bad decision?\"\n    },\n    {\n      \"t\": 388.0,\n      \"text\": \"Not necessarily. Check the process first.\"\n    },\n    {\n      \"t\": 392.6,\n      \"text\": \"Next up: Checkpoint B, a review of T14 to T23. Well done for reaching the end of the lessons!\"\n    }\n  ]\n}","scene-coin.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Two made-up markets: a deep book with a tiny spread, and a thin one with a 1% spread.\nconst CN = [\n  { n: 'BTC/USDT', ba: 'Bid 59,999 · Ask 60,001', sp: 'Spread 2 USDT ≈ 0.003%', bids: [0.95, 0.8, 0.9, 0.7, 0.85], asks: [0.9, 0.85, 0.75, 0.95, 0.8], liq: 0.9, lq: 'High', res: '✓ Chosen', col: 'var(--main)' },\n  { n: 'XYZ/USDT', ba: 'Bid 0.995 · Ask 1.005', sp: 'Spread 0.01 USDT = 1%', bids: [0.22, 0.1, 0.16, 0.06, 0.12], asks: [0.14, 0.2, 0.08, 0.12, 0.05], liq: 0.16, lq: 'Thin', res: 'Skip', col: 'var(--accent)' },\n];\nkit.scene('coin', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 1 of 8 · Choose a coin', 'Choose a liquid market');\n    this.track = UI.track(kit, 1);\n    let cards = '';\n    CN.forEach((c, k) => {\n      let book = '';\n      for (let i = 0; i < 5; i++) {\n        book += '<div style=\"position:absolute;right:50%;margin-right:10px;top:' + (i * 24) + 'px;height:16px;border-radius:4px 0 0 4px;background:color-mix(in srgb, var(--up) 70%, transparent)\" class=\"cn-b\" data-w=\"' + c.bids[i] + '\"></div>' +\n          '<div style=\"position:absolute;left:50%;margin-left:10px;top:' + (i * 24) + 'px;height:16px;border-radius:0 4px 4px 0;background:color-mix(in srgb, var(--down) 70%, transparent)\" class=\"cn-b\" data-w=\"' + c.asks[i] + '\"></div>';\n      }\n      cards += '<div class=\"glass cn-c\" style=\"left:' + (140 + k * 510) + 'px;top:300px;width:480px;height:420px;padding:26px 30px\">' +\n        '<div style=\"display:flex;align-items:center;justify-content:space-between\"><span class=\"mono\" style=\"font-size:40px\">' + c.n + '</span>' +\n        '<span class=\"chip cn-r\" style=\"font-size:24px;padding:6px 18px;' + (k ? 'border-color:var(--accent);color:var(--accent)' : 'background:var(--main);color:var(--ground);border-color:var(--main)') + '\">' + c.res + '</span></div>' +\n        '<p class=\"mono\" style=\"margin:12px 0 0;font-size:26px;color:color-mix(in srgb, var(--second) 75%, var(--ground))\">' + c.ba + '</p>' +\n        '<p class=\"fict\" style=\"margin:22px 0 8px\">Order book · buyers | sellers</p>' +\n        '<div style=\"position:relative;height:116px\">' + book + '<div style=\"position:absolute;left:50%;top:-4px;width:2px;height:120px;background:color-mix(in srgb, var(--second) 30%, transparent)\"></div></div>' +\n        '<p class=\"mono cn-sp\" style=\"margin:18px 0 0;font-size:26px;color:' + c.col + '\">' + c.sp + '</p>' +\n        '<div class=\"cn-m\" style=\"display:flex;align-items:center;gap:16px;margin-top:20px\"><span style=\"font-size:26px;font-weight:600;width:120px\">Liquidity</span>' +\n        '<div style=\"flex:1;height:16px;border-radius:8px;background:color-mix(in srgb, var(--second) 10%, transparent);overflow:hidden\"><div class=\"cn-f\" style=\"height:100%;width:0;background:' + c.col + '\"></div></div><span class=\"mono\" style=\"font-size:24px;width:70px\">' + c.lq + '</span></div>' +\n        '</div>';\n    });\n    kit.stage.append(kit.h('<div><p class=\"fict\" style=\"position:absolute;left:140px;top:262px;margin:0\">Made-up coins · fictional prices · educational simulation</p>' + cards +\n      '<div class=\"glass cn-d\" style=\"left:1180px;top:300px;width:600px;padding:24px 32px\"><p class=\"kick\" style=\"margin:0 0 10px\">Liquidity</p><p class=\"def\" style=\"margin:0;font-size:30px\">How easily you can <b>buy or sell</b> without moving the price much.</p></div>' +\n      '<div class=\"glass cn-a\" style=\"left:1180px;top:520px;width:600px;padding:24px 32px;border-color:var(--main)\"><div style=\"display:flex;align-items:center;gap:16px\"><p class=\"kick\" style=\"margin:0\">Demo account</p><span class=\"chip mono\" style=\"font-size:20px;padding:4px 14px;background:var(--main);color:var(--ground);border-color:var(--main)\">DEMO</span></div>' +\n      '<p class=\"mono\" style=\"margin:8px 0 0;font-size:64px\"><span class=\"cn-v\">0</span> <span style=\"font-size:32px;color:color-mix(in srgb, var(--second) 60%, var(--ground))\">USDT</span></p>' +\n      '<p style=\"margin:4px 0 0;font-size:24px;color:color-mix(in srgb, var(--second) 62%, var(--ground))\">Practice money · no real orders</p></div></div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.cards = all('.cn-c').map((e) => e.style); this.bars = all('.cn-b').map((e) => ({ st: e.style, w: +e.dataset.w }));\n    this.sp = all('.cn-sp').map((e) => e.style); this.m = all('.cn-m').map((e) => e.style); this.f = all('.cn-f').map((e) => e.style); this.r = all('.cn-r').map((e) => e.style);\n    this.d = q('.cn-d').style; this.a = q('.cn-a').style; this.v = q('.cn-v');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 1.0, pose: 'magnify' }, { t: 6.9, pose: 'explain' }, { t: 12.8, pose: 'think' }, { t: 19.0, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    this.cards.forEach((s, i) => { UI.rise(kit, s, t, 1.0 + i * 0.4, 0.7, 34); });\n    this.bars.forEach((b, i) => { const a = 7.2 + (i % 10) * 0.08 + (i >= 10 ? 0.5 : 0); b.st.width = (b.w * 170 * eio(seg(t, a, a + 0.7))).toFixed(1) + 'px'; });\n    this.sp.forEach((s, i) => { UI.rise(kit, s, t, 12.9 + i * 2.2, 0.5, 14); });\n    this.m.forEach((s, i) => { s.opacity = eo(seg(t, 7.2, 7.6)); });\n    this.f.forEach((s, i) => { s.width = (CN[i].liq * 100 * eio(seg(t, 8.0 + i * 0.5, 9.2 + i * 0.5))).toFixed(1) + '%'; });\n    this.r.forEach((s, i) => { const p = seg(t, 19.2 + i * 0.6, 19.8 + i * 0.6); s.opacity = eo(p); s.transform = 'scale(' + lerp(0.7, 1, eob(p, 1.8)).toFixed(3) + ')'; });\n    const dim = eo(seg(t, 19.8, 20.4));\n    this.cards[1].opacity = (+this.cards[1].opacity * lerp(1, 0.55, dim)).toFixed(3);\n    this.cards[0].borderColor = dim > 0 ? 'var(--main)' : '';\n    UI.rise(kit, this.d, t, 6.9, 0.6, 24);\n    UI.rise(kit, this.a, t, 19.4, 0.6, 24);\n    UI.set(this.v, UI.fmt(Math.round(1000 * eo(seg(t, 19.8, 21.0)))));\n    this.tutor.render(t);\n  },\n});\n","scene-context.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// The 5-minute hour first (higher highs, higher lows), then its last three candles become fifteen 1-minute candles.\nconst CX_LO = [0, 2, 5, 11], CX_HI = [1, 4, 9];\nkit.scene('context', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 2 of 8 · Context', 'Big picture first');\n    this.track = UI.track(kit, 2);\n    const D = UI.D, X = D.x5, Y = D.y5;\n    this.c5 = UI.cdl(kit, 'cx5', 12);\n    let dots = '';\n    CX_LO.forEach((i) => { dots += '<circle class=\"cx-d\" cx=\"' + X(i) + '\" cy=\"' + (Y(D.K5[i][2]) + 16).toFixed(1) + '\" r=\"9\" style=\"fill:var(--main)\"/>'; });\n    CX_HI.forEach((i) => { dots += '<circle class=\"cx-d\" cx=\"' + X(i) + '\" cy=\"' + (Y(D.K5[i][1]) - 16).toFixed(1) + '\" r=\"9\" style=\"fill:var(--accent)\"/>'; });\n    const bx = X(9) - 32, bw = X(11) - X(9) + 64, by = Y(60650) - 18, bh = Y(59850) - Y(60650) + 36;\n    const svg5 = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"cx-5\">' + UI.grid(160, 1040, Y, 58800, 60800, 400) + this.c5.html +\n      '<line class=\"cx-tl\" x1=\"' + X(0) + '\" y1=\"' + (Y(58950) + 16).toFixed(1) + '\" x2=\"' + X(11) + '\" y2=\"' + (Y(59850) + 16).toFixed(1) + '\" pathLength=\"1\" stroke-width=\"3\" stroke-dasharray=\"1 1\" style=\"stroke:var(--main)\"/>' +\n      dots + '<rect class=\"cx-box\" x=\"' + bx + '\" y=\"' + by.toFixed(1) + '\" width=\"' + bw + '\" height=\"' + bh.toFixed(1) + '\" rx=\"10\" fill=\"none\" stroke-width=\"3\" stroke-dasharray=\"10 8\" style=\"stroke:var(--second)\"/></g></svg>');\n    kit.stage.append(svg5);\n    this.f5 = kit.h('<p class=\"fict\" style=\"position:absolute;left:160px;top:276px;margin:0\">BTC/USDT · 5-minute · fictional replay · educational simulation</p>'); kit.stage.append(this.f5);\n    this.tg = [kit.h('<p class=\"tag\" style=\"left:200px;top:330px;border-color:var(--accent)\">Higher highs</p>'), kit.h('<p class=\"tag\" style=\"left:200px;top:386px;border-color:var(--main)\">Higher lows</p>'),\n      kit.h('<p class=\"tag\" style=\"left:' + (bx - 230) + 'px;top:' + (by - 6).toFixed(0) + 'px\">Last 15 minutes</p>')];\n    this.tg.forEach((e) => kit.stage.append(e));\n    this.c1 = UI.chart1(kit, 'cx1', { draw: 16.0, k: 0.1, at: 15.6 });\n    this.tg1 = kit.h('<p class=\"tag\" style=\"left:540px;top:330px;border-color:var(--main)\">Run up, then a pull-back</p>'); kit.stage.append(this.tg1);\n    const card = (cls, top, k, s) => '<div class=\"glass ' + cls + '\" style=\"left:1180px;top:' + top + 'px;width:600px;padding:22px 30px\"><p class=\"kick\" style=\"margin:0 0 10px\">' + k + '</p><p style=\"margin:0;font-size:30px;line-height:1.38;font-weight:600\">' + s + '</p></div>';\n    kit.stage.append(kit.h('<div>' + card('cx-a', 300, '5-minute · the big picture', 'Higher highs and higher lows: the trend <span class=\"hl\">leans up</span>. Trends can still end.') +\n      card('cx-b', 520, '1-minute · the detail', 'Same 15 minutes, more candles. <span class=\"hv\">Noisier</span>: use it for detail, not direction.') + '</div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.g5 = svg5.querySelector('.cx-5').style; this.tl = svg5.querySelector('.cx-tl'); this.dots = [...svg5.querySelectorAll('.cx-d')].map((e) => e.style); this.box = svg5.querySelector('.cx-box');\n    this.a = q('.cx-a').style; this.b = q('.cx-b').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 1.0, pose: 'candles', flip: true }, { t: 7.1, pose: 'point' }, { t: 13.8, pose: 'magnify' }, { t: 20.1, pose: 'think' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    const D = UI.D, out = ei(seg(t, 15.0, 15.8));\n    this.g5.opacity = (1 - out).toFixed(3); this.f5.style.opacity = (0.9 * eo(seg(t, 0.3, 0.9)) * (1 - out)).toFixed(3);\n    D.K5.forEach((c, i) => {\n      const s = 1.0 + i * 0.3, p = eo(seg(t, s, s + 0.45));\n      this.c5.set(i, { x: D.x5(i), w: 34, o: c[0], h: c[0] + (c[1] - c[0]) * p, l: c[0] + (c[2] - c[0]) * p, c: c[0] + (c[3] - c[0]) * p, y: D.y5, op: eo(seg(t, s, s + 0.2)) * (i >= 9 ? 1 : lerp(1, 0.45, eo(seg(t, 13.8, 14.4)))) });\n    });\n    this.dots.forEach((s, i) => { const a = 7.3 + i * 0.35, p = seg(t, a, a + 0.4); s.opacity = eo(p); s.transformBox = 'fill-box'; s.transformOrigin = 'center'; s.transform = 'scale(' + lerp(0.3, 1, eob(p, 2)).toFixed(3) + ')'; });\n    this.tl.setAttribute('stroke-dasharray', eio(seg(t, 9.6, 11.0)).toFixed(3) + ' 1');\n    UI.rise(kit, this.tg[0].style, t, 7.6, 0.5, 14, 15.0, 15.6);\n    UI.rise(kit, this.tg[1].style, t, 8.6, 0.5, 14, 15.0, 15.6);\n    const bp = seg(t, 13.9, 14.6);\n    this.box.setAttribute('stroke-dashoffset', (-t * 20).toFixed(1)); this.box.style.opacity = eo(bp);\n    UI.rise(kit, this.tg[2].style, t, 14.2, 0.5, 14, 15.0, 15.6);\n    this.c1.render(t);\n    UI.rise(kit, this.tg1.style, t, 20.6, 0.5, 14);\n    UI.rise(kit, this.a, t, 7.1, 0.6, 24);\n    UI.rise(kit, this.b, t, 20.1, 0.6, 24);\n    this.tutor.render(t);\n  },\n});\n","scene-costs.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// The plan in numbers: stop distance, budget, fees, notional, and the two planned outcomes.\nconst CS = [['Demo account', '1,000 USDT', 1.0, 'var(--second)'], ['Stop distance', '300 = 0.5%', 8.6, 'var(--accent)'], ['Risk budget (example)', '6 USDT', 14.0, 'var(--second)'],\n  ['Fees, 0.05% each way', '≈ 1 USDT', 15.8, 'var(--second)'], ['Left for the price move', '5 USDT', 17.8, 'var(--second)'], ['Notional ≈ 5 ÷ 0.5%', '', 20.8, 'var(--main)'],\n  ['If the stop is hit', '≈ −6 USDT', 26.6, 'var(--down)'], ['If the target is hit', '≈ +9 USDT', 29.4, 'var(--up)']];\nkit.scene('costs', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 5 of 8 · Costs and risk', 'Do the maths first');\n    this.track = UI.track(kit, 5);\n    this.c1 = UI.chart1(kit, 'cs');\n    const D = UI.D, Y = D.y1, xb = 1000;\n    const br = (a, b, c) => '<path d=\"M' + xb + ' ' + (Y(a)).toFixed(1) + ' V' + Y(b).toFixed(1) + ' M' + (xb - 12) + ' ' + Y(a).toFixed(1) + ' H' + (xb + 12) + ' M' + (xb - 12) + ' ' + Y(b).toFixed(1) + ' H' + (xb + 12) + '\" fill=\"none\" stroke-width=\"3\" style=\"stroke:' + c + '\"/>';\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\">' +\n      '<g class=\"cs-en\">' + UI.hline(60000, 'var(--second)') + '</g><g class=\"cs-sl\">' + UI.hline(59700, 'var(--accent)', '12 8') + '</g><g class=\"cs-tg\">' + UI.hline(60600, 'var(--main)', '12 8') + '</g>' +\n      '<g class=\"cs-b1\">' + br(60000, 59700, 'var(--accent)') + '</g><g class=\"cs-b2\">' + br(60600, 60000, 'var(--main)') + '</g></svg>');\n    kit.stage.append(svg);\n    const tag = (s, x, y, c) => { const e = kit.h('<p class=\"tag\" style=\"left:' + x + 'px;top:' + y.toFixed(0) + 'px;border-color:' + c + '\">' + s + '</p>'); kit.stage.append(e); return e.style; };\n    this.tEn = tag('Entry ≈ 60,000', 750, Y(60000) - 52, 'var(--second)');\n    this.tSl = tag('Stop 59,700 · −0.5%', 690, Y(59700) + 8, 'var(--accent)');\n    this.tTg = tag('Target 60,600 · +1%', 690, Y(60600) - 52, 'var(--main)');\n    this.tLv = tag('1x exposure · no leverage', 200, 306, 'var(--main)');\n    let rows = '';\n    CS.forEach((r, i) => {\n      rows += '<div class=\"cs-r\" style=\"display:flex;align-items:baseline;justify-content:space-between;padding:6px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)' + (i === 5 ? ';border-bottom-color:var(--main)' : '') + '\">' +\n        '<span style=\"font-size:27px;color:color-mix(in srgb, var(--second) 75%, var(--ground))\">' + r[0] + '</span><span class=\"mono cs-v\" style=\"font-size:30px;color:' + r[3] + '\">' + r[1] + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"glass cs-p\" style=\"left:1180px;top:286px;width:600px;padding:18px 30px\"><p class=\"kick\" style=\"margin:0 0 2px\">Example only · not advice</p>' + rows + '</div>'));\n    const q = (s) => svg.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.en = q('.cs-en line'); this.sl = q('.cs-sl line'); this.tg = q('.cs-tg line'); this.b1 = q('.cs-b1').style; this.b2 = q('.cs-b2').style;\n    this.p = kit.stage.querySelector('.cs-p').style; this.rows = all('.cs-r').map((e) => e.style); this.vs = all('.cs-v');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'laptop' }, { t: 7.4, pose: 'point' }, { t: 13.8, pose: 'typing' }, { t: 20.6, pose: 'idea' }, { t: 26.4, pose: 'think' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    this.c1.render(t, lerp(1, 0.6, eo(seg(t, 7.4, 8.0))));\n    this.en.parentNode.style.opacity = eo(seg(t, 7.6, 8.2));\n    this.sl.parentNode.style.opacity = eo(seg(t, 8.6, 9.2));\n    this.tg.parentNode.style.opacity = eo(seg(t, 27.0, 27.6));\n    this.b1.opacity = eo(seg(t, 9.4, 9.9)); this.b2.opacity = eo(seg(t, 27.8, 28.3));\n    UI.rise(kit, this.tEn, t, 7.8, 0.5, 12); UI.rise(kit, this.tSl, t, 8.8, 0.5, 12); UI.rise(kit, this.tTg, t, 27.2, 0.5, 12); UI.rise(kit, this.tLv, t, 23.6, 0.5, 12);\n    UI.rise(kit, this.p, t, 0.8, 0.6, 24);\n    CS.forEach((r, i) => { const p = seg(t, r[2], r[2] + 0.4); this.rows[i].opacity = lerp(0, 1, eo(p)).toFixed(3); this.rows[i].transform = 'translateX(' + lerp(16, 0, eo(p)).toFixed(1) + 'px)'; });\n    UI.set(this.vs[0], UI.fmt(Math.round(1000 * eo(seg(t, 1.2, 2.0)))) + ' USDT');\n    UI.set(this.vs[5], UI.fmt(Math.round(1000 * eo(seg(t, 21.2, 22.6)) / 10) * 10) + ' USDT');\n    this.tutor.render(t);\n  },\n});\n","scene-decide.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Three choices, a written reason, then DEMO BUY with stop and target set together.\nconst DC_B = [['DEMO BUY', 'var(--up)'], ['DEMO SELL', 'var(--down)'], ['NO_TRADE', 'var(--main)']];\nconst DC_WHY = '5m trend up. Bounce at support. Stop 59,700, target 60,600. Planned loss ≈ 6 USDT, inside my budget.';\nkit.scene('decide', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 6 of 8 · Decide', 'Choose, and say why');\n    this.track = UI.track(kit, 6);\n    this.c1 = UI.chart1(kit, 'dc');\n    const D = UI.D, Y = D.y1, x0 = D.x1(14) + 14;\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"dc-l\">' + UI.hline(60000, 'color-mix(in srgb, var(--second) 60%, transparent)') + UI.hline(59700, 'var(--accent)', '12 8') + UI.hline(60600, 'var(--main)', '12 8') + '</g>' +\n      '<g class=\"dc-pin\"><circle cx=\"' + x0 + '\" cy=\"' + Y(60000).toFixed(1) + '\" r=\"13\" style=\"fill:var(--up)\"/><circle class=\"dc-ring\" cx=\"' + x0 + '\" cy=\"' + Y(60000).toFixed(1) + '\" r=\"13\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--up)\"/></g></svg>');\n    kit.stage.append(svg);\n    let btns = '';\n    DC_B.forEach((b) => { btns += '<div class=\"dc-b mono\" style=\"flex:1;height:64px;border-radius:16px;display:grid;place-items:center;font-size:25px;border:2px solid ' + b[1] + ';color:' + b[1] + '\">' + b[0] + '</div>'; });\n    kit.stage.append(kit.h('<div><div class=\"glass dc-p\" style=\"left:1180px;top:286px;width:600px;padding:20px 28px;display:flex;flex-direction:column;gap:14px\">' +\n      '<p class=\"kick\" style=\"margin:0\">Your decision · demo</p><div style=\"display:flex;gap:12px\">' + btns + '</div>' +\n      '<p class=\"dc-n\" style=\"margin:0;font-size:24px;color:var(--main)\">NO_TRADE is always allowed.</p>' +\n      '<p class=\"kick dc-wl\" style=\"margin:6px 0 0;color:var(--accent)\">Why · required</p>' +\n      '<div class=\"dc-f\" style=\"min-height:170px;box-sizing:border-box;padding:14px 18px;border-radius:16px;border:1.5px dashed color-mix(in srgb, var(--second) 30%, transparent)\"><span class=\"dc-x\" style=\"font-size:28px;line-height:1.38;font-weight:600\"></span><span class=\"dc-cur\" style=\"display:inline-block;width:3px;height:30px;margin-left:2px;vertical-align:-4px;background:var(--main)\"></span></div></div>' +\n      '<div class=\"glass dc-t\" style=\"left:735px;top:300px;width:292px;padding:16px 20px;border-color:var(--up)\"><p class=\"mono\" style=\"margin:0;font-size:28px;color:var(--up)\">DEMO BUY</p>' +\n      '<p class=\"mono\" style=\"margin:6px 0 0;font-size:23px;line-height:1.45\">1,000 USDT · 1x<br>Stop 59,700<br>Target 60,600</p><p class=\"fict\" style=\"margin:8px 0 0\">Simulated · no real order</p></div></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.l = svg.querySelector('.dc-l').style; this.pin = svg.querySelector('.dc-pin').style; this.ring = svg.querySelector('.dc-ring');\n    this.p = q('.dc-p').style; this.bs = [...kit.stage.querySelectorAll('.dc-b')].map((e) => e.style); this.n = q('.dc-n').style;\n    this.wl = q('.dc-wl').style; this.f = q('.dc-f').style; this.x = q('.dc-x'); this.cur = q('.dc-cur').style; this.tk = q('.dc-t').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'think' }, { t: 6.4, pose: 'writing' }, { t: 13.0, pose: 'typing' }, { t: 19.9, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    this.c1.render(t);\n    this.l.opacity = eo(seg(t, 0.4, 1.0)) * 0.8;\n    UI.rise(kit, this.p, t, 0.8, 0.6, 24);\n    this.bs.forEach((s, i) => {\n      const a = 1.4 + i * 0.6, hl = Math.sin(Math.PI * seg(t, a, a + 0.8));\n      const pick = i === 0 ? eo(seg(t, 20.4, 20.8)) : 0, press = i === 0 ? Math.sin(Math.PI * seg(t, 20.2, 20.6)) : 0;\n      s.background = 'color-mix(in srgb, ' + DC_B[i][1] + ' ' + (10 + 25 * hl + 80 * pick).toFixed(0) + '%, var(--ground))';\n      s.color = pick > 0.5 ? 'var(--ground)' : DC_B[i][1];\n      s.transform = 'scale(' + (1 + 0.05 * hl - 0.06 * press).toFixed(4) + ')';\n      s.opacity = i === 0 ? 1 : lerp(1, 0.5, eo(seg(t, 20.4, 21.0)));\n    });\n    this.n.opacity = eo(seg(t, 3.4, 3.9));\n    this.wl.opacity = eo(seg(t, 6.6, 7.0)); this.f.opacity = eo(seg(t, 6.6, 7.0));\n    const done = UI.type(this.x, DC_WHY, t, 13.3, 22);\n    this.cur.opacity = t > 6.6 && (!done || Math.floor(t * 2) % 2 === 0) && t < 20.4 ? 1 : 0;\n    this.f.borderColor = done ? 'var(--main)' : 'color-mix(in srgb, var(--second) 30%, transparent)';\n    const tp = seg(t, 20.8, 21.4);\n    this.tk.opacity = eo(tp); this.tk.transform = 'translateY(' + lerp(20, 0, eo(tp)).toFixed(1) + 'px) scale(' + lerp(0.9, 1, eob(tp, 1.6)).toFixed(3) + ')';\n    this.pin.opacity = eo(seg(t, 20.4, 20.8));\n    const w = ((t - 20.8) % 1.6 + 1.6) % 1.6 / 1.6;\n    this.ring.setAttribute('r', (13 + 22 * w).toFixed(1)); this.ring.style.opacity = t > 20.8 ? 1 - w : 0;\n    this.tutor.render(t);\n  },\n});\n","scene-doubt.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Notes typed before deciding; two possible paths fork from the current price.\nconst DB = [['Leaning', 'Bounce up from support. The 5m trend is up.', 'var(--main)', 7.0], ['Against', 'Support tested twice already. It could break.', 'var(--accent)', 13.2], ['Wrong if', 'Price falls below 59,700.', 'var(--second)', 19.2]];\nkit.scene('doubt', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 4 of 8 · Write down doubts', 'What could go wrong?');\n    this.track = UI.track(kit, 4);\n    this.c1 = UI.chart1(kit, 'db');\n    const D = UI.D, X = D.x1, Y = D.y1, x0 = X(14) + 14, y0 = Y(60000);\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\">' + '<g class=\"db-sp\">' + UI.band(59850, 59950, 'var(--main)', 160, 1040) + '</g>' +\n      '<path class=\"db-up\" d=\"M' + x0 + ' ' + y0.toFixed(1) + ' C' + (x0 + 120) + ' ' + y0.toFixed(1) + ' ' + (x0 + 160) + ' ' + Y(60450).toFixed(1) + ' 990 ' + Y(60450).toFixed(1) + '\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" style=\"stroke:var(--up)\"/>' +\n      '<path class=\"db-dn\" d=\"M' + x0 + ' ' + y0.toFixed(1) + ' C' + (x0 + 120) + ' ' + y0.toFixed(1) + ' ' + (x0 + 160) + ' ' + Y(59650).toFixed(1) + ' 990 ' + Y(59650).toFixed(1) + '\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"0 1\" style=\"stroke:var(--down)\"/>' +\n      '<line class=\"db-w\" x1=\"160\" x2=\"1040\" y1=\"' + Y(59700).toFixed(1) + '\" y2=\"' + Y(59700).toFixed(1) + '\" stroke-width=\"3\" stroke-dasharray=\"12 8\" style=\"stroke:var(--accent)\"/>' +\n      '<circle cx=\"' + x0 + '\" cy=\"' + y0.toFixed(1) + '\" r=\"10\" style=\"fill:var(--second)\"/></svg>');\n    kit.stage.append(svg);\n    const tag = (s, x, y, c) => { const e = kit.h('<p class=\"tag\" style=\"left:' + x + 'px;top:' + y.toFixed(0) + 'px;border-color:' + c + '\">' + s + '</p>'); kit.stage.append(e); return e.style; };\n    this.tUp = tag('Bounce?', 870, Y(60450) - 54, 'var(--up)');\n    this.tDn = tag('Break?', 880, Y(59650) - 54, 'var(--down)');\n    this.tW = tag('Wrong if below 59,700', 210, Y(59700) + 10, 'var(--accent)');\n    let rows = '';\n    DB.forEach((r) => {\n      rows += '<div class=\"db-r\" style=\"display:flex;gap:18px;align-items:flex-start;min-height:84px\">' +\n        '<span class=\"chip\" style=\"flex:none;width:150px;justify-content:center;font-size:24px;padding:6px 0;border-color:' + r[2] + ';color:' + r[2] + '\">' + r[0] + '</span>' +\n        '<span class=\"db-x\" style=\"font-size:28px;line-height:1.35;font-weight:600\"></span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"glass db-p\" style=\"left:1180px;top:290px;width:600px;padding:22px 30px;display:flex;flex-direction:column;gap:14px\"><p class=\"kick\" style=\"margin:0\">My notes · before deciding</p>' + rows +\n      '<div class=\"db-r\" style=\"display:flex;gap:18px;align-items:center\"><span class=\"chip\" style=\"flex:none;width:150px;justify-content:center;font-size:24px;padding:6px 0\">Confidence</span>' +\n      '<div style=\"flex:1;display:flex;flex-direction:column;gap:8px\"><div style=\"height:16px;border-radius:8px;background:color-mix(in srgb, var(--second) 10%, transparent);overflow:hidden\"><div class=\"db-m\" style=\"height:100%;width:0;background:linear-gradient(90deg, var(--main), var(--accent))\"></div></div>' +\n      '<span style=\"font-size:26px;font-weight:600\">Medium · not certain</span></div></div></div>'));\n    const q = (s) => svg.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.sp = q('.db-sp').style; this.up = q('.db-up'); this.dn = q('.db-dn'); this.w = q('.db-w').style;\n    this.p = kit.stage.querySelector('.db-p').style; this.rows = all('.db-r').map((e) => e.style); this.xs = all('.db-x'); this.m = kit.stage.querySelector('.db-m').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'writing' }, { t: 13.0, pose: 'think' }, { t: 19.0, pose: 'writing' }, { t: 22.0, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    this.c1.render(t, lerp(1, 0.75, eo(seg(t, 6.8, 7.6))));\n    this.sp.opacity = eo(seg(t, 0.6, 1.2));\n    this.up.setAttribute('stroke-dasharray', eio(seg(t, 7.4, 8.6)).toFixed(3) + ' 1');\n    this.dn.setAttribute('stroke-dasharray', eio(seg(t, 13.6, 14.8)).toFixed(3) + ' 1');\n    UI.rise(kit, this.tUp, t, 8.4, 0.5, 12); UI.rise(kit, this.tDn, t, 14.6, 0.5, 12);\n    this.w.opacity = eo(seg(t, 19.6, 20.2)); UI.rise(kit, this.tW, t, 19.8, 0.5, 12);\n    UI.rise(kit, this.p, t, 0.8, 0.6, 24);\n    DB.forEach((r, i) => { this.rows[i].opacity = eo(seg(t, r[3] - 0.3, r[3])); UI.type(this.xs[i], r[1], t, r[3], 16); });\n    this.rows[3].opacity = eo(seg(t, 21.6, 22.0));\n    this.m.width = (50 * eio(seg(t, 22.0, 23.0))).toFixed(1) + '%';\n    this.tutor.render(t);\n  },\n});\n","scene-hook.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst HK = [['Choose a coin', 'liquid market, demo account'], ['Check context', '5m picture, 1m detail'], ['Range & levels', 'high, low and zones'], ['Write down doubts', 'what could go wrong'],\n  ['Costs & risk', 'fees, stop and size'], ['Decide', 'BUY, SELL or NO_TRADE'], ['Monitor & exit', 'follow the plan'], ['Journal', 'review the process']];\nconst HK_L = ['T14', 'T15', 'T16', 'T17', 'T18', 'T19', 'T20', 'T21', 'T22'];\nkit.scene('hook', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'The capstone', 'Eight steps, every time');\n    let cards = '', chips = '';\n    HK.forEach((s, i) => {\n      cards += '<div class=\"glass hk-c\" style=\"left:' + (140 + (i % 4) * 410) + 'px;top:' + (330 + Math.floor(i / 4) * 200) + 'px;width:380px;height:176px;padding:22px 26px;display:flex;flex-direction:column;gap:8px\">' +\n        '<span class=\"mono\" style=\"font-size:44px;line-height:1;color:var(--main)\">' + (i + 1) + '</span>' +\n        '<span style=\"font-size:32px;font-weight:700\">' + s[0] + '</span><span style=\"font-size:24px;color:color-mix(in srgb, var(--second) 62%, var(--ground))\">' + s[1] + '</span></div>';\n    });\n    HK_L.forEach((s, i) => { chips += '<span class=\"chip mono hk-l\" style=\"position:absolute;left:' + (140 + i * 180) + 'px;top:430px;font-size:30px;padding:14px 26px\">' + s + '</span>'; });\n    kit.stage.append(kit.h('<div>' + chips + '<p class=\"kick hk-lk\" style=\"position:absolute;left:140px;top:360px;margin:0\">Everything from Phase 4 and Phase 5, used together</p>' + cards +\n      '<div class=\"glass hk-b\" style=\"left:1180px;top:118px;width:600px;padding:18px 28px;display:flex;flex-direction:column;gap:10px\">' +\n      '<div style=\"display:flex;align-items:center;gap:16px\"><span class=\"chip mono\" style=\"font-size:24px;padding:6px 18px;background:var(--main);color:var(--ground);border-color:var(--main)\">DEMO</span><span style=\"font-size:26px;font-weight:600\">Educational simulation</span></div>' +\n      '<p class=\"hk-s\" style=\"margin:0;font-size:26px;font-weight:600\">Scored on: <span class=\"hl\">process ✓</span> · not profit</p></div></div>'));\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.cards = all('.hk-c').map((e) => e.style); this.chips = all('.hk-l').map((e) => e.style);\n    this.lk = kit.stage.querySelector('.hk-lk').style; this.b = kit.stage.querySelector('.hk-b').style; this.s = kit.stage.querySelector('.hk-s').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 6.1, pose: 'checklist' }, { t: 12.6, pose: 'laptop' }, { t: 18.5, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.head(t);\n    const out = ei(seg(t, 5.6, 6.2));\n    this.lk.opacity = eo(seg(t, 0.8, 1.3)) * (1 - out);\n    this.chips.forEach((s, i) => {\n      const a = 1.0 + i * 0.3, p = seg(t, a, a + 0.5);\n      s.opacity = eo(p) * (1 - out);\n      s.transform = 'translateY(' + (lerp(24, 0, eo(p)) - 60 * out).toFixed(1) + 'px) scale(' + lerp(0.85, 1, eob(p, 1.7)).toFixed(3) + ')';\n    });\n    let cur = -1;\n    this.cards.forEach((s, i) => { if (t >= 6.4 + i * 0.7) cur = i; });\n    this.cards.forEach((s, i) => {\n      const a = 6.4 + i * 0.7, p = seg(t, a, a + 0.6);\n      s.opacity = eo(seg(t, a, a + 0.3));\n      s.transform = 'translateY(' + lerp(30, 0, eo(p)).toFixed(1) + 'px) scale(' + lerp(0.92, 1, eob(p, 1.6)).toFixed(4) + ')';\n      const hot = i === cur && t < 12.6, all = t > 18.5;\n      s.borderColor = hot || all ? 'var(--main)' : 'color-mix(in srgb, var(--main) 22%, transparent)';\n      s.background = hot ? 'color-mix(in srgb, var(--ground) 76%, var(--main))' : '';\n    });\n    const b = seg(t, 12.6, 13.2);\n    this.b.opacity = eo(b); this.b.transform = 'translateY(' + lerp(-20, 0, eo(b)).toFixed(1) + 'px)';\n    const s2 = seg(t, 18.5, 19.0);\n    this.s.opacity = eo(s2); this.s.transform = 'translateX(' + lerp(20, 0, eo(s2)).toFixed(1) + 'px)';\n    this.tutor.render(t);\n  },\n});\n","scene-journal.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// The journal fills in; the process score ticks to 8 of 8 while the outcome stays negative.\nconst JR = [['Setup', 'Bounce at support, 5m uptrend', 1.2], ['Decision', 'DEMO BUY at 60,000 · reason ✓', 2.0], ['Plan', 'Stop 59,700 · target 60,600 · 1,000 USDT', 2.8], ['Exit', 'Stop hit · filled 59,680 (20 slippage)', 3.6],\n  ['Result', '', 7.4], ['Followed plan?', 'Yes: size, stop and exit as written', 13.2], ['Learned', 'Support can break. Stops can slip.', 20.0]];\nkit.scene('journal', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 8 of 8 · Journal and review', 'Write it down');\n    this.track = UI.track(kit, 8);\n    let rows = '';\n    JR.forEach((r, i) => {\n      rows += '<div class=\"jr-r\" style=\"display:flex;align-items:baseline;gap:20px;padding:9px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\">' +\n        '<span style=\"flex:none;width:210px;font-size:26px;color:color-mix(in srgb, var(--second) 65%, var(--ground))\">' + r[0] + '</span>' +\n        (i === 4 ? '<span class=\"mono\" style=\"font-size:28px\"><span class=\"jr-g dn\">−0.00</span> price · <span class=\"jr-f dn\">−0.00</span> fees · <b class=\"jr-n dn\">−0.00</b> net</span>'\n          : '<span style=\"font-size:28px;font-weight:600' + (i === 5 ? ';color:var(--main)' : '') + '\">' + r[1] + '</span>') + '</div>';\n    });\n    let pills = '';\n    UI.STEPS.forEach((s, i) => {\n      pills += '<div class=\"jr-s\" style=\"display:flex;align-items:center;gap:14px;height:50px\"><svg width=\"40\" height=\"40\" viewBox=\"0 0 52 52\" style=\"flex:none\"><circle cx=\"26\" cy=\"26\" r=\"23\" fill=\"none\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 45%, transparent)\"/>' +\n        '<path class=\"jr-k\" d=\"M15 27 L23 35 L38 18\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/></svg><span style=\"font-size:27px;font-weight:600\">' + (i + 1) + ' ' + s + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"glass jr-c\" style=\"left:140px;top:286px;width:980px;padding:18px 34px\"><p class=\"kick\" style=\"margin:0 0 4px\">Trade journal · demo · fictional · USDT</p>' + rows + '</div>' +\n      '<div class=\"glass jr-p\" style=\"left:1180px;top:286px;width:600px;padding:18px 30px\"><div style=\"display:flex;align-items:baseline;justify-content:space-between\"><p class=\"kick\" style=\"margin:0\">Process score</p><span class=\"mono jr-sc\" style=\"font-size:56px;color:var(--main)\">0 / 8</span></div>' +\n      '<div style=\"display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:4px\">' + pills + '</div>' +\n      '<div class=\"jr-o\" style=\"margin-top:12px;padding-top:12px;border-top:1.5px solid color-mix(in srgb, var(--second) 14%, transparent)\"><div style=\"display:flex;justify-content:space-between;align-items:baseline\"><span style=\"font-size:27px\">Outcome</span><span class=\"mono dn\" style=\"font-size:32px\">−6.33 USDT</span></div>' +\n      '<div style=\"display:flex;justify-content:space-between;align-items:baseline;margin-top:6px\"><span style=\"font-size:27px\">Demo balance</span><span class=\"mono\" style=\"font-size:32px\">993.67 USDT</span></div></div></div></div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.c = q('.jr-c').style; this.p = q('.jr-p').style; this.rows = all('.jr-r').map((e) => e.style);\n    this.g = q('.jr-g'); this.f = q('.jr-f'); this.n = q('.jr-n'); this.sc = q('.jr-sc'); this.ks = all('.jr-k'); this.ss = all('.jr-s').map((e) => e.style); this.o = q('.jr-o').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'writing' }, { t: 7.2, pose: 'read' }, { t: 13.0, pose: 'checklist' }, { t: 19.8, pose: 'calm' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    UI.rise(kit, this.c, t, 0.6, 0.6, 24); UI.rise(kit, this.p, t, 1.0, 0.6, 24);\n    JR.forEach((r, i) => { const p = seg(t, r[2], r[2] + 0.4); this.rows[i].opacity = eo(p).toFixed(3); this.rows[i].transform = 'translateX(' + lerp(16, 0, eo(p)).toFixed(1) + 'px)'; });\n    const c1 = eo(seg(t, 7.6, 8.6)), c2 = eo(seg(t, 9.0, 9.8)), c3 = eo(seg(t, 10.4, 11.2));\n    UI.set(this.g, UI.sgn(-5.33 * c1, 2)); UI.set(this.f, UI.sgn(-1.0 * c2, 2)); UI.set(this.n, UI.sgn(-6.33 * c3, 2));\n    let n = 0;\n    this.ks.forEach((k, i) => { const a = 13.6 + i * 0.4, p = seg(t, a, a + 0.35); k.setAttribute('stroke-dasharray', eo(p).toFixed(3) + ' 1'); if (p >= 1) n++; this.ss[i].opacity = lerp(0.5, 1, eo(p)).toFixed(3); });\n    UI.set(this.sc, n + ' / 8');\n    this.o.opacity = eo(seg(t, 19.8, 20.4)).toFixed(3);\n    this.tutor.render(t);\n  },\n});\n","scene-levels.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Range box, support and resistance zones on the 15 one-minute candles.\nconst LV_ROWS = [['High', '60,650', 1.4], ['Low', '59,850', 3.0], ['Range', '800 ≈ 1.3%', 7.4], ['Support', '59,850 – 59,950', 11.8], ['Resistance', '60,550 – 60,650', 18.0], ['Now', '60,000', 20.6]];\nkit.scene('levels', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 3 of 8 · Range and levels', 'Where are the edges?');\n    this.track = UI.track(kit, 3);\n    this.c1 = UI.chart1(kit, 'lv', { vol: true, draw: 0.6, k: 0.06 });\n    const D = UI.D, X = D.x1, Y = D.y1;\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\">' +\n      '<g class=\"lv-rs\">' + UI.band(60550, 60650, 'var(--accent)', 160, 1040) + '</g>' +\n      '<g class=\"lv-sp\">' + UI.band(59850, 59950, 'var(--main)', 160, 1040) + '</g>' +\n      '<rect class=\"lv-box\" x=\"172\" y=\"' + Y(60650).toFixed(1) + '\" width=\"' + (X(14) + 20 - 172) + '\" height=\"' + (Y(59850) - Y(60650)).toFixed(1) + '\" rx=\"8\" fill=\"none\" stroke-width=\"3\" stroke-dasharray=\"10 8\" style=\"stroke:var(--second)\"/>' +\n      '<path class=\"lv-br\" d=\"M748 ' + (Y(60650) + 4).toFixed(1) + ' V' + (Y(59850) - 4).toFixed(1) + ' M736 ' + (Y(60650) + 16).toFixed(1) + ' L748 ' + (Y(60650) + 4).toFixed(1) + ' L760 ' + (Y(60650) + 16).toFixed(1) + ' M736 ' + (Y(59850) - 16).toFixed(1) + ' L748 ' + (Y(59850) - 4).toFixed(1) + ' L760 ' + (Y(59850) - 16).toFixed(1) + '\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--second)\"/>' +\n      '<circle class=\"lv-hi\" cx=\"' + X(2) + '\" cy=\"' + (Y(60650) - 14).toFixed(1) + '\" r=\"9\" style=\"fill:var(--accent)\"/>' +\n      '<circle class=\"lv-lo\" cx=\"' + X(11) + '\" cy=\"' + (Y(59850) + 14).toFixed(1) + '\" r=\"9\" style=\"fill:var(--main)\"/>' +\n      '<circle class=\"lv-t\" cx=\"' + X(7) + '\" cy=\"' + Y(59860).toFixed(1) + '\" r=\"22\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--main)\"/>' +\n      '<circle class=\"lv-t\" cx=\"' + X(11) + '\" cy=\"' + Y(59850).toFixed(1) + '\" r=\"22\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--main)\"/>' +\n      '<line class=\"lv-now\" x1=\"' + (X(14) + 14) + '\" x2=\"1040\" y1=\"' + Y(60000).toFixed(1) + '\" y2=\"' + Y(60000).toFixed(1) + '\" pathLength=\"1\" stroke-width=\"3\" style=\"stroke:var(--second)\"/>' +\n      '</svg>');\n    kit.stage.append(svg);\n    const tag = (s, x, y, c) => { const e = kit.h('<p class=\"tag\" style=\"left:' + x + 'px;top:' + y + 'px;border-color:' + c + '\">' + s + '</p>'); kit.stage.append(e); return e.style; };\n    this.tHi = tag('High 60,650', 300, 306, 'var(--accent)');\n    this.tLo = tag('Low 59,850', 300, Y(59850) + 30, 'var(--main)');\n    this.tRg = tag('800 USDT ≈ 1.3%', 774, Y(60250) - 22, 'var(--second)');\n    this.tNow = tag('Now 60,000', 800, Y(60000) - 56, 'var(--second)');\n    this.tRs = tag('Resistance zone', 790, Y(60650) - 54, 'var(--accent)');\n    let rows = '';\n    LV_ROWS.forEach((r, i) => {\n      rows += '<div class=\"lv-r\" style=\"display:flex;align-items:baseline;justify-content:space-between;padding:12px 0;border-bottom:1.5px solid color-mix(in srgb, var(--second) 10%, transparent)\">' +\n        '<span style=\"font-size:28px;color:color-mix(in srgb, var(--second) 72%, var(--ground))\">' + r[0] + '</span><span class=\"mono\" style=\"font-size:32px;color:' + (i === 3 ? 'var(--main)' : i === 4 ? 'var(--accent)' : 'var(--second)') + '\">' + r[1] + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"glass lv-p\" style=\"left:1180px;top:290px;width:600px;padding:20px 32px\"><p class=\"kick\" style=\"margin:0 0 4px\">Last 15 minutes · USDT</p>' + rows + '</div>'));\n    const q = (s) => svg.querySelector(s), all = (s) => [...svg.querySelectorAll(s)];\n    this.rs = q('.lv-rs').style; this.sp = q('.lv-sp').style; this.box = q('.lv-box').style; this.br = q('.lv-br').style;\n    this.hi = q('.lv-hi').style; this.lo = q('.lv-lo').style; this.tc = all('.lv-t').map((e) => e.style); this.now = q('.lv-now');\n    this.p = kit.stage.querySelector('.lv-p').style; this.rows = [...kit.stage.querySelectorAll('.lv-r')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'magnify' }, { t: 7.2, pose: 'point' }, { t: 11.6, pose: 'candles', flip: true }, { t: 17.8, pose: 'explain' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    this.c1.render(t);\n    const pop = (s, a) => { const p = seg(t, a, a + 0.45); s.opacity = eo(p); s.transformBox = 'fill-box'; s.transformOrigin = 'center'; s.transform = 'scale(' + lerp(0.3, 1, eob(p, 2)).toFixed(3) + ')'; };\n    pop(this.hi, 1.4); pop(this.lo, 3.0);\n    UI.rise(kit, this.tHi, t, 1.6, 0.5, 12); UI.rise(kit, this.tLo, t, 3.2, 0.5, 12);\n    this.box.opacity = eo(seg(t, 7.2, 7.8)); this.br.opacity = eo(seg(t, 7.6, 8.1));\n    UI.rise(kit, this.tRg, t, 7.8, 0.5, 12);\n    this.sp.opacity = eo(seg(t, 11.8, 12.6));\n    this.tc.forEach((s, i) => pop(s, 12.8 + i * 1.2));\n    this.rs.opacity = eo(seg(t, 18.0, 18.8));\n    UI.rise(kit, this.tRs, t, 18.3, 0.5, 12);\n    this.now.setAttribute('stroke-dasharray', eio(seg(t, 20.6, 21.4)).toFixed(3) + ' 1');\n    UI.rise(kit, this.tNow, t, 21.0, 0.5, 12);\n    UI.rise(kit, this.p, t, 1.0, 0.6, 24);\n    this.rows.forEach((s, i) => { s.opacity = eo(seg(t, LV_ROWS[i][2], LV_ROWS[i][2] + 0.4)); });\n    this.tutor.render(t);\n  },\n});\n","scene-mistake.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Three mistakes during the lifecycle, each with its correction; the first two show what they cost.\nconst MK = [\n  { w: 'Moving the stop further away', n: ['Planned loss', 6, 11], r: 'Keep the stop where the plan put it.', a: 0.8, b: 6.8 },\n  { w: 'Doubling the size to win it back', n: ['Risk', 6, 12], r: 'Take a break. Read your journal first.', a: 13.4, b: 17.6 },\n  { w: 'Judging only by profit', n: null, r: 'Judge the process. A good process can still lose.', a: 20.3, b: 23.0 },\n];\nkit.scene('mistake', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Common mistakes', 'Where plans go wrong');\n    let html = '';\n    MK.forEach((m, i) => {\n      const y = 290 + i * 160;\n      html += '<div class=\"glass mk-w\" style=\"left:140px;top:' + y + 'px;width:780px;height:140px;padding:20px 30px;display:flex;align-items:center;gap:24px\">' +\n        '<svg width=\"56\" height=\"56\" viewBox=\"0 0 44 44\" style=\"flex:none\"><circle cx=\"22\" cy=\"22\" r=\"20\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--accent)\"/><path d=\"M14 14 L30 30 M30 14 L14 30\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"stroke:var(--accent)\"/></svg>' +\n        '<div style=\"flex:1\"><p class=\"kick\" style=\"margin:0 0 6px;color:var(--accent)\">Mistake ' + (i + 1) + '</p><p style=\"margin:0;font-size:30px;font-weight:700\">' + m.w + '</p></div>' +\n        (m.n ? '<div style=\"text-align:right;flex:none\"><p class=\"fict\" style=\"margin:0 0 4px\">' + m.n[0] + '</p><p class=\"mono dn\" style=\"margin:0;font-size:34px\">−<span class=\"mk-n\">' + m.n[1] + '</span> USDT</p></div>' : '') + '</div>' +\n        '<svg class=\"art mk-a\" viewBox=\"0 0 1920 1080\"><path d=\"M930 ' + (y + 70) + ' H968 M956 ' + (y + 58) + ' L970 ' + (y + 70) + ' L956 ' + (y + 82) + '\" fill=\"none\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/></svg>' +\n        '<div class=\"glass mk-r\" style=\"left:980px;top:' + y + 'px;width:800px;height:140px;padding:20px 30px;display:flex;align-items:center;gap:24px;border-color:var(--main)\">' +\n        '<svg width=\"56\" height=\"56\" viewBox=\"0 0 52 52\" style=\"flex:none\"><circle cx=\"26\" cy=\"26\" r=\"23\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--main)\"/><path class=\"mk-k\" d=\"M15 27 L23 35 L38 18\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/></svg>' +\n        '<div><p class=\"kick\" style=\"margin:0 0 6px\">Instead</p><p style=\"margin:0;font-size:30px;font-weight:600\">' + m.r + '</p></div></div>';\n    });\n    kit.stage.append(kit.h('<div>' + html + '</div>'));\n    const all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.ws = all('.mk-w').map((e) => e.style); this.rs = all('.mk-r').map((e) => e.style); this.as = all('.mk-a').map((e) => e.style); this.ks = all('.mk-k'); this.ns = all('.mk-n');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'confused' }, { t: 6.8, pose: 'idea' }, { t: 13.4, pose: 'think' }, { t: 17.6, pose: 'calm' }, { t: 20.3, pose: 'magnify' }, { t: 23.0, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    MK.forEach((m, i) => {\n      UI.rise(kit, this.ws[i], t, m.a, 0.6, 24);\n      this.as[i].opacity = eo(seg(t, m.b - 0.3, m.b));\n      const p = seg(t, m.b, m.b + 0.6);\n      this.rs[i].opacity = eo(p); this.rs[i].transform = 'translateX(' + lerp(30, 0, eo(p)).toFixed(1) + 'px)';\n      this.ks[i].setAttribute('stroke-dasharray', eo(seg(t, m.b + 0.4, m.b + 0.9)).toFixed(3) + ' 1');\n      if (m.n) { const c = eio(seg(t, m.a + 2.4, m.a + 4.4)); UI.set(this.ns[i], Math.round(lerp(m.n[1], m.n[2], c))); }\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-monitor.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Three possible futures, then the replay: eight 1-minute candles form live; the stop triggers and fills at 59,680.\nconst MN_A = 11.4, MN_D = 1.6, MN_FILL = 59680;\n// Live price inside candle i at u in [0,1]: open → first extreme → other extreme → close.\nconst mnPts = (c) => (c[3] >= c[0] ? [c[0], c[2], c[1], c[3]] : [c[0], c[1], c[2], c[3]]);\nconst MN_U = [0, 0.3, 0.7, 1];\nfunction mnAt(c, u) {\n  const P = mnPts(c); let price = P[0], hi = c[0], lo = c[0];\n  for (let k = 1; k < 4; k++) {\n    const f = kit.clamp01((u - MN_U[k - 1]) / (MN_U[k] - MN_U[k - 1]));\n    if (f <= 0) break;\n    price = kit.lerp(P[k - 1], P[k], kit.eio(f));\n    hi = Math.max(hi, f >= 1 ? P[k] : price, P[k - 1]); lo = Math.min(lo, f >= 1 ? P[k] : price, P[k - 1]);\n  }\n  return { price, hi, lo };\n}\n// When the live price first touches the 59,700 stop in the last candle.\nlet MN_TS = MN_A + 7 * MN_D + MN_D;\nfor (let u = 0; u <= 1; u += 0.001) { if (mnAt(UI.D.C1[22], u).price <= 59700) { MN_TS = MN_A + 7 * MN_D + u * MN_D; break; } }\nkit.scene('monitor', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Step 7 of 8 · Monitor and exit', 'Follow the plan');\n    this.track = UI.track(kit, 7);\n    this.c1 = UI.chart1(kit, 'mn', { cap: 23 });\n    const D = UI.D, Y = D.y1, x0 = D.x1(14) + 14, y0 = Y(60000);\n    const br = (p, c, dash) => '<path class=\"mn-br\" d=\"M' + x0 + ' ' + y0.toFixed(1) + ' C' + (x0 + 100) + ' ' + y0.toFixed(1) + ' ' + (x0 + 140) + ' ' + Y(p).toFixed(1) + ' 1000 ' + Y(p).toFixed(1) + '\" pathLength=\"1\" fill=\"none\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"stroke:' + c + '\"/>';\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"mn-l\">' + UI.hline(60000, 'color-mix(in srgb, var(--second) 55%, transparent)') + UI.hline(59700, 'var(--accent)', '12 8') + UI.hline(60600, 'var(--main)', '12 8') + '</g>' +\n      '<g class=\"mn-bg\">' + br(60600, 'var(--up)') + br(60050, 'var(--second)') + br(59700, 'var(--down)') + '</g>' +\n      '<g class=\"mn-fill\"><circle cx=\"' + D.x1(22) + '\" cy=\"' + Y(MN_FILL).toFixed(1) + '\" r=\"12\" style=\"fill:var(--accent)\"/><circle class=\"mn-fr\" cx=\"' + D.x1(22) + '\" cy=\"' + Y(MN_FILL).toFixed(1) + '\" r=\"12\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--accent)\"/></g></svg>');\n    kit.stage.append(svg);\n    const tag = (s, x, y, c) => { const e = kit.h('<p class=\"tag\" style=\"left:' + x + 'px;top:' + y.toFixed(0) + 'px;border-color:' + c + '\">' + s + '</p>'); kit.stage.append(e); return e.style; };\n    this.tb = [tag('Target ≈ +9', 860, Y(60600) - 50, 'var(--up)'), tag('Flat: fees ≈ −1', 830, Y(60050) - 50, 'var(--second)'), tag('Stop ≈ −6', 880, Y(59700) + 8, 'var(--down)')];\n    this.tq = tag('Which path? Nobody knows.', 200, 306, 'var(--main)');\n    this.tSl = tag('Stop 59,700 · unchanged', 200, Y(59700) + 8, 'var(--accent)');\n    this.tFill = tag('Filled 59,680', 800, Y(MN_FILL) + 4, 'var(--accent)');\n    this.tPk = tag('High 60,400', 700, Y(60400) - 50, 'var(--up)');\n    kit.stage.append(kit.h('<div class=\"glass mn-p\" style=\"left:1180px;top:286px;width:600px;padding:20px 30px\"><p class=\"kick\" style=\"margin:0 0 6px\">Demo BUY at 60,000</p>' +\n      '<div class=\"row\" style=\"padding:10px 0\"><span>Minute</span><span class=\"mono mn-m\" style=\"font-size:32px\">0 of the trade</span></div>' +\n      '<div class=\"row\" style=\"padding:10px 0\"><span>Price</span><span class=\"mono mn-pr\" style=\"font-size:32px\">60,000</span></div>' +\n      '<div class=\"row\" style=\"padding:10px 0;border:0\"><span>Open PnL · before fees</span><span class=\"mono mn-v\" style=\"font-size:40px\">+0.00</span></div>' +\n      '<div style=\"position:relative;height:18px;border-radius:9px;background:color-mix(in srgb, var(--second) 10%, transparent)\"><div style=\"position:absolute;left:37.5%;top:-6px;width:2px;height:30px;background:var(--second)\"></div><div class=\"mn-bar\" style=\"position:absolute;top:0;height:100%;border-radius:9px\"></div></div>' +\n      '<p class=\"mn-s\" style=\"margin:14px 0 0;font-size:26px;font-weight:600;color:var(--main)\">Stop and target set before entry ✓</p></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.l = svg.querySelector('.mn-l').style; this.brs = [...svg.querySelectorAll('.mn-br')]; this.bg = svg.querySelector('.mn-bg').style;\n    this.fill = svg.querySelector('.mn-fill').style; this.fr = svg.querySelector('.mn-fr');\n    this.p = q('.mn-p').style; this.m = q('.mn-m'); this.pr = q('.mn-pr'); this.v = q('.mn-v'); this.bar = q('.mn-bar').style; this.s = q('.mn-s');\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'think' }, { t: 6.6, pose: 'calm' }, { t: 11.4, pose: 'laptop' }, { t: 15.4, pose: 'calm' }, { t: 19.4, pose: 'magnify' }, { t: 26.4, pose: 'checklist' }],\n      says: [{ t0: 15.6, t1: 19.2, text: 'Plan stays!' }],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t); this.track(t);\n    const D = UI.D, Y = D.y1;\n    this.c1.render(t);\n    this.l.opacity = eo(seg(t, 0.4, 1.0));\n    const bo = 1 - ei(seg(t, 10.6, 11.4));\n    this.brs.forEach((b, i) => { const a = 1.2 + i * 0.6; b.setAttribute('stroke-dasharray', eio(seg(t, a, a + 0.9)).toFixed(3) + ' 1'); });\n    this.bg.opacity = bo.toFixed(3);\n    this.tb.forEach((s, i) => UI.rise(kit, s, t, 1.8 + i * 0.6, 0.5, 12, 10.6, 11.2));\n    UI.rise(kit, this.tq, t, 6.8, 0.5, 12, 10.6, 11.2);\n    // Replay candles.\n    let price = 60000, minute = 0;\n    const exited = t >= MN_TS;\n    for (let j = 0; j < 8; j++) {\n      const i = 15 + j, c = D.C1[i], a = MN_A + j * MN_D, u = kit.clamp01((t - a) / MN_D);\n      if (t < a) { this.c1.cd.set(i, { x: D.x1(i), w: 22, o: c[0], h: c[0], l: c[0], c: c[0], y: Y, op: 0 }); continue; }\n      const m = mnAt(c, u);\n      this.c1.cd.set(i, { x: D.x1(i), w: 22, o: c[0], h: m.hi, l: m.lo, c: m.price, y: Y, op: 1, live: u < 1 });\n      price = m.price; minute = j + 1;\n    }\n    const shown = exited ? MN_FILL : price;\n    const pnl = (shown - 60000) / 60;\n    UI.set(this.m, (exited ? 8 : minute) + ' of the trade');\n    UI.set(this.pr, UI.fmt(Math.round(shown / 10) * 10));\n    UI.set(this.v, UI.sgn(pnl, 2));\n    this.v.style.color = pnl > 0.005 ? 'var(--up)' : pnl < -0.005 ? 'var(--down)' : 'var(--second)';\n    // Meter: −6 … +10 USDT, zero at 37.5%.\n    const z = 37.5, w = Math.abs(pnl) / 16 * 100;\n    this.bar.left = (pnl >= 0 ? z : z - w).toFixed(2) + '%'; this.bar.width = w.toFixed(2) + '%';\n    this.bar.background = pnl >= 0 ? 'var(--up)' : 'var(--down)';\n    UI.rise(kit, this.p, t, 0.8, 0.6, 24);\n    UI.set(this.s, t < 15.4 ? 'Stop and target set before entry ✓' : t < MN_TS ? 'Stop stays at 59,700 ✓' : t < 26.4 ? 'Stop hit: exit at 59,680 ✓' : 'Exit as planned ✓ No adding more');\n    this.s.style.color = t >= MN_TS ? 'var(--accent)' : 'var(--main)';\n    if (t >= 26.4) this.s.style.color = 'var(--main)';\n    UI.rise(kit, this.tSl, t, 15.6, 0.5, 12);\n    UI.rise(kit, this.tPk, t, MN_A + 2 * MN_D + 1.0, 0.5, 12);\n    this.fill.opacity = eo(seg(t, MN_TS, MN_TS + 0.3));\n    const fw = ((t - MN_TS) % 1.6 + 1.6) % 1.6 / 1.6;\n    this.fr.setAttribute('r', (12 + 22 * fw).toFixed(1)); this.fr.style.opacity = t > MN_TS ? 1 - fw : 0;\n    UI.rise(kit, this.tFill, t, MN_TS + 0.3, 0.5, 12);\n    this.tutor.render(t);\n  },\n});\n","scene-next.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nkit.scene('next', {\n  init(kit) {\n    const pts = UI.walk(kit, 23, 96, 140, 1780, 930, 840, 18);\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"next23-g\" x1=\"0\" x2=\"1\"><stop offset=\"0\" style=\"stop-color:var(--main)\"/><stop offset=\"1\" style=\"stop-color:var(--accent)\"/></linearGradient></defs>' +\n      '<path class=\"next-path\" d=\"' + UI.d(pts) + '\" pathLength=\"1\" fill=\"none\" stroke=\"url(#next23-g)\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"opacity:.5\"/></svg>' +\n      '<div class=\"next-lock\" style=\"position:absolute;left:0;right:0;top:150px;display:flex;justify-content:center\"></div>' +\n      '<div class=\"words\" style=\"left:210px;top:300px;width:1500px;align-items:center;text-align:center;gap:28px\">' +\n      '<p class=\"kick next-k\">Lesson T23 complete · Up next: CPB</p>' +\n      '<h2 class=\"line next-t\" style=\"font-size:100px\">Checkpoint B</h2>' +\n      '<p class=\"sub next-s\" style=\"margin:0\">A video recap of T14 to T23</p>' +\n      '<div class=\"rule next-r\" style=\"width:240px\"></div>' +\n      '<div class=\"chip next-c\" style=\"font-size:32px;padding:20px 38px;background:var(--main);color:var(--ground);border-color:var(--main)\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 28 28\"><path d=\"M7 4 L24 14 L7 24 Z\" style=\"fill:var(--ground)\"/></svg><span>Continue to Checkpoint B</span></div></div>' +\n      '<p class=\"fict next-f\" style=\"position:absolute;left:0;right:0;bottom:70px;margin:0;text-align:center\">Educational content only · Not financial advice · Crypto and futures involve risk</p>' +\n      '</div>'));\n    kit.stage.querySelector('.next-lock').append(UI.lockup(kit));\n    const q = (s) => kit.stage.querySelector(s);\n    this.path = q('.next-path'); this.lock = q('.next-lock').style; this.k = q('.next-k').style; this.s = q('.next-s').style;\n    this.t = q('.next-t'); this.r = q('.next-r').style; this.c = q('.next-c').style; this.f = q('.next-f').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }, { t: 1.1, x: 1620, y: 965, s: 230, d: 1.0 }],\n      poses: [{ t: 0, pose: 'thumbs' }, { t: 0.1, pose: 'walk', flip: true }, { t: 1.1, pose: 'wave' }, { t: 4.0, pose: 'celebrate' }, { t: 6.8, pose: 'wave' }],\n      says: [{ t0: 1.3, t1: 5.6, text: 'Well done!', side: 'top' }],\n    });\n  },\n  render(t) {\n    this.path.setAttribute('stroke-dasharray', eio(seg(t, 0, 2.6)) + ' 1');\n    const l = seg(t, 0.1, 0.8);\n    this.lock.opacity = eo(l);\n    this.lock.transform = 'scale(' + lerp(0.85, 1, eob(l, 1.6)) + ')';\n    this.k.opacity = eo(seg(t, 0.5, 1.0));\n    TextFx.fadeFromRight(this.t, t, 0.7);\n    this.s.opacity = eo(seg(t, 1.2, 1.7));\n    this.r.transform = 'scaleX(' + eo(seg(t, 1.5, 2.2)) + ')';\n    const c = seg(t, 2.1, 2.7);\n    this.c.opacity = eo(seg(t, 2.1, 2.4));\n    this.c.transform = 'scale(' + (lerp(0.8, 1, eob(c, 1.7)) * kit.breathe(Math.max(0, t - 2.7), 0.015, 2.4)) + ')';\n    this.f.opacity = 0.9 * eo(seg(t, 2.8, 3.4));\n    this.tutor.render(t);\n  },\n});\n","scene-notrade.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Same chart, same numbers: a second learner writes their doubts and chooses NO_TRADE before knowing the outcome.\nconst NT_WHY = 'Support tested twice. Weak volume on the bounce. Not confident.';\nconst NT_B = [['DEMO BUY', 'var(--up)'], ['DEMO SELL', 'var(--down)'], ['NO_TRADE', 'var(--main)']];\nkit.scene('notrade', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'The other route', 'NO_TRADE can be a success');\n    this.c1 = UI.chart1(kit, 'nt', { vol: true });\n    const D = UI.D, Y = D.y1, x0 = D.x1(14) + 14, y0 = Y(60000);\n    const fork = (p, c) => '<path class=\"nt-f\" d=\"M' + x0 + ' ' + y0.toFixed(1) + ' C' + (x0 + 110) + ' ' + y0.toFixed(1) + ' ' + (x0 + 150) + ' ' + Y(p).toFixed(1) + ' 990 ' + Y(p).toFixed(1) + '\" pathLength=\"1\" fill=\"none\" stroke-width=\"4\" stroke-linecap=\"round\" style=\"stroke:' + c + '\"/>';\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"nt-sp\">' + UI.band(59850, 59950, 'var(--main)', 160, 1040) + '</g>' +\n      '<rect class=\"nt-vb\" x=\"' + (D.x1(12) - 18) + '\" y=\"724\" width=\"' + (D.x1(14) - D.x1(12) + 36) + '\" height=\"48\" rx=\"8\" fill=\"none\" stroke-width=\"3\" style=\"stroke:var(--accent)\"/>' +\n      fork(60450, 'var(--up)') + fork(59650, 'var(--down)') +\n      '<g class=\"nt-q\"><circle cx=\"1000\" cy=\"' + y0.toFixed(1) + '\" r=\"30\" style=\"fill:color-mix(in srgb, var(--ground) 70%, var(--main));stroke:var(--main);stroke-width:2\"/><text x=\"1000\" y=\"' + (y0 + 13).toFixed(1) + '\" text-anchor=\"middle\" class=\"mono\" style=\"font-size:38px;fill:var(--second)\">?</text></g>' +\n      '<circle cx=\"' + x0 + '\" cy=\"' + y0.toFixed(1) + '\" r=\"10\" style=\"fill:var(--second)\"/></svg>');\n    kit.stage.append(svg);\n    const tag = (s, x, y, c) => { const e = kit.h('<p class=\"tag\" style=\"left:' + x + 'px;top:' + y.toFixed(0) + 'px;border-color:' + c + '\">' + s + '</p>'); kit.stage.append(e); return e.style; };\n    this.tD = tag('Decision point · 60,000', 640, y0 - 60, 'var(--second)');\n    this.tV = tag('Weak volume on the bounce', 240, 668, 'var(--accent)');\n    this.tU = tag('Future unknown at decision time', 200, 306, 'var(--main)');\n    let btns = '';\n    NT_B.forEach((b) => { btns += '<div class=\"nt-b mono\" style=\"flex:1;height:60px;border-radius:16px;display:grid;place-items:center;font-size:24px;border:2px solid ' + b[1] + ';color:' + b[1] + '\">' + b[0] + '</div>'; });\n    const row = (a, b) => '<div class=\"row nt-r\" style=\"padding:9px 0\"><span>' + a + '</span><span class=\"mono\" style=\"font-size:30px\">' + b + '</span></div>';\n    kit.stage.append(kit.h('<div><div class=\"glass nt-p\" style=\"left:1180px;top:286px;width:600px;padding:20px 30px;display:flex;flex-direction:column;gap:12px\">' +\n      '<p class=\"kick\" style=\"margin:0\">Learner 2 · notes</p><div style=\"min-height:114px\"><span class=\"nt-x\" style=\"font-size:28px;line-height:1.38;font-weight:600\"></span></div>' +\n      '<div style=\"display:flex;gap:12px\">' + btns + '</div><div>' + row('Result', '0 USDT · no fees') + row('Demo balance', '1,000 USDT') +\n      '<div class=\"row nt-r\" style=\"padding:9px 0;border:0\"><span>Process</span><span class=\"mono\" style=\"font-size:30px;color:var(--main)\">complete ✓</span></div></div></div>' +\n      '<div class=\"nt-st\" style=\"position:absolute;left:700px;top:350px;padding:12px 26px;border-radius:16px;border:3px solid var(--main);background:color-mix(in srgb, var(--ground) 70%, var(--main));font-family:var(--display, var(--sans));font-size:38px;font-weight:700;color:var(--main)\">Success ✓</div></div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.sp = svg.querySelector('.nt-sp').style; this.vb = svg.querySelector('.nt-vb').style; this.fs = [...svg.querySelectorAll('.nt-f')]; this.qm = svg.querySelector('.nt-q').style;\n    this.p = q('.nt-p').style; this.x = q('.nt-x'); this.bs = all('.nt-b').map((e) => e.style); this.rs = all('.nt-r').map((e) => e.style); this.st = q('.nt-st').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'present' }, { t: 6.8, pose: 'writing' }, { t: 13.8, pose: 'celebrate' }, { t: 20.3, pose: 'explain' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.c1.render(t);\n    this.sp.opacity = eo(seg(t, 0.6, 1.2));\n    UI.rise(kit, this.tD, t, 1.4, 0.5, 12, 20.0, 20.5);\n    UI.rise(kit, this.p, t, 0.8, 0.6, 24);\n    UI.type(this.x, NT_WHY, t, 7.2, 16);\n    this.vb.opacity = eo(seg(t, 8.6, 9.1)); UI.rise(kit, this.tV, t, 8.8, 0.5, 12);\n    this.bs.forEach((s, i) => {\n      const pick = i === 2 ? eo(seg(t, 11.6, 12.0)) : 0, press = i === 2 ? Math.sin(Math.PI * seg(t, 11.4, 11.8)) : 0;\n      s.background = 'color-mix(in srgb, ' + NT_B[i][1] + ' ' + (10 + 85 * pick).toFixed(0) + '%, var(--ground))';\n      s.color = pick > 0.5 ? 'var(--ground)' : NT_B[i][1];\n      s.transform = 'scale(' + (1 - 0.06 * press).toFixed(4) + ')';\n      s.opacity = i === 2 ? 1 : lerp(1, 0.45, eo(seg(t, 11.6, 12.2)));\n    });\n    this.rs.forEach((s, i) => { const p = seg(t, 14.0 + i * 0.9, 14.4 + i * 0.9); s.opacity = eo(p).toFixed(3); s.transform = 'translateX(' + lerp(16, 0, eo(p)).toFixed(1) + 'px)'; });\n    const sp = seg(t, 17.0, 17.5);\n    this.st.opacity = eo(sp) * (1 - ei(seg(t, 20.0, 20.4))); this.st.transform = 'rotate(-4deg) scale(' + lerp(1.6, 1, eob(sp, 1.4)).toFixed(3) + ')';\n    this.fs.forEach((f, i) => { const a = 20.6 + i * 0.4; f.setAttribute('stroke-dasharray', eio(seg(t, a, a + 1.0)).toFixed(3) + ' 1'); f.style.opacity = seg(t, a, a + 0.1) > 0 ? 0.8 : 0; });\n    const qp = seg(t, 21.8, 22.3);\n    this.qm.opacity = eo(qp);\n    UI.rise(kit, this.tU, t, 21.4, 0.5, 12);\n    this.tutor.render(t);\n  },\n});\n","scene-recap.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\nconst RECAP = [['Eight steps, in order: coin, context, levels, doubts, costs, decide, monitor, journal.', 1.0], ['Size comes from the risk budget and the stop distance, before you decide.', 7.1], ['Judge the process, not one outcome. NO_TRADE can be a full success.', 13.3]];\nkit.scene('recap', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Recap', 'Three things to remember');\n    let items = '';\n    RECAP.forEach((s) => {\n      items += '<div class=\"rc-i\" style=\"display:flex;align-items:center;gap:26px\"><svg width=\"50\" height=\"50\" viewBox=\"0 0 52 52\" style=\"flex:none\"><circle cx=\"26\" cy=\"26\" r=\"23\" fill=\"none\" stroke-width=\"3\" style=\"stroke:color-mix(in srgb, var(--main) 45%, transparent)\"/>' +\n        '<path class=\"rc-tick\" d=\"M15 27 L23 35 L38 18\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/></svg><span style=\"font-size:34px;font-weight:600\">' + s[0] + '</span></div>';\n    });\n    kit.stage.append(kit.h('<div>' +\n      '<div style=\"position:absolute;left:140px;top:290px;width:1400px;display:flex;flex-direction:column;gap:24px\">' + items + '</div>' +\n      '<div class=\"glass rc-q\" style=\"left:140px;top:590px;width:1180px;padding:24px 36px\"><p class=\"kick\" style=\"margin:0 0 10px;color:var(--accent)\">Check yourself</p>' +\n      '<p style=\"margin:0;font-size:32px;font-weight:600;line-height:1.4\">You followed the plan and the demo trade still lost. A bad decision?</p>' +\n      '<p class=\"rc-a\" style=\"margin:12px 0 0;font-size:30px;line-height:1.4;color:var(--main);font-weight:700\">Not necessarily. Check the process first: one result proves very little.</p></div></div>'));\n    const q = (s) => kit.stage.querySelector(s);\n    this.qc = q('.rc-q').style; this.a = q('.rc-a').style;\n    this.items = [...kit.stage.querySelectorAll('.rc-i')].map((e) => e.style);\n    this.ticks = [...kit.stage.querySelectorAll('.rc-tick')];\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'checklist' }, { t: 18.7, pose: 'think' }, { t: 24.0, pose: 'thumbs' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    this.items.forEach((s, i) => {\n      const a = RECAP[i][1];\n      s.opacity = eo(seg(t, a, a + 0.4));\n      s.transform = 'translateX(' + lerp(26, 0, eo(seg(t, a, a + 0.5))) + 'px)';\n      this.ticks[i].setAttribute('stroke-dasharray', eo(seg(t, a + 0.5, a + 0.9)) + ' 1');\n    });\n    const qp = seg(t, 18.7, 19.4);\n    this.qc.opacity = eo(qp); this.qc.transform = 'translateY(' + lerp(30, 0, eo(qp)) + 'px)';\n    const ap = seg(t, 24.0, 24.5);\n    this.a.opacity = eo(ap); this.a.transform = 'translateX(' + lerp(20, 0, eo(ap)) + 'px)';\n    this.tutor.render(t);\n  },\n});\n","scene-risks.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\nconst RISKS = [\n  ['Simulation is not the market', 'Real fills can slip more than in a replay, and real money feels very different.', 1.0],\n  ['Careful plans still lose', 'Losses are normal, even with a good process. Never trade money you can’t afford to lose.', 8.6],\n  ['Leverage and liquidation', 'This plan used 1x. More leverage makes losses bigger and can lead to liquidation.', 14.6],\n  ['Not advice', 'Fictional prices, for education only. NO_TRADE is always allowed.', 21.4],\n];\nkit.scene('risks', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    let cards = '';\n    RISKS.forEach((r, i) => {\n      cards += '<div class=\"glass rk-c\" style=\"left:' + (140 + (i % 2) * 780) + 'px;top:' + (330 + Math.floor(i / 2) * 218) + 'px;width:750px;min-height:196px;padding:24px 34px\">' +\n        '<p class=\"kick\" style=\"margin:0 0 10px;color:var(--accent)\">' + r[0] + '</p><p style=\"margin:0;font-size:30px;line-height:1.4;font-weight:600\">' + r[1] + '</p></div>';\n    });\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"words\" style=\"left:140px;top:170px;width:1400px\"><p class=\"kick rk-k\" style=\"color:var(--accent)\">Before you go further</p>' +\n      '<h2 class=\"line rk-t\">Honest limits</h2></div>' + cards + '</div>'));\n    this.k = kit.stage.querySelector('.rk-k').style; this.t = kit.stage.querySelector('.rk-t');\n    this.cards = [...kit.stage.querySelectorAll('.rk-c')].map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.8, pose: 'think' }, { t: 8.4, pose: 'calm' }, { t: 14.4, pose: 'magnify' }, { t: 21.2, pose: 'explain' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t);\n    this.k.opacity = eo(seg(t, 0, 0.5));\n    TextFx.fadeFromRight(this.t, t, 0.1);\n    let cur = -1;\n    RISKS.forEach((r, i) => { if (t >= r[2]) cur = i; });\n    this.cards.forEach((c, i) => {\n      const a = RISKS[i][2], p = seg(t, a, a + 0.7);\n      c.opacity = eo(seg(t, a, a + 0.35));\n      c.transform = 'translateY(' + (lerp(40, 0, eo(p)) - Math.max(0, t - a) * 0.5).toFixed(2) + 'px) scale(' + lerp(0.95, 1, eob(p, 1.5)).toFixed(4) + ')';\n      c.borderColor = i === cur ? 'color-mix(in srgb, var(--accent) 70%, transparent)' : 'color-mix(in srgb, var(--main) 22%, transparent)';\n    });\n    this.tutor.render(t);\n  },\n});\n","scene-title.js":"const { seg, eo, eob, eio, lerp, TextFx } = kit;\n// Title art: an eight-step loop draws around a DEMO badge, one segment per step.\nconst TI_C = [1400, 470], TI_R = 210;\nkit.scene('title', {\n  init(kit) {\n    let segs = '', nums = '';\n    for (let i = 0; i < 8; i++) {\n      const a0 = (i / 8) * Math.PI * 2 - Math.PI / 2 + 0.07, a1 = ((i + 1) / 8) * Math.PI * 2 - Math.PI / 2 - 0.07;\n      const p = (a) => (Math.cos(a) * TI_R).toFixed(1) + ' ' + (Math.sin(a) * TI_R).toFixed(1);\n      segs += '<path class=\"ti-s\" d=\"M' + p(a0) + ' A' + TI_R + ' ' + TI_R + ' 0 0 1 ' + p(a1) + '\" pathLength=\"1\" fill=\"none\" stroke-width=\"14\" stroke-linecap=\"round\" style=\"stroke:' + (i < 5 ? 'var(--main)' : 'var(--accent)') + '\"/>';\n      const am = (a0 + a1) / 2;\n      nums += '<g transform=\"translate(' + (Math.cos(am) * (TI_R + 52)).toFixed(1) + ' ' + (Math.sin(am) * (TI_R + 52)).toFixed(1) + ')\"><g class=\"ti-n\"><circle r=\"26\" style=\"fill:color-mix(in srgb, var(--ground) 80%, var(--main));stroke:color-mix(in srgb, var(--main) 50%, transparent);stroke-width:2\"/>' +\n        '<text class=\"mono\" y=\"9\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:26px\">' + (i + 1) + '</text></g></g>';\n    }\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><radialGradient id=\"t23-f\"><stop offset=\"0\" style=\"stop-color:color-mix(in srgb, var(--main) 22%, var(--ground))\"/><stop offset=\"1\" style=\"stop-color:var(--ground)\"/></radialGradient></defs>' +\n      '<g class=\"ti-ring\" transform=\"translate(' + TI_C[0] + ' ' + TI_C[1] + ')\"><circle r=\"300\" style=\"fill:url(#t23-f);opacity:.8\"/>' +\n      '<circle r=\"' + TI_R + '\" fill=\"none\" stroke-width=\"14\" style=\"stroke:color-mix(in srgb, var(--second) 8%, transparent)\"/>' + segs + nums +\n      '<text class=\"mono\" y=\"10\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:78px;letter-spacing:.08em\">DEMO</text>' +\n      '<text y=\"60\" text-anchor=\"middle\" style=\"fill:color-mix(in srgb, var(--second) 62%, var(--ground));font-size:24px\">chart → journal</text></g></svg>' +\n      '<div class=\"words\" style=\"left:140px;top:220px;width:900px\"><p class=\"kick title-k\">Phase 5 · Scalping &amp; Risk Management</p>' +\n      '<h1 class=\"line title-t\" style=\"font-size:104px\">Full Scalping Decision Lifecycle</h1>' +\n      '<div class=\"rule title-r\" style=\"width:260px\"></div>' +\n      '<p class=\"sub title-s\">Lesson T23 · about 7 minutes · educational simulation</p></div>' +\n      '<p class=\"fict\" style=\"position:absolute;left:140px;bottom:80px;margin:0\">Education only · Demo only · Not financial advice</p>' +\n      '</div>'));\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.k = q('.title-k').style; this.t = q('.title-t'); this.r = q('.title-r').style; this.s = q('.title-s').style;\n    this.ring = q('.ti-ring'); this.segs = all('.ti-s'); this.nums = all('.ti-n').map((e) => e.style);\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: 2080, y: C.y, s: C.s }, { t: 2.6, x: C.x, y: C.y, s: C.s, d: 1.9, ease: (p) => kit.lerp(p, kit.eo(p), 0.5) }],\n      poses: [{ t: 0, pose: 'walk', flip: true }, { t: 2.6, pose: 'present' }, { t: 5.6, pose: 'laptop' }],\n      says: [{ t0: 3.0, t1: 7.4, text: 'Demo only!' }],\n    });\n  },\n  render(t) {\n    this.k.opacity = eo(seg(t, -0.6, -0.1));\n    TextFx.fadeFromRight(this.t, t, -0.9);\n    this.r.transformOrigin = '0 50%';\n    this.r.transform = 'scaleX(' + eo(seg(t, 0.2, 0.9)) + ')';\n    this.s.opacity = eo(seg(t, 0.6, 1.1));\n    const c = seg(t, -0.6, 0.6);\n    this.ring.setAttribute('transform', 'translate(' + TI_C[0] + ' ' + (TI_C[1] - t * 2).toFixed(1) + ') scale(' + (lerp(0.9, 1, eob(c, 1.6)) * (1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.2))).toFixed(4) + ')');\n    this.ring.style.opacity = eo(c);\n    this.segs.forEach((s, i) => { const a = 0.8 + i * 0.5, p = seg(t, a, a + 0.45); s.setAttribute('stroke-dasharray', eio(p).toFixed(3) + ' 1'); s.style.opacity = p > 0 ? 1 : 0; });\n    this.nums.forEach((s, i) => { const a = 0.9 + i * 0.5, p = seg(t, a, a + 0.4); s.opacity = eo(p); s.transformBox = 'fill-box'; s.transformOrigin = 'center'; s.transform = 'scale(' + lerp(0.5, 1, eob(p, 1.8)).toFixed(3) + ')'; });\n    this.tutor.render(t);\n  },\n});\n","scene-try.js":"const { seg, eo, ei, eob, eio, lerp, TextFx } = kit;\n// Pause and calculate: a wider stop with the same budget means a smaller position.\nconst TR_O = ['1,000 USDT', '500 USDT', '5,000 USDT'], TR_OK = 1, TR_BAD = 0, TR_R = 13.4, TR_N = 19.6;\nkit.scene('try', {\n  init(kit) {\n    this.chrome = UI.chrome(kit);\n    this.head = UI.head(kit, 'Your turn', 'Pause and work it out');\n    let rows = '';\n    TR_O.forEach((o, i) => {\n      const mark = i === TR_OK ? '<path class=\"tr-ok\" d=\"M10 23 L19 32 L35 13\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"stroke:var(--main)\"/>'\n        : i === TR_BAD ? '<path class=\"tr-no\" d=\"M13 13 L31 31 M31 13 L13 31\" pathLength=\"1\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" style=\"stroke:var(--accent)\"/>' : '';\n      rows += '<div class=\"tr-o\" style=\"display:flex;align-items:center;gap:22px;padding:12px 22px;border-radius:20px;border:2px solid color-mix(in srgb, var(--second) 14%, transparent);background:color-mix(in srgb, var(--ground) 90%, var(--main))\">' +\n        '<span class=\"tr-l mono\" style=\"width:50px;height:50px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:26px;border:2px solid color-mix(in srgb, var(--main) 45%, transparent)\">' + 'ABC'[i] + '</span>' +\n        '<span class=\"mono\" style=\"font-size:32px;flex:1\">' + o + '</span><svg width=\"44\" height=\"44\" viewBox=\"0 0 44 44\" style=\"flex:none\">' + mark + '</svg></div>';\n    });\n    kit.stage.append(kit.h('<div>' +\n      '<div class=\"glass tr-q\" style=\"left:140px;top:280px;width:1000px;padding:24px 36px\"><p class=\"fict\" style=\"margin:0 0 10px\">Question · fictional prices · demo</p>' +\n      '<p class=\"def\" style=\"margin:0;font-size:32px\">Entry 60,000. The stop must go at <b>59,400</b>, which is <b>1%</b> away. You keep <b>5 USDT</b> for the price move. About what notional?</p></div>' +\n      '<div class=\"tr-os\" style=\"position:absolute;left:140px;top:486px;width:1000px;display:flex;flex-direction:column;gap:14px\">' + rows + '</div>' +\n      '<div class=\"glass tr-w\" style=\"left:1220px;top:280px;width:560px;padding:20px 28px;display:flex;flex-direction:column;gap:16px\">' +\n      '<div><p class=\"kick\" style=\"margin:0 0 6px\">Why B</p><p style=\"margin:0;font-size:28px;line-height:1.35;font-weight:600\"><span class=\"mono\">5 ÷ 1% = 500 USDT</span>. A wider stop means a smaller position.</p></div>' +\n      '<div class=\"tr-w2\"><p class=\"kick\" style=\"margin:0 0 6px;color:var(--accent)\">Why not A</p><p style=\"margin:0;font-size:28px;line-height:1.35;font-weight:600\"><span class=\"mono\">1,000 × 1% = 10 USDT</span>: double the budget.</p></div></div></div>'));\n    this.ring = UI.ring(kit, 1480, 470, 100, 6.9, 8.0, 5, TR_R + 0.2, 'Pause to think');\n    this.hint = kit.h('<p class=\"tr-h\" style=\"position:absolute;left:1280px;width:400px;top:620px;margin:0;text-align:center;font-size:26px;color:color-mix(in srgb, var(--second) 62%, var(--ground))\">Hint: budget ÷ stop %</p>');\n    kit.stage.append(this.hint);\n    const q = (s) => kit.stage.querySelector(s), all = (s) => [...kit.stage.querySelectorAll(s)];\n    this.qc = q('.tr-q').style; this.os = all('.tr-o').map((e) => e.style); this.ls = all('.tr-l').map((e) => e.style); this.ok = q('.tr-ok'); this.no = q('.tr-no');\n    this.w = q('.tr-w').style; this.w2 = q('.tr-w2').style;\n    const C = UI.CORNER;\n    this.tutor = UI.tutor(kit, {\n      keys: [{ t: 0, x: C.x, y: C.y, s: C.s }],\n      poses: [{ t: 0, pose: 'explain' }, { t: 0.6, pose: 'present' }, { t: 7.6, pose: 'think' }, { t: TR_R, pose: 'cheer' }, { t: TR_R + 2.4, pose: 'explain' }, { t: TR_N, pose: 'magnify' }],\n      says: [],\n    });\n  },\n  render(t) {\n    this.chrome(t); this.head(t);\n    UI.rise(kit, this.qc, t, 1.0, 0.7, 30);\n    const rv = eo(seg(t, TR_R, TR_R + 0.5)), nb = eo(seg(t, TR_N, TR_N + 0.5));\n    this.os.forEach((s, i) => {\n      const a = 3.0 + i * 0.4, p = eo(seg(t, a, a + 0.5)), good = i === TR_OK, tempt = i === TR_BAD;\n      const dim = good ? 1 : tempt ? lerp(lerp(1, 0.5, rv), 1, nb) : lerp(1, 0.4, rv);\n      s.opacity = (eo(seg(t, a, a + 0.3)) * dim).toFixed(3);\n      s.transform = 'translateX(' + lerp(30, 0, p).toFixed(1) + 'px)';\n      if (good) { s.borderColor = 'color-mix(in srgb, var(--main) ' + (14 + 86 * rv).toFixed(0) + '%, transparent)'; s.background = 'color-mix(in srgb, var(--ground) ' + lerp(90, 74, rv).toFixed(0) + '%, var(--main))'; this.ls[i].background = rv > 0.5 ? 'var(--main)' : 'transparent'; this.ls[i].color = rv > 0.5 ? 'var(--ground)' : 'var(--second)'; }\n      if (tempt) s.borderColor = 'color-mix(in srgb, ' + (nb > 0 ? 'var(--accent)' : 'var(--second)') + ' ' + (14 + 86 * nb).toFixed(0) + '%, transparent)';\n    });\n    const po = seg(t, TR_R + 0.2, TR_R + 0.7), pn = seg(t, TR_N + 0.1, TR_N + 0.6);\n    this.ok.setAttribute('stroke-dasharray', eo(po).toFixed(3) + ' 1'); this.ok.style.opacity = po > 0 ? 1 : 0;\n    this.no.setAttribute('stroke-dasharray', eo(pn).toFixed(3) + ' 1'); this.no.style.opacity = pn > 0 ? 1 : 0;\n    this.ring(t);\n    this.hint.style.opacity = eo(seg(t, 10.0, 10.5)) * (1 - ei(seg(t, TR_R - 0.2, TR_R + 0.2)));\n    const wp = seg(t, TR_R + 0.6, TR_R + 1.2);\n    this.w.opacity = eo(wp); this.w.transform = 'translateY(' + lerp(24, 0, eo(wp)).toFixed(1) + 'px)';\n    this.w2.opacity = nb; this.w2.transform = 'translateX(' + lerp(20, 0, nb).toFixed(1) + 'px)';\n    this.tutor.render(t);\n  },\n});\n","scenes.json":"{\n  \"v\": 1,\n  \"stage\": \"final\",\n  \"look\": \"XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner\",\n  \"palettes\": [\n    [\n      \"#02030a\",\n      \"#3ecbff\",\n      \"#eef1f7\",\n      \"#a855f7\"\n    ]\n  ],\n  \"theirs\": 1,\n  \"width\": 1920,\n  \"height\": 1080,\n  \"fps\": 60,\n  \"background\": \"#02030a\",\n  \"fonts\": {\n    \"display\": {\n      \"family\": \"Outfit\",\n      \"or\": \"plus-jakarta-sans\",\n      \"weights\": [\n        400,\n        600,\n        700\n      ]\n    },\n    \"sans\": \"manrope\",\n    \"mono\": \"dm-mono\"\n  },\n  \"scenes\": [\n    {\n      \"id\": \"title\",\n      \"name\": \"Lesson twenty-three\",\n      \"dur\": 8,\n      \"desc\": \"Title card: Phase 5, lesson T23, Full Scalping Decision Lifecycle; an eight-step loop draws around a DEMO badge; the tutor walks in.\"\n    },\n    {\n      \"id\": \"hook\",\n      \"name\": \"Eight steps\",\n      \"dur\": 22,\n      \"desc\": \"The capstone: eight step cards in order, from choosing a coin to the journal; educational simulation, demo only; scored on process, not profit.\"\n    },\n    {\n      \"id\": \"coin\",\n      \"name\": \"Step 1 · Choose a coin\",\n      \"dur\": 25,\n      \"desc\": \"Liquidity defined; made-up BTC/USDT (deep book, spread about 0.003%) against XYZ/USDT (thin book, 1% spread); BTC/USDT chosen on a 1,000 USDT demo account.\"\n    },\n    {\n      \"id\": \"context\",\n      \"name\": \"Step 2 · Context\",\n      \"dur\": 28,\n      \"desc\": \"A fictional 5-minute chart: higher highs and higher lows, trend leans up; the last three 5-minute candles become fifteen 1-minute candles with a run up and a pull-back.\"\n    },\n    {\n      \"id\": \"levels\",\n      \"name\": \"Step 3 · Range and levels\",\n      \"dur\": 26,\n      \"desc\": \"On the 1-minute chart: range 59,850 to 60,650 = 800 USDT, about 1.3%; support zone 59,850-59,950 touched twice; resistance 60,550-60,650; price now 60,000.\"\n    },\n    {\n      \"id\": \"doubt\",\n      \"name\": \"Step 4 · Write down doubts\",\n      \"dur\": 26,\n      \"desc\": \"Notes typed in: leaning (bounce from support), against (support tested twice), wrong if below 59,700, confidence medium; two possible paths fork from the price.\"\n    },\n    {\n      \"id\": \"costs\",\n      \"name\": \"Step 5 · Costs and risk\",\n      \"dur\": 33,\n      \"desc\": \"Entry 60,000, stop 59,700 (0.5%), target 60,600 (1%); example budget 6 USDT, fees about 1 USDT, 5 USDT for the move, notional 5 / 0.5% = 1,000 USDT at 1x; stop about -6, target about +9.\"\n    },\n    {\n      \"id\": \"decide\",\n      \"name\": \"Step 6 · Decide\",\n      \"dur\": 27,\n      \"desc\": \"DEMO BUY, DEMO SELL and NO_TRADE buttons; a written reason types in; DEMO BUY is chosen with stop and target set; a demo ticket appears.\"\n    },\n    {\n      \"id\": \"monitor\",\n      \"name\": \"Step 7 · Monitor and exit\",\n      \"dur\": 34,\n      \"desc\": \"Three possible paths fan out; the replay forms eight 1-minute candles: up to 60,400, then down through support; the stop triggers and fills at 59,680; open PnL meter moves and freezes at -5.33.\"\n    },\n    {\n      \"id\": \"journal\",\n      \"name\": \"Step 8 · Journal\",\n      \"dur\": 27,\n      \"desc\": \"Journal card fills in: plan, exit, result -5.33 price, -1.00 fees, -6.33 net; process score ticks to 8 of 8; demo balance 993.67 USDT.\"\n    },\n    {\n      \"id\": \"notrade\",\n      \"name\": \"The NO_TRADE route\",\n      \"dur\": 27,\n      \"desc\": \"Same chart and numbers; a second learner writes doubts and picks NO_TRADE: 0 USDT, no fees, process complete, a success decided before knowing the outcome.\"\n    },\n    {\n      \"id\": \"mistake\",\n      \"name\": \"Common mistakes\",\n      \"dur\": 27,\n      \"desc\": \"Moving the stop (loss about 6 becomes about 11), doubling size to win back a loss (risk doubles), judging only by profit; each with its correction.\"\n    },\n    {\n      \"id\": \"try\",\n      \"name\": \"Try it\",\n      \"dur\": 26,\n      \"desc\": \"Pause and calculate: stop 1% away, 5 USDT for the move; options 1,000 / 500 / 5,000 USDT; 5-second countdown; answer B, 500 USDT; why not A.\"\n    },\n    {\n      \"id\": \"risks\",\n      \"name\": \"Honest limits\",\n      \"dur\": 28,\n      \"desc\": \"Simulation is not the market; careful plans still lose; leverage and liquidation; fictional and educational, NO_TRADE always allowed.\"\n    },\n    {\n      \"id\": \"recap\",\n      \"name\": \"Recap\",\n      \"dur\": 28,\n      \"desc\": \"Three key points and a check question: followed the plan and still lost, bad decision? Not necessarily.\"\n    },\n    {\n      \"id\": \"next\",\n      \"name\": \"Up next\",\n      \"dur\": 10,\n      \"desc\": \"End card: Phase 5 lessons complete; next, Checkpoint B (CPB), a video recap of T14 to T23.\"\n    }\n  ]\n}","score.js":"kit.score(function (S, T) {\n  // No voice: the music is the only sound. Soft pad and keys; a light pulse while the steps run; quieter for mistakes and limits.\n  const BPM = 84, B = 60 / BPM, BAR = 4 * B;\n  S.tempo(BPM, { t0: 0 });\n  S.program('pad', 'pad', { rev: 0.7, gain: -6 });\n  S.program('keys', 'ep', { rev: 0.45, gain: -10 });\n  S.program('mal', 'pluck', { rev: 0.5, gain: -12, pan: 0.2 });\n  S.program('bass', 'bass', { gain: -10 });\n  const prog = [['D3', 'A3', 'E4', 'F#4'], ['B2', 'F#3', 'A3', 'D4'], ['G2', 'D3', 'F#3', 'B3'], ['A2', 'E3', 'A3', 'C#4']];\n  const roots = ['D2', 'B1', 'G1', 'A1'];\n  const tops = [['F#5', 'A5', 'E5'], ['D5', 'F#5', 'A5'], ['B4', 'D5', 'F#5'], ['C#5', 'E5', 'A5']];\n  const inR = (s, a, b) => s >= a - 0.1 && s < b - 0.1;\n  const pulse = (s) => inR(s, T.coin, T.doubt) || inR(s, T.costs, T.journal) || inR(s, T.try, T.risks);\n  const quiet = (s) => inR(s, T.mistake, T.try) || inR(s, T.risks, T.recap);\n  const bars = Math.floor(T.END / BAR);\n  for (let b = 0; b < bars; b++) {\n    const beat = b * 4, s = beat * B, c = prog[b % 4];\n    if (s >= T.next - 0.1) break;\n    S.chord('pad', c, { beat, beats: 4, vel: quiet(s) ? 26 : 32 });\n    if (!quiet(s)) S.chord('keys', c.slice(1), { beat, beats: 3, vel: 34 });\n    if (pulse(s)) { S.pattern('mal', 'x.x..x.x', { from: beat, repeat: 1, pitch: tops[b % 4], vel: 30 }); S.note('bass', roots[b % 4], { beat, beats: 3, vel: 46 }); }\n  }\n  const steps = (a, b) => { const ts = []; for (let s = a + 0.18; s < b; s += 0.364) ts.push(s); S.ticks(ts, { vel: 24 }); };\n  steps(T.title, T.title + 2.6); steps(T.next + 0.1, T.next + 1.1);\n  const pops = (s, at, v, p) => at.forEach((a) => S.fx('pop', s + a, { vel: v || 28, pitch: p == null ? 5 : p }));\n  // title + hook\n  for (let i = 0; i < 8; i++) S.fx('pop', T.title + 0.9 + i * 0.5, { vel: 22, pitch: 2 + i });\n  for (let i = 0; i < 9; i++) S.fx('tick', T.hook + 1.0 + i * 0.3, { vel: 22 });\n  for (let i = 0; i < 8; i++) S.fx('pop', T.hook + 6.4 + i * 0.7, { vel: 28, pitch: 2 + i });\n  S.fx('ding', T.hook + 12.6, { vel: 32 }); S.fx('chime', T.hook + 18.5, { vel: 36 });\n  // steps\n  pops(T.coin, [1.0, 1.4], 28); S.fx('whoosh', T.coin + 7.2, { dur: 1.0, vel: 20 }); S.fx('ding', T.coin + 19.2, { vel: 36 }); S.fx('pop', T.coin + 19.8, { vel: 26, pitch: -3 });\n  for (let i = 0; i < 12; i++) S.fx('tick', T.context + 1.0 + i * 0.3, { vel: 18 });\n  for (let i = 0; i < 7; i++) S.fx('pop', T.context + 7.3 + i * 0.35, { vel: 24, pitch: i });\n  S.fx('whoosh', T.context + 14.9, { dur: 1.2, vel: 24 });\n  pops(T.levels, [1.4, 3.0], 30); S.fx('whoosh', T.levels + 7.2, { dur: 0.9, vel: 18 }); pops(T.levels, [12.8, 14.0], 30, 9); S.fx('pop', T.levels + 18.0, { vel: 28, pitch: 2 }); S.fx('ding', T.levels + 20.6, { vel: 30 });\n  pops(T.doubt, [7.0, 13.2, 19.2], 26); S.fx('whoosh', T.doubt + 7.4, { dur: 1.0, vel: 18 }); S.fx('whoosh', T.doubt + 13.6, { dur: 1.0, vel: 18 }); S.fx('ding', T.doubt + 22.0, { vel: 28 });\n  pops(T.costs, [1.0, 8.6, 14.0, 15.8, 17.8], 26); S.fx('ding', T.costs + 21.2, { vel: 36 }); S.fx('thud', T.costs + 26.6, { vel: 28 }); S.fx('chime', T.costs + 29.4, { vel: 34 });\n  [1.4, 2.0, 2.6].forEach((a) => S.fx('tick', T.decide + a, { vel: 26 }));\n  { const ts = []; for (let s = 13.3; s < 17.8; s += 0.22) ts.push(T.decide + s); S.ticks(ts, { vel: 12 }); }\n  S.fx('pop', T.decide + 20.2, { vel: 36, pitch: 0 }); S.fx('chime', T.decide + 20.8, { vel: 36 });\n  S.fx('whoosh', T.monitor + 1.2, { dur: 1.8, vel: 20 });\n  for (let j = 0; j < 8; j++) S.fx('tick', T.monitor + 11.4 + j * 1.6, { vel: 24 });\n  S.fx('thud', T.monitor + 23.5, { vel: 36 }); S.fx('ding', T.monitor + 26.4, { vel: 26 });\n  pops(T.journal, [1.2, 2.0, 2.8, 3.6], 24); for (let i = 0; i < 3; i++) S.fx('tick', T.journal + 7.6 + i * 1.4, { vel: 24 });\n  for (let i = 0; i < 8; i++) S.fx('pop', T.journal + 13.6 + i * 0.4, { vel: 28, pitch: 2 + i });\n  S.fx('chime', T.journal + 16.9, { vel: 38 });\n  S.fx('pop', T.notrade + 11.4, { vel: 34, pitch: 0 }); pops(T.notrade, [14.0, 14.9, 15.8], 26, 7); S.fx('chime', T.notrade + 17.0, { vel: 40 }); S.fx('whoosh', T.notrade + 20.6, { dur: 1.2, vel: 18 });\n  [0.8, 13.4, 20.3].forEach((a) => S.fx('thud', T.mistake + a, { vel: 24 })); [6.8, 17.6, 23.0].forEach((a) => S.fx('chime', T.mistake + a, { vel: 30 }));\n  for (let i = 0; i < 5; i++) S.fx('tick', T.try + 8.0 + i, { vel: 30 });\n  S.fx('chime', T.try + 13.4, { vel: 42 }); S.fx('ding', T.try + 13.7, { vel: 30 }); S.fx('thud', T.try + 19.6, { vel: 24 });\n  [1.0, 8.6, 14.6, 21.4].forEach((a) => S.fx('pop', T.risks + a, { vel: 26 }));\n  [1.4, 7.5, 13.7].forEach((a) => S.fx('pop', T.recap + a, { vel: 32, pitch: 7 })); S.fx('ding', T.recap + 24.0, { vel: 36 });\n  S.fx('revswell', T.next, { dur: 1.6, vel: 44 });\n  S.chord('pad', ['D3', 'A3', 'D4', 'F#4'], { t: T.next, dur: 9, vel: 40 });\n  S.chord('keys', ['D3', 'A3', 'D4', 'F#4', 'A4'], { t: T.next + 0.7, dur: 8, vel: 50 });\n  S.run('mal', ['D5', 'E5', 'F#5', 'A5', 'B5', 'D6'], { t: T.next + 1.4, step: 0.12, vel: 40, cresc: 6 });\n  S.master({ gain: -10, music: 21, fadeOut: 2.5 });\n});\n","shared.js":"window.UI = {\n  LESSON: 'T23 · Full scalping decision lifecycle',\n  TOTAL: 402,\n  lockup(kit) {\n    return kit.h('<div class=\"lock\"><img alt=\"\" src=\"' + kit.assets.url('xtinex-x.png') + '\"><span class=\"lock-xt\">XTINEX</span><span class=\"lock-bar\"></span><span class=\"lock-xo\">XORA</span></div>');\n  },\n  // Lesson header: lesson name and a progress bar across the whole film.\n  chrome(kit) {\n    const el = kit.h('<div class=\"chrome\"><span>' + kit.esc(UI.LESSON) + '</span><div><i></i></div></div>');\n    kit.stage.append(el);\n    const bar = el.querySelector('i').style, start = kit.start;\n    return (t) => { bar.width = (Math.min(1, (start + t) / UI.TOTAL) * 100).toFixed(2) + '%'; };\n  },\n  // Set text only when it changes.\n  set(el, v) { v = String(v); if (el.textContent !== v) el.textContent = v; },\n  // Signed amount: +10.00 / −10.00 (true minus sign).\n  sgn(n, dp) { const v = Math.abs(n) < 1e-9 ? 0 : n; return (v > 0 ? '+' : v < 0 ? '−' : '') + UI.fmt(Math.abs(v), dp); },\n  // Entrance: fade in and rise from dy px, starting at a, over d seconds. Optional fade-out window [o0, o1].\n  rise(kit, st, t, a, d, dy, o0, o1) {\n    const p = kit.seg(t, a, a + (d || 0.6));\n    const out = o0 == null ? 0 : kit.ei(kit.seg(t, o0, o1));\n    st.opacity = (kit.eo(kit.seg(t, a, a + (d || 0.6) * 0.6)) * (1 - out)).toFixed(3);\n    st.transform = 'translateY(' + kit.lerp(dy == null ? 30 : dy, 0, kit.eo(p)).toFixed(1) + 'px)';\n    return p;\n  },\n  // Countdown ring centred at cx, cy: shown from tIn, a pause sign, then n seconds counting down from t0, gone by tOut.\n  ring(kit, cx, cy, r, tIn, t0, n, tOut, label) {\n    const C = 2 * Math.PI * r;\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"ui-ring\" transform=\"translate(' + cx + ' ' + cy + ')\">' +\n      '<circle r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" style=\"stroke:color-mix(in srgb, var(--second) 10%, transparent)\"/>' +\n      '<circle class=\"ui-arc\" r=\"' + r + '\" fill=\"none\" stroke-width=\"12\" stroke-linecap=\"round\" transform=\"rotate(-90)\" stroke-dasharray=\"' + C.toFixed(1) + '\" style=\"stroke:var(--main)\"/>' +\n      '<g class=\"ui-pause\"><rect x=\"-24\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/><rect x=\"8\" y=\"-32\" width=\"16\" height=\"64\" rx=\"4\" style=\"fill:var(--second)\"/></g>' +\n      '<text class=\"ui-n mono\" y=\"26\" text-anchor=\"middle\" style=\"fill:var(--second);font-size:72px\"></text>' +\n      (label ? '<text y=\"' + (-r - 30) + '\" text-anchor=\"middle\" style=\"fill:color-mix(in srgb, var(--second) 62%, var(--ground));font-size:26px\">' + kit.esc(label) + '</text>' : '') + '</g></svg>');\n    kit.stage.append(svg);\n    const g = svg.querySelector('.ui-ring'), arc = svg.querySelector('.ui-arc'), pause = svg.querySelector('.ui-pause').style, num = svg.querySelector('.ui-n');\n    return (t) => {\n      const p = kit.seg(t, tIn, tIn + 0.5);\n      g.style.opacity = kit.eo(p) * (1 - kit.ei(kit.seg(t, tOut - 0.4, tOut)));\n      g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ') scale(' + kit.lerp(0.8, 1, kit.eob(p, 1.6)).toFixed(4) + ')');\n      arc.setAttribute('stroke-dashoffset', (C * kit.seg(t, t0, t0 + n)).toFixed(1));\n      const txt = t < t0 ? '' : String(Math.max(0, Math.min(n, Math.ceil(n - (t - t0)))));\n      if (num.textContent !== txt) num.textContent = txt;\n      pause.opacity = t < t0 ? 1 : 0;\n    };\n  },\n  fmt(n, dp) { return n.toLocaleString('en-US', { minimumFractionDigits: dp || 0, maximumFractionDigits: dp || 0 }); },\n  // Deterministic fictional price walk: returns [[x,y],...] across x0..x1.\n  walk(kit, seed, n, x0, x1, y0, y1, amp) {\n    const r = kit.rng(seed); const pts = []; let v = 0;\n    for (let i = 0; i < n; i++) {\n      v += (r() - 0.5) * amp; v *= 0.86;\n      const p = i / (n - 1);\n      pts.push([x0 + (x1 - x0) * p, y0 + (y1 - y0) * p + v]);\n    }\n    return pts;\n  },\n  d(pts) { return pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' '); },\n  // The tutor sits in this corner between scenes: feet x, feet y, brain width (px).\n  CORNER: { x: 1735, y: 1042, s: 160 },\n  // Side speech bubbles sit this far higher than in T01, so they clear the two-line caption band (y ≈ 784–930).\n  LIFT: 96,\n  // The brain tutor. cfg.keys: [{t, x, y, s, d?, ease?}] feet position and brain width, each key reached at t after a d-second move.\n  // cfg.poses: [{t, pose, flip?}] ('wave' and 'walk' play their frame loops). cfg.says: [{t0, t1, text, side?: 'left'|'top'}].\n  tutor(kit, cfg) {\n    const M = kit.json('tutor.json');\n    const root = kit.h('<div class=\"tutor\"></div>');\n    const shadow = kit.h('<div class=\"tutor-shadow\"></div>');\n    root.append(shadow);\n    const imgs = {};\n    for (const n of Object.keys(M)) {\n      const im = kit.h('<img class=\"tutor-img\" alt=\"\" src=\"' + kit.assets.url('tutor-' + n + '.webp') + '\">');\n      imgs[n] = im.style; root.append(im);\n    }\n    const says = (cfg.says || []).map((s) => {\n      const b = kit.h('<div class=\"bubble' + (s.side === 'top' ? ' is-top' : '') + '\"><p>' + kit.esc(s.text) + '</p></div>');\n      root.append(b);\n      return Object.assign({}, s, { st: b.style });\n    });\n    kit.stage.append(root);\n    const keys = cfg.keys, poses = cfg.poses;\n    const LOOPS = {\n      wave: { f: ['wv1', 'wv2', 'wv3', 'wv4', 'wv3', 'wv2'], fps: 7 },\n      walk: { f: ['wk0', 'wk1', 'wk2', 'wk3', 'wk4', 'wk5', 'wk6', 'wk7'], fps: 11 },\n    };\n    const name = (p, dt) => { const L = LOOPS[p.pose]; return L ? L.f[Math.floor(Math.max(0, dt) * L.fps) % L.f.length] : p.pose; };\n    let shown = [];\n    const place = (n, flip, x, y, s, op, sc, lift) => {\n      const m = M[n], st = imgs[n], k = s / m.bw;\n      st.width = (m.w * k).toFixed(1) + 'px'; st.height = (m.h * k).toFixed(1) + 'px';\n      st.left = (x - m.ax * k).toFixed(1) + 'px'; st.top = (y - m.feet * k).toFixed(1) + 'px';\n      st.transformOrigin = (m.ax * k).toFixed(1) + 'px ' + (m.feet * k).toFixed(1) + 'px';\n      st.transform = 'translateY(' + lift.toFixed(2) + 'px) scale(' + (flip ? -sc : sc).toFixed(4) + ',' + sc.toFixed(4) + ')';\n      st.opacity = op;\n      shown.push(n);\n    };\n    const api = {\n      at(t) {\n        let x = keys[0].x, y = keys[0].y, s = keys[0].s;\n        for (let i = 1; i < keys.length; i++) {\n          const a = keys[i - 1], b = keys[i], d = b.d == null ? 0.8 : b.d;\n          const p = kit.seg(t, b.t - d, b.t);\n          if (p <= 0) break;\n          const e = (b.ease || kit.eio)(p);\n          x = kit.lerp(a.x, b.x, e); y = kit.lerp(a.y, b.y, e); s = kit.lerp(a.s, b.s, e);\n        }\n        return { x, y, s };\n      },\n      render(t) {\n        for (const n of shown) imgs[n].opacity = 0;\n        shown = [];\n        const { x, y, s } = api.at(t);\n        let i = 0;\n        for (let j = 0; j < poses.length; j++) if (poses[j].t <= t) i = j;\n        const cur = poses[i], dt = t - cur.t;\n        const sw = i > 0 ? kit.clamp01(dt / 0.18) : 1;\n        const pop = i > 0 ? kit.clamp01(dt / 0.32) : 1;\n        const bob = Math.sin(t * 2 * Math.PI / 2.6) * s * 0.025;\n        const hop = cur.pose === 'walk' ? 0 : Math.sin(Math.PI * pop) * s * 0.07;\n        const step = cur.pose === 'walk' ? Math.abs(Math.sin(dt * Math.PI * 2.75)) * s * 0.03 : 0;\n        const breathe = 1 + 0.012 * Math.sin(t * 2 * Math.PI / 3.1);\n        const sc = breathe * (cur.pose === 'walk' ? 1 : kit.lerp(0.93, 1, kit.eob(pop, 1.8)));\n        if (sw < 1) { const pv = poses[i - 1]; place(name(pv, t - pv.t), !!pv.flip, x, y, s, 1 - sw, breathe, bob); }\n        place(name(cur, dt), !!cur.flip, x, y, s, sw, sc, bob - hop - step);\n        const sh = shadow.style;\n        sh.left = (x - s * 0.6).toFixed(1) + 'px'; sh.top = (y - s * 0.07).toFixed(1) + 'px';\n        sh.width = (s * 1.2).toFixed(1) + 'px'; sh.height = (s * 0.16).toFixed(1) + 'px';\n        sh.opacity = 0.75 - (hop + step) / s;\n        for (const b of says) {\n          const p = kit.seg(t, b.t0, b.t0 + 0.32), o = kit.seg(t, b.t1 - 0.25, b.t1);\n          b.st.opacity = kit.eo(p) * (1 - kit.ei(o));\n          if (b.st.opacity === '0') continue;\n          const g = kit.lerp(0.88, 1, kit.eob(p, 1.6)) * kit.lerp(1, 0.96, kit.ei(o));\n          if (b.side === 'top') {\n            b.st.transformOrigin = '50% 100%';\n            b.st.transform = 'translate(' + x.toFixed(1) + 'px,' + (y - s * 1.42).toFixed(1) + 'px) translate(-50%,-100%) scale(' + g.toFixed(4) + ')';\n          } else {\n            b.st.transformOrigin = '100% 100%';\n            b.st.transform = 'translate(' + (x - s * 0.18).toFixed(1) + 'px,' + (y - s * 1.12 - UI.LIFT).toFixed(1) + 'px) translate(-100%,-100%) scale(' + g.toFixed(4) + ')';\n          }\n        }\n      },\n    };\n    return api;\n  },\n  // ── Chart helpers (from T14) ──\n  // Piecewise eased value through keys [[t, v], ...].\n  path(keys, t) {\n    const K = UI.K; let v = keys[0][1];\n    for (let i = 1; i < keys.length; i++) { const a = keys[i - 1], b = keys[i]; if (t >= a[0]) v = K.lerp(a[1], b[1], K.eio(K.clamp01((t - a[0]) / (b[0] - a[0])))); }\n    return v;\n  },\n  // Price grid for a chart: horizontal lines with price labels to the right of x1.\n  grid(x0, x1, yOf, lo, hi, step) {\n    let g = '';\n    for (let p = lo; p <= hi + 1e-6; p += step) {\n      const y = yOf(p).toFixed(1);\n      g += '<line x1=\"' + x0 + '\" x2=\"' + x1 + '\" y1=\"' + y + '\" y2=\"' + y + '\" style=\"stroke:color-mix(in srgb, var(--second) 9%, transparent);stroke-width:1.5\"/>' +\n        '<text x=\"' + (x1 + 16) + '\" y=\"' + (+y + 8) + '\" class=\"mono\" style=\"fill:color-mix(in srgb, var(--second) 50%, var(--ground));font-size:22px\">' + UI.fmt(p) + '</text>';\n    }\n    return g;\n  },\n  // Same grid with the price labels on the left, ending at x0 - 14.\n  gridL(x0, x1, yOf, lo, hi, step) {\n    let g = '';\n    for (let p = lo; p <= hi + 1e-6; p += step) {\n      const y = yOf(p).toFixed(1);\n      g += '<line x1=\"' + x0 + '\" x2=\"' + x1 + '\" y1=\"' + y + '\" y2=\"' + y + '\" style=\"stroke:color-mix(in srgb, var(--second) 9%, transparent);stroke-width:1.5\"/>' +\n        '<text x=\"' + (x0 - 14) + '\" y=\"' + (+y + 8) + '\" text-anchor=\"end\" class=\"mono\" style=\"fill:color-mix(in srgb, var(--second) 50%, var(--ground));font-size:22px\">' + UI.fmt(p) + '</text>';\n    }\n    return g;\n  },\n  // Polyline of a price function f(s) for s in [s0, s1], mapped with xOf and yOf.\n  line(f, s0, s1, xOf, yOf, dt) {\n    let d = '';\n    for (let s = s0; s <= s1 + 1e-6; s += dt || 0.05) d += (d ? 'L' : 'M') + xOf(s).toFixed(1) + ' ' + yOf(f(s)).toFixed(1);\n    return d || 'M0 0';\n  },\n  // ── Candle helpers (T14) ──\n  // n SVG candles: html to place inside an <svg>; set(i, c) draws candle i with\n  // c = {x, w, o, h, l, c, y: price → y, op?, live?, col?}. Up (close ≥ open) is --up, down is --down.\n  cdl(kit, cls, n) {\n    let html = '';\n    for (let i = 0; i < n; i++) html += '<g class=\"' + cls + '\"><line class=\"' + cls + '-w\" stroke-linecap=\"round\"/><rect class=\"' + cls + '-b\" rx=\"4\"/></g>';\n    let G, W, B;\n    return {\n      html,\n      set(i, c) {\n        if (!G) { const all = (s) => [...kit.stage.querySelectorAll(s)]; G = all('.' + cls); W = all('.' + cls + '-w'); B = all('.' + cls + '-b'); }\n        const col = c.col || (c.c >= c.o ? 'var(--up)' : 'var(--down)');\n        const yt = c.y(Math.max(c.o, c.c)), yb = c.y(Math.min(c.o, c.c)), bh = Math.max(c.min == null ? 4 : c.min, yb - yt), ym = (yt + yb) / 2;\n        const w = W[i], b = B[i], sw = Math.max(3, c.w * 0.07);\n        w.setAttribute('x1', c.x.toFixed(1)); w.setAttribute('x2', c.x.toFixed(1));\n        w.setAttribute('y1', c.y(c.h).toFixed(1)); w.setAttribute('y2', c.y(c.l).toFixed(1));\n        w.setAttribute('stroke-width', sw.toFixed(1)); w.style.stroke = col;\n        b.setAttribute('x', (c.x - c.w / 2).toFixed(1)); b.setAttribute('width', c.w.toFixed(1));\n        b.setAttribute('y', (ym - bh / 2).toFixed(1)); b.setAttribute('height', bh.toFixed(1));\n        b.setAttribute('stroke-width', (sw * 0.8).toFixed(1));\n        b.style.stroke = col;\n        b.style.fill = c.live ? 'color-mix(in srgb, ' + col + ' 38%, var(--ground))' : col;\n        G[i].style.opacity = c.op == null ? 1 : c.op;\n      },\n    };\n  },\n  // ── T23: one fictional BTC/USDT replay used by every step ──\n  D: {\n    // 5-minute candles [open, high, low, close] for the last hour. The last three are built from the 1-minute candles below.\n    K5: [[59000, 59180, 58950, 59150], [59150, 59300, 59100, 59250], [59250, 59280, 59080, 59120], [59120, 59450, 59110, 59420],\n      [59420, 59640, 59400, 59560], [59560, 59610, 59350, 59400], [59400, 59780, 59380, 59750], [59750, 60050, 59720, 60000],\n      [60000, 60220, 59880, 60200], [60200, 60650, 60180, 60320], [60320, 60360, 59860, 60100], [60100, 60140, 59850, 60000]],\n    // 1-minute candles: 0–14 before the decision (last close 60,000), 15–22 the replay after a DEMO BUY at 60,000.\n    C1: [[60200, 60380, 60180, 60350], [60350, 60520, 60330, 60500], [60500, 60650, 60480, 60600], [60600, 60640, 60450, 60480], [60480, 60520, 60300, 60320],\n      [60320, 60360, 60150, 60180], [60180, 60220, 60020, 60050], [60050, 60080, 59860, 59900], [59900, 60060, 59880, 60040], [60040, 60120, 59990, 60100],\n      [60100, 60140, 59960, 59980], [59980, 60000, 59850, 59880], [59880, 59960, 59860, 59940], [59940, 60020, 59920, 59990], [59990, 60040, 59970, 60000],\n      [60000, 60120, 59980, 60100], [60100, 60260, 60080, 60230], [60230, 60400, 60200, 60360], [60360, 60380, 60200, 60220],\n      [60220, 60250, 60050, 60080], [60080, 60110, 59900, 59930], [59930, 59980, 59820, 59840], [59840, 59870, 59660, 59700]],\n    V1: [0.62, 0.74, 0.86, 0.6, 0.52, 0.48, 0.44, 0.58, 0.5, 0.42, 0.38, 0.5, 0.4, 0.36, 0.34, 0.4, 0.48, 0.56, 0.5, 0.58, 0.66, 0.8, 0.92],\n    x1: (i) => 200 + i * 36,\n    y1: (p) => 720 - (p - 59600) * 0.325,\n    x5: (i) => 236 + i * 64,\n    y5: (p) => 720 - (p - 58800) * 0.195,\n  },\n  STEPS: ['Coin', 'Context', 'Levels', 'Doubts', 'Costs', 'Decide', 'Monitor', 'Journal'],\n  // Scene header: eyebrow + headline at top left. Returns render(t).\n  head(kit, kick, title, o) {\n    o = o || {};\n    const el = kit.h('<div class=\"words\" style=\"left:140px;top:' + (o.top || 124) + 'px;width:' + (o.w || 960) + 'px;gap:14px\"><p class=\"kick\">' + kick + '</p>' +\n      '<h2 class=\"line\" style=\"font-size:' + (o.fs || 68) + 'px\">' + title + '</h2></div>');\n    kit.stage.append(el);\n    const k = el.querySelector('.kick').style, h = el.querySelector('.line');\n    return (t) => { k.opacity = kit.eo(kit.seg(t, 0, 0.5)); kit.TextFx.fadeFromRight(h, t, 0.1); };\n  },\n  // Step tracker, top right: eight numbered dots, steps before cur done, cur lit. Returns render(t).\n  track(kit, cur) {\n    let g = '';\n    UI.STEPS.forEach((s, i) => {\n      const x = 1214 + i * 72, n = i + 1;\n      g += '<g class=\"tk-d\" transform=\"translate(' + x + ' 168)\"><circle r=\"23\" stroke-width=\"2.5\" style=\"fill:' + (n < cur ? 'color-mix(in srgb, var(--main) 28%, var(--ground))' : 'var(--ground)') + ';stroke:color-mix(in srgb, var(--main) ' + (n <= cur ? 90 : 35) + '%, transparent)\"/>' +\n        '<text class=\"mono\" y=\"8\" text-anchor=\"middle\" style=\"font-size:22px;fill:' + (n < cur ? 'var(--main)' : 'color-mix(in srgb, var(--second) 60%, var(--ground))') + '\">' + n + '</text></g>';\n      if (i < 7) g += '<line x1=\"' + (x + 25) + '\" x2=\"' + (x + 47) + '\" y1=\"168\" y2=\"168\" stroke-width=\"2.5\" style=\"stroke:color-mix(in srgb, var(--main) ' + (n < cur ? 70 : 22) + '%, transparent)\"/>';\n    });\n    const cx = 1214 + (cur - 1) * 72;\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"tk\">' + g +\n      '<g class=\"tk-c\" transform=\"translate(' + cx + ' 168)\"><circle class=\"tk-h\" r=\"23\" style=\"fill:none;stroke:var(--main);stroke-width:3\"/><circle r=\"23\" style=\"fill:var(--main)\"/><text class=\"mono\" y=\"8\" text-anchor=\"middle\" style=\"font-size:22px;fill:var(--ground);font-weight:600\">' + cur + '</text></g>' +\n      '<text x=\"' + cx + '\" y=\"226\" text-anchor=\"middle\" class=\"tk-l\" style=\"font-size:22px;font-weight:600;fill:var(--main)\">' + UI.STEPS[cur - 1] + '</text></g></svg>');\n    kit.stage.append(svg);\n    const all = svg.querySelector('.tk').style, c = svg.querySelector('.tk-c'), h = svg.querySelector('.tk-h'), l = svg.querySelector('.tk-l').style;\n    return (t) => {\n      all.opacity = kit.eo(kit.seg(t, 0.2, 0.7));\n      const p = kit.seg(t, 0.5, 1.0);\n      c.setAttribute('transform', 'translate(' + cx + ' 168) scale(' + kit.lerp(0.6, 1, kit.eob(p, 1.8)).toFixed(3) + ')');\n      const w = ((t - 1) % 2.4 + 2.4) % 2.4 / 2.4;\n      h.setAttribute('r', (23 + 14 * w).toFixed(1)); h.style.opacity = t > 1 ? (1 - w) * 0.6 : 0;\n      l.opacity = kit.eo(kit.seg(t, 0.8, 1.2));\n    };\n  },\n  // The 1-minute chart: grid, n candles (default the 15 before the decision), optional volume bars.\n  // o.draw: candles draw in from this time (default: already there). Returns {cd, render(t)}.\n  chart1(kit, cls, o) {\n    o = o || {};\n    const D = UI.D, n = o.n || 15, cd = UI.cdl(kit, cls + '-c', o.cap || n);\n    let vol = '';\n    if (o.vol) for (let i = 0; i < (o.cap || n); i++) vol += '<rect class=\"' + cls + '-v\" x=\"' + (D.x1(i) - 11) + '\" y=\"' + (768 - D.V1[i] * 36).toFixed(1) + '\" width=\"22\" height=\"' + (D.V1[i] * 36).toFixed(1) + '\" rx=\"3\" style=\"fill:color-mix(in srgb, var(--main) 45%, transparent)\"/>';\n    const svg = kit.h('<svg class=\"art\" viewBox=\"0 0 1920 1080\"><g class=\"' + cls + '-g\">' + UI.grid(160, 1040, D.y1, 59600, 60800, 200) + '</g>' + vol + cd.html + '</svg>');\n    kit.stage.append(svg);\n    const f = kit.h('<p class=\"fict\" style=\"position:absolute;left:160px;top:276px;margin:0\">' + (o.label || 'BTC/USDT · 1-minute · fictional replay · educational simulation') + '</p>');\n    kit.stage.append(f);\n    const g = svg.querySelector('.' + cls + '-g').style, fs = f.style, vs = [...svg.querySelectorAll('.' + cls + '-v')].map((e) => e.style);\n    return {\n      cd, svg,\n      render(t, dim) {\n        const K = kit, d0 = o.draw == null ? -10 : o.draw, m = dim == null ? 1 : dim;\n        const a0 = o.at || 0; g.opacity = K.eo(K.seg(t, a0, a0 + 0.6)); fs.opacity = 0.9 * K.eo(K.seg(t, a0 + 0.3, a0 + 0.9));\n        for (let i = 0; i < n; i++) {\n          const c = D.C1[i], s = d0 + i * (o.k || 0.1), p = K.eo(K.seg(t, s, s + 0.4));\n          cd.set(i, { x: D.x1(i), w: 22, o: c[0], h: c[0] + (c[1] - c[0]) * p, l: c[0] + (c[2] - c[0]) * p, c: c[0] + (c[3] - c[0]) * p, y: D.y1, op: K.eo(K.seg(t, s, s + 0.2)) * m });\n          if (vs[i]) { vs[i].opacity = K.eo(K.seg(t, s, s + 0.3)) * m; }\n        }\n      },\n    };\n  },\n  // A horizontal price line across the chart with a label tag at its right end.\n  hline(p, color, dash, x0, x1) {\n    const y = UI.D.y1(p).toFixed(1);\n    return '<line x1=\"' + (x0 || 160) + '\" x2=\"' + (x1 || 1040) + '\" y1=\"' + y + '\" y2=\"' + y + '\" pathLength=\"1\" stroke-width=\"3\"' + (dash ? ' stroke-dasharray=\"' + dash + '\"' : '') + ' style=\"stroke:' + color + '\"/>';\n  },\n  // Zone band between two prices.\n  band(a, b, color, x0, x1) {\n    const Y = UI.D.y1;\n    return '<rect x=\"' + (x0 || 160) + '\" width=\"' + ((x1 || 1040) - (x0 || 160)) + '\" y=\"' + Y(b).toFixed(1) + '\" height=\"' + (Y(a) - Y(b)).toFixed(1) + '\" rx=\"6\" style=\"fill:color-mix(in srgb, ' + color + ' 18%, transparent);stroke:color-mix(in srgb, ' + color + ' 65%, transparent);stroke-width:2\"/>';\n  },\n  // Typewriter: show the first part of s, from time a at cps characters per second.\n  type(el, s, t, a, cps) {\n    const n = Math.max(0, Math.min(s.length, Math.floor((t - a) * (cps || 30))));\n    UI.set(el, s.slice(0, n));\n    return n >= s.length;\n  },\n};\nUI.K = kit;\n","tutor.json":"{\n  \"wv1\": {\n    \"w\": 381,\n    \"h\": 448,\n    \"ax\": 163.5,\n    \"feet\": 434,\n    \"bw\": 305\n  },\n  \"wv2\": {\n    \"w\": 374,\n    \"h\": 448,\n    \"ax\": 165.0,\n    \"feet\": 436,\n    \"bw\": 305\n  },\n  \"wv3\": {\n    \"w\": 363,\n    \"h\": 448,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wv4\": {\n    \"w\": 375,\n    \"h\": 446,\n    \"ax\": 166.0,\n    \"feet\": 431,\n    \"bw\": 305\n  },\n  \"wk0\": {\n    \"w\": 353,\n    \"h\": 460,\n    \"ax\": 162.5,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk1\": {\n    \"w\": 361,\n    \"h\": 460,\n    \"ax\": 164.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk2\": {\n    \"w\": 345,\n    \"h\": 460,\n    \"ax\": 170.5,\n    \"feet\": 448,\n    \"bw\": 310\n  },\n  \"wk3\": {\n    \"w\": 365,\n    \"h\": 460,\n    \"ax\": 164.0,\n    \"feet\": 446,\n    \"bw\": 310\n  },\n  \"wk4\": {\n    \"w\": 375,\n    \"h\": 457,\n    \"ax\": 167.5,\n    \"feet\": 444,\n    \"bw\": 310\n  },\n  \"wk5\": {\n    \"w\": 364,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk6\": {\n    \"w\": 354,\n    \"h\": 457,\n    \"ax\": 166.5,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"wk7\": {\n    \"w\": 365,\n    \"h\": 457,\n    \"ax\": 167.0,\n    \"feet\": 445,\n    \"bw\": 310\n  },\n  \"present\": {\n    \"w\": 546,\n    \"h\": 612,\n    \"ax\": 218,\n    \"feet\": 605,\n    \"bw\": 421\n  },\n  \"explain\": {\n    \"w\": 502,\n    \"h\": 602,\n    \"ax\": 275,\n    \"feet\": 594,\n    \"bw\": 394\n  },\n  \"think\": {\n    \"w\": 465,\n    \"h\": 656,\n    \"ax\": 229,\n    \"feet\": 648,\n    \"bw\": 452\n  },\n  \"point\": {\n    \"w\": 547,\n    \"h\": 568,\n    \"ax\": 210,\n    \"feet\": 561,\n    \"bw\": 415\n  },\n  \"confused\": {\n    \"w\": 185,\n    \"h\": 169,\n    \"ax\": 85.0,\n    \"feet\": 162,\n    \"bw\": 138\n  },\n  \"thumbs\": {\n    \"w\": 181,\n    \"h\": 179,\n    \"ax\": 102.0,\n    \"feet\": 172,\n    \"bw\": 138\n  },\n  \"cheer\": {\n    \"w\": 207,\n    \"h\": 182,\n    \"ax\": 105.0,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"idea\": {\n    \"w\": 169,\n    \"h\": 178,\n    \"ax\": 69.5,\n    \"feet\": 171,\n    \"bw\": 138\n  },\n  \"magnify\": {\n    \"w\": 187,\n    \"h\": 170,\n    \"ax\": 85.5,\n    \"feet\": 163,\n    \"bw\": 138\n  },\n  \"read\": {\n    \"w\": 190,\n    \"h\": 181,\n    \"ax\": 82.5,\n    \"feet\": 175,\n    \"bw\": 138\n  },\n  \"checklist\": {\n    \"w\": 185,\n    \"h\": 161,\n    \"ax\": 97.5,\n    \"feet\": 153,\n    \"bw\": 138\n  },\n  \"laptop\": {\n    \"w\": 185,\n    \"h\": 170,\n    \"ax\": 82.0,\n    \"feet\": 164,\n    \"bw\": 138\n  },\n  \"typing\": {\n    \"w\": 207,\n    \"h\": 175,\n    \"ax\": 74.0,\n    \"feet\": 167,\n    \"bw\": 138\n  },\n  \"writing\": {\n    \"w\": 191,\n    \"h\": 169,\n    \"ax\": 111.5,\n    \"feet\": 161,\n    \"bw\": 138\n  },\n  \"calm\": {\n    \"w\": 234,\n    \"h\": 174,\n    \"ax\": 111.0,\n    \"feet\": 167,\n    \"bw\": 138\n  },\n  \"celebrate\": {\n    \"w\": 209,\n    \"h\": 171,\n    \"ax\": 100.5,\n    \"feet\": 165,\n    \"bw\": 138\n  },\n  \"hi\": {\n    \"w\": 518,\n    \"h\": 594,\n    \"ax\": 298,\n    \"feet\": 587,\n    \"bw\": 408\n  },\n  \"candles\": {\n    \"w\": 257,\n    \"h\": 160,\n    \"ax\": 70.5,\n    \"feet\": 151,\n    \"bw\": 138\n  },\n  \"pointer\": {\n    \"w\": 248,\n    \"h\": 171,\n    \"ax\": 74.5,\n    \"feet\": 164,\n    \"bw\": 138\n  }\n}"}};</script>
+<script>
+/* XORA Futures Edge lesson player.
+ *
+ * Plays a lesson written as scene modules (content/futures-edge/<id>/modules) as a plain web
+ * page. Everything on screen is a pure function of the lesson time t, so the page can pause,
+ * seek and replay at any point. It provides the small "kit" the scenes are written against
+ * (stage, easing, TextFx, assets, json) and a WebAudio synth for score.js.
+ *
+ * With a voiceover, build-lesson.mjs lengthens some scenes so the narration fits: a scene with
+ * stretch factor k plays its animation and sound effects k times slower. Scene code still sees the
+ * authored timeline (kit.start, kit.dur and t), so nothing in the modules changes. The voice is
+ * one mixed track; the music dips under each line, and the CC button shows the line as text.
+ *
+ * build-lesson.mjs inlines this file into public/futures-edge/lessons/<id>.html, after a
+ * `window.FILM = {...}` block that carries the scene list, module texts and asset paths.
+ */
+(function () {
+  "use strict";
+
+  const F = window.FILM;
+  const W = F.width;
+  const H = F.height;
+
+  // ── Maths and easing ───────────────────────────────────────────────────────
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const clamp01 = (x) => clamp(x, 0, 1);
+  const seg = (t, a, b) => (b <= a ? (t >= b ? 1 : 0) : clamp01((t - a) / (b - a)));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const eo = (x) => 1 - Math.pow(1 - clamp01(x), 3);
+  const ei = (x) => Math.pow(clamp01(x), 3);
+  const eio = (x) => {
+    x = clamp01(x);
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  };
+  const eob = (x, s = 1.4) => {
+    x = clamp01(x);
+    return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2);
+  };
+  const rng = (seed) => {
+    let a = seed >>> 0 || 1;
+    return () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+  const breathe = (t, amt = 0.012, period = 3.2) => 1 + amt * Math.sin((2 * Math.PI * t) / period);
+
+  // ── DOM helpers ────────────────────────────────────────────────────────────
+  const h = (html) => {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = String(html).trim();
+    return tpl.content.firstElementChild;
+  };
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const el = (tag, o = {}, children = []) => {
+    const e = document.createElement(tag);
+    if (o.class) e.className = o.class;
+    if (o.style) e.setAttribute("style", o.style);
+    if (o.text != null) e.textContent = o.text;
+    if (o.html != null) e.innerHTML = o.html;
+    for (const [k, v] of Object.entries(o.attrs || {})) e.setAttribute(k, v);
+    for (const c of children) e.append(c);
+    return e;
+  };
+
+  // Words of an element as inline-block spans (inline markup such as <b> is kept).
+  const wordCache = new WeakMap();
+  function words(root) {
+    let list = wordCache.get(root);
+    if (list) return list;
+    list = [];
+    const walk = (node) => {
+      for (const child of Array.from(node.childNodes)) {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const part of child.textContent.split(/(\s+)/)) {
+            if (!part) continue;
+            if (/^\s+$/.test(part)) {
+              frag.append(document.createTextNode(part));
+            } else {
+              const s = document.createElement("span");
+              s.textContent = part;
+              s.style.display = "inline-block";
+              frag.append(s);
+              list.push(s);
+            }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      }
+    };
+    walk(root);
+    wordCache.set(root, list);
+    return list;
+  }
+  const TextFx = {
+    fadeFromRight(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.11, d = o.dur ?? 0.5, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = eo(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = p;
+        s.style.transform = "translateX(" + ((1 - p) * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+    fadeOutLeft(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.04, d = o.dur ?? 0.35, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = ei(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = 1 - p;
+        s.style.transform = "translateX(" + (-p * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+  };
+
+  // ── The kit the scene modules use ──────────────────────────────────────────
+  const modules = F.modules;
+  const jsonCache = {};
+  const assets = {
+    url: (name) => F.assetBase + name,
+    has: (name) => Object.prototype.hasOwnProperty.call(F.assets, name),
+    list: () => Object.keys(F.assets),
+  };
+  const defs = {};
+  let scoreFn = null;
+
+  // start/dur: the scene in the played timeline; oldStart/oldDur: as authored (k = dur / oldDur).
+  let acc = 0;
+  const scenes = F.scenes.map((s) => {
+    const o = Object.assign({ k: 1, oldStart: acc, oldDur: s.dur }, s, { start: acc });
+    acc += s.dur;
+    return o;
+  });
+  const END = acc;
+  const OLD_END = scenes.reduce((a, s) => a + s.oldDur, 0);
+  // Authored time to played time.
+  function warp(x) {
+    for (let i = scenes.length - 1; i >= 0; i--) {
+      const s = scenes[i];
+      if (x >= s.oldStart) return s.start + (x - s.oldStart) * s.k;
+    }
+    return x;
+  }
+  // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
+  const lines = (F.voice && F.voice.lines) || [];
+  // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
+  const duckSpans = [];
+  if (F.voice && F.voice.src) for (const l of lines) {
+    const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
+    if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
+  }
+
+  function makeKit(box, start, dur) {
+    return {
+      stage: box, start, dur, W, H,
+      seg, lerp, eo, ei, eio, eob, clamp, clamp01, rng, breathe, TextFx, h, el, esc,
+      assets,
+      module: (n) => (n in modules ? modules[n] : null),
+      json: (n) => (jsonCache[n] ??= JSON.parse(modules[n])),
+      modules: () => Object.keys(modules),
+      scene: (id, def) => { defs[id] = def; },
+      score: (fn) => { scoreFn = fn; },
+    };
+  }
+  const run = (name, kit) => new Function("kit", modules[name] + "\n//# sourceURL=" + F.id + "/" + name)(kit);
+
+  // ── Stage ──────────────────────────────────────────────────────────────────
+  const stage = document.getElementById("stage");
+  const css = document.createElement("style");
+  css.textContent = modules["base.css"] || "";
+  document.head.append(css);
+
+  function fit() {
+    const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+  }
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 200));
+  fit();
+
+  // ── Audio: score.js recorded as events, then synthesised with WebAudio ─────
+  function midiOf(p) {
+    if (typeof p === "number") return p;
+    const m = /^([A-Ga-g])([#b]?)(-?\d)$/.exec(String(p).trim());
+    if (!m) return 72;
+    const base = { c: 0, d: 2, e: 4, f: 5, g: 7, a: 9, b: 11 }[m[1].toLowerCase()];
+    return 12 * (Number(m[3]) + 1) + base + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
+  }
+
+  // score.js runs twice: the music against the played timeline, the sound effects against the
+  // authored one and then moved onto the played one, so each cue stays with its animation.
+  function recordScore() {
+    const T = { END };
+    for (const s of scenes) T[s.id] = s.start;
+    const music = recordPass(T);
+    const Told = { END: OLD_END };
+    for (const s of scenes) Told[s.id] = s.oldStart;
+    const cues = recordPass(Told);
+    const ev = music.ev.filter((e) => e.k !== "f");
+    for (const e of cues.ev) {
+      if (e.k !== "f") continue;
+      e.t = warp(e.t);
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      ev.push(e);
+    }
+    ev.sort((a, b) => a.s - b.s);
+    return { ev, tracks: music.tracks, master: music.master };
+  }
+
+  function recordPass(T) {
+    const ev = [];
+    const tracks = {};
+    const master = { gain: -6, music: 0, fadeOut: 1 };
+    let B = 0.5, t0 = 0;
+    const at = (o) => (o.t != null ? o.t : t0 + (o.beat || 0) * B);
+    const len = (o, d) => (o.dur != null ? o.dur : o.beats != null ? o.beats * B : d);
+    const push = (e) => {
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      if (e.s < -0.1) return;
+      if (e.s < 0) { e.t += -e.s; e.s = 0; }
+      ev.push(e);
+    };
+    const hits = (str, rep, step, from, vel, fn) => {
+      for (let r = 0; r < rep; r++) {
+        for (let i = 0; i < str.length; i++) {
+          const c = str[i];
+          if (c !== "x" && c !== "X" && c !== "o") continue;
+          fn(t0 + (from + (r * str.length + i) * step) * B, vel * (c === "X" ? 1.25 : c === "o" ? 0.5 : 1));
+        }
+      }
+    };
+    const S = {
+      tempo(bpm, o = {}) { B = 60 / bpm; t0 = o.t0 || 0; },
+      beat: (n) => t0 + n * B,
+      toBeat: (t) => (t - t0) / B,
+      seed() {},
+      program(track, patch, o = {}) {
+        tracks[track] = { patch, gain: o.gain || 0, pan: o.pan || 0, rev: o.rev || 0, bright: o.bright ?? 1 };
+      },
+      note(track, p, o = {}) { push({ k: "n", track, m: midiOf(p), t: at(o), d: len(o, B), v: o.vel ?? 90 }); },
+      chord(track, ps, o = {}) { ps.forEach((p) => S.note(track, p, o)); },
+      pattern(track, str, o = {}) {
+        const pitches = o.pitch || ["C5"];
+        let k = 0;
+        const step = o.step ?? 0.5;
+        hits(str, o.repeat ?? 1, step, o.from || 0, o.vel ?? 80, (t, v) =>
+          push({ k: "n", track, m: midiOf(pitches[k++ % pitches.length]), t, d: o.dur ?? step * B * 0.9, v }));
+      },
+      drum(name, o = {}) { push({ k: "d", name, t: at(o), d: 0.3, v: o.vel ?? 90 }); },
+      drums(map, o = {}) {
+        for (const name of Object.keys(map)) {
+          hits(map[name], o.repeat ?? 1, o.step ?? 0.5, o.from || 0, o.vel ?? 80, (t, v) => push({ k: "d", name, t, d: 0.3, v }));
+        }
+      },
+      ticks(times, o = {}) { times.forEach((t) => push({ k: "f", name: "tick", t, d: 0.03, v: o.vel ?? 40, pitch: 0 })); },
+      fx(name, t, o = {}) { push({ k: "f", name, t, d: o.dur ?? 0.5, v: o.vel ?? 70, pitch: o.pitch || 0 }); },
+      run(track, ps, o = {}) {
+        const step = o.step ?? 0.1;
+        ps.forEach((p, i) => push({ k: "n", track, m: midiOf(p), t: o.t + i * step, d: step * 2.5, v: (o.vel ?? 70) + i * (o.cresc || 0) }));
+      },
+      master(o = {}) {
+        if (o.gain != null) master.gain = o.gain;
+        if (o.music != null) master.music = o.music;
+        if (o.fadeOut != null) master.fadeOut = o.fadeOut;
+      },
+    };
+    if (scoreFn) scoreFn(S, T);
+    return { ev, tracks, master };
+  }
+
+  const db = (x) => Math.pow(10, x / 20);
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+  const audio = {
+    ctx: null, enabled: false, muted: false, score: null,
+    out: null, verb: null, noise: null, session: null, timer: 0,
+    voiceData: null, voiceBuf: null, voiceOut: null,
+  };
+  const DUCK = 0.4;
+
+  function setupAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    const ctx = (audio.ctx = new AC());
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -14;
+    comp.ratio.value = 4;
+    comp.connect(ctx.destination);
+    audio.out = ctx.createGain();
+    audio.out.gain.value = db(audio.score.master.gain);
+    audio.out.connect(comp);
+    // A small generated room for the reverb send.
+    const len = Math.floor(ctx.sampleRate * 2.4);
+    const ir = ctx.createBuffer(2, len, ctx.sampleRate);
+    const r = rng(9);
+    for (let c = 0; c < 2; c++) {
+      const d = ir.getChannelData(c);
+      for (let i = 0; i < len; i++) d[i] = (r() * 2 - 1) * Math.pow(1 - i / len, 3);
+    }
+    audio.verb = ctx.createConvolver();
+    audio.verb.buffer = ir;
+    const verbGain = ctx.createGain();
+    verbGain.gain.value = 0.5;
+    audio.verb.connect(verbGain);
+    verbGain.connect(audio.out);
+    const nb = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+    const nd = nb.getChannelData(0);
+    const r2 = rng(3);
+    for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
+    audio.noise = nb;
+    // The voice skips the music's compressor and goes straight out.
+    audio.voiceOut = ctx.createGain();
+    audio.voiceOut.gain.value = 1;
+    audio.voiceOut.connect(ctx.destination);
+    decodeVoice();
+    return true;
+  }
+
+  async function decodeVoice() {
+    if (!audio.ctx || audio.voiceBuf || !audio.voiceData) return;
+    try {
+      const data = await audio.voiceData;
+      if (!data || audio.voiceBuf) return;
+      audio.voiceBuf = await new Promise((ok, fail) => audio.ctx.decodeAudioData(data.slice(0), ok, fail));
+    } catch (e) {
+      return; // the lesson plays on without the voice
+    }
+    if (audio.session) startVoice(audio.session);
+  }
+
+  // The voice of one session, from the session's start point; the music dips under each line.
+  function startVoice(s) {
+    if (!audio.voiceBuf || s.voice) return;
+    const ctx = audio.ctx;
+    const at = Math.max(s.ctx0, ctx.currentTime + 0.02);
+    const off = s.film0 + (at - s.ctx0);
+    if (off >= audio.voiceBuf.duration) return;
+    const src = ctx.createBufferSource();
+    src.buffer = audio.voiceBuf;
+    src.connect(audio.voiceOut);
+    src.start(at, off);
+    s.voice = src;
+    for (const g of [s.duck.gain, s.send.gain]) {
+      for (const [a, b] of duckSpans) {
+        if (b <= off) continue;
+        const ca = at + (a - off), cb = at + (b - off);
+        if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
+        g.setValueAtTime(DUCK, cb);
+        g.linearRampToValueAtTime(1, cb + 0.5);
+      }
+    }
+  }
+
+  // One playback session: a bus that can be dropped as a whole on pause or seek.
+  function startSession(filmT) {
+    stopSession();
+    if (!audio.enabled || audio.muted) return;
+    const ctx = audio.ctx;
+    const bus = ctx.createGain();
+    const duck = ctx.createGain();
+    bus.connect(duck);
+    duck.connect(audio.out);
+    const send = ctx.createGain();
+    send.connect(audio.verb);
+    // The instruments (not the drums or sound effects) go through their own level, master({ music }).
+    const music = ctx.createGain();
+    music.gain.value = db(audio.score.master.music);
+    music.connect(bus);
+    const musicSend = ctx.createGain();
+    musicSend.gain.value = music.gain.value;
+    musicSend.connect(send);
+    const tracks = {};
+    for (const [name, tr] of Object.entries(audio.score.tracks)) {
+      const g = ctx.createGain();
+      g.gain.value = db(tr.gain);
+      const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(music); } else g.connect(music);
+      const rs = ctx.createGain();
+      rs.gain.value = tr.rev;
+      g.connect(rs);
+      rs.connect(musicSend);
+      tracks[name] = { node: g, def: tr };
+    }
+    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0, voice: null };
+    audio.session = s;
+    startVoice(s);
+    // Notes already sounding at the seek point start now with what is left of them.
+    for (const e of audio.score.ev) {
+      if (e.s >= filmT) break;
+      if (e.k === "n" && e.s + e.d > filmT + 0.15) sound(e, s, filmT, e.s + e.d - filmT);
+    }
+    s.idx = audio.score.ev.findIndex((e) => e.s >= filmT);
+    if (s.idx < 0) s.idx = audio.score.ev.length;
+    // Fade the master out over the last seconds of the lesson.
+    const fo = audio.score.master.fadeOut;
+    if (fo > 0) {
+      const a = Math.max(filmT, END - fo);
+      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT));
+      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT));
+    }
+    audio.timer = setInterval(() => pump(), 50);
+    pump();
+  }
+
+  function stopSession() {
+    clearInterval(audio.timer);
+    const s = audio.session;
+    audio.session = null;
+    if (!s) return;
+    const now = audio.ctx.currentTime;
+    s.bus.gain.cancelScheduledValues(now);
+    s.bus.gain.setTargetAtTime(0, now, 0.03);
+    s.send.gain.cancelScheduledValues(now);
+    s.send.gain.setTargetAtTime(0, now, 0.03);
+    if (s.voice) {
+      const v = s.voice;
+      try { v.stop(now + 0.05); } catch (e) { /* not started yet */ }
+      setTimeout(() => v.disconnect(), 400);
+    }
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); s.music.disconnect(); s.musicSend.disconnect(); }, 400);
+  }
+
+  function pump() {
+    const s = audio.session;
+    if (!s) return;
+    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0);
+    const horizon = filmNow + 0.6;
+    const ev = audio.score.ev;
+    while (s.idx < ev.length && ev[s.idx].s <= horizon) {
+      const e = ev[s.idx++];
+      if (e.s >= s.film0) sound(e, s, e.s, e.d);
+    }
+  }
+
+  function sound(e, s, filmStart, dur) {
+    const ctx = audio.ctx;
+    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0));
+    const v = Math.pow(clamp01(e.v / 127), 1.5);
+    if (e.k === "n") {
+      const tr = s.tracks[e.track];
+      if (!tr) return;
+      voice(tr.def.patch, tr.node, hz(e.m), when, Math.max(0.05, dur), v, tr.def.bright);
+    } else if (e.k === "d") {
+      drum(e.name, s.bus, when, v);
+    } else {
+      fx(e.name, s.bus, s.send, when, e.d, v, e.pitch || 0);
+    }
+  }
+
+  function env(g, when, peak, attack, hold, release) {
+    peak = Math.max(peak, 0.0002);
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.linearRampToValueAtTime(peak, when + attack);
+    g.gain.setValueAtTime(peak, when + attack + hold);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + attack + hold + release);
+    return when + attack + hold + release + 0.05;
+  }
+  function osc(type, f, dest, when, stop, detune) {
+    const o = audio.ctx.createOscillator();
+    o.type = type;
+    o.frequency.value = f;
+    if (detune) o.detune.value = detune;
+    o.connect(dest);
+    o.start(when);
+    o.stop(stop);
+    return o;
+  }
+  function noiseSrc(dest, when, stop) {
+    const n = audio.ctx.createBufferSource();
+    n.buffer = audio.noise;
+    n.loop = true;
+    n.connect(dest);
+    n.start(when);
+    n.stop(stop);
+    return n;
+  }
+
+  function voice(patch, dest, f, when, dur, v, bright) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    let stop;
+    switch (patch) {
+      case "pad": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 700 + 900 * bright;
+        lp.connect(g);
+        stop = env(g, when, 0.22 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
+        osc("sawtooth", f, lp, when, stop, -8);
+        osc("sawtooth", f, lp, when, stop, 8);
+        break;
+      }
+      case "ep":
+      case "keys": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.22 * v + 0.0002, when + 0.008);
+        g.gain.exponentialRampToValueAtTime(0.08 * v + 0.0001, when + Math.min(dur, 0.9));
+        g.gain.exponentialRampToValueAtTime(0.0001, when + dur + 0.4);
+        stop = when + dur + 0.45;
+        osc("sine", f, g, when, stop);
+        const h2 = ctx.createGain();
+        h2.gain.value = 0.25;
+        h2.connect(g);
+        osc("sine", f * 2, h2, when, stop);
+        break;
+      }
+      case "bass": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 500;
+        lp.connect(g);
+        stop = env(g, when, 0.34 * v, 0.01, Math.max(0, dur - 0.1), 0.18);
+        osc("sine", f, lp, when, stop);
+        osc("triangle", f * 2, lp, when, stop);
+        break;
+      }
+      case "pluck": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.24 * v + 0.0002, when + 0.004);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + Math.min(1.1, dur + 0.45));
+        stop = when + Math.min(1.1, dur + 0.45) + 0.05;
+        osc("triangle", f, g, when, stop);
+        break;
+      }
+      default: {
+        // marimba, vibes, glock and anything unknown: a struck bar.
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.26 * v + 0.0002, when + 0.003);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + 0.7);
+        stop = when + 0.75;
+        osc("sine", f, g, when, stop);
+        const h4 = ctx.createGain();
+        h4.gain.value = 0.12;
+        h4.connect(g);
+        osc("sine", f * 4, h4, when, stop);
+      }
+    }
+  }
+
+  function drum(name, dest, when, v) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    if (name === "kick" || name === "tom") {
+      const o = osc("sine", 140, g, when, when + 0.4);
+      o.frequency.setValueAtTime(140, when);
+      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
+      env(g, when, 0.8 * v, 0.002, 0.02, 0.3);
+    } else {
+      const f = ctx.createBiquadFilter();
+      f.type = name === "sidestick" || name === "woodblock" ? "bandpass" : "highpass";
+      f.frequency.value = name === "sidestick" || name === "woodblock" ? 1900 : 7000;
+      f.connect(g);
+      noiseSrc(f, when, when + 0.2);
+      env(g, when, 0.22 * v, 0.001, 0.005, name === "openhat" ? 0.25 : 0.045);
+    }
+  }
+
+  function fx(name, dest, send, when, dur, v, pitch) {
+    const ctx = audio.ctx;
+    const tr = Math.pow(2, pitch / 12);
+    const g = ctx.createGain();
+    g.connect(dest);
+    const wet = ctx.createGain();
+    wet.gain.value = 0.35;
+    g.connect(wet);
+    wet.connect(send);
+    const r = rng(Math.floor(when * 1000));
+    switch (name) {
+      case "tick": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.frequency.value = 3000 + r() * 1500;
+        f.Q.value = 3;
+        f.connect(g);
+        noiseSrc(f, when, when + 0.06);
+        env(g, when, 0.5 * v, 0.001, 0.004, 0.025);
+        break;
+      }
+      case "click": {
+        osc("square", 1400, g, when, when + 0.06);
+        env(g, when, 0.12 * v, 0.001, 0.005, 0.03);
+        break;
+      }
+      case "ding": {
+        osc("sine", 1046.5 * tr, g, when, when + 1.6);
+        osc("sine", 1568 * tr, g, when, when + 1.6);
+        env(g, when, 0.16 * v, 0.004, 0.02, 1.4);
+        break;
+      }
+      case "chime": {
+        [0, 4, 7].forEach((st, i) => {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + i * 0.07;
+          osc("sine", 1046.5 * tr * Math.pow(2, st / 12), gi, t, t + 1);
+          env(gi, t, 0.14 * v, 0.003, 0.01, 0.9);
+        });
+        g.gain.value = 1;
+        break;
+      }
+      case "sparkle": {
+        for (let i = 0; i < 6; i++) {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + r() * 0.5;
+          osc("sine", 2000 + r() * 2200, gi, t, t + 0.2);
+          env(gi, t, 0.07 * v, 0.002, 0.01, 0.12);
+        }
+        break;
+      }
+      case "whoosh":
+      case "revswell": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.Q.value = 0.8;
+        f.frequency.setValueAtTime(300, when);
+        f.frequency.exponentialRampToValueAtTime(name === "whoosh" ? 2400 : 3200, when + dur);
+        f.connect(g);
+        noiseSrc(f, when, when + dur + 0.1);
+        g.gain.setValueAtTime(0.0001, when);
+        if (name === "whoosh") {
+          g.gain.linearRampToValueAtTime(0.3 * v, when + dur * 0.5);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur);
+        } else {
+          g.gain.exponentialRampToValueAtTime(0.28 * v + 0.0002, when + dur);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur + 0.06);
+        }
+        break;
+      }
+      case "thud": {
+        const o = osc("sine", 110, g, when, when + 0.4);
+        o.frequency.setValueAtTime(110, when);
+        o.frequency.exponentialRampToValueAtTime(45, when + 0.18);
+        env(g, when, 0.5 * v, 0.002, 0.02, 0.3);
+        break;
+      }
+      case "boing": {
+        const o = osc("sine", 220 * tr, g, when, when + 0.5);
+        o.frequency.setValueAtTime(220 * tr, when);
+        o.frequency.linearRampToValueAtTime(520 * tr, when + 0.12);
+        o.frequency.linearRampToValueAtTime(300 * tr, when + 0.4);
+        env(g, when, 0.2 * v, 0.005, 0.05, 0.35);
+        break;
+      }
+      default: {
+        // pop, and any name this synth does not know.
+        const o = osc("sine", 600 * tr, g, when, when + 0.2);
+        o.frequency.setValueAtTime(600 * tr, when);
+        o.frequency.exponentialRampToValueAtTime(1200 * tr, when + 0.06);
+        env(g, when, 0.3 * v, 0.002, 0.01, 0.12);
+      }
+    }
+  }
+
+  // ── Playback ───────────────────────────────────────────────────────────────
+  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1 };
+  let instances = [];
+
+  function sceneAt(t) {
+    for (let i = scenes.length - 1; i >= 0; i--) if (t >= scenes[i].start) return i;
+    return 0;
+  }
+
+  function renderAt(t) {
+    const i = sceneAt(t);
+    if (i !== state.current) {
+      instances.forEach((inst, k) => { inst.box.style.display = k === i ? "block" : "none"; });
+      state.current = i;
+    }
+    const inst = instances[i];
+    inst.def.render.call(inst.def, (Math.min(t, END - 1e-4) - inst.sc.start) / inst.sc.k, inst.kit);
+    ui.update(t);
+  }
+
+  function now() { return performance.now() / 1000; }
+
+  function play() {
+    if (state.t >= END - 0.01) state.t = 0;
+    state.playing = true;
+    state.wall0 = now();
+    state.t0 = state.t;
+    startSession(state.t);
+    ui.update(state.t);
+  }
+  function pause() {
+    state.playing = false;
+    stopSession();
+    ui.update(state.t);
+  }
+  function seek(t) {
+    state.t = clamp(t, 0, END);
+    state.wall0 = now();
+    state.t0 = state.t;
+    if (state.playing) startSession(state.t);
+    renderAt(state.t);
+  }
+  function tick() {
+    if (state.playing) {
+      state.t = state.t0 + (now() - state.wall0);
+      if (state.t >= END) {
+        state.t = END;
+        pause();
+      }
+      renderAt(state.t);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  async function enableAudio() {
+    if (audio.enabled) return;
+    if (!audio.ctx && !setupAudio()) return;
+    try { await audio.ctx.resume(); } catch (e) { /* stays suspended */ }
+    if (audio.ctx.state !== "running") return;
+    audio.enabled = true;
+    ui.sound();
+    if (state.playing) startSession(state.t);
+  }
+
+  // ── Controls ───────────────────────────────────────────────────────────────
+  const fmt = (t) => {
+    const s = Math.max(0, Math.floor(t));
+    return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  };
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" fill="currentColor"/></svg>',
+    replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6.5l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z" fill="currentColor"/></svg>',
+    on: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    off: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    full: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+
+  const CC_LANGS = [
+    { id: "ml", label: "മലയാളം", short: "മ", name: "Malayalam" },
+    { id: "en", label: "English", short: "EN", name: "English" },
+    { id: "off", label: "Off", short: "CC", name: "Off" },
+  ];
+
+  // ── Full screen ────────────────────────────────────────────────────────────
+  // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
+  // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
+  // course page the player asks the parent to grow the lesson to fill the whole screen instead.
+  const embedded = window.parent !== window;
+  const root = document.documentElement;
+  const fs = {
+    native: !!(document.fullscreenEnabled || document.webkitFullscreenEnabled),
+    pseudo: false,
+    available() { return this.native || embedded; },
+    active() { return !!(document.fullscreenElement || document.webkitFullscreenElement) || this.pseudo; },
+    async toggle() {
+      if (this.native) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* not locked */ }
+          await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        try {
+          await (root.requestFullscreen || root.webkitRequestFullscreen).call(root, { navigationUI: "hide" });
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock("landscape").catch(() => {});
+          return;
+        } catch (e) {
+          if (!embedded) return; // refused: fall through to the parent page below
+        }
+      }
+      this.pseudo = !this.pseudo;
+      window.parent.postMessage({ type: "futures-edge:fullscreen", on: this.pseudo }, location.origin);
+      ui.full();
+    },
+  };
+  document.addEventListener("fullscreenchange", () => ui.full());
+  document.addEventListener("webkitfullscreenchange", () => ui.full());
+  const ui = (() => {
+    const bar = h(
+      '<div class="fe-ui" role="group" aria-label="Lesson controls">' +
+        '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
+        '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
+        '<span class="fe-time"></span>' +
+        (lines.length ? '<div class="fe-ccw"><button type="button" class="fe-btn fe-cc" aria-haspopup="true" aria-expanded="false">CC</button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Subtitles" hidden>' +
+          CC_LANGS.map((l) => '<button type="button" role="menuitemradio" data-lang="' + l.id + '"' + (l.id === "ml" ? ' lang="ml"' : "") + '>' + l.label + '</button>').join("") +
+          '</div></div>' : "") +
+        '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
+        (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
+      "</div>"
+    );
+    const hint = h('<button type="button" class="fe-hint">Click anywhere for sound</button>');
+    const cap = h('<p class="fe-cap" aria-live="off"></p>');
+    document.body.append(cap, bar, hint);
+    const cc = bar.querySelector(".fe-cc");
+    const ccMenu = bar.querySelector(".fe-ccm");
+    const fsb = bar.querySelector(".fe-fs");
+    if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
+    // Subtitle language: Malayalam by default when the lesson has it, then English, or off.
+    // The viewer's choice is remembered on this device.
+    const hasMl = lines.some((l) => l.ml);
+    let ccLang = hasMl ? "ml" : "en", capText = null;
+    try {
+      const saved = localStorage.getItem("fe-subtitles");
+      if (saved === "en" || saved === "off" || (saved === "ml" && hasMl)) ccLang = saved;
+    } catch (e) { /* storage blocked: keep the default */ }
+    const setLang = (lang) => {
+      ccLang = lang;
+      try { localStorage.setItem("fe-subtitles", lang); } catch (e) { /* not remembered */ }
+      capText = null;
+      api.update(state.t);
+      api.cc();
+    };
+    const openMenu = (open) => {
+      if (!ccMenu) return;
+      ccMenu.hidden = !open;
+      cc.setAttribute("aria-expanded", String(open));
+      if (open) (ccMenu.querySelector('[aria-checked="true"]') || ccMenu.firstElementChild).focus();
+    };
+    if (cc) {
+      cc.addEventListener("click", (e) => { e.stopPropagation(); openMenu(ccMenu.hidden); wake(); });
+      ccMenu.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-lang]");
+        if (!b) return;
+        e.stopPropagation();
+        setLang(b.dataset.lang);
+        openMenu(false);
+        cc.focus();
+      });
+      ccMenu.addEventListener("keydown", (e) => {
+        const items = Array.from(ccMenu.children), i = items.indexOf(document.activeElement);
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+        }
+        if (e.key === "Escape") { e.stopPropagation(); openMenu(false); cc.focus(); }
+      });
+      document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-ccw")) openMenu(false); }, true);
+      if (!hasMl) ccMenu.querySelector('[data-lang="ml"]').remove();
+    }
+    const pp = bar.querySelector(".fe-pp");
+    const trk = bar.querySelector(".fe-track");
+    const fill = trk.querySelector("i");
+    const time = bar.querySelector(".fe-time");
+    const snd = bar.querySelector(".fe-snd");
+    trk.setAttribute("aria-valuemax", String(Math.round(END)));
+    let idle = 0;
+    const wake = () => {
+      document.body.classList.remove("fe-idle");
+      clearTimeout(idle);
+      idle = setTimeout(() => { if (state.playing) document.body.classList.add("fe-idle"); }, 2600);
+    };
+    document.addEventListener("pointermove", wake);
+    pp.addEventListener("click", (e) => { e.stopPropagation(); enableAudio(); state.playing ? pause() : play(); wake(); });
+    snd.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (!audio.enabled) { await enableAudio(); return; }
+      audio.muted = !audio.muted;
+      if (audio.muted) stopSession(); else if (state.playing) startSession(state.t);
+      api.sound();
+    });
+    const seekTo = (clientX) => {
+      const r = trk.getBoundingClientRect();
+      seek(clamp01((clientX - r.left) / r.width) * END);
+    };
+    let drag = false;
+    trk.addEventListener("pointerdown", (e) => { e.stopPropagation(); enableAudio(); drag = true; trk.setPointerCapture(e.pointerId); seekTo(e.clientX); });
+    trk.addEventListener("pointermove", (e) => { if (drag) seekTo(e.clientX); });
+    trk.addEventListener("pointerup", () => { drag = false; });
+    trk.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { seek(state.t + 5); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { seek(state.t - 5); e.preventDefault(); }
+    });
+    // The first click anywhere turns the sound on; later clicks on the lesson pause and resume.
+    document.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".fe-ui")) return;
+      if (!audio.enabled) { enableAudio(); return; }
+      state.playing ? pause() : play();
+      wake();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.target.closest && e.target.closest(".fe-ccw")) return; // the subtitle menu handles its own keys
+      if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
+      if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === "Escape" && fs.pseudo) fs.toggle();
+    });
+    const api = {
+      update(t) {
+        const done = !state.playing && t >= END - 0.01;
+        pp.innerHTML = state.playing ? ICON.pause : done ? ICON.replay : ICON.play;
+        pp.setAttribute("aria-label", state.playing ? "Pause" : done ? "Replay" : "Play");
+        fill.style.width = ((t / END) * 100).toFixed(3) + "%";
+        trk.setAttribute("aria-valuenow", String(Math.round(t)));
+        time.textContent = fmt(t) + " / " + fmt(END);
+        let text = "";
+        if (ccLang !== "off") for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = (ccLang === "ml" && l.ml) || l.text;
+        if (text !== capText) {
+          capText = text;
+          cap.textContent = text;
+          cap.hidden = !text;
+          cap.lang = ccLang === "ml" ? "ml" : "en";
+        }
+        if (!state.playing) wake();
+      },
+      sound() {
+        const on = audio.enabled && !audio.muted;
+        snd.innerHTML = on ? ICON.on : ICON.off;
+        snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
+        hint.hidden = audio.enabled;
+      },
+      cc() {
+        if (!cc) return;
+        const cur = CC_LANGS.find((l) => l.id === ccLang);
+        cc.textContent = ccLang === "off" ? "CC" : cur.short;
+        cc.classList.toggle("is-off", ccLang === "off");
+        cc.setAttribute("aria-label", "Subtitles: " + cur.name);
+        for (const b of ccMenu.children) b.setAttribute("aria-checked", String(b.dataset.lang === ccLang));
+      },
+      full() {
+        if (!fsb) return;
+        const on = fs.active();
+        fsb.innerHTML = on ? ICON.exit : ICON.full;
+        fsb.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+      },
+    };
+    api.sound();
+    api.full();
+    api.cc();
+    wake();
+    return api;
+  })();
+
+  // For tests and frame-by-frame capture: window.lessonPlayer.ready.then(() => { pause(); seek(12.5); }).
+  let markReady;
+  window.lessonPlayer = {
+    duration: END,
+    ready: new Promise((r) => { markReady = r; }),
+    play, pause, seek,
+    time: () => state.t,
+    score: () => audio.score,
+    // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
+    audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
+    voice: () => ({ lines, loaded: !!audio.voiceBuf, playing: !!(audio.session && audio.session.voice) }),
+  };
+
+  // ── Boot ───────────────────────────────────────────────────────────────────
+  async function boot() {
+    if (F.voice && F.voice.src) {
+      audio.voiceData = fetch(F.voice.src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+    }
+    try {
+      await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
+    } catch (e) { /* system fonts stand in */ }
+    run("shared.js", makeKit(stage, 0, OLD_END));
+    for (const sc of scenes) {
+      const box = el("div", { class: "fe-scene" });
+      stage.append(box);
+      const kit = makeKit(box, sc.oldStart, sc.oldDur);
+      run("scene-" + sc.id + ".js", kit);
+      const def = defs[sc.id];
+      if (def && def.init) await def.init.call(def, kit);
+      instances.push({ sc, def, box, kit });
+    }
+    if (modules["score.js"]) run("score.js", makeKit(stage, 0, OLD_END));
+    audio.score = recordScore();
+    // Wait (briefly) for the images so the first frames do not pop in.
+    const imgs = Array.from(stage.querySelectorAll("img"));
+    await Promise.race([
+      Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })))),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+    instances.forEach((inst) => { inst.box.style.display = "none"; });
+    renderAt(0);
+    document.body.classList.add("fe-ready");
+    // A parent page that allows autoplay (iframe allow="autoplay" after a click) gets sound
+    // straight away; otherwise the first click turns it on.
+    if (setupAudio() && audio.ctx.state === "running") { audio.enabled = true; ui.sound(); }
+    play();
+    requestAnimationFrame(tick);
+    markReady();
+  }
+  boot().catch((e) => {
+    document.querySelector(".fe-loading").textContent = "This lesson could not start. Please reload the page.";
+    throw e;
+  });
+})();
+
+</script>
+</body>
+</html>

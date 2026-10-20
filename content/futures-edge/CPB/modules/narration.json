@@ -1,0 +1,161 @@
+{
+  "about": "CPB on-screen captions (no voice track yet). Each line appears at film time t (seconds); can be recorded as voiceover later.",
+  "lines": [
+    {
+      "t": 0.6,
+      "text": "Checkpoint B, the last stop. Let's review Phases 4 and 5: charts, scalping and risk."
+    },
+    {
+      "t": 8.4,
+      "text": "Eight questions on T14 to T23: chart reading, risk maths and demo decisions."
+    },
+    {
+      "t": 14.3,
+      "text": "Read each question, pick an answer, and pause the video whenever you need more time."
+    },
+    {
+      "t": 20.7,
+      "text": "Not graded here. The graded Checkpoint B quiz is in the interactive course."
+    },
+    {
+      "t": 27.3,
+      "text": "Question one, from T14. Open 60,000, high 60,300, low 59,800, close 60,200. Which is true?"
+    },
+    {
+      "t": 34.6,
+      "text": "A. It's a green, up candle, and the top of its body is the close: 60,200."
+    },
+    {
+      "t": 41.2,
+      "text": "B mixes up high and close. 60,300 is the top of the wick, the highest price traded."
+    },
+    {
+      "t": 48.3,
+      "text": "Question two, from T15. Five 1-minute candles become one 5-minute candle. What are its prices?"
+    },
+    {
+      "t": 55.6,
+      "text": "A. The first open, the highest high, the lowest low, and the last close."
+    },
+    {
+      "t": 62.2,
+      "text": "B is tempting, but candles don't average. They keep the real open, high, low and close."
+    },
+    {
+      "t": 69.3,
+      "text": "Question three, from T17. Price breaks above resistance, then falls back below within two candles."
+    },
+    {
+      "t": 76.6,
+      "text": "B. It may be a fakeout. Wait for more evidence. No pattern is certain."
+    },
+    {
+      "t": 83.2,
+      "text": "A is the trap. A break alone is not confirmation, and buying on hope is not a plan."
+    },
+    {
+      "t": 90.3,
+      "text": "Question four, from T18. A big green candle has very high volume. What can you conclude?"
+    },
+    {
+      "t": 97.6,
+      "text": "B. A lot was traded. That's one clue, not proof of where price goes next."
+    },
+    {
+      "t": 104.2,
+      "text": "A is tempting, but volume alone never tells you the direction."
+    },
+    {
+      "t": 111.3,
+      "text": "Question five, from T19. Each scalp makes +0.80 USDT gross, and fees cost 1.00. After 10 trades?"
+    },
+    {
+      "t": 118.6,
+      "text": "B, minus 2.00 USDT. Each trade nets minus 0.20, and 10 times minus 0.20 is minus 2.00."
+    },
+    {
+      "t": 125.2,
+      "text": "A forgets the fees. Many small trades mean many fees."
+    },
+    {
+      "t": 132.3,
+      "text": "Question six, from T20 and T21. Mid-range, flat trend, low volume, no level near. Your decision?"
+    },
+    {
+      "t": 139.6,
+      "text": "C, NO_TRADE. Nothing lines up, so waiting is the sensible decision."
+    },
+    {
+      "t": 146.2,
+      "text": "A is the trap: one green candle is not a reason to take a risk."
+    },
+    {
+      "t": 153.3,
+      "text": "Question seven, from T22. Risk budget 10 USDT. Stop 2% from entry. About what notional?"
+    },
+    {
+      "t": 160.6,
+      "text": "A, about 500 USDT. 10 divided by 2% is 500."
+    },
+    {
+      "t": 167.2,
+      "text": "B uses the whole account. 1,000 times 2% risks 20 USDT, double the budget."
+    },
+    {
+      "t": 174.3,
+      "text": "Question eight, from T23. Your demo stop slipped: minus 6.30 instead of minus 6. What next?"
+    },
+    {
+      "t": 181.6,
+      "text": "B. Journal it, check the process, and take a break. A small slip is normal."
+    },
+    {
+      "t": 188.2,
+      "text": "A is revenge trading. Doubling the size doubles the risk."
+    },
+    {
+      "t": 195.4,
+      "text": "Before you finish: critical safety."
+    },
+    {
+      "t": 199.1,
+      "text": "Leverage magnifies losses. No leverage is safe, and liquidation can take your margin."
+    },
+    {
+      "t": 205.6,
+      "text": "A stop-loss is a trigger, not a promise. Gaps and slippage happen."
+    },
+    {
+      "t": 210.9,
+      "text": "Never share passwords, OTP or 2FA codes, or API secret keys. Not even with 'support'."
+    },
+    {
+      "t": 217.4,
+      "text": "Size from your risk budget first. When signals are unclear, NO_TRADE is a real decision."
+    },
+    {
+      "t": 225.4,
+      "text": "Here's where to look if you missed one."
+    },
+    {
+      "t": 228.8,
+      "text": "One: T14. Two: T15. Three: T16 and T17. Four: T18."
+    },
+    {
+      "t": 233.2,
+      "text": "Five: T19. Six: T20 and T21. Seven: T22. Eight: T23."
+    },
+    {
+      "t": 237.6,
+      "text": "Rewatch any lesson, no penalty. Risk sizing and NO_TRADE deserve a second look."
+    },
+    {
+      "t": 245.6,
+      "text": "That's the whole course. Congratulations on finishing every lesson!"
+    },
+    {
+      "t": 251.0,
+      "text": "Finishing is not certification or permission to trade. Keep practising in demo mode."
+    }
+  ]
+}

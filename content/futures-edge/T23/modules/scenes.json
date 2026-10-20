@@ -1,0 +1,129 @@
+{
+  "v": 1,
+  "stage": "final",
+  "look": "XORA site look, same as the V00 welcome film: deep void ground, frosted glass panels with thin cyan-to-violet edges, fictional market lines drawing in, calm eased motion, the brain tutor guiding from the bottom-right corner",
+  "palettes": [
+    [
+      "#02030a",
+      "#3ecbff",
+      "#eef1f7",
+      "#a855f7"
+    ]
+  ],
+  "theirs": 1,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "background": "#02030a",
+  "fonts": {
+    "display": {
+      "family": "Outfit",
+      "or": "plus-jakarta-sans",
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "sans": "manrope",
+    "mono": "dm-mono"
+  },
+  "scenes": [
+    {
+      "id": "title",
+      "name": "Lesson twenty-three",
+      "dur": 8,
+      "desc": "Title card: Phase 5, lesson T23, Full Scalping Decision Lifecycle; an eight-step loop draws around a DEMO badge; the tutor walks in."
+    },
+    {
+      "id": "hook",
+      "name": "Eight steps",
+      "dur": 22,
+      "desc": "The capstone: eight step cards in order, from choosing a coin to the journal; educational simulation, demo only; scored on process, not profit."
+    },
+    {
+      "id": "coin",
+      "name": "Step 1 · Choose a coin",
+      "dur": 25,
+      "desc": "Liquidity defined; made-up BTC/USDT (deep book, spread about 0.003%) against XYZ/USDT (thin book, 1% spread); BTC/USDT chosen on a 1,000 USDT demo account."
+    },
+    {
+      "id": "context",
+      "name": "Step 2 · Context",
+      "dur": 28,
+      "desc": "A fictional 5-minute chart: higher highs and higher lows, trend leans up; the last three 5-minute candles become fifteen 1-minute candles with a run up and a pull-back."
+    },
+    {
+      "id": "levels",
+      "name": "Step 3 · Range and levels",
+      "dur": 26,
+      "desc": "On the 1-minute chart: range 59,850 to 60,650 = 800 USDT, about 1.3%; support zone 59,850-59,950 touched twice; resistance 60,550-60,650; price now 60,000."
+    },
+    {
+      "id": "doubt",
+      "name": "Step 4 · Write down doubts",
+      "dur": 26,
+      "desc": "Notes typed in: leaning (bounce from support), against (support tested twice), wrong if below 59,700, confidence medium; two possible paths fork from the price."
+    },
+    {
+      "id": "costs",
+      "name": "Step 5 · Costs and risk",
+      "dur": 33,
+      "desc": "Entry 60,000, stop 59,700 (0.5%), target 60,600 (1%); example budget 6 USDT, fees about 1 USDT, 5 USDT for the move, notional 5 / 0.5% = 1,000 USDT at 1x; stop about -6, target about +9."
+    },
+    {
+      "id": "decide",
+      "name": "Step 6 · Decide",
+      "dur": 27,
+      "desc": "DEMO BUY, DEMO SELL and NO_TRADE buttons; a written reason types in; DEMO BUY is chosen with stop and target set; a demo ticket appears."
+    },
+    {
+      "id": "monitor",
+      "name": "Step 7 · Monitor and exit",
+      "dur": 34,
+      "desc": "Three possible paths fan out; the replay forms eight 1-minute candles: up to 60,400, then down through support; the stop triggers and fills at 59,680; open PnL meter moves and freezes at -5.33."
+    },
+    {
+      "id": "journal",
+      "name": "Step 8 · Journal",
+      "dur": 27,
+      "desc": "Journal card fills in: plan, exit, result -5.33 price, -1.00 fees, -6.33 net; process score ticks to 8 of 8; demo balance 993.67 USDT."
+    },
+    {
+      "id": "notrade",
+      "name": "The NO_TRADE route",
+      "dur": 27,
+      "desc": "Same chart and numbers; a second learner writes doubts and picks NO_TRADE: 0 USDT, no fees, process complete, a success decided before knowing the outcome."
+    },
+    {
+      "id": "mistake",
+      "name": "Common mistakes",
+      "dur": 27,
+      "desc": "Moving the stop (loss about 6 becomes about 11), doubling size to win back a loss (risk doubles), judging only by profit; each with its correction."
+    },
+    {
+      "id": "try",
+      "name": "Try it",
+      "dur": 26,
+      "desc": "Pause and calculate: stop 1% away, 5 USDT for the move; options 1,000 / 500 / 5,000 USDT; 5-second countdown; answer B, 500 USDT; why not A."
+    },
+    {
+      "id": "risks",
+      "name": "Honest limits",
+      "dur": 28,
+      "desc": "Simulation is not the market; careful plans still lose; leverage and liquidation; fictional and educational, NO_TRADE always allowed."
+    },
+    {
+      "id": "recap",
+      "name": "Recap",
+      "dur": 28,
+      "desc": "Three key points and a check question: followed the plan and still lost, bad decision? Not necessarily."
+    },
+    {
+      "id": "next",
+      "name": "Up next",
+      "dur": 10,
+      "desc": "End card: Phase 5 lessons complete; next, Checkpoint B (CPB), a video recap of T14 to T23."
+    }
+  ]
+}

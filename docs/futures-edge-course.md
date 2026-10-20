@@ -52,7 +52,7 @@ To change a lesson that is already out, edit its files in `content/futures-edge/
 again. The dialog checks the page exists before loading it; if it is missing it says "This lesson
 is not available yet."
 
-V00 and T01 are available with a voiceover; T02–T13, CP1 and CPA are available with captions (no voiceover yet).
+All 27 are available. V00 and T01 have a voiceover; the rest have subtitles only (no voiceover yet). Every lesson has English and Malayalam subtitles.
 
 ### Voiceover
 

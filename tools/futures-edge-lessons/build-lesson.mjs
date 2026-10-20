@@ -11,6 +11,7 @@
 // scene is lengthened (never shortened) just enough for its lines to play one after another
 // near the moments they were written for, and the player slows that scene's animation and
 // sound effects by the same factor. Silence at the ends of each clip is trimmed first.
+// voice-ml/ (optional) holds the same lines in Malayalam; the player then offers an EN / മ voice switch.
 // Needs ffmpeg and ffprobe on the PATH when voice/ exists.
 // Without voice/, the narration lines are still shown as captions at their written times.
 // modules/narration.ml.json (optional) adds Malayalam subtitles, shown by default.
@@ -56,6 +57,9 @@ body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
   background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
 .fe-btn svg { width: 20px; height: 20px; }
 .fe-ccw { position: relative; flex: none; }
+.fe-sp, .fe-lang { width: auto; min-width: 40px; padding: 0 8px; font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums; color: #eef1f7; }
+.fe-spw .fe-ccm { min-width: 96px; }
 .fe-cc { font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; letter-spacing: 0.04em; color: #eef1f7;
   box-shadow: inset 0 -2px 0 #3ecbff; }
 .fe-cc.is-off { color: #6b7489; box-shadow: none; }
@@ -85,9 +89,11 @@ body.fe-idle .fe-cap { bottom: 20px; }
   font: 600 14px/1 "Manrope", system-ui, sans-serif; }
 .fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
 @media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-width: 400px) { .fe-ui { gap: 4px; padding: 6px; } .fe-sp, .fe-lang { min-width: 34px; padding: 0 4px; } }
 @media (max-height: 420px) {
   .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
   .fe-btn { width: 34px; height: 34px; }
+  .fe-sp, .fe-lang { width: auto; min-width: 34px; }
   .fe-btn svg { width: 18px; height: 18px; }
   .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
   body.fe-idle .fe-cap { bottom: 8px; }
@@ -187,16 +193,27 @@ function build(id) {
   const voiceDir = join(src, "voice");
   if (existsSync(voiceDir) && modules["narration.json"]) {
     const lines = JSON.parse(modules["narration.json"]).lines;
+    // voice-ml/ (optional): the same lines spoken in Malayalam. Both tracks share one timing, so each
+    // line gets the time of the longer of its two recordings.
+    const mlDir = join(src, "voice-ml");
     const clips = trimClips(voiceDir, lines.length);
+    const mlClips = existsSync(mlDir) ? trimClips(mlDir, lines.length) : null;
     try {
-      const durs = lines.map((l, i) => probe(join(clips, String(i).padStart(2, "0") + ".wav")) / VOICE_TEMPO);
+      const len = (dir, i) => probe(join(dir, String(i).padStart(2, "0") + ".wav")) / VOICE_TEMPO;
+      const durs = lines.map((l, i) => Math.max(len(clips, i), mlClips ? len(mlClips, i) : 0));
       const plan = planVoice(cut.scenes, lines, durs);
       scenes = plan.scenes;
       const total = scenes.reduce((a, x) => a + x.dur, 0);
       mixVoice(clips, plan, total, join(dest, "voice.mp3"));
-      voice = { src: `${id}/voice.mp3`, lines: plan.lines.map(({ i, t, d, text }) => ({ i, t, d: Math.round(d * 1000) / 1000, text })) };
+      if (mlClips) mixVoice(mlClips, plan, total, join(dest, "voice-ml.mp3"));
+      voice = {
+        src: `${id}/voice.mp3`,
+        ...(mlClips ? { srcMl: `${id}/voice-ml.mp3` } : {}),
+        lines: plan.lines.map(({ i, t, d, text }) => ({ i, t, d: Math.round(d * 1000) / 1000, text })),
+      };
     } finally {
       rmSync(clips, { recursive: true, force: true });
+      if (mlClips) rmSync(mlClips, { recursive: true, force: true });
     }
   } else if (modules["narration.json"]) {
     // Captions only: each line stays up until shortly before the next one (or its scene's end).

@@ -88,6 +88,11 @@ the public site.
   line, same order), otherwise English. The CC button opens a menu: മലയാളം / English / Off; the choice is
   remembered on the device. The Malayalam font (Noto Sans Malayalam, OFL) ships with each lesson. The Malayalam
   is a draft for native-speaker review.
+- Speed: the 1× button opens 1× / 1.25× / 1.5× / 1.75× / 2× (also the < and > keys). The picture, music and sound
+  effects speed up together; the voice keeps its normal pitch. The choice is remembered on the device.
+- Voice language: a lesson with `content/futures-edge/<id>/voice-ml/` (the same lines spoken in Malayalam, same
+  numbering) gets an EN / മ button that switches the voice in place. The build times both tracks together.
+  Today only V00 has a Malayalam voice; other lessons have English voice with Malayalam subtitles.
 - It needs no network beyond its own files: no CDN, no fonts from Google, no claude.ai.
 
 | Lesson | Where it was authored (the source of record is now `content/futures-edge/<id>/`) |

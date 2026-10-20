@@ -150,6 +150,9 @@
   }
   // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
   const lines = (F.voice && F.voice.lines) || [];
+  // Voice language for lessons recorded in English and Malayalam (F.voice.srcMl): English unless the viewer chose Malayalam.
+  let voiceLang = "en";
+  try { if (localStorage.getItem("fe-voice-lang") === "ml") voiceLang = "ml"; } catch (e) { /* English */ }
   // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
   const duckSpans = [];
   if (F.voice && F.voice.src) for (const l of lines) {
@@ -281,7 +284,7 @@
   const audio = {
     ctx: null, enabled: false, muted: false, score: null,
     out: null, verb: null, noise: null, session: null, timer: 0,
-    voiceData: null, voiceBuf: null, voiceOut: null,
+    voiceEl: null, voiceNode: null, voiceOut: null,
   };
   const DUCK = 0.4;
 
@@ -319,38 +322,49 @@
     audio.voiceOut = ctx.createGain();
     audio.voiceOut.gain.value = 1;
     audio.voiceOut.connect(ctx.destination);
-    decodeVoice();
+    if (audio.voiceEl) {
+      try { audio.voiceNode = ctx.createMediaElementSource(audio.voiceEl); audio.voiceNode.connect(audio.voiceOut); }
+      catch (e) { /* the element then plays on its own */ }
+    }
     return true;
   }
 
-  async function decodeVoice() {
-    if (!audio.ctx || audio.voiceBuf || !audio.voiceData) return;
-    try {
-      const data = await audio.voiceData;
-      if (!data || audio.voiceBuf) return;
-      audio.voiceBuf = await new Promise((ok, fail) => audio.ctx.decodeAudioData(data.slice(0), ok, fail));
-    } catch (e) {
-      return; // the lesson plays on without the voice
-    }
-    if (audio.session) startVoice(audio.session);
+  // The voice is an <audio> element: it keeps its pitch when the lesson plays faster. Each track is
+  // downloaded whole and played from memory, so jumping to any point works on every server.
+  const voiceBlobs = {};
+  function voiceUrl() { return voiceLang === "ml" && F.voice.srcMl ? F.voice.srcMl : F.voice.src; }
+  function loadVoice() {
+    const url = voiceUrl();
+    voiceBlobs[url] ??= fetch(url).then((r) => (r.ok ? r.blob() : null)).then((b) => (b ? URL.createObjectURL(b) : null)).catch(() => null);
+    voiceBlobs[url].then((blobUrl) => {
+      if (!blobUrl || voiceUrl() !== url) return;
+      audio.voiceEl.src = blobUrl;
+      if (audio.session) startSession(state.t);
+    });
+  }
+  function makeVoice() {
+    if (!F.voice || !F.voice.src) return;
+    const v = new Audio();
+    v.preload = "auto";
+    v.preservesPitch = v.mozPreservesPitch = v.webkitPreservesPitch = true;
+    audio.voiceEl = v;
+    loadVoice();
   }
 
   // The voice of one session, from the session's start point; the music dips under each line.
   function startVoice(s) {
-    if (!audio.voiceBuf || s.voice) return;
-    const ctx = audio.ctx;
-    const at = Math.max(s.ctx0, ctx.currentTime + 0.02);
-    const off = s.film0 + (at - s.ctx0);
-    if (off >= audio.voiceBuf.duration) return;
-    const src = ctx.createBufferSource();
-    src.buffer = audio.voiceBuf;
-    src.connect(audio.voiceOut);
-    src.start(at, off);
-    s.voice = src;
+    const v = audio.voiceEl;
+    if (!v || !v.src || s.voice) return;
+    if (v.duration && s.film0 >= v.duration) return;
+    v.playbackRate = s.rate;
+    v.currentTime = s.film0;
+    v.play().catch(() => { /* blocked or not loaded: the lesson plays on without it */ });
+    s.voice = true;
+    const at = s.ctx0, off = s.film0, r = s.rate;
     for (const g of [s.duck.gain, s.send.gain]) {
       for (const [a, b] of duckSpans) {
         if (b <= off) continue;
-        const ca = at + (a - off), cb = at + (b - off);
+        const ca = at + (a - off) / r, cb = at + (b - off) / r;
         if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
         g.setValueAtTime(DUCK, cb);
         g.linearRampToValueAtTime(1, cb + 0.5);
@@ -388,7 +402,7 @@
       rs.connect(musicSend);
       tracks[name] = { node: g, def: tr };
     }
-    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, upTo: filmT, idx: 0, voice: null };
+    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, rate: state.rate, idx: 0, voice: false };
     audio.session = s;
     startVoice(s);
     // Notes already sounding at the seek point start now with what is left of them.
@@ -402,8 +416,8 @@
     const fo = audio.score.master.fadeOut;
     if (fo > 0) {
       const a = Math.max(filmT, END - fo);
-      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT));
-      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT));
+      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT) / s.rate);
+      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT) / s.rate);
     }
     audio.timer = setInterval(() => pump(), 50);
     pump();
@@ -419,19 +433,18 @@
     s.bus.gain.setTargetAtTime(0, now, 0.03);
     s.send.gain.cancelScheduledValues(now);
     s.send.gain.setTargetAtTime(0, now, 0.03);
-    if (s.voice) {
-      const v = s.voice;
-      try { v.stop(now + 0.05); } catch (e) { /* not started yet */ }
-      setTimeout(() => v.disconnect(), 400);
-    }
+    if (s.voice && audio.voiceEl) audio.voiceEl.pause();
     setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); s.music.disconnect(); s.musicSend.disconnect(); }, 400);
   }
 
   function pump() {
     const s = audio.session;
     if (!s) return;
-    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0);
-    const horizon = filmNow + 0.6;
+    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0) * s.rate;
+    const horizon = filmNow + 0.6 * s.rate;
+    // Keep the voice in step with the picture.
+    const v = audio.voiceEl;
+    if (s.voice && v && !v.paused && !v.seeking && filmNow > s.film0 + 0.5 && Math.abs(v.currentTime - filmNow) > 0.25) v.currentTime = filmNow;
     const ev = audio.score.ev;
     while (s.idx < ev.length && ev[s.idx].s <= horizon) {
       const e = ev[s.idx++];
@@ -441,7 +454,8 @@
 
   function sound(e, s, filmStart, dur) {
     const ctx = audio.ctx;
-    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0));
+    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0) / s.rate);
+    dur /= s.rate;
     const v = Math.pow(clamp01(e.v / 127), 1.5);
     if (e.k === "n") {
       const tr = s.tracks[e.track];
@@ -450,7 +464,7 @@
     } else if (e.k === "d") {
       drum(e.name, s.bus, when, v);
     } else {
-      fx(e.name, s.bus, s.send, when, e.d, v, e.pitch || 0);
+      fx(e.name, s.bus, s.send, when, e.d / s.rate, v, e.pitch || 0);
     }
   }
 
@@ -662,7 +676,16 @@
   }
 
   // ── Playback ───────────────────────────────────────────────────────────────
-  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1 };
+  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1, rate: 1 };
+  const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+  try { const r = Number(localStorage.getItem("fe-speed")); if (SPEEDS.includes(r)) state.rate = r; } catch (e) { /* 1x */ }
+  function setRate(r) {
+    state.t0 = state.t;
+    state.wall0 = now();
+    state.rate = r;
+    try { localStorage.setItem("fe-speed", String(r)); } catch (e) { /* not remembered */ }
+    if (state.playing) startSession(state.t);
+  }
   let instances = [];
 
   function sceneAt(t) {
@@ -705,7 +728,7 @@
   }
   function tick() {
     if (state.playing) {
-      state.t = state.t0 + (now() - state.wall0);
+      state.t = state.t0 + (now() - state.wall0) * state.rate;
       if (state.t >= END) {
         state.t = END;
         pause();
@@ -785,7 +808,11 @@
         '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
         '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
         '<span class="fe-time"></span>' +
-        (lines.length ? '<button type="button" class="fe-btn fe-lang" aria-label="Language">EN</button>' : "") +
+        '<div class="fe-ccw fe-spw"><button type="button" class="fe-btn fe-sp" aria-haspopup="true" aria-expanded="false"></button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Playback speed" hidden>' +
+          SPEEDS.map((r) => '<button type="button" role="menuitemradio" data-rate="' + r + '">' + r + '×</button>').join("") +
+          '</div></div>' +
+        (F.voice && F.voice.srcMl ? '<button type="button" class="fe-btn fe-lang"></button>' : "") +
         (lines.length ? '<div class="fe-ccw"><button type="button" class="fe-btn fe-cc" aria-haspopup="true" aria-expanded="false">CC</button>' +
           '<div class="fe-ccm" role="menu" aria-label="Subtitles" hidden>' +
           CC_LANGS.map((l) => '<button type="button" role="menuitemradio" data-lang="' + l.id + '"' + (l.id === "ml" ? ' lang="ml"' : "") + '>' + l.label + '</button>').join("") +
@@ -798,7 +825,7 @@
     const cap = h('<p class="fe-cap" aria-live="off"></p>');
     document.body.append(cap, bar, hint);
     const cc = bar.querySelector(".fe-cc");
-    const ccMenu = bar.querySelector(".fe-ccm");
+    const ccMenu = cc && cc.nextElementSibling;
     const fsb = bar.querySelector(".fe-fs");
     if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
     // Subtitle language: Malayalam by default when the lesson has it, then English, or off.
@@ -816,18 +843,62 @@
       api.update(state.t);
       api.cc();
     };
-    // Language toggle: switches voice track (EN / ML) and reloads.
+    // Voice language (only lessons recorded in both): switches the voice in place, at the same moment.
     const langBtn = bar.querySelector(".fe-lang");
-    if (langBtn) {
+    const showLang = () => {
       langBtn.textContent = voiceLang === "ml" ? "മ" : "EN";
-      langBtn.setAttribute("aria-label", voiceLang === "ml" ? "Switch to English" : "Switch to Malayalam");
+      langBtn.setAttribute("aria-label", "Voice: " + (voiceLang === "ml" ? "Malayalam. Switch to English" : "English. Switch to Malayalam"));
+    };
+    if (langBtn) {
+      showLang();
       langBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const next = voiceLang === "ml" ? "en" : "ml";
-        try { localStorage.setItem("fe-voice-lang", next); } catch (e) {}
-        location.reload();
+        voiceLang = voiceLang === "ml" ? "en" : "ml";
+        try { localStorage.setItem("fe-voice-lang", voiceLang); } catch (e) { /* not remembered */ }
+        showLang();
+        if (audio.voiceEl) {
+          audio.voiceEl.pause();
+          loadVoice();
+        }
+        wake();
       });
     }
+    // Playback speed menu.
+    const sp = bar.querySelector(".fe-sp"), spMenu = sp.nextElementSibling;
+    const showRate = () => {
+      sp.textContent = state.rate + "×";
+      sp.setAttribute("aria-label", "Playback speed " + state.rate + "×");
+      for (const b of spMenu.children) b.setAttribute("aria-checked", String(Number(b.dataset.rate) === state.rate));
+    };
+    const openSp = (open) => {
+      spMenu.hidden = !open;
+      sp.setAttribute("aria-expanded", String(open));
+      if (open) (spMenu.querySelector('[aria-checked="true"]') || spMenu.firstElementChild).focus();
+    };
+    sp.addEventListener("click", (e) => { e.stopPropagation(); openSp(spMenu.hidden); wake(); });
+    spMenu.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-rate]");
+      if (!b) return;
+      e.stopPropagation();
+      setRate(Number(b.dataset.rate));
+      showRate();
+      openSp(false);
+      sp.focus();
+    });
+    spMenu.addEventListener("keydown", (e) => {
+      const items = Array.from(spMenu.children), i = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+      }
+      if (e.key === "Escape") { e.stopPropagation(); openSp(false); sp.focus(); }
+    });
+    document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-spw")) openSp(false); }, true);
+    const stepRate = (d) => {
+      const i = SPEEDS.indexOf(state.rate), j = clamp(i + d, 0, SPEEDS.length - 1);
+      if (j !== i) { setRate(SPEEDS[j]); showRate(); }
+    };
+    showRate();
     const openMenu = (open) => {
       if (!ccMenu) return;
       ccMenu.hidden = !open;
@@ -899,6 +970,8 @@
       if (e.target.closest && e.target.closest(".fe-ccw")) return; // the subtitle menu handles its own keys
       if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
       if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === ">" || e.key === ".") { stepRate(1); wake(); }
+      if (e.key === "<" || e.key === ",") { stepRate(-1); wake(); }
       if (e.key === "Escape" && fs.pseudo) fs.toggle();
     });
     const api = {
@@ -957,26 +1030,14 @@
     score: () => audio.score,
     // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
     audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
-    voice: () => ({ lines, loaded: !!audio.voiceBuf, playing: !!(audio.session && audio.session.voice) }),
+    voice: () => ({ lines, lang: voiceLang, loaded: !!(audio.voiceEl && audio.voiceEl.readyState >= 1), playing: !!(audio.voiceEl && !audio.voiceEl.paused), at: audio.voiceEl ? audio.voiceEl.currentTime : null }),
+    rate: () => state.rate,
+    setRate,
   };
 
   // ── Boot ───────────────────────────────────────────────────────────────────
-  // Voice language: "en" (default) or "ml". Preference is remembered.
-  let voiceLang = "en";
-  try {
-    const saved = localStorage.getItem("fe-voice-lang");
-    if (saved === "ml" || saved === "en") voiceLang = saved;
-  } catch (e) {}
-  function voiceSrc() {
-    if (!F.voice || !F.voice.src) return null;
-    if (voiceLang === "ml") return F.voice.src.replace(/voice\.mp3$/, "voice-ml.mp3");
-    return F.voice.src;
-  }
   async function boot() {
-    const src = voiceSrc();
-    if (src) {
-      audio.voiceData = fetch(src).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
-    }
+    makeVoice();
     try {
       await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
     } catch (e) { /* system fonts stand in */ }

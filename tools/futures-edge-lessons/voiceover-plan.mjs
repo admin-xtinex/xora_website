@@ -212,7 +212,7 @@ as well so the course sounds like one tutor (their scripts are here too).
 - One file per line: \`content/futures-edge/<id>/voice/00.mp3\`, \`01.mp3\`, … in the order of the script
   (the **NN** number of each line). Every line needs its file; a missing file stops the build.
 - MP3 (or WAV converted to MP3), 44.1 kHz or 48 kHz, mono or stereo, 128 kbps or better.
-- Trim silence: no more than about 0.2 s before and after the speech. No music or effects.
+- Silence at the start and end of each clip is trimmed by the build, so it does not matter. No music or effects.
 - Loudness does not need to match exactly: the build normalises the whole track to -16 LUFS.
 - The JSON next to each script (\`<id>.json\`) lists \`file\`, \`say\` and timing for every line, for a
   script that calls the voice API in a loop.
@@ -232,8 +232,7 @@ In the xora_website repo, record the voiceover for Futures Edge lesson <ID>.
 Read docs/futures-edge/voiceover/README.md (voice, files, timing) and docs/futures-edge/voiceover/<ID>.json.
 For every line, generate speech from its "say" text (never "text") with our chosen voice and the same settings
 for every line, passing the previous and next line as context if the voice API supports it. Save each clip to
-content/futures-edge/<ID>/<file> (voice/00.mp3, voice/01.mp3, ... exactly as listed), trimmed to at most 0.2 s of
-silence at each end. Do not change narration.json. Then run node tools/futures-edge-lessons/build-lesson.mjs <ID>,
+content/futures-edge/<ID>/<file> (voice/00.mp3, voice/01.mp3, ... exactly as listed). Do not change narration.json. Then run node tools/futures-edge-lessons/build-lesson.mjs <ID>,
 open public/futures-edge/lessons/<ID>.html, and check the voice plays in order with the subtitles.
 Keep API keys out of the repo (environment variable only).
 \`\`\`

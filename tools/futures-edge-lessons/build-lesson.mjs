@@ -10,11 +10,13 @@
 // Voiceover: voice/NN.mp3 is line NN of modules/narration.json. The voice sets the pace: each
 // scene is lengthened (never shortened) just enough for its lines to play one after another
 // near the moments they were written for, and the player slows that scene's animation and
-// sound effects by the same factor. Needs ffmpeg and ffprobe on the PATH when voice/ exists.
+// sound effects by the same factor. Silence at the ends of each clip is trimmed first.
+// Needs ffmpeg and ffprobe on the PATH when voice/ exists.
 // Without voice/, the narration lines are still shown as captions at their written times.
 // modules/narration.ml.json (optional) adds Malayalam subtitles, shown by default.
 import { execFileSync } from "node:child_process";
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -98,7 +100,7 @@ const scriptSafe = (s) => s.replace(/<\/(script)/gi, "<\\/$1");
 // Voice timing: the clips play 6% faster (pitch kept), a gap of GAP s between lines, and a line may
 // start at most MAX_DRIFT s after the moment it was written for; a scene ends TAIL s after its last line.
 const VOICE_TEMPO = 1.06;
-const GAP = 0.3;
+const GAP = 0.55; // the clips are trimmed, so this is the real pause between lines
 const TAIL = 0.4;
 const MAX_DRIFT = 1.5;
 
@@ -139,9 +141,23 @@ function planVoice(scenes, lines, durs) {
 }
 
 // Mixes every line into one track at its planned time (mono MP3, loudness-normalised).
-function mixVoice(src, plan, total, out) {
+// Trims silence from both ends of every clip (voice tools often leave 0.2-0.5 s), so the planned
+// timing matches the speech. Returns the folder of trimmed WAVs; the caller removes it.
+function trimClips(voiceDir, count) {
+  const dir = mkdtempSync(join(tmpdir(), "fe-voice-"));
+  const cut = "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.05";
+  for (let i = 0; i < count; i++) {
+    const n = String(i).padStart(2, "0");
+    const from = join(voiceDir, n + ".mp3");
+    if (!existsSync(from)) throw new Error(`missing voice clip ${from}`);
+    execFileSync("ffmpeg", ["-v", "error", "-y", "-i", from, "-af", `${cut},areverse,${cut},areverse`, "-ac", "1", "-ar", "44100", join(dir, n + ".wav")]);
+  }
+  return dir;
+}
+
+function mixVoice(clips, plan, total, out) {
   const args = ["-v", "error", "-y"];
-  for (const l of plan.lines) args.push("-i", join(src, "voice", String(l.i).padStart(2, "0") + ".mp3"));
+  for (const l of plan.lines) args.push("-i", join(clips, String(l.i).padStart(2, "0") + ".wav"));
   const chains = plan.lines.map((l, j) => `[${j}:a]atempo=${VOICE_TEMPO},adelay=${Math.round(l.t * 1000)}:all=1[v${j}]`);
   const mix = plan.lines.map((l, j) => `[v${j}]`).join("") + `amix=inputs=${plan.lines.length}:normalize=0:dropout_transition=0,apad,atrim=0:${total},loudnorm=I=-16:TP=-1.5:LRA=11[out]`;
   args.push("-filter_complex", chains.join(";") + ";" + mix, "-map", "[out]", "-ac", "1", "-ar", "44100", "-b:a", "96k", out);
@@ -171,12 +187,17 @@ function build(id) {
   const voiceDir = join(src, "voice");
   if (existsSync(voiceDir) && modules["narration.json"]) {
     const lines = JSON.parse(modules["narration.json"]).lines;
-    const durs = lines.map((l, i) => probe(join(voiceDir, String(i).padStart(2, "0") + ".mp3")) / VOICE_TEMPO);
-    const plan = planVoice(cut.scenes, lines, durs);
-    scenes = plan.scenes;
-    const total = scenes.reduce((a, x) => a + x.dur, 0);
-    mixVoice(src, plan, total, join(dest, "voice.mp3"));
-    voice = { src: `${id}/voice.mp3`, lines: plan.lines.map(({ i, t, d, text }) => ({ i, t, d: Math.round(d * 1000) / 1000, text })) };
+    const clips = trimClips(voiceDir, lines.length);
+    try {
+      const durs = lines.map((l, i) => probe(join(clips, String(i).padStart(2, "0") + ".wav")) / VOICE_TEMPO);
+      const plan = planVoice(cut.scenes, lines, durs);
+      scenes = plan.scenes;
+      const total = scenes.reduce((a, x) => a + x.dur, 0);
+      mixVoice(clips, plan, total, join(dest, "voice.mp3"));
+      voice = { src: `${id}/voice.mp3`, lines: plan.lines.map(({ i, t, d, text }) => ({ i, t, d: Math.round(d * 1000) / 1000, text })) };
+    } finally {
+      rmSync(clips, { recursive: true, force: true });
+    }
   } else if (modules["narration.json"]) {
     // Captions only: each line stays up until shortly before the next one (or its scene's end).
     const lines = JSON.parse(modules["narration.json"]).lines;

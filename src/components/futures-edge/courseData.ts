@@ -47,7 +47,7 @@ export const LESSONS: Lesson[] = [
   { id: "T06", kind: "lesson", phase: 2, title: "Entry, Exit and Profit/Loss", line: "Work out gross and net results, with fees.", minutes: 5, status: "available", pose: "explain" },
   { id: "T07", kind: "lesson", phase: 2, title: "Market, Limit and Stop Orders", line: "How orders fill, and why fills are not guaranteed.", minutes: 5, status: "available", pose: "think" },
   { id: "T08", kind: "lesson", phase: 2, title: "Stop-Loss and Take-Profit", line: "Plan an exit before you enter.", minutes: 5, status: "available", pose: "present" },
-  { id: "T09", kind: "lesson", phase: 2, title: "Fees, Spread and Slippage", line: "How small costs turn small wins into losses.", minutes: 5, status: "available", pose: "explain", flip: true },
+  { id: "T09", kind: "lesson", phase: 2, title: "Fees, Spread and Slippage", line: "How small costs turn small wins into losses.", minutes: 6, status: "available", pose: "explain", flip: true },
 
   { id: "T10", kind: "lesson", phase: 3, title: "Exchange Platform Tour", line: "A mock trading screen, piece by piece.", minutes: 5, status: "available", pose: "point" },
   { id: "T11", kind: "lesson", phase: 3, title: "Spot vs Futures", line: "Owning coins versus a contract about their price.", minutes: 5, status: "available", pose: "think" },

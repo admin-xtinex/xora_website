@@ -81,7 +81,7 @@ default, English in the CC menu). Commit `content/futures-edge/<id>/voice/` and 
 | [T06](T06.md) | Entry, Exit and Profit/Loss | 47 | 834 | 4,695 | 4:57.0 | 5:20.9 | — |
 | [T07](T07.md) | Market, Limit and Stop Orders | 54 | 804 | 4,344 | 5:10.0 | 5:09.3 | — |
 | [T08](T08.md) | Stop-Loss and Take-Profit | 51 | 734 | 4,316 | 5:08.0 | 4:42.5 | — |
-| [T09](T09.md) | Fees, Spread and Slippage | 49 | 742 | 4,019 | 4:55.0 | 4:45.5 | — |
+| [T09](T09.md) | Fees, Spread and Slippage | 49 | 742 | 4,019 | 4:55.0 | 4:45.5 | yes |
 | [T10](T10.md) | Exchange Platform Tour | 52 | 745 | 4,076 | 5:15.0 | 4:46.6 | — |
 | [T11](T11.md) | Spot vs Futures | 48 | 628 | 3,524 | 4:33.0 | 4:01.6 | — |
 | [T12](T12.md) | Margin and Leverage | 54 | 753 | 4,263 | 5:11.0 | 4:49.9 | — |

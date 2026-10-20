@@ -12,7 +12,7 @@ service cloud.firestore {
     function isAdmin() {
       return signedIn()
         && request.auth.token.email_verified == true
-        && request.auth.token.email.lower() in ['tisan@xtinex.com'];
+        && request.auth.token.email.lower() in ['tisan@xtinex.com', 'info@xtinex.com'];
     }
     function own(uid) { return signedIn() && request.auth.uid == uid; }
 

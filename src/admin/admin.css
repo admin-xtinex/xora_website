@@ -50,3 +50,10 @@
 .adm-when { color: #6b7489; }
 .adm-who { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #b4bccb; }
 @media (max-width: 600px) { .adm-feed li { grid-template-columns: 1fr; gap: 2px; } }
+
+.adm-sub { margin: 18px 0 8px; font: 700 15px/1.2 "Outfit", "Manrope", system-ui, sans-serif; color: #d6dbe6; }
+.adm-money { display: grid; gap: 10px; }
+.adm-money p { margin: 0; padding: 14px 16px; border-radius: 12px; background: rgba(238, 241, 247, 0.04); display: grid; gap: 4px; }
+.adm-money span { color: #b4bccb; font-size: 13px; }
+.adm-money b { font: 700 24px/1 "Outfit", "Manrope", system-ui, sans-serif; }
+.adm-money small { color: #6b7489; font-size: 12px; }

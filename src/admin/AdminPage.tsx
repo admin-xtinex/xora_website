@@ -4,7 +4,9 @@ import { BrandLockup } from "@/components/Header";
 import { LESSONS } from "@/components/futures-edge/courseData";
 import { AccountMenu } from "@/auth/AccountMenu";
 import { useAuth } from "@/auth/AuthProvider";
-import type { EventRow, UserRow } from "@/auth/firebase";
+import type { EntRow, EventRow, SubRow, UserRow } from "@/auth/firebase";
+import { subscriptionAnalytics } from "@/billing/analytics";
+import { getPlan, inr } from "@/billing/pricing";
 import { linkClick, navigate } from "@/lib/router";
 import "@/auth/auth.css";
 import "./admin.css";
@@ -26,7 +28,11 @@ const EVENT_LABEL: Record<string, string> = {
   signup: "Signed up", signin: "Signed in", lesson_open: "Opened lesson", checkpoint_open: "Opened checkpoint",
   video_start: "Started video", video_25: "Watched 25%", video_50: "Watched 50%", video_75: "Watched 75%",
   video_complete: "Finished video", lesson_complete: "Completed lesson", quiz_attempt: "Took quiz", checkpoint_attempt: "Took checkpoint",
+  sub_activated: "Activated plan (preview)", sub_upgraded: "Upgraded plan (preview)", sub_downgrade_scheduled: "Scheduled downgrade",
+  sub_cancelled: "Cancelled preview plan", sub_renewed: "Renewed preview plan", sub_change_cleared: "Kept current plan",
+  course_activated: "Unlocked course (preview)", bundle_activated: "Activated Starter Pack (preview)",
 };
+const SUB_EVENTS = new Set(Object.keys(EVENT_LABEL).filter((k) => k.startsWith("sub_") || k === "course_activated" || k === "bundle_activated"));
 
 function csv(rows: (string | number)[][]) {
   return rows.map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\n");
@@ -39,6 +45,8 @@ export function AdminPage() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [search, setSearch] = useState("");
+  const [subs, setSubs] = useState<SubRow[] | null>(null);
+  const [ents, setEnts] = useState<EntRow[] | null>(null);
 
   useEffect(() => { document.title = "Admin | XORA"; }, []);
   useEffect(() => {
@@ -53,6 +61,10 @@ export function AdminPage() {
       const [u, e] = await Promise.all([a.loadUsers(), a.loadEvents()]);
       setUsers(u);
       setEvents(e);
+      // Subscription data is separate, so the learner analytics still load if it is not readable.
+      const [s, en] = await Promise.all([a.loadSubscriptions(), a.loadEntitlements()]).catch(() => [[], []] as [SubRow[], EntRow[]]);
+      setSubs(s);
+      setEnts(en);
     } catch (e) {
       setError((e as { code?: string })?.code === "permission-denied"
         ? "Firestore refused the request. Check that this email is in the admin list in firebase/firestore.rules and that the rules are published."
@@ -94,6 +106,23 @@ export function AdminPage() {
     const q = search.trim().toLowerCase();
     return (users || []).filter((u) => !q || u.email.includes(q) || u.name.toLowerCase().includes(q));
   }, [users, search]);
+
+  const subStats = useMemo(() => (subs && ents ? subscriptionAnalytics(subs, ents) : null), [subs, ents]);
+  const emailOf = useMemo(() => new Map((users || []).map((u) => [u.uid, u.email])), [users]);
+
+  const exportSubsCsv = () => {
+    const rows: (string | number)[][] = [["Email", "Product", "Plan", "Period", "Status", "Bundle", "Activated", "Expires", "Regular INR", "Shown offer INR", "Amount collected INR", "Payment status", "Activation source", "Real purchase", "Campaign"]];
+    for (const s of subs || []) {
+      rows.push([emailOf.get(s.userId) || s.userId, s.productType, s.planId, s.billingPeriod || "", s.status, s.bundleId ? "yes" : "",
+        s.activatedAt ? new Date(s.activatedAt).toISOString() : "", s.expiresAt ? new Date(s.expiresAt).toISOString() : "",
+        s.regularPriceINR, s.displayedOfferPriceINR, s.amountCollected, s.paymentStatus, s.activationSource, s.isRealPurchase ? "yes" : "no", s.campaignId || ""]);
+    }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv(rows)], { type: "text/csv" }));
+    a.download = `xora-preview-subscriptions-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
 
   const exportCsv = () => {
     const rows: (string | number)[][] = [["Name", "Email", "Sign-in method", "Joined", "Last seen", "Sign-ins", "Lessons started", "Lessons completed"]];
@@ -161,7 +190,10 @@ export function AdminPage() {
             </section>
             <section className="adm-card">
               <h2>Sales</h2>
-              <p className="adm-msg">Payments are not enabled yet: the course is free. When paid access is added (for example with Razorpay), orders, revenue and paying learners will show here.</p>
+              <p className="adm-msg">
+                Actual revenue: <b>{inr(0)}</b>. The site runs in Paymentless Preview Mode, so no payments are taken; preview activations
+                are listed under Subscriptions below and are not sales.
+              </p>
             </section>
           </div>
 
@@ -213,6 +245,75 @@ export function AdminPage() {
                 </tbody>
               </table>
             </div>
+          </section>
+
+          <section className="adm-card" aria-labelledby="adm-subs">
+            <div className="adm-row">
+              <h2 id="adm-subs">Subscriptions · Preview Mode</h2>
+              <div className="adm-actions"><button type="button" onClick={exportSubsCsv} disabled={!subs?.length}><Download size={16} aria-hidden /> Export subscriptions CSV</button></div>
+            </div>
+            {!subStats ? <p className="adm-msg">Loading…</p> : (
+              <>
+                <p className="adm-note" style={{ marginTop: 0 }}>
+                  Every activation so far is a paymentless preview: nothing was charged and none of these are sales.
+                </p>
+                <section className="adm-kpis" aria-label="Subscription summary">
+                  <Kpi label="Preview activations" value={subStats.previewActivations} />
+                  <Kpi label="Active preview plans" value={subStats.activePlans} />
+                  <Kpi label="Expired plans" value={subStats.expiredPlans} />
+                  <Kpi label="Course activations" value={subStats.courseActivations} />
+                  <Kpi label="Starter Pack activations" value={subStats.bundleActivations} />
+                  <Kpi label="Founders offer used" value={subStats.foundersAdoption} />
+                </section>
+                <div className="adm-grid" style={{ marginTop: 14 }}>
+                  <div>
+                    <table className="adm-table">
+                      <thead><tr><th>Active plan</th><th>Learners</th></tr></thead>
+                      <tbody>
+                        {(["starter", "trader", "pro"] as const).map((p) => <tr key={p}><td>{getPlan(p).planName}</td><td>{subStats.plans[p] ?? 0}</td></tr>)}
+                        <tr><td>Weekly activations (all time)</td><td>{subStats.periods.weekly}</td></tr>
+                        <tr><td>Monthly activations (all time)</td><td>{subStats.periods.monthly}</td></tr>
+                        <tr><td>Learners with the full course</td><td>{subStats.courseOwners}</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="adm-money">
+                    <p><span>Actual revenue</span><b>{inr(subStats.actualRevenueINR)}</b><small>No payments are taken in Preview Mode.</small></p>
+                    <p><span>Potential value at displayed prices</span><b>{inr(subStats.potentialValueINR)}</b><small>What the preview activations would cost at the prices shown. Not revenue.</small></p>
+                  </div>
+                </div>
+                <h3 className="adm-sub">Learner subscriptions</h3>
+                <div className="adm-scroll">
+                  <table className="adm-table">
+                    <thead><tr><th>Learner</th><th>Plan</th><th>Status</th><th>Expires</th><th>Course</th></tr></thead>
+                    <tbody>
+                      {(ents || []).filter((e) => e.app || e.course).map((e) => {
+                        const expired = e.app?.expiresAt != null && e.app.expiresAt <= Date.now();
+                        return (
+                          <tr key={e.uid}>
+                            <td>{emailOf.get(e.uid) || e.uid}</td>
+                            <td>{e.app ? `${getPlan(e.app.planId as "starter").planName} · ${e.app.billingPeriod}${e.app.viaBundle ? " · Starter Pack" : ""}` : "—"}</td>
+                            <td>{!e.app ? "—" : expired ? "Expired" : e.app.cancelAtPeriodEnd ? "Cancelled (until expiry)" : e.app.scheduledChange ? "Change scheduled" : "Active (preview)"}</td>
+                            <td>{e.app?.expiresAt ? fmtDate(new Date(e.app.expiresAt)) : "—"}</td>
+                            <td>{e.course ? (e.course.viaBundle ? "Yes (Starter Pack)" : "Yes") : "Free intro"}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <h3 className="adm-sub">Recent subscription events</h3>
+                <ul className="adm-feed">
+                  {(events || []).filter((e) => SUB_EVENTS.has(e.type)).slice(0, 50).map((e) => (
+                    <li key={e.id}>
+                      <span className="adm-when" title={fmtTime(e.at)}>{ago(e.at)}</span>
+                      <span className="adm-who">{e.email}</span>
+                      <span>{EVENT_LABEL[e.type]}{e.lesson ? ` · ${e.lesson}` : ""}{e.detail ? ` · ${e.detail}` : ""}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </section>
 
           <section className="adm-card">

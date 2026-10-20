@@ -1,8 +1,32 @@
 import { useEffect, useRef, useState } from "react";
-import { LogIn, LogOut, Shield, UserRound } from "lucide-react";
+import { CreditCard, LogIn, LogOut, Shield, UserRound } from "lucide-react";
 import { linkClick, navigate } from "@/lib/router";
 import { useAuth } from "./AuthProvider";
 import "./auth.css";
+
+/** Account links inside the phone menu (the header button is hidden on narrow screens). */
+export function AccountLinks({ onNavigate }: { onNavigate?: () => void }) {
+  const { enabled, ready, user, isAdmin, api } = useAuth();
+  if (!enabled || !ready) return null;
+  if (!user) return <a href="/signin" onClick={linkClick("/signin", onNavigate)}>Sign in</a>;
+  return (
+    <>
+      <a href="/account/subscription" onClick={linkClick("/account/subscription", onNavigate)}>My Subscription</a>
+      {isAdmin ? <a href="/admin" onClick={linkClick("/admin", onNavigate)}>Admin</a> : null}
+      <a
+        href="/"
+        onClick={async (e) => {
+          e.preventDefault();
+          onNavigate?.();
+          await (await api()).signOutUser();
+          navigate("/");
+        }}
+      >
+        Sign out ({user.email})
+      </a>
+    </>
+  );
+}
 
 /** "Sign in" for visitors; the learner's name with Sign out (and Admin for admins) once signed in. */
 export function AccountMenu({ compact = false }: { compact?: boolean }) {
@@ -27,8 +51,7 @@ export function AccountMenu({ compact = false }: { compact?: boolean }) {
     return (
       <a className="acct-signin" href="/signin" onClick={linkClick("/signin")}>
         <LogIn size={16} aria-hidden />
-        {compact ? null : "Sign in"}
-        {compact ? <span className="sr-only">Sign in</span> : null}
+        <span className={compact ? "sr-only" : "acct-label"}>Sign in</span>
       </a>
     );
   }
@@ -43,6 +66,9 @@ export function AccountMenu({ compact = false }: { compact?: boolean }) {
           <p className="acct-who">
             <UserRound size={14} aria-hidden /> {user.email}
           </p>
+          <a role="menuitem" href="/account/subscription" onClick={linkClick("/account/subscription", () => setOpen(false))}>
+            <CreditCard size={16} aria-hidden /> My Subscription
+          </a>
           {isAdmin ? (
             <a role="menuitem" href="/admin" onClick={linkClick("/admin", () => setOpen(false))}>
               <Shield size={16} aria-hidden /> Admin

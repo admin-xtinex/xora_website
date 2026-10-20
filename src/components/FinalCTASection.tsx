@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, CircleCheck } from "lucide-react";
+import { ArrowRight, BookOpen, CircleCheck, Tag } from "lucide-react";
 import { FINAL, LINKS } from "@/lib/content";
 import { MagneticButton } from "./ui/MagneticButton";
 import { Reveal } from "./ui/Reveal";
@@ -24,6 +24,10 @@ export function FinalCTASection() {
           <MagneticButton href={LINKS.course}>
             Start Futures Edge
             <ArrowRight size={17} aria-hidden />
+          </MagneticButton>
+          <MagneticButton href={LINKS.pricing} variant="ghost">
+            See plans and launch prices
+            <Tag size={17} aria-hidden />
           </MagneticButton>
           <MagneticButton href={LINKS.contact} variant="ghost">
             Talk to the XORA team

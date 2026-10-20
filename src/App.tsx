@@ -16,6 +16,10 @@ import { isFuturesEdgePath } from "./features/futures-edge";
 import { ActivityTracker } from "./auth/ActivityTracker";
 import { AuthPage, RequireAuth } from "./auth/AuthPage";
 import { needsAuth } from "./auth/config";
+import { CourseGate } from "./billing/CourseGate";
+
+const PricingPage = lazy(() => import("./billing/PricingPage").then((m) => ({ default: m.PricingPage })));
+const AccountPage = lazy(() => import("./billing/AccountPage").then((m) => ({ default: m.AccountPage })));
 
 const AdminPage = lazy(() => import("./admin/AdminPage").then((m) => ({ default: m.AdminPage })));
 const loading = <p role="status" style={{ minHeight: "100vh", margin: 0, display: "grid", placeItems: "center", color: "#b4bccb" }}>Loading…</p>;
@@ -28,6 +32,8 @@ const FuturesEdgeApp = FUTURES_EDGE_ENABLED ? lazy(() => import("./features/futu
 const TITLES: Record<string, string> = {
   "/": "XORA — AI-Powered Trading Intelligence | XTINEX",
   "/course": "Futures Edge Course | XORA by XTINEX",
+  "/pricing": "Pricing | XORA by XTINEX",
+  "/account/subscription": "My Subscription | XORA",
 };
 
 function HomePage() {
@@ -67,7 +73,7 @@ function Routes({ path }: { path: string }) {
   if (path === "/signin" || path === "/signup") return <AuthPage initial={path === "/signup" ? "signup" : "signin"} />;
   if (path === "/admin") return <Suspense fallback={loading}><AdminPage /></Suspense>;
   // The course and everything in it needs an account; the landing page does not.
-  if (needsAuth(path)) return <RequireAuth path={path}><CourseRoutes path={path} /></RequireAuth>;
+  if (needsAuth(path)) return <RequireAuth path={path}><CourseGate path={path}><CourseRoutes path={path} /></CourseGate></RequireAuth>;
   return <SitePages path={path} />;
 }
 
@@ -88,7 +94,7 @@ function CourseRoutes({ path }: { path: string }) {
 }
 
 function SitePages({ path }: { path: string }) {
-  const page = path === "/course" ? "/course" : "/";
+  const page = path === "/course" || path === "/pricing" || path === "/account/subscription" ? path : "/";
 
   useEffect(() => {
     document.title = TITLES[page];
@@ -109,7 +115,11 @@ function SitePages({ path }: { path: string }) {
       <div className="ambient" aria-hidden />
       <Header />
       <main id="main" key={page}>
-        {page === "/course" ? <CoursePage /> : <HomePage />}
+        {page === "/course" ? <CoursePage /> : page === "/pricing" || page === "/account/subscription" ? (
+          <Suspense fallback={<p role="status" className="container" style={{ padding: "140px 0" }}>Loading…</p>}>
+            {page === "/pricing" ? <PricingPage /> : <AccountPage />}
+          </Suspense>
+        ) : <HomePage />}
       </main>
       <Footer />
     </MotionConfig>

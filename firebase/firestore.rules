@@ -29,6 +29,79 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // ── Paymentless Preview subscriptions ───────────────────────────────────────
+    // Learners may only grant themselves PREVIEW entitlements: no payment, nothing collected, never a real
+    // purchase. Real paid entitlements must be written by a trusted server after payment verification
+    // (see docs/FUTURE_PAYMENT_INTEGRATION.md); no client can write activationSource other than this.
+    function previewMarked(m) {
+      return m.activationSource == 'paymentless_preview'
+        && m.paymentStatus == 'not_applicable'
+        && m.amountCollected == 0
+        && m.isRealPurchase == false;
+    }
+    function periodDays(p) { return p == 'weekly' ? 7 : 30; }
+    // Expiry must be the billing period from now (server clock), give or take 10 minutes of client clock drift.
+    function expiryOk(exp, days) {
+      return exp is timestamp
+        && exp > request.time + duration.value(days, 'd') - duration.value(10, 'm')
+        && exp < request.time + duration.value(days, 'd') + duration.value(10, 'm');
+    }
+    function appOk(next, prev) {
+      return next == null
+        || (previewMarked(next)
+            && next.planId in ['starter', 'trader', 'pro']
+            && next.billingPeriod in ['weekly', 'monthly']
+            && next.status in ['active_preview', 'expired', 'cancelled', 'scheduled_change', 'superseded']
+            && (prev != null && next.subscriptionId == prev.subscriptionId
+                  ? next.expiresAt == prev.expiresAt
+                  : expiryOk(next.expiresAt, periodDays(next.billingPeriod))));
+    }
+    function courseOk(next, prev) {
+      return next == null
+        || (previewMarked(next)
+            && (prev != null && next.subscriptionId == prev.subscriptionId
+                  ? next.expiresAt == prev.expiresAt
+                  : next.expiresAt == null));
+    }
+
+    match /entitlements/{uid} {
+      allow read: if own(uid) || isAdmin();
+      allow create: if own(uid)
+        && request.resource.data.uid == uid
+        && request.resource.data.keys().hasOnly(['uid', 'app', 'course', 'launchUsed', 'version', 'updatedAt'])
+        && request.resource.data.version == 1
+        && appOk(request.resource.data.app, null)
+        && courseOk(request.resource.data.course, null);
+      allow update: if own(uid)
+        && request.resource.data.uid == uid
+        && request.resource.data.keys().hasOnly(['uid', 'app', 'course', 'launchUsed', 'version', 'updatedAt'])
+        && request.resource.data.version == resource.data.version + 1
+        && appOk(request.resource.data.app, resource.data.app)
+        && courseOk(request.resource.data.course, resource.data.course)
+        // A course grant, once made, is never removed by the learner.
+        && (resource.data.course == null || request.resource.data.course != null);
+      allow delete: if false;
+    }
+
+    match /subscriptions/{id} {
+      allow read: if (signedIn() && resource.data.userId == request.auth.uid) || isAdmin();
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.subscriptionId == id
+        && previewMarked(request.resource.data)
+        && request.resource.data.planId in ['starter', 'trader', 'pro', 'course']
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.activatedAt == request.time
+        && (request.resource.data.planId == 'course'
+              ? request.resource.data.expiresAt == null
+              : expiryOk(request.resource.data.expiresAt, periodDays(request.resource.data.billingPeriod)));
+      allow update: if signedIn()
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+        && request.resource.data.status in ['active_preview', 'expired', 'cancelled', 'superseded'];
+      allow delete: if false;
+    }
+
     match /events/{id} {
       allow create: if signedIn()
         && request.resource.data.uid == request.auth.uid

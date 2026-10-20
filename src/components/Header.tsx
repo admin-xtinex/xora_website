@@ -4,7 +4,7 @@ import { LINKS, NAV } from "@/lib/content";
 import { linkClick, usePath } from "@/lib/router";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "./ui/MagneticButton";
-import { AccountMenu } from "@/auth/AccountMenu";
+import { AccountLinks, AccountMenu } from "@/auth/AccountMenu";
 
 // The course app (src/features/futures-edge) may only import from this file; it shows the account menu too.
 export { AccountMenu };
@@ -26,10 +26,11 @@ const SECTIONS = NAV.filter((n) => n.href.startsWith("/#") || n.href === "/");
 export function Header() {
   const path = usePath();
   const onCourse = path === "/course";
+  const onPricing = path === "/pricing";
   const [scrolled, setScrolled] = useState(false);
   const [section, setSection] = useState<string>("home");
   const [open, setOpen] = useState(false);
-  const active = onCourse ? "course" : section;
+  const active = onCourse ? "course" : onPricing ? "pricing" : section;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -40,7 +41,7 @@ export function Header() {
 
   // Scroll highlight on the home page: the last section whose top has passed 40% of the viewport.
   useEffect(() => {
-    if (onCourse) return;
+    if (onCourse || onPricing) return;
     let raf = 0;
     const update = () => {
       raf = 0;
@@ -63,7 +64,7 @@ export function Header() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [onCourse]);
+  }, [onCourse, onPricing]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -90,7 +91,7 @@ export function Header() {
               <li key={item.id}>
                 <a
                   href={item.href}
-                  aria-current={active === item.id ? (item.id === "course" ? "page" : "true") : undefined}
+                  aria-current={active === item.id ? (item.id === "course" || item.id === "pricing" ? "page" : "true") : undefined}
                   className={cn(active === item.id && "is-active")}
                   onClick={linkClick(item.href)}
                 >
@@ -134,6 +135,7 @@ export function Header() {
             {item.label}
           </a>
         ))}
+        <AccountLinks onNavigate={close} />
         {!onCourse ? (
           <MagneticButton href={LINKS.getStarted} onClick={close}>
             Get Started

@@ -9,7 +9,8 @@ type Mode = "signin" | "signup" | "reset";
 // Where to go after signing in: ?next=/learn/futures-edge/t05, only paths on this site.
 function nextPath() {
   const n = new URLSearchParams(location.search).get("next") || "";
-  return n.startsWith("/") && !n.startsWith("//") ? n : "/learn/futures-edge";
+  // Same-site paths only: "//host" and "/\\host" would leave the site.
+  return n.startsWith("/") && !n.startsWith("//") && !n.includes("\\") ? n : "/learn/futures-edge";
 }
 
 const MESSAGES: Record<string, string> = {

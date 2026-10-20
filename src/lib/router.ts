@@ -11,9 +11,12 @@ if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 function subscribe(cb: () => void) {
   listeners.add(cb);
   window.addEventListener("popstate", cb);
+  // The course app (src/features/futures-edge) announces its own page changes with this event.
+  window.addEventListener("fe:navigate", cb);
   return () => {
     listeners.delete(cb);
     window.removeEventListener("popstate", cb);
+    window.removeEventListener("fe:navigate", cb);
   };
 }
 

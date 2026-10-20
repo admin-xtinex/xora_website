@@ -168,3 +168,37 @@ export async function loadEvents(max = 1000): Promise<EventRow[]> {
     return { id: d.id, uid: x.uid, email: x.email || "", type: x.type, lesson: x.lesson || "", detail: x.detail || "", at: date(x.at) };
   });
 }
+
+/** Preview subscription records and current entitlements, for the admin portal. Dates as epoch ms. */
+export type SubRow = {
+  subscriptionId: string; userId: string; planId: string; productType: string; purchasedProductId: string; bundleId: string | null;
+  billingPeriod: string | null; status: string; activationSource: string; paymentStatus: string; amountCollected: number;
+  isRealPurchase: boolean; regularPriceINR: number; displayedOfferPriceINR: number; campaignId: string | null;
+  activatedAt: number | null; expiresAt: number | null; createdAt: number | null;
+};
+export type EntRow = { uid: string; app: { planId: string; billingPeriod: string; expiresAt: number | null; cancelAtPeriodEnd: boolean; scheduledChange: unknown; viaBundle: boolean } | null; course: { activatedAt: number | null; viaBundle: boolean } | null };
+
+const msOf = (t: unknown) => (t && typeof (t as Timestamp).toMillis === "function" ? (t as Timestamp).toMillis() : null);
+
+export async function loadSubscriptions(max = 2000): Promise<SubRow[]> {
+  const snap = await getDocs(query(collection(db, "subscriptions"), orderBy("createdAt", "desc"), limit(max)));
+  return snap.docs.map((d) => {
+    const x = d.data();
+    return { ...(x as SubRow), activatedAt: msOf(x.activatedAt), expiresAt: msOf(x.expiresAt), createdAt: msOf(x.createdAt) };
+  });
+}
+
+export async function loadEntitlements(max = 2000): Promise<EntRow[]> {
+  const snap = await getDocs(query(collection(db, "entitlements"), limit(max)));
+  return snap.docs.map((d) => {
+    const x = d.data();
+    return {
+      uid: d.id,
+      app: x.app ? { ...x.app, expiresAt: msOf(x.app.expiresAt) } : null,
+      course: x.course ? { activatedAt: msOf(x.course.activatedAt), viaBundle: !!x.course.viaBundle } : null,
+    };
+  });
+}
+
+/** For the subscription store (src/billing/firestoreStore.ts). */
+export { auth, db };

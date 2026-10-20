@@ -11,6 +11,7 @@ export const LINKS = {
   getStarted: COURSE,
   course: COURSE,
   futuresEdge: "/#futures-edge",
+  pricing: "/pricing",
 } as const;
 
 // `id` is the home-page section (for the scroll highlight); `href` is where the link goes.
@@ -18,6 +19,7 @@ export const NAV = [
   { id: "home", href: "/", label: "Home" },
   { id: "futures-edge", href: "/#futures-edge", label: "Futures Edge" },
   { id: "course", href: COURSE, label: "Course" },
+  { id: "pricing", href: "/pricing", label: "Pricing" },
   { id: "journey", href: "/#journey", label: "Learn" },
   { id: "intelligence", href: "/#intelligence", label: "Practice" },
   { id: "about", href: "/#about", label: "About" },
@@ -161,6 +163,8 @@ export const FOOTER = {
         { label: "What XORA Does", href: "/#what" },
         { label: "Market Intelligence", href: "/#intelligence" },
         { label: "Get Started", href: COURSE },
+        { label: "Pricing", href: "/pricing" },
+        { label: "My Subscription", href: "/account/subscription" },
       ],
     },
     {
@@ -168,6 +172,7 @@ export const FOOTER = {
       links: [
         { label: "Introduction", href: "/#futures-edge" },
         { label: "Course", href: COURSE },
+        { label: "Course pricing", href: "/pricing" },
         { label: "Learning Path", href: "/#journey" },
         { label: "Demo Practice", href: "/#intelligence" },
         { label: "Risk Notice", href: "/#trust" },

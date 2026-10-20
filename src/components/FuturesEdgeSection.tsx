@@ -152,6 +152,9 @@ export function FuturesEdgeSection() {
               Start Futures Edge
               <ArrowRight size={17} aria-hidden />
             </MagneticButton>
+            <MagneticButton href={LINKS.pricing} variant="ghost">
+              Course pricing
+            </MagneticButton>
           </Reveal>
         </div>
 

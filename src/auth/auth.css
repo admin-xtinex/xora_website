@@ -125,3 +125,16 @@
 }
 .acct-menu a:hover,
 .acct-menu button:hover { background: rgba(238, 241, 247, 0.07); }
+
+/* Site header: keep the account button compact so the navigation fits (the phone menu repeats the links). */
+@media (max-width: 1180px) {
+  .header-end .acct-signin { width: 44px; padding: 0; justify-content: center; }
+  .header-end .acct-label, .header-end .acct-name { display: none; }
+  .header-end .acct-btn { padding: 0 4px; }
+}
+@media (max-width: 1080px) {
+  .header-end .header-cta { display: none; }
+}
+@media (max-width: 480px) {
+  .header-end .acct, .header-end .acct-signin { display: none; }
+}

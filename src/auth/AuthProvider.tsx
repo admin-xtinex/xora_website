@@ -21,6 +21,11 @@ const loadApi = () => (apiPromise ??= import("./firebase"));
 const Ctx = createContext<AuthState>({ enabled: false, ready: true, user: null, isAdmin: false, api: loadApi });
 export const useAuth = () => useContext(Ctx);
 
+/** Shows the Admin link and page. A password account must have confirmed its email; Google accounts are confirmed
+ *  already. The data itself is protected by firebase/firestore.rules, which repeat this check on the server. */
+export const isAdminUser = (u: Pick<AppUser, "email" | "emailVerified"> | null, admins = ADMIN_EMAILS) =>
+  !!u && u.emailVerified && admins.includes(u.email.toLowerCase());
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(!AUTH_ENABLED);
   const [user, setUser] = useState<AppUser | null>(null);
@@ -49,8 +54,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       enabled: AUTH_ENABLED,
       ready,
       user,
-      // A password account must have confirmed its email; Google accounts are confirmed already.
-      isAdmin: !!user && user.emailVerified && ADMIN_EMAILS.includes(user.email),
+      isAdmin: isAdminUser(user),
       api: loadApi,
     }),
     [ready, user],

@@ -29,6 +29,15 @@ Animations respect `prefers-reduced-motion`; the hero video stays paused for red
 `Dockerfile` builds the site and serves `dist/` with nginx on port 80 (`/health` for probes),
 the same contract as the xtinex.com website image.
 
+### Automatic deploy (GitHub Actions)
+
+Every push to `main` builds, tests and deploys the site (`.github/workflows/deploy.yml`); it can also be
+started from the Actions tab ("Deploy" → "Run workflow"). One-time setup, on a Windows computer signed in to
+Azure: run `powershell -ExecutionPolicy Bypass -File .\scripts\setup-deploy-secret.ps1`. It reads the Static
+Web App's deployment token with `az` and saves it as the repository secret `AZURE_STATIC_WEB_APPS_API_TOKEN`
+(with `gh`, or via the clipboard and the GitHub settings page). Until the secret exists, runs build and test
+but skip the deploy.
+
 ### Azure Static Web Apps (current preview)
 
 Live on the **Free** plan: `xora-website` in resource group `rg-xora-web` (East Asia),

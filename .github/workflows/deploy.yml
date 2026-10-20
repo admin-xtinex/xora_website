@@ -1,0 +1,53 @@
+# Deploys the site to the Azure Static Web App "xora-website" on every push to main
+# (and on demand from the Actions tab).
+#
+# Needs the repository secret AZURE_STATIC_WEB_APPS_API_TOKEN: run scripts/setup-deploy-secret.ps1 once.
+# Without the secret the site is still built and tested, and the run says the deploy was skipped.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Pushes often come in quick succession (one per lesson); only the newest one needs to go live.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # Only used to decide whether to deploy; the token itself is passed to the deploy step below.
+      SWA_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      # .env.production turns on the interactive course (/learn/futures-edge).
+      - run: npm run build
+
+      - name: Deploy to Azure Static Web Apps
+        if: ${{ env.SWA_TOKEN != '' }}
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: dist
+          skip_app_build: true
+          skip_api_build: true
+
+      - name: Deploy skipped
+        if: ${{ env.SWA_TOKEN == '' }}
+        run: echo "::warning::AZURE_STATIC_WEB_APPS_API_TOKEN is not set, so the site was built but not deployed. Run scripts/setup-deploy-secret.ps1."

@@ -10,6 +10,7 @@ import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
 import { IntelligenceShowcaseSection } from "./components/IntelligenceShowcaseSection";
 import { JourneySection } from "./components/JourneySection";
+import { StorySection } from "./components/StorySection";
 import { TrustNoticeSection } from "./components/TrustNoticeSection";
 import { ValueSection } from "./components/ValueSection";
 import { navigate, scrollToTarget, usePath } from "./lib/router";
@@ -47,6 +48,7 @@ function HomePage() {
       <IntelligenceShowcaseSection />
       <DifferenceSection />
       <TrustNoticeSection />
+      <StorySection />
       <FinalCTASection />
     </>
   );

@@ -146,6 +146,21 @@ export const TRUST = {
     "XORA Futures Edge is focused on education, market analysis and guided demo practice. It is not a live trading service and no real funds are required. Trading crypto futures involves significant risk, including the loss of your capital — understand leverage and risk before you trade. XORA does not promise or guarantee profits.",
 } as const;
 
+/** The first-user promo film (hero button + the story block above the final CTA). */
+export const STORY = {
+  film: "/promos/first-user.html",
+  kicker: "A real XORA result",
+  title: "What happened to our first user",
+  body: "His first live day on Binance futures with XORA: the engine scanned, the Advanced AI filtered, and the account grew.",
+  stats: [
+    { value: "14 USDT", sub: "≈ ₹1,400 to start" },
+    { value: "168", sub: "trades executed" },
+    { value: "+36.43 USDT", sub: "≈ ₹3,643 after fees" },
+  ],
+  cta: "Watch the story",
+  note: "Real results from one live account on its first day, after Binance fees. Trading crypto futures carries risk; past results do not guarantee future returns. Not investment advice.",
+} as const;
+
 export const FINAL = {
   kicker: "Start your XORA journey",
   title: ["See the market", "smarter."],

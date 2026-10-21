@@ -5,6 +5,7 @@ import { HERO, LINKS } from "@/lib/content";
 import { linkClick } from "@/lib/router";
 import { HeroScene } from "./HeroScene";
 import { OverviewDialog } from "./OverviewDialog";
+import { StoryDialog } from "./StoryDialog";
 import { Icon } from "./ui/Icon";
 import { MagneticButton } from "./ui/MagneticButton";
 import { Sparkline } from "./ui/Sparkline";
@@ -19,6 +20,7 @@ function useDepth(sx: MotionValue<number>, sy: MotionValue<number>, k: number) {
 export function HeroSection() {
   const section = useRef<HTMLElement>(null);
   const [overview, setOverview] = useState(false);
+  const [story, setStory] = useState(false);
   const reduce = useReducedMotion();
 
   // Pointer parallax: each layer moves by its own depth.
@@ -131,6 +133,12 @@ export function HeroSection() {
               </span>
               Watch Overview
             </button>
+            <button type="button" className="btn btn-link" onClick={() => setStory(true)}>
+              <span className="play-ring">
+                <Play size={13} fill="currentColor" aria-hidden />
+              </span>
+              First user story
+            </button>
           </motion.div>
         </motion.div>
 
@@ -162,6 +170,7 @@ export function HeroSection() {
       </a>
 
       <OverviewDialog open={overview} onClose={() => setOverview(false)} />
+      <StoryDialog open={story} onClose={() => setStory(false)} />
     </section>
   );
 }

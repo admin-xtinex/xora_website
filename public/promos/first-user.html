@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What happened to our first user · XORA</title>
+<meta name="description" content="What happened to our first user: an animated XORA story. Not financial advice.">
+<style>
+@font-face { font-family:"Outfit";font-weight:400 700; src: url("first-user/fonts/outfit.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Manrope";font-weight:400 800; src: url("first-user/fonts/manrope.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:400; src: url("first-user/fonts/dm-mono-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"DM Mono";font-weight:500; src: url("first-user/fonts/dm-mono-500.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:400; src: url("first-user/fonts/noto-sans-malayalam-400.woff2") format("woff2"); font-display: block; }
+@font-face { font-family:"Noto Sans Malayalam";font-weight:600; src: url("first-user/fonts/noto-sans-malayalam-600.woff2") format("woff2"); font-display: block; }
+
+html, body { margin: 0; height: 100%; background: #02030a; overflow: hidden; color: #eef1f7;
+  font-family: "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden;
+  background: #02030a; transform-origin: 50% 50%;
+  --display: "Outfit", "Manrope", system-ui, sans-serif;
+  --sans: "Manrope", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace; }
+#stage .fe-scene { position: absolute; inset: 0; overflow: hidden; }
+body:not(.fe-ready) #stage { visibility: hidden; }
+.fe-loading { position: fixed; inset: 0; display: grid; place-items: center; margin: 0; font-size: 15px; color: #6b7489; }
+body.fe-ready .fe-loading { display: none; }
+.fe-ui { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 10; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 14px; background: rgba(7, 8, 20, 0.8); border: 1px solid rgba(130, 160, 255, 0.18);
+  backdrop-filter: blur(8px); transition: opacity 0.4s; }
+body.fe-idle .fe-ui { opacity: 0; }
+body:not(.fe-ready) .fe-ui, body:not(.fe-ready) .fe-hint { display: none; }
+.fe-btn { flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 10px;
+  background: rgba(238, 241, 247, 0.08); color: #eef1f7; cursor: pointer; }
+.fe-btn svg { width: 20px; height: 20px; }
+.fe-ccw { position: relative; flex: none; }
+.fe-sp, .fe-lang { width: auto; min-width: 40px; padding: 0 8px; font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums; color: #eef1f7; }
+.fe-spw .fe-ccm { min-width: 96px; }
+.fe-cc { font: 700 13px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; letter-spacing: 0.04em; color: #eef1f7;
+  box-shadow: inset 0 -2px 0 #3ecbff; }
+.fe-cc.is-off { color: #6b7489; box-shadow: none; }
+.fe-ccm { position: absolute; right: 0; bottom: calc(100% + 10px); display: grid; min-width: 150px; padding: 6px; border-radius: 12px;
+  background: rgba(7, 8, 20, 0.96); border: 1px solid rgba(130, 160, 255, 0.25); }
+.fe-ccm[hidden] { display: none; }
+.fe-ccm button { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: none; color: #eef1f7; font: 600 15px/1 "Manrope", "Noto Sans Malayalam", system-ui, sans-serif; text-align: left; cursor: pointer; }
+.fe-ccm button:hover, .fe-ccm button:focus-visible { background: rgba(238, 241, 247, 0.08); outline: none; }
+.fe-ccm button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+.fe-ccm button[aria-checked="true"]::before { background: #3ecbff; }
+.fe-cap:lang(ml) { font-family: "Noto Sans Malayalam", "Manrope", system-ui, sans-serif; line-height: 1.55; }
+/* Captions sit left of centre so they clear the tutor's corner and speech bubbles (bottom right). */
+.fe-cap { position: fixed; left: 42%; bottom: 76px; z-index: 9; transform: translateX(-50%); width: max-content;
+  max-width: min(64vw, 1000px); margin: 0; padding: 8px 16px; border-radius: 10px; background: rgba(2, 3, 10, 0.78);
+  color: #eef1f7; font: 600 clamp(13px, 2.1vw, 22px)/1.4 "Manrope", system-ui, sans-serif; text-align: center;
+  transition: bottom 0.4s; pointer-events: none; }
+body.fe-idle .fe-cap { bottom: 20px; }
+.fe-cap[hidden], body:not(.fe-ready) .fe-cap { display: none; }
+.fe-track { position: relative; flex: 1; height: 6px; border-radius: 6px; background: rgba(238, 241, 247, 0.14);
+  cursor: pointer; touch-action: none; }
+.fe-track::before { content: ""; position: absolute; inset: -12px 0; }
+.fe-track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, #3ecbff, #a855f7); }
+.fe-time { flex: none; font: 500 13px/1 "DM Mono", ui-monospace, monospace; color: #b4bccb; font-variant-numeric: tabular-nums; }
+.fe-hint { position: fixed; top: 12px; right: 12px; z-index: 10; padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(62, 203, 255, 0.45); background: rgba(7, 8, 20, 0.82); color: #eef1f7;
+  font: 600 14px/1 "Manrope", system-ui, sans-serif; }
+.fe-btn:focus-visible, .fe-track:focus-visible, .fe-hint:focus-visible { outline: 2px solid #3ecbff; outline-offset: 2px; }
+@media (max-width: 520px) { .fe-time { display: none; } }
+@media (max-width: 400px) { .fe-ui { gap: 4px; padding: 6px; } .fe-sp, .fe-lang { min-width: 34px; padding: 0 4px; } }
+@media (max-height: 420px) {
+  .fe-ui { left: 6px; right: 6px; bottom: 6px; gap: 6px; padding: 4px 6px; border-radius: 10px; }
+  .fe-btn { width: 34px; height: 34px; }
+  .fe-sp, .fe-lang { width: auto; min-width: 34px; }
+  .fe-btn svg { width: 18px; height: 18px; }
+  .fe-cap { bottom: 50px; padding: 4px 10px; font-size: clamp(11px, 3.4vh, 18px); }
+  body.fe-idle .fe-cap { bottom: 8px; }
+  .fe-hint { top: 6px; right: 6px; padding: 7px 12px; font-size: 12px; }
+}
+
+</style>
+</head>
+<body>
+<p class="fe-loading">Loading video…</p>
+<div id="stage" aria-label="What happened to our first user" role="img"></div>
+<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/promos/first-user/. Edit the source, not this file. -->
+<script>window.FILM = {"id":"first-user","width":1920,"height":1080,"scenes":[{"id":"hook","name":"The question","dur":4,"k":1,"oldStart":0,"oldDur":4},{"id":"start","name":"14 USDT","dur":4,"k":1,"oldStart":4,"oldDur":4},{"id":"engine","name":"The engine","dur":6,"k":1,"oldStart":8,"oldDur":6},{"id":"filter","name":"AI filter","dur":5,"k":1,"oldStart":14,"oldDur":5},{"id":"move","name":"The climb","dur":6,"k":1,"oldStart":19,"oldDur":6},{"id":"top3","name":"Best 3 trades","dur":9,"k":1,"oldStart":25,"oldDur":9},{"id":"result","name":"The result","dur":5,"k":1,"oldStart":34,"oldDur":5},{"id":"next","name":"Your story","dur":6,"k":1,"oldStart":39,"oldDur":6}],"voice":null,"assetBase":"first-user/assets/","assets":{"tutor-present.webp":{"mime":"image/webp","w":546,"h":612}},"fontChecks":["600 40px \"Noto Sans Malayalam\"","400 40px \"Manrope\"","700 40px \"Outfit\"","600 40px \"Outfit\"","400 40px \"DM Mono\"","500 40px \"DM Mono\""],"modules":{"base.css":"#stage { --ground:#02030a; --main:#3ecbff; --second:#eef1f7; --accent:#a855f7; color:var(--second); font-family:var(--sans, system-ui, sans-serif) }\n.ground { position:absolute; inset:0; overflow:hidden; background:radial-gradient(80% 70% at 80% 10%, color-mix(in srgb, var(--main) 13%, var(--ground)), transparent 60%), radial-gradient(70% 70% at 10% 95%, color-mix(in srgb, var(--accent) 13%, var(--ground)), transparent 65%), var(--ground) }\n.words { position:absolute; margin:0; display:flex; flex-direction:column; gap:22px } .words > * { margin:0 }\n.line { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:96px; line-height:1.02; font-weight:700; letter-spacing:-0.025em }\n.hero { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:120px; line-height:1; font-weight:800; letter-spacing:-0.035em }\n.mid { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-size:62px; line-height:1.08; font-weight:600; letter-spacing:-0.015em }\n.thin { font-family:var(--display, var(--sans, system-ui, sans-serif)); font-weight:300 }\n.sub { font-size:34px; line-height:1.35; color:color-mix(in srgb, var(--second) 72%, var(--ground)); font-weight:500 }\n.tag { font-family:var(--mono, ui-monospace, monospace); font-size:24px; letter-spacing:.18em; text-transform:uppercase; color:var(--main) }\n.num { font-family:var(--mono, ui-monospace, monospace); font-variant-numeric:tabular-nums; font-weight:500 }\n.hi { color:var(--main) } .vi { color:var(--accent) }\n.grad { background:linear-gradient(90deg, var(--main), var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent }\n.up { color:color-mix(in srgb, var(--main) 35%, #2fd897) } .dn { color:color-mix(in srgb, var(--accent) 30%, #ff5c7c) }\n.glass { position:absolute; border-radius:28px; background:color-mix(in srgb, var(--ground) 84%, var(--main)); border:1.5px solid color-mix(in srgb, var(--main) 28%, transparent); box-shadow:0 30px 90px rgba(0,0,0,.5) }\n.edge { position:absolute; inset:-1.5px; border-radius:inherit; padding:1.5px; background:linear-gradient(120deg, color-mix(in srgb, var(--main) 80%, transparent), color-mix(in srgb, var(--accent) 80%, transparent)); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude }\n.art { position:absolute; inset:0; width:100%; height:100%; overflow:visible }\n.bloom { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--main) 45%, transparent), transparent); pointer-events:none }\n.bloomv { position:absolute; border-radius:50%; background:radial-gradient(closest-side, color-mix(in srgb, var(--accent) 45%, transparent), transparent); pointer-events:none }\n.note { font-size:20px; line-height:1.4; color:color-mix(in srgb, var(--second) 48%, var(--ground)) }\n.chip { font-family:var(--mono, ui-monospace, monospace); font-size:20px; letter-spacing:.14em; text-transform:uppercase; padding:8px 16px; border-radius:999px; border:1.5px solid currentColor }","scene-engine.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nconst CX = 1240, CY = 540, R = 330, NP = 700;\nconst WORDS = ['Scanning', 'Analysing', 'Calculating'];\nconst COINS = ['DOOD', 'IOST', 'ALT', 'XNY', 'ETH', 'BTC', 'SOL', 'CVX', 'JCT', 'BR', 'ZRO', 'PARTI'];\nkit.scene('engine', {\n  init(kit) {\n    const r = kit.rng(9); this.pts = [];\n    for (let i = 0; i < NP; i++) { const y = 1 - (i / (NP - 1)) * 2, rad = Math.sqrt(1 - y * y), th = i * 2.399963; this.pts.push([Math.cos(th) * rad, y, Math.sin(th) * rad, r()]); }\n    let tags = ''; COINS.forEach((c, i) => { tags += '<p class=\"num engine-coin\" style=\"position:absolute;left:0;top:0;margin:0;font-size:22px;letter-spacing:.08em;color:#eef1f7\">' + c + '</p>'; });\n    let cols = ''; for (let c = 0; c < 6; c++) cols += '<p class=\"num engine-col\" style=\"position:absolute;left:' + (c * 58) + 'px;top:0;width:56px;margin:0;font-size:18px;line-height:28px;color:#3ecbff;white-space:pre\"></p>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"bloom engine-b\" style=\"left:' + (CX - 520) + 'px;top:' + (CY - 520) + 'px;width:1040px;height:1040px\"></div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' +\n      '<g class=\"engine-r1\"><ellipse cx=\"' + CX + '\" cy=\"' + CY + '\" rx=\"470\" ry=\"120\" fill=\"none\" stroke=\"#3ecbff\" stroke-opacity=\".45\" stroke-width=\"2\" stroke-dasharray=\"4 10\"/></g>' +\n      '<g class=\"engine-r2\"><ellipse cx=\"' + CX + '\" cy=\"' + CY + '\" rx=\"430\" ry=\"150\" fill=\"none\" stroke=\"#a855f7\" stroke-opacity=\".4\" stroke-width=\"2\"/></g>' +\n      '<circle cx=\"' + CX + '\" cy=\"' + CY + '\" r=\"' + (R + 40) + '\" fill=\"none\" stroke=\"#3ecbff\" stroke-opacity=\".12\" stroke-width=\"2\"/>' +\n      '<circle class=\"engine-ping\" cx=\"' + CX + '\" cy=\"' + CY + '\" r=\"' + R + '\" fill=\"none\" stroke=\"#3ecbff\" stroke-width=\"3\"/></svg>' +\n      tags +\n      '<div style=\"position:absolute;left:150px;top:660px;width:360px;height:300px;overflow:hidden;opacity:.35\">' + cols + '</div>' +\n      '<div class=\"words\" style=\"left:150px;top:250px;width:700px;gap:18px\">' +\n      '<p class=\"tag\">XORA engine · live</p>' +\n      '<p class=\"hero engine-w\" style=\"font-size:116px\">Scanning</p>' +\n      '<p class=\"sub engine-s\">Every coin, every candle: price, volume, trend, volatility and order flow, read again the moment a candle closes.</p></div></div>'));\n    this.coins = [...kit.stage.querySelectorAll('.engine-coin')].map((e) => e.style);\n    this.cols = [...kit.stage.querySelectorAll('.engine-col')];\n    const q = (c) => kit.stage.querySelector('.engine-' + c);\n    this.r1 = q('r1').style; this.r2 = q('r2').style; this.ping = q('ping'); this.w = q('w'); this.s = q('s').style; this.b = q('b').style;\n    // the lesson player has no shared fx canvas: the sphere gets its own, under the words\n    const cv = kit.h('<canvas width=\"1920\" height=\"1080\" style=\"position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none\"></canvas>');\n    kit.stage.querySelector('.ground').insertBefore(cv, kit.stage.querySelector('.ground > .words'));\n    this.ctx = cv.getContext('2d');\n  },\n  render(t0) {\n    const t = t0 * 1.25;\n    const ctx = this.ctx; ctx.clearRect(0, 0, 1920, 1080); const rot = t * 0.55, tilt = 0.38, scanY = Math.sin(t * 1.3) * 0.95, appear = eo(seg(t, 0, 1.2));\n    const cr = Math.cos(rot), sr = Math.sin(rot), ct = Math.cos(tilt), st = Math.sin(tilt);\n    ctx.save(); ctx.globalCompositeOperation = 'lighter';\n    for (const [x, y, z, k] of this.pts) {\n      const x1 = x * cr - z * sr, z1 = x * sr + z * cr; const y2 = y * ct - z1 * st, z2 = y * st + z1 * ct;\n      const per = 1 / (1.9 - z2 * 0.7); const px = CX + x1 * R * per * 1.3 * appear, py = CY + y2 * R * per * 1.3 * appear;\n      const near = Math.max(0, 1 - Math.abs(y - scanY) * 7);\n      const a = (0.18 + 0.55 * (z2 + 1) / 2) * appear + near * 0.9;\n      ctx.fillStyle = near > 0.05 ? 'rgba(238,241,247,' + Math.min(1, a) + ')' : (k > 0.82 ? 'rgba(168,85,247,' + a + ')' : 'rgba(62,203,255,' + a + ')');\n      const sz = (1.2 + per * 1.8) * (1 + near * 1.4);\n      ctx.fillRect(px - sz / 2, py - sz / 2, sz, sz);\n    }\n    ctx.restore();\n    this.r1.transformOrigin = CX + 'px ' + CY + 'px'; this.r1.transform = 'rotate(' + (t * 16) + 'deg)';\n    this.r2.transformOrigin = CX + 'px ' + CY + 'px'; this.r2.transform = 'rotate(' + (-t * 11 + 20) + 'deg)';\n    const pp = (t % 1.6) / 1.6; this.ping.setAttribute('r', (R * 0.4 + pp * R * 1.1).toFixed(1)); this.ping.style.opacity = (1 - pp) * 0.6 * appear;\n    this.coins.forEach((s, i) => { const a = t * 0.5 + i / COINS.length * Math.PI * 2; const x = CX + Math.cos(a) * 520, y = CY + Math.sin(a) * 175; const front = Math.sin(a) > 0; s.transform = 'translate(' + (x - 30).toFixed(1) + 'px,' + (y - 14).toFixed(1) + 'px) scale(' + (front ? 1.1 : 0.8) + ')'; s.opacity = (front ? 0.95 : 0.35) * eo(seg(t, 0.6 + i * 0.05, 1.0 + i * 0.05)); });\n    const f = Math.floor(t * 3); this.cols.forEach((el, c) => { const rr = kit.rng(c * 777 + f); let s = ''; for (let i = 0; i < 12; i++) s += (rr() * 99.99).toFixed(2) + '\\n'; el.textContent = s; });\n    const k = Math.min(2, Math.floor(t / 2.4)); const ph = (t % 2.4) / 2.4; const word = WORDS[k];\n    if (this.w.textContent !== word) this.w.textContent = word;\n    this.w.style.opacity = k < 2 ? Math.min(1, seg(ph, 0, 0.12) * 1.0, 1 - seg(ph, 0.86, 1)) : seg(ph, 0, 0.12);\n    this.w.style.transform = 'translateX(' + lerp(26, 0, eo(seg(ph, 0, 0.2))) + 'px)';\n    this.s.opacity = eo(seg(t, 0.6, 1.1));\n    this.b.opacity = 0.35 + 0.15 * Math.sin(t * 2); \n    kit.stage.style.opacity = 1 - eio(seg(t, 7.0, 7.5));\n    if (t > 7.0) { ctx.save(); ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = 'rgba(0,0,0,' + eio(seg(t, 7.0, 7.5)) + ')'; ctx.fillRect(0, 0, 1920, 1080); ctx.restore(); }\n  },\n});\n","scene-filter.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nconst NR = 5, RX0 = 620, RX1 = 1520, CY = 645, N = 120;\nconst rx = (k) => RX0 + (RX1 - RX0) * k / (NR - 1);\nkit.scene('filter', {\n  init(kit) {\n    const r = kit.rng(17); this.ps = [];\n    for (let i = 0; i < N; i++) { const die = r() < 0.06 ? NR : Math.floor(r() * NR); this.ps.push({ t0: i * 0.038, y0: CY + (r() - 0.5) * 520, die, sp: 520 + r() * 160, dx: (r() - 0.5) }); }\n    let rings = '';\n    for (let k = 0; k < NR; k++) rings += '<g class=\"filter-ring\"><ellipse cx=\"' + rx(k) + '\" cy=\"' + CY + '\" rx=\"46\" ry=\"' + (300 - k * 34) + '\" fill=\"#3ecbff\" fill-opacity=\".04\" stroke=\"url(#filterG)\" stroke-width=\"4\"/><text x=\"' + rx(k) + '\" y=\"' + (CY + 300 - k * 34 + 50) + '\" text-anchor=\"middle\" fill=\"#6b7489\" font-size=\"20\" font-family=\"DM Mono, monospace\" letter-spacing=\"3\">AI ' + String(k + 1).padStart(2, '0') + '</text></g>';\n    let dots = ''; for (let i = 0; i < N; i++) dots += '<circle class=\"filter-p\" r=\"7\"/>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"filterG\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#3ecbff\"/><stop offset=\"1\" stop-color=\"#a855f7\"/></linearGradient></defs>' + rings + dots +\n      '<circle class=\"filter-goal\" cx=\"1760\" cy=\"' + CY + '\" r=\"58\" fill=\"#0c0e1f\" stroke=\"#2fd897\" stroke-width=\"5\"/>' +\n      '<text x=\"1760\" y=\"' + (CY + 9) + '\" text-anchor=\"middle\" fill=\"#2fd897\" font-size=\"26\" font-family=\"DM Mono, monospace\">TRADE</text></svg>' +\n      '<div class=\"words\" style=\"left:150px;top:110px;width:1500px;gap:14px\"><p class=\"tag\">XORA Advanced AI</p><h2 class=\"line filter-head\" style=\"font-size:84px\">Filters out the risky trades.</h2></div>' +\n      '<div class=\"words filter-c\" style=\"left:150px;top:262px;width:1300px;gap:4px\"><p class=\"sub\" style=\"font-size:30px\">Most setups never make it through. Only the ones that clear every AI layer become trades.</p></div></div>'));\n    this.dots = [...kit.stage.querySelectorAll('.filter-p')];\n    this.rings = [...kit.stage.querySelectorAll('.filter-ring')].map((e) => e.style);\n    this.head = kit.stage.querySelector('.filter-head'); this.goal = kit.stage.querySelector('.filter-goal').style;\n    this.c = kit.stage.querySelector('.filter-c').style;\n  },\n  render(t0) {\n    const t = t0 * 1.3;\n    TextFx.fadeFromRight(this.head, t, 0.05);\n    this.rings.forEach((s, k) => { s.opacity = eo(seg(t, 0.1 + k * 0.1, 0.5 + k * 0.1)); });\n    let seen = 0, passed = 0, hit = new Array(NR).fill(0);\n    this.ps.forEach((p, i) => {\n      const el = this.dots[i], lt = t - 0.4 - p.t0;\n      if (lt <= 0) { el.style.opacity = 0; return; }\n      seen++;\n      let x = 120 + lt * p.sp, y = lerp(p.y0, CY, eio(Math.min(1, (x - 120) / (RX0 - 120)))), o = 1, col = '#3ecbff';\n      const stop = p.die < NR ? rx(p.die) : 1760;\n      if (x >= stop) {\n        const f = (x - stop) / p.sp;\n        if (p.die < NR) { x = stop + 30 * f; y = CY + (p.dx > 0 ? 1 : -1) * 360 * f * f * 3 + p.dx * 60 * f; o = Math.max(0, 1 - f * 1.6); col = '#ff5c7c'; hit[p.die]++; }\n        else { x = 1760; o = Math.max(0, 1 - f * 4); col = '#2fd897'; passed++; }\n      } else { for (let k = 0; k < NR; k++) if (x > rx(k)) col = k >= 3 ? '#a855f7' : '#3ecbff'; }\n      el.setAttribute('cx', x.toFixed(1)); el.setAttribute('cy', y.toFixed(1)); el.setAttribute('fill', col); el.style.opacity = o;\n    });\n    this.rings.forEach((s, k) => { s.filter = 'brightness(' + (1 + Math.min(1.5, hit[k] * 0.04)) + ')'; });\n    this.goal.transformOrigin = '1760px ' + CY + 'px'; this.goal.transform = 'scale(' + (1 + 0.08 * Math.sin(t * 4) * Math.min(1, passed)) + ')';\n    this.c.opacity = eo(seg(t, 1.2, 1.7));\n    kit.stage.style.opacity = 1 - eio(seg(t, 6.0, 6.5));\n  },\n});\n","scene-hook.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nkit.scene('hook', {\n  init(kit) {\n    const r = kit.rng(3); this.stars = [];\n    let s = '';\n    for (let i = 0; i < 90; i++) { const st = { x: r() * 1920, y: r() * 1080, z: 0.3 + r() * 0.9, ph: r() * 6 }; this.stars.push(st); s += '<circle class=\"hook-s\" r=\"' + (1 + st.z * 1.6).toFixed(1) + '\" fill=\"' + (i % 4 ? '#3ecbff' : '#a855f7') + '\"/>'; }\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' + s +\n      '<defs><linearGradient id=\"hookL\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#3ecbff\" stop-opacity=\"0\"/><stop offset=\".5\" stop-color=\"#eef1f7\"/><stop offset=\"1\" stop-color=\"#a855f7\" stop-opacity=\"0\"/></linearGradient></defs>' +\n      '<rect class=\"hook-streak\" x=\"0\" y=\"738\" width=\"1920\" height=\"3\" fill=\"url(#hookL)\"/></svg>' +\n      '<div class=\"bloom hook-bloom\" style=\"left:560px;top:340px;width:800px;height:800px\"></div>' +\n      '<div class=\"words\" style=\"left:200px;top:330px;width:1520px;gap:30px\">' +\n      '<p class=\"tag hook-tag\">A true story</p>' +\n      '<h1 class=\"mid hook-q\" style=\"font-size:76px\">Do you know what happened to</h1>' +\n      '<p class=\"hero grad hook-name\" style=\"font-size:150px\">our first user?</p></div></div>'));\n    this.ss = [...kit.stage.querySelectorAll('.hook-s')];\n    this.streak = kit.stage.querySelector('.hook-streak').style; this.bloom = kit.stage.querySelector('.hook-bloom').style;\n    this.tag = kit.stage.querySelector('.hook-tag'); this.q = kit.stage.querySelector('.hook-q'); this.name = kit.stage.querySelector('.hook-name').style;\n    this.box = kit.stage.querySelector('.words').style;\n  },\n  render(t0) {\n    const t = t0 * 1.25;\n    this.stars.forEach((st, i) => { const x = (st.x - t * 22 * st.z + 1920) % 1920; this.ss[i].setAttribute('cx', x.toFixed(1)); this.ss[i].setAttribute('cy', st.y); this.ss[i].style.opacity = (0.25 + 0.5 * st.z) * (0.6 + 0.4 * Math.sin(t * 1.4 + st.ph)); });\n    TextFx.fadeFromRight(this.tag, t, -0.7);\n    TextFx.fadeFromRight(this.q, t, -0.55, { stagger: 0.09 });\n    const n = eob(seg(t, 1.3, 2.1), 1.7);\n    this.name.opacity = eo(seg(t, 1.3, 1.6));\n    this.name.transform = 'scale(' + lerp(0.82, 1, n) + ')'; this.name.transformOrigin = '0 60%';\n    this.name.letterSpacing = lerp(0.02, -0.035, eo(seg(t, 1.3, 2.6))) + 'em';\n    this.streak.transformOrigin = '960px 740px'; this.streak.transform = 'scaleX(' + eio(seg(t, 1.3, 2.4)) + ')';\n    this.streak.opacity = eo(seg(t, 1.3, 1.6)) * (1 - 0.5 * seg(t, 3, 4.5));\n    this.bloom.opacity = 0.35 + 0.5 * eo(seg(t, 1.3, 2.0)) - 0.25 * seg(t, 2.5, 4.5);\n    this.bloom.transform = 'scale(' + lerp(0.6, 1.15, eo(seg(t, 1.2, 3.5))) + ')';\n    const out = eio(seg(t, 4.4, 5));\n    this.box.opacity = 1 - out; this.box.transform = 'translateX(' + (-3 * t - 50 * out) + 'px)';\n  },\n});\n","scene-move.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nconst V = [-8.88,-9.04,-9.04,-8.13,-3.43,-1.72,-2.28,-3.26,-4.54,-12.4,-13.23,-13.23,-14.13,-12.3,-12.61,-11.61,-10.23,-11.69,-12.15,-8.65,-10.26,-7.36,-8.49,-7.82,-8.61,-7.38,-10.95,-17.67,26.75,25.89,25.35,36.52,36.43];\nconst X0 = 160, X1 = 1460, Y = (v) => 700 - v * 9.2;\nconst P = V.map((v, i) => [X0 + (X1 - X0) * i / (V.length - 1), Y(v)]);\nconst d = P.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');\nlet LEN = 0; for (let i = 1; i < P.length; i++) LEN += Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]);\nkit.scene('move', {\n  init(kit) {\n    let grid = '';\n    for (let h = 0; h <= 8; h += 2) grid += '<line x1=\"' + (X0 + (X1 - X0) * h / 8) + '\" x2=\"' + (X0 + (X1 - X0) * h / 8) + '\" y1=\"300\" y2=\"900\" stroke=\"#eef1f7\" stroke-opacity=\".06\" stroke-width=\"2\"/>';\n    const area = d + ' L' + X1 + ' 900 L' + X0 + ' 900 Z';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' + grid +\n      '<defs><linearGradient id=\"moveL\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#a855f7\"/><stop offset=\".8\" stop-color=\"#3ecbff\"/><stop offset=\"1\" stop-color=\"#2fd897\"/></linearGradient>' +\n      '<linearGradient id=\"moveF\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#3ecbff\" stop-opacity=\".26\"/><stop offset=\"1\" stop-color=\"#3ecbff\" stop-opacity=\"0\"/></linearGradient>' +\n      '<clipPath id=\"moveC\"><rect class=\"move-clip\" x=\"0\" y=\"0\" width=\"0\" height=\"1080\"/></clipPath>' +\n      '<filter id=\"moveGlow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\"><feGaussianBlur stdDeviation=\"9\"/></filter></defs>' +\n      '<path d=\"' + area + '\" fill=\"url(#moveF)\" clip-path=\"url(#moveC)\"/>' +\n      '<path class=\"move-glow\" d=\"' + d + '\" fill=\"none\" stroke=\"url(#moveL)\" stroke-width=\"16\" opacity=\".55\" filter=\"url(#moveGlow)\"/>' +\n      '<path class=\"move-line\" d=\"' + d + '\" fill=\"none\" stroke=\"url(#moveL)\" stroke-width=\"6\" stroke-linejoin=\"round\"/>' +\n      '<circle class=\"move-dot\" r=\"14\" fill=\"#eef1f7\" stroke=\"#02030a\" stroke-width=\"5\"/>' +\n      '<circle class=\"move-ring\" cx=\"' + P[32][0] + '\" cy=\"' + P[32][1] + '\" r=\"20\" fill=\"none\" stroke=\"#2fd897\" stroke-width=\"4\"/></svg>' +\n      '<div class=\"words\" style=\"left:160px;top:100px;width:1100px;gap:10px\"><p class=\"tag\">His live account</p><h2 class=\"mid move-head\">Then the winners ran.</h2></div>' +\n      '<div class=\"words move-end\" style=\"left:1510px;top:250px;width:380px;gap:6px\"><p class=\"num up\" style=\"font-size:84px;line-height:1\">+36.43</p><p class=\"tag\" style=\"color:#b4bccb;font-size:20px\">USDT profit for the day</p><p class=\"mid thin\" style=\"font-size:44px;color:#eef1f7;margin-top:6px\">≈ ₹3,643</p></div></div>'));\n    const q = (c) => kit.stage.querySelector('.move-' + c);\n    this.line = q('line'); this.glow = q('glow'); this.line.style.strokeDasharray = LEN; this.glow.style.strokeDasharray = LEN;\n    this.clip = q('clip'); this.dot = q('dot'); this.ring = q('ring'); this.head = q('head'); this.end = q('end').style;\n  },\n  render(t) {\n    TextFx.fadeFromRight(this.head, t, 0.05);\n    const p = eio(seg(t, 0.4, 4.0));\n    this.line.style.strokeDashoffset = LEN * (1 - p); this.glow.style.strokeDashoffset = LEN * (1 - p);\n    this.clip.setAttribute('width', X0 + (X1 - X0) * p);\n    const f = p * (V.length - 1), i = Math.min(V.length - 2, Math.floor(f)), k = f - i;\n    this.dot.setAttribute('cx', lerp(P[i][0], P[i + 1][0], k)); this.dot.setAttribute('cy', lerp(P[i][1], P[i + 1][1], k));\n    this.dot.style.opacity = eo(seg(t, 0.3, 0.6));\n    const e = eob(seg(t, 4.0, 4.5), 1.8);\n    this.end.opacity = eo(seg(t, 4.0, 4.3)); this.end.transform = 'scale(' + lerp(1.3, 1, e) + ')'; this.end.transformOrigin = '0 50%';\n    const pr = (t - 4.0) % 1.2 / 1.2; this.ring.setAttribute('r', (20 + pr * 60).toFixed(1)); this.ring.style.opacity = t > 4.0 ? (1 - pr) * 0.8 : 0;\n    kit.stage.style.opacity = 1 - eio(seg(t, 5.5, 6));\n  },\n});\n","scene-next.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nkit.scene('next', {\n  init(kit) {\n    const r = kit.rng(5); this.st = []; let s = '';\n    for (let i = 0; i < 70; i++) { const p = { x: r() * 1920, y: r() * 1080, z: 0.3 + r() * 0.9 }; this.st.push(p); s += '<circle class=\"next-s\" r=\"' + (1 + p.z * 1.5).toFixed(1) + '\" fill=\"' + (i % 3 ? '#3ecbff' : '#a855f7') + '\"/>'; }\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' + s + '</svg>' +\n      '<div class=\"bloomv next-b\" style=\"left:1150px;top:180px;width:760px;height:760px\"></div>' +\n      '<img class=\"next-tutor\" src=\"' + kit.assets.url('tutor-present.webp') + '\" style=\"position:absolute;left:1310px;top:250px;width:470px;height:auto\">' +\n      '<div class=\"words\" style=\"left:170px;top:210px;width:1100px;gap:26px\">' +\n      '<h1 class=\"hero next-l1\" style=\"font-size:132px\">Your story</h1>' +\n      '<p class=\"hero grad next-l2\" style=\"font-size:132px\">could be next.</p>' +\n      '<div class=\"next-rule\" style=\"height:6px;width:260px;border-radius:3px;background:linear-gradient(90deg,#3ecbff,#a855f7);transform-origin:0 50%\"></div>' +\n      '<p class=\"mid next-cta\" style=\"font-size:54px\">Start with XORA at <span class=\"hi\" style=\"font-weight:700\">xora.xtinex.com</span></p></div>' +\n      '<div class=\"words next-note\" style=\"left:170px;top:950px;width:1580px\"><p class=\"note\">Real results from one live account on its first day, 21 Oct 2026. Trading crypto futures carries risk; past results do not guarantee future returns. Not investment advice.</p></div></div>'));\n    this.ss = [...kit.stage.querySelectorAll('.next-s')];\n    const q = (c) => kit.stage.querySelector('.next-' + c);\n    this.l1 = q('l1'); this.l2 = q('l2').style; this.rule = q('rule').style; this.cta = q('cta'); this.tutor = q('tutor').style; this.note = q('note').style; this.b = q('b').style;\n  },\n  render(t0) {\n    const t = t0 * (7 / 6);\n    this.st.forEach((p, i) => { this.ss[i].setAttribute('cx', ((p.x + t * 18 * p.z) % 1920).toFixed(1)); this.ss[i].setAttribute('cy', p.y); this.ss[i].style.opacity = 0.2 + 0.5 * p.z; });\n    TextFx.fadeFromRight(this.l1, t, 0.05, { dur: 0.6, dx: 34 });\n    const k = eob(seg(t, 0.6, 1.3), 1.6);\n    this.l2.opacity = eo(seg(t, 0.6, 0.9)); this.l2.transform = 'scale(' + lerp(0.85, 1, k) + ')'; this.l2.transformOrigin = '0 60%';\n    this.rule.transform = 'scaleX(' + eo(seg(t, 1.4, 2.0)) + ')';\n    TextFx.fadeFromRight(this.cta, t, 1.8);\n    this.tutor.opacity = eo(seg(t, 0.9, 1.2));\n    this.tutor.transform = 'translate(' + lerp(160, 0, eob(seg(t, 0.9, 1.7), 1.5)) + 'px,' + (Math.sin(t * 2.2) * 7) + 'px) rotate(' + (Math.sin(t * 1.6) * 1.5) + 'deg)';\n    this.note.opacity = eo(seg(t, 2.6, 3.1));\n    this.b.opacity = 0.3 + 0.4 * eo(seg(t, 0.9, 1.8));\n    kit.stage.style.transform = 'scale(' + (1 + 0.003 * t) + ')';\n  },\n});\n","scene-result.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nkit.scene('result', {\n  init(kit) {\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"bloom result-b\" style=\"left:560px;top:120px;width:900px;height:900px\"></div>' +\n      '<div class=\"words\" style=\"left:160px;top:120px;width:1600px;gap:10px\"><p class=\"tag\">His first live day</p><h2 class=\"mid result-head\">The final result</h2></div>' +\n      '<div class=\"glass result-c1\" style=\"left:160px;top:330px;width:500px;height:300px\"><div class=\"edge\"></div><div class=\"words\" style=\"left:40px;top:44px;width:430px;gap:10px\"><p class=\"num result-n\" style=\"font-size:130px;line-height:1\">0</p><p class=\"tag\" style=\"color:#b4bccb\">trades executed</p></div></div>' +\n      '<div class=\"glass result-c2\" style=\"left:710px;top:330px;width:1050px;height:300px\"><div class=\"edge\"></div><div class=\"words\" style=\"left:44px;top:44px;width:980px;gap:10px\"><p class=\"num up result-p\" style=\"font-size:130px;line-height:1\">+0.00</p><p class=\"tag\" style=\"color:#b4bccb\">USDT profit after Binance fees · ≈ ₹3,643</p></div></div>' +\n      '<div class=\"words result-grow\" style=\"left:160px;top:690px;width:1600px;gap:16px\">' +\n      '<div style=\"display:flex;align-items:baseline;gap:26px\"><p class=\"num\" style=\"font-size:58px\">14</p><p class=\"tag\" style=\"color:#b4bccb\">USDT start<br>≈ ₹1,400</p>' +\n      '<div style=\"flex:1;height:14px;border-radius:7px;background:#eef1f714;position:relative;align-self:center;overflow:hidden\"><div class=\"result-bar\" style=\"position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:7px;background:linear-gradient(90deg,#3ecbff,#a855f7,#2fd897);transform-origin:0 50%\"></div></div>' +\n      '<p class=\"num up\" style=\"font-size:58px\"><span class=\"result-end\">14.00</span></p><p class=\"tag\" style=\"color:#b4bccb\">USDT end<br>≈ ₹<span class=\"result-inr\">1,400</span></p></div>' +\n      '<p class=\"note result-note\">XORA auto trades and trades placed from XORA signals, after Binance fees.</p></div></div>'));\n    const q = (c) => kit.stage.querySelector('.result-' + c);\n    this.head = q('head'); this.c1 = q('c1').style; this.c2 = q('c2').style; this.n = q('n'); this.p = q('p'); this.grow = q('grow').style; this.bar = q('bar').style; this.end = q('end'); this.b = q('b').style;\n  },\n  render(t0) {\n    const t = t0 * 1.3;\n    TextFx.fadeFromRight(this.head, t, 0.05);\n    const a = eob(seg(t, 0.3, 0.9), 1.5), b = eob(seg(t, 0.6, 1.2), 1.5);\n    this.c1.opacity = eo(seg(t, 0.3, 0.6)); this.c1.transform = 'translateY(' + lerp(40, 0, a) + 'px)';\n    this.c2.opacity = eo(seg(t, 0.6, 0.9)); this.c2.transform = 'translateY(' + lerp(40, 0, b) + 'px)';\n    this.n.textContent = String(Math.round(168 * eio(seg(t, 0.6, 2.4))));\n    const pv = 36.43 * eio(seg(t, 1.0, 3.0)); this.p.textContent = '+' + pv.toFixed(2);\n    this.grow.opacity = eo(seg(t, 2.6, 3.0));\n    const g = eio(seg(t, 2.8, 4.4)); this.bar.transform = 'scaleX(' + lerp(14 / 50.43, 1, g) + ')';\n    this.end.textContent = (14 + 36.43 * g).toFixed(2);\n    this.inr = this.inr || this.end.closest('.words').querySelector('.result-inr');\n    this.inr.textContent = Math.round((14 + 36.43 * g) * 100).toLocaleString('en-IN');\n    this.b.opacity = 0.2 + 0.5 * eo(seg(t, 2.8, 3.6)); this.b.transform = 'scale(' + kit.breathe(t, 0.03, 2.4) + ')';\n    kit.stage.style.opacity = 1 - eio(seg(t, 6.0, 6.5));\n  },\n});\n","scene-start.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nconst CX = 1450, BASE = 860;\nkit.scene('start', {\n  init(kit) {\n    let coins = '';\n    for (let i = 0; i < 14; i++) coins += '<g class=\"start-c\"><ellipse cx=\"' + CX + '\" cy=\"0\" rx=\"150\" ry=\"34\" fill=\"#0c0e1f\" stroke=\"url(#startG)\" stroke-width=\"4\"/><ellipse cx=\"' + CX + '\" cy=\"-10\" rx=\"150\" ry=\"34\" fill=\"#121636\" stroke=\"url(#startG)\" stroke-width=\"3\"/></g>';\n    kit.stage.append(kit.h('<div class=\"ground\">' +\n      '<div class=\"bloom start-b\" style=\"left:1100px;top:330px;width:700px;height:700px\"></div>' +\n      '<svg class=\"art\" viewBox=\"0 0 1920 1080\"><defs><linearGradient id=\"startG\" x1=\"0\" x2=\"1\"><stop offset=\"0\" stop-color=\"#3ecbff\"/><stop offset=\"1\" stop-color=\"#a855f7\"/></linearGradient></defs>' + coins + '</svg>' +\n      '<div class=\"words\" style=\"left:180px;top:250px;width:900px;gap:18px\">' +\n      '<p class=\"mid start-l1\">He started with just</p>' +\n      '<p class=\"hero\" style=\"font-size:220px;line-height:1\"><span class=\"num start-n\">0</span><span class=\"grad\" style=\"font-size:110px\"> USDT</span></p>' +\n      '<p class=\"mid thin start-inr\" style=\"color:#b4bccb\">≈ ₹1,400</p>' +\n      '<p class=\"sub start-s\">No big account. No trading desk. Just XORA.</p></div></div>'));\n    this.cs = [...kit.stage.querySelectorAll('.start-c')];\n    const q = (c) => kit.stage.querySelector('.start-' + c);\n    this.l1 = q('l1'); this.n = q('n'); this.inr = q('inr').style; this.s = q('s'); this.b = q('b').style;\n  },\n  render(t0) {\n    const t = t0 * 1.25;\n    TextFx.fadeFromRight(this.l1, t, 0.05);\n    const c = eio(seg(t, 0.5, 2.3));\n    this.n.textContent = String(Math.round(14 * c));\n    this.cs.forEach((g, i) => {\n      const tl = 0.5 + i * 0.13, p = seg(t, tl, tl + 0.45);\n      const y = BASE - i * 22 - lerp(420, 0, eob(p, 1.3));\n      g.setAttribute('transform', 'translate(0,' + y.toFixed(1) + ')');\n      g.style.opacity = p > 0 ? 1 : 0;\n    });\n    this.inr.opacity = eo(seg(t, 2.3, 2.7));\n    TextFx.fadeFromRight(this.s, t, 2.9);\n    this.b.opacity = 0.3 + 0.4 * eo(seg(t, 1.5, 2.6)); this.b.transform = 'scale(' + kit.breathe(t, 0.03, 2.4) + ')';\n    kit.stage.style.opacity = 1 - eio(seg(t, 4.5, 5));\n  },\n});\n","scene-top3.js":"const { seg, eo, eio, eob, lerp, TextFx } = kit;\nconst X0 = 150, X1 = 1110, Y0 = 250, Y1 = 900, BEAT = 4;\nkit.scene('top3', {\n  init(kit) {\n    const T = kit.json('top3.json');\n    this.beats = [];\n    T.forEach((d, j) => {\n      const K = d.k; let lo = Infinity, hi = -Infinity; for (const k of K) { lo = Math.min(lo, k[2]); hi = Math.max(hi, k[1]); } lo = Math.min(lo, d.x); hi = Math.max(hi, d.e); const pad = (hi - lo) * 0.06; lo -= pad; hi += pad;\n      const px = (i) => X0 + (X1 - X0) * (i + 0.5) / K.length, py = (v) => Y1 - (v - lo) / (hi - lo) * (Y1 - Y0);\n      const cw = (X1 - X0) / K.length * 0.62; let c = '';\n      K.forEach((k, i) => { const col = k[3] >= k[0] ? '#2fd897' : '#ff5c7c'; c += '<g class=\"top3-k\"><line x1=\"' + px(i) + '\" x2=\"' + px(i) + '\" y1=\"' + py(k[1]) + '\" y2=\"' + py(k[2]) + '\" stroke=\"' + col + '\" stroke-width=\"2\"/><rect x=\"' + (px(i) - cw / 2) + '\" y=\"' + py(Math.max(k[0], k[3])) + '\" width=\"' + cw + '\" height=\"' + Math.max(2, Math.abs(py(k[0]) - py(k[3]))) + '\" rx=\"1.5\" fill=\"' + col + '\"/></g>'; });\n      const root = kit.h('<div class=\"top3-beat\" style=\"position:absolute;inset:0\">' +\n        '<div class=\"glass\" style=\"left:100px;top:200px;width:1060px;height:760px\"><div class=\"edge\"></div></div>' +\n        '<svg class=\"art\" viewBox=\"0 0 1920 1080\">' +\n        '<rect class=\"top3-zone\" x=\"' + px(d.i0) + '\" y=\"' + Y0 + '\" width=\"' + (px(d.i1) - px(d.i0)) + '\" height=\"' + (Y1 - Y0) + '\" fill=\"#2fd897\" fill-opacity=\"0.08\"/>' +\n        '<g>' + c + '</g>' +\n        '<line class=\"top3-in\" x1=\"' + px(d.i0) + '\" x2=\"' + X1 + '\" y1=\"' + py(d.e) + '\" y2=\"' + py(d.e) + '\" stroke=\"#a855f7\" stroke-width=\"3\" stroke-dasharray=\"12 9\"/>' +\n        '<line class=\"top3-out\" x1=\"' + px(d.i0) + '\" x2=\"' + X1 + '\" y1=\"' + py(d.x) + '\" y2=\"' + py(d.x) + '\" stroke=\"#2fd897\" stroke-width=\"3\" stroke-dasharray=\"12 9\"/>' +\n        '<circle class=\"top3-dot\" cx=\"' + px(d.i0) + '\" cy=\"' + py(d.e) + '\" r=\"13\" fill=\"#a855f7\" stroke=\"#02030a\" stroke-width=\"5\"/>' +\n        '<path class=\"top3-arrow\" d=\"M' + (X1 - 40) + ' ' + (py(d.e) + 20) + ' L' + (X1 - 40) + ' ' + (py(d.x) - 24) + '\" stroke=\"#2fd897\" stroke-width=\"5\" stroke-linecap=\"round\" fill=\"none\"/>' +\n        '<path class=\"top3-head\" d=\"M' + (X1 - 56) + ' ' + (py(d.x) - 40) + ' L' + (X1 - 40) + ' ' + (py(d.x) - 18) + ' L' + (X1 - 24) + ' ' + (py(d.x) - 40) + '\" stroke=\"#2fd897\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/></svg>' +\n        '<div class=\"words\" style=\"left:130px;top:224px;width:600px;gap:4px\"><p class=\"tag\" style=\"font-size:20px\">' + d.s + ' / USDT · ' + d.tf + ' candles</p></div>' +\n        '<div class=\"words top3-card\" style=\"left:1240px;top:220px;width:600px;gap:20px\">' +\n        '<p class=\"tag\">Best trade #' + (j + 1) + '</p>' +\n        '<p class=\"hero\" style=\"font-size:132px\">' + d.s + '</p>' +\n        '<div style=\"display:flex;gap:12px;flex-wrap:wrap\"><span class=\"chip dn\">Sell · ' + d.lev + '×</span><span class=\"chip ' + (d.src.indexOf('auto') >= 0 ? 'hi' : 'vi') + '\">' + d.src + '</span></div>' +\n        '<p class=\"num up top3-net\" style=\"font-size:104px;line-height:1\">+' + d.net.toFixed(2) + ' <span style=\"font-size:40px;color:#b4bccb\">USDT</span></p>' +\n        '<p class=\"mid thin\" style=\"font-size:48px;margin-top:-8px\">≈ ₹' + Math.round(d.net * 100).toLocaleString('en-IN') + '</p>' +\n        '<p class=\"sub\" style=\"font-size:30px\">Sold at ' + d.o + ', closed at ' + d.c + ' IST. Price fell ' + d.move.replace('−', '') + (d.roi ? ', ' + d.roi + '% on the margin' : '') + '. After fees.</p></div></div>');\n      kit.stage.append(root);\n      const q = (c) => root.querySelector('.top3-' + c);\n      this.beats.push({ root: root.style, ks: [...root.querySelectorAll('.top3-k')].map((g) => g.style), n: K.length, i0: d.i0, i1: d.i1, zone: q('zone').style, in_: q('in').style, out: q('out').style, dot: q('dot').style, arrow: q('arrow'), head: q('head').style, card: q('card').style, net: q('net').style, dx: px(d.i0), dy: py(d.e) });\n    });\n    kit.stage.prepend(kit.h('<div class=\"ground\"></div>'));\n  },\n  render(t0) {\n    const t = t0 * (4 / 3);\n    this.beats.forEach((b, j) => {\n      const lt = t - j * BEAT;\n      const inn = eio(seg(lt, -0.1, 0.45)), out = j < 2 ? eio(seg(lt, BEAT - 0.35, BEAT + 0.1)) : 0;\n      b.root.opacity = lt < -0.1 || lt > BEAT + 0.1 && j < 2 ? 0 : Math.min(inn, 1 - out);\n      b.root.transform = 'translateX(' + (lerp(80, 0, inn) - 120 * out) + 'px)';\n      b.ks.forEach((s, i) => { s.opacity = eo(i <= b.i0 ? seg(lt, 0.0 + i * 0.012, 0.3 + i * 0.012) : seg(lt, 0.7 + (i - b.i0) / (b.n - b.i0) * 1.5, 0.9 + (i - b.i0) / (b.n - b.i0) * 1.5)); });\n      b.dot.transformOrigin = b.dx + 'px ' + b.dy + 'px'; b.dot.transform = 'scale(' + eob(seg(lt, 0.45, 0.8), 1.8) + ')';\n      b.in_.opacity = eo(seg(lt, 0.5, 0.8)); b.zone.opacity = eo(seg(lt, 0.7, 1.6));\n      b.out.opacity = eo(seg(lt, 2.1, 2.4));\n      b.arrow.style.strokeDasharray = 1000; b.arrow.style.strokeDashoffset = 1000 * (1 - eo(seg(lt, 2.1, 2.6))); b.head.opacity = eo(seg(lt, 2.5, 2.7));\n      b.card.opacity = eo(seg(lt, 0.2, 0.6)); b.card.transform = 'translateX(' + lerp(30, 0, eo(seg(lt, 0.2, 0.7))) + 'px)';\n      b.net.opacity = eo(seg(lt, 2.3, 2.6)); b.net.transform = 'scale(' + lerp(1.25, 1, eob(seg(lt, 2.3, 2.7), 1.8)) + ')'; b.net.transformOrigin = '0 60%';\n    });\n    kit.stage.style.opacity = 1 - eio(seg(t, 11.5, 12));\n  },\n});\n","scenes.json":"{\"v\":1,\"stage\":\"final\",\"look\":\"XORA site look at its most cinematic: deep void ground, glass panels with cyan-to-violet edges, light that sweeps and blooms, volumetric scan rings, streaming data, depth and parallax. Website promo telling the true story of XORA's first user Tisan: his first live Binance day (168 trades, +36.43 USDT after fees from a 14 USDT start). Short cut, about 45 s, confident wording.\",\"palettes\":[[\"#02030a\",\"#3ecbff\",\"#eef1f7\",\"#a855f7\"]],\"theirs\":1,\"width\":1920,\"height\":1080,\"fps\":60,\"background\":\"#02030a\",\"fonts\":{\"display\":{\"family\":\"Outfit\",\"or\":\"plus-jakarta-sans\",\"weights\":[300,600,700,800]},\"sans\":\"manrope\",\"mono\":\"dm-mono\"},\"scenes\":[{\"id\":\"hook\",\"name\":\"The question\",\"dur\":4,\"desc\":\"On the void: do you know what happened to our first user, Tisan?\"},{\"id\":\"start\",\"name\":\"14 USDT\",\"dur\":4,\"desc\":\"His whole starting balance counts up: 14 USDT, about 1,400 rupees.\"},{\"id\":\"engine\",\"name\":\"The engine\",\"dur\":6,\"desc\":\"The XORA engine wakes: a sphere of market data spins, rings scan, numbers stream; scanning, analysing, calculating.\"},{\"id\":\"filter\",\"name\":\"AI filter\",\"dur\":5,\"desc\":\"Setups pour into the Advanced AI filter; ring after ring removes the risky ones; a few clean trades pass.\"},{\"id\":\"move\",\"name\":\"The climb\",\"dur\":6,\"desc\":\"The live account line climbs to the day's +36.43 USDT.\"},{\"id\":\"top3\",\"name\":\"Best 3 trades\",\"dur\":9,\"desc\":\"Three trade cards on real candles: DOOD sell +44.73, ALT sell +12.08, IOST sell +7.30.\"},{\"id\":\"result\",\"name\":\"The result\",\"dur\":5,\"desc\":\"Totals land: 168 trades executed, +36.43 USDT after fees, 14 to 50.43 USDT.\"},{\"id\":\"next\",\"name\":\"Your story\",\"dur\":6,\"desc\":\"Your story could be next. xora.xtinex.com, the brain tutor, a short risk note.\"}]}","score.js":"kit.score(function (S, T) {\n  S.tempo(120, { t0: 0 });\n  // beats: start 8, engine 16, filter 28, move 38, top3 50, result 68, next 78\n  S.program('pad', 'pad', { rev: 0.75 }); S.program('keys', 'ep', { rev: 0.35 }); S.program('bass', 'bass');\n  S.program('arp', 'pluck', { pan: -0.2, rev: 0.45, gain: -3 }); S.program('mallet', 'marimba', { pan: 0.2 }); S.program('glk', 'glock', { rev: 0.55, gain: -3 });\n  // the question\n  S.note('pad', 'A2', { t: 0, dur: 8.2, vel: 36 }); S.note('pad', 'E3', { t: 0, dur: 8.2, vel: 30 }); S.note('pad', 'C#4', { t: 1.0, dur: 7, vel: 24 });\n  S.fx('revswell', T.hook + 1.05, { dur: 1.0 }); S.note('glk', 'E6', { t: T.hook + 1.08, dur: 2, vel: 50 }); S.note('glk', 'A5', { t: T.hook + 1.3, dur: 2, vel: 40 });\n  // 14 USDT: coins drop in\n  const coins = []; for (let i = 0; i < 14; i++) coins.push(T.start + (0.92 + i * 0.13) / 1.25); S.ticks(coins, { vel: 34 });\n  S.fx('revswell', T.engine, { dur: 1.2 });\n  // engine, filter, last 8 hours: the groove\n  const prog = [['A2', 'E3', 'B3', 'C#4'], ['F#2', 'C#3', 'A3', 'E4'], ['D2', 'A2', 'F#3', 'C#4'], ['E2', 'B2', 'G#3', 'B3']];\n  const roots = ['A1', 'F#1', 'D1', 'E1'];\n  for (let b = 16, i = 0; b < 50; b += 4, i++) {\n    S.chord('keys', prog[i % 4], { beat: b, beats: 3.8, vel: 46 });\n    S.note('bass', roots[i % 4], { beat: b, beats: 1.5, vel: 78 }); S.note('bass', roots[i % 4], { beat: b + 2.5, beats: 1, vel: 62 });\n  }\n  S.pattern('arp', 'xxxxxxxx', { from: 16, repeat: 6, step: 0.5, pitch: ['A4', 'C#5', 'E5', 'B5', 'E5', 'C#5'], vel: 40 });\n  S.drums({ kick: 'x...x...', hat: 'oxoxoxox' }, { from: 16, repeat: 3 });\n  S.drums({ kick: 'x...x.x.', sidestick: '..x...x.', hat: 'oxoxoxox' }, { from: 28, repeat: 5 });\n  S.pattern('mallet', 'x.x.X.xx', { from: 38, repeat: 3, pitch: ['E5', 'A4', 'C#5', 'B4'], vel: 52 });\n  for (let k = 0; k < 5; k++) S.fx('click', T.filter + (0.9 + k * 0.6) / 1.3, { vel: 40 });\n  S.drum('crash', { t: T.move + 4.0, vel: 66 }); S.fx('ding', T.move + 4.05);\n  // best 3 trades\n  for (let b = 50, i = 0; b < 68; b += 4, i++) { S.chord('keys', prog[(i + 2) % 4], { beat: b, beats: 3.8, vel: 50 }); S.note('bass', roots[(i + 2) % 4], { beat: b, beats: 1.5, vel: 80 }); }\n  S.drums({ kick: 'x...x.x.', snare: '....x...', hat: 'xxxxxxxx' }, { from: 50, repeat: 4, vel: 60 });\n  S.drums({ kick: 'x...x...', hat: 'xxxx' }, { from: 66, repeat: 1, vel: 56 });\n  S.pattern('mallet', 'x.xxx.x.', { from: 50, repeat: 4, pitch: ['A5', 'E5', 'C#5', 'E5'], vel: 50 });\n  for (let j = 0; j < 3; j++) { S.fx('whoosh', T.top3 + j * 3 - 0.08, { dur: 0.35 }); S.fx('sparkle', T.top3 + j * 3 + 0.55, { dur: 1.1 }); S.fx('chime', T.top3 + j * 3 + 1.76); }\n  // the result\n  S.run('mallet', ['A4', 'C#5', 'E5', 'A5', 'C#6', 'E6'], { t: T.result - 0.62, step: 0.1, vel: 54, cresc: 10 });\n  S.chord('keys', ['A2', 'E3', 'A3', 'C#4', 'E4'], { beat: 68, beats: 10, vel: 66 }); S.note('bass', 'A1', { beat: 68, beats: 4, vel: 88 });\n  S.drum('kick', { beat: 68, vel: 104 }); S.drum('crash', { beat: 68, vel: 64 });\n  S.fx('sparkle', T.result + 0.5, { dur: 1.8 }); S.fx('ding', T.result + 3.4);\n  // your story could be next\n  S.fx('revswell', T.next, { dur: 1.2 });\n  S.chord('keys', ['D3', 'A3', 'D4', 'F#4', 'A4'], { beat: 78, beats: 12, vel: 62 }); S.note('bass', 'D2', { beat: 78, beats: 8, vel: 84 });\n  S.drum('kick', { beat: 78, vel: 96 }); S.note('pad', 'D3', { beat: 78, beats: 12, vel: 44 }); S.note('glk', 'A5', { beat: 80, beats: 4, vel: 42 }); S.note('glk', 'D6', { beat: 81, beats: 4, vel: 38 });\n  S.fx('click', T.next + 1.55);\n  S.master({ gain: -6, fadeOut: 1.5 });\n});\n","top3.json":"[{\"s\":\"DOOD\",\"tf\":\"5m\",\"sc\":10000000,\"k\":[[46290,46730,45390,45700],[45700,47160,44830,46500],[46500,49560,46390,49190],[49170,49310,46780,47670],[47670,48330,46120,46580],[46580,46680,43700,44200],[44190,45740,43040,44750],[44760,45500,43380,43490],[43500,44480,42230,44250],[44250,45050,43680,43760],[43770,44940,43510,44770],[44760,44770,42320,43240],[43230,43320,41600,42360],[42370,45360,41660,45280],[45280,45940,40270,40410],[40420,42900,40330,41340],[41340,42850,41000,42090],[42090,43000,39520,39930],[39950,40770,38120,38780],[38770,40200,38010,40010],[40020,40050,38600,39560],[39560,39940,38360,38790],[38780,39290,36390,36960],[36950,37340,32610,33640],[33620,33750,30770,32230],[32220,32240,29610,30360],[30360,30360,27010,27260],[27250,29800,27110,28460],[28470,28520,24180,24840],[24860,26280,23910,24920],[24920,24920,23180,23670],[23660,25260,23350,24380],[24370,25570,24070,24800],[24800,24800,23510,23720],[23740,24280,22090,22420],[22420,22730,21420,21630],[21610,22950,21250,21710],[21700,22670,21690,22020],[22020,22240,21510,22010],[22010,23580,21770,23010],[23000,23760,20800,21440],[21440,23330,21310,22050],[22050,23010,21980,22410],[22400,23100,22350,22480],[22490,23360,22190,23160],[23160,23470,21910,22450],[22450,22880,22240,22720],[22740,22740,22070,22150],[22150,22490,22010,22370],[22370,22370,21810,22280]],\"i0\":7,\"i1\":45,\"e\":44940,\"x\":30011,\"net\":44.73,\"move\":\"−33%\",\"roi\":null,\"src\":\"XORA signal\",\"o\":\"19:46\",\"c\":\"22:55\",\"lev\":25},{\"s\":\"ALT\",\"tf\":\"1m\",\"sc\":1000000,\"k\":[[13785,13957,13761,13892],[13893,13937,13779,13929],[13926,14299,13869,14191],[14180,14429,14173,14228],[14225,14410,14090,14208],[14199,14299,14129,14258],[14263,14344,14202,14271],[14272,14443,14245,14249],[14248,14295,13890,14117],[14114,14197,14059,14128],[14133,14185,13932,14079],[14084,14121,13982,14112],[14112,14341,14037,14219],[14226,15062,14081,14994],[14998,15411,14601,15271],[15267,15633,15094,15521],[15519,15619,15320,15540],[15536,15550,15375,15423],[15431,15489,15013,15125],[15119,15365,15050,15073],[15071,15129,14901,15010],[15015,15150,14974,15112],[15113,15378,15071,15118],[15110,15489,15064,15308],[15303,15305,15100,15201],[15203,15241,15071,15123],[15120,15348,15116,15199],[15200,15231,14271,14669],[14669,14729,14435,14454],[14454,14680,14347,14523],[14523,14570,14010,14192],[14203,14274,13710,13947],[13958,14010,13622,13986],[13986,13999,13811,13914],[13921,14036,13752,13865],[13870,14060,13755,14046],[14048,14056,13750,13841],[13841,13971,13820,13885],[13890,14033,13858,13927],[13927,14191,13922,13989],[13988,13994,13478,13683],[13686,13698,13177,13261],[13266,13375,13262,13282],[13283,13326,13100,13113],[13113,13152,12801,12836],[12834,12889,12689,12758],[12764,12890,12652,12818],[12818,12846,12737,12789],[12782,13221,12714,12990],[12991,13072,12960,13061],[13062,13073,12905,12950],[12954,13079,12948,13025],[13028,13155,12968,13072],[13070,13143,13003,13047],[13046,13144,13010,13081],[13081,13088,12884,12992],[13002,13002,12805,12860],[12857,12995,12751,12967],[12967,12977,12818,12863],[12863,12955,12847,12878],[12884,12969,12859,12948],[12946,13123,12937,13011],[13011,13092,12981,13059],[13061,13075,12968,13030],[13026,13150,12989,13114],[13114,13128,12989,13088],[13086,13086,12976,12989],[12988,13138,12988,13035],[13036,13041,12883,12974],[12974,13245,12974,13050],[13050,13132,12988,13045],[13049,13050,12924,12971],[12972,12999,12870,12939],[12939,13010,12856,12895],[12895,12943,12880,12894],[12894,12963,12882,12885],[12890,12981,12789,12947],[12943,12945,12802,12875],[12879,12921,12796,12911],[12908,13486,12902,13315],[13306,13317,13096,13122],[13122,13153,13050,13086],[13081,13209,13077,13107],[13108,13253,13089,13174],[13175,13260,13148,13196],[13199,13201,13015,13051],[13044,13095,13034,13062],[13059,13062,12965,12993]],\"i0\":24,\"i1\":79,\"e\":15227,\"x\":13367,\"net\":12.08,\"move\":\"−12%\",\"roi\":302,\"src\":\"XORA auto trade\",\"o\":\"22:44\",\"c\":\"23:39\",\"lev\":25},{\"s\":\"IOST\",\"tf\":\"1m\",\"sc\":10000000,\"k\":[[12289,12294,12052,12079],[12078,12143,11929,12105],[12103,12112,11850,12022],[12025,12154,11922,12111],[12115,12250,12073,12239],[12245,12449,12231,12390],[12389,12413,12275,12369],[12373,12396,12208,12230],[12231,12473,12153,12374],[12373,12394,12185,12221],[12214,12216,12073,12152],[12151,12192,12065,12079],[12083,12174,12046,12156],[12156,12319,12087,12299],[12299,12320,11576,11918],[11918,12080,11796,11890],[11892,11892,11500,11772],[11761,12080,11674,11975],[11970,12195,11949,12185],[12186,12200,12097,12186],[12182,12187,12000,12061],[12064,12064,11934,11999],[11998,12074,11968,11990],[11991,12136,11950,11975],[11981,12010,11815,11954],[11955,12087,11927,12056],[12057,12058,11517,11621],[11619,11671,11144,11367],[11376,11394,11047,11208],[11201,11204,10754,10859],[10859,10942,10654,10785],[10779,10811,10690,10760],[10762,10826,10641,10671],[10675,10748,10651,10731],[10735,10750,10328,10446],[10446,10524,10400,10490],[10492,10496,10254,10391],[10390,10461,10334,10418],[10418,10495,10292,10392],[10387,10448,10337,10400],[10400,10579,10388,10566],[10562,10576,10271,10325],[10332,10486,10332,10481],[10477,10632,10457,10559],[10557,10560,10103,10139],[10138,10283,10126,10230],[10234,10318,10214,10240],[10245,10331,10206,10251],[10250,10319,10235,10315],[10315,10409,10297,10367]],\"i0\":24,\"i1\":41,\"e\":11977,\"x\":10508,\"net\":7.3,\"move\":\"−12%\",\"roi\":243,\"src\":\"XORA auto trade\",\"o\":\"09:30\",\"c\":\"09:47\",\"lev\":20}]"}};</script>
+<script>
+/* XORA Futures Edge lesson player.
+ *
+ * Plays a lesson written as scene modules (content/futures-edge/<id>/modules) as a plain web
+ * page. Everything on screen is a pure function of the lesson time t, so the page can pause,
+ * seek and replay at any point. It provides the small "kit" the scenes are written against
+ * (stage, easing, TextFx, assets, json) and a WebAudio synth for score.js.
+ *
+ * With a voiceover, build-lesson.mjs lengthens some scenes so the narration fits: a scene with
+ * stretch factor k plays its animation and sound effects k times slower. Scene code still sees the
+ * authored timeline (kit.start, kit.dur and t), so nothing in the modules changes. The voice is
+ * one mixed track; the music dips under each line, and the CC button shows the line as text.
+ *
+ * build-lesson.mjs inlines this file into public/futures-edge/lessons/<id>.html, after a
+ * `window.FILM = {...}` block that carries the scene list, module texts and asset paths.
+ */
+(function () {
+  "use strict";
+
+  const F = window.FILM;
+  const W = F.width;
+  const H = F.height;
+
+  // ── Maths and easing ───────────────────────────────────────────────────────
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const clamp01 = (x) => clamp(x, 0, 1);
+  const seg = (t, a, b) => (b <= a ? (t >= b ? 1 : 0) : clamp01((t - a) / (b - a)));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const eo = (x) => 1 - Math.pow(1 - clamp01(x), 3);
+  const ei = (x) => Math.pow(clamp01(x), 3);
+  const eio = (x) => {
+    x = clamp01(x);
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  };
+  const eob = (x, s = 1.4) => {
+    x = clamp01(x);
+    return 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2);
+  };
+  const rng = (seed) => {
+    let a = seed >>> 0 || 1;
+    return () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+  const breathe = (t, amt = 0.012, period = 3.2) => 1 + amt * Math.sin((2 * Math.PI * t) / period);
+
+  // ── DOM helpers ────────────────────────────────────────────────────────────
+  const h = (html) => {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = String(html).trim();
+    return tpl.content.firstElementChild;
+  };
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const el = (tag, o = {}, children = []) => {
+    const e = document.createElement(tag);
+    if (o.class) e.className = o.class;
+    if (o.style) e.setAttribute("style", o.style);
+    if (o.text != null) e.textContent = o.text;
+    if (o.html != null) e.innerHTML = o.html;
+    for (const [k, v] of Object.entries(o.attrs || {})) e.setAttribute(k, v);
+    for (const c of children) e.append(c);
+    return e;
+  };
+
+  // Words of an element as inline-block spans (inline markup such as <b> is kept).
+  const wordCache = new WeakMap();
+  function words(root) {
+    let list = wordCache.get(root);
+    if (list) return list;
+    list = [];
+    const walk = (node) => {
+      for (const child of Array.from(node.childNodes)) {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const part of child.textContent.split(/(\s+)/)) {
+            if (!part) continue;
+            if (/^\s+$/.test(part)) {
+              frag.append(document.createTextNode(part));
+            } else {
+              const s = document.createElement("span");
+              s.textContent = part;
+              s.style.display = "inline-block";
+              frag.append(s);
+              list.push(s);
+            }
+          }
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          walk(child);
+        }
+      }
+    };
+    walk(root);
+    wordCache.set(root, list);
+    return list;
+  }
+  const TextFx = {
+    fadeFromRight(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.11, d = o.dur ?? 0.5, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = eo(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = p;
+        s.style.transform = "translateX(" + ((1 - p) * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+    fadeOutLeft(root, t, t0, o = {}) {
+      const st = o.stagger ?? 0.04, d = o.dur ?? 0.35, dx = o.dx ?? 26;
+      const list = words(root);
+      list.forEach((s, i) => {
+        const p = ei(seg(t, t0 + i * st, t0 + i * st + d));
+        s.style.opacity = 1 - p;
+        s.style.transform = "translateX(" + (-p * dx).toFixed(2) + "px)";
+      });
+      return t0 + Math.max(0, list.length - 1) * st + d;
+    },
+  };
+
+  // ── The kit the scene modules use ──────────────────────────────────────────
+  const modules = F.modules;
+  const jsonCache = {};
+  const assets = {
+    url: (name) => F.assetBase + name,
+    has: (name) => Object.prototype.hasOwnProperty.call(F.assets, name),
+    list: () => Object.keys(F.assets),
+  };
+  const defs = {};
+  let scoreFn = null;
+
+  // start/dur: the scene in the played timeline; oldStart/oldDur: as authored (k = dur / oldDur).
+  let acc = 0;
+  const scenes = F.scenes.map((s) => {
+    const o = Object.assign({ k: 1, oldStart: acc, oldDur: s.dur }, s, { start: acc });
+    acc += s.dur;
+    return o;
+  });
+  const END = acc;
+  const OLD_END = scenes.reduce((a, s) => a + s.oldDur, 0);
+  // Authored time to played time.
+  function warp(x) {
+    for (let i = scenes.length - 1; i >= 0; i--) {
+      const s = scenes[i];
+      if (x >= s.oldStart) return s.start + (x - s.oldStart) * s.k;
+    }
+    return x;
+  }
+  // Narration lines: spoken when the lesson has a voice track (F.voice.src), always shown as captions.
+  const lines = (F.voice && F.voice.lines) || [];
+  // Voice language for lessons recorded in English and Malayalam (F.voice.srcMl): English unless the viewer chose Malayalam.
+  let voiceLang = "en";
+  try { if (localStorage.getItem("fe-voice-lang") === "ml") voiceLang = "ml"; } catch (e) { /* English */ }
+  // Stretches where the music dips under the voice: each line plus a little either side, close ones joined.
+  const duckSpans = [];
+  if (F.voice && F.voice.src) for (const l of lines) {
+    const a = l.t - 0.15, b = l.t + l.d + 0.25, last = duckSpans[duckSpans.length - 1];
+    if (last && a - last[1] < 1.2) last[1] = b; else duckSpans.push([a, b]);
+  }
+
+  function makeKit(box, start, dur) {
+    return {
+      stage: box, start, dur, W, H,
+      seg, lerp, eo, ei, eio, eob, clamp, clamp01, rng, breathe, TextFx, h, el, esc,
+      assets,
+      module: (n) => (n in modules ? modules[n] : null),
+      json: (n) => (jsonCache[n] ??= JSON.parse(modules[n])),
+      modules: () => Object.keys(modules),
+      scene: (id, def) => { defs[id] = def; },
+      score: (fn) => { scoreFn = fn; },
+    };
+  }
+  const run = (name, kit) => new Function("kit", modules[name] + "\n//# sourceURL=" + F.id + "/" + name)(kit);
+
+  // ── Stage ──────────────────────────────────────────────────────────────────
+  const stage = document.getElementById("stage");
+  const css = document.createElement("style");
+  css.textContent = modules["base.css"] || "";
+  document.head.append(css);
+
+  function fit() {
+    const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+  }
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", () => setTimeout(fit, 200));
+  fit();
+
+  // ── Audio: score.js recorded as events, then synthesised with WebAudio ─────
+  function midiOf(p) {
+    if (typeof p === "number") return p;
+    const m = /^([A-Ga-g])([#b]?)(-?\d)$/.exec(String(p).trim());
+    if (!m) return 72;
+    const base = { c: 0, d: 2, e: 4, f: 5, g: 7, a: 9, b: 11 }[m[1].toLowerCase()];
+    return 12 * (Number(m[3]) + 1) + base + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0);
+  }
+
+  // score.js runs twice: the music against the played timeline, the sound effects against the
+  // authored one and then moved onto the played one, so each cue stays with its animation.
+  function recordScore() {
+    const T = { END };
+    for (const s of scenes) T[s.id] = s.start;
+    const music = recordPass(T);
+    const Told = { END: OLD_END };
+    for (const s of scenes) Told[s.id] = s.oldStart;
+    const cues = recordPass(Told);
+    const ev = music.ev.filter((e) => e.k !== "f");
+    for (const e of cues.ev) {
+      if (e.k !== "f") continue;
+      e.t = warp(e.t);
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      ev.push(e);
+    }
+    ev.sort((a, b) => a.s - b.s);
+    return { ev, tracks: music.tracks, master: music.master };
+  }
+
+  function recordPass(T) {
+    const ev = [];
+    const tracks = {};
+    const master = { gain: -6, music: 0, fadeOut: 1 };
+    let B = 0.5, t0 = 0;
+    const at = (o) => (o.t != null ? o.t : t0 + (o.beat || 0) * B);
+    const len = (o, d) => (o.dur != null ? o.dur : o.beats != null ? o.beats * B : d);
+    const push = (e) => {
+      e.s = e.name === "revswell" ? e.t - e.d : e.t;
+      if (e.s < -0.1) return;
+      if (e.s < 0) { e.t += -e.s; e.s = 0; }
+      ev.push(e);
+    };
+    const hits = (str, rep, step, from, vel, fn) => {
+      for (let r = 0; r < rep; r++) {
+        for (let i = 0; i < str.length; i++) {
+          const c = str[i];
+          if (c !== "x" && c !== "X" && c !== "o") continue;
+          fn(t0 + (from + (r * str.length + i) * step) * B, vel * (c === "X" ? 1.25 : c === "o" ? 0.5 : 1));
+        }
+      }
+    };
+    const S = {
+      tempo(bpm, o = {}) { B = 60 / bpm; t0 = o.t0 || 0; },
+      beat: (n) => t0 + n * B,
+      toBeat: (t) => (t - t0) / B,
+      seed() {},
+      program(track, patch, o = {}) {
+        tracks[track] = { patch, gain: o.gain || 0, pan: o.pan || 0, rev: o.rev || 0, bright: o.bright ?? 1 };
+      },
+      note(track, p, o = {}) { push({ k: "n", track, m: midiOf(p), t: at(o), d: len(o, B), v: o.vel ?? 90 }); },
+      chord(track, ps, o = {}) { ps.forEach((p) => S.note(track, p, o)); },
+      pattern(track, str, o = {}) {
+        const pitches = o.pitch || ["C5"];
+        let k = 0;
+        const step = o.step ?? 0.5;
+        hits(str, o.repeat ?? 1, step, o.from || 0, o.vel ?? 80, (t, v) =>
+          push({ k: "n", track, m: midiOf(pitches[k++ % pitches.length]), t, d: o.dur ?? step * B * 0.9, v }));
+      },
+      drum(name, o = {}) { push({ k: "d", name, t: at(o), d: 0.3, v: o.vel ?? 90 }); },
+      drums(map, o = {}) {
+        for (const name of Object.keys(map)) {
+          hits(map[name], o.repeat ?? 1, o.step ?? 0.5, o.from || 0, o.vel ?? 80, (t, v) => push({ k: "d", name, t, d: 0.3, v }));
+        }
+      },
+      ticks(times, o = {}) { times.forEach((t) => push({ k: "f", name: "tick", t, d: 0.03, v: o.vel ?? 40, pitch: 0 })); },
+      fx(name, t, o = {}) { push({ k: "f", name, t, d: o.dur ?? 0.5, v: o.vel ?? 70, pitch: o.pitch || 0 }); },
+      run(track, ps, o = {}) {
+        const step = o.step ?? 0.1;
+        ps.forEach((p, i) => push({ k: "n", track, m: midiOf(p), t: o.t + i * step, d: step * 2.5, v: (o.vel ?? 70) + i * (o.cresc || 0) }));
+      },
+      master(o = {}) {
+        if (o.gain != null) master.gain = o.gain;
+        if (o.music != null) master.music = o.music;
+        if (o.fadeOut != null) master.fadeOut = o.fadeOut;
+      },
+    };
+    if (scoreFn) scoreFn(S, T);
+    return { ev, tracks, master };
+  }
+
+  const db = (x) => Math.pow(10, x / 20);
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+  const audio = {
+    ctx: null, enabled: false, muted: false, score: null,
+    out: null, verb: null, noise: null, session: null, timer: 0,
+    voiceEl: null, voiceNode: null, voiceOut: null,
+  };
+  const DUCK = 0.4;
+
+  function setupAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    const ctx = (audio.ctx = new AC());
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -14;
+    comp.ratio.value = 4;
+    comp.connect(ctx.destination);
+    audio.out = ctx.createGain();
+    audio.out.gain.value = db(audio.score.master.gain);
+    audio.out.connect(comp);
+    // A small generated room for the reverb send.
+    const len = Math.floor(ctx.sampleRate * 2.4);
+    const ir = ctx.createBuffer(2, len, ctx.sampleRate);
+    const r = rng(9);
+    for (let c = 0; c < 2; c++) {
+      const d = ir.getChannelData(c);
+      for (let i = 0; i < len; i++) d[i] = (r() * 2 - 1) * Math.pow(1 - i / len, 3);
+    }
+    audio.verb = ctx.createConvolver();
+    audio.verb.buffer = ir;
+    const verbGain = ctx.createGain();
+    verbGain.gain.value = 0.5;
+    audio.verb.connect(verbGain);
+    verbGain.connect(audio.out);
+    const nb = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+    const nd = nb.getChannelData(0);
+    const r2 = rng(3);
+    for (let i = 0; i < nd.length; i++) nd[i] = r2() * 2 - 1;
+    audio.noise = nb;
+    // The voice skips the music's compressor and goes straight out.
+    audio.voiceOut = ctx.createGain();
+    audio.voiceOut.gain.value = 1;
+    audio.voiceOut.connect(ctx.destination);
+    if (audio.voiceEl) {
+      try { audio.voiceNode = ctx.createMediaElementSource(audio.voiceEl); audio.voiceNode.connect(audio.voiceOut); }
+      catch (e) { /* the element then plays on its own */ }
+    }
+    return true;
+  }
+
+  // The voice is an <audio> element: it keeps its pitch when the lesson plays faster. Each track is
+  // downloaded whole and played from memory, so jumping to any point works on every server.
+  const voiceBlobs = {};
+  function voiceUrl() { return voiceLang === "ml" && F.voice.srcMl ? F.voice.srcMl : F.voice.src; }
+  function loadVoice() {
+    const url = voiceUrl();
+    voiceBlobs[url] ??= fetch(url).then((r) => (r.ok ? r.blob() : null)).then((b) => (b ? URL.createObjectURL(b) : null)).catch(() => null);
+    voiceBlobs[url].then((blobUrl) => {
+      if (!blobUrl || voiceUrl() !== url) return;
+      audio.voiceEl.src = blobUrl;
+      if (audio.session) startSession(state.t);
+    });
+  }
+  function makeVoice() {
+    if (!F.voice || !F.voice.src) return;
+    const v = new Audio();
+    v.preload = "auto";
+    v.preservesPitch = v.mozPreservesPitch = v.webkitPreservesPitch = true;
+    audio.voiceEl = v;
+    loadVoice();
+  }
+
+  // The voice of one session, from the session's start point; the music dips under each line.
+  function startVoice(s) {
+    const v = audio.voiceEl;
+    if (!v || !v.src || s.voice) return;
+    if (v.duration && s.film0 >= v.duration) return;
+    v.playbackRate = s.rate;
+    v.currentTime = s.film0;
+    v.play().catch(() => { /* blocked or not loaded: the lesson plays on without it */ });
+    s.voice = true;
+    const at = s.ctx0, off = s.film0, r = s.rate;
+    for (const g of [s.duck.gain, s.send.gain]) {
+      for (const [a, b] of duckSpans) {
+        if (b <= off) continue;
+        const ca = at + (a - off) / r, cb = at + (b - off) / r;
+        if (ca > at) { g.setValueAtTime(1, ca); g.linearRampToValueAtTime(DUCK, ca + 0.25); } else g.setValueAtTime(DUCK, at);
+        g.setValueAtTime(DUCK, cb);
+        g.linearRampToValueAtTime(1, cb + 0.5);
+      }
+    }
+  }
+
+  // One playback session: a bus that can be dropped as a whole on pause or seek.
+  function startSession(filmT) {
+    stopSession();
+    if (!audio.enabled || audio.muted) return;
+    const ctx = audio.ctx;
+    const bus = ctx.createGain();
+    const duck = ctx.createGain();
+    bus.connect(duck);
+    duck.connect(audio.out);
+    const send = ctx.createGain();
+    send.connect(audio.verb);
+    // The instruments (not the drums or sound effects) go through their own level, master({ music }).
+    const music = ctx.createGain();
+    music.gain.value = db(audio.score.master.music);
+    music.connect(bus);
+    const musicSend = ctx.createGain();
+    musicSend.gain.value = music.gain.value;
+    musicSend.connect(send);
+    const tracks = {};
+    for (const [name, tr] of Object.entries(audio.score.tracks)) {
+      const g = ctx.createGain();
+      g.gain.value = db(tr.gain);
+      const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+      if (pan) { pan.pan.value = tr.pan; g.connect(pan); pan.connect(music); } else g.connect(music);
+      const rs = ctx.createGain();
+      rs.gain.value = tr.rev;
+      g.connect(rs);
+      rs.connect(musicSend);
+      tracks[name] = { node: g, def: tr };
+    }
+    const s = { bus, duck, send, music, musicSend, tracks, ctx0: ctx.currentTime + 0.06, film0: filmT, rate: state.rate, idx: 0, voice: false };
+    audio.session = s;
+    startVoice(s);
+    // Notes already sounding at the seek point start now with what is left of them.
+    for (const e of audio.score.ev) {
+      if (e.s >= filmT) break;
+      if (e.k === "n" && e.s + e.d > filmT + 0.15) sound(e, s, filmT, e.s + e.d - filmT);
+    }
+    s.idx = audio.score.ev.findIndex((e) => e.s >= filmT);
+    if (s.idx < 0) s.idx = audio.score.ev.length;
+    // Fade the master out over the last seconds of the lesson.
+    const fo = audio.score.master.fadeOut;
+    if (fo > 0) {
+      const a = Math.max(filmT, END - fo);
+      bus.gain.setValueAtTime(1, s.ctx0 + (a - filmT) / s.rate);
+      bus.gain.linearRampToValueAtTime(0.0001, s.ctx0 + (END - filmT) / s.rate);
+    }
+    audio.timer = setInterval(() => pump(), 50);
+    pump();
+  }
+
+  function stopSession() {
+    clearInterval(audio.timer);
+    const s = audio.session;
+    audio.session = null;
+    if (!s) return;
+    const now = audio.ctx.currentTime;
+    s.bus.gain.cancelScheduledValues(now);
+    s.bus.gain.setTargetAtTime(0, now, 0.03);
+    s.send.gain.cancelScheduledValues(now);
+    s.send.gain.setTargetAtTime(0, now, 0.03);
+    if (s.voice && audio.voiceEl) audio.voiceEl.pause();
+    setTimeout(() => { s.bus.disconnect(); s.duck.disconnect(); s.send.disconnect(); s.music.disconnect(); s.musicSend.disconnect(); }, 400);
+  }
+
+  function pump() {
+    const s = audio.session;
+    if (!s) return;
+    const filmNow = s.film0 + (audio.ctx.currentTime - s.ctx0) * s.rate;
+    const horizon = filmNow + 0.6 * s.rate;
+    // Keep the voice in step with the picture.
+    const v = audio.voiceEl;
+    if (s.voice && v && !v.paused && !v.seeking && filmNow > s.film0 + 0.5 && Math.abs(v.currentTime - filmNow) > 0.25) v.currentTime = filmNow;
+    const ev = audio.score.ev;
+    while (s.idx < ev.length && ev[s.idx].s <= horizon) {
+      const e = ev[s.idx++];
+      if (e.s >= s.film0) sound(e, s, e.s, e.d);
+    }
+  }
+
+  function sound(e, s, filmStart, dur) {
+    const ctx = audio.ctx;
+    const when = Math.max(ctx.currentTime, s.ctx0 + (filmStart - s.film0) / s.rate);
+    dur /= s.rate;
+    const v = Math.pow(clamp01(e.v / 127), 1.5);
+    if (e.k === "n") {
+      const tr = s.tracks[e.track];
+      if (!tr) return;
+      voice(tr.def.patch, tr.node, hz(e.m), when, Math.max(0.05, dur), v, tr.def.bright);
+    } else if (e.k === "d") {
+      drum(e.name, s.bus, when, v);
+    } else {
+      fx(e.name, s.bus, s.send, when, e.d / s.rate, v, e.pitch || 0);
+    }
+  }
+
+  function env(g, when, peak, attack, hold, release) {
+    peak = Math.max(peak, 0.0002);
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.linearRampToValueAtTime(peak, when + attack);
+    g.gain.setValueAtTime(peak, when + attack + hold);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + attack + hold + release);
+    return when + attack + hold + release + 0.05;
+  }
+  function osc(type, f, dest, when, stop, detune) {
+    const o = audio.ctx.createOscillator();
+    o.type = type;
+    o.frequency.value = f;
+    if (detune) o.detune.value = detune;
+    o.connect(dest);
+    o.start(when);
+    o.stop(stop);
+    return o;
+  }
+  function noiseSrc(dest, when, stop) {
+    const n = audio.ctx.createBufferSource();
+    n.buffer = audio.noise;
+    n.loop = true;
+    n.connect(dest);
+    n.start(when);
+    n.stop(stop);
+    return n;
+  }
+
+  function voice(patch, dest, f, when, dur, v, bright) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    let stop;
+    switch (patch) {
+      case "pad": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 700 + 900 * bright;
+        lp.connect(g);
+        stop = env(g, when, 0.22 * v, 0.5, Math.max(0, dur - 0.5), 1.1);
+        osc("sawtooth", f, lp, when, stop, -8);
+        osc("sawtooth", f, lp, when, stop, 8);
+        break;
+      }
+      case "ep":
+      case "keys": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.22 * v + 0.0002, when + 0.008);
+        g.gain.exponentialRampToValueAtTime(0.08 * v + 0.0001, when + Math.min(dur, 0.9));
+        g.gain.exponentialRampToValueAtTime(0.0001, when + dur + 0.4);
+        stop = when + dur + 0.45;
+        osc("sine", f, g, when, stop);
+        const h2 = ctx.createGain();
+        h2.gain.value = 0.25;
+        h2.connect(g);
+        osc("sine", f * 2, h2, when, stop);
+        break;
+      }
+      case "bass": {
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 500;
+        lp.connect(g);
+        stop = env(g, when, 0.34 * v, 0.01, Math.max(0, dur - 0.1), 0.18);
+        osc("sine", f, lp, when, stop);
+        osc("triangle", f * 2, lp, when, stop);
+        break;
+      }
+      case "pluck": {
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.24 * v + 0.0002, when + 0.004);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + Math.min(1.1, dur + 0.45));
+        stop = when + Math.min(1.1, dur + 0.45) + 0.05;
+        osc("triangle", f, g, when, stop);
+        break;
+      }
+      default: {
+        // marimba, vibes, glock and anything unknown: a struck bar.
+        g.gain.setValueAtTime(0.0001, when);
+        g.gain.linearRampToValueAtTime(0.26 * v + 0.0002, when + 0.003);
+        g.gain.exponentialRampToValueAtTime(0.0001, when + 0.7);
+        stop = when + 0.75;
+        osc("sine", f, g, when, stop);
+        const h4 = ctx.createGain();
+        h4.gain.value = 0.12;
+        h4.connect(g);
+        osc("sine", f * 4, h4, when, stop);
+      }
+    }
+  }
+
+  function drum(name, dest, when, v) {
+    const ctx = audio.ctx;
+    const g = ctx.createGain();
+    g.connect(dest);
+    if (name === "kick" || name === "tom") {
+      const o = osc("sine", 140, g, when, when + 0.4);
+      o.frequency.setValueAtTime(140, when);
+      o.frequency.exponentialRampToValueAtTime(45, when + 0.12);
+      env(g, when, 0.8 * v, 0.002, 0.02, 0.3);
+    } else {
+      const f = ctx.createBiquadFilter();
+      f.type = name === "sidestick" || name === "woodblock" ? "bandpass" : "highpass";
+      f.frequency.value = name === "sidestick" || name === "woodblock" ? 1900 : 7000;
+      f.connect(g);
+      noiseSrc(f, when, when + 0.2);
+      env(g, when, 0.22 * v, 0.001, 0.005, name === "openhat" ? 0.25 : 0.045);
+    }
+  }
+
+  function fx(name, dest, send, when, dur, v, pitch) {
+    const ctx = audio.ctx;
+    const tr = Math.pow(2, pitch / 12);
+    const g = ctx.createGain();
+    g.connect(dest);
+    const wet = ctx.createGain();
+    wet.gain.value = 0.35;
+    g.connect(wet);
+    wet.connect(send);
+    const r = rng(Math.floor(when * 1000));
+    switch (name) {
+      case "tick": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.frequency.value = 3000 + r() * 1500;
+        f.Q.value = 3;
+        f.connect(g);
+        noiseSrc(f, when, when + 0.06);
+        env(g, when, 0.5 * v, 0.001, 0.004, 0.025);
+        break;
+      }
+      case "click": {
+        osc("square", 1400, g, when, when + 0.06);
+        env(g, when, 0.12 * v, 0.001, 0.005, 0.03);
+        break;
+      }
+      case "ding": {
+        osc("sine", 1046.5 * tr, g, when, when + 1.6);
+        osc("sine", 1568 * tr, g, when, when + 1.6);
+        env(g, when, 0.16 * v, 0.004, 0.02, 1.4);
+        break;
+      }
+      case "chime": {
+        [0, 4, 7].forEach((st, i) => {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + i * 0.07;
+          osc("sine", 1046.5 * tr * Math.pow(2, st / 12), gi, t, t + 1);
+          env(gi, t, 0.14 * v, 0.003, 0.01, 0.9);
+        });
+        g.gain.value = 1;
+        break;
+      }
+      case "sparkle": {
+        for (let i = 0; i < 6; i++) {
+          const gi = ctx.createGain();
+          gi.connect(g);
+          const t = when + r() * 0.5;
+          osc("sine", 2000 + r() * 2200, gi, t, t + 0.2);
+          env(gi, t, 0.07 * v, 0.002, 0.01, 0.12);
+        }
+        break;
+      }
+      case "whoosh":
+      case "revswell": {
+        const f = ctx.createBiquadFilter();
+        f.type = "bandpass";
+        f.Q.value = 0.8;
+        f.frequency.setValueAtTime(300, when);
+        f.frequency.exponentialRampToValueAtTime(name === "whoosh" ? 2400 : 3200, when + dur);
+        f.connect(g);
+        noiseSrc(f, when, when + dur + 0.1);
+        g.gain.setValueAtTime(0.0001, when);
+        if (name === "whoosh") {
+          g.gain.linearRampToValueAtTime(0.3 * v, when + dur * 0.5);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur);
+        } else {
+          g.gain.exponentialRampToValueAtTime(0.28 * v + 0.0002, when + dur);
+          g.gain.linearRampToValueAtTime(0.0001, when + dur + 0.06);
+        }
+        break;
+      }
+      case "thud": {
+        const o = osc("sine", 110, g, when, when + 0.4);
+        o.frequency.setValueAtTime(110, when);
+        o.frequency.exponentialRampToValueAtTime(45, when + 0.18);
+        env(g, when, 0.5 * v, 0.002, 0.02, 0.3);
+        break;
+      }
+      case "boing": {
+        const o = osc("sine", 220 * tr, g, when, when + 0.5);
+        o.frequency.setValueAtTime(220 * tr, when);
+        o.frequency.linearRampToValueAtTime(520 * tr, when + 0.12);
+        o.frequency.linearRampToValueAtTime(300 * tr, when + 0.4);
+        env(g, when, 0.2 * v, 0.005, 0.05, 0.35);
+        break;
+      }
+      default: {
+        // pop, and any name this synth does not know.
+        const o = osc("sine", 600 * tr, g, when, when + 0.2);
+        o.frequency.setValueAtTime(600 * tr, when);
+        o.frequency.exponentialRampToValueAtTime(1200 * tr, when + 0.06);
+        env(g, when, 0.3 * v, 0.002, 0.01, 0.12);
+      }
+    }
+  }
+
+  // ── Playback ───────────────────────────────────────────────────────────────
+  const state = { t: 0, playing: false, wall0: 0, t0: 0, current: -1, rate: 1 };
+  const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+  try { const r = Number(localStorage.getItem("fe-speed")); if (SPEEDS.includes(r)) state.rate = r; } catch (e) { /* 1x */ }
+  function setRate(r) {
+    state.t0 = state.t;
+    state.wall0 = now();
+    state.rate = r;
+    try { localStorage.setItem("fe-speed", String(r)); } catch (e) { /* not remembered */ }
+    if (state.playing) startSession(state.t);
+  }
+  let instances = [];
+
+  function sceneAt(t) {
+    for (let i = scenes.length - 1; i >= 0; i--) if (t >= scenes[i].start) return i;
+    return 0;
+  }
+
+  function renderAt(t) {
+    const i = sceneAt(t);
+    if (i !== state.current) {
+      instances.forEach((inst, k) => { inst.box.style.display = k === i ? "block" : "none"; });
+      state.current = i;
+    }
+    const inst = instances[i];
+    inst.def.render.call(inst.def, (Math.min(t, END - 1e-4) - inst.sc.start) / inst.sc.k, inst.kit);
+    ui.update(t);
+  }
+
+  function now() { return performance.now() / 1000; }
+
+  function play() {
+    if (state.t >= END - 0.01) state.t = 0;
+    state.playing = true;
+    state.wall0 = now();
+    state.t0 = state.t;
+    startSession(state.t);
+    ui.update(state.t);
+  }
+  function pause() {
+    state.playing = false;
+    stopSession();
+    ui.update(state.t);
+  }
+  function seek(t) {
+    state.t = clamp(t, 0, END);
+    state.wall0 = now();
+    state.t0 = state.t;
+    if (state.playing) startSession(state.t);
+    renderAt(state.t);
+  }
+  // Tells the page around the lesson (the course, when signed in) how far the video has been watched:
+  // started, 25 %, 50 %, 75 % and finished, each once per visit.
+  const reported = new Set();
+  function reportProgress() {
+    if (window.parent === window) return;
+    const pct = state.t >= END - 0.5 ? 100 : [75, 50, 25].find((p) => state.t >= (END * p) / 100) || 0;
+    for (const p of [0, 25, 50, 75, 100]) {
+      if (p > pct || reported.has(p)) continue;
+      reported.add(p);
+      try { window.parent.postMessage({ type: "futures-edge:progress", lesson: F.id, pct: p }, location.origin); } catch (e) { /* no parent page */ }
+    }
+  }
+  function tick() {
+    if (state.playing) {
+      state.t = state.t0 + (now() - state.wall0) * state.rate;
+      if (state.t >= END) {
+        state.t = END;
+        pause();
+      }
+      renderAt(state.t);
+      reportProgress();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  async function enableAudio() {
+    if (audio.enabled) return;
+    if (!audio.ctx && !setupAudio()) return;
+    try { await audio.ctx.resume(); } catch (e) { /* stays suspended */ }
+    if (audio.ctx.state !== "running") return;
+    audio.enabled = true;
+    ui.sound();
+    if (state.playing) startSession(state.t);
+  }
+
+  // ── Controls ───────────────────────────────────────────────────────────────
+  const fmt = (t) => {
+    const s = Math.max(0, Math.floor(t));
+    return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  };
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" fill="currentColor"/></svg>',
+    replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6.5l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-8z" fill="currentColor"/></svg>',
+    on: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    off: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    full: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    exit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+
+  const CC_LANGS = [
+    { id: "ml", label: "മലയാളം", short: "മ", name: "Malayalam" },
+    { id: "en", label: "English", short: "EN", name: "English" },
+    { id: "off", label: "Off", short: "CC", name: "Off" },
+  ];
+
+  // ── Full screen ────────────────────────────────────────────────────────────
+  // The Fullscreen API where the browser has it (desktop, Android, iPad), turning a phone to
+  // landscape where it allows. iPhone Safari has no Fullscreen API for pages, so inside the
+  // course page the player asks the parent to grow the lesson to fill the whole screen instead.
+  const embedded = window.parent !== window;
+  const root = document.documentElement;
+  const fs = {
+    native: !!(document.fullscreenEnabled || document.webkitFullscreenEnabled),
+    pseudo: false,
+    available() { return this.native || embedded; },
+    active() { return !!(document.fullscreenElement || document.webkitFullscreenElement) || this.pseudo; },
+    async toggle() {
+      if (this.native) {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch (e) { /* not locked */ }
+          await (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        try {
+          await (root.requestFullscreen || root.webkitRequestFullscreen).call(root, { navigationUI: "hide" });
+          if (screen.orientation && screen.orientation.lock) await screen.orientation.lock("landscape").catch(() => {});
+          return;
+        } catch (e) {
+          if (!embedded) return; // refused: fall through to the parent page below
+        }
+      }
+      this.pseudo = !this.pseudo;
+      window.parent.postMessage({ type: "futures-edge:fullscreen", on: this.pseudo }, location.origin);
+      ui.full();
+    },
+  };
+  document.addEventListener("fullscreenchange", () => ui.full());
+  document.addEventListener("webkitfullscreenchange", () => ui.full());
+  const ui = (() => {
+    const bar = h(
+      '<div class="fe-ui" role="group" aria-label="Lesson controls">' +
+        '<button type="button" class="fe-btn fe-pp" aria-label="Pause"></button>' +
+        '<div class="fe-track" role="slider" tabindex="0" aria-label="Lesson position" aria-valuemin="0"><i></i></div>' +
+        '<span class="fe-time"></span>' +
+        '<div class="fe-ccw fe-spw"><button type="button" class="fe-btn fe-sp" aria-haspopup="true" aria-expanded="false"></button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Playback speed" hidden>' +
+          SPEEDS.map((r) => '<button type="button" role="menuitemradio" data-rate="' + r + '">' + r + '×</button>').join("") +
+          '</div></div>' +
+        (F.voice && F.voice.srcMl ? '<button type="button" class="fe-btn fe-lang"></button>' : "") +
+        (lines.length ? '<div class="fe-ccw"><button type="button" class="fe-btn fe-cc" aria-haspopup="true" aria-expanded="false">CC</button>' +
+          '<div class="fe-ccm" role="menu" aria-label="Subtitles" hidden>' +
+          CC_LANGS.map((l) => '<button type="button" role="menuitemradio" data-lang="' + l.id + '"' + (l.id === "ml" ? ' lang="ml"' : "") + '>' + l.label + '</button>').join("") +
+          '</div></div>' : "") +
+        '<button type="button" class="fe-btn fe-snd" aria-label="Turn sound on"></button>' +
+        (fs.available() ? '<button type="button" class="fe-btn fe-fs" aria-label="Full screen"></button>' : "") +
+      "</div>"
+    );
+    const hint = h('<button type="button" class="fe-hint">Click anywhere for sound</button>');
+    const cap = h('<p class="fe-cap" aria-live="off"></p>');
+    document.body.append(cap, bar, hint);
+    const cc = bar.querySelector(".fe-cc");
+    const ccMenu = cc && cc.nextElementSibling;
+    const fsb = bar.querySelector(".fe-fs");
+    if (fsb) fsb.addEventListener("click", (e) => { e.stopPropagation(); fs.toggle(); wake(); });
+    // Subtitle language: Malayalam by default when the lesson has it, then English, or off.
+    // The viewer's choice is remembered on this device.
+    const hasMl = lines.some((l) => l.ml);
+    let ccLang = hasMl ? "ml" : "en", capText = null;
+    try {
+      const saved = localStorage.getItem("fe-subtitles");
+      if (saved === "en" || saved === "off" || (saved === "ml" && hasMl)) ccLang = saved;
+    } catch (e) { /* storage blocked: keep the default */ }
+    const setLang = (lang) => {
+      ccLang = lang;
+      try { localStorage.setItem("fe-subtitles", lang); } catch (e) { /* not remembered */ }
+      capText = null;
+      api.update(state.t);
+      api.cc();
+    };
+    // Voice language (only lessons recorded in both): switches the voice in place, at the same moment.
+    const langBtn = bar.querySelector(".fe-lang");
+    const showLang = () => {
+      langBtn.textContent = voiceLang === "ml" ? "മ" : "EN";
+      langBtn.setAttribute("aria-label", "Voice: " + (voiceLang === "ml" ? "Malayalam. Switch to English" : "English. Switch to Malayalam"));
+    };
+    if (langBtn) {
+      showLang();
+      langBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        voiceLang = voiceLang === "ml" ? "en" : "ml";
+        try { localStorage.setItem("fe-voice-lang", voiceLang); } catch (e) { /* not remembered */ }
+        showLang();
+        if (audio.voiceEl) {
+          audio.voiceEl.pause();
+          loadVoice();
+        }
+        wake();
+      });
+    }
+    // Playback speed menu.
+    const sp = bar.querySelector(".fe-sp"), spMenu = sp.nextElementSibling;
+    const showRate = () => {
+      sp.textContent = state.rate + "×";
+      sp.setAttribute("aria-label", "Playback speed " + state.rate + "×");
+      for (const b of spMenu.children) b.setAttribute("aria-checked", String(Number(b.dataset.rate) === state.rate));
+    };
+    const openSp = (open) => {
+      spMenu.hidden = !open;
+      sp.setAttribute("aria-expanded", String(open));
+      if (open) (spMenu.querySelector('[aria-checked="true"]') || spMenu.firstElementChild).focus();
+    };
+    sp.addEventListener("click", (e) => { e.stopPropagation(); openSp(spMenu.hidden); wake(); });
+    spMenu.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-rate]");
+      if (!b) return;
+      e.stopPropagation();
+      setRate(Number(b.dataset.rate));
+      showRate();
+      openSp(false);
+      sp.focus();
+    });
+    spMenu.addEventListener("keydown", (e) => {
+      const items = Array.from(spMenu.children), i = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+      }
+      if (e.key === "Escape") { e.stopPropagation(); openSp(false); sp.focus(); }
+    });
+    document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-spw")) openSp(false); }, true);
+    const stepRate = (d) => {
+      const i = SPEEDS.indexOf(state.rate), j = clamp(i + d, 0, SPEEDS.length - 1);
+      if (j !== i) { setRate(SPEEDS[j]); showRate(); }
+    };
+    showRate();
+    const openMenu = (open) => {
+      if (!ccMenu) return;
+      ccMenu.hidden = !open;
+      cc.setAttribute("aria-expanded", String(open));
+      if (open) (ccMenu.querySelector('[aria-checked="true"]') || ccMenu.firstElementChild).focus();
+    };
+    if (cc) {
+      cc.addEventListener("click", (e) => { e.stopPropagation(); openMenu(ccMenu.hidden); wake(); });
+      ccMenu.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-lang]");
+        if (!b) return;
+        e.stopPropagation();
+        setLang(b.dataset.lang);
+        openMenu(false);
+        cc.focus();
+      });
+      ccMenu.addEventListener("keydown", (e) => {
+        const items = Array.from(ccMenu.children), i = items.indexOf(document.activeElement);
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+        }
+        if (e.key === "Escape") { e.stopPropagation(); openMenu(false); cc.focus(); }
+      });
+      document.addEventListener("pointerdown", (e) => { if (!e.target.closest(".fe-ccw")) openMenu(false); }, true);
+      if (!hasMl) ccMenu.querySelector('[data-lang="ml"]').remove();
+    }
+    const pp = bar.querySelector(".fe-pp");
+    const trk = bar.querySelector(".fe-track");
+    const fill = trk.querySelector("i");
+    const time = bar.querySelector(".fe-time");
+    const snd = bar.querySelector(".fe-snd");
+    trk.setAttribute("aria-valuemax", String(Math.round(END)));
+    let idle = 0;
+    const wake = () => {
+      document.body.classList.remove("fe-idle");
+      clearTimeout(idle);
+      idle = setTimeout(() => { if (state.playing) document.body.classList.add("fe-idle"); }, 2600);
+    };
+    document.addEventListener("pointermove", wake);
+    pp.addEventListener("click", (e) => { e.stopPropagation(); enableAudio(); state.playing ? pause() : play(); wake(); });
+    snd.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      if (!audio.enabled) { await enableAudio(); return; }
+      audio.muted = !audio.muted;
+      if (audio.muted) stopSession(); else if (state.playing) startSession(state.t);
+      api.sound();
+    });
+    const seekTo = (clientX) => {
+      const r = trk.getBoundingClientRect();
+      seek(clamp01((clientX - r.left) / r.width) * END);
+    };
+    let drag = false;
+    trk.addEventListener("pointerdown", (e) => { e.stopPropagation(); enableAudio(); drag = true; trk.setPointerCapture(e.pointerId); seekTo(e.clientX); });
+    trk.addEventListener("pointermove", (e) => { if (drag) seekTo(e.clientX); });
+    trk.addEventListener("pointerup", () => { drag = false; });
+    trk.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { seek(state.t + 5); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { seek(state.t - 5); e.preventDefault(); }
+    });
+    // The first click anywhere turns the sound on; later clicks on the lesson pause and resume.
+    document.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".fe-ui")) return;
+      if (!audio.enabled) { enableAudio(); return; }
+      state.playing ? pause() : play();
+      wake();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.target.closest && e.target.closest(".fe-ccw")) return; // the subtitle menu handles its own keys
+      if (e.key === " " || e.key === "k") { e.preventDefault(); enableAudio(); state.playing ? pause() : play(); wake(); }
+      if ((e.key === "f" || e.key === "F") && fs.available()) { fs.toggle(); wake(); }
+      if (e.key === ">" || e.key === ".") { stepRate(1); wake(); }
+      if (e.key === "<" || e.key === ",") { stepRate(-1); wake(); }
+      if (e.key === "Escape" && fs.pseudo) fs.toggle();
+    });
+    const api = {
+      update(t) {
+        const done = !state.playing && t >= END - 0.01;
+        pp.innerHTML = state.playing ? ICON.pause : done ? ICON.replay : ICON.play;
+        pp.setAttribute("aria-label", state.playing ? "Pause" : done ? "Replay" : "Play");
+        fill.style.width = ((t / END) * 100).toFixed(3) + "%";
+        trk.setAttribute("aria-valuenow", String(Math.round(t)));
+        time.textContent = fmt(t) + " / " + fmt(END);
+        let text = "";
+        if (ccLang !== "off") for (const l of lines) if (t >= l.t - 0.1 && t < l.t + l.d + 0.4) text = (ccLang === "ml" && l.ml) || l.text;
+        if (text !== capText) {
+          capText = text;
+          cap.textContent = text;
+          cap.hidden = !text;
+          cap.lang = ccLang === "ml" ? "ml" : "en";
+        }
+        if (!state.playing) wake();
+      },
+      sound() {
+        const on = audio.enabled && !audio.muted;
+        snd.innerHTML = on ? ICON.on : ICON.off;
+        snd.setAttribute("aria-label", on ? "Mute" : "Turn sound on");
+        hint.hidden = audio.enabled;
+      },
+      cc() {
+        if (!cc) return;
+        const cur = CC_LANGS.find((l) => l.id === ccLang);
+        cc.textContent = ccLang === "off" ? "CC" : cur.short;
+        cc.classList.toggle("is-off", ccLang === "off");
+        cc.setAttribute("aria-label", "Subtitles: " + cur.name);
+        for (const b of ccMenu.children) b.setAttribute("aria-checked", String(b.dataset.lang === ccLang));
+      },
+      full() {
+        if (!fsb) return;
+        const on = fs.active();
+        fsb.innerHTML = on ? ICON.exit : ICON.full;
+        fsb.setAttribute("aria-label", on ? "Exit full screen" : "Full screen");
+      },
+    };
+    api.sound();
+    api.full();
+    api.cc();
+    wake();
+    return api;
+  })();
+
+  // For tests and frame-by-frame capture: window.lessonPlayer.ready.then(() => { pause(); seek(12.5); }).
+  let markReady;
+  window.lessonPlayer = {
+    duration: END,
+    ready: new Promise((r) => { markReady = r; }),
+    play, pause, seek,
+    time: () => state.t,
+    score: () => audio.score,
+    // The audio graph, for level checks: music and effects reach `out`, the voice `voiceOut`.
+    audioGraph: () => ({ ctx: audio.ctx, out: audio.out, voiceOut: audio.voiceOut }),
+    voice: () => ({ lines, lang: voiceLang, loaded: !!(audio.voiceEl && audio.voiceEl.readyState >= 1), playing: !!(audio.voiceEl && !audio.voiceEl.paused), at: audio.voiceEl ? audio.voiceEl.currentTime : null }),
+    rate: () => state.rate,
+    setRate,
+  };
+
+  // ── Boot ───────────────────────────────────────────────────────────────────
+  async function boot() {
+    makeVoice();
+    try {
+      await Promise.all(F.fontChecks.map((f) => document.fonts.load(f)));
+    } catch (e) { /* system fonts stand in */ }
+    run("shared.js", makeKit(stage, 0, OLD_END));
+    for (const sc of scenes) {
+      const box = el("div", { class: "fe-scene" });
+      stage.append(box);
+      const kit = makeKit(box, sc.oldStart, sc.oldDur);
+      run("scene-" + sc.id + ".js", kit);
+      const def = defs[sc.id];
+      if (def && def.init) await def.init.call(def, kit);
+      instances.push({ sc, def, box, kit });
+    }
+    if (modules["score.js"]) run("score.js", makeKit(stage, 0, OLD_END));
+    audio.score = recordScore();
+    // Wait (briefly) for the images so the first frames do not pop in.
+    const imgs = Array.from(stage.querySelectorAll("img"));
+    await Promise.race([
+      Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })))),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+    instances.forEach((inst) => { inst.box.style.display = "none"; });
+    renderAt(0);
+    document.body.classList.add("fe-ready");
+    // A parent page that allows autoplay (iframe allow="autoplay" after a click) gets sound
+    // straight away; otherwise the first click turns it on.
+    if (setupAudio() && audio.ctx.state === "running") { audio.enabled = true; ui.sound(); }
+    play();
+    requestAnimationFrame(tick);
+    markReady();
+  }
+  boot().catch((e) => {
+    document.querySelector(".fe-loading").textContent = "This lesson could not start. Please reload the page.";
+    throw e;
+  });
+})();
+
+</script>
+</body>
+</html>

@@ -23,8 +23,11 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "../..");
-const contentDir = join(root, "content/futures-edge");
-const outDir = join(root, "public/futures-edge/lessons");
+const lessonContentDir = join(root, "content/futures-edge");
+const lessonOutDir = join(root, "public/futures-edge/lessons");
+// Promo films (the same scene format, played by the same runtime): content/promos/<id>/ -> public/promos/<id>.html
+const promoContentDir = join(root, "content/promos");
+const promoOutDir = join(root, "public/promos");
 
 const FONTS = [
   { file: "outfit.woff2", from: join(root, "public/fonts/outfit.woff2"), face: 'font-family:"Outfit";font-weight:400 700' },
@@ -171,7 +174,9 @@ function mixVoice(clips, plan, total, out) {
 }
 
 function build(id) {
-  const src = join(contentDir, id);
+  const promo = !existsSync(join(lessonContentDir, id, "film.json")) && existsSync(join(promoContentDir, id, "film.json"));
+  const src = join(promo ? promoContentDir : lessonContentDir, id);
+  const outDir = promo ? promoOutDir : lessonOutDir;
   const film = JSON.parse(readFileSync(join(src, "film.json"), "utf8"));
   const modules = {};
   for (const name of readdirSync(join(src, "modules")).sort()) modules[name] = readFileSync(join(src, "modules", name), "utf8");
@@ -259,17 +264,20 @@ function build(id) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${id} · ${film.title.replace(/^[A-Z]\d+\s+/, "")} · XORA Futures Edge</title>
-<meta name="description" content="XORA Futures Edge lesson ${id}, an animated lesson (${Math.round(total / 60)} min). Education only, not financial advice.">
+${promo
+    ? `<title>${film.title} · XORA</title>
+<meta name="description" content="${film.title}: an animated XORA story. Not financial advice.">`
+    : `<title>${id} · ${film.title.replace(/^[A-Z]\d+\s+/, "")} · XORA Futures Edge</title>
+<meta name="description" content="XORA Futures Edge lesson ${id}, an animated lesson (${Math.round(total / 60)} min). Education only, not financial advice.">`}
 <style>
 ${fontFaces}
 ${css}
 </style>
 </head>
 <body>
-<p class="fe-loading">Loading lesson…</p>
+<p class="fe-loading">Loading ${promo ? "video" : "lesson"}…</p>
 <div id="stage" aria-label="${film.title}" role="img"></div>
-<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/futures-edge/${id}/. Edit the source, not this file. -->
+<!-- Built by tools/futures-edge-lessons/build-lesson.mjs from content/${promo ? "promos" : "futures-edge"}/${id}/. Edit the source, not this file. -->
 <script>window.FILM = ${scriptSafe(JSON.stringify(FILM))};</script>
 <script>
 ${scriptSafe(runtime)}
@@ -277,10 +285,12 @@ ${scriptSafe(runtime)}
 </body>
 </html>
 `;
+  mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, `${id}.html`), html);
-  console.log(`lesson ${id}: ${scenes.length} scenes, ${total.toFixed(1)}s${voice ? `, ${voice.lines.length} voice lines` : ""}, ${Object.keys(manifest).length} images -> public/futures-edge/lessons/${id}.html`);
+  console.log(`${promo ? "promo" : "lesson"} ${id}: ${scenes.length} scenes, ${total.toFixed(1)}s${voice ? `, ${voice.lines.length} voice lines` : ""}, ${Object.keys(manifest).length} images -> ${promo ? "public/promos" : "public/futures-edge/lessons"}/${id}.html`);
 }
 
 const ids = process.argv.slice(2);
-const all = readdirSync(contentDir).filter((d) => existsSync(join(contentDir, d, "film.json"))).sort();
+// With no ids: every lesson. A promo builds only when named (node build-lesson.mjs first-user).
+const all = readdirSync(lessonContentDir).filter((d) => existsSync(join(lessonContentDir, d, "film.json"))).sort();
 for (const id of ids.length ? ids : all) build(id);
